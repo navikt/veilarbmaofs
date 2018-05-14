@@ -1,10 +1,13 @@
 import * as React from 'react';
+import Innholdslaster from "../components/innholdslaster";
 
 class Application extends React.Component {
   public render() {
     return (
       <div className="veilarbmaofs">
-          <h1>Veilarbmaofs</h1>
+          <Innholdslaster avhengigheter={[]} >
+            <p>Data</p>
+          </Innholdslaster>
       </div>
     );
   }
