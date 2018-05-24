@@ -1,0 +1,27 @@
+@import "~nav-frontend-core/less/_variabler";
+
+.container {
+  @media (min-width: 1200px) {
+    max-width: 63rem;
+  }
+
+  .toggle-persondetaljer {
+    display: block;
+    background: none;
+    border: none;
+    padding: 5px 30px 5px 15px;
+
+    @media (min-width: 768px) {
+      margin-left: auto;
+    }
+
+    .chevron {
+        transition: transform 0.3s;
+    }
+
+    .toggle-persondetaljer__tekst:hover {
+      border-bottom: 1px solid @navBla;
+    }
+  }
+
+}
