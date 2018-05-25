@@ -3,15 +3,17 @@ import Innholdslaster from "../components/innholdslaster";
 import Persondetaljer from "./persondetaljer/persondetaljer";
 
 import './application.less';
+import AppProvider from "./context";
 
 class Application extends React.Component {
   public render() {
     return (
       <div className="veilarbmaofs">
-          <Innholdslaster avhengigheter={[]} > {/** tekster */}
-              <p>TESTING 1337</p>
-              <Persondetaljer />
-          </Innholdslaster>
+          <AppProvider>
+              <Innholdslaster avhengigheter={[]} > {/** tekster */}
+                  <Persondetaljer />
+              </Innholdslaster>
+          </AppProvider>
       </div>
     );
   }

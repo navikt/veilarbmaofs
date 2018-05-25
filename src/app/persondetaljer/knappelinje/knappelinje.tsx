@@ -1,27 +1,36 @@
 import * as React from 'react';
-// import HiddenIfHOC from '../../../components/hidden-if';
-import { elementer } from '../../../config';
+import {elementer, IInformasjonsElement} from '../../../config';
 
+import {AppContext, IAppContextProp, withAppContext} from "../../context";
 import './knappelinje.less';
 
-function KnapperFraConfig() {
-        return <>
-            {elementer.map(element => (
-                <button key={element.id}>
-                    <span>
-                        {element.id}
-                    </span>
-                </button>
-            ))}
-        </>;
-}
+function InfoKnappPure(props: IInformasjonsElement & IAppContextProp) {
+    const handleClick = () => props.context.toggleKnapp(props.id);
 
-const Knappelinje = () => {
+    return (
+        <button onClick={handleClick}>
+                <span>
+                    {props.id}
+                </span>
+        </button>
+    );
+}
+const InfoKnapp = withAppContext<IInformasjonsElement>(AppContext, InfoKnappPure);
+
+
+const renderElementer: React.ReactNode[] = elementer
+    .map((element) => <InfoKnapp key={element.id} {...element}/>);
+
+function Knappelinje(props: IAppContextProp) {
+    if (!props.context.apen) {
+        return null;
+    }
+
     return (
         <div className="knappelinje">
-            <KnapperFraConfig />
+            {renderElementer}
         </div>
     );
-};
-export default Knappelinje;
-// export default HiddenIfHOC(Knappelinje);
+}
+
+export default withAppContext<{}>(AppContext, Knappelinje);
