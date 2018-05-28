@@ -1,0 +1,74 @@
+@coreModulePath: "../../";
+@nodeModulesPath: "../../";
+
+@import "../../node_modules/nav-frontend-core/less/_variabler";
+
+body {
+  background-color: @navLysGra;
+}
+
+.veilarbmaofs {
+  @import "../../node_modules/nav-frontend-typografi-style/src/index";
+  @import "../../node_modules/nav-frontend-core/less/core";
+  @import "../../node_modules/nav-frontend-paneler-style/src/index";
+  @import "../../node_modules/nav-frontend-paneler-style/src/mixins";
+  @import "../../node_modules/nav-frontend-alertstriper-style/src/index";
+  @import "../../node_modules/nav-frontend-chevron-style/src/index";
+  @import "../../node_modules/nav-frontend-ekspanderbartpanel-style/src/index";
+
+  @import "./persondetaljer/persondetaljer";
+  @import "./persondetaljer/basisinfo/basisinfo";
+  @import "./persondetaljer/knappelinje/knappelinje";
+
+  .typo-normal-mixin();
+  @hover-color: @navBla;
+  @active-color: @navDypBla;
+  @focus-color: @orangeFocus;
+  @black: #000;
+  color: @navMorkGra;
+  font-family: @font-family;
+  line-height: @line-height-base;
+
+  .container {
+    @media (min-width: 1200px) {
+      max-width: 63rem;
+    }
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    margin-bottom: 0.45em;
+    padding-right: 1em;
+    padding-bottom: 0.3em;
+    padding-top: 0.3em;
+    display: inline-block;
+    text-decoration: none;
+    color: @navBla;
+
+    &:active, &:visited {
+      color: @navBla;
+    }
+
+    &:hover {
+      color: @navBla;
+      border-bottom: black;
+    }
+
+    &:focus {
+      background-color: @focus-color;
+      outline: none;
+    }
+
+    i {
+      margin-bottom: 0.22em;
+      margin-right: 0.25em;
+    }
+  }
+}
