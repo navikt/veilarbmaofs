@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-import { elementer, IInformasjonsElement } from './../../../config';
+import { elementer, IInformasjonsElement } from '../../../config';
 
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
 import Datafetcher from "../datafetcher";
+
+import './informasjonsvisning.less';
 
 
 function VisningsBolkPure<SOURCE, DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
@@ -16,12 +18,12 @@ function VisningsBolkPure<SOURCE, DATA>(props: IInformasjonsElement<DATA> & IApp
     const dataSource: () => Promise<DATA> = props.dataSource;
 
     return (
-        <>
+        <div className="informasjonselement">
             <h1>{props.id}</h1>
             <Datafetcher data={dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
-        </>
+        </div>
     );
 }
 
