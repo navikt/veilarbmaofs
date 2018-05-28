@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { IFOKompetanseData } from '../datatyper';
 
-function Jobbsokerkompetanse(props: { data: any }) {
+export interface IKompetanseData {
+    jobbsokerkompetanse: IFOKompetanseData;
+}
+
+interface IProps {
+    data: IKompetanseData;
+}
+
+function Jobbsokerkompetanse(props: IProps) {
     return (
         <>
             <p>Jobbsøkerkompetanse her</p>

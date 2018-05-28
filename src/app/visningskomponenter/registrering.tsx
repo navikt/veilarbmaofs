@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { IRegisteringData } from '../datatyper';
 
-function Registerering(props: { data: any }) {
+export interface IRegistereringData {
+    registering: IRegisteringData;
+}
+
+interface IProps {
+    data: IRegistereringData;
+}
+
+function Registerering(props: IProps) {
     // if (!!true) {
     //     throw new Error('nei nei nei');
     // }

@@ -1,13 +1,12 @@
-import CV from "./app/visningskomponenter/cv";
-import Jobbonsker from "./app/visningskomponenter/jobbonsker";
-import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
-import Oppfolging from "./app/visningskomponenter/oppfolging";
-import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia";
-import Registerering from "./app/visningskomponenter/registrering";
-import Ytelser from "./app/visningskomponenter/ytelser";
+import CV, { ICVData } from './app/visningskomponenter/cv';
+import Jobbonsker, { IJobbonskerData } from './app/visningskomponenter/jobbonsker';
+import Jobbsokerkompetanse, { IKompetanseData } from './app/visningskomponenter/jobbsokerkompetanse';
+import Oppfolging, { IOppfolgingData } from './app/visningskomponenter/oppfolging';
+import Personalia, {IPersonaliaData} from "./app/visningskomponenter/personalia";
+import Registerering, { IRegistereringData } from './app/visningskomponenter/registrering';
+import Ytelser, { IYtelserData } from './app/visningskomponenter/ytelser';
 import { getData } from "./fetch-utils";
 
-import { IRegistreringsData } from "./app/datatyper";
 
 export interface IInformasjonsElement<T> {
     component: React.ComponentType<{ data: T }>;
@@ -19,28 +18,28 @@ export type Config = Array<IInformasjonsElement<any>>;
 export const elementer: Config = [
     {
         component: Registerering,
-        dataSource: getData<{ registering: IRegistreringsData }>({
+        dataSource: getData<IRegistereringData>({
             registering: '/veilarbregistrering/api/registrering'
         }),
         id: 'Registrering',
     },
     {
         component: CV,
-        dataSource: getData<{ cv: IRegistreringsData }>({
-            cv: '/veilarbregistrering/api/registrering'
+        dataSource: getData<ICVData>({
+            cv: '/arenapam/api/cv'
         }),
         id: 'CV',
     },
     {
         component: Jobbonsker,
-        dataSource: getData<{ jobbonsker: IRegistreringsData }>({
+        dataSource: getData<IJobbonskerData>({
             jobbonsker: '/veilarbregistrering/api/jobbonsker'
         }),
         id: 'Jobbønsker',
     },
     {
         component: Personalia,
-        dataSource: getData<IPersonaliaInfo>({
+        dataSource: getData<IPersonaliaData>({
             arena: '/veilarbarena/api',
             tps: '/veilarbperson/api/',
         }),
@@ -48,21 +47,21 @@ export const elementer: Config = [
     },
     {
         component: Ytelser,
-        dataSource: getData<{ ytelser: IRegistreringsData }>({
+        dataSource: getData<IYtelserData>({
             ytelser: '/arena/api/pagaendeytelser'
         }),
         id: 'Ytelser',
     },
     {
         component: Oppfolging,
-        dataSource: getData<{ oppfolging: IRegistreringsData }>({
+        dataSource: getData<IOppfolgingData>({
             oppfolging: '/veilarboppfolging/api/oppfolging'
         }),
         id: 'Oppfølging',
     },
     {
         component: Jobbsokerkompetanse,
-        dataSource: getData<{ jobbsokerkompetanse: IRegistreringsData }>({
+        dataSource: getData<IKompetanseData>({
             jobbsokerkompetanse: '/veilarbjobbsokerkompetanse/api/jobbsokerkompetanse'
         }),
         id: 'Jobbsøkerkompetanse',
