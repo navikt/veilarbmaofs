@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Data} from "../persondetaljer/datafetcher";
 
-function CV(props: { data: Data[]}) {
+function CV(props: { data: any}) {
     return (
         <>
             <p>CV her</p>

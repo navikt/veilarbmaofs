@@ -1,7 +1,12 @@
 import * as React from 'react';
-import {Data} from "../persondetaljer/datafetcher";
+import {IArenaPersonInfo, ITPSPersonInfo} from "../datatyper";
 
-function Personalia(props: { data: Data[]}) {
+export interface IPersonaliaInfo {
+    arena: IArenaPersonInfo;
+    tps: ITPSPersonInfo;
+}
+
+function Personalia(props: { data: IPersonaliaInfo }) {
     return (
         <>
             <p>Personalia her</p>

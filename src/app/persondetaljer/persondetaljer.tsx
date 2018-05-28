@@ -7,7 +7,7 @@ import Informasjonsvisning from "./informasjonsvisning/informasjonsvisning";
 import Knappelinje from './knappelinje/knappelinje';
 import Tilbakelenke from "./tilbakelenke";
 
-import {AppContext, IAppContextProp, withAppContext} from "../context";
+import { AppContext, IAppContextProp, withAppContext } from "../context";
 
 import './persondetaljer.less';
 

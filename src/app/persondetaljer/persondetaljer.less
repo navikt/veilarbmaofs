@@ -1,5 +1,7 @@
 @import "~nav-frontend-core/less/_variabler";
 
+@focus-color: @orangeFocus;
+
 .container {
   @media (min-width: 1200px) {
     max-width: 63rem;
@@ -11,6 +13,11 @@
     border: none;
     padding: 5px 30px 5px 15px;
 
+    &:focus {
+      background: @focus-color;
+      outline: none;
+    }
+
     @media (min-width: 768px) {
       margin-left: auto;
     }
@@ -20,7 +27,8 @@
     }
 
     .toggle-persondetaljer__tekst:hover {
-      border-bottom: 1px solid @navBla;
+      text-decoration: underline;
+      //border-bottom: 1px solid @navBla;
     }
   }
 

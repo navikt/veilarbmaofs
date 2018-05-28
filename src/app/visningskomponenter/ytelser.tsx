@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Data} from "../persondetaljer/datafetcher";
 
-function Ytelser(props: { data: Data[]}) {
+function Ytelser(props: { data: any }) {
     return (
         <>
             <p>Ytelser her</p>

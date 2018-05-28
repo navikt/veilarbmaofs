@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Data} from "../persondetaljer/datafetcher";
 
-function Jobbsokerkompetanse(props: { data: Data[]}) {
+function Jobbsokerkompetanse(props: { data: any }) {
     return (
         <>
             <p>Jobbsøkerkompetanse her</p>

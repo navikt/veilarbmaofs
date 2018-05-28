@@ -44,7 +44,6 @@ class AppProvider extends React.Component<{}, IState> {
         } else {
             this.setState({ valgteKnapper: [ ...this.state.valgteKnapper, id ]});
         }
-        console.log(id, 'id'); // tslint:disable-line
         return id;
     }
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Data } from "../persondetaljer/datafetcher";
 
-function Registerering(props: { data: Data[]}) {
+function Registerering(props: { data: any }) {
     // if (!!true) {
     //     throw new Error('nei nei nei');
     // }

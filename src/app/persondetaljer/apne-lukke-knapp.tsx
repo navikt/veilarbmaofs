@@ -15,9 +15,9 @@ function ApneLukkeKnapp(props: IAppContextProp) {
             aria-pressed={props.context.apen}
             onClick={props.context.toggleApen}
         >
-                    <span className="toggle-persondetaljer__tekst">
-                        Detaljer {/*TODO: tekst */}
-                    </span>
+            <span className="toggle-persondetaljer__tekst">
+                Detaljer {/*TODO: tekst */}
+            </span>
             <i className={cls(props.context.apen)}/>
         </button>
     );

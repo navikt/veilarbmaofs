@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Data} from "../persondetaljer/datafetcher";
 
-function Oppfolging(props: { data: Data[]}) {
+function Oppfolging(props: { data: any }) {
     return (
         <>
             <p>Oppfolging her</p>
