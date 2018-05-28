@@ -3,12 +3,12 @@ import * as React from 'react';
 import { elementer, IInformasjonsElement } from '../../../config';
 
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
-import Datafetcher from "../datafetcher";
+import Datafetcher from "../../datafetcher";
 
 import './informasjonsvisning.less';
 
 
-function VisningsBolkPure<SOURCE, DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
+function VisningsBolkPure<DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
     if (!props.context.valgteKnapper.includes(props.id)) {
         return null;
     }

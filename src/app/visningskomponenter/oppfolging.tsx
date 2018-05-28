@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { IFOOppfolgingData } from '../datatyper';
 
-function Oppfolging(props: { data: any }) {
+export interface IOppfolgingData {
+    oppfolging: IFOOppfolgingData;
+}
+
+interface IProps {
+    data: IOppfolgingData;
+}
+
+function Oppfolging(props: IProps) {
     return (
         <>
             <p>Oppfolging her</p>

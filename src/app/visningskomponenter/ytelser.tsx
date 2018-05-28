@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { IArenaYtelserData } from '../datatyper';
 
-function Ytelser(props: { data: any }) {
+export interface IYtelserData {
+    ytelser: IArenaYtelserData;
+}
+
+interface IProps {
+    data: IYtelserData;
+}
+
+function Ytelser(props: IProps) {
     return (
         <>
             <p>Ytelser her</p>

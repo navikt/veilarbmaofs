@@ -1,6 +1,15 @@
 import * as React from 'react';
+import { IRegisteringJobbonskerData } from '../datatyper';
 
-function Jobbonsker(props: { data: any }) {
+export interface IJobbonskerData {
+    jobbonsker: IRegisteringJobbonskerData;
+}
+
+interface IProps {
+    data: IJobbonskerData;
+}
+
+function Jobbonsker(props: IProps) {
     return (
         <>
             <p>Jobbønsker her</p>

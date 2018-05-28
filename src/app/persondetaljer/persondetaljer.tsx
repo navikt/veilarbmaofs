@@ -28,8 +28,8 @@ class Persondetaljer extends React.Component<IAppContextProp> {
                         <ApneLukkeKnapp/>
                         <Basisinfo/>
 
-                        <Knappelinje/>
-                        <Informasjonsvisning/>
+                        <Knappelinje />
+                        <Informasjonsvisning />
                     </div>
                 </div>
             </div>
