@@ -1,8 +1,11 @@
 import * as React from 'react';
 import Grid from "../../grid";
 import Beskrivelse from "./beskrivelse";
+import Kompetanse from "./kompetanse";
+import Kurs from "./kurs";
 import Sertifikater from "./sertifikater";
 import Utdanning from "./utdanning";
+import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
 
 
@@ -136,7 +139,7 @@ export interface ICVInfo {
 
 
 function CV(props: { data: { cv: ICVInfo } }) {
-    const { beskrivelse, yrkeserfaring, utdanning, sertifikater, disponererBil } = props.data.cv;
+    const { beskrivelse, yrkeserfaring, utdanning, sertifikater, disponererBil, kompetanse, kurs, verv } = props.data.cv;
 
     return (
         <>
@@ -145,6 +148,9 @@ function CV(props: { data: { cv: ICVInfo } }) {
                 <Yrkeserfaring yrkeserfaring={yrkeserfaring}/>
                 <Utdanning utdanning={utdanning} />
                 <Sertifikater sertifikater={sertifikater} disponererBil={disponererBil} />
+                <Kompetanse kompetanse={kompetanse} />
+                <Kurs kurs={kurs} />
+                <Verv verv={verv}/>
             </Grid>
         </>
     );

@@ -205,8 +205,8 @@ const CV: object = {
       'fraDato': "2012-01-01",
       'tilDato': null,
       'beskrivelse': "test test",
-      'tittel': "Test-kurs",
-      'arrangor': "zzz",
+      'tittel': "Offentlige anbud",
+      'arrangor': "Forum for offentlige anbud",
       'omfang': {
         'verdi': null,
         'enhet': null

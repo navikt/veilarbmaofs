@@ -8,7 +8,7 @@ function Utdanning(props: Pick<ICVInfo, 'utdanning'>) {
             <div className="typo-element">
                 {utdanning.utdannelsessted}
             </div>
-            <div>{utdanning.nusKodeUtdanningsnavn}</div>
+            <div>{utdanning.alternativtUtdanningsnavn}</div>
             <div>Fra: {utdanning.fraDato}</div>
             <div>Til: {utdanning.fraDato}</div>
         </div>
