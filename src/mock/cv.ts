@@ -20,7 +20,7 @@ const CV: object = {
       'tittel': ""
     }
   ],
-  'beskrivelse': "",
+  'beskrivelse': "I'm the hero Sandaker deserves, but not the one it needs right now.",
   'kandidatnummer': "CG133309",
   'sistEndret': "2018-04-10T03:05:46",
   'adresse': {
@@ -49,8 +49,17 @@ const CV: object = {
       'styrkKode': "7115.04",
       'styrkKodeStillingstittel': "Snekker",
       'utelukketForFremtiden': false,
-      'arbeidsgiver': "",
+      'arbeidsgiver': "Sandaker Snekkerverksted",
       'alternativStillingstittel': "Snekker"
+    },
+    {
+        'fraDato': "2013-01-01",
+        'tilDato': "2014-12-31",
+        'styrkKode': "7115.04",
+        'styrkKodeStillingstittel': "Murer",
+        'utelukketForFremtiden': false,
+        'arbeidsgiver': "Sandaker Mureri",
+        'alternativStillingstittel': "Murer"
     }
   ],
   'sertifikater': [
