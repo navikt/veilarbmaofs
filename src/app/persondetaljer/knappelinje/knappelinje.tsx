@@ -2,17 +2,20 @@ import * as classNames from "classnames";
 import * as React from 'react';
 import {elementer, IInformasjonsElement} from '../../../config';
 
+import Grid from "../../grid";
+
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
+
 import './knappelinje.less';
 
-function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp) {
+function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp & React.HtmlHTMLAttributes<HTMLButtonElement>) {
     const handleClick = () => props.context.toggleKnapp(props.id);
     const cls = classNames('knapp', {
         'knapp--valgt': props.context.valgteKnapper.includes(props.id)
     });
 
     return (
-        <button onClick={handleClick} className={cls}>
+        <button onClick={handleClick} className={cls} style={props.style}>
             <span>
                 {props.id}
             </span>
@@ -31,9 +34,9 @@ function Knappelinje(props: IAppContextProp) {
     }
 
     return (
-        <div className="knappelinje">
+        <Grid className="knappelinje" columns={elementer.length} gap="0.5rem">
             {renderElementer}
-        </div>
+        </Grid>
     );
 }
 

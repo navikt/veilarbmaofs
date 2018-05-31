@@ -1,4 +1,4 @@
-import CV from "./app/visningskomponenter/cv";
+import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging from "./app/visningskomponenter/oppfolging";
@@ -27,7 +27,8 @@ export const elementer: Config = [
     {
         component: CV,
         dataSource: getData<{ cv: IRegistreringsData }>({
-            cv: '/veilarbregistrering/api/registrering'
+            // cv: '//app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398'
+            cv: '/pam-arena'
         }),
         id: 'CV',
     },

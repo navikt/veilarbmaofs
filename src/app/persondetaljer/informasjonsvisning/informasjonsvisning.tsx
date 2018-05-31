@@ -19,7 +19,7 @@ function VisningsBolkPure<SOURCE, DATA>(props: IInformasjonsElement<DATA> & IApp
 
     return (
         <div className="informasjonselement">
-            <h1>{props.id}</h1>
+            <div className="typo-innholdstittel">{props.id}</div>
             <Datafetcher data={dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
