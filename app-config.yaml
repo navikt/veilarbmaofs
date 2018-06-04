@@ -1,0 +1,14 @@
+# ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
+image: docker.adeo.no:5000/fo/veilarbmaofs
+replicas:
+  min: 2
+  max: 4
+  cpuThresholdPercentage: 50
+port: 8080
+healthcheck:
+  liveness:
+    path: veilarbmaofs/isAlive
+    initialDelay: 60
+  readiness:
+    path: veilarbmaofs/isAlive
+    initialDelay: 60
