@@ -7,10 +7,10 @@ const Basisinfo = () =>
         <div className="basisinfo">
             <i className="ikon--kjonn"/>
             <h1 className="basisinfo__navnogalder typo-innholdstittel">
-                {`props.navn`}
-                <span> {`${`props.alder`} år`}</span>
+                {`Bruce Wayne`}
+                <span> {`${`38`} år`}</span>
             </h1>
-            <span className="basisinfo__fodselsnummer">`${`props.fodselsnummer`}`</span>
+            <span className="basisinfo__fodselsnummer">{`1010800398`}</span>
         </div>
     );
 

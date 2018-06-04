@@ -7,9 +7,8 @@ import Sertifikater from "./sertifikater";
 import Utdanning from "./utdanning";
 import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
+import {StringOrNull} from "../felles-typer";
 
-
-type StringOrNull = string | undefined | null;
 
 interface ICVVerv {
     fraDato: string;

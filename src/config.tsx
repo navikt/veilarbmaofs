@@ -2,7 +2,7 @@ import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging from "./app/visningskomponenter/oppfolging";
-import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia";
+import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
 import Ytelser from "./app/visningskomponenter/ytelser";
 import { getData } from "./fetch-utils";
