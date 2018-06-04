@@ -26,8 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "tslint ./src/**/*.ts*",
-    "test": "react-scripts test --env=jsdom",
+    "lint": "echo not inplementet",
+    "test": "react-scripts test --env=jsdom -a",
+    "test:coverage": "echo not inplementet",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
