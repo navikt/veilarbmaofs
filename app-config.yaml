@@ -8,7 +8,7 @@ port: 80
 healthcheck:
   liveness:
     path: isAlive
-    initialDelay: 60
+    initialDelay: 10
   readiness:
     path: isReady
-    initialDelay: 60
+    initialDelay: 10
