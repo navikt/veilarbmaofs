@@ -7,8 +7,8 @@ replicas:
 port: 8080
 healthcheck:
   liveness:
-    path: veilarbmaofs/isAlive
+    path: isAlive
     initialDelay: 60
   readiness:
-    path: veilarbmaofs/isAlive
+    path: isReady
     initialDelay: 60
