@@ -4,7 +4,7 @@ import {ICVInfo} from "./cv";
 
 function Verv(props: Pick<ICVInfo, 'verv'>) {
     const vervliste = props.verv.map((verv, index) => (
-        <div key={`verv-${index}`} className="informasjonsbolk">
+        <div key={`verv-${index}`} className="underinformasjon">
             <div className="typo-element">
                 {verv.organisasjon}
             </div>

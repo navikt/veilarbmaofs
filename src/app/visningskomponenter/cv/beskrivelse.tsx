@@ -5,7 +5,7 @@ import {ICVInfo} from "./cv";
 function Beskrivelse(props: Pick<ICVInfo, 'beskrivelse'>) {
    return (
        <Informasjonsbolk header="Beskrivelse" {...props}>
-           <div className="informasjonsbolk">
+           <div className="underinformasjon">
                {props.beskrivelse}
            </div>
        </Informasjonsbolk>
