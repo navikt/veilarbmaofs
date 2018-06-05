@@ -26,9 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "echo not inplementet",
+    "lint": "echo not implemented, part of the build script",
     "test": "react-scripts test --env=jsdom -a",
-    "test:coverage": "echo not inplementet",
+    "test:coverage": "echo not implemented",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
