@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {StringOrNull} from "../felles-typer";
+import Grid from "../../grid";
+import { StringOrNull } from "../felles-typer";
+import Adresser from "./adresser";
+import Bankkonto from "./bankkonto";
+import Epost from "./epost";
+import Sivilstand from "./sivilstand";
+import Statsborgerskap from "./statsborgerskap";
+import Telefon from "./telefon";
 
 interface IPersonaliaBarn {
     fornavn: string;
@@ -18,9 +25,9 @@ interface IPersonaliaBehandlendeEnhet {
     navn: string;
 }
 
-interface IPersonaliaSivilstand {
+export interface IPersonaliaSivilstand {
     sivilstand: string;
-    fraDato: string;
+    fraDato: StringOrNull;
 }
 
 interface IPersonaliaPartner {
@@ -80,11 +87,24 @@ export interface IPersonaliaInfo {
 
 }
 
-function Personalia(props: { data: IPersonaliaInfo }) {
+function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
+    const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, telefon, epost, kontonummer, statsborgerskap, sivilstand } = props.data.personalia;
+
     return (
         <>
-            <p>Personalia her</p>
-            <pre>{JSON.stringify(props, null, 2)}</pre>
+            <Grid columns={5} gap="0.5rem">
+                <Adresser
+                    bostedsadresse={bostedsadresse}
+                    postAdresse={postAdresse}
+                    midlertidigAdresseNorge={midlertidigAdresseNorge}
+                    midlertidigAdresseUtland={midlertidigAdresseUtland}
+                />
+                <Telefon telefon={telefon} />
+                <Epost epost={epost} />
+                <Bankkonto kontonummer={kontonummer} />
+                <Statsborgerskap statsborgerskap={statsborgerskap} />
+                <Sivilstand sivilstand={sivilstand} />
+            </Grid>
         </>
     );
 }
