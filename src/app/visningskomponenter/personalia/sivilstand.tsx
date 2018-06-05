@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { CSSProperties } from "react";
+import Informasjonsbolk from "../informasjonsbolk";
 import { IPersonaliaSivilstand } from "./personalia";
 
-const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand, style?: CSSProperties }) => {
+const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand }) => {
     const { sivilstand, fraDato } = props.sivilstand;
 
     const FraTidspunkt = () => {
@@ -15,7 +15,7 @@ const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand, style?: CSSPrope
     };
 
     return (
-        <div style={props.style}>
+        <Informasjonsbolk {...props}>
             <div>
                 Sivilstand
             </div>
@@ -23,7 +23,7 @@ const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand, style?: CSSPrope
                 {sivilstand}
             </div>
             <FraTidspunkt />
-        </div>
+        </Informasjonsbolk>
     );
 };
 

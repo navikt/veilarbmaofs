@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {CSSProperties} from "react";
+import Informasjonsbolk from "../informasjonsbolk";
 
-const Telefon = (props: { telefon: string, style?: CSSProperties }) => (
-    <div style={props.style}>
+const Telefon = (props: { telefon: string }) => (
+    <Informasjonsbolk {...props}>
         <div>
             Telefon
         </div>
         <div>
             {props.telefon}
         </div>
-    </div>
+    </Informasjonsbolk>
 );
 
 export default Telefon;

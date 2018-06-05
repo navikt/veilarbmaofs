@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {CSSProperties} from "react";
+import Informasjonsbolk from "../informasjonsbolk";
 
-const Bankkonto = (props: { kontonummer: string, style?: CSSProperties }) => (
-    <div style={props.style}>
+const Bankkonto = (props: { kontonummer: string }) => (
+    <Informasjonsbolk {...props}>
         <div>
             Kontonummer
         </div>
         <div>
             {props.kontonummer}
         </div>
-    </div>
+    </Informasjonsbolk>
 );
 
 export default Bankkonto;
