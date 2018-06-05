@@ -3,12 +3,14 @@ import Grid from "../../grid";
 import { StringOrNull } from "../felles-typer";
 import Adresser from "./adresser";
 import Bankkonto from "./bankkonto";
+import Barn from "./barn";
 import Epost from "./epost";
+import Partner from "./partner";
 import Sivilstand from "./sivilstand";
 import Statsborgerskap from "./statsborgerskap";
 import Telefon from "./telefon";
 
-interface IPersonaliaBarn {
+export interface IPersonaliaBarn {
     fornavn: string;
     mellomnavn: StringOrNull;
     etternavn: string;
@@ -30,7 +32,7 @@ export interface IPersonaliaSivilstand {
     fraDato: StringOrNull;
 }
 
-interface IPersonaliaPartner {
+export interface IPersonaliaPartner {
     fornavn: string;
     mellomnavn: StringOrNull;
     etternavn: string;
@@ -88,7 +90,7 @@ export interface IPersonaliaInfo {
 }
 
 function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
-    const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, telefon, epost, kontonummer, statsborgerskap, sivilstand } = props.data.personalia;
+    const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, telefon, epost, kontonummer, statsborgerskap, sivilstand, partner, barn } = props.data.personalia;
 
     return (
         <>
@@ -104,6 +106,8 @@ function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
                 <Bankkonto kontonummer={kontonummer} />
                 <Statsborgerskap statsborgerskap={statsborgerskap} />
                 <Sivilstand sivilstand={sivilstand} />
+                <Partner partner={partner} />
+                <Barn barn={barn} />
             </Grid>
         </>
     );

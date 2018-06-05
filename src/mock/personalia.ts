@@ -19,14 +19,14 @@ const Personalia: object = {
         "harSammeBosted": true,
         "kjonn": "M"
     }, {
-        "fornavn": "HENRY",
+        "fornavn": "HARRY",
         "mellomnavn": null,
         "etternavn": "BOSCH",
-        "sammensattNavn": "HENRY BOSCH",
+        "sammensattNavn": "HARRY BOSCH",
         "fodselsnummer": "10108000398",
         "fodselsdato": "2014-05-24",
         "dodsdato": null,
-        "harSammeBosted": true,
+        "harSammeBosted": false,
         "kjonn": "M"
     }, {
         "fornavn": "SATOSHI",
