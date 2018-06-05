@@ -4,12 +4,12 @@ import {ICVInfo} from "./cv";
 
 function Kurs(props: Pick<ICVInfo, 'kurs'>) {
     const kompetanser = props.kurs.map((kurs, index) => (
-        <div key={`kurs-${index}`} className="informasjonsbolk">
+        <div key={`kurs-${index}`} className="underinformasjon">
             <div className="typo-element">
                 {kurs.tittel}
             </div>
             <div>{kurs.arrangor}</div>
-            <div>Fra: {kurs.fraDato}</div>
+            <div>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

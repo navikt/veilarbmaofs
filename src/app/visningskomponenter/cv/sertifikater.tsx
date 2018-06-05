@@ -6,7 +6,7 @@ type Props = Pick<ICVInfo, 'sertifikater'> & Pick<ICVInfo, 'disponererBil'>;
 
 function Sertifikater(props: Props) {
     const sertifikatListe = props.sertifikater.map((sertifikat, index) => (
-        <div key={`sertifikater-${index}`} className="informasjonsbolk">
+        <div key={`sertifikater-${index}`} className="underinformasjon">
             {sertifikat.sertifikatKodeNavn}
         </div>
     ));

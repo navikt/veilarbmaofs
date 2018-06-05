@@ -2,8 +2,6 @@ import * as classNames from "classnames";
 import * as React from 'react';
 import {elementer, IInformasjonsElement} from '../../../config';
 
-import Grid from "../../grid";
-
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
 
 import './knappelinje.less';
@@ -15,10 +13,8 @@ function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp & Reac
     });
 
     return (
-        <button onClick={handleClick} className={cls} style={props.style}>
-            <span>
-                {props.id}
-            </span>
+        <button onClick={handleClick} className={cls}>
+            {props.id}
         </button>
     );
 }
@@ -34,9 +30,9 @@ function Knappelinje(props: IAppContextProp) {
     }
 
     return (
-        <Grid className="knappelinje" columns={elementer.length} gap="0.5rem">
+        <div className="knappelinje" >
             {renderElementer}
-        </Grid>
+        </div>
     );
 }
 

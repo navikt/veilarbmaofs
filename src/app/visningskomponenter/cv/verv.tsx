@@ -4,13 +4,13 @@ import {ICVInfo} from "./cv";
 
 function Verv(props: Pick<ICVInfo, 'verv'>) {
     const vervliste = props.verv.map((verv, index) => (
-        <div key={`verv-${index}`} className="informasjonsbolk">
+        <div key={`verv-${index}`} className="underinformasjon">
             <div className="typo-element">
                 {verv.organisasjon}
             </div>
             <div>{verv.tittel}</div>
-            <div>Fra: {verv.fraDato}</div>
-            <div>Til: {verv.fraDato}</div>
+            <div>Fra: {new Date(verv.fraDato).toLocaleDateString()}</div>
+            <div>Til: {new Date(verv.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

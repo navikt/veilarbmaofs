@@ -1,15 +1,14 @@
 import * as React from 'react';
 import Grid from "../../grid";
+import { StringOrNull } from "../felles-typer";
 import Beskrivelse from "./beskrivelse";
 import Kompetanse from "./kompetanse";
 import Kurs from "./kurs";
 import Sertifikater from "./sertifikater";
+import SistEndret from "./sist-endret";
 import Utdanning from "./utdanning";
 import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
-
-
-type StringOrNull = string | undefined | null;
 
 interface ICVVerv {
     fraDato: string;
@@ -136,13 +135,12 @@ export interface ICVInfo {
     }
 }
 
-
-
 function CV(props: { data: { cv: ICVInfo } }) {
-    const { beskrivelse, yrkeserfaring, utdanning, sertifikater, disponererBil, kompetanse, kurs, verv } = props.data.cv;
+    const { beskrivelse, yrkeserfaring, utdanning, sertifikater, disponererBil, kompetanse, kurs, verv, sistEndret } = props.data.cv;
 
     return (
         <>
+            <SistEndret sistEndret={sistEndret} />
             <Grid columns={2} gap="0.5rem">
                 <Beskrivelse beskrivelse={beskrivelse}/>
                 <Yrkeserfaring yrkeserfaring={yrkeserfaring}/>
