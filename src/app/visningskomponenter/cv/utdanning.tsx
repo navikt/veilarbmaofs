@@ -9,8 +9,8 @@ function Utdanning(props: Pick<ICVInfo, 'utdanning'>) {
                 {utdanning.utdannelsessted}
             </div>
             <div>{utdanning.alternativtUtdanningsnavn}</div>
-            <div>Fra: {utdanning.fraDato}</div>
-            <div>Til: {utdanning.fraDato}</div>
+            <div>Fra: {new Date(utdanning.fraDato).toLocaleDateString()}</div>
+            <div>Til: {new Date(utdanning.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

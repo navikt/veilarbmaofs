@@ -9,7 +9,7 @@ function Kurs(props: Pick<ICVInfo, 'kurs'>) {
                 {kurs.tittel}
             </div>
             <div>{kurs.arrangor}</div>
-            <div>Fra: {kurs.fraDato}</div>
+            <div>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

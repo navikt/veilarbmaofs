@@ -9,8 +9,8 @@ function Verv(props: Pick<ICVInfo, 'verv'>) {
                 {verv.organisasjon}
             </div>
             <div>{verv.tittel}</div>
-            <div>Fra: {verv.fraDato}</div>
-            <div>Til: {verv.fraDato}</div>
+            <div>Fra: {new Date(verv.fraDato).toLocaleDateString()}</div>
+            <div>Til: {new Date(verv.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

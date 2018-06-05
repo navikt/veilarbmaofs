@@ -9,8 +9,8 @@ function Yrkeserfaring(props: Pick<ICVInfo, 'yrkeserfaring'>){
                 {erfaring.arbeidsgiver}
             </div>
             <div>{erfaring.styrkKodeStillingstittel}</div>
-            <div>Fra: {erfaring.fraDato}</div>
-            <div>Til: {erfaring.fraDato}</div>
+            <div>Fra: {new Date(erfaring.fraDato).toLocaleDateString()}</div>
+            <div>Til: {new Date(erfaring.fraDato).toLocaleDateString()}</div>
         </div>
     ));
 

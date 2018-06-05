@@ -8,7 +8,7 @@ const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand }) => {
     const FraTidspunkt = () => {
         const component = (
             <div>
-                Fra: {fraDato}
+                Fra: {new Date(fraDato!).toLocaleDateString()}
             </div>
         );
         return fraDato ? component : null;
