@@ -13,3 +13,4 @@ mock.get('/veilarbperson/api', Personalia as JSONValue);
 mock.get('/veilarbarena/api', { ytelser: 'DAGP' });
 // mock.get('/https://app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398', CV as JSONValue);
 mock.get('/pam-arena', CV as JSONValue);
+
