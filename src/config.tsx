@@ -9,14 +9,16 @@ import { getData } from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
 
+
+export type Datasource<T> = () => Promise<T>;
+
 export interface IInformasjonsElement<T> {
     component: React.ComponentType<{ data: T }>;
-    dataSource: () => Promise<T>;
+    dataSource: Datasource<T>;
     id: string;
 }
 
-export type Config = Array<IInformasjonsElement<any>>;
-export const elementer: Config = [
+export const elementer: Array<IInformasjonsElement<any>> = [
     {
         component: Registerering,
         dataSource: getData<{ registering: IRegistreringsData }>({
