@@ -1,8 +1,13 @@
 import * as React from 'react';
+import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
 import {ICVInfo} from "./cv";
 
 function Utdanning(props: Pick<ICVInfo, 'utdanning'>) {
+    if (isNullOrUndefined(props.utdanning)) {
+        return null;
+    }
+
     const utdanninger = props.utdanning.map((utdanning, index) => (
         <div key={`utdanning-${index}`} className="underinformasjon">
             <div className="typo-element">

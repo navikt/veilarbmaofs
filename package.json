@@ -2,6 +2,7 @@
   "name": "veilarbmaofs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/veilarbmaofs",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
