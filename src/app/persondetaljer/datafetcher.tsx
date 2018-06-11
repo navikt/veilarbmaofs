@@ -1,9 +1,10 @@
 import * as React from 'react';
+import {Datasource} from "../../config";
 
 export type Feilmelding = string & { __TYPE__: "feilmelding" };
 
 interface IProps<T> {
-    data: () => Promise<T>;
+    data: Datasource<T>;
     children: (data: T) => React.ReactNode;
 }
 

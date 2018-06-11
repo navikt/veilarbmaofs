@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Innholdslaster from "../components/innholdslaster";
 import Persondetaljer from "./persondetaljer/persondetaljer";
 
 import './application.less';
@@ -10,9 +9,7 @@ class Application extends React.Component {
     return (
       <div className="veilarbmaofs">
           <AppProvider>
-              <Innholdslaster avhengigheter={[]} > {/** tekster */}
-                  <Persondetaljer />
-              </Innholdslaster>
+              <Persondetaljer />
           </AppProvider>
       </div>
     );

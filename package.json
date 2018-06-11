@@ -27,7 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "echo not implemented, part of the build script",
-    "test": "react-scripts test --env=jsdom -a",
+    "test": "react-scripts test --env=jsdom",
     "test:coverage": "echo not implemented",
     "eject": "react-scripts eject",
     "heroku-serve": "serve -s build -l $PORT",
