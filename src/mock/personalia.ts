@@ -1,6 +1,6 @@
 // tslint:disable
 
-const Personalia: object = {
+const Personalia: {} = {
     "fornavn": "BRUCE",
     "mellomnavn": "BATTY",
     "etternavn": "WAYNE",

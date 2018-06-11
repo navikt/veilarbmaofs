@@ -1,3 +1,5 @@
+import fetch from './fetch-cache';
+
 type Feilmelding = string & { __TYPE__: "feilmelding" };
 
 export type SourceConfig<T> = {
