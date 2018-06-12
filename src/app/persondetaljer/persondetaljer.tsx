@@ -9,11 +9,13 @@ import Tilbakelenke from "./tilbakelenke";
 
 import { AppContext, IAppContextProp, withAppContext } from "../context";
 
+import {IFetchContext} from "../../config";
 import './persondetaljer.less';
 
 class Persondetaljer extends React.Component<IAppContextProp> {
     public render() {
         const apen = this.props.context.apen;
+        const fetchContext: IFetchContext = {fnr : "1234567899"};
 
         return (
             <div className="container">
@@ -28,8 +30,8 @@ class Persondetaljer extends React.Component<IAppContextProp> {
                         <ApneLukkeKnapp />
                         <Basisinfo />
 
-                        <Knappelinje />
-                        <Informasjonsvisning />
+                        <Knappelinje fetchContext={fetchContext} />
+                        <Informasjonsvisning fetchContext={fetchContext} />
                     </div>
                 </div>
             </div>

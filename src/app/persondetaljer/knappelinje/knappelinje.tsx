@@ -1,12 +1,12 @@
 import * as classNames from "classnames";
 import * as React from 'react';
-import {elementer, IInformasjonsElement} from '../../../config';
+import {getConfig, IFetchContext, IInformasjonsElement} from '../../../config';
 
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
 
 import './knappelinje.less';
 
-function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp & React.HtmlHTMLAttributes<HTMLButtonElement>) {
+function InfoKnapp(props: IInformasjonsElement<any> & IAppContextProp & React.HtmlHTMLAttributes<HTMLButtonElement>) {
     const handleClick = () => props.context.toggleKnapp(props.id);
     const cls = classNames('knapp', {
         'knapp--valgt': props.context.valgteKnapper.includes(props.id)
@@ -18,16 +18,18 @@ function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp & Reac
         </button>
     );
 }
-const InfoKnapp = withAppContext<IInformasjonsElement<any>>(AppContext, InfoKnappPure);
 
+interface IProps {
+    fetchContext: IFetchContext;
+}
 
-const renderElementer: React.ReactNode[] = elementer
-    .map((element) => <InfoKnapp key={element.id} {...element}/>);
-
-function Knappelinje(props: IAppContextProp) {
+function Knappelinje(props: IAppContextProp & IProps) {
     if (!props.context.apen) {
         return null;
     }
+
+    const renderElementer: React.ReactNode[] = getConfig(props.fetchContext)
+        .map((element) => <InfoKnapp key={element.id} {...element} context={props.context} />);
 
     return (
         <div className="knappelinje" >
@@ -36,4 +38,4 @@ function Knappelinje(props: IAppContextProp) {
     );
 }
 
-export default withAppContext<{}>(AppContext, Knappelinje);
+export default withAppContext<IProps>(AppContext, Knappelinje);

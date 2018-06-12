@@ -5,12 +5,13 @@ interface IState {
     valgteKnapper: string[];
 }
 
-interface IAppContext {
+export interface IAppContext {
     apen: boolean;
     valgteKnapper: string[];
     toggleApen(): void;
     toggleKnapp(id: string): void;
 }
+
 export interface IAppContextProp {
     context: IAppContext
 }
