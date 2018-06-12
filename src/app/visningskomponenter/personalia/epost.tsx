@@ -1,10 +1,14 @@
 import * as React from 'react';
+import {isNullOrUndefined} from "../../utils/util";
 import { StringOrNull } from "../felles-typer";
 import Informasjonsbolk from "../informasjonsbolk";
 
 const Epost = (props: { epost: StringOrNull }) => {
+    if (isNullOrUndefined(props.epost)) {
+        return null;
+    }
 
-    return !props.epost ? null :
+    return (
         <Informasjonsbolk {...props}>
             <div>
                 Epost
@@ -13,6 +17,7 @@ const Epost = (props: { epost: StringOrNull }) => {
                 {props.epost}
             </div>
         </Informasjonsbolk>
+    );
 };
 
 export default Epost;

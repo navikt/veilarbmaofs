@@ -1,72 +1,104 @@
 import * as React from 'react';
+import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
-import {IPersonaliaInfo} from "./personalia";
+import {IPersonaliaBostedsadresse, IPersonaliaInfo} from "./personalia";
 
 type Props = Pick<IPersonaliaInfo, 'bostedsadresse'> & Pick<IPersonaliaInfo, 'postAdresse'> & Pick<IPersonaliaInfo, 'midlertidigAdresseNorge'> & Pick<IPersonaliaInfo, 'midlertidigAdresseUtland'>;
 
 
 function Adresser(props: Props) {
-    const { gatenavn, husnummer, husbokstav, postnummer, poststed } = props.bostedsadresse.strukturertAdresse.Gateadresse;
     const { postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland } = props;
 
-    const SammensattFolkeregistrertAdresse = () => {
-        const bokstav = husbokstav ? husbokstav : '';
+    function AdresseVisning(prop: IPersonaliaBostedsadresse) {
+        const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.strukturertAdresse.Gateadresse;
         const nummer = husnummer ? husnummer : '';
+        const bokstav = husbokstav ? husbokstav : '';
+
+        return (
+        <>
+            <div>
+                {`${gatenavn} ${nummer}${bokstav}`}
+            </div>
+            <div>
+                {`${postnummer} ${poststed}`}
+            </div>
+        </>);
+    }
+
+    const SammensattFolkeregistrertAdresse = () => {
+        if (isNullOrUndefined(props.bostedsadresse)) {
+            return null;
+        }
+
         return (
             <div className="underinformasjon">
                 <div>
                     Folkeregistrert postadresse
                 </div>
-                <div>
-                    {`${gatenavn} ${nummer}${bokstav}`}
-                </div>
-                <div>
-                    {`${postnummer} ${poststed}`}
-                </div>
+                <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/>
             </div>
         );
     };
 
     const PostAdresse = () => {
-        const postAdresseKomponent = (
+        if (isNullOrUndefined(postAdresse)) {
+            return null;
+        }
+
+        const { adresselinje1, adresselinje2, adresselinje3, adresselinje4, landkode } = postAdresse.ustrukturertAdresse;
+
+        return (
             <div className="underinformasjon">
                 <div>
                     Postadresse
                 </div>
                 <div>
-                    {postAdresse}
+                    {adresselinje1}
+                </div>
+                <div>
+                    {adresselinje2}
+                </div>
+                <div>
+                    {adresselinje3}
+                </div>
+                <div>
+                    {adresselinje4}
+                </div>
+                <div>
+                    {landkode}
                 </div>
             </div>
         );
-        return postAdresse ? postAdresseKomponent : null;
     };
 
     const MidlertidigNorge = () => {
-        const component = (
+        if (isNullOrUndefined(midlertidigAdresseNorge)) {
+            return null;
+        }
+
+        return (
             <div className="underinformasjon">
                 <div>
                     Midlertidig adresse Norge
                 </div>
-                <div>
-                    {midlertidigAdresseNorge}
-                </div>
+                <AdresseVisning strukturertAdresse={midlertidigAdresseNorge.strukturertAdresse}/>
             </div>
         );
-        return midlertidigAdresseNorge ? component : null;
     };
 
     const MidlertidigUtland = () => {
-        const component = (
+        if (isNullOrUndefined(midlertidigAdresseUtland)) {
+            return null;
+        }
+
+      return (
             <div className="underinformasjon">
                 <div>
-                    Midlertidig adresse Utland
+                    Midlertidig adresse Norge
                 </div>
-                <div>
-                    {midlertidigAdresseUtland}
-                </div>
+                <AdresseVisning strukturertAdresse={midlertidigAdresseUtland.strukturertAdresse}/>
             </div>
         );
-        return midlertidigAdresseUtland ? component : null;
     };
 
     return (

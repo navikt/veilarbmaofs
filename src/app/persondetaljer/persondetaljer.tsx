@@ -19,7 +19,7 @@ class Persondetaljer extends React.Component<IAppContextProp> {
 
         return (
             <div className="container">
-                <Tilbakelenke/>
+                <Tilbakelenke />
                 <div
                     className={cls("panel--stor ", {
                         'apen': apen,
@@ -27,11 +27,11 @@ class Persondetaljer extends React.Component<IAppContextProp> {
                     })}
                 >
                     <div className="persondetaljer">
-                        <ApneLukkeKnapp/>
-                        <Basisinfo/>
+                        <ApneLukkeKnapp />
+                        <Basisinfo />
 
-                        <Knappelinje fetchContext={fetchContext}/>
-                        <Informasjonsvisning fetchContext={fetchContext}/>
+                        <Knappelinje fetchContext={fetchContext} />
+                        <Informasjonsvisning fetchContext={fetchContext} />
                     </div>
                 </div>
             </div>
