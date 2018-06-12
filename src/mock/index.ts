@@ -4,7 +4,18 @@ import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from './personalia';
 
 const loggingMiddleware: Middleware = (request, response) => {
-    console.log('response', response); // tslint:disable-line
+    // tslint:disable
+    console.groupCollapsed(request.url);
+    console.groupCollapsed('config');
+    console.log('url', request.url);
+    console.log('queryParams', request.queryParams);
+    console.log('pathParams', request.pathParams);
+    console.log('body', request.body);
+    console.groupEnd();
+
+    console.log('response', JSON.parse(response.body));
+    console.groupEnd();
+    // tslint:enable
     return response;
 };
 
