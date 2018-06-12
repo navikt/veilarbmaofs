@@ -43,21 +43,32 @@ export interface IPersonaliaPartner {
     harSammeBosted: boolean;
     kjonn: string;
 }
-
-interface IPersonaliaBostedsadresse {
+export interface IPersonaliaStrukturertAdresse {
     strukturertAdresse: {
         Gateadresse: {
             landkode: string;
             tilleggsadresse: StringOrNull;
             postnummer: string;
             poststed: string;
-            husnummer: StringOrNull;
+            husnummer: number;
             husbokstav: StringOrNull;
             kommunenummer: string;
             gatenavn: StringOrNull;
             bolignummer: StringOrNull;
-            gatenummer: StringOrNull;
+            gatenummer: number;
         }
+    }
+}
+
+export type IPersonaliaBostedsadresse = IPersonaliaStrukturertAdresse;
+
+interface IPersonaliaPostadresse {
+    ustrukturertAdresse: {
+        adresselinje1: string;
+        adresselinje2: StringOrNull;
+        adresselinje3: StringOrNull;
+        adresselinje4: StringOrNull;
+        landkode: string;
     }
 }
 
@@ -81,9 +92,9 @@ export interface IPersonaliaInfo {
     sivilstand: IPersonaliaSivilstand;
     partner: IPersonaliaPartner;
     bostedsadresse: IPersonaliaBostedsadresse;
-    midlertidigAdresseNorge: StringOrNull;
-    midlertidigAdresseUtland: StringOrNull;
-    postAdresse: StringOrNull;
+    midlertidigAdresseNorge: IPersonaliaStrukturertAdresse;
+    midlertidigAdresseUtland: IPersonaliaStrukturertAdresse;
+    postAdresse: IPersonaliaPostadresse;
     egenAnsatt: boolean;
     kjonn: string;
 

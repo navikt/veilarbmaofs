@@ -87,7 +87,7 @@ interface ICVKurs {
     tittel: string;
     arrangor: string;
     omfang: {
-        verdi: StringOrNull
+        verdi: number
         enhet: StringOrNull
     }
 }

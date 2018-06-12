@@ -1,8 +1,8 @@
-import CV from "./app/visningskomponenter/cv/cv";
+import CV, {ICVInfo} from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging from "./app/visningskomponenter/oppfolging";
-import Personalia from "./app/visningskomponenter/personalia/personalia";
+import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
 import Ytelser from "./app/visningskomponenter/ytelser";
 import { getData } from "./fetch-utils";
@@ -28,7 +28,7 @@ export const elementer: Array<IInformasjonsElement<any>> = [
     },
     {
         component: CV,
-        dataSource: getData<{ cv: IRegistreringsData }>({
+        dataSource: getData<{ cv: ICVInfo }>({
             // cv: '//app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398'
             cv: '/pam-arena'
         }),
@@ -43,8 +43,8 @@ export const elementer: Array<IInformasjonsElement<any>> = [
     },
     {
         component: Personalia,
-        dataSource: getData<{ personalia: IRegistreringsData }>({
-            personalia: '/veilarbperson/api/'
+        dataSource: getData<{ personalia: IPersonaliaInfo }>({
+            personalia: '/veilarbperson/api/person/10108000398'
         }),
         id: 'Personalia',
     },
