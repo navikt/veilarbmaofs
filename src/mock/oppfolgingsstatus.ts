@@ -1,6 +1,6 @@
 // tslint:disable
 
-const oppfolingstatus: {} = {
+const oppfolingstatus = {
     formidlingsgruppe: "IARBS",
     rettighetsgruppe: "AAP",
     servicegruppe: "BATT",
