@@ -20,7 +20,7 @@ export interface OppfolgingData {
     veilederId: StringOrNull;
 }
 
-function Oppfolging(props: { data: {oppfolging: OppfolgingData} }) {
+function Oppfolging(props: { data: { oppfolging: OppfolgingData } }) {
     const oppfolging = props.data.oppfolging;
     return (
         <>
