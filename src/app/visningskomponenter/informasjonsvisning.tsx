@@ -1,43 +1,43 @@
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import * as React from 'react';
-
-import { elementer, IInformasjonsElement } from '../../config';
-
-import {AppContext, IAppContextProp, withAppContext} from "../context";
+import {getConfig, IFetchContext, IInformasjonsElement} from "../../config";
+import {AppContext, IAppContext, IAppContextProp, withAppContext} from "../context";
 import Datafetcher from "../utils/datafetcher";
 
 import './informasjonsvisning.less';
 
 const noop = () => {}; // tslint:disable-line
 
-function VisningsBolkPure<SOURCE, DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
+function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
     const Component = props.component;
-
-    const dataSource: () => Promise<DATA> = props.dataSource;
 
     return (
         <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
-            <Datafetcher data={dataSource}>
+            <Datafetcher data={props.dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
         </Ekspanderbartpanel>
     );
 }
 
-const VisningsBolk = withAppContext<IInformasjonsElement<any>>(AppContext, VisningsBolkPure);
-
-function lagVisningBolk<T>(element: IInformasjonsElement<T>, index: number) {
-    return <VisningsBolk {...element} key={index} />
+function lagVisningBolk<T>(context: IAppContext) {
+    return (element: IInformasjonsElement<T>, index: number) => (
+        <VisningsBolk {...element} key={index} context={context} />
+    );
 }
 
-const renderElementer: React.ReactNode[] = elementer
-    .map(lagVisningBolk);
+interface IProps {
+    fetchContext: IFetchContext;
+}
 
-class Informasjonsvisning extends React.Component<IAppContextProp> {
+class Informasjonsvisning extends React.Component<IAppContextProp & IProps> {
     public render() {
         if (!this.props.context.apen) {
             return null;
         }
+
+        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext)
+            .map(lagVisningBolk(this.props.context));
 
         return (
             <div className="informasjonsvisning">
@@ -47,4 +47,4 @@ class Informasjonsvisning extends React.Component<IAppContextProp> {
     }
 }
 
-export default withAppContext<{}>(AppContext, Informasjonsvisning);
+export default withAppContext<IProps>(AppContext, Informasjonsvisning);

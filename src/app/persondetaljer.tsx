@@ -1,17 +1,19 @@
 import * as cls from 'classnames';
 import * as React from 'react';
 
+import {IFetchContext} from "../config";
+import { AppContext, IAppContextProp, withAppContext } from "./context";
+
 import Basisinfo from "./basisinfo/basisinfo";
 import Tilbakelenke from "./tilbakelenke";
 import Informasjonsvisning from "./visningskomponenter/informasjonsvisning";
-
-import { AppContext, IAppContextProp, withAppContext } from "./context";
 
 import './persondetaljer.less';
 
 class Persondetaljer extends React.Component<IAppContextProp> {
     public render() {
         const apen = this.props.context.apen;
+        const fetchContext: IFetchContext = {fnr : "1234567899"};
 
         return (
             <>
@@ -23,7 +25,7 @@ class Persondetaljer extends React.Component<IAppContextProp> {
                     })}
                 >
                     <Basisinfo />
-                    <Informasjonsvisning />
+                    <Informasjonsvisning fetchContext={fetchContext} />
                 </div>
             </>
         )

@@ -1,6 +1,6 @@
 // tslint:disable
 
-const CV: object = {
+const CV = {
   'personId': 3125339,
   'fodselsdato': "1980-10-10",
   'fodselsnummer': "10108000398",
