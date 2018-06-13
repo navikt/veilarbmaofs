@@ -1,7 +1,7 @@
 import CV, {ICVInfo} from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
-import Oppfolging from "./app/visningskomponenter/oppfolging";
+import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
 import Ytelser from "./app/visningskomponenter/ytelser";
@@ -62,8 +62,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Oppfolging,
-         dataSource: getData<{ oppfolging: IRegistreringsData }>({
-             oppfolging: `/veilarboppfolging/api/person/oppfolging/${context.fnr}/oppfolgingsstatus`
+         dataSource: getData<{ oppfolging: OppfolgingData }>({
+             oppfolging: `/veilarboppfolging/api/person/oppfolging/${context.fnr}/oppfolgingsstatus`,
          }),
          id: 'Oppfølging',
      },

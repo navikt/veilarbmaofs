@@ -12,7 +12,7 @@ const oppfolingstatus = {
         navn: "NAV TestHeim",
         enhetId: "007"
     },
-    veilederid: "Z123456",  // TODO: this should be a part of the response
+    veilederId: "Z123456",  // TODO: this should be a part of the response
     inaktiveringsdato: null
 };
 
