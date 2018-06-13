@@ -1,39 +1,33 @@
-@import "~nav-frontend-core/less/_variabler";
+.persondetaljer {
+  display: grid;
+  grid-template-areas:
+          "ikon personalia apnelukke"
+          ". knappelinje ."
+          ". innhold .";
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 1rem;
 
-@focus-color: @orangeFocus;
-
-.container {
-  @media (min-width: 1200px) {
-    max-width: 63rem;
+  :not(.apen) & {
+    grid-row-gap: 0;
   }
+}
 
-  .persondetaljer {
-    margin: 0 1rem 1rem 1rem;
-  }
+.basisinfo .ikon {
+  grid-area: ikon;
+}
 
-  .toggle-persondetaljer {
-    display: block;
-    background: none;
-    border: none;
-    padding: 5px 30px 5px 15px;
+.basisinfo__personalia {
+  grid-area: personalia;
+}
 
-    &:focus {
-      background: @focus-color;
-      outline: none;
-    }
+.basisinfo__apnelukke {
+  grid-area: apnelukke;
+}
 
-    @media (min-width: 768px) {
-      margin-left: auto;
-    }
+.knappelinje {
+  grid-area: knappelinje;
+}
 
-    .chevron {
-        transition: transform 0.3s;
-    }
-
-    .toggle-persondetaljer__tekst:hover {
-      text-decoration: underline;
-      //border-bottom: 1px solid @navBla;
-    }
-  }
-
+.informasjonsvisning {
+  grid-area: innhold;
 }

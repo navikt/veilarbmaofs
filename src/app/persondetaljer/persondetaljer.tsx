@@ -1,7 +1,6 @@
 import * as cls from 'classnames';
 import * as React from 'react';
 
-import ApneLukkeKnapp from './apne-lukke-knapp';
 import Basisinfo from "./basisinfo/basisinfo";
 import Informasjonsvisning from "./informasjonsvisning/informasjonsvisning";
 import Knappelinje from './knappelinje/knappelinje';
@@ -16,7 +15,7 @@ class Persondetaljer extends React.Component<IAppContextProp> {
         const apen = this.props.context.apen;
 
         return (
-            <div className="container">
+            <>
                 <Tilbakelenke />
                 <div
                     className={cls("panel--stor ", {
@@ -25,14 +24,13 @@ class Persondetaljer extends React.Component<IAppContextProp> {
                     })}
                 >
                     <div className="persondetaljer">
-                        <ApneLukkeKnapp />
                         <Basisinfo />
 
                         <Knappelinje />
                         <Informasjonsvisning />
                     </div>
                 </div>
-            </div>
+            </>
         )
     }
 }

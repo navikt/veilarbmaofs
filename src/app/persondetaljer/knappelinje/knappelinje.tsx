@@ -1,5 +1,6 @@
 import * as classNames from "classnames";
 import * as React from 'react';
+
 import {elementer, IInformasjonsElement} from '../../../config';
 
 import {AppContext, IAppContextProp, withAppContext} from "../../context";
@@ -8,8 +9,8 @@ import './knappelinje.less';
 
 function InfoKnappPure(props: IInformasjonsElement<any> & IAppContextProp & React.HtmlHTMLAttributes<HTMLButtonElement>) {
     const handleClick = () => props.context.toggleKnapp(props.id);
-    const cls = classNames('knapp', {
-        'knapp--valgt': props.context.valgteKnapper.includes(props.id)
+    const cls = classNames('knappelinje__toggleknapp', {
+        'knappelinje__toggleknapp--valgt': props.context.valgteKnapper.includes(props.id)
     });
 
     return (

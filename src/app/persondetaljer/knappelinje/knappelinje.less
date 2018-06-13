@@ -1,36 +1,33 @@
 @import "~nav-frontend-core/less/_variabler";
-
-@hover-color: @navBla;
-@active-color: @navDypBla;
+@import "~nav-frontend-typografi-style/src/fontimports";
+@import "~nav-frontend-knapper-style/src/mixins";
 
 .knappelinje {
-  button {
-    border: 2px solid transparent;
-    border-radius: 3px;
-    cursor: pointer;
+  .knappelinje__toggleknapp {
+    .knappbase-mixin(@font-family);
+
+    padding: 0.25rem 0.75rem;
+    background-color: @navLysGra;
+    color: @navMorkGra;
+    letter-spacing: normal;
+    border: none;
+    text-transform: none;
+    text-decoration: none;
+    line-height: inherit;
+
+    margin-right: 0.5rem;
 
     &:hover {
-      color: @hover-color;
+      color: @navBla;
       text-decoration: underline;
     }
-
-    &:focus {
-      border: 2px solid @orangeFocus;
-      outline: none;
-    }
   }
-
-  .knapp {
-    margin-right: 0.5rem;
-    width: max-content;
-  }
-
-  .knapp--valgt {
-    background-color: @navBla;
-    color: white;
+  .knappelinje__toggleknapp--valgt {
+      background-color: @navBla;
+      color: white;
 
     &:hover {
-      background-color: @active-color;
+      background-color: @navDypBla;
       color: white;
     }
   }

@@ -1,11 +1,19 @@
-.basisinfo {
-  margin-bottom: 1rem;
-}
+@import "~nav-frontend-core/less/_variabler";
 
-.basisinfo__navnogalder {
-  margin-bottom: 0.5rem;
-}
+.toggle-persondetaljer {
+  display: block;
+  background: none;
+  border: none;
 
-.basisinfo__fodselsnummer {
-  margin-bottom: 1rem;
+  &:focus {
+    background: @orangeFocus;
+    outline: none;
+  }
+  .chevron {
+    transition: transform 0.3s;
+  }
+
+  .toggle-persondetaljer__tekst:hover {
+    text-decoration: underline;
+  }
 }
