@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Persondetaljer from "./persondetaljer/persondetaljer";
+import Persondetaljer from "./persondetaljer";
 
 import './application.less';
 import AppProvider from "./context";

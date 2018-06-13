@@ -1,6 +1,6 @@
-@import "~nav-frontend-core/less/_variabler";
+@import "../../../node_modules/nav-frontend-core/less/_variabler";
 
-.toggle-persondetaljer {
+.apne-lukke-knapp {
   display: block;
   background: none;
   border: none;
@@ -13,7 +13,9 @@
     transition: transform 0.3s;
   }
 
-  .toggle-persondetaljer__tekst:hover {
-    text-decoration: underline;
+  &:hover {
+    .apne-lukke-knapp__tekst {
+      text-decoration: underline;
+    }
   }
 }

@@ -1,14 +1,20 @@
+@import "../../node_modules/nav-frontend-core/less/_variabler";
+@import (reference)"../../node_modules/nav-frontend-paneler-style/src/index";
+
 .persondetaljer {
+  .panel--stor();
+
+  background-color: @navLysGra;
   display: grid;
   grid-template-areas:
           "ikon personalia apnelukke"
-          ". knappelinje ."
           ". innhold .";
   grid-template-columns: auto 1fr auto;
   grid-gap: 1rem;
 
-  :not(.apen) & {
+  &:not(.apen) {
     grid-row-gap: 0;
+    -ms-grid-rows: auto;
   }
 }
 
@@ -24,10 +30,11 @@
   grid-area: apnelukke;
 }
 
-.knappelinje {
-  grid-area: knappelinje;
-}
-
 .informasjonsvisning {
   grid-area: innhold;
+}
+
+.tilbakelenke {
+  display: inline-block;
+  margin-bottom: 1rem;
 }

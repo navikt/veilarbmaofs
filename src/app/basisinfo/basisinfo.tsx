@@ -19,7 +19,9 @@ function Basisinfo() {
                 </h1>
                 <span className="basisinfo__fodselsnummer">{`1010800398`}</span>
             </div>
-            <ApneLukkeKnapp />
+            <div className="basisinfo__apnelukke">
+                <ApneLukkeKnapp />
+            </div>
         </>
     );
 }
