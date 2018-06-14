@@ -1,4 +1,4 @@
-import FetchMock, {Middleware} from "yet-another-fetch-mock";
+import FetchMock, {Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
 import CV from './cv';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
@@ -23,7 +23,10 @@ const loggingMiddleware: Middleware = (request, response) => {
 };
 
 const mock = FetchMock.configure({
-    middleware: loggingMiddleware
+    middleware: MiddlewareUtils.combine(
+        MiddlewareUtils.delayMiddleware(500),
+        loggingMiddleware
+    )
 });
 
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
