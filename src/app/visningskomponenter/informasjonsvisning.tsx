@@ -1,27 +1,22 @@
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import * as React from 'react';
-
-import {getConfig, IFetchContext, IInformasjonsElement} from '../../../config';
-
-import {AppContext, IAppContext, IAppContextProp, withAppContext} from "../../context";
-import Datafetcher from "../datafetcher";
+import {getConfig, IFetchContext, IInformasjonsElement} from "../../config";
+import {AppContext, IAppContext, IAppContextProp, withAppContext} from "../context";
+import Datafetcher from "../utils/datafetcher";
 
 import './informasjonsvisning.less';
 
+const noop = () => {}; // tslint:disable-line
 
 function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
-    if (!props.context.valgteKnapper.includes(props.id)) {
-        return null;
-    }
-
     const Component = props.component;
 
     return (
-        <div className="informasjonselement">
-            <div className="typo-innholdstittel informasjonsbolk">{props.id}</div>
+        <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
             <Datafetcher data={props.dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
-        </div>
+        </Ekspanderbartpanel>
     );
 }
 

@@ -59,5 +59,4 @@ class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
     }
 }
 
-
 export default Datafetcher;

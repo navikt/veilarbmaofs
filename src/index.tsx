@@ -1,16 +1,14 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import Application from './app/application';
+import NAVSPA from './NAVSPA';
 
 // tslint:disable
-if (!(global as any)._babelPolyfill){
+if (!(global as any)._babelPolyfill) {
     require('babel-polyfill')
+}
+if (process.env.NODE_ENV === 'development') {
+    require('./mock');
 }
 // tslint:enable
 
 
-import './mock';
-
-ReactDOM.render(<Application />, document.getElementById('app') as HTMLElement);
-
-// registerServiceWorker();
+NAVSPA.eksporter('veilarbmaofs', Application);

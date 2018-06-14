@@ -1,10 +1,14 @@
 import * as React from 'react';
-import Persondetaljer from "./persondetaljer/persondetaljer";
+import Persondetaljer from "./persondetaljer";
 
 import './application.less';
 import AppProvider from "./context";
 
-class Application extends React.Component {
+export interface IAppProps {
+    fnr: string;
+}
+
+class Application extends React.Component<IAppProps> {
   public render() {
     return (
       <div className="veilarbmaofs">
