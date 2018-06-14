@@ -33,5 +33,9 @@ export default class NAVSPA {
         return NAVSPAImporter;
     }
 
+    public static render<PROPS>(name: string, element: HTMLElement, props: PROPS): void {
+        NAVSPA.scope[name](element, props);
+    }
+
     private static scope: INAVSPAScope = (global as any)['NAVSPA'] = (global as any)['NAVSPA'] || {}; // tslint:disable-line
 }
