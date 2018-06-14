@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Grid from "../../grid";
+import Grid from "../../utils/grid";
 import {StringOrNull} from "../felles-typer";
 import Aktivitetsfase from "./aktivitetsfase";
 import Innsatsgruppe from "./innsatsgruppe";

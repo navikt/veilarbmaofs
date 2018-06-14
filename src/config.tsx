@@ -5,11 +5,11 @@ import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/o
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
 import Ytelser, {YtelseData} from "./app/visningskomponenter/ytelser/ytelser";
-import { getData } from "./fetch-utils";
+import {Data, getData } from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
 
-export type Datasource<T> = () => Promise<T>;
+export type Datasource<T> = () => Promise<Data<T>>;
 
 export interface IInformasjonsElement<T> {
     component: React.ComponentType<{ data: T }>;
