@@ -41,7 +41,7 @@ function Adresser(props: Props) {
     };
 
     const PostAdresse = () => {
-        if (isNullOrUndefined(postAdresse)) {
+        if (isNullOrUndefined(postAdresse) || isNullOrUndefined(postAdresse.ustrukturertAdresse)) {
             return null;
         }
 
