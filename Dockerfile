@@ -11,4 +11,4 @@ RUN npm run build
 
 FROM ${BASE_IMAGE_PREFIX}nginx
 
-COPY --from=builder /source/build /usr/share/nginx/html
+COPY --from=builder /source/build /usr/share/nginx/html/veilarbmaofs
