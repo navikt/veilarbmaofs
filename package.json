@@ -39,7 +39,7 @@
     "test:coverage": "echo not implemented",
     "eject": "react-scripts eject",
     "heroku-serve": "serve -s build -l $PORT",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "node _scripts/prepheroku.js && npm run build"
   },
   "devDependencies": {
     "@nutgaard/react-scripts": "0.0.8-beta.2",
