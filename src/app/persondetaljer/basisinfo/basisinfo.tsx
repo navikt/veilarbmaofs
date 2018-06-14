@@ -10,7 +10,7 @@ const Basisinfo = () =>
                 {`Bruce Wayne`}
                 <span> {`${`38`} år`}</span>
             </h1>
-            <span className="basisinfo__fodselsnummer">{`1010800398`}</span>
+            <span className="basisinfo__fodselsnummer">{`10108000398`}</span>
         </div>
     );
 

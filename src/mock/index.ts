@@ -2,6 +2,7 @@ import FetchMock, {Middleware} from "yet-another-fetch-mock";
 import CV from './cv';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
+import ytelsestatus from "./ytelsestatus";
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -28,4 +29,4 @@ mock.get('/veilarbarena/api', { ytelser: 'DAGP' });
 // mock.get('/https://app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398', CV as JSONValue);
 mock.get('/pam-arena', CV);
 mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
-
+mock.get('/arena/api/pagaendeytelser/ytelsestatus', ytelsestatus);

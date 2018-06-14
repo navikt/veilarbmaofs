@@ -4,11 +4,10 @@ import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
-import Ytelser from "./app/visningskomponenter/ytelser";
+import Ytelser, {YtelseData} from "./app/visningskomponenter/ytelser/ytelser";
 import { getData } from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
-
 
 export type Datasource<T> = () => Promise<T>;
 
@@ -55,8 +54,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Ytelser,
-         dataSource: getData<{ ytelser: IRegistreringsData }>({
-             ytelser: '/arena/api/pagaendeytelser'
+         dataSource: getData<{ ytelser: YtelseData }>({
+             ytelser: '/arena/api/pagaendeytelser/ytelsestatus'
          }),
          id: 'Ytelser',
      },
