@@ -38,7 +38,7 @@
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "echo not implemented",
     "eject": "react-scripts eject",
-    "heroku-serve": "serve -s build -l 8080",
+    "heroku-serve": "serve -s build -l $PORT",
     "heroku-postbuild": "node _scripts/prepheroku.js && cross-env REACT_APP_MOCK=true npm run build"
   },
   "devDependencies": {
