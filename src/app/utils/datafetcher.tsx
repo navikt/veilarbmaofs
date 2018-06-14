@@ -27,7 +27,7 @@ class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
                     if (error) {
                         this.setState({ error });
                     } else {
-                        // this.setState({ data: data as T });
+                        this.setState({ data });
                     }
 
                 }
