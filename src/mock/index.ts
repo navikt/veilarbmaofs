@@ -12,7 +12,7 @@ const loggingMiddleware: Middleware = (request, response) => {
     console.log('body', request.body);
     console.groupEnd();
 
-    console.log('response', JSON.parse(response.body));
+    // console.log('response', JSON.parse(response.body));
     console.groupEnd();
     // tslint:enable
     return response;
