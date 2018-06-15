@@ -55,7 +55,7 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      {
          component: Ytelser,
          dataSource: getData<{ ytelser: YtelseData }>({
-             ytelser: '/arena/api/pagaendeytelser/ytelsestatus'
+             ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
          }),
          id: 'Ytelser',
      },
