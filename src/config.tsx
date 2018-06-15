@@ -1,5 +1,5 @@
-import CV, {ICVInfo} from "./app/visningskomponenter/cv/cv";
-import Jobbonsker from "./app/visningskomponenter/jobbonsker";
+import CV from "./app/visningskomponenter/cv/cv";
+import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
@@ -8,6 +8,7 @@ import Ytelser from "./app/visningskomponenter/ytelser";
 import {Data, getData} from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
+import {ArenaPerson} from "./app/datatyper/arenaperson";
 
 
 export type Datasource<T> = () => Promise<Data<T>>;
@@ -33,7 +34,7 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: CV,
-         dataSource: getData<{ cv: ICVInfo }>({
+         dataSource: getData<{ cv: ArenaPerson }>({
              // cv: '//app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398'
              cv: '/pam-arena'
          }),
@@ -41,8 +42,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Jobbonsker,
-         dataSource: getData<{ jobbonsker: IRegistreringsData }>({
-             jobbonsker: '/veilarbregistrering/api/jobbonsker'
+         dataSource: getData<{ jobbonsker: ArenaPerson }>({
+             jobbonsker: '/pam-arena'
          }),
          id: 'Jobbønsker',
      },
