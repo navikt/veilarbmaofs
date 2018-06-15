@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import { ICVInfo } from "./cv";
 
-function SistEndret(props: Pick<ICVInfo, 'sistEndret'>) {
+function SistEndret(props: Pick<ArenaPerson, 'sistEndret'>) {
     if (isNullOrUndefined(props.sistEndret)) {
         return null;
     }
