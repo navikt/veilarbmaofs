@@ -32,4 +32,4 @@ mock.get('/veilarbarena/api', { ytelser: 'DAGP' });
 // mock.get('/https://app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398', CV as JSONValue);
 mock.get('/pam-arena', CV);
 mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
-mock.get('/arena/api/pagaendeytelser/ytelsestatus', Ytelsestatus);
+mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);

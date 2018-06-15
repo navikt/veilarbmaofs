@@ -11,4 +11,4 @@ const ytelsestatus = {
     }
 };
 
-export default ytelsestatus;
+export default ytelsestatus;    
