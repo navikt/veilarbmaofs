@@ -1,5 +1,5 @@
 import CV from "./app/visningskomponenter/cv/cv";
-import Jobbonsker from "./app/visningskomponenter/jobbonsker";
+import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
@@ -42,8 +42,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Jobbonsker,
-         dataSource: getData<{ jobbonsker: IRegistreringsData }>({
-             jobbonsker: '/veilarbregistrering/api/jobbonsker'
+         dataSource: getData<{ jobbonsker: ArenaPerson }>({
+             jobbonsker: '/pam-arena'
          }),
          id: 'Jobbønsker',
      },

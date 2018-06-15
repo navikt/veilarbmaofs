@@ -44,28 +44,28 @@ interface Kompetanse {
     kompetanseKodeTekst: string;
 }
 
-interface GeografiJobbonsker {
+export interface GeografiJobbonsker {
     geografiKodeTekst: string;
     geografiKode: string;
 }
 
-interface YrkeJobbonsker {
+export interface YrkeJobbonsker {
     styrkKode: string;
     styrkBeskrivelse: string;
     primaertJobbonske: boolean;
 }
 
-interface HeltidDeltidJobbonsker {
+export interface HeltidDeltidJobbonsker {
     heltidDeltidKode: string;
     heltidDeltidKodeTekst: string;
 }
 
-interface AnsettelsesforholdJobbonsker {
+export interface AnsettelsesforholdJobbonsker {
     ansettelsesforholdKodeTekst: string;
     ansettelsesforholdKode: string;
 }
 
-interface ArbeidstidsordningJobbonsker {
+export interface ArbeidstidsordningJobbonsker {
     arbeidstidsordningKode: string;
     arbeidstidsordningKodeTekst: string;
 }
