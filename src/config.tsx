@@ -36,21 +36,21 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
          component: CV,
          dataSource: getData<{ cv: ArenaPerson }>({
              // cv: '//app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398'
-             cv: '/pam-arena'
+             cv: `pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
          }),
          id: 'CV',
      },
      {
          component: Jobbonsker,
          dataSource: getData<{ jobbonsker: ArenaPerson }>({
-             jobbonsker: '/pam-arena'
+             jobbonsker: `pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
          }),
          id: 'Jobbønsker',
      },
      {
          component: Personalia,
          dataSource: getData<{ personalia: IPersonaliaInfo }>({
-             personalia: '/veilarbperson/api/person/10108000398'
+             personalia: `/veilarbperson/api/person/${context.fnr}`
          }),
          id: 'Personalia',
      },
