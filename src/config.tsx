@@ -43,7 +43,7 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      {
          component: Jobbonsker,
          dataSource: getData<{ jobbonsker: ArenaPerson }>({
-             jobbonsker: '/pam-arena'
+             jobbonsker: `pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
          }),
          id: 'Jobbønsker',
      },

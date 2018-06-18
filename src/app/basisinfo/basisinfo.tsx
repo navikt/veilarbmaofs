@@ -12,6 +12,26 @@ import { kalkulerAlder } from "../utils/date-utils";
 
 import './basisinfo.less';
 
+function render( { personalia }: { personalia: IPersonaliaInfo }) {
+    const alder = kalkulerAlder(new Date(personalia.fodselsdato));
+    const ikon = personalia.kjonn === "K" ? KvinneIkon : MannIkon;
+
+    return (
+        <>
+            <img src={ikon} className="basisinfo__ikon"/>
+            <div className="basisinfo__personalia">
+                <div className="basisinfo__personalia">
+                    <h1 className="basisinfo__navnogalder typo-innholdstittel">
+                        {personalia.sammensattNavn}
+                        <span> {`${alder} år`}</span>
+                    </h1>
+                    <span className="basisinfo__fodselsnummer">{personalia.fodselsnummer}</span>
+                </div>
+            </div>
+        </>
+    );
+}
+
 function Basisinfo({ fnr }: IAppProps) {
     const sourceConfig: SourceConfig<{personalia: string}> = {
         personalia: `/veilarbperson/api/person/${fnr}`
@@ -19,43 +39,16 @@ function Basisinfo({ fnr }: IAppProps) {
 
     const data = getData<{ personalia: IPersonaliaInfo }>(sourceConfig);
 
-    function FetchedData() {
-        return (
-            <Datafetcher data={data}>
-                { (el: { personalia: IPersonaliaInfo }) => <LagBasisInfo person={el.personalia}/> }
-            </Datafetcher>
-        );
-    }
-
-    function LagBasisInfo(props: { person: IPersonaliaInfo }) {
-        const alder = kalkulerAlder(new Date(props.person.fodselsdato));
-        const ikon = props.person.kjonn === "K" ? KvinneIkon : MannIkon;
-
-        return (
-            <>
-                <img src={ikon} className="basisinfo__ikon"/>
-                <div className="basisinfo__personalia">
-                    <div className="basisinfo__personalia">
-                        <h1 className="basisinfo__navnogalder typo-innholdstittel">
-                            {props.person.sammensattNavn}
-                            <span> {`${alder} år`}</span>
-                        </h1>
-                        <span className="basisinfo__fodselsnummer">{fnr}</span>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
     return (
         <>
-            <FetchedData />
+            <Datafetcher data={data}>
+                { render }
+            </Datafetcher>
             <div className="basisinfo__apnelukke">
                 <ApneLukkeKnapp />
             </div>
         </>
     );
 }
-
 
 export default Basisinfo;

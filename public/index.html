@@ -16,24 +16,29 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="initFnr()">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <form onsubmit="return onSubmit()">
       <label for="fnr">Fnr: </label>
-      <input type="text" name="fnr" id="fnr" value="10108000398"/>
+      <input type="text" name="fnr" id="fnr" />
       <button>Søk</button>
     </form>
     <div id="app"></div>
   </body>
   <script>
+    const defaultFnr = "10108000398";
+    function initFnr() {
+        document.getElementById('fnr').value = defaultFnr;
+    }
+
     const render = (fnr) => NAVSPA['veilarbmaofs'](document.getElementById('app'), { fnr: fnr });
     function onSubmit() {
         render(document.getElementById('fnr').value);
         return false;
     }
 
-    render('10108000398');
+    render(defaultFnr);
   </script>
 </html>
