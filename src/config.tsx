@@ -3,7 +3,6 @@ import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
-import Registerering from "./app/visningskomponenter/registrering";
 import Ytelser from "./app/visningskomponenter/ytelser";
 import {Data, getData} from "./fetch-utils";
 
@@ -25,13 +24,6 @@ export interface IFetchContext {
 
 export function getConfig(context: IFetchContext): Array<IInformasjonsElement<any>> {
  return [
-     {
-         component: Registerering,
-         dataSource: getData<{ registering: IRegistreringsData }>({
-             registering: '/veilarbregistrering/api/registrering'
-         }),
-         id: 'Registrering',
-     },
      {
          component: CV,
          dataSource: getData<{ cv: ArenaPerson }>({
