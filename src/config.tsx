@@ -50,7 +50,7 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      {
          component: Personalia,
          dataSource: getData<{ personalia: IPersonaliaInfo }>({
-             personalia: '/veilarbperson/api/person/10108000398'
+             personalia: `/veilarbperson/api/person/${context.fnr}`
          }),
          id: 'Personalia',
      },
