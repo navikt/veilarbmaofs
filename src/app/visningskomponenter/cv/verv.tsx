@@ -1,9 +1,9 @@
 import * as React from 'react';
+import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
-import {ICVInfo} from "./cv";
 
-function Verv(props: Pick<ICVInfo, 'verv'>) {
+function Verv(props: Pick<ArenaPerson, 'verv'>) {
     if (isNullOrUndefined(props.verv)) {
         return null;
     }
