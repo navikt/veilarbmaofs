@@ -12,16 +12,12 @@ import Informasjonsvisning from "./visningskomponenter/informasjonsvisning";
 import './persondetaljer.less';
 
 class Persondetaljer extends React.Component<IAppContextProp & IAppProps> {
-    public shouldComponentUpdate(nextProps: any) {
-        return this.props.fnr !== nextProps.fnr;
-    }
-
     public render() {
         const apen = this.props.context.apen;
         const fetchContext: IFetchContext = { fnr : this.props.fnr };
 
         return (
-            <>
+            <React.Fragment key={this.props.fnr}>
                 <Tilbakelenke />
                 <div
                     className={cls("persondetaljer", {
@@ -32,7 +28,7 @@ class Persondetaljer extends React.Component<IAppContextProp & IAppProps> {
                     <Basisinfo fnr={this.props.fnr} />
                     <Informasjonsvisning fetchContext={fetchContext} />
                 </div>
-            </>
+            </React.Fragment>
         )
     }
 }
