@@ -1,3 +1,4 @@
+import AlertStripeAdvarselSolid from "nav-frontend-alertstriper/lib/advarsel-solid-alertstripe";
 import * as React from 'react';
 import {Datasource} from "../../config";
 import {Data} from "../../fetch-utils";
@@ -50,7 +51,10 @@ class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
 
     public render() {
         if (this.state.error) {
-            return <p>Alvorlig feil... </p>
+            return (
+            <AlertStripeAdvarselSolid>
+                Kunne ikke laste data, prøv på nytt ...
+            </AlertStripeAdvarselSolid>);
         }
         if (this.state.data === null) {
             return "Spinner here";
