@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import Grid from "../../utils/grid";
 import Beskrivelse from "./beskrivelse";
 import Kompetanse from "./kompetanse";
 import Kurs from "./kurs";
+import Placeholder from './placeholder';
 import Sertifikater from "./sertifikater";
 import SistEndret from "./sist-endret";
 import Utdanning from "./utdanning";
@@ -11,7 +13,14 @@ import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
 
 
-function CV(props: { data: { cv: ArenaPerson } }) {
+interface IProps {
+    data: {
+        cv: ArenaPerson
+    }
+}
+
+
+function CV(props: IProps) {
     const { beskrivelse, yrkeserfaring, utdanning, sertifikater, disponererBil, kompetanse, kurs, verv, sistEndret } = props.data.cv;
 
     return (
@@ -29,5 +38,7 @@ function CV(props: { data: { cv: ArenaPerson } }) {
         </>
     );
 }
+
+(CV as VisningKomponent).placeholder = Placeholder;
 
 export default CV;

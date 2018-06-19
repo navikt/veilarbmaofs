@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
 import Grid from "../../utils/grid";
+import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import {StringOrNull} from "../felles-typer";
-import Enhet from "./enhet";
-import Innsatsgruppe from "./innsatsgruppe";
-import Veileder from "./veileder";
+import Placeholder from './placeholder';
 
 
 export interface EnhetType {
@@ -20,18 +20,24 @@ export interface OppfolgingData {
     veilederId: StringOrNull;
 }
 
+function toStr(enhet: EnhetType): StringOrNull {
+    return enhet.enhetId ? `${enhet.enhetId} ${enhet.navn}` : null;
+}
+
 function Oppfolging(props: { data: { oppfolging: OppfolgingData } }) {
     const oppfolging = props.data.oppfolging;
     return (
         <>
             <Grid columns={4} gap="0.5rem">
-                <Innsatsgruppe innsatsgruppe={"Do we need it here?"}/>
-                <Veileder veilederId={oppfolging.veilederId}/>
-                <Enhet enhet={oppfolging.geografiskEnhet} navn="Geografisk enhet"/>
-                <Enhet enhet={oppfolging.oppfolgingsEnhet} navn="Oppfølgingsenhet"/>
+                <InformasjonsbolkEnkel header="Innsatsgruppe:" value={"Do do we need it?"}/>
+                <InformasjonsbolkEnkel header="Veileder:" value={oppfolging.veilederId} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Geografisk enhet:" value={toStr(oppfolging.geografiskEnhet)} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Oppfølgingsenhet:" value={toStr(oppfolging.oppfolgingsEnhet)} defaultValue="-"/>
             </Grid>
         </>
     );
 }
+
+(Oppfolging as VisningKomponent).placeholder = Placeholder;
 
 export default Oppfolging;

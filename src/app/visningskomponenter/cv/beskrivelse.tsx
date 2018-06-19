@@ -4,7 +4,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 
 function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
@@ -13,10 +13,8 @@ function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
     }
 
    return (
-       <Informasjonsbolk header="Beskrivelse" {...props}>
-           <Normaltekst className="underinformasjon">
-               {props.beskrivelse}
-           </Normaltekst>
+       <Informasjonsbolk header="Beskrivelse">
+           <Normaltekst className="underinformasjon">{props.beskrivelse}</Normaltekst>
        </Informasjonsbolk>
    );
 }

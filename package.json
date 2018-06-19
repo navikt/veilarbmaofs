@@ -26,6 +26,7 @@
     "nav-frontend-typografi": "^2.0.3",
     "nav-frontend-typografi-style": "^1.0.8",
     "prop-types": "^15.6.1",
+    "puppeteer": "^1.5.0",
     "react": "^16.3.2",
     "react-collapse": "^4.0.3",
     "react-content-loader": "^3.1.2",
@@ -57,6 +58,7 @@
     "serve": "^8.2.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
+    "typescript-require": "^0.2.10",
     "yet-another-fetch-mock": "^2.3.3"
   }
 }

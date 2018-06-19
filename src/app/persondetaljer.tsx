@@ -11,6 +11,8 @@ import Informasjonsvisning from "./visningskomponenter/informasjonsvisning";
 
 import './persondetaljer.less';
 
+import { UnmountClosed as Collapse } from 'react-collapse';
+
 class Persondetaljer extends React.Component<IAppContextProp & IAppProps> {
     public render() {
         const apen = this.props.context.apen;
@@ -26,7 +28,9 @@ class Persondetaljer extends React.Component<IAppContextProp & IAppProps> {
                     })}
                 >
                     <Basisinfo fnr={this.props.fnr} />
-                    <Informasjonsvisning fetchContext={fetchContext} />
+                    <Collapse isOpened={apen} className="informasjonsvisning" hasNestedCollapse={true}>
+                        <Informasjonsvisning fetchContext={fetchContext} />
+                    </Collapse>
                 </div>
             </React.Fragment>
         )
