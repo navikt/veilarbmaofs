@@ -1,16 +1,15 @@
 import * as React from 'react';
-import {CSSProperties} from "react";
+
+import { Systemtittel } from 'nav-frontend-typografi';
 
 interface IProps {
     header?: string;
-    style?: CSSProperties;
+    style?: React.CSSProperties;
     children: React.ReactNode;
 }
 
 function Informasjonsbolk(props: IProps) {
-    const overskrift = <div className="typo-systemtittel">
-        {props.header}
-    </div>;
+    const overskrift = <Systemtittel>{props.header}</Systemtittel>;
 
     return (
         <div className="informasjonsbolk" style={props.style}>

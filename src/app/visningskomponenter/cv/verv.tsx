@@ -3,6 +3,8 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
 import {ICVInfo} from "./cv";
 
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+
 function Verv(props: Pick<ICVInfo, 'verv'>) {
     if (isNullOrUndefined(props.verv)) {
         return null;
@@ -10,12 +12,12 @@ function Verv(props: Pick<ICVInfo, 'verv'>) {
 
     const vervliste = props.verv.map((verv, index) => (
         <div key={`verv-${index}`} className="underinformasjon">
-            <div className="typo-element">
+            <Element>
                 {verv.organisasjon}
-            </div>
-            <div>{verv.tittel}</div>
-            <div>Fra: {new Date(verv.fraDato).toLocaleDateString()}</div>
-            <div>Til: {new Date(verv.fraDato).toLocaleDateString()}</div>
+            </Element>
+            <Normaltekst>{verv.tittel}</Normaltekst>
+            <Normaltekst>Fra: {new Date(verv.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>Til: {new Date(verv.fraDato).toLocaleDateString()}</Normaltekst>
         </div>
     ));
 

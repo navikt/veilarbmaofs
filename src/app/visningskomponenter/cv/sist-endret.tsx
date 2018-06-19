@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import { Normaltekst } from 'nav-frontend-typografi';
+
 import {isNullOrUndefined} from "../../utils/util";
 import { ICVInfo } from "./cv";
 
@@ -10,9 +13,9 @@ function SistEndret(props: Pick<ICVInfo, 'sistEndret'>) {
     const formattertTidspunkt = new Date(props.sistEndret).toLocaleString();
 
     return (
-        <div className="typo-normal italic-gra">
+        <Normaltekst className="italic-gra">
             {`Sist endret: ${formattertTidspunkt}`}
-        </div>
+        </Normaltekst>
     );
 }
 

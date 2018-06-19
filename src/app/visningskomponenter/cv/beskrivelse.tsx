@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import { Normaltekst } from 'nav-frontend-typografi';
+
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
 import {ICVInfo} from "./cv";
@@ -10,9 +13,9 @@ function Beskrivelse(props: Pick<ICVInfo, 'beskrivelse'>) {
 
    return (
        <Informasjonsbolk header="Beskrivelse" {...props}>
-           <div className="underinformasjon">
+           <Normaltekst className="underinformasjon">
                {props.beskrivelse}
-           </div>
+           </Normaltekst>
        </Informasjonsbolk>
    );
 }

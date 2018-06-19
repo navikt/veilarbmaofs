@@ -3,6 +3,8 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
 import {ICVInfo} from "./cv";
 
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+
 function Kurs(props: Pick<ICVInfo, 'kurs'>) {
     if (isNullOrUndefined(props.kurs)) {
         return null;
@@ -10,11 +12,11 @@ function Kurs(props: Pick<ICVInfo, 'kurs'>) {
 
     const kompetanser = props.kurs.map((kurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
-            <div className="typo-element">
+            <Element>
                 {kurs.tittel}
-            </div>
-            <div>{kurs.arrangor}</div>
-            <div>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</div>
+            </Element>
+            <Normaltekst>{kurs.arrangor}</Normaltekst>
+            <Normaltekst>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</Normaltekst>
         </div>
     ));
 

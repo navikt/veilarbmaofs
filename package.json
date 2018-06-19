@@ -28,6 +28,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-collapse": "^4.0.3",
+    "react-content-loader": "^3.1.2",
     "react-dom": "^16.3.2",
     "react-motion": "^0.5.2"
   },
@@ -49,6 +50,7 @@
     "@types/node": "^10.0.6",
     "@types/react": "^16.3.14",
     "@types/react-collapse": "^4.0.1",
+    "@types/react-content-loader": "^3.1.2",
     "@types/react-dom": "^16.0.5",
     "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.3",

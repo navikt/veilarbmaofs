@@ -3,6 +3,8 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
 import {ICVInfo} from "./cv";
 
+import { Normaltekst } from 'nav-frontend-typografi';
+
 type Props = Pick<ICVInfo, 'sertifikater'> & Pick<ICVInfo, 'disponererBil'>;
 
 function Sertifikater(props: Props) {
@@ -11,17 +13,17 @@ function Sertifikater(props: Props) {
     }
 
     const sertifikatListe = props.sertifikater.map((sertifikat, index) => (
-        <div key={`sertifikater-${index}`} className="underinformasjon">
+        <Normaltekst key={`sertifikater-${index}`} className="underinformasjon">
             {sertifikat.sertifikatKodeNavn}
-        </div>
+        </Normaltekst>
     ));
 
     return (
         <Informasjonsbolk header="Sertifikater" {...props}>
             {sertifikatListe}
-            <div>
+            <Normaltekst>
                 Disponerer bil: {props.disponererBil? "Ja" : "Nei"}
-            </div>
+            </Normaltekst>
         </Informasjonsbolk>
     );
 }

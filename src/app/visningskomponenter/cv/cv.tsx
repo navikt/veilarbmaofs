@@ -10,6 +10,8 @@ import Utdanning from "./utdanning";
 import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
 
+// import Placeholder from './placeholder';
+
 interface ICVVerv {
     fraDato: string;
     tilDato: string;
