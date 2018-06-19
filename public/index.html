@@ -33,7 +33,10 @@
         document.getElementById('fnr').value = defaultFnr;
     }
 
-    const render = (fnr) => NAVSPA['veilarbmaofs'](document.getElementById('app'), { fnr: fnr });
+    function render(fnr) {
+        return NAVSPA['veilarbmaofs'](document.getElementById('app'), {fnr: fnr});
+    }
+
     function onSubmit() {
         render(document.getElementById('fnr').value);
         return false;
