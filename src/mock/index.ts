@@ -23,15 +23,14 @@ const loggingMiddleware: Middleware = (request, response) => {
 };
 
 const mock = FetchMock.configure({
+    enableFallback: false,
     middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.delayMiddleware(1500),
+        MiddlewareUtils.delayMiddleware(200),
         loggingMiddleware
     )
 });
 
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
-mock.get('/veilarbarena/api', { ytelser: 'DAGP' });
-// mock.get('/https://app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398', CV as JSONValue);
-mock.get('/pam-arena', CV);
+mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
 

@@ -2,8 +2,6 @@ import * as React from 'react';
 import {Datasource} from "../../config";
 import {Data} from "../../fetch-utils";
 
-import Placeholder from '../visningskomponenter/cv/placeholder';
-
 interface IProps<T> {
     data: Datasource<T>;
     children: (data: T) => React.ReactNode;
@@ -55,7 +53,7 @@ class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
             return <p>Alvorlig feil... </p>
         }
         if (this.state.data === null) {
-            return <Placeholder />;
+            return "Spinner here";
         }
         return this.props.children(this.state.data);
     }

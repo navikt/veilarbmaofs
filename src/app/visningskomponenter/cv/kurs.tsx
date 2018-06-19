@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../informasjonsbolk";
-import {ICVInfo} from "./cv";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 
-function Kurs(props: Pick<ICVInfo, 'kurs'>) {
+function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     if (isNullOrUndefined(props.kurs)) {
         return null;
     }
