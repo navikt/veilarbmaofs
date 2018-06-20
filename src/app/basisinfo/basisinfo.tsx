@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getData, SourceConfig } from '../../fetch-utils';
 import { IAppProps } from '../application';
-import { IPersonaliaInfo } from "../visningskomponenter/personalia/personalia";
+import { IPersonaliaInfo } from '../visningskomponenter/personalia/personalia';
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import KvinneIkon from './kvinne.svg';
 import MannIkon from './mann.svg';
@@ -14,7 +14,7 @@ import './basisinfo.less';
 function render( { personalia }: { personalia: IPersonaliaInfo }) {
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
     const ikon = personalia.kjonn === 'K' ? KvinneIkon : MannIkon;
-    const ikonTekst = `ikon ${personalia.kjonn === 'K'? 'kvinne': 'mann'}`;
+    const ikonTekst = `ikon ${personalia.kjonn === 'K' ? 'kvinne': 'mann'}`;
 
     return (
         <>
