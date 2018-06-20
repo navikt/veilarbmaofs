@@ -32,9 +32,9 @@ function template(tmp, values) {
 }
 
 process.env.REACT_APP_MOCK='true';
-// run(`node ${pre}`);
-// run(`node ${buildScript}`);
-// run(`node ${post}`);
+run(`node ${pre}`);
+run(`node ${buildScript}`);
+run(`node ${post}`);
 
 const server = run.async(`node ${serve} -l 8080 build`);
 
@@ -47,6 +47,7 @@ function delay(delay) {
 async function generatePlaceholderForContent(page, nthChild, saveTo) {
     console.log('generationg', saveTo);
     await page.goto('http://localhost:8080');
+    await delay(3000);
     await page.click('.apne-lukke-knapp');
     await delay(1000);
     await page.click(`.ekspanderbartPanel:nth-child(${nthChild})`);

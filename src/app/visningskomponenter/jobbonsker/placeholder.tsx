@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ContentLoader from 'react-content-loader';
+import ContentLoader from './../../utils/content-loader';
 
 function Placeholder() {
     return (
