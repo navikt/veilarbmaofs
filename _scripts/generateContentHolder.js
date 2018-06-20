@@ -12,7 +12,9 @@ try {
     puppeteer = require('puppeteer');
 } catch (e) {
     console.log('Fant ikke puppeteer. Innstallerer uten endring til package.json.');
-    run('npm install puppeteer');
+    run('npm install puppeteer --no-save');
+
+    puppeteer = require('puppeteer');
 }
 
 const config = [
@@ -100,7 +102,7 @@ async function generatePlacholderForPerson(page) {
 
 
 (async function runTest() {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1200 });
 
