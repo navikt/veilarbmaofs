@@ -1,24 +1,24 @@
 import * as React from 'react';
-
-import { getData, SourceConfig } from "../../fetch-utils";
-import { IAppProps } from "../application";
+import { getData, SourceConfig } from '../../fetch-utils';
+import { IAppProps } from '../application';
 import { IPersonaliaInfo } from "../visningskomponenter/personalia/personalia";
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import KvinneIkon from './kvinne.svg';
 import MannIkon from './mann.svg';
 
-import Datafetcher from "../utils/datafetcher";
-import { kalkulerAlder } from "../utils/date-utils";
+import Datafetcher from '../utils/datafetcher';
+import { kalkulerAlder } from '../utils/date-utils';
 
 import './basisinfo.less';
 
 function render( { personalia }: { personalia: IPersonaliaInfo }) {
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
-    const ikon = personalia.kjonn === "K" ? KvinneIkon : MannIkon;
+    const ikon = personalia.kjonn === 'K' ? KvinneIkon : MannIkon;
+    const ikonTekst = `ikon ${personalia.kjonn === 'K'? 'kvinne': 'mann'}`;
 
     return (
         <>
-            <img src={ikon} className="basisinfo__ikon"/>
+            <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>
             <div className="basisinfo__personalia">
                 <div className="basisinfo__personalia">
                     <h1 className="basisinfo__navnogalder typo-innholdstittel">
