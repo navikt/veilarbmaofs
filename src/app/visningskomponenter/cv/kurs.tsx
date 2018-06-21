@@ -10,19 +10,19 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
         return null;
     }
 
-    const kompetanser = props.kurs.map((kurs, index) => (
+    const kurs = props.kurs.map((enkeltKurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
             <Element>
-                {kurs.tittel}
+                {enkeltKurs.tittel}
             </Element>
-            <Normaltekst>{kurs.arrangor}</Normaltekst>
-            <Normaltekst>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
+            <Normaltekst>Fra: {new Date(enkeltKurs.fraDato).toLocaleDateString()}</Normaltekst>
         </div>
     ));
 
     return (
         <Informasjonsbolk header="Kurs" {...props}>
-            {kompetanser}
+            {kurs}
         </Informasjonsbolk>
     );
 }
