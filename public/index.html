@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,15 +17,17 @@
     </style>
   </head>
   <body onload="initFnr()">
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <form onsubmit="return onSubmit()">
-      <label for="fnr">Fnr: </label>
-      <input type="text" name="fnr" id="fnr" />
-      <button>Søk</button>
-    </form>
-    <div id="app"></div>
+    <div role="main">
+      <noscript>
+        You need to enable JavaScript to run this app.
+      </noscript>
+      <form onsubmit="return onSubmit()">
+        <label for="fnr">Fnr: </label>
+        <input type="text" name="fnr" id="fnr" />
+        <button>Søk</button>
+      </form>
+      <div id="app"></div>
+    </div>
   </body>
   <script>
     const defaultFnr = "10108000398";
