@@ -6,6 +6,7 @@ import {Data} from "../../fetch-utils";
 interface IProps<T> {
     data: Datasource<T>;
     children: (data: T) => React.ReactNode;
+    loader?: React.ComponentType
 }
 
 interface IState<T> {
@@ -57,6 +58,9 @@ class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
             </AlertStripeAdvarselSolid>);
         }
         if (this.state.data === null) {
+            if (this.props.loader) {
+                return React.createElement(this.props.loader);
+            }
             return "Spinner here";
         }
         return this.props.children(this.state.data);

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 
 function Kompetanse(props: Pick<ArenaPerson, 'kompetanse'>) {
     if (isNullOrUndefined(props.kompetanse)) {
@@ -10,10 +12,10 @@ function Kompetanse(props: Pick<ArenaPerson, 'kompetanse'>) {
 
     const kompetanser = props.kompetanse.map((kompetanse, index) => (
         <div key={`kompetanse-${index}`} className="underinformasjon">
-            <div className="typo-element">
+            <Element>
                 {kompetanse.kompetanseKodeTekst}
-            </div>
-            <div>{kompetanse.beskrivelse}</div>
+            </Element>
+            <Normaltekst>{kompetanse.beskrivelse || ''}</Normaltekst>
         </div>
     ));
 

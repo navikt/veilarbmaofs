@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
+import Placeholder from './placeholder';
 
 function Ytelser(props: { data: any }) {
     return (
@@ -8,5 +10,7 @@ function Ytelser(props: { data: any }) {
         </>
     );
 }
+
+(Ytelser as VisningKomponent).placeholder = Placeholder;
 
 export default Ytelser;

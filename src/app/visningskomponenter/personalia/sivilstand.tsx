@@ -1,35 +1,26 @@
 import * as React from 'react';
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Dato from '../felles-komponenter/dato';
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import { IPersonaliaSivilstand } from "./personalia";
 
-const Sivilstand = (props: { sivilstand: IPersonaliaSivilstand }) => {
+import { Normaltekst } from 'nav-frontend-typografi';
+
+function Sivilstand(props: { sivilstand: IPersonaliaSivilstand }) {
     if (isNullOrUndefined(props.sivilstand)) {
         return null;
     }
 
-    const { sivilstand, fraDato } = props.sivilstand;
-
-    const FraTidspunkt = () => {
-        const component = (
-            <div>
-                Fra: {new Date(fraDato!).toLocaleDateString()}
-            </div>
-        );
-        return fraDato ? component : null;
-    };
+    const { sivilstand, ...rest} = props;
 
     return (
-        <Informasjonsbolk {...props}>
-            <div>
-                Sivilstand
-            </div>
-            <div>
-                {sivilstand}
-            </div>
-            <FraTidspunkt />
+        <Informasjonsbolk header="Sivilstand" {...rest}>
+            <Normaltekst>
+                {sivilstand.sivilstand}
+            </Normaltekst>
+            <Dato dato={sivilstand.fraDato}/>
         </Informasjonsbolk>
     );
-};
+}
 
 export default Sivilstand;

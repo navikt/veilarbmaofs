@@ -1,9 +1,9 @@
 import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
-import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
+import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
-import Ytelser from "./app/visningskomponenter/ytelser";
+import Ytelser from "./app/visningskomponenter/ytelser/ytelser";
 import {Data, getData} from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
@@ -11,9 +11,10 @@ import {ArenaPerson} from "./app/datatyper/arenaperson";
 
 
 export type Datasource<T> = () => Promise<Data<T>>;
+export type VisningKomponent<T = {}> = React.ComponentType<{ data: T}> & { placeholder?: React.ComponentType };
 
 export interface IInformasjonsElement<T> {
-    component: React.ComponentType<{ data: T }>;
+    component: VisningKomponent<T>;
     dataSource: Datasource<T>;
     id: string;
 }

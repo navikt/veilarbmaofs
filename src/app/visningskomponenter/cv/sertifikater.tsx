@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+
+import { Normaltekst } from 'nav-frontend-typografi';
 
 type Props = Pick<ArenaPerson, 'sertifikater'> & Pick<ArenaPerson, 'disponererBil'>;
 
@@ -10,18 +12,20 @@ function Sertifikater(props: Props) {
         return null;
     }
 
-    const sertifikatListe = props.sertifikater.map((sertifikat, index) => (
-        <div key={`sertifikater-${index}`} className="underinformasjon">
+    const { sertifikater, disponererBil, ...rest } = props;
+
+    const sertifikatListe = sertifikater.map((sertifikat, index) => (
+        <Normaltekst key={`sertifikater-${index}`} className="underinformasjon">
             {sertifikat.sertifikatKodeNavn}
-        </div>
+        </Normaltekst>
     ));
 
     return (
-        <Informasjonsbolk header="Sertifikater" {...props}>
+        <Informasjonsbolk header="Sertifikater" {...rest}>
             {sertifikatListe}
-            <div>
-                Disponerer bil: {props.disponererBil? "Ja" : "Nei"}
-            </div>
+            <Normaltekst>
+                Disponerer bil: {disponererBil? "Ja" : "Nei"}
+            </Normaltekst>
         </Informasjonsbolk>
     );
 }

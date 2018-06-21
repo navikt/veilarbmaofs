@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     if (isNullOrUndefined(props.utdanning)) {
@@ -10,12 +12,13 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 
     const utdanninger = props.utdanning.map((utdanning, index) => (
         <div key={`utdanning-${index}`} className="underinformasjon">
-            <div className="typo-element">
+            <Element className="typo-element">
                 {utdanning.utdannelsessted}
-            </div>
-            <div>{utdanning.alternativtUtdanningsnavn}</div>
-            <div>Fra: {new Date(utdanning.fraDato).toLocaleDateString()}</div>
-            <div>Til: {new Date(utdanning.fraDato).toLocaleDateString()}</div>
+            </Element>
+
+            <Normaltekst>{utdanning.alternativtUtdanningsnavn}</Normaltekst>
+            <Normaltekst>Fra: {new Date(utdanning.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>Til: {new Date(utdanning.fraDato).toLocaleDateString()}</Normaltekst>
         </div>
     ));
 

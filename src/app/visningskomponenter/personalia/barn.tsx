@@ -1,37 +1,42 @@
 import * as React from 'react';
-import { kalkulerAlder } from "../../utils/date-utils";
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
-import {IPersonaliaInfo} from "./personalia";
+import { kalkulerAlder } from '../../utils/date-utils';
+import { isNullOrUndefined } from '../../utils/util';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import { IPersonaliaBarn, IPersonaliaInfo } from './personalia';
 
-const Barn = (props: Pick<IPersonaliaInfo, 'barn'>) => {
+import { Normaltekst } from 'nav-frontend-typografi';
+
+function EnkeltBarn(props: { barn: IPersonaliaBarn }) {
+    const { harSammeBosted, sammensattNavn, fodselsnummer, fodselsdato, kjonn } = props.barn;
+    const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
+    const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
+    const alder = kalkulerAlder(new Date(fodselsdato));
+
+    return (
+        <div className="underinformasjon">
+            <Normaltekst>
+                {`${sammensattNavn} (${alder}), ${lesbartKjonn}`}
+            </Normaltekst>
+            <Normaltekst>
+                {fodselsnummer}
+            </Normaltekst>
+            <Normaltekst>
+                {borSammen}
+            </Normaltekst>
+        </div>
+    );
+}
+
+function Barn(props: Pick<IPersonaliaInfo, 'barn'>) {
     if (isNullOrUndefined(props.barn)) {
         return null;
     }
 
-    const barnListe = props.barn.map((barn, index) => {
-        const { harSammeBosted, sammensattNavn, fodselsnummer, fodselsdato, kjonn } = barn;
-        const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
-        const lesbartKjonn = kjonn === 'M' ? "Gutt" : "Jente";
-        const alder = kalkulerAlder(new Date(fodselsdato));
+    const { barn, ...rest} = props;
 
-        return (<div key={`barn-${index}`} className="underinformasjon">
-            <div>
-                {`${sammensattNavn} (${alder}), ${lesbartKjonn}`}
-            </div>
-            <div>
-                {fodselsnummer}
-            </div>
-            <div>
-                {borSammen}
-            </div>
-        </div>);
-    });
+    const barnListe = barn.map((ettBarn) => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />);
     return (
-        <Informasjonsbolk {...props}>
-            <div>
-                Barn:
-            </div>
+        <Informasjonsbolk header="Barn:" {...rest}>
             {barnListe}
         </Informasjonsbolk>
     );

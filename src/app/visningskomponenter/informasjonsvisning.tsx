@@ -13,7 +13,7 @@ function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & IAppContextProp)
 
     return (
         <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
-            <Datafetcher data={props.dataSource}>
+            <Datafetcher data={props.dataSource} loader={Component.placeholder}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
         </Ekspanderbartpanel>
@@ -32,17 +32,13 @@ interface IProps {
 
 class Informasjonsvisning extends React.Component<IAppContextProp & IProps> {
     public render() {
-        if (!this.props.context.apen) {
-            return null;
-        }
-
         const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext)
             .map(lagVisningBolk(this.props.context));
 
         return (
-            <div className="informasjonsvisning">
+            <>
                 {renderElementer}
-            </div>
+            </>
         );
     }
 }

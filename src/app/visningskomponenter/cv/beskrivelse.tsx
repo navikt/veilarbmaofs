@@ -1,7 +1,11 @@
 import * as React from 'react';
+
+import { Normaltekst } from 'nav-frontend-typografi';
+
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+
 
 function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
     if (isNullOrUndefined(props.beskrivelse)) {
@@ -9,10 +13,8 @@ function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
     }
 
    return (
-       <Informasjonsbolk header="Beskrivelse" {...props}>
-           <div className="underinformasjon">
-               {props.beskrivelse}
-           </div>
+       <Informasjonsbolk header="Beskrivelse">
+           <Normaltekst className="underinformasjon">{props.beskrivelse}</Normaltekst>
        </Informasjonsbolk>
    );
 }
