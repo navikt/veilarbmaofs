@@ -13,10 +13,11 @@ import MannIkon from './mann.svg';
 function render( { personalia }: { personalia: IPersonaliaInfo }) {
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
     const ikon = personalia.kjonn === "K" ? KvinneIkon : MannIkon;
+    const ikonTekst = `ikon ${personalia.kjonn === 'K' ? 'kvinne': 'mann'}`;
 
     return (
         <>
-            <img src={ikon} className="basisinfo__ikon"/>
+            <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>
             <div className="basisinfo__personalia">
                 <div className="basisinfo__personalia">
                     <h1 className="basisinfo__navnogalder typo-innholdstittel">
