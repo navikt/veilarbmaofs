@@ -5,14 +5,14 @@ import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Normaltekst } from 'nav-frontend-typografi';
 
-type Props = Pick<ArenaPerson, 'sertifikater'> & Pick<ArenaPerson, 'disponererBil'>;
+type Props = Pick<ArenaPerson, 'sertifikater'>;
 
 function Sertifikater(props: Props) {
     if (isNullOrUndefined(props.sertifikater)) {
         return null;
     }
 
-    const { sertifikater, disponererBil, ...rest } = props;
+    const { sertifikater, ...rest } = props;
 
     const sertifikatListe = sertifikater.map((sertifikat, index) => (
         <Normaltekst key={`sertifikater-${index}`} className="underinformasjon">
@@ -23,9 +23,6 @@ function Sertifikater(props: Props) {
     return (
         <Informasjonsbolk header="Sertifikater" {...rest}>
             {sertifikatListe}
-            <Normaltekst>
-                Disponerer bil: {disponererBil? "Ja" : "Nei"}
-            </Normaltekst>
         </Informasjonsbolk>
     );
 }

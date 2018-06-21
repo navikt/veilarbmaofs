@@ -26,7 +26,7 @@ interface Yrkeserfaring {
     alternativStillingstittel: string;
 }
 
-interface Sertifikater {
+interface Sertifikat {
     fraDato: string;
     tilDato: StringOrNull
     sertifikatKode: string;
@@ -37,7 +37,6 @@ interface Sertifikater {
 
 interface Kompetanse {
     fraDato: string;
-    tilDato: StringOrNull
     beskrivelse: StringOrNull
     alternativTekst: StringOrNull
     kompetanseKode: string;
@@ -73,7 +72,6 @@ export interface ArbeidstidsordningJobbonsker {
 interface Kurs {
     fraDato: string;
     tilDato: StringOrNull
-    beskrivelse: string;
     tittel: string;
     arrangor: string;
     omfang: {
@@ -109,7 +107,9 @@ export interface ArenaPerson {
     };
     utdanning: Utdanning[];
     yrkeserfaring: Yrkeserfaring[];
-    sertifikater: Sertifikater[];
+    forerkort: Sertifikat[];
+    sertifikater: Sertifikat[];
+    sprak: Kompetanse[];
     kompetanse: Kompetanse[];
     geografiJobbonsker: GeografiJobbonsker[];
     yrkeJobbonsker: YrkeJobbonsker[];
