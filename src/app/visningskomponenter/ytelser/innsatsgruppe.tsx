@@ -1,17 +1,29 @@
 import * as React from 'react';
 import {isNullOrUndefined} from "../../utils/util";
-import {StringOrNull} from "../felles-typer";
 import Informasjonsbolk from "../informasjonsbolk";
+import {YtelseDataType} from "./ytelsevisning";
 
-function Innsatsgruppe(props: {innsatsgruppe: StringOrNull}) {
-    if (isNullOrUndefined(props.innsatsgruppe)) {
+function Innsatsgruppe(props: Pick<YtelseDataType, 'oppfolgingskontrakter'>) {
+    if (isNullOrUndefined(props.oppfolgingskontrakter)) {
         return null;
     }
 
+    const innsats = props.oppfolgingskontrakter.map((oppfolgingskontrakt, index) => (
+        <div key={`innsats-${index}`}>
+            <Informasjonsbolk {...props}>
+                <div>Innsatsgruppe:</div>
+                {
+                    oppfolgingskontrakt.innsatsgrupper.map((innsatsgruppe) => (
+                        <div>{oppfolgingskontrakt.innsatsgrupper}</div>
+                    ))
+                }
+            </Informasjonsbolk>
+        </div>
+    ));
+
     return (
         <Informasjonsbolk {...props}>
-            <div>Innsatsgruppe:</div>
-            <div>{props.innsatsgruppe}</div>
+            <div>{innsats}</div>
         </Informasjonsbolk>
     );
 }

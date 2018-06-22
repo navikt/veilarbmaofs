@@ -4,7 +4,7 @@ import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Registerering from "./app/visningskomponenter/registrering";
-import Ytelser, {YtelseData} from "./app/visningskomponenter/ytelser/ytelser";
+import YtelseVisning, {YtelseDataType} from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData } from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
@@ -53,8 +53,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
          id: 'Personalia',
      },
      {
-         component: Ytelser,
-         dataSource: getData<{ ytelser: YtelseData }>({
+         component: YtelseVisning,
+         dataSource: getData<{ ytelser: YtelseDataType }>({
              ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
          }),
          id: 'Ytelser',

@@ -1,14 +1,57 @@
-
-const ytelsestatus = {
-    aktivitetsfase: "Ingen aktivitetsfase",
-    innsatsgruppe: "Situasjonsbestemt innsats",
-    rettighetsperiode: "10 uker igjen",
-    status: "Iverksatt",
-    vedtak: "Tiltakspenger",
-    vedtaksperiode: {
-        fradato: "2017-10-19",
-        tildato: "2017-12-20"
-    }
+const ytelsestatus: {} = {
+    oppfolgingskontrakter:
+        [{
+            innsatsgrupper: ["Spesielt tilpasset innsats"],
+            status: "Aktiv"
+        }],
+    vedtaksliste:
+        [{
+            aktivitetsfase: null,
+            fradato: {
+                day: '19',
+                month: '2',
+                year: '2018',
+            },
+            status: "Iverksatt",
+            tildato: {
+                day: '12',
+                month: '10',
+                year: '2018'
+            },
+            vedtakstype: "Eksamensgebyr / Ny rettighet"
+        }, {
+            aktivitetsfase: "Under arbeidsavklaring",
+            fradato: {
+                day: '19',
+                month: '2',
+                year: '2018',
+            },
+            status: "Iverksatt",
+            tildato: {
+                day: '12',
+                month: '10',
+                year: '2018',
+            },
+            vedtakstype: "Arbeidsavklaringspenger / Endring"
+        }, {
+            aktivitetsfase: "Under arbeidsavklaring",
+            fradato: {
+                day: '19',
+                month: '2',
+                year: '2018',
+            },
+            status: "Avsluttet",
+            vedtakstype: "Arbeidsavklaringspenger / Ny rettighet"
+        }],
+    ytelser:
+        [{
+            datoFra: {
+                day: '19',
+                month: '2',
+                year: '2018',
+            },
+            datoTil: null,
+        }],
 };
 
-export default ytelsestatus;    
+export default ytelsestatus;
