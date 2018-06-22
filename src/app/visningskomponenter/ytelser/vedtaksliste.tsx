@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Grid from "../../utils/grid";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import {YtelseDataType} from "./ytelsevisning";
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
@@ -10,8 +10,7 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     }
 
     const vedtaks = props.vedtaksliste.map((vedtak, index) => (
-        <div key={`vedtak-${index}`}>
-            <Grid columns={4} gap="0.5rem">
+            <Grid columns={4} gap="0.5rem" key={`vedtak-${index}`}>
                 <div>
                     <div>Vedtak:</div>
                     <div>{vedtak.vedtakstype}</div>
@@ -30,11 +29,10 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
                     <div>Til Dato: {vedtak.tildato && `${vedtak.tildato.day}-${vedtak.tildato.month}-${vedtak.tildato.year}`}</div>
                 </div>
             </Grid>
-        </div>
     ));
 
     return (
-        <Informasjonsbolk {...props}>
+        <Informasjonsbolk header="Aktive vedtak" {...props}>
             {vedtaks}
         </Informasjonsbolk>
     );

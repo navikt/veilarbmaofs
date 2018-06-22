@@ -1,18 +1,19 @@
-import CV, {ICVInfo} from "./app/visningskomponenter/cv/cv";
-import Jobbonsker from "./app/visningskomponenter/jobbonsker";
-import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse";
+import CV from "./app/visningskomponenter/cv/cv";
+import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
+import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
-import Registerering from "./app/visningskomponenter/registrering";
 import YtelseVisning, {YtelseDataType} from "./app/visningskomponenter/ytelser/ytelsevisning";
-import {Data, getData } from "./fetch-utils";
+import {Data, getData} from "./fetch-utils";
 
 import { IRegistreringsData } from "./app/datatyper";
+import {ArenaPerson} from "./app/datatyper/arenaperson";
 
 export type Datasource<T> = () => Promise<Data<T>>;
+export type VisningKomponent<T = {}> = React.ComponentType<{ data: T}> & { placeholder?: React.ComponentType };
 
 export interface IInformasjonsElement<T> {
-    component: React.ComponentType<{ data: T }>;
+    component: VisningKomponent<T>;
     dataSource: Datasource<T>;
     id: string;
 }
@@ -24,31 +25,23 @@ export interface IFetchContext {
 export function getConfig(context: IFetchContext): Array<IInformasjonsElement<any>> {
  return [
      {
-         component: Registerering,
-         dataSource: getData<{ registering: IRegistreringsData }>({
-             registering: '/veilarbregistrering/api/registrering'
-         }),
-         id: 'Registrering',
-     },
-     {
          component: CV,
-         dataSource: getData<{ cv: ICVInfo }>({
-             // cv: '//app-t5.adeo.no/pam-arena/rest/arenaperson/hent?fnr=10108000398'
-             cv: '/pam-arena'
+         dataSource: getData<{ cv: ArenaPerson }>({
+             cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
          }),
          id: 'CV',
      },
      {
          component: Jobbonsker,
-         dataSource: getData<{ jobbonsker: IRegistreringsData }>({
-             jobbonsker: '/veilarbregistrering/api/jobbonsker'
+         dataSource: getData<{ jobbonsker: ArenaPerson }>({
+             jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
          }),
          id: 'Jobbønsker',
      },
      {
          component: Personalia,
          dataSource: getData<{ personalia: IPersonaliaInfo }>({
-             personalia: '/veilarbperson/api/person/10108000398'
+             personalia: `/veilarbperson/api/person/${context.fnr}`
          }),
          id: 'Personalia',
      },

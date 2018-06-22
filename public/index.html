@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,13 +16,34 @@
       }
     </style>
   </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="app"></div>
+  <body onload="initFnr()">
+    <div role="main">
+      <noscript>
+        You need to enable JavaScript to run this app.
+      </noscript>
+      <form onsubmit="return onSubmit()">
+        <label for="fnr">Fnr: </label>
+        <input type="text" name="fnr" id="fnr" />
+        <button>Søk</button>
+      </form>
+      <div id="app"></div>
+    </div>
   </body>
   <script>
-    NAVSPA['veilarbmaofs'](document.getElementById('app'), { fnr: '10108000398' });
+    const defaultFnr = "10108000398";
+    function initFnr() {
+        document.getElementById('fnr').value = defaultFnr;
+    }
+
+    function render(fnr) {
+        return NAVSPA['veilarbmaofs'](document.getElementById('app'), {fnr: fnr});
+    }
+
+    function onSubmit() {
+        render(document.getElementById('fnr').value);
+        return false;
+    }
+
+    render(defaultFnr);
   </script>
 </html>

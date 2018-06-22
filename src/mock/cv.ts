@@ -62,7 +62,7 @@ const CV = {
         'alternativStillingstittel': "Murer"
     }
   ],
-  'sertifikater': [
+  'forerkort': [
     {
       'fraDato': "2016-10-19",
       'tilDato': null,
@@ -96,26 +96,35 @@ const CV = {
       'utsteder': "'Førerkort': Kl. D (buss)"
     }
   ],
+  'sertifikater': [
+      {
+          'fraDato': "2017-08-22",
+          'tilDato': null,
+          'sertifikatKode': "V1.6666",
+          'sertifikatKodeNavn': "Sveiselappen",
+          'alternativtNavn': null,
+          'utsteder': "Norges sveiselag"
+      }
+  ],
+  'sprak': [
+      {
+          'fraDato': "2016-10-19",
+          'beskrivelse': "Test-morsmål",
+          'alternativTekst': null,
+          'kompetanseKode': "430173",
+          'kompetanseKodeTekst': "Polsk"
+      },
+      {
+          'fraDato': "2016-10-19",
+          'beskrivelse': "Behersker språket godt",
+          'alternativTekst': null,
+          'kompetanseKode': "4103",
+          'kompetanseKodeTekst': "Bokmål"
+      }
+  ],
   'kompetanse': [
     {
       'fraDato': "2016-10-19",
-      'tilDato': null,
-      'beskrivelse': "Test-morsmål",
-      'alternativTekst': null,
-      'kompetanseKode': "430173",
-      'kompetanseKodeTekst': "Polsk"
-    },
-    {
-      'fraDato': "2016-10-19",
-      'tilDato': null,
-      'beskrivelse': "Behersker språket godt",
-      'alternativTekst': null,
-      'kompetanseKode': "4103",
-      'kompetanseKodeTekst': "Bokmål"
-    },
-    {
-      'fraDato': "2016-10-19",
-      'tilDato': null,
       'beskrivelse': null,
       'alternativTekst': null,
       'kompetanseKode': "3140201",
@@ -204,7 +213,6 @@ const CV = {
     {
       'fraDato': "2012-01-01",
       'tilDato': null,
-      'beskrivelse': "test test",
       'tittel': "Offentlige anbud",
       'arrangor': "Forum for offentlige anbud",
       'omfang': {

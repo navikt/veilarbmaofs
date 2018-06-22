@@ -1,18 +1,20 @@
 import * as React from 'react';
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
-import {ICVInfo} from "./cv";
 
-function Beskrivelse(props: Pick<ICVInfo, 'beskrivelse'>) {
+import { Normaltekst } from 'nav-frontend-typografi';
+
+import {ArenaPerson} from "../../datatyper/arenaperson";
+import {isNullOrUndefined} from "../../utils/util";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+
+
+function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
     if (isNullOrUndefined(props.beskrivelse)) {
         return null;
     }
 
    return (
-       <Informasjonsbolk header="Beskrivelse" {...props}>
-           <div className="underinformasjon">
-               {props.beskrivelse}
-           </div>
+       <Informasjonsbolk header="Beskrivelse">
+           <Normaltekst className="underinformasjon">{props.beskrivelse}</Normaltekst>
        </Informasjonsbolk>
    );
 }

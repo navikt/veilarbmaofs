@@ -1,27 +1,28 @@
 import * as React from 'react';
+import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
-import {ICVInfo} from "./cv";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
-type Props = Pick<ICVInfo, 'sertifikater'> & Pick<ICVInfo, 'disponererBil'>;
+import { Normaltekst } from 'nav-frontend-typografi';
+
+type Props = Pick<ArenaPerson, 'sertifikater'>;
 
 function Sertifikater(props: Props) {
     if (isNullOrUndefined(props.sertifikater)) {
         return null;
     }
 
-    const sertifikatListe = props.sertifikater.map((sertifikat, index) => (
-        <div key={`sertifikater-${index}`} className="underinformasjon">
+    const { sertifikater, ...rest } = props;
+
+    const sertifikatListe = sertifikater.map((sertifikat, index) => (
+        <Normaltekst key={`sertifikater-${index}`} className="underinformasjon">
             {sertifikat.sertifikatKodeNavn}
-        </div>
+        </Normaltekst>
     ));
 
     return (
-        <Informasjonsbolk header="Sertifikater" {...props}>
+        <Informasjonsbolk header="Sertifikater" {...rest}>
             {sertifikatListe}
-            <div>
-                Disponerer bil: {props.disponererBil? "Ja" : "Nei"}
-            </div>
         </Informasjonsbolk>
     );
 }

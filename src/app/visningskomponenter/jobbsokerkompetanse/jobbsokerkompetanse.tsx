@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
+import Placeholder from './placeholder';
 
 function Jobbsokerkompetanse(props: { data: any }) {
     return (
@@ -8,5 +10,7 @@ function Jobbsokerkompetanse(props: { data: any }) {
         </>
     );
 }
+
+(Jobbsokerkompetanse as VisningKomponent).placeholder = Placeholder;
 
 export default Jobbsokerkompetanse;

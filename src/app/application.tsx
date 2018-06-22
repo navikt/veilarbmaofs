@@ -13,7 +13,7 @@ class Application extends React.Component<IAppProps> {
     return (
       <div className="veilarbmaofs">
           <AppProvider>
-              <Persondetaljer />
+              <Persondetaljer fnr={this.props.fnr}/>
           </AppProvider>
       </div>
     );

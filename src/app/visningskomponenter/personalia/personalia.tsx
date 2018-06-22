@@ -1,14 +1,13 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
 import Grid from "../../utils/grid";
+import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import { StringOrNull } from "../felles-typer";
 import Adresser from "./adresser";
-import Bankkonto from "./bankkonto";
 import Barn from "./barn";
-import Epost from "./epost";
 import Partner from "./partner";
+import Placeholder from './placeholder';
 import Sivilstand from "./sivilstand";
-import Statsborgerskap from "./statsborgerskap";
-import Telefon from "./telefon";
 
 export interface IPersonaliaBarn {
     fornavn: string;
@@ -112,10 +111,10 @@ function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
                     midlertidigAdresseNorge={midlertidigAdresseNorge}
                     midlertidigAdresseUtland={midlertidigAdresseUtland}
                 />
-                <Telefon telefon={telefon} />
-                <Epost epost={epost} />
-                <Bankkonto kontonummer={kontonummer} />
-                <Statsborgerskap statsborgerskap={statsborgerskap} />
+                <InformasjonsbolkEnkel header="Telefon" value={telefon} />
+                <InformasjonsbolkEnkel header="Epost" value={epost} />
+                <InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
+                <InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
                 <Sivilstand sivilstand={sivilstand} />
                 <Partner partner={partner} />
                 <Barn barn={barn} />
@@ -123,5 +122,7 @@ function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
         </>
     );
 }
+
+(Personalia as VisningKomponent).placeholder  = Placeholder;
 
 export default Personalia;

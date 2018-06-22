@@ -1,4 +1,6 @@
-const ytelsestatus: {} = {
+// tslint:disable
+
+const ytelsestatus: any = {
     oppfolgingskontrakter:
         [{
             innsatsgrupper: ["Spesielt tilpasset innsats"],

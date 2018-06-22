@@ -1,26 +1,28 @@
 import * as React from 'react';
+import {ArenaPerson} from "../../datatyper/arenaperson";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
-import {ICVInfo} from "./cv";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
-function Kurs(props: Pick<ICVInfo, 'kurs'>) {
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+
+function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     if (isNullOrUndefined(props.kurs)) {
         return null;
     }
 
-    const kompetanser = props.kurs.map((kurs, index) => (
+    const kurs = props.kurs.map((enkeltKurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
-            <div className="typo-element">
-                {kurs.tittel}
-            </div>
-            <div>{kurs.arrangor}</div>
-            <div>Fra: {new Date(kurs.fraDato).toLocaleDateString()}</div>
+            <Element>
+                {enkeltKurs.tittel}
+            </Element>
+            <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
+            <Normaltekst>Fra: {new Date(enkeltKurs.fraDato).toLocaleDateString()}</Normaltekst>
         </div>
     ));
 
     return (
         <Informasjonsbolk header="Kurs" {...props}>
-            {kompetanser}
+            {kurs}
         </Informasjonsbolk>
     );
 }

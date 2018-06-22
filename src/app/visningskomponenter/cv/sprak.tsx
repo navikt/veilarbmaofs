@@ -5,25 +5,25 @@ import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 
-function Kompetanse(props: Pick<ArenaPerson, 'kompetanse'>) {
-    if (isNullOrUndefined(props.kompetanse)) {
+function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
+    if (isNullOrUndefined(props.sprak)) {
         return null;
     }
 
-    const kompetanser = props.kompetanse.map((kompetanse, index) => (
+    const sprak = props.sprak.map((enkeltSprak, index) => (
         <div key={`kompetanse-${index}`} className="underinformasjon">
             <Element>
-                {kompetanse.kompetanseKodeTekst}
+                {enkeltSprak.kompetanseKodeTekst}
             </Element>
-            <Normaltekst>{kompetanse.beskrivelse || ''}</Normaltekst>
+            <Normaltekst>{enkeltSprak.beskrivelse || ''}</Normaltekst>
         </div>
     ));
 
     return (
-        <Informasjonsbolk header="Kompetanse" {...props}>
-            {kompetanser}
+        <Informasjonsbolk header="Språk" {...props}>
+            {sprak}
         </Informasjonsbolk>
     );
 }
 
-export default Kompetanse;
+export default Sprak;

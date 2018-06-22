@@ -1,7 +1,7 @@
 import * as React from 'react';
 import EMDASH from "../../utils/emdash.js";
 import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../informasjonsbolk";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import {YtelseDataType} from "./ytelsevisning";
 
 function Ytelseliste(props: Pick<YtelseDataType, 'ytelser'>) {
@@ -16,7 +16,7 @@ function Ytelseliste(props: Pick<YtelseDataType, 'ytelser'>) {
     ));
 
     return (
-        <Informasjonsbolk {...props}>
+        <Informasjonsbolk header="Pågående ytelser" {...props}>
             <div>Rettighetsperiode</div>
             <div>{ytelser}</div>
         </Informasjonsbolk>
