@@ -8,7 +8,7 @@ const ytelsestatus: any = {
         }],
     vedtaksliste:
         [{
-            aktivitetsfase: null,
+            aktivitetsfase: 'Under arbeidsavklaring',
             fradato: {
                 day: '19',
                 month: '2',

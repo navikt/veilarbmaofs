@@ -10,7 +10,7 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     }
 
     const vedtaks = props.vedtaksliste.map((vedtak, index) => (
-            <Grid columns={4} gap="0.5rem" key={`vedtak-${index}`}>
+            <Grid columns={4} gap="1rem" key={`vedtak-${index}`} className="underinformasjon">
                 <div>
                     <div>Vedtak:</div>
                     <div>{vedtak.vedtakstype}</div>

@@ -9,7 +9,7 @@ function Innsatsgruppe(props: Pick<YtelseDataType, 'oppfolgingskontrakter'>) {
     }
     const { oppfolgingskontrakter } = props;
 
-    return <InformasjonsbolkListe header="Innsatsgruppe:" list={oppfolgingskontrakter.map(kontrakt => kontrakt.innsatsgrupper)}/>;
+    return <InformasjonsbolkListe header="Innsatsgruppe" list={oppfolgingskontrakter.map(kontrakt => kontrakt.innsatsgrupper)}/>;
 }
 
 export default Innsatsgruppe;
