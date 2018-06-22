@@ -1,6 +1,6 @@
 import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
-import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
+import Jobbsokerkompetanse, {KartleggingData} from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
 import Ytelser from "./app/visningskomponenter/ytelser/ytelser";
@@ -62,8 +62,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Jobbsokerkompetanse,
-         dataSource: getData<{ jobbsokerkompetanse: IRegistreringsData }>({
-             jobbsokerkompetanse: '/veilarbjobbsokerkompetanse/api/jobbsokerkompetanse'
+         dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
+             jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
          }),
          id: 'Jobbsøkerkompetanse',
      }
