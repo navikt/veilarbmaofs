@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import { isNullOrUndefined } from '../../utils/util';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 
@@ -12,11 +12,11 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
 
     const kurs = props.kurs.map((enkeltKurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
-            <Element>
-                {enkeltKurs.tittel}
-            </Element>
+            <Element>{enkeltKurs.tittel}</Element>
             <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
-            <Normaltekst>Fra: {new Date(enkeltKurs.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>
+                Fra: {new Date(enkeltKurs.fraDato).toLocaleDateString()}
+            </Normaltekst>
         </div>
     ));
 

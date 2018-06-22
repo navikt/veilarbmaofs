@@ -1,39 +1,39 @@
-@import "../../node_modules/nav-frontend-core/less/_variabler";
-@import (reference)"../../node_modules/nav-frontend-paneler-style/src/index";
+@import '../../node_modules/nav-frontend-core/less/_variabler';
+@import (reference) '../../node_modules/nav-frontend-paneler-style/src/index';
 
 .persondetaljer {
-  .panel--stor();
+    .panel--stor();
 
-  background-color: @navLysGra;
-  display: grid;
-  grid-template-areas:
-          "ikon personalia apnelukke apnelukke"
-          ". innhold innhold .";
-  grid-template-columns: 32px 1fr auto 32px;
-  grid-gap: 1rem;
+    background-color: @navLysGra;
+    display: grid;
+    grid-template-areas:
+        'ikon personalia apnelukke apnelukke'
+        '. innhold innhold .';
+    grid-template-columns: 32px 1fr auto 32px;
+    grid-gap: 1rem;
 
-  &:not(.apen) {
-    padding-bottom: 0;
-  }
+    &:not(.apen) {
+        padding-bottom: 0;
+    }
 }
 
 .basisinfo .ikon {
-  grid-area: ikon;
+    grid-area: ikon;
 }
 
 .basisinfo__personalia {
-  grid-area: personalia;
+    grid-area: personalia;
 }
 
 .basisinfo__apnelukke {
-  grid-area: apnelukke;
+    grid-area: apnelukke;
 }
 
 .informasjonsvisning {
-  grid-area: innhold;
+    grid-area: innhold;
 }
 
 .tilbakelenke {
-  display: inline-block;
-  margin-bottom: 1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
 }

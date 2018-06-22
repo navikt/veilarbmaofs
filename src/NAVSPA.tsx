@@ -7,14 +7,18 @@ interface INAVSPAScope {
 type NAVSPAApp = (element: HTMLElement, props: any) => void;
 
 export default class NAVSPA {
-    public static eksporter<PROPS>(name: string, component: React.ComponentType<PROPS>) {
+    public static eksporter<PROPS>(
+        name: string,
+        component: React.ComponentType<PROPS>
+    ) {
         NAVSPA.scope[name] = (element: HTMLElement, props: PROPS) => {
             ReactDOM.render(React.createElement(component, props), element);
         };
     }
 
     public static importer<PROPS>(name: string): React.ComponentType<PROPS> {
-        class NAVSPAImporter extends React.Component<PROPS> { // tslint:disable-line
+        class NAVSPAImporter extends React.Component<PROPS> {
+            // tslint:disable-line
             private el: HTMLElement;
 
             public componentDidMount() {
@@ -22,7 +26,7 @@ export default class NAVSPA {
             }
 
             public render() {
-                return <div ref={this.saveRef}/>
+                return <div ref={this.saveRef} />;
             }
 
             private saveRef = (el: HTMLDivElement) => {
@@ -33,9 +37,14 @@ export default class NAVSPA {
         return NAVSPAImporter;
     }
 
-    public static render<PROPS>(name: string, element: HTMLElement, props: PROPS): void {
+    public static render<PROPS>(
+        name: string,
+        element: HTMLElement,
+        props: PROPS
+    ): void {
         NAVSPA.scope[name](element, props);
     }
 
-    private static scope: INAVSPAScope = (global as any)['NAVSPA'] = (global as any)['NAVSPA'] || {}; // tslint:disable-line
+    private static scope: INAVSPAScope = ((global as any)['NAVSPA'] = // tslint:disable-line
+        (global as any)['NAVSPA'] || {}); // tslint:disable-line
 }

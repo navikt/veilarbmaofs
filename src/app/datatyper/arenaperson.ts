@@ -1,4 +1,4 @@
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import { StringOrNull } from '../visningskomponenter/felles-typer';
 
 interface Verv {
     fraDato: string;
@@ -28,7 +28,7 @@ interface Yrkeserfaring {
 
 interface Sertifikat {
     fraDato: string;
-    tilDato: StringOrNull
+    tilDato: StringOrNull;
     sertifikatKode: string;
     sertifikatKodeNavn: string;
     alternativtNavn: StringOrNull;
@@ -37,8 +37,8 @@ interface Sertifikat {
 
 interface Kompetanse {
     fraDato: string;
-    beskrivelse: StringOrNull
-    alternativTekst: StringOrNull
+    beskrivelse: StringOrNull;
+    alternativTekst: StringOrNull;
     kompetanseKode: string;
     kompetanseKodeTekst: string;
 }
@@ -71,13 +71,13 @@ export interface ArbeidstidsordningJobbonsker {
 
 interface Kurs {
     fraDato: string;
-    tilDato: StringOrNull
+    tilDato: StringOrNull;
     tittel: string;
     arrangor: string;
     omfang: {
-        verdi: number
-        enhet: StringOrNull
-    }
+        verdi: number;
+        enhet: StringOrNull;
+    };
 }
 
 export interface ArenaPerson {
@@ -94,7 +94,7 @@ export interface ArenaPerson {
     disponererBil: boolean;
     verv: Verv[];
     beskrivelse: StringOrNull;
-    kandidatnummer: StringOrNull
+    kandidatnummer: StringOrNull;
     sistEndret: string;
     adresse: {
         landkode: string;
@@ -102,8 +102,8 @@ export interface ArenaPerson {
         poststednavn: string;
         kommunenr: number;
         adrlinje1: string;
-        adrlinje2: StringOrNull
-        adrlinje3: StringOrNull
+        adrlinje2: StringOrNull;
+        adrlinje3: StringOrNull;
     };
     utdanning: Utdanning[];
     yrkeserfaring: Yrkeserfaring[];
@@ -116,6 +116,6 @@ export interface ArenaPerson {
     heltidDeltidJobbonsker: HeltidDeltidJobbonsker[];
     ansettelsesforholdJobbonsker: AnsettelsesforholdJobbonsker[];
     arbeidstidsordningJobbonsker: ArbeidstidsordningJobbonsker[];
-    epost: StringOrNull
-    kurs: Kurs[]
+    epost: StringOrNull;
+    kurs: Kurs[];
 }

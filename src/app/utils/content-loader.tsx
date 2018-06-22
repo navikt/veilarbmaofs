@@ -1,20 +1,20 @@
-import * as React from 'react'
+import * as React from 'react';
 
 import { guid } from 'nav-frontend-js-utils';
 
 export interface Props {
-    animate: boolean,
-    speed: number,
-    className: string,
-    width: number,
-    height: number,
-    preserveAspectRatio: string,
-    primaryColor: string,
-    secondaryColor: string,
-    primaryOpacity: number,
-    secondaryOpacity: number,
-    style: { [key: string]: any },
-    uniquekey: string,
+    animate: boolean;
+    speed: number;
+    className: string;
+    width: number;
+    height: number;
+    preserveAspectRatio: string;
+    primaryColor: string;
+    secondaryColor: string;
+    primaryOpacity: number;
+    secondaryOpacity: number;
+    style: { [key: string]: any };
+    uniquekey: string;
 }
 
 export const defaultProps = {
@@ -30,12 +30,14 @@ export const defaultProps = {
 };
 
 export type WrapProps = {
-    children?: React.ReactNode,
+    children?: React.ReactNode;
 } & Partial<Props>;
 
 function Wrap(props: WrapProps) {
-    const idClip = props.uniquekey ? `${props.uniquekey}-idClip` : guid()
-    const idGradient = props.uniquekey ? `${props.uniquekey}-idGradient` : guid()
+    const idClip = props.uniquekey ? `${props.uniquekey}-idClip` : guid();
+    const idGradient = props.uniquekey
+        ? `${props.uniquekey}-idGradient`
+        : guid();
 
     return (
         <svg
@@ -58,7 +60,13 @@ function Wrap(props: WrapProps) {
             <defs>
                 <clipPath id={idClip}>{props.children}</clipPath>
                 <mask id="myMask">
-                    <rect x="0" y="0" width="100%" height="100%" fill="url(#maskGradient)"  />
+                    <rect
+                        x="0"
+                        y="0"
+                        width="100%"
+                        height="100%"
+                        fill="url(#maskGradient)"
+                    />
                     <linearGradient id="maskGradient">
                         <stop offset="0" stopColor="white" stopOpacity="1" />
                         <stop offset="0" stopColor="white" stopOpacity="0">
@@ -85,7 +93,11 @@ function Wrap(props: WrapProps) {
                 </mask>
 
                 <linearGradient id={idGradient}>
-                    <stop offset="0%" stopColor={props.primaryColor} stopOpacity={props.primaryOpacity}>
+                    <stop
+                        offset="0%"
+                        stopColor={props.primaryColor}
+                        stopOpacity={props.primaryOpacity}
+                    >
                         <animate
                             attributeName="offset"
                             from="-2"
@@ -94,7 +106,11 @@ function Wrap(props: WrapProps) {
                             repeatCount="indefinite"
                         />
                     </stop>
-                    <stop offset="50%" stopColor={props.secondaryColor} stopOpacity={props.secondaryOpacity}>
+                    <stop
+                        offset="50%"
+                        stopColor={props.secondaryColor}
+                        stopOpacity={props.secondaryOpacity}
+                    >
                         <animate
                             attributeName="offset"
                             from="-1.5"
@@ -103,7 +119,11 @@ function Wrap(props: WrapProps) {
                             repeatCount="indefinite"
                         />
                     </stop>
-                    <stop offset="100%" stopColor={props.primaryColor} stopOpacity={props.primaryOpacity}>
+                    <stop
+                        offset="100%"
+                        stopColor={props.primaryColor}
+                        stopOpacity={props.primaryOpacity}
+                    >
                         <animate
                             attributeName="offset"
                             from="-1"
@@ -120,4 +140,4 @@ function Wrap(props: WrapProps) {
 
 (Wrap as any).defaultProps = defaultProps;
 
-export default Wrap
+export default Wrap;

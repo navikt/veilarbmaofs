@@ -1,3 +1,5 @@
-export function isNullOrUndefined(param: string | object | null | undefined): boolean {
+export function isNullOrUndefined(
+    param: string | object | null | undefined
+): boolean {
     return param === undefined || param === null;
 }

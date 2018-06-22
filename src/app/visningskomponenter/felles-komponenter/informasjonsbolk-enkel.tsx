@@ -12,7 +12,10 @@ interface IProps {
 }
 
 function InformasjonsbolkEnkel(props: IProps) {
-    if (isNullOrUndefined(props.value) && isNullOrUndefined(props.defaultValue)) {
+    if (
+        isNullOrUndefined(props.value) &&
+        isNullOrUndefined(props.defaultValue)
+    ) {
         return null;
     }
 
@@ -20,7 +23,7 @@ function InformasjonsbolkEnkel(props: IProps) {
 
     return (
         <Informasjonsbolk {...rest}>
-            <Normaltekst>{value || defaultValue}</Normaltekst>
+            <Normaltekst>{value || defaultValue}</Normaltekst>
         </Informasjonsbolk>
     );
 }
