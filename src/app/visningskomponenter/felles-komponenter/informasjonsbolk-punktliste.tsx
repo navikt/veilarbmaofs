@@ -8,19 +8,23 @@ interface Props<T> {
     list: T[]
 }
 
-function InformasjonsbolkListe<T>(props: Props<T>) {
+function InformasjonsbolkPunktliste<T>(props: Props<T>) {
     const { header, list, ...rest} = props;
     const elementer = list.map((element: T) => (
-        <Normaltekst key={element as any}>
-            {element}
-        </Normaltekst>
+        <li>
+            <Normaltekst key={element as any}>
+                {element}
+            </Normaltekst>
+        </li>
     ));
 
     return (
         <Informasjonsbolk header={header} {...rest}>
-            {elementer}
+            <ul>
+                {elementer}
+            </ul>
         </Informasjonsbolk>
     );
 }
 
-export default InformasjonsbolkListe;
+export default InformasjonsbolkPunktliste;

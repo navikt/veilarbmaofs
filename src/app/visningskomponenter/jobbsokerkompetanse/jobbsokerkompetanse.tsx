@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
 import Grid from "../../utils/grid";
-import InformasjonsbolkListe from "../felles-komponenter/informasjonsbolk-liste";
+import InformasjonsbolkPunktliste from "../felles-komponenter/informasjonsbolk-punktliste";
 import SistEndret from "../felles-komponenter/sist-endret";
 import Placeholder from './placeholder';
 
@@ -57,8 +57,8 @@ function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingDa
         <>
             <SistEndret sistEndret={besvarelseDato} />
             <Grid columns={1} gap="0.5rem">
-                <InformasjonsbolkListe header="Dette gjør du bra" list={kulepunktListe} />
-                <InformasjonsbolkListe header="Dette kan du gjøre bedre" list={raadListe}/>
+                <InformasjonsbolkPunktliste header="Dette gjør du bra" list={kulepunktListe} />
+                <InformasjonsbolkPunktliste header="Dette kan du gjøre bedre" list={raadListe}/>
             </Grid>
         </>
     );
