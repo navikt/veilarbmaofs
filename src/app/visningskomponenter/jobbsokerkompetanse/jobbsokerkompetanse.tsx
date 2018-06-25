@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
 import Grid from "../../utils/grid";
-import InformasjonsbolkPunktliste from "../felles-komponenter/informasjonsbolk-punktliste";
+import {skillUtTipsTilDegFraTekst} from "../../utils/util";
+import InformasjonsbolkPunktliste, { InformasjonsbolkPunktlisteMedLenke } from "../felles-komponenter/informasjonsbolk-punktliste";
 import SistEndret from "../felles-komponenter/sist-endret";
 import Placeholder from './placeholder';
 
@@ -51,14 +52,19 @@ function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingDa
     const { besvarelseDato, kulepunkter, raad } = props.data.jobbsokerkompetanse;
 
     const kulepunktListe = kulepunkter.map(punkt => punkt.kulepunkt);
-    const raadListe = raad.map(rad => rad.raadIngress);
+    const raadListe = raad.map(rad => {
+        const ingressOgTips: string[] = skillUtTipsTilDegFraTekst(rad.raadIngress);
+        const tips = ingressOgTips[1];
+        const tekst = ingressOgTips[0];
+        return { tips, tekst };
+    });
 
     return (
         <>
             <SistEndret sistEndret={besvarelseDato} />
             <Grid columns={1} gap="0.5rem">
                 <InformasjonsbolkPunktliste header="Dette gjør du bra" list={kulepunktListe} />
-                <InformasjonsbolkPunktliste header="Dette kan du gjøre bedre" list={raadListe}/>
+                <InformasjonsbolkPunktlisteMedLenke header="Dette kan du gjøre bedre" list={raadListe}/>
             </Grid>
         </>
     );
