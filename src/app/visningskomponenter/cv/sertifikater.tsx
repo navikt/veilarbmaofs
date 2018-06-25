@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import { isNullOrUndefined } from '../../utils/util';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
-import Grid from "../../utils/grid";
+import Grid from '../../utils/grid';
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
-import { StringOrNull } from "../felles-typer";
-import Adresser from "./adresser";
-import Barn from "./barn";
-import Partner from "./partner";
+import { StringOrNull } from '../felles-typer';
+import Adresser from './adresser';
+import Barn from './barn';
+import Partner from './partner';
 import Placeholder from './placeholder';
-import Sivilstand from "./sivilstand";
+import Sivilstand from './sivilstand';
 
 export interface IPersonaliaBarn {
     fornavn: string;
@@ -55,8 +55,8 @@ export interface IPersonaliaStrukturertAdresse {
             gatenavn: StringOrNull;
             bolignummer: StringOrNull;
             gatenummer: number;
-        }
-    }
+        };
+    };
 }
 
 export type IPersonaliaBostedsadresse = IPersonaliaStrukturertAdresse;
@@ -68,17 +68,17 @@ interface IPersonaliaPostadresse {
         adresselinje3: StringOrNull;
         adresselinje4: StringOrNull;
         landkode: string;
-    }
+    };
 }
 
 export interface IPersonaliaInfo {
     fornavn: string;
     mellomnavn: StringOrNull;
-    etternavn: string,
+    etternavn: string;
     sammensattNavn: string;
     fodselsnummer: string;
     fodselsdato: string;
-    dodsdato: StringOrNull,
+    dodsdato: StringOrNull;
     barn: IPersonaliaBarn[];
     diskresjonskode: StringOrNull;
     kontonummer: string;
@@ -96,11 +96,22 @@ export interface IPersonaliaInfo {
     postAdresse: IPersonaliaPostadresse;
     egenAnsatt: boolean;
     kjonn: string;
-
 }
 
 function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
-    const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, telefon, epost, kontonummer, statsborgerskap, sivilstand, partner, barn } = props.data.personalia;
+    const {
+        bostedsadresse,
+        postAdresse,
+        midlertidigAdresseNorge,
+        midlertidigAdresseUtland,
+        telefon,
+        epost,
+        kontonummer,
+        statsborgerskap,
+        sivilstand,
+        partner,
+        barn,
+    } = props.data.personalia;
 
     return (
         <>
@@ -113,8 +124,14 @@ function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
                 />
                 <InformasjonsbolkEnkel header="Telefon" value={telefon} />
                 <InformasjonsbolkEnkel header="Epost" value={epost} />
-                <InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
-                <InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
+                <InformasjonsbolkEnkel
+                    header="Kontonummer"
+                    value={kontonummer}
+                />
+                <InformasjonsbolkEnkel
+                    header="Statsborgerskap"
+                    value={statsborgerskap}
+                />
                 <Sivilstand sivilstand={sivilstand} />
                 <Partner partner={partner} />
                 <Barn barn={barn} />
@@ -123,6 +140,6 @@ function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
     );
 }
 
-(Personalia as VisningKomponent).placeholder  = Placeholder;
+(Personalia as VisningKomponent).placeholder = Placeholder;
 
 export default Personalia;

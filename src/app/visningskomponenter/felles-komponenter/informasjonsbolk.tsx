@@ -13,7 +13,7 @@ function Informasjonsbolk(props: IProps) {
     return (
         <div className="informasjonsbolk" {...rest}>
             <Element>{header}</Element>
-            { children }
+            {children}
         </div>
     );
 }

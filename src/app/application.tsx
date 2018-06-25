@@ -1,23 +1,23 @@
 import * as React from 'react';
-import Persondetaljer from "./persondetaljer";
+import Persondetaljer from './persondetaljer';
 
 import './application.less';
-import AppProvider from "./context";
+import AppProvider from './context';
 
 export interface IAppProps {
     fnr: string;
 }
 
 class Application extends React.Component<IAppProps> {
-  public render() {
-    return (
-      <div className="veilarbmaofs">
-          <AppProvider>
-              <Persondetaljer fnr={this.props.fnr}/>
-          </AppProvider>
-      </div>
-    );
-  }
+    public render() {
+        return (
+            <div className="veilarbmaofs">
+                <AppProvider>
+                    <Persondetaljer fnr={this.props.fnr} />
+                </AppProvider>
+            </div>
+        );
+    }
 }
 
 export default Application;

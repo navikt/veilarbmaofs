@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import { isNullOrUndefined } from '../../utils/util';
 
 import { Normaltekst } from 'nav-frontend-typografi';
 

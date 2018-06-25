@@ -1,9 +1,9 @@
-import Chevron  from 'nav-frontend-chevron';
+import Chevron from 'nav-frontend-chevron';
 import * as React from 'react';
 
 import './apne-lukke-knapp.less';
 
-import {AppContext, IAppContextProp, withAppContext} from "../context";
+import { AppContext, IAppContextProp, withAppContext } from '../context';
 
 function ApneLukkeKnapp(props: IAppContextProp) {
     const apen = props.context.apen;

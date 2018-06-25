@@ -13,7 +13,7 @@ export interface IAppContext {
 }
 
 export interface IAppContextProp {
-    context: IAppContext
+    context: IAppContext;
 }
 
 export const AppContext = React.createContext<IAppContext>({
@@ -22,7 +22,6 @@ export const AppContext = React.createContext<IAppContext>({
     toggleKnapp: () => {}, // tslint:disable-line
     valgteKnapper: [],
 });
-
 
 class AppProvider extends React.Component<{}, IState> {
     public state: IState = {
@@ -39,11 +38,12 @@ class AppProvider extends React.Component<{}, IState> {
 
     public toggleKnapp(id: string) {
         if (this.state.valgteKnapper.includes(id)) {
-            const nyeValgte = this.state.valgteKnapper
-                .filter((valgt) => valgt !== id);
-            this.setState({ valgteKnapper: nyeValgte});
+            const nyeValgte = this.state.valgteKnapper.filter(
+                valgt => valgt !== id
+            );
+            this.setState({ valgteKnapper: nyeValgte });
         } else {
-            this.setState({ valgteKnapper: [ ...this.state.valgteKnapper, id ]});
+            this.setState({ valgteKnapper: [...this.state.valgteKnapper, id] });
         }
         return id;
     }
@@ -56,7 +56,7 @@ class AppProvider extends React.Component<{}, IState> {
         const context: IAppContext = {
             ...this.state,
             toggleApen: this.toggleApen,
-            toggleKnapp: this.toggleKnapp
+            toggleKnapp: this.toggleKnapp,
         };
 
         return (
@@ -67,8 +67,10 @@ class AppProvider extends React.Component<{}, IState> {
     }
 }
 
-
-export function withAppContext<PROPS>(context: React.Context<IAppContext>, component: React.ComponentType<IAppContextProp & PROPS>): React.ComponentType<PROPS> {
+export function withAppContext<PROPS>(
+    context: React.Context<IAppContext>,
+    component: React.ComponentType<IAppContextProp & PROPS>
+): React.ComponentType<PROPS> {
     const Context = context;
     const Component = component;
     return (props: PROPS) => {
@@ -81,6 +83,5 @@ export function withAppContext<PROPS>(context: React.Context<IAppContext>, compo
         );
     };
 }
-
 
 export default AppProvider;

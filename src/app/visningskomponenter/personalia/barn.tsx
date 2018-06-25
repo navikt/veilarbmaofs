@@ -7,7 +7,13 @@ import { IPersonaliaBarn, IPersonaliaInfo } from './personalia';
 import { Normaltekst } from 'nav-frontend-typografi';
 
 function EnkeltBarn(props: { barn: IPersonaliaBarn }) {
-    const { harSammeBosted, sammensattNavn, fodselsnummer, fodselsdato, kjonn } = props.barn;
+    const {
+        harSammeBosted,
+        sammensattNavn,
+        fodselsnummer,
+        fodselsdato,
+        kjonn,
+    } = props.barn;
     const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
     const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
     const alder = kalkulerAlder(new Date(fodselsdato));
@@ -17,12 +23,8 @@ function EnkeltBarn(props: { barn: IPersonaliaBarn }) {
             <Normaltekst>
                 {`${sammensattNavn} (${alder}), ${lesbartKjonn}`}
             </Normaltekst>
-            <Normaltekst>
-                {fodselsnummer}
-            </Normaltekst>
-            <Normaltekst>
-                {borSammen}
-            </Normaltekst>
+            <Normaltekst>{fodselsnummer}</Normaltekst>
+            <Normaltekst>{borSammen}</Normaltekst>
         </div>
     );
 }
@@ -32,14 +34,16 @@ function Barn(props: Pick<IPersonaliaInfo, 'barn'>) {
         return null;
     }
 
-    const { barn, ...rest} = props;
+    const { barn, ...rest } = props;
 
-    const barnListe = barn.map((ettBarn) => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />);
+    const barnListe = barn.map(ettBarn => (
+        <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />
+    ));
     return (
         <Informasjonsbolk header="Barn:" {...rest}>
             {barnListe}
         </Informasjonsbolk>
     );
-};
+}
 
 export default Barn;

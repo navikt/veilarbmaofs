@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import { isNullOrUndefined } from '../../utils/util';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';
 
-type Props = Pick<ArenaPerson, 'forerkort'> & Pick<ArenaPerson, 'disponererBil'>;
+type Props = Pick<ArenaPerson, 'forerkort'> &
+    Pick<ArenaPerson, 'disponererBil'>;
 
 function Forerkort(props: Props) {
     if (isNullOrUndefined(props.forerkort)) {
@@ -24,7 +25,7 @@ function Forerkort(props: Props) {
         <Informasjonsbolk header="Førerkort" {...rest}>
             {forerkortListe}
             <Normaltekst>
-                Disponerer bil: {disponererBil ? "Ja" : "Nei"}
+                Disponerer bil: {disponererBil ? 'Ja' : 'Nei'}
             </Normaltekst>
         </Informasjonsbolk>
     );

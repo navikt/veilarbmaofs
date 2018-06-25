@@ -1,20 +1,31 @@
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import * as React from 'react';
-import {getConfig, IFetchContext, IInformasjonsElement} from "../../config";
-import {AppContext, IAppContext, IAppContextProp, withAppContext} from "../context";
-import Datafetcher from "../utils/datafetcher";
+import { getConfig, IFetchContext, IInformasjonsElement } from '../../config';
+import {
+    AppContext,
+    IAppContext,
+    IAppContextProp,
+    withAppContext,
+} from '../context';
+import Datafetcher from '../utils/datafetcher';
 
 import './informasjonsvisning.less';
 
 const noop = () => {}; // tslint:disable-line
 
-function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & IAppContextProp) {
+function VisningsBolk<DATA>(
+    props: IInformasjonsElement<DATA> & IAppContextProp
+) {
     const Component = props.component;
 
     return (
-        <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
+        <Ekspanderbartpanel
+            tittel={props.id}
+            onClick={noop}
+            tittelProps="undertittel"
+        >
             <Datafetcher data={props.dataSource} loader={Component.placeholder}>
-                {(data: DATA) => <Component data={data}/>}
+                {(data: DATA) => <Component data={data} />}
             </Datafetcher>
         </Ekspanderbartpanel>
     );
@@ -32,14 +43,11 @@ interface IProps {
 
 class Informasjonsvisning extends React.Component<IAppContextProp & IProps> {
     public render() {
-        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext)
-            .map(lagVisningBolk(this.props.context));
+        const renderElementer: React.ReactNode[] = getConfig(
+            this.props.fetchContext
+        ).map(lagVisningBolk(this.props.context));
 
-        return (
-            <>
-                {renderElementer}
-            </>
-        );
+        return <>{renderElementer}</>;
     }
 }
 
