@@ -3,12 +3,10 @@ import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
 import Jobbsokerkompetanse, {KartleggingData} from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia, {IPersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
-import Ytelser from "./app/visningskomponenter/ytelser/ytelser";
+import YtelseVisning, {YtelseDataType} from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
-import { IRegistreringsData } from "./app/datatyper";
 import {ArenaPerson} from "./app/datatyper/arenaperson";
-
 
 export type Datasource<T> = () => Promise<Data<T>>;
 export type VisningKomponent<T = {}> = React.ComponentType<{ data: T}> & { placeholder?: React.ComponentType };
@@ -47,9 +45,9 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
          id: 'Personalia',
      },
      {
-         component: Ytelser,
-         dataSource: getData<{ ytelser: IRegistreringsData }>({
-             ytelser: '/arena/api/pagaendeytelser'
+         component: YtelseVisning,
+         dataSource: getData<{ ytelser: YtelseDataType }>({
+             ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
          }),
          id: 'Ytelser',
      },

@@ -3,6 +3,7 @@ import CV from './cv';
 import Jobbsokerkompetanse from './jobbsokerkompetanse';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
+import Ytelsestatus from "./ytelsestatus";
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -34,4 +35,4 @@ mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
-
+mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
