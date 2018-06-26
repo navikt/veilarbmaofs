@@ -2,6 +2,7 @@ import FetchMock, {Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
 import CV from './cv';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
+import Ytelsestatus from "./ytelsestatus";
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
@@ -32,4 +33,4 @@ const mock = FetchMock.configure({
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
-
+mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
