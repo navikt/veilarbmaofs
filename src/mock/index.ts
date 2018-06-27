@@ -24,6 +24,7 @@ const loggingMiddleware: Middleware = (request, response) => {
 };
 
 const mock = FetchMock.configure({
+    enableFallback: false,
     middleware: MiddlewareUtils.combine(
         MiddlewareUtils.delayMiddleware(1500),
         loggingMiddleware
