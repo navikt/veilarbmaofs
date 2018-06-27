@@ -5,10 +5,11 @@ import Informasjonsbolk from "./informasjonsbolk";
 interface Props<T> {
     header: string;
     list: T[]
+    className?: string;
 }
 
 function InformasjonsbolkPunktliste<T>(props: Props<T>) {
-    const { header, list, ...rest} = props;
+    const { header, list, className,...rest} = props;
     const elementer = list.map((element: T, index: number) => (
         <li key={index}>
             <Normaltekst key={element as any}>
@@ -18,7 +19,7 @@ function InformasjonsbolkPunktliste<T>(props: Props<T>) {
     ));
 
     return (
-        <Informasjonsbolk header={header} {...rest}>
+        <Informasjonsbolk header={header} {...rest} className={className}>
             <ul>
                 {elementer}
             </ul>

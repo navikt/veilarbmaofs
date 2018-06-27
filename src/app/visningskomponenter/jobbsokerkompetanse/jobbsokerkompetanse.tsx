@@ -62,9 +62,9 @@ function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingDa
     return (
         <>
             <SistEndret sistEndret={besvarelseDato} />
-            <Grid columns={1} gap="0.5rem">
-                <InformasjonsbolkPunktliste header="Dette gjør du bra" list={kulepunktListe} />
-                <Informasjonsbolk header="Dette kan du gjøre bedre">
+            <Grid columns={1} gap="0rem">
+                <InformasjonsbolkPunktliste header="Dette gjør du bra" list={kulepunktListe} className="jobbsokerkompetanse__punktliste"/>
+                <Informasjonsbolk header="Dette kan du gjøre bedre" className="jobbsokerkompetanse__raadliste">
                     <ul>
                         {raadliste}
                     </ul>
