@@ -14,13 +14,13 @@ import Utdanning from "./utdanning";
 import Verv from "./verv";
 import Yrkeserfaring from "./yrkeserfaring";
 
-interface IProps {
+interface Props {
     data: {
         cv: ArenaPerson
     }
 }
 
-function CV(props: IProps) {
+function CV(props: Props) {
     const { beskrivelse, yrkeserfaring, utdanning, sertifikater, forerkort, disponererBil, sprak, kompetanse, kurs, verv, sistEndret } = props.data.cv;
 
     return (

@@ -2,11 +2,11 @@ import * as React from 'react';
 import {isNullOrUndefined} from "../../utils/util";
 import Dato from '../felles-komponenter/dato';
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import { IPersonaliaSivilstand } from "./personalia";
+import { PersonaliaSivilstand } from "./personalia";
 
 import { Normaltekst } from 'nav-frontend-typografi';
 
-function Sivilstand(props: { sivilstand: IPersonaliaSivilstand }) {
+function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
     if (isNullOrUndefined(props.sivilstand)) {
         return null;
     }

@@ -2,13 +2,13 @@ import * as cls from"classnames";
 import { Element } from 'nav-frontend-typografi';
 import * as React from 'react';
 
-interface IProps {
+interface Props {
     header: string;
     children: React.ReactNode;
     className?: string;
 }
 
-function Informasjonsbolk(props: IProps) {
+function Informasjonsbolk(props: Props) {
     const { header, children, className, ...rest } = props;
 
     return (

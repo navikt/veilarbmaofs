@@ -1,53 +1,12 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
+import {VisningKomponent} from '../../../config';
+import {KartleggingData} from "../../datatyper/kartlegging";
 import Grid from "../../utils/grid";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import InformasjonsbolkPunktliste from "../felles-komponenter/informasjonsbolk-punktliste";
 import SistEndret from "../felles-komponenter/sist-endret";
 import Placeholder from './placeholder';
-import { RaadVisning } from "./raad-visning";
-
-interface SvarAlternativ {
-    svarAlternativKey: string;
-    svarAlternativ: string;
-}
-
-interface Besvarelse {
-    sporsmal: string;
-    sporsmalKey: string;
-    svarAlternativer: SvarAlternativ[];
-    tips?: string;
-    tipsKey?: string;
-}
-
-export interface Aktivitet {
-    tittel: string;
-    innhold: string;
-}
-
-export interface Raad {
-    raadKey: string;
-    raadTittel: string;
-    raadIngress: string;
-    raadAktiviteter: Aktivitet[];
-}
-
-interface Kulepunkt {
-    kulepunktKey: string;
-    kulepunktPrioritet: number;
-    kulepunkt: string;
-}
-
-export interface KartleggingData {
-    besvarelse: Besvarelse[];
-    besvarelseDato: string;
-    kulepunkter: Kulepunkt[];
-    oppsummering: string;
-    oppsummeringKey: string;
-    raad: Raad[];
-    underOppfolging: boolean;
-
-}
+import {RaadVisning} from "./raad-visning";
 
 function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingData }}) {
     const { besvarelseDato, kulepunkter, raad } = props.data.jobbsokerkompetanse;

@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import './grid.less';
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
     columns: number;
     gap: string;
 }
 
-class Grid extends React.Component<IProps> {
+class Grid extends React.Component<Props> {
     public render() {
         const columns = new Array(this.props.columns)
             .fill('1fr')

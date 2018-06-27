@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface IState {
+interface State {
     apen: boolean;
     valgteKnapper: string[];
 }
@@ -12,7 +12,7 @@ export interface IAppContext {
     toggleKnapp(id: string): void;
 }
 
-export interface IAppContextProp {
+export interface AppContextProp {
     context: IAppContext
 }
 
@@ -24,8 +24,8 @@ export const AppContext = React.createContext<IAppContext>({
 });
 
 
-class AppProvider extends React.Component<{}, IState> {
-    public state: IState = {
+class AppProvider extends React.Component<{}, State> {
+    public state: State = {
         apen: false,
         valgteKnapper: [],
     };
@@ -68,7 +68,7 @@ class AppProvider extends React.Component<{}, IState> {
 }
 
 
-export function withAppContext<PROPS>(context: React.Context<IAppContext>, component: React.ComponentType<IAppContextProp & PROPS>): React.ComponentType<PROPS> {
+export function withAppContext<PROPS>(context: React.Context<IAppContext>, component: React.ComponentType<AppContextProp & PROPS>): React.ComponentType<PROPS> {
     const Context = context;
     const Component = component;
     return (props: PROPS) => {

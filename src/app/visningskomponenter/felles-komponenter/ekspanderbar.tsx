@@ -5,21 +5,21 @@ import {Collapse} from "react-collapse";
 
 import './ekspanderbar.less'
 
-interface IState {
+interface State {
     apen: boolean;
 }
 
-interface IProps {
+interface Props {
     tekst: string;
     lenketekst: string;
 }
 
-export class Ekspanderbar extends React.Component<IProps, IState> {
-    public state: IState = {
+export class Ekspanderbar extends React.Component<Props, State> {
+    public state: State = {
         apen: false
     };
 
-    constructor(props: IProps) {
+    constructor(props: Props) {
         super(props);
         this.toggleApen = this.toggleApen.bind(this);
     }

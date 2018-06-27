@@ -1,12 +1,12 @@
 import { Normaltekst } from "nav-frontend-typografi";
 import Element from "nav-frontend-typografi/lib/element";
 import * as React from 'react';
+import {Raad, RaadAktivitet} from "../../datatyper/kartlegging";
 import {skillUtTipsTilDegFraTekst} from "../../utils/util";
 import {Ekspanderbar} from "../felles-komponenter/ekspanderbar";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {Aktivitet, Raad} from "./jobbsokerkompetanse";
 
-function Aktivitetsvisning(props: { data: Aktivitet[], hidden: boolean }) {
+function RaadAktivitetsvisning(props: { data: RaadAktivitet[], hidden: boolean }) {
     const aktiviteter = props.hidden ? null :
         props.data.map((raadaktivitet, index) => {
             const html = {__html: raadaktivitet.innhold};
@@ -27,7 +27,7 @@ export function RaadVisning(props: { raad: Raad }) {
     return <Informasjonsbolk header={raadTittel} key={raadKey}>
         <>
             <Ekspanderbar tekst={tekst} lenketekst={tips}>
-                <Aktivitetsvisning data={raadAktiviteter} hidden={false}/>
+                <RaadAktivitetsvisning data={raadAktiviteter} hidden={false}/>
             </Ekspanderbar>
         </>
     </Informasjonsbolk>
