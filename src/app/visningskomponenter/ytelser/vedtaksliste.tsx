@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {YtelseDataType} from "../../datatyper/ytelse";
 import Grid from "../../utils/grid";
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {YtelseDataType} from "./ytelsevisning";
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     if(isNullOrUndefined(props.vedtaksliste)){

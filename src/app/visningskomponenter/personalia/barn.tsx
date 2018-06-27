@@ -2,11 +2,11 @@ import * as React from 'react';
 import { kalkulerAlder } from '../../utils/date-utils';
 import { isNullOrUndefined } from '../../utils/util';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
-import { IPersonaliaBarn, IPersonaliaInfo } from './personalia';
 
 import { Normaltekst } from 'nav-frontend-typografi';
+import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
 
-function EnkeltBarn(props: { barn: IPersonaliaBarn }) {
+function EnkeltBarn(props: { barn: PersonaliaBarn }) {
     const { harSammeBosted, sammensattNavn, fodselsnummer, fodselsdato, kjonn } = props.barn;
     const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
     const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
@@ -27,7 +27,7 @@ function EnkeltBarn(props: { barn: IPersonaliaBarn }) {
     );
 }
 
-function Barn(props: Pick<IPersonaliaInfo, 'barn'>) {
+function Barn(props: Pick<PersonaliaInfo, 'barn'>) {
     if (isNullOrUndefined(props.barn)) {
         return null;
     }
@@ -40,6 +40,6 @@ function Barn(props: Pick<IPersonaliaInfo, 'barn'>) {
             {barnListe}
         </Informasjonsbolk>
     );
-};
+}
 
 export default Barn;

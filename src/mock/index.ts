@@ -32,5 +32,5 @@ const mock = FetchMock.configure({
 
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
-mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
+mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
