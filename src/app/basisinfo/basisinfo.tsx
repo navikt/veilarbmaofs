@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { getData, SourceConfig } from "../../fetch-utils";
-import { IAppProps } from "../application";
+import { AppProps } from "../application";
 import Datafetcher from "../utils/datafetcher";
 import { kalkulerAlder } from "../utils/date-utils";
-import { IPersonaliaInfo } from "../visningskomponenter/personalia/personalia";
+import { PersonaliaInfo } from "../visningskomponenter/personalia/personalia";
 import ContentLoader from './../utils/content-loader';
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import './basisinfo.less';
 import KvinneIkon from './kvinne.svg';
 import MannIkon from './mann.svg';
 
-function render( { personalia }: { personalia: IPersonaliaInfo }) {
+function render( { personalia }: { personalia: PersonaliaInfo }) {
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
     const ikon = personalia.kjonn === "K" ? KvinneIkon : MannIkon;
     const ikonTekst = `ikon ${personalia.kjonn === 'K' ? 'kvinne': 'mann'}`;
@@ -45,12 +45,12 @@ function Placeholder() {
     );
 }
 
-function Basisinfo({ fnr }: IAppProps) {
+function Basisinfo({ fnr }: AppProps) {
     const sourceConfig: SourceConfig<{personalia: string}> = {
         personalia: `/veilarbperson/api/person/${fnr}`
     };
 
-    const data = getData<{ personalia: IPersonaliaInfo }>(sourceConfig);
+    const data = getData<{ personalia: PersonaliaInfo }>(sourceConfig);
 
     return (
         <>

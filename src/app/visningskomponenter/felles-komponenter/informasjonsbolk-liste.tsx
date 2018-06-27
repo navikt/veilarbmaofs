@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import Informasjonsbolk from "./informasjonsbolk";
 
-
 interface Props<T> {
     header: string;
     list: T[]

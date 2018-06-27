@@ -10,7 +10,7 @@ import Partner from "./partner";
 import Placeholder from './placeholder';
 import Sivilstand from "./sivilstand";
 
-export interface IPersonaliaBarn {
+export interface PersonaliaBarn {
     fornavn: string;
     mellomnavn: StringOrNull;
     etternavn: string;
@@ -22,17 +22,17 @@ export interface IPersonaliaBarn {
     kjonn: string;
 }
 
-interface IPersonaliaBehandlendeEnhet {
+interface PersonaliaBehandlendeEnhet {
     enhetsnummer: string;
     navn: string;
 }
 
-export interface IPersonaliaSivilstand {
+export interface PersonaliaSivilstand {
     sivilstand: string;
     fraDato: StringOrNull;
 }
 
-export interface IPersonaliaPartner {
+export interface PersonaliaPartner {
     fornavn: string;
     mellomnavn: StringOrNull;
     etternavn: string;
@@ -43,7 +43,7 @@ export interface IPersonaliaPartner {
     harSammeBosted: boolean;
     kjonn: string;
 }
-export interface IPersonaliaStrukturertAdresse {
+export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
         Gateadresse: {
             landkode: string;
@@ -60,9 +60,9 @@ export interface IPersonaliaStrukturertAdresse {
     }
 }
 
-export type IPersonaliaBostedsadresse = IPersonaliaStrukturertAdresse;
+export type PersonaliaBostedsadresse = PersonaliaStrukturertAdresse;
 
-interface IPersonaliaPostadresse {
+interface PersonaliaPostadresse {
     ustrukturertAdresse: {
         adresselinje1: string;
         adresselinje2: StringOrNull;
@@ -72,7 +72,7 @@ interface IPersonaliaPostadresse {
     }
 }
 
-export interface IPersonaliaInfo {
+export interface PersonaliaInfo {
     fornavn: string;
     mellomnavn: StringOrNull;
     etternavn: string,
@@ -80,28 +80,28 @@ export interface IPersonaliaInfo {
     fodselsnummer: string;
     fodselsdato: string;
     dodsdato: StringOrNull,
-    barn: IPersonaliaBarn[];
+    barn: PersonaliaBarn[];
     diskresjonskode: StringOrNull;
     kontonummer: string;
     geografiskTilknytning: string;
-    behandlendeEnhet: IPersonaliaBehandlendeEnhet;
+    behandlendeEnhet: PersonaliaBehandlendeEnhet;
     telefon: string;
     epost: StringOrNull;
     statsborgerskap: string;
     sikkerhetstiltak: StringOrNull;
-    sivilstand: IPersonaliaSivilstand;
-    partner: IPersonaliaPartner;
-    bostedsadresse: IPersonaliaBostedsadresse;
-    midlertidigAdresseNorge: IPersonaliaStrukturertAdresse;
-    midlertidigAdresseUtland: IPersonaliaStrukturertAdresse;
-    postAdresse: IPersonaliaPostadresse;
+    sivilstand: PersonaliaSivilstand;
+    partner: PersonaliaPartner;
+    bostedsadresse: PersonaliaBostedsadresse;
+    midlertidigAdresseNorge: PersonaliaStrukturertAdresse;
+    midlertidigAdresseUtland: PersonaliaStrukturertAdresse;
+    postAdresse: PersonaliaPostadresse;
     egenAnsatt: boolean;
     kjonn: string;
 
 }
 const MAX_ALDER_BARN = 21;
 
-function Personalia(props: { data: { personalia: IPersonaliaInfo } }) {
+function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
     const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, telefon, epost, kontonummer, statsborgerskap, sivilstand, partner, barn } = props.data.personalia;
     const filtrertBarneListe = barn.filter(enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
 
