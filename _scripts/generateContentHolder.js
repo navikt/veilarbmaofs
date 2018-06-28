@@ -54,7 +54,7 @@ async function generatePlaceholderForContent(page, nthChild, saveTo) {
     await delay(1000);
     await page.click(`.ekspanderbartPanel:nth-child(${nthChild})`);
 
-    await delay(3000);
+    await delay(5000);
 
     const content = await page.$('.ekspanderbartPanel__innhold');
     const children = await content.$$('h1,h2,h3,h4,h5,h6,p,span,img');
