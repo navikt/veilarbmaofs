@@ -33,6 +33,8 @@ export type WrapProps = {
     children?: React.ReactNode,
 } & Partial<Props>;
 
+const notIE: boolean = !window.navigator.userAgent.includes('Trident');
+
 function Wrap(props: WrapProps) {
     const idClip = props.uniquekey ? `${props.uniquekey}-idClip` : guid()
     const idGradient = props.uniquekey ? `${props.uniquekey}-idGradient` : guid()
@@ -48,7 +50,7 @@ function Wrap(props: WrapProps) {
             <rect
                 style={{ fill: `url(#${idGradient})`, maskType: 'alpha' }}
                 clipPath={`url(#${idClip})`}
-                mask={`url(#myMask)`}
+                mask={notIE ? `url(#myMask)` : undefined}
                 x="0"
                 y="0"
                 width={props.width}
