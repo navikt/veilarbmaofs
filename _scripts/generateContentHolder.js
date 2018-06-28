@@ -21,7 +21,7 @@ const config = [
     require.resolve('./../src/app/visningskomponenter/cv/cv.tsx'),
     require.resolve('./../src/app/visningskomponenter/jobbonsker/jobbonsker.tsx'),
     require.resolve('./../src/app/visningskomponenter/personalia/personalia.tsx'),
-    require.resolve('./../src/app/visningskomponenter/ytelser/ytelser.tsx'),
+    require.resolve('./../src/app/visningskomponenter/ytelser/ytelsevisning.tsx'),
     require.resolve('./../src/app/visningskomponenter/oppfolging/oppfolging.tsx'),
     require.resolve('./../src/app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse.tsx')
 ].map((dir) => path.dirname(dir));
@@ -54,7 +54,7 @@ async function generatePlaceholderForContent(page, nthChild, saveTo) {
     await delay(1000);
     await page.click(`.ekspanderbartPanel:nth-child(${nthChild})`);
 
-    await delay(3000);
+    await delay(5000);
 
     const content = await page.$('.ekspanderbartPanel__innhold');
     const children = await content.$$('h1,h2,h3,h4,h5,h6,p,span,img');
@@ -82,6 +82,7 @@ async function generatePlaceholderForContent(page, nthChild, saveTo) {
 }
 
 async function generatePlacholderForPerson(page) {
+    await delay(5000);
     await page.goto('http://localhost:8080');
     await delay(2000);
 
@@ -102,6 +103,7 @@ async function generatePlacholderForPerson(page) {
 
 
 (async function runTest() {
+    await delay(5000);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1200 });
