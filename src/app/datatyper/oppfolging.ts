@@ -6,6 +6,6 @@ export interface OppfolgingEnhet {
 }
 
 export interface OppfolgingData {
-    oppfolgingsEnhet: OppfolgingEnhet,
+    oppfolgingsenhet: OppfolgingEnhet,
     veilederId: StringOrNull;
 }
