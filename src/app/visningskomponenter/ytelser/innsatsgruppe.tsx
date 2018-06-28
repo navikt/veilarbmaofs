@@ -1,7 +1,7 @@
 import * as React from 'react';
+import {YtelseDataType} from "../../datatyper/ytelse";
 import {isNullOrUndefined} from "../../utils/util";
 import InformasjonsbolkListe from "../felles-komponenter/informasjonsbolk-liste";
-import {YtelseDataType} from "./ytelsevisning";
 
 function Innsatsgruppe(props: Pick<YtelseDataType, 'oppfolgingskontrakter'>) {
     if (isNullOrUndefined(props.oppfolgingskontrakter)) {

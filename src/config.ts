@@ -1,13 +1,16 @@
 import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
-import Oppfolging, {OppfolgingData} from "./app/visningskomponenter/oppfolging/oppfolging";
-import Personalia, {PersonaliaInfo} from "./app/visningskomponenter/personalia/personalia";
-import YtelseVisning, {YtelseDataType} from "./app/visningskomponenter/ytelser/ytelsevisning";
+import Oppfolging from "./app/visningskomponenter/oppfolging/oppfolging";
+import Personalia from "./app/visningskomponenter/personalia/personalia";
+import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
 import {ArenaPerson} from "./app/datatyper/arenaperson";
 import {KartleggingData} from "./app/datatyper/kartlegging";
+import {OppfolgingData} from "./app/datatyper/oppfolging";
+import {PersonaliaInfo} from "./app/datatyper/personalia";
+import {YtelseDataType} from "./app/datatyper/ytelse";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 export type VisningKomponent<T = {}> = React.ComponentType<{ data: T}> & { placeholder?: React.ComponentType };
@@ -54,8 +57,13 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
      },
      {
          component: Oppfolging,
-         dataSource: getData<{ oppfolging: OppfolgingData }>({
-             oppfolging: `/veilarboppfolging/api/person/oppfolging/${context.fnr}/oppfolgingsstatus`,
+         dataSource: getData<{
+             oppfolging: OppfolgingData,
+             personalia: PersonaliaInfo,
+             ytelser: YtelseDataType }>({
+                 oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
+                 personalia: `/veilarbperson/api/person/${context.fnr}`,
+                 ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
          }),
          id: 'Oppfølging',
      },

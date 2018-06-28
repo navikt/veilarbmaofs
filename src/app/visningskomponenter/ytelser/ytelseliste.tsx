@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {YtelseDataType} from "../../datatyper/ytelse";
 import EMDASH from "../../utils/emdash.js";
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {YtelseDataType} from "./ytelsevisning";
 
 function Ytelseliste(props: Pick<YtelseDataType, 'ytelser'>) {
     if(isNullOrUndefined(props.ytelser)){

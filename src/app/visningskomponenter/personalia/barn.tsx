@@ -2,9 +2,9 @@ import * as React from 'react';
 import { kalkulerAlder } from '../../utils/date-utils';
 import { isNullOrUndefined } from '../../utils/util';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
-import { PersonaliaBarn, PersonaliaInfo } from './personalia';
 
 import { Normaltekst } from 'nav-frontend-typografi';
+import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
 
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {
     const { harSammeBosted, sammensattNavn, fodselsnummer, fodselsdato, kjonn } = props.barn;
