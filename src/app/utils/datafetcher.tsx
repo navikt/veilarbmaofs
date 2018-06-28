@@ -3,19 +3,19 @@ import * as React from 'react';
 import {Datasource} from "../../config";
 import {Data} from "../../fetch-utils";
 
-interface IProps<T> {
+interface Props<T> {
     data: Datasource<T>;
     children: (data: T) => React.ReactNode;
     loader?: React.ComponentType
 }
 
-interface IState<T> {
+interface State<T> {
     error: boolean;
     data: T | null;
 }
 
-class Datafetcher<T> extends React.Component<IProps<T>, IState<T>> {
-    public state: IState<T> = { data: null, error: false };
+class Datafetcher<T> extends React.Component<Props<T>, State<T>> {
+    public state: State<T> = { data: null, error: false };
     private amIStillhere: boolean = true;
 
     public componentDidMount() {

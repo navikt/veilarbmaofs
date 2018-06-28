@@ -12,8 +12,8 @@
     "nav-frontend-chevron": "^1.0.5",
     "nav-frontend-chevron-style": "^0.3.4",
     "nav-frontend-core": "^4.0.5",
-    "nav-frontend-ekspanderbartpanel": "^1.0.11",
-    "nav-frontend-ekspanderbartpanel-style": "^0.3.11",
+    "nav-frontend-ekspanderbartpanel": "^1.0.12",
+    "nav-frontend-ekspanderbartpanel-style": "^0.3.12",
     "nav-frontend-ikoner-assets": "^0.2.27",
     "nav-frontend-js-utils": "^1.0.6",
     "nav-frontend-knapper": "^1.0.10",
@@ -42,7 +42,7 @@
     "heroku-postbuild": "node _scripts/preHeroku.js && cross-env REACT_APP_MOCK=true npm run build && node _scripts/postHeroku.js"
   },
   "devDependencies": {
-    "@nutgaard/react-scripts": "0.0.8-beta.2",
+    "@nutgaard/react-scripts": "0.0.8-beta.4",
     "@types/classnames": "^2.2.4",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.4",

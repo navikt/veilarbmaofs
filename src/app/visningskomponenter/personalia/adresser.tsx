@@ -1,8 +1,7 @@
-import * as React from 'react';
-import {isNullOrUndefined} from "../../utils/util";
-
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import * as React from 'react';
 import {PersonaliaBostedsadresse, PersonaliaInfo} from "../../datatyper/personalia";
+import {isNullOrUndefined} from "../../utils/util";
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {

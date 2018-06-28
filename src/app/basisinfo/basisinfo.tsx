@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getData, SourceConfig } from "../../fetch-utils";
-import { IAppProps } from "../application";
+import { AppProps } from "../application";
 import {PersonaliaInfo} from "../datatyper/personalia";
 import Datafetcher from "../utils/datafetcher";
 import { kalkulerAlder } from "../utils/date-utils";
@@ -45,7 +45,7 @@ function Placeholder() {
     );
 }
 
-function Basisinfo({ fnr }: IAppProps) {
+function Basisinfo({ fnr }: AppProps) {
     const sourceConfig: SourceConfig<{personalia: string}> = {
         personalia: `/veilarbperson/api/person/${fnr}`
     };

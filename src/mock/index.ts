@@ -1,5 +1,6 @@
 import FetchMock, {HandlerArgument, Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
 import CV from './cv';
+import Jobbsokerkompetanse from './jobbsokerkompetanse';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
 import veileder from "./veileder";
@@ -37,4 +38,5 @@ mock.get('/veilarbveileder/api/veileder/:veilederId',
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
+mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);

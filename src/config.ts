@@ -6,8 +6,8 @@ import Personalia from "./app/visningskomponenter/personalia/personalia";
 import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
-import { IRegistreringsData } from "./app/datatyper";
 import {ArenaPerson} from "./app/datatyper/arenaperson";
+import {KartleggingData} from "./app/datatyper/kartlegging";
 import {OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {YtelseDataType} from "./app/datatyper/ytelse";
@@ -21,11 +21,11 @@ export interface IInformasjonsElement<T> {
     id: string;
 }
 
-export interface IFetchContext {
+export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: IFetchContext): Array<IInformasjonsElement<any>> {
+export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
  return [
      {
          component: CV,
@@ -57,7 +57,7 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Oppfolging,
-         dataSource: getData<{ 
+         dataSource: getData<{
              oppfolging: OppfolgingData,
              personalia: PersonaliaInfo,
              ytelser: YtelseDataType }>({
@@ -69,8 +69,8 @@ export function getConfig(context: IFetchContext): Array<IInformasjonsElement<an
      },
      {
          component: Jobbsokerkompetanse,
-         dataSource: getData<{ jobbsokerkompetanse: IRegistreringsData }>({
-             jobbsokerkompetanse: '/veilarbjobbsokerkompetanse/api/jobbsokerkompetanse'
+         dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
+             jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
          }),
          id: 'Jobbsøkerkompetanse',
      }

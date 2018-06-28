@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
 import {PersonaliaInfo} from "../../datatyper/personalia";
+import {kalkulerAlder} from "../../utils/date-utils";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import Adresser from "./adresser";
@@ -9,18 +10,23 @@ import Partner from "./partner";
 import Placeholder from './placeholder';
 import Sivilstand from "./sivilstand";
 
+const MAX_ALDER_BARN = 21;
+
 function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
-    const { bostedsadresse, 
-        postAdresse, 
-        midlertidigAdresseNorge, 
-        midlertidigAdresseUtland, 
-        telefon, 
-        epost, 
-        kontonummer, 
-        statsborgerskap, 
-        sivilstand, 
-        partner, 
+    const { bostedsadresse,
+        postAdresse,
+        midlertidigAdresseNorge,
+        midlertidigAdresseUtland,
+        telefon,
+        epost,
+        kontonummer,
+        statsborgerskap,
+        sivilstand,
+        partner,
         barn } = props.data.personalia;
+
+    const filtrertBarneListe = barn.filter(enkeltBarn =>
+        kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
 
     return (
         <>
@@ -37,7 +43,7 @@ function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
                 <InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
                 <Sivilstand sivilstand={sivilstand} />
                 <Partner partner={partner} />
-                <Barn barn={barn} />
+                <Barn barn={filtrertBarneListe} />
             </Grid>
         </>
     );

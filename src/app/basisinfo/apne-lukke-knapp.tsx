@@ -3,9 +3,9 @@ import * as React from 'react';
 
 import './apne-lukke-knapp.less';
 
-import {AppContext, IAppContextProp, withAppContext} from "../context";
+import {AppContext, AppContextProp, withAppContext} from "../context";
 
-function ApneLukkeKnapp(props: IAppContextProp) {
+function ApneLukkeKnapp(props: AppContextProp) {
     const apen = props.context.apen;
     const retning = apen ? 'opp' : 'ned';
     return (
