@@ -1,7 +1,8 @@
-import FetchMock, {Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
+import FetchMock, {HandlerArgument, Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
 import CV from './cv';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
+import veileder from "./veileder";
 import Ytelsestatus from "./ytelsestatus";
 
 const loggingMiddleware: Middleware = (request, response) => {
@@ -31,6 +32,8 @@ const mock = FetchMock.configure({
     )
 });
 
+mock.get('/veilarbveileder/api/veileder/:veilederId',
+    (handler:HandlerArgument) => veileder(handler.pathParams.veilederId));
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);

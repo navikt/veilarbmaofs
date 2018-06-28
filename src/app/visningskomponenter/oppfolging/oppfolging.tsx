@@ -7,6 +7,7 @@ import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import {StringOrNull} from "../felles-typer";
 import Placeholder from './placeholder';
+import {Veileder} from "./veileder";
 
 interface OppfolgingProps {
     data: {
@@ -32,11 +33,13 @@ function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNull {
 
 function Oppfolging(props: OppfolgingProps) {
     const {oppfolging, personalia, ytelser} = props.data;
+
     return (
         <>
             <Grid columns={4} gap="0.5rem">
-                <InformasjonsbolkEnkel header="Innsatsgruppe:" value={getInnsatsgruppeVisningstekst(ytelser)}/>
-                <InformasjonsbolkEnkel header="Veileder:" value={oppfolging.veilederId} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Innsatsgruppe:" value={getInnsatsgruppeVisningstekst(ytelser)}
+                                       defaultValue="-"/>
+                <Veileder veilederId={oppfolging.veilederId}/>
                 <InformasjonsbolkEnkel header="Geografisk enhet:"
                                        value={toStrPersonalia(personalia.behandlendeEnhet)}
                                        defaultValue="-"/>
