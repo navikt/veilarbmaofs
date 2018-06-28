@@ -33,7 +33,7 @@ export type WrapProps = {
     children?: React.ReactNode,
 } & Partial<Props>;
 
-const notIE: boolean = !window.navigator.userAgent.includes('Trident');
+const notIE: boolean = window.navigator.userAgent.indexOf('Trident') === -1;
 
 function Wrap(props: WrapProps) {
     const idClip = props.uniquekey ? `${props.uniquekey}-idClip` : guid()
