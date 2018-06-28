@@ -44,7 +44,7 @@ function Oppfolging(props: OppfolgingProps) {
                                        value={toStrPersonalia(personalia.behandlendeEnhet)}
                                        defaultValue="-"/>
                 <InformasjonsbolkEnkel header="Oppfølgingsenhet:"
-                                       value={toStrOppfolging(oppfolging.oppfolgingsEnhet)}
+                                       value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
                                        defaultValue="-"/>
             </Grid>
         </>
