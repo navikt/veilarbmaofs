@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { VisningKomponent } from '../../../config';
 import {VedtakType, YtelseDataType} from "../../datatyper/ytelse";
 import {VEDTAKSSTATUSER} from "../../konstanter";
 import Grid from "../../utils/grid";
 import Innsatsgruppe from "./innsatsgruppe";
+import Placeholder from './placeholder';
 import Vedtaksliste from "./vedtaksliste";
 import Ytelseliste from "./ytelseliste";
 
@@ -24,5 +26,7 @@ function YtelseVisning(props: {data: {ytelser: YtelseDataType}}) {
         </>
     );
 }
+
+(YtelseVisning as VisningKomponent).placeholder  = Placeholder;
 
 export default YtelseVisning;
