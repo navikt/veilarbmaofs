@@ -6,13 +6,13 @@ import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel"
 import {StringOrNull} from "../felles-typer";
 import VeilederPlaceholder from "./veileder-placeholder";
 
-
-export function renderVeilder({ veileder }: { veileder: VeilederData }) {
-    const veilederStr = veileder ? `${veileder.navn} (${veileder.ident})` : null;
+export function renderVeileder(props: VeilederData) {
+    const {ident, navn, ...rest} = props;
+    const veilederStr = ident ? `${navn} (${ident})` : null;
     return <InformasjonsbolkEnkel header="Veileder:" 
                                   value={veilederStr} 
-                                  defaultValue="-"/>
-
+                                  defaultValue="-"
+                                  {...rest}/>
 }
 
 interface VeilederProps{
@@ -20,15 +20,15 @@ interface VeilederProps{
 }
 
 export function Veileder(props: VeilederProps){
-
+    const {veilederId, ...rest } = props;
     const sourceConfig: SourceConfig<{veileder: VeilederData}> = {
-        veileder: `/veilarbveileder/api/veileder/${props.veilederId}`
+        veileder: `/veilarbveileder/api/veileder/${veilederId}`
     };
 
     const data = getData<{ veileder: VeilederData }>(sourceConfig);
 
     return <Datafetcher data={data} loader={VeilederPlaceholder}>
-        { renderVeilder }
+        { (resp) => renderVeileder({...resp.veileder, ...rest}) }
     </Datafetcher>
 
 }
