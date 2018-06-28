@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getData, SourceConfig } from "../../fetch-utils";
 import { AppProps } from "../application";
+import {PersonaliaInfo} from "../datatyper/personalia";
 import Datafetcher from "../utils/datafetcher";
 import { kalkulerAlder } from "../utils/date-utils";
-import { PersonaliaInfo } from "../visningskomponenter/personalia/personalia";
 import ContentLoader from './../utils/content-loader';
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import './basisinfo.less';

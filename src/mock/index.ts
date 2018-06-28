@@ -1,8 +1,9 @@
-import FetchMock, {Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
+import FetchMock, {HandlerArgument, Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
 import CV from './cv';
 import Jobbsokerkompetanse from './jobbsokerkompetanse';
 import Oppfolgingsstatus from "./oppfolgingsstatus";
 import Personalia from "./personalia";
+import veileder from "./veileder";
 import Ytelsestatus from "./ytelsestatus";
 
 const loggingMiddleware: Middleware = (request, response) => {
@@ -25,14 +26,17 @@ const loggingMiddleware: Middleware = (request, response) => {
 };
 
 const mock = FetchMock.configure({
+    enableFallback: false,
     middleware: MiddlewareUtils.combine(
         MiddlewareUtils.delayMiddleware(1500),
         loggingMiddleware
     )
 });
 
+mock.get('/veilarbveileder/api/veileder/:veilederId',
+    (handler:HandlerArgument) => veileder(handler.pathParams.veilederId));
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
-mock.get('/veilarboppfolging/api/person/oppfolging/:fnr/Oppfolgingsstatus', Oppfolgingsstatus);
+mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);

@@ -1,43 +1,13 @@
 import * as React from 'react';
+import {VedtakType, YtelseDataType} from "../../datatyper/ytelse";
 import {VEDTAKSSTATUSER} from "../../konstanter";
 import Grid from "../../utils/grid";
-import {StringOrNull} from "../felles-typer";
 import Innsatsgruppe from "./innsatsgruppe";
 import Vedtaksliste from "./vedtaksliste";
 import Ytelseliste from "./ytelseliste";
-export interface OppfolgingskontrakterType {
-    innsatsgrupper: StringOrNull[];
-}
-
-export interface VedtakType {
-    aktivitetsfase: StringOrNull;
-    vedtakstype: StringOrNull;
-    status: StringOrNull;
-    fradato: {
-        year: "string",
-        month: "string",
-        day: "string"
-    };
-    tildato: {
-        year: "string",
-        month: "string",
-        day: "string"
-    };
-}
-
-export interface YtelseType {
-    rettighetsperiode: StringOrNull;
-}
-
-export interface YtelseDataType {
-    oppfolgingskontrakter: OppfolgingskontrakterType[];
-    vedtaksliste: VedtakType[];
-    ytelser: YtelseType[];
-}
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
-    const iverksatteVedtak = vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
-    return iverksatteVedtak;
+    return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
 };
 
 function YtelseVisning(props: {data: {ytelser: YtelseDataType}}) {
