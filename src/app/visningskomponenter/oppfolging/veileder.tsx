@@ -32,7 +32,7 @@ export function Veileder(props: VeilederProps) {
 
     return (
         <Datafetcher data={data} loader={VeilederPlaceholder}>
-            {(resp) => renderVeilder({ veileder: resp.veileder, ...rest })}
+            {(resp) => renderVeilder({ ...resp, ...rest })}
         </Datafetcher>
     );
 }
