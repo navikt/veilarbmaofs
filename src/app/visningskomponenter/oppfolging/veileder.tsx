@@ -6,8 +6,7 @@ import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel"
 import {StringOrNull} from "../felles-typer";
 import VeilederPlaceholder from "./veileder-placeholder";
 
-export function renderVeilder(data: { veileder: VeilederData }, rest: any) {
-    const veileder = data.veileder;
+export function renderVeileder({ veileder, ...rest}: { veileder: VeilederData }) {
     const veilederStr = veileder ? `${veileder.navn} (${veileder.ident})` : null;
     return <InformasjonsbolkEnkel header="Veileder:" 
                                   value={veilederStr} 
@@ -28,7 +27,7 @@ export function Veileder(props: VeilederProps){
     const data = getData<{ veileder: VeilederData }>(sourceConfig);
 
     return <Datafetcher data={data} loader={VeilederPlaceholder}>
-        { (fetchedData : { veileder: VeilederData }) => renderVeilder(fetchedData, rest) }
+        { (resp) => renderVeileder({...resp, ...rest}) }
     </Datafetcher>
 
 }
