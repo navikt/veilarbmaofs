@@ -1,4 +1,4 @@
-import Chevron  from 'nav-frontend-chevron';
+import Chevron from 'nav-frontend-chevron';
 import * as React from 'react';
 
 import './apne-lukke-knapp.less';
@@ -9,16 +9,18 @@ function ApneLukkeKnapp(props: AppContextProp) {
     const apen = props.context.apen;
     const retning = apen ? 'opp' : 'ned';
     return (
-        <button
-            className="undertekst apne-lukke-knapp"
-            aria-pressed={apen}
-            onClick={props.context.toggleApen}
-        >
+        <div className="basisinfo__apnelukke">
+            <button
+                className="undertekst apne-lukke-knapp"
+                aria-pressed={apen}
+                onClick={props.context.toggleApen}
+            >
             <span className="apne-lukke-knapp__tekst">
-                Detaljer {/*TODO: tekst */}
+                Detaljer
             </span>
-            <Chevron type={retning} />
-        </button>
+                <Chevron type={retning}/>
+            </button>
+        </div>
     );
 }
 
