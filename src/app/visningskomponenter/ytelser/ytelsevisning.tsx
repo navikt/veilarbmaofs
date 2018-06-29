@@ -1,28 +1,28 @@
 import * as React from 'react';
-import {VEDTAKSSTATUSER, YTELSESTATUSER} from "../../konstanter";
+import {OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER} from "../../konstanter";
+import EMDASH from "../../utils/emdash.js";
 import Grid from "../../utils/grid";
 import {StringOrNull} from "../felles-typer";
 import Innsatsgruppe from "./innsatsgruppe";
 import Vedtaksliste from "./vedtaksliste";
-import Ytelseliste from "./ytelseliste";
+
 export interface OppfolgingskontrakterType {
     innsatsgrupper: StringOrNull[];
+    status: string;
 }
 
 export interface VedtakType {
     aktivitetsfase: StringOrNull;
     vedtakstype: StringOrNull;
     status: StringOrNull;
-    fradato: {
-        year: string,
-        month: string,
-        day: string
-    };
-    tildato: {
-        year: string,
-        month: string,
-        day: string
-    };
+    fradato: DatoType;
+    tildato: DatoType;
+}
+
+export interface DatoType {
+    year: string,
+    month: string,
+    day: string
 }
 
 export interface YtelseType {
@@ -36,26 +36,26 @@ export interface YtelseDataType {
     ytelser: YtelseType[];
 }
 
-const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
-    const iverksatteVedtak = vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
-    return iverksatteVedtak;
+export const getInnsatsgruppeVisningstekst = (InnstatsgruppeListe: OppfolgingskontrakterType[]) => {
+    const aktiveOppfolgingskontrakter =
+        InnstatsgruppeListe && InnstatsgruppeListe.filter(kontrakt => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
+    return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : EMDASH;
 };
 
-const getYtelseForVisning = (ytelseliste: YtelseType[]) => {
-    return ytelseliste.filter(ytelse => ytelse.status === YTELSESTATUSER.aktiv)
+const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
+    return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
 };
 
 function YtelseVisning(props: {data: {ytelser: YtelseDataType}}) {
-    const {oppfolgingskontrakter, vedtaksliste, ytelser} = props.data.ytelser;
+    const {oppfolgingskontrakter, vedtaksliste} = props.data.ytelser;
     const aktivVedtak = getVedtakForVisning(vedtaksliste);
-    const aktivYtelser = getYtelseForVisning(ytelser);
-
+    const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
+    
     return (
         <>
         <Grid columns={1} gap="0.5rem">
-            <Innsatsgruppe oppfolgingskontrakter={oppfolgingskontrakter}/>
+            <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
             <Vedtaksliste vedtaksliste={aktivVedtak} />
-            <Ytelseliste ytelser={aktivYtelser} />
         </Grid>
         </>
     );

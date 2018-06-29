@@ -4,8 +4,12 @@ const ytelsestatus: any = {
     oppfolgingskontrakter:
         [{
             innsatsgrupper: ["Spesielt tilpasset innsats"],
-            status: "Aktiv"
-        }],
+            status: "Aktiv",
+        },
+            {
+                innsatsgrupper: ["Spesielt tilpasset innsats"],
+                status: "Lukket",
+            }],
     vedtaksliste:
         [{
             aktivitetsfase: 'Under arbeidsavklaring',
