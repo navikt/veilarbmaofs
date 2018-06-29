@@ -7,11 +7,13 @@ import { kalkulerAlder } from "../utils/date-utils";
 import ContentLoader from './../utils/content-loader';
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import './basisinfo.less';
+import Etiketter from "./etiketter";
 import KvinneIkon from './kvinne.svg';
 import MannIkon from './mann.svg';
 
 function render( { personalia }: { personalia: PersonaliaInfo }) {
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
+    const aldersvisning = personalia.dodsdato ? '(DØD)' : `${alder} år`;
     const ikon = personalia.kjonn === "K" ? KvinneIkon : MannIkon;
     const ikonTekst = `ikon ${personalia.kjonn === 'K' ? 'kvinne': 'mann'}`;
 
@@ -22,8 +24,9 @@ function render( { personalia }: { personalia: PersonaliaInfo }) {
                 <div className="basisinfo__personalia">
                     <h1 className="basisinfo__navnogalder typo-innholdstittel">
                         {personalia.sammensattNavn}
-                        <span> {`${alder} år`}</span>
+                        <span className="basisinfo__alder"> {aldersvisning}</span>
                     </h1>
+                    <Etiketter person={personalia} />
                     <span className="basisinfo__fodselsnummer">{personalia.fodselsnummer}</span>
                 </div>
             </div>
