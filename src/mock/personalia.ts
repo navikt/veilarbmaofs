@@ -9,7 +9,7 @@ const Personalia = {
     "fodselsdato": "1974-09-16",
     "dodsdato": null,
     "barn": [{
-        "fornavn": "BRUVE",
+        "fornavn": "BRUCE",
         "mellomnavn": null,
         "etternavn": "BANNER",
         "sammensattNavn": "BRUCE BANNER",
@@ -39,7 +39,7 @@ const Personalia = {
         "harSammeBosted": true,
         "kjonn": "K"
     }],
-    "diskresjonskode": null,
+    "diskresjonskode": '6',
     "kontonummer": "12345678910",
     "geografiskTilknytning": "0106",
     "behandlendeEnhet": {
@@ -49,7 +49,7 @@ const Personalia = {
     "telefon": "+4799999999",
     "epost": "tester.scrambling-script@fellesregistre.no",
     "statsborgerskap": "NORGE",
-    "sikkerhetstiltak": null,
+    "sikkerhetstiltak": "To ansatte i samtale",
     "sivilstand": {
         "sivilstand": "Gift",
         "fraDato": "2016-08-04"
@@ -84,7 +84,7 @@ const Personalia = {
     "midlertidigAdresseNorge": null,
     "midlertidigAdresseUtland": null,
     "postAdresse": "PB 134, 1621 GRESSVIK",
-    "egenAnsatt": false,
+    "egenAnsatt": true,
     "kjonn": "K"
 };
 

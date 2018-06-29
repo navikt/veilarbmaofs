@@ -28,7 +28,7 @@ function EnkeltBarn(props: { barn: PersonaliaBarn }) {
 }
 
 function Barn(props: Pick<PersonaliaInfo, 'barn'>) {
-    if (isNullOrUndefined(props.barn)) {
+    if (isNullOrUndefined(props.barn) || props.barn.length === 0) {
         return null;
     }
 
