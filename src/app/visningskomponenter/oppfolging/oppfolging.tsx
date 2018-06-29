@@ -37,13 +37,13 @@ function Oppfolging(props: OppfolgingProps) {
     return (
         <>
             <Grid columns={4} gap="0.5rem">
-                <InformasjonsbolkEnkel header="Innsatsgruppe:" value={getInnsatsgruppeVisningstekst(ytelser)}
+                <InformasjonsbolkEnkel header="Innsatsgruppe" value={getInnsatsgruppeVisningstekst(ytelser)}
                                        defaultValue="-"/>
                 <Veileder veilederId={oppfolging.veilederId}/>
-                <InformasjonsbolkEnkel header="Geografisk enhet:"
+                <InformasjonsbolkEnkel header="Geografisk enhet"
                                        value={toStrPersonalia(personalia.behandlendeEnhet)}
                                        defaultValue="-"/>
-                <InformasjonsbolkEnkel header="Oppfølgingsenhet:"
+                <InformasjonsbolkEnkel header="Oppfølgingsenhet"
                                        value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
                                        defaultValue="-"/>
             </Grid>
