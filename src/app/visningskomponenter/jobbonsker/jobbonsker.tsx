@@ -26,11 +26,11 @@ function Jobbonsker(props: { data: { jobbonsker: ArenaPerson } }) {
     return (
         <>
             <Grid columns={5} gap="0.5rem">
-                <InformasjonsbolkListe header="Geografi:" list={geografi}/>
-                <InformasjonsbolkListe header="Yrke:" list={styrkBeskrivelse}/>
-                <InformasjonsbolkListe header="Heltid/Deltid:" list={heltidDeltid}/>
-                <InformasjonsbolkListe header="Arbeidstidordning:" list={arbeidstidsordning}/>
-                <InformasjonsbolkListe header="Ansettelseforhold:" list={ansettelseforhold}/>
+                <InformasjonsbolkListe header="Geografi" list={geografi}/>
+                <InformasjonsbolkListe header="Yrke" list={styrkBeskrivelse}/>
+                <InformasjonsbolkListe header="Heltid/Deltid" list={heltidDeltid}/>
+                <InformasjonsbolkListe header="Arbeidstidordning" list={arbeidstidsordning}/>
+                <InformasjonsbolkListe header="Ansettelseforhold" list={ansettelseforhold}/>
             </Grid>
         </>
     );

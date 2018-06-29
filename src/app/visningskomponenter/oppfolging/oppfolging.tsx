@@ -29,10 +29,10 @@ function Oppfolging(props: { data: { oppfolging: OppfolgingData } }) {
     return (
         <>
             <Grid columns={4} gap="0.5rem">
-                <InformasjonsbolkEnkel header="Innsatsgruppe:" value={"Do do we need it?"}/>
-                <InformasjonsbolkEnkel header="Veileder:" value={oppfolging.veilederId} defaultValue="-"/>
-                <InformasjonsbolkEnkel header="Geografisk enhet:" value={toStr(oppfolging.geografiskEnhet)} defaultValue="-"/>
-                <InformasjonsbolkEnkel header="Oppfølgingsenhet:" value={toStr(oppfolging.oppfolgingsEnhet)} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Innsatsgruppe" value={"Do do we need it?"}/>
+                <InformasjonsbolkEnkel header="Veileder" value={oppfolging.veilederId} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Geografisk enhet" value={toStr(oppfolging.geografiskEnhet)} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Oppfølgingsenhet" value={toStr(oppfolging.oppfolgingsEnhet)} defaultValue="-"/>
             </Grid>
         </>
     );
