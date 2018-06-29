@@ -5,20 +5,18 @@ export interface OppfolgingskontrakterType {
     status: string;
 }
 
+export interface DatoType {
+    year: string,
+    month: string,
+    day: string
+}
+
 export interface VedtakType {
     aktivitetsfase: StringOrNull;
     vedtakstype: StringOrNull;
     status: StringOrNull;
-    fradato: {
-        year: "string",
-        month: "string",
-        day: "string"
-    };
-    tildato: {
-        year: "string",
-        month: "string",
-        day: "string"
-    };
+    fradato: DatoType;
+    tildato: DatoType;
 }
 
 export interface YtelseType {
