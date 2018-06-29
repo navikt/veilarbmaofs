@@ -1,3 +1,4 @@
+import Normaltekst from "nav-frontend-typografi/lib/normaltekst";
 import * as React from 'react';
 import {YtelseDataType} from "../../datatyper/ytelse";
 import EMDASH from "../../utils/emdash.js";
@@ -20,21 +21,21 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
           return EMDASH;
     };
 
-    const vedtaks = props.vedtaksliste.map((vedtak, index) => (
+    const vedtakliste = props.vedtaksliste.map((vedtak, index) => (
         <Grid columns={4} gap="1rem" key={`vedtak-${index}`}>
             <InformasjonsbolkEnkel header="Vedtak" value={visEmdashHvisNull(vedtak.vedtakstype)} />
             <InformasjonsbolkEnkel header="Vedtak Status" value={visEmdashHvisNull(vedtak.status)} />
             <InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)} />
             <Informasjonsbolk header="Vedtaksperiode" {...props}>
-                <div>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</div>
-                <div>{vedtak.tildato && `Til: ${formaterDato(vedtak.tildato)}`}</div>
+                <Normaltekst>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</Normaltekst>
+                <Normaltekst>{vedtak.tildato && `Til: ${formaterDato(vedtak.tildato)}`}</Normaltekst>
             </Informasjonsbolk>
         </Grid>
     ));
 
     return (
         <div {...props}>
-            {vedtaks}
+            {vedtakliste}
         </div>
     );
 }
