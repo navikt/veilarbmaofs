@@ -1,17 +1,18 @@
+import * as cls from"classnames";
+import { Element } from 'nav-frontend-typografi';
 import * as React from 'react';
 
-import { Element } from 'nav-frontend-typografi';
-
-interface IProps {
+interface Props {
     header: string;
     children: React.ReactNode;
+    className?: string;
 }
 
-function Informasjonsbolk(props: IProps) {
-    const { header, children, ...rest } = props;
+function Informasjonsbolk(props: Props) {
+    const { header, children, className, ...rest } = props;
 
     return (
-        <div className="informasjonsbolk" {...rest}>
+        <div className={cls("informasjonsbolk", className)} {...rest}>
             <Element>{header}</Element>
             { children }
         </div>

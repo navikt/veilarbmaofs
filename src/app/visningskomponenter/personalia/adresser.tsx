@@ -1,10 +1,9 @@
-import * as React from 'react';
-import {isNullOrUndefined} from "../../utils/util";
-import {IPersonaliaBostedsadresse, IPersonaliaInfo} from "./personalia";
-
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import * as React from 'react';
+import {PersonaliaBostedsadresse, PersonaliaInfo} from "../../datatyper/personalia";
+import {isNullOrUndefined} from "../../utils/util";
 
-function SammensattFolkeregistrertAdresse(props: Pick<IPersonaliaInfo, 'bostedsadresse'>) {
+function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {
         return null;
     }
@@ -19,7 +18,7 @@ function SammensattFolkeregistrertAdresse(props: Pick<IPersonaliaInfo, 'bostedsa
     );
 }
 
-function PostAdresse(props: Pick<IPersonaliaInfo, 'postAdresse'>) {
+function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
     if (isNullOrUndefined(props.postAdresse) || isNullOrUndefined(props.postAdresse.ustrukturertAdresse)) {
         return null;
     }
@@ -50,7 +49,7 @@ function PostAdresse(props: Pick<IPersonaliaInfo, 'postAdresse'>) {
     );
 }
 
-function MidlertidigNorge(props: Pick<IPersonaliaInfo, 'midlertidigAdresseNorge'>) {
+function MidlertidigNorge(props: Pick<PersonaliaInfo, 'midlertidigAdresseNorge'>) {
     if (isNullOrUndefined(props.midlertidigAdresseNorge)) {
         return null;
     }
@@ -65,7 +64,7 @@ function MidlertidigNorge(props: Pick<IPersonaliaInfo, 'midlertidigAdresseNorge'
     );
 }
 
-function MidlertidigUtland(props: Pick<IPersonaliaInfo, 'midlertidigAdresseUtland'>) {
+function MidlertidigUtland(props: Pick<PersonaliaInfo, 'midlertidigAdresseUtland'>) {
     if (isNullOrUndefined(props.midlertidigAdresseUtland)) {
         return null;
     }
@@ -80,7 +79,7 @@ function MidlertidigUtland(props: Pick<IPersonaliaInfo, 'midlertidigAdresseUtlan
     );
 }
 
-function AdresseVisning(prop: IPersonaliaBostedsadresse) {
+function AdresseVisning(prop: PersonaliaBostedsadresse) {
     const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.strukturertAdresse.Gateadresse;
     const nummer = husnummer ? husnummer : '';
     const bokstav = husbokstav ? husbokstav : '';
@@ -96,7 +95,7 @@ function AdresseVisning(prop: IPersonaliaBostedsadresse) {
         </>);
 }
 
-type Props = Pick<IPersonaliaInfo, 'bostedsadresse'> & Pick<IPersonaliaInfo, 'postAdresse'> & Pick<IPersonaliaInfo, 'midlertidigAdresseNorge'> & Pick<IPersonaliaInfo, 'midlertidigAdresseUtland'>;
+type Props = Pick<PersonaliaInfo, 'bostedsadresse'> & Pick<PersonaliaInfo, 'postAdresse'> & Pick<PersonaliaInfo, 'midlertidigAdresseNorge'> & Pick<PersonaliaInfo, 'midlertidigAdresseUtland'>;
 
 function Adresser(props: Props) {
     const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, ...rest} = props;

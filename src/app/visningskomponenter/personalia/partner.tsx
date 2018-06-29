@@ -1,12 +1,11 @@
+import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
+import {PersonaliaPartner} from "../../datatyper/personalia";
 import { kalkulerAlder } from "../../utils/date-utils";
 import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import { IPersonaliaPartner } from "./personalia";
 
-import { Normaltekst } from 'nav-frontend-typografi';
-
-function Partner(props: { partner: IPersonaliaPartner}) {
+function Partner(props: { partner: PersonaliaPartner}) {
     if (isNullOrUndefined(props.partner)) {
         return null;
     }

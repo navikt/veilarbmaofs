@@ -1,38 +1,51 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
+import {OppfolgingData, OppfolgingEnhet} from "../../datatyper/oppfolging";
+import {PersonaliaEnhet, PersonaliaInfo} from "../../datatyper/personalia";
+import {YtelseDataType} from "../../datatyper/ytelse";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import {StringOrNull} from "../felles-typer";
 import Placeholder from './placeholder';
+import {Veileder} from "./veileder";
 
-
-export interface EnhetType {
-    navn: StringOrNull;
-    enhetId: StringOrNull;
+interface OppfolgingProps {
+    data: {
+        oppfolging: OppfolgingData,
+        ytelser: YtelseDataType
+        personalia: PersonaliaInfo
+    }
 }
 
-export interface OppfolgingData {
-    formidlingsgruppe: StringOrNull;
-    rettighetsgruppe: StringOrNull;
-    servicegruppe: StringOrNull;
-    oppfolgingsEnhet: EnhetType,
-    geografiskEnhet: EnhetType,
-    veilederId: StringOrNull;
-}
-
-function toStr(enhet: EnhetType): StringOrNull {
+function toStrOppfolging(enhet: OppfolgingEnhet): StringOrNull {
     return enhet.enhetId ? `${enhet.enhetId} ${enhet.navn}` : null;
 }
 
-function Oppfolging(props: { data: { oppfolging: OppfolgingData } }) {
-    const oppfolging = props.data.oppfolging;
+function toStrPersonalia(enhet: PersonaliaEnhet): StringOrNull {
+    return enhet.enhetsnummer ? `${enhet.enhetsnummer} ${enhet.navn}` : null;
+}
+
+function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNull {
+    const aktiveOppfolgingskontrakter =
+        ytelser.oppfolgingskontrakter.filter(kontrakt => kontrakt.status === "Aktiv");
+    return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : null;
+}
+
+function Oppfolging(props: OppfolgingProps) {
+    const {oppfolging, personalia, ytelser} = props.data;
+
     return (
         <>
             <Grid columns={4} gap="0.5rem">
-                <InformasjonsbolkEnkel header="Innsatsgruppe" value={"Do do we need it?"}/>
-                <InformasjonsbolkEnkel header="Veileder" value={oppfolging.veilederId} defaultValue="-"/>
-                <InformasjonsbolkEnkel header="Geografisk enhet" value={toStr(oppfolging.geografiskEnhet)} defaultValue="-"/>
-                <InformasjonsbolkEnkel header="Oppfølgingsenhet" value={toStr(oppfolging.oppfolgingsEnhet)} defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Innsatsgruppe" value={getInnsatsgruppeVisningstekst(ytelser)}
+                                       defaultValue="-"/>
+                <Veileder veilederId={oppfolging.veilederId}/>
+                <InformasjonsbolkEnkel header="Geografisk enhet"
+                                       value={toStrPersonalia(personalia.behandlendeEnhet)}
+                                       defaultValue="-"/>
+                <InformasjonsbolkEnkel header="Oppfølgingsenhet"
+                                       value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
+                                       defaultValue="-"/>
             </Grid>
         </>
     );

@@ -4,11 +4,11 @@ import Persondetaljer from "./persondetaljer";
 import './application.less';
 import AppProvider from "./context";
 
-export interface IAppProps {
+export interface AppProps {
     fnr: string;
 }
 
-class Application extends React.Component<IAppProps> {
+class Application extends React.Component<AppProps> {
   public render() {
     return (
       <div className="veilarbmaofs">

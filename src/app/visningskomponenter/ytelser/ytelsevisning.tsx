@@ -1,40 +1,10 @@
 import * as React from 'react';
+import {OppfolgingskontrakterType, VedtakType, YtelseDataType} from "../../datatyper/ytelse";
 import {OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER} from "../../konstanter";
 import EMDASH from "../../utils/emdash.js";
 import Grid from "../../utils/grid";
-import {StringOrNull} from "../felles-typer";
 import Innsatsgruppe from "./innsatsgruppe";
 import Vedtaksliste from "./vedtaksliste";
-
-export interface OppfolgingskontrakterType {
-    innsatsgrupper: StringOrNull[];
-    status: string;
-}
-
-export interface VedtakType {
-    aktivitetsfase: StringOrNull;
-    vedtakstype: StringOrNull;
-    status: StringOrNull;
-    fradato: DatoType;
-    tildato: DatoType;
-}
-
-export interface DatoType {
-    year: string,
-    month: string,
-    day: string
-}
-
-export interface YtelseType {
-    rettighetsperiode: StringOrNull;
-    status: string;
-}
-
-export interface YtelseDataType {
-    oppfolgingskontrakter: OppfolgingskontrakterType[];
-    vedtaksliste: VedtakType[];
-    ytelser: YtelseType[];
-}
 
 export const getInnsatsgruppeVisningstekst = (InnstatsgruppeListe: OppfolgingskontrakterType[]) => {
     const aktiveOppfolgingskontrakter =

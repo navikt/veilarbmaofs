@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {YtelseDataType} from "../../datatyper/ytelse";
 import EMDASH from "../../utils/emdash.js";
 import Grid from "../../utils/grid";
 import {isNullOrUndefined} from "../../utils/util";
@@ -6,7 +7,6 @@ import {formaterDato} from "../felles-komponenter/dato";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
 import {StringOrNull} from "../felles-typer";
-import {YtelseDataType} from "./ytelsevisning";
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     if(isNullOrUndefined(props.vedtaksliste)){
