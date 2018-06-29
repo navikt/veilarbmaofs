@@ -1,40 +1,42 @@
+import Normaltekst from "nav-frontend-typografi/lib/normaltekst";
 import * as React from 'react';
 import {YtelseDataType} from "../../datatyper/ytelse";
+import EMDASH from "../../utils/emdash.js";
 import Grid from "../../utils/grid";
 import {isNullOrUndefined} from "../../utils/util";
+import {formaterDato} from "../felles-komponenter/dato";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
+import {StringOrNull} from "../felles-typer";
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     if(isNullOrUndefined(props.vedtaksliste)){
         return null;
     }
 
-    const vedtaks = props.vedtaksliste.map((vedtak, index) => (
-            <Grid columns={4} gap="1rem" key={`vedtak-${index}`} className="underinformasjon">
-                <div>
-                    <div>Vedtak:</div>
-                    <div>{vedtak.vedtakstype}</div>
-                </div>
-                <div>
-                    <div>Status:</div>
-                    <div>{vedtak.status}</div>
-                </div>
-                <div>
-                    <div>Aktivitetsfase:</div>
-                    <div>{vedtak.aktivitetsfase}</div>
-                </div>
-                <div>
-                    <div>Vedtaksperiode:</div>
-                    <div>Fra Dato: {vedtak.fradato && `${vedtak.fradato.day}-${vedtak.fradato.month}-${vedtak.fradato.year}`}</div>
-                    <div>Til Dato: {vedtak.tildato && `${vedtak.tildato.day}-${vedtak.tildato.month}-${vedtak.tildato.year}`}</div>
-                </div>
-            </Grid>
+    const visEmdashHvisNull = (verdi: StringOrNull) => {
+          if(verdi){
+              return verdi;
+          }
+          return EMDASH;
+    };
+
+    const vedtakliste = props.vedtaksliste.map((vedtak, index) => (
+        <Grid columns={4} gap="1rem" key={`vedtak-${index}`}>
+            <InformasjonsbolkEnkel header="Vedtak" value={visEmdashHvisNull(vedtak.vedtakstype)} />
+            <InformasjonsbolkEnkel header="Vedtak Status" value={visEmdashHvisNull(vedtak.status)} />
+            <InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)} />
+            <Informasjonsbolk header="Vedtaksperiode" {...props}>
+                <Normaltekst>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</Normaltekst>
+                <Normaltekst>{vedtak.tildato && `Til: ${formaterDato(vedtak.tildato)}`}</Normaltekst>
+            </Informasjonsbolk>
+        </Grid>
     ));
 
     return (
-        <Informasjonsbolk header="Aktive vedtak" {...props}>
-            {vedtaks}
-        </Informasjonsbolk>
+        <div {...props}>
+            {vedtakliste}
+        </div>
     );
 }
 

@@ -1,15 +1,19 @@
 import * as React from 'react';
-import {YtelseDataType} from "../../datatyper/ytelse";
 import {isNullOrUndefined} from "../../utils/util";
-import InformasjonsbolkListe from "../felles-komponenter/informasjonsbolk-liste";
+import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import {StringOrNull} from "../felles-typer";
 
-function Innsatsgruppe(props: Pick<YtelseDataType, 'oppfolgingskontrakter'>) {
+function Innsatsgruppe(props: {oppfolgingskontrakter: StringOrNull}) {
     if (isNullOrUndefined(props.oppfolgingskontrakter)) {
         return null;
     }
     const { oppfolgingskontrakter } = props;
 
-    return <InformasjonsbolkListe header="Innsatsgruppe" list={oppfolgingskontrakter.map(kontrakt => kontrakt.innsatsgrupper)}/>;
+    return (
+        <Informasjonsbolk header="Innsatsgruppe" {...props}>
+            {oppfolgingskontrakter}
+        </Informasjonsbolk>
+    );
 }
 
 export default Innsatsgruppe;

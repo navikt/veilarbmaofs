@@ -4,8 +4,12 @@ const ytelsestatus: any = {
     oppfolgingskontrakter:
         [{
             innsatsgrupper: ["Spesielt tilpasset innsats"],
-            status: "Aktiv"
-        }],
+            status: "Aktiv",
+        },
+            {
+                innsatsgrupper: ["Spesielt tilpasset innsats"],
+                status: "Lukket",
+            }],
     vedtaksliste:
         [{
             aktivitetsfase: 'Under arbeidsavklaring',
@@ -22,18 +26,14 @@ const ytelsestatus: any = {
             },
             vedtakstype: "Eksamensgebyr / Ny rettighet"
         }, {
-            aktivitetsfase: "Under arbeidsavklaring",
+            aktivitetsfase: null,
             fradato: {
                 day: '19',
                 month: '2',
                 year: '2018',
             },
             status: "Iverksatt",
-            tildato: {
-                day: '12',
-                month: '10',
-                year: '2018',
-            },
+            tildato: null,
             vedtakstype: "Arbeidsavklaringspenger / Endring"
         }, {
             aktivitetsfase: "Under arbeidsavklaring",
@@ -53,7 +53,17 @@ const ytelsestatus: any = {
                 year: '2018',
             },
             datoTil: null,
-        }],
+            status: 'Aktiv'
+        },
+            {
+                datoFra: {
+                    day: '19',
+                    month: '3',
+                    year: '2018',
+                },
+                datoTil: null,
+                status: 'Inaktiv'
+            }],
 };
 
 export default ytelsestatus;
