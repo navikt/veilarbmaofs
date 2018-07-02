@@ -6,18 +6,12 @@ import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel"
 import {StringOrNull} from "../felles-typer";
 import VeilederPlaceholder from "./veileder-placeholder";
 
-function veilederInformasjonbolkEnkel(value: StringOrNull, ...rest: any[]){
+function VeilederInformasjonbolkEnkel(props: {value?: string}){
+    const {value, ...rest} = props;
     return <InformasjonsbolkEnkel header="Veileder"
                                   value={value}
                                   defaultValue="-"
                                   {...rest}/>
-}
-
-
-export function renderVeileder(props: VeilederData) {
-    const {ident, navn, ...rest} = props;
-    const veilederStr = ident ? `${navn} (${ident})` : null;
-    return veilederInformasjonbolkEnkel(veilederStr, rest)
 }
 
 interface VeilederProps{
@@ -28,7 +22,7 @@ export function Veileder(props: VeilederProps){
     const {veilederId, ...rest } = props;
 
     if (!veilederId){
-        return veilederInformasjonbolkEnkel(null, rest);
+        return <VeilederInformasjonbolkEnkel {...rest}/>;
     }
 
     const sourceConfig: SourceConfig<{veileder: VeilederData}> = {
@@ -38,7 +32,11 @@ export function Veileder(props: VeilederProps){
     const data = getData<{ veileder: VeilederData }>(sourceConfig);
 
     return <Datafetcher data={data} loader={VeilederPlaceholder}>
-        { (resp) => renderVeileder({...resp.veileder, ...rest}) }
+        { (resp: { veileder: VeilederData }) => {
+            const {ident, navn } = resp.veileder;
+            const veilederStr = ident ? `${navn} (${ident})` : undefined;
+            return <VeilederInformasjonbolkEnkel value={veilederStr} {...rest}/>
+        }}
     </Datafetcher>
 
 }
