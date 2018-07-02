@@ -24,7 +24,7 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     const vedtakliste = props.vedtaksliste.map((vedtak, index) => (
         <Grid columns={4} gap="1rem" key={`vedtak-${index}`}>
             <InformasjonsbolkEnkel header="Vedtak" value={visEmdashHvisNull(vedtak.vedtakstype)} />
-            <InformasjonsbolkEnkel header="Vedtak Status" value={visEmdashHvisNull(vedtak.status)} />
+            <InformasjonsbolkEnkel header="Vedtakstatus" value={visEmdashHvisNull(vedtak.status)} />
             <InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)} />
             <Informasjonsbolk header="Vedtaksperiode" {...props}>
                 <Normaltekst>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</Normaltekst>
