@@ -7,7 +7,7 @@ import Informasjonsbolk from './informasjonsbolk';
 
 interface Props {
     header: string;
-    value: StringOrNull;
+    value?: StringOrNull;
     defaultValue?: string;
 }
 
