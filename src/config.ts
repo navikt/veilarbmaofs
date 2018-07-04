@@ -13,10 +13,9 @@ import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {YtelseDataType} from "./app/datatyper/ytelse";
 
 export type Datasource<T> = () => Promise<Data<T>>;
-export type VisningKomponent<T = {}> = React.ComponentType<{ data: T}> & { placeholder?: React.ComponentType };
 
 export interface IInformasjonsElement<T> {
-    component: VisningKomponent<T>;
+    component: React.ComponentType<{ data: T}>;
     dataSource: Datasource<T>;
     id: string;
 }

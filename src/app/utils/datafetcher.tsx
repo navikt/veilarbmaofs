@@ -1,7 +1,8 @@
 import AlertStripeAdvarselSolid from "nav-frontend-alertstriper/lib/advarsel-solid-alertstripe";
+import NavFrontendSpinner from "nav-frontend-spinner";
 import * as React from 'react';
-import {Datasource} from "../../config";
-import {Data} from "../../fetch-utils";
+import { Datasource } from "../../config";
+import { Data } from "../../fetch-utils";
 
 interface Props<T> {
     data: Datasource<T>;
@@ -61,7 +62,7 @@ class Datafetcher<T> extends React.Component<Props<T>, State<T>> {
             if (this.props.loader) {
                 return React.createElement(this.props.loader);
             }
-            return "Spinner here";
+            return <NavFrontendSpinner type="XL"/>;
         }
         return this.props.children(this.state.data);
     }

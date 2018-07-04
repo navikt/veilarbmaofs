@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
-import {OppfolgingData, OppfolgingEnhet} from "../../datatyper/oppfolging";
-import {PersonaliaEnhet, PersonaliaInfo} from "../../datatyper/personalia";
-import {YtelseDataType} from "../../datatyper/ytelse";
+import { OppfolgingData, OppfolgingEnhet } from "../../datatyper/oppfolging";
+import { PersonaliaEnhet, PersonaliaInfo } from "../../datatyper/personalia";
+import { YtelseDataType } from "../../datatyper/ytelse";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
-import {StringOrNull} from "../felles-typer";
-import Placeholder from './placeholder';
-import {Veileder} from "./veileder";
+import { StringOrNull } from "../felles-typer";
+import { Veileder } from "./veileder";
 
 interface OppfolgingProps {
     data: {
@@ -50,7 +48,5 @@ function Oppfolging(props: OppfolgingProps) {
         </>
     );
 }
-
-(Oppfolging as VisningKomponent).placeholder = Placeholder;
 
 export default Oppfolging;

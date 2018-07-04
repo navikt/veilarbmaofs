@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import Grid from "../../utils/grid";
 import SistEndret from "../felles-komponenter/sist-endret";
@@ -7,7 +6,6 @@ import Beskrivelse from "./beskrivelse";
 import Forerkort from "./forerkort";
 import Kompetanse from "./kompetanse";
 import Kurs from "./kurs";
-import Placeholder from './placeholder';
 import Sertifikater from "./sertifikater";
 import Sprak from "./sprak";
 import Utdanning from "./utdanning";
@@ -40,7 +38,5 @@ function CV(props: Props) {
         </>
     );
 }
-
-(CV as VisningKomponent).placeholder = Placeholder;
 
 export default CV;

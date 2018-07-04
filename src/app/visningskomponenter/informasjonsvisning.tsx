@@ -13,7 +13,7 @@ function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & AppContextProp) 
 
     return (
         <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
-            <Datafetcher data={props.dataSource} loader={Component.placeholder}>
+            <Datafetcher data={props.dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
         </Ekspanderbartpanel>

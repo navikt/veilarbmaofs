@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import Grid from "../../utils/grid";
-
-import { VisningKomponent } from '../../../config';
 import InformasjonsbolkListe from '../felles-komponenter/informasjonsbolk-liste';
-import Placeholder from './placeholder';
 
 function Jobbonsker(props: { data: { jobbonsker: ArenaPerson } }) {
     const {
@@ -35,7 +32,5 @@ function Jobbonsker(props: { data: { jobbonsker: ArenaPerson } }) {
         </>
     );
 }
-
-(Jobbonsker as VisningKomponent).placeholder = Placeholder;
 
 export default Jobbonsker;
