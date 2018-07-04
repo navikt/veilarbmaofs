@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import Grid from "../../utils/grid";
 import InformasjonsbolkListe from '../felles-komponenter/informasjonsbolk-liste';
@@ -34,4 +33,4 @@ function Jobbonsker(props: { data: { jobbonsker: ArenaPerson } }) {
     );
 }
 
-export default Jobbonsker as VisningKomponent;
+export default Jobbonsker;

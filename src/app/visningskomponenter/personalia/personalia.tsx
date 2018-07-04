@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import { PersonaliaInfo } from "../../datatyper/personalia";
 import { kalkulerAlder } from "../../utils/date-utils";
 import Grid from "../../utils/grid";
@@ -48,4 +47,4 @@ function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
     );
 }
 
-export default Personalia as VisningKomponent;
+export default Personalia;

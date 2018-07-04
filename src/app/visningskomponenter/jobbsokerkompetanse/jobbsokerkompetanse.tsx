@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import { KartleggingData } from "../../datatyper/kartlegging";
 import Grid from "../../utils/grid";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
@@ -32,4 +31,4 @@ function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingDa
     );
 }
 
-export default Jobbsokerkompetanse as VisningKomponent;
+export default Jobbsokerkompetanse;

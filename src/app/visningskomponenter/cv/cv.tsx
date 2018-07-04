@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import Grid from "../../utils/grid";
 import SistEndret from "../felles-komponenter/sist-endret";
@@ -40,4 +39,4 @@ function CV(props: Props) {
     );
 }
 
-export default CV as VisningKomponent;
+export default CV;

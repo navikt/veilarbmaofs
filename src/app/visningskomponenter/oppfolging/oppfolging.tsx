@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { VisningKomponent } from '../../../config';
 import { OppfolgingData, OppfolgingEnhet } from "../../datatyper/oppfolging";
 import { PersonaliaEnhet, PersonaliaInfo } from "../../datatyper/personalia";
 import { YtelseDataType } from "../../datatyper/ytelse";
@@ -50,4 +49,4 @@ function Oppfolging(props: OppfolgingProps) {
     );
 }
 
-export default Oppfolging as VisningKomponent;
+export default Oppfolging;
