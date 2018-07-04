@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { VisningKomponent } from '../../../config';
-import {PersonaliaInfo} from "../../datatyper/personalia";
-import {kalkulerAlder} from "../../utils/date-utils";
+import { PersonaliaInfo } from "../../datatyper/personalia";
+import { kalkulerAlder } from "../../utils/date-utils";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
 import Adresser from "./adresser";
 import Barn from "./barn";
 import Partner from "./partner";
-import Placeholder from './placeholder';
 import Sivilstand from "./sivilstand";
 
 const MAX_ALDER_BARN = 21;
@@ -49,6 +48,4 @@ function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
     );
 }
 
-(Personalia as VisningKomponent).placeholder  = Placeholder;
-
-export default Personalia;
+export default Personalia as VisningKomponent;

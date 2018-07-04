@@ -7,7 +7,6 @@ import Beskrivelse from "./beskrivelse";
 import Forerkort from "./forerkort";
 import Kompetanse from "./kompetanse";
 import Kurs from "./kurs";
-import Placeholder from './placeholder';
 import Sertifikater from "./sertifikater";
 import Sprak from "./sprak";
 import Utdanning from "./utdanning";
@@ -41,6 +40,4 @@ function CV(props: Props) {
     );
 }
 
-(CV as VisningKomponent).placeholder = Placeholder;
-
-export default CV;
+export default CV as VisningKomponent;

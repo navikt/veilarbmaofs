@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {VisningKomponent} from '../../../config';
-import {KartleggingData} from "../../datatyper/kartlegging";
+import { VisningKomponent } from '../../../config';
+import { KartleggingData } from "../../datatyper/kartlegging";
 import Grid from "../../utils/grid";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import InformasjonsbolkPunktliste from "../felles-komponenter/informasjonsbolk-punktliste";
 import SistEndret from "../felles-komponenter/sist-endret";
-import Placeholder from './placeholder';
-import {RaadVisning} from "./raad-visning";
+import { RaadVisning } from "./raad-visning";
 
 function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingData }}) {
     const { besvarelseDato, kulepunkter, raad } = props.data.jobbsokerkompetanse;
@@ -33,6 +32,4 @@ function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingDa
     );
 }
 
-(Jobbsokerkompetanse as VisningKomponent).placeholder = Placeholder;
-
-export default Jobbsokerkompetanse;
+export default Jobbsokerkompetanse as VisningKomponent;

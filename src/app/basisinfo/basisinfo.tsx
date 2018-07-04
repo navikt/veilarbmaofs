@@ -5,8 +5,6 @@ import {PersonaliaInfo} from "../datatyper/personalia";
 import Datafetcher from "../utils/datafetcher";
 import {renderBasisInfo} from "./basisinfo-visning";
 import './basisinfo.less';
-import {Placeholder} from "./placeholder";
-
 
 function Basisinfo({fnr}: AppProps) {
     const sourceConfig: SourceConfig<{ personalia: string }> = {
@@ -17,7 +15,7 @@ function Basisinfo({fnr}: AppProps) {
 
     return (
         <>
-        <Datafetcher data={data} loader={Placeholder}>
+        <Datafetcher data={data}>
             {renderBasisInfo}
         </Datafetcher>
         </>
