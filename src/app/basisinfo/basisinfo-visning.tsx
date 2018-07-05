@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {PersonaliaInfo} from "../datatyper/personalia";
 import {kalkulerAlder} from "../utils/date-utils";
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import Etiketter from "./etiketter";
 import KvinneIkon from './kvinne.svg';
@@ -14,7 +14,7 @@ function Icon(prop: {kjonn: string}){
     return <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>
 }
 
-function NavnOgAlder(prop: {navn: string, dodsdato: StringOrNull, fodselsdato: string}){
+function NavnOgAlder(prop: {navn: string, dodsdato: StringOrNothing, fodselsdato: string}){
     const alder = kalkulerAlder(new Date(prop.fodselsdato));
     const aldersvisning = prop.dodsdato ? '(DØD)' : `${alder} år`;
 
