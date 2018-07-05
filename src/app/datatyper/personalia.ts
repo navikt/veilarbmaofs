@@ -1,13 +1,13 @@
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface PersonaliaBarn {
     fornavn: string;
-    mellomnavn: StringOrNull;
+    mellomnavn: StringOrNothing;
     etternavn: string;
     sammensattNavn: string;
     fodselsnummer: string;
     fodselsdato: string;
-    dodsdato: StringOrNull;
+    dodsdato: StringOrNothing;
     harSammeBosted: boolean;
     kjonn: string;
 }
@@ -19,17 +19,17 @@ export interface PersonaliaEnhet {
 
 export interface PersonaliaSivilstand {
     sivilstand: string;
-    fraDato: StringOrNull;
+    fraDato: StringOrNothing;
 }
 
 export interface PersonaliaPartner {
     fornavn: string;
-    mellomnavn: StringOrNull;
+    mellomnavn: StringOrNothing;
     etternavn: string;
     sammensattNavn: string;
     fodselsnummer: string;
     fodselsdato: string;
-    dodsdato: StringOrNull;
+    dodsdato: StringOrNothing;
     harSammeBosted: boolean;
     kjonn: string;
 }
@@ -37,14 +37,14 @@ export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
         Gateadresse: {
             landkode: string;
-            tilleggsadresse: StringOrNull;
+            tilleggsadresse: StringOrNothing;
             postnummer: string;
             poststed: string;
             husnummer: number;
-            husbokstav: StringOrNull;
+            husbokstav: StringOrNothing;
             kommunenummer: string;
-            gatenavn: StringOrNull;
-            bolignummer: StringOrNull;
+            gatenavn: StringOrNothing;
+            bolignummer: StringOrNothing;
             gatenummer: number;
         }
     }
@@ -55,30 +55,30 @@ export type PersonaliaBostedsadresse = PersonaliaStrukturertAdresse;
 interface PersonaliaPostadresse {
     ustrukturertAdresse: {
         adresselinje1: string;
-        adresselinje2: StringOrNull;
-        adresselinje3: StringOrNull;
-        adresselinje4: StringOrNull;
+        adresselinje2: StringOrNothing;
+        adresselinje3: StringOrNothing;
+        adresselinje4: StringOrNothing;
         landkode: string;
     }
 }
 
 export interface PersonaliaInfo {
     fornavn: string;
-    mellomnavn: StringOrNull;
+    mellomnavn: StringOrNothing;
     etternavn: string,
     sammensattNavn: string;
     fodselsnummer: string;
     fodselsdato: string;
-    dodsdato: StringOrNull,
+    dodsdato: StringOrNothing,
     barn: PersonaliaBarn[];
-    diskresjonskode: StringOrNull;
+    diskresjonskode: StringOrNothing;
     kontonummer: string;
     geografiskTilknytning: string;
     behandlendeEnhet: PersonaliaEnhet;
     telefon: string;
-    epost: StringOrNull;
+    epost: StringOrNothing;
     statsborgerskap: string;
-    sikkerhetstiltak: StringOrNull;
+    sikkerhetstiltak: StringOrNothing;
     sivilstand: PersonaliaSivilstand;
     partner: PersonaliaPartner;
     bostedsadresse: PersonaliaBostedsadresse;

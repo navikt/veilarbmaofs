@@ -4,7 +4,7 @@ import { PersonaliaEnhet, PersonaliaInfo } from "../../datatyper/personalia";
 import { YtelseDataType } from "../../datatyper/ytelse";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
-import { StringOrNull } from "../felles-typer";
+import { StringOrNothing } from "../felles-typer";
 import { Veileder } from "./veileder";
 
 interface OppfolgingProps {
@@ -15,15 +15,15 @@ interface OppfolgingProps {
     }
 }
 
-function toStrOppfolging(enhet: OppfolgingEnhet): StringOrNull {
+function toStrOppfolging(enhet: OppfolgingEnhet): StringOrNothing {
     return enhet.enhetId ? `${enhet.enhetId} ${enhet.navn}` : null;
 }
 
-function toStrPersonalia(enhet: PersonaliaEnhet): StringOrNull {
+function toStrPersonalia(enhet: PersonaliaEnhet): StringOrNothing {
     return enhet.enhetsnummer ? `${enhet.enhetsnummer} ${enhet.navn}` : null;
 }
 
-function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNull {
+function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNothing {
     const aktiveOppfolgingskontrakter =
         ytelser.oppfolgingskontrakter.filter(kontrakt => kontrakt.status === "Aktiv");
     return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : null;

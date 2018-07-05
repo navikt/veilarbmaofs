@@ -1,11 +1,11 @@
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface OppfolgingEnhet {
-    navn: StringOrNull;
-    enhetId: StringOrNull;
+    navn: StringOrNothing;
+    enhetId: StringOrNothing;
 }
 
 export interface OppfolgingData {
     oppfolgingsenhet: OppfolgingEnhet,
-    veilederId: StringOrNull;
+    veilederId: StringOrNothing;
 }

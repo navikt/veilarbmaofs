@@ -1,7 +1,7 @@
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface OppfolgingskontrakterType {
-    innsatsgrupper: StringOrNull[];
+    innsatsgrupper: StringOrNothing[];
     status: string;
 }
 
@@ -12,15 +12,15 @@ export interface DatoType {
 }
 
 export interface VedtakType {
-    aktivitetsfase: StringOrNull;
-    vedtakstype: StringOrNull;
-    status: StringOrNull;
+    aktivitetsfase: StringOrNothing;
+    vedtakstype: StringOrNothing;
+    status: StringOrNothing;
     fradato: DatoType;
     tildato: DatoType;
 }
 
 export interface YtelseType {
-    rettighetsperiode: StringOrNull;
+    rettighetsperiode: StringOrNothing;
 }
 
 export interface YtelseDataType {

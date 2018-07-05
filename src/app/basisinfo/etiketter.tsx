@@ -1,7 +1,7 @@
 import {EtikettAdvarsel} from "nav-frontend-etiketter";
 import * as React from 'react';
 import {PersonaliaInfo} from "../datatyper/personalia";
-import {StringOrNull} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 import './etiketter.less';
 
 type Props = Pick<PersonaliaInfo, 'diskresjonskode'>
@@ -9,7 +9,7 @@ type Props = Pick<PersonaliaInfo, 'diskresjonskode'>
     & Pick<PersonaliaInfo, 'sikkerhetstiltak'>
     & Pick<PersonaliaInfo, 'egenAnsatt'>;
 
-function EtikettWrapper(props : {hidden: boolean, etikettStr: StringOrNull}) {
+function EtikettWrapper(props : {hidden: boolean, etikettStr: StringOrNothing}) {
     if (props.hidden) {
         return null;
     }

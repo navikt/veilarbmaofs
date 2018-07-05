@@ -2,12 +2,12 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 
 import { isNullOrUndefined } from '../../utils/util';
-import { StringOrNull } from '../felles-typer';
+import { StringOrNothing } from '../felles-typer';
 import Informasjonsbolk from './informasjonsbolk';
 
 interface Props {
     header: string;
-    value?: StringOrNull;
+    value?: StringOrNothing;
     defaultValue?: string;
 }
 

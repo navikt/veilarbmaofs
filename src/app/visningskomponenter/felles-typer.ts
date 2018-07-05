@@ -1,1 +1,1 @@
-export type StringOrNull = string | undefined | null;
+export type StringOrNothing = string | undefined | null;

@@ -7,14 +7,14 @@ import {isNullOrUndefined} from "../../utils/util";
 import {formaterDato} from "../felles-komponenter/dato";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
-import {StringOrNull} from "../felles-typer";
+import {StringOrNothing} from "../felles-typer";
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     if(isNullOrUndefined(props.vedtaksliste)){
         return null;
     }
 
-    const visEmdashHvisNull = (verdi: StringOrNull) => {
+    const visEmdashHvisNull = (verdi: StringOrNothing) => {
           if(verdi){
               return verdi;
           }

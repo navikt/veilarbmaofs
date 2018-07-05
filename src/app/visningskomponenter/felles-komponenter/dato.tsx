@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isNullOrUndefined } from '../../utils/util';
 
 import { Normaltekst } from 'nav-frontend-typografi';
-import { StringOrNull } from '../felles-typer';
+import { StringOrNothing } from '../felles-typer';
 
 export interface DatoType {
     year: string,
@@ -10,7 +10,7 @@ export interface DatoType {
     day: string
 }
 
-function Dato(props: { dato: StringOrNull }) {
+function Dato(props: { dato: StringOrNothing }) {
     if (isNullOrUndefined(props.dato)) {
         return null;
     }

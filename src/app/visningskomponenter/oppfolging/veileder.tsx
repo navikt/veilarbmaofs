@@ -3,10 +3,10 @@ import {getData, SourceConfig} from "../../../fetch-utils";
 import {VeilederData} from "../../datatyper/veileder";
 import Datafetcher from "../../utils/datafetcher";
 import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
-import {StringOrNull} from "../felles-typer";
+import {StringOrNothing} from "../felles-typer";
 
 interface VeilederProps {
-    veilederId: StringOrNull;
+    veilederId: StringOrNothing;
 }
 
 export function Veileder(props: VeilederProps) {
