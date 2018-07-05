@@ -15,12 +15,18 @@ interface OppfolgingProps {
     }
 }
 
-function toStrOppfolging(enhet: OppfolgingEnhet): StringOrNothing {
-    return enhet.enhetId ? `${enhet.enhetId} ${enhet.navn}` : null;
+function toStrOppfolging(enhet?: OppfolgingEnhet | null): StringOrNothing {
+    if (!enhet || !enhet.enhetId){
+        return null;
+    }
+    return `${enhet.enhetId} ${enhet.navn}`;
 }
 
-function toStrPersonalia(enhet: PersonaliaEnhet): StringOrNothing {
-    return enhet.enhetsnummer ? `${enhet.enhetsnummer} ${enhet.navn}` : null;
+function toStrPersonalia(enhet?: PersonaliaEnhet | null): StringOrNothing {
+    if (!enhet || !enhet.enhetsnummer){
+        return null;
+    }
+    return `${enhet.enhetsnummer} ${enhet.navn}`;
 }
 
 function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNothing {

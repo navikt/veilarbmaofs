@@ -20,7 +20,7 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
 
         return (
             <React.Fragment key={this.props.fnr}>
-                <Tilbakelenke />
+                <Tilbakelenke enhet={this.props.enhet}/>
                 <div
                     className={cls("persondetaljer", {
                         'apen': apen,
