@@ -6,6 +6,7 @@ import AppProvider from "./context";
 
 export interface AppProps {
     fnr: string;
+    enhet?: string;
 }
 
 class Application extends React.Component<AppProps> {
@@ -13,7 +14,7 @@ class Application extends React.Component<AppProps> {
     return (
       <div className="veilarbmaofs">
           <AppProvider>
-              <Persondetaljer fnr={this.props.fnr}/>
+              <Persondetaljer {...this.props}/>
           </AppProvider>
       </div>
     );
