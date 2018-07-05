@@ -16,7 +16,7 @@ function Partner(props: { partner: PersonaliaPartner}) {
 
 
     return (
-        <Informasjonsbolk header="Partner:" {...rest}>
+        <Informasjonsbolk header="Partner" {...rest}>
             <Normaltekst>{borSammen}</Normaltekst>
             <Normaltekst>{`${sammensattNavn} (${alder})`}</Normaltekst>
             <Normaltekst>{fodselsnummer}</Normaltekst>
