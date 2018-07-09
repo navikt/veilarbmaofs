@@ -27,24 +27,12 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
 
     return (
         <div className="underinformasjon">
-            <Element>
-                Postadresse
-            </Element>
-            <Normaltekst>
-                {adresselinje1}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje2}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje3}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje4}
-            </Normaltekst>
-            <Normaltekst>
-                {landkode}
-            </Normaltekst>
+            <Element> Postadresse </Element>
+            { adresselinje1 && <span> {adresselinje1} </span> }
+            { adresselinje2 && <span> {adresselinje2} </span> }
+            { adresselinje3 && <span> {adresselinje3} </span> }
+            { adresselinje4 && <Normaltekst> {adresselinje4} </Normaltekst> }
+            { landkode && <Normaltekst> {landkode} </Normaltekst> }
         </div>
     );
 }

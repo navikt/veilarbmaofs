@@ -83,7 +83,15 @@ const Personalia = {
     },
     "midlertidigAdresseNorge": null,
     "midlertidigAdresseUtland": null,
-    "postAdresse": "PB 134, 1621 GRESSVIK",
+    "postAdresse": {
+        "ustrukturertAdresse": {
+            "adresselinje1": "DOIDGE",
+            "adresselinje2": null,
+            "adresselinje3": null,
+            "adresselinje4": "4001 STAVANGER",
+            "landkode": "NORGE"
+        }
+    },
     "egenAnsatt": true,
     "kjonn": "K"
 };

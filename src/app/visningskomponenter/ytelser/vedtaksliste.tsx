@@ -27,8 +27,8 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
             <InformasjonsbolkEnkel header="Vedtakstatus" value={visEmdashHvisNull(vedtak.status)} />
             <InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)} />
             <Informasjonsbolk header="Vedtaksperiode" {...props}>
-                <Normaltekst>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</Normaltekst>
-                <Normaltekst>{vedtak.tildato && `Til: ${formaterDato(vedtak.tildato)}`}</Normaltekst>
+                { vedtak.fradato && <Normaltekst> Fra: {formaterDato(vedtak.fradato)} </Normaltekst> }
+                { vedtak.tildato && <Normaltekst> Til: {formaterDato(vedtak.tildato)} </Normaltekst> }
             </Informasjonsbolk>
         </Grid>
     ));
