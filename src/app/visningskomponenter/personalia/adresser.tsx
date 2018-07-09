@@ -28,9 +28,9 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
     return (
         <div className="underinformasjon">
             <Element> Postadresse </Element>
-            { adresselinje1 && <span> {adresselinje1} </span> }
-            { adresselinje2 && <span> {adresselinje2} </span> }
-            { adresselinje3 && <span> {adresselinje3} </span> }
+            { adresselinje1 && <Normaltekst> {adresselinje1} </Normaltekst> }
+            { adresselinje2 && <Normaltekst> {adresselinje2} </Normaltekst> }
+            { adresselinje3 && <Normaltekst> {adresselinje3} </Normaltekst> }
             { adresselinje4 && <Normaltekst> {adresselinje4} </Normaltekst> }
             { landkode && <Normaltekst> {landkode} </Normaltekst> }
         </div>
