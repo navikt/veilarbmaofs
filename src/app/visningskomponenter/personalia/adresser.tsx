@@ -2,6 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import {PersonaliaBostedsadresse, PersonaliaInfo} from "../../datatyper/personalia";
 import {isNullOrUndefined} from "../../utils/util";
+import NormalTekstWrapper from "../felles-komponenter/normaltekstwrapper";
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {
@@ -27,24 +28,12 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
 
     return (
         <div className="underinformasjon">
-            <Element>
-                Postadresse
-            </Element>
-            <Normaltekst>
-                {adresselinje1}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje2}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje3}
-            </Normaltekst>
-            <Normaltekst>
-                {adresselinje4}
-            </Normaltekst>
-            <Normaltekst>
-                {landkode}
-            </Normaltekst>
+            <Element> Postadresse </Element>
+            <NormalTekstWrapper> {adresselinje1} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje2} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje3} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje4} </NormalTekstWrapper>
+            <NormalTekstWrapper> {landkode} </NormalTekstWrapper>
         </div>
     );
 }
