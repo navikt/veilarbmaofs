@@ -29,11 +29,11 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
     return (
         <div className="underinformasjon">
             <Element> Postadresse </Element>
-            <NormalTekstWrapper value={adresselinje1} />
-            <NormalTekstWrapper value={adresselinje2} />
-            <NormalTekstWrapper value={adresselinje3} />
-            <NormalTekstWrapper value={adresselinje4} />
-            <NormalTekstWrapper value={landkode} />
+            <NormalTekstWrapper> {adresselinje1} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje2} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje3} </NormalTekstWrapper>
+            <NormalTekstWrapper> {adresselinje4} </NormalTekstWrapper>
+            <NormalTekstWrapper> {landkode} </NormalTekstWrapper>
         </div>
     );
 }

@@ -1,24 +1,19 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import Normaltekst from "nav-frontend-typografi/lib/normaltekst";
 import * as React from 'react';
 
-import { isNullOrUndefined } from '../../utils/util';
-import { StringOrNothing } from '../felles-typer';
-
-interface Props {
-    value?: StringOrNothing;
-    label?: StringOrNothing;
+interface ChildProps {
+    children?: React.ReactNode
 }
 
-function NormalTekstWrapper(props: Props) {
-    if (isNullOrUndefined(props.value)) {
-        return null;
+function notNullChildren<T>(Comp: React.ComponentType<T & ChildProps>) {
+    return (props: T & ChildProps) => {
+        if (!props.children) {
+            return null;
+        }
+        return <Comp {...props}/>;
     }
-
-    const { value, label } = props;
-
-    return (
-            <Normaltekst>{label}{value}</Normaltekst>
-    );
 }
+
+const NormalTekstWrapper = notNullChildren(Normaltekst);
 
 export default NormalTekstWrapper;
