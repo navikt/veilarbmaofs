@@ -34,7 +34,7 @@ function Barn(props: Pick<PersonaliaInfo, 'barn'>) {
 
     const { barn, ...rest} = props;
 
-    const barnListe = barn.map((ettBarn, index) => <EnkeltBarn barn={ettBarn} key={index} />);
+    const barnListe = barn.map((ettBarn) => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />);
     return (
         <Informasjonsbolk header="Barn under 21 år" {...rest}>
             {barnListe}
