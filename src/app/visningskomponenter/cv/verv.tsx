@@ -4,6 +4,7 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import {formaterDato} from "../utils";
 
 function Verv(props: Pick<ArenaPerson, 'verv'>) {
     if (isNullOrUndefined(props.verv)) {
@@ -16,8 +17,8 @@ function Verv(props: Pick<ArenaPerson, 'verv'>) {
                 {verv.organisasjon}
             </Element>
             <Normaltekst>{verv.tittel}</Normaltekst>
-            <Normaltekst>Fra: {new Date(verv.fraDato).toLocaleDateString()}</Normaltekst>
-            <Normaltekst>Til: {new Date(verv.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>Fra: {formaterDato(verv.fraDato)}</Normaltekst>
+            <Normaltekst>Til: {formaterDato(verv.tilDato)}</Normaltekst>
         </div>
     ));
 
