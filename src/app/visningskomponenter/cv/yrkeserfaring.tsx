@@ -4,6 +4,7 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import {formaterDato} from "../utils";
 
 function Yrkeserfaring(props: Pick<ArenaPerson, 'yrkeserfaring'>){
     if (isNullOrUndefined(props.yrkeserfaring)) {
@@ -17,8 +18,8 @@ function Yrkeserfaring(props: Pick<ArenaPerson, 'yrkeserfaring'>){
             </Element>
 
             <Normaltekst>{erfaring.styrkKodeStillingstittel}</Normaltekst>
-            <Normaltekst>Fra: {new Date(erfaring.fraDato).toLocaleDateString()}</Normaltekst>
-            <Normaltekst>Til: {new Date(erfaring.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>Fra: {formaterDato(erfaring.fraDato)}</Normaltekst>
+            <Normaltekst>Til: {formaterDato(erfaring.tilDato)}</Normaltekst>
         </div>
     ));
 

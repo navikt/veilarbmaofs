@@ -4,6 +4,7 @@ import {isNullOrUndefined} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import {formaterDato} from "../utils";
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     if (isNullOrUndefined(props.kurs)) {
@@ -16,7 +17,7 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
                 {enkeltKurs.tittel}
             </Element>
             <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
-            <Normaltekst>Fra: {new Date(enkeltKurs.fraDato).toLocaleDateString()}</Normaltekst>
+            <Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>
         </div>
     ));
 
