@@ -17,6 +17,10 @@ export default class NAVSPA {
         class NAVSPAImporter extends React.Component<PROPS> { // tslint:disable-line
             private el: HTMLElement;
 
+            public componentWillUnmount() {
+                ReactDOM.unmountComponentAtNode(this.el);
+            }
+
             public componentDidMount() {
                 NAVSPA.scope[name](this.el, this.props);
             }
