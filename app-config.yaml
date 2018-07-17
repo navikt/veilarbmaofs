@@ -12,4 +12,8 @@ healthcheck:
   readiness:
     path: isReady
     initialDelay: 10
+fasitResources:
+  used:
+  - alias: loadbalancer:veilarbmaofs
+    resourceType: loadbalancerconfig
 team: oppfolging
