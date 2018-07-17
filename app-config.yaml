@@ -12,3 +12,4 @@ healthcheck:
   readiness:
     path: isReady
     initialDelay: 10
+team: oppfolging
