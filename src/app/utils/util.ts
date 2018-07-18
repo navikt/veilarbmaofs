@@ -10,3 +10,12 @@ export function skillUtTipsTilDegFraTekst(tekst: string): string[] {
     const resten = splittetTekst.join(". ").concat(". ");
     return Array.from([resten, tips]);
 }
+
+export function omit<S>(obj: S, ...props: string[]) {
+    return Object.keys(obj)
+        .filter((key) => !props.includes(key))
+        .reduce((acc, key) => {
+            acc[key] = obj[key];
+            return acc;
+        }, {})
+}

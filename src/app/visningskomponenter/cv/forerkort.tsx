@@ -21,7 +21,7 @@ function Forerkort(props: Props) {
     ));
 
     return (
-        <Informasjonsbolk header="Førerkort" {...rest}>
+        <Informasjonsbolk header="Førerkort" headerTypo="ingress" {...rest}>
             {forerkortListe}
             <Normaltekst>
                 Disponerer bil: {disponererBil ? "Ja" : "Nei"}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
+import {isNullOrUndefined, omit} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
@@ -20,7 +20,7 @@ function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
     ));
 
     return (
-        <Informasjonsbolk header="Språk" {...props}>
+        <Informasjonsbolk header="Språk" headerTypo="ingress" {...omit(props, 'sprak')}>
             {sprak}
         </Informasjonsbolk>
     );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined} from "../../utils/util";
+import {isNullOrUndefined, omit} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 
 import { Element, Normaltekst } from 'nav-frontend-typografi';
@@ -24,7 +24,7 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     ));
 
     return (
-        <Informasjonsbolk header="Utdanning" {...props}>
+        <Informasjonsbolk header="Utdanning" headerTypo="ingress" {...omit(props, 'utdanning')}>
             {utdanninger}
         </Informasjonsbolk>
     );

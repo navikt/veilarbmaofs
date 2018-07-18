@@ -21,7 +21,7 @@ function Sertifikater(props: Props) {
     ));
 
     return (
-        <Informasjonsbolk header="Sertifikater" {...rest}>
+        <Informasjonsbolk header="Sertifikater" headerTypo="ingress" {...rest}>
             {sertifikatListe}
         </Informasjonsbolk>
     );
