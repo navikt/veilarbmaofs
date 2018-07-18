@@ -16,3 +16,4 @@ fasitResources:
   used:
   - alias: loadbalancer:veilarbmaofs
     resourceType: loadbalancerconfig
+team: oppfolging
