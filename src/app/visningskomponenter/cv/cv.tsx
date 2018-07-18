@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import Grid from "../../utils/grid";
+import FloatGrid from "../../utils/float-grid";
 import SistEndret from "../felles-komponenter/sist-endret";
 import Beskrivelse from "./beskrivelse";
 import Forerkort from "./forerkort";
@@ -24,8 +24,8 @@ function CV(props: Props) {
     return (
         <>
             <SistEndret sistEndret={sistEndret} />
-            <Grid columns={2} gap="0.5rem">
-                <Beskrivelse beskrivelse={beskrivelse} />
+            <Beskrivelse beskrivelse={beskrivelse} />
+            <FloatGrid columns={2} gap={8}>
                 <Yrkeserfaring yrkeserfaring={yrkeserfaring} />
                 <Utdanning utdanning={utdanning} />
                 <Sertifikater sertifikater={sertifikater} />
@@ -34,7 +34,7 @@ function CV(props: Props) {
                 <Kompetanse kompetanse={kompetanse} />
                 <Kurs kurs={kurs} />
                 <Verv verv={verv}/>
-            </Grid>
+            </FloatGrid>
         </>
     );
 }

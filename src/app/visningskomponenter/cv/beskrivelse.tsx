@@ -13,7 +13,7 @@ function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
     }
 
    return (
-       <Informasjonsbolk header="Beskrivelse">
+       <Informasjonsbolk header="Beskrivelse" headerTypo="ingress">
            <Normaltekst className="underinformasjon">{props.beskrivelse}</Normaltekst>
        </Informasjonsbolk>
    );
