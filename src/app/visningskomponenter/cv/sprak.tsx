@@ -1,26 +1,23 @@
+import {Element, Normaltekst} from 'nav-frontend-typografi';
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined, omit} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-
-import { Element, Normaltekst } from 'nav-frontend-typografi';
+import {safeMap} from "../utils";
 
 function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
-    if (isNullOrUndefined(props.sprak)) {
-        return null;
-    }
+    const {sprak: arenaSprak, ...rest} = props;
 
-    const sprak = props.sprak.map((enkeltSprak, index) => (
+    const sprak = safeMap(arenaSprak, (enkeltSprak, index) => (
         <div key={`kompetanse-${index}`} className="underinformasjon">
             <Element>
                 {enkeltSprak.kompetanseKodeTekst}
             </Element>
-            <Normaltekst>{enkeltSprak.beskrivelse || ''}</Normaltekst>
+            <Normaltekst>{enkeltSprak.beskrivelse || ''}</Normaltekst>
         </div>
     ));
 
     return (
-        <Informasjonsbolk header="Språk" headerTypo="ingress" {...omit(props, 'sprak')}>
+        <Informasjonsbolk header="Språk" headerTypo="ingress" {...rest}>
             {sprak}
         </Informasjonsbolk>
     );

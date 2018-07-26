@@ -3,10 +3,16 @@ import {isNullOrUndefined} from "../utils/util";
 import {StringOrNothing} from "./felles-typer";
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {
-    if (verdi) {
-        return verdi;
+    return verdi ? verdi : EMDASH;
+}
+export function visEmdashHvisTom<T>(verdi: T[]): T[] | string {
+    return verdi.length > 0 ? verdi : EMDASH;
+}
+export function safeMap<T, S>(verdi: T[] | null, fn: (t: T, i: number, ) => S): S[] | string {
+    if (verdi == null) {
+        return EMDASH;
     }
-    return EMDASH;
+    return visEmdashHvisTom(verdi.map(fn));
 }
 
 export interface DatoType {
@@ -17,7 +23,7 @@ export interface DatoType {
 
 export function formaterDato( datoObjekt: DatoType | string ) {
     if (isNullOrUndefined(datoObjekt)) {
-        return null;
+        return EMDASH;
     }
 
     let lokalDato = null;

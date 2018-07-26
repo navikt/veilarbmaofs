@@ -1,6 +1,8 @@
-// tslint:disable
+// tslint:disable object-literal-sort-keys
+import {JSONValue} from "yet-another-fetch-mock";
+import {YtelseDataType} from "../../app/datatyper/ytelse";
 
-const ytelsestatus: any = {
+const ytelsestatus: YtelseDataType & JSONValue = {
     oppfolgingskontrakter:
         [{
             innsatsgrupper: ["Spesielt tilpasset innsats"],
@@ -44,26 +46,7 @@ const ytelsestatus: any = {
             },
             status: "Avsluttet",
             vedtakstype: "Arbeidsavklaringspenger / Ny rettighet"
-        }],
-    ytelser:
-        [{
-            datoFra: {
-                day: '19',
-                month: '2',
-                year: '2018',
-            },
-            datoTil: null,
-            status: 'Aktiv'
-        },
-            {
-                datoFra: {
-                    day: '19',
-                    month: '3',
-                    year: '2018',
-                },
-                datoTil: null,
-                status: 'Inaktiv'
-            }],
+        }]
 };
 
 export default ytelsestatus;

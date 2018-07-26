@@ -1,3 +1,5 @@
+import {OrNothing} from "../visningskomponenter/felles-typer";
+
 interface SvarAlternativ {
     svarAlternativKey: string;
     svarAlternativ: string;
@@ -7,8 +9,8 @@ interface Besvarelse {
     sporsmal: string;
     sporsmalKey: string;
     svarAlternativer: SvarAlternativ[];
-    tips?: string;
-    tipsKey?: string;
+    tips: OrNothing<string>;
+    tipsKey: OrNothing<string>;
 }
 
 export interface RaadAktivitet {
@@ -33,8 +35,8 @@ export interface KartleggingData {
     besvarelse: Besvarelse[];
     besvarelseDato: string;
     kulepunkter: Kulepunkt[];
-    oppsummering: string;
-    oppsummeringKey: string;
+    oppsummering: OrNothing<string>;
+    oppsummeringKey: OrNothing<string>;
     raad: Raad[];
     underOppfolging: boolean;
 

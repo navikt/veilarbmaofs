@@ -1,10 +1,12 @@
 import FetchMock, {HandlerArgument, Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
-import CV from './cv';
-import Jobbsokerkompetanse from './jobbsokerkompetanse';
-import Oppfolgingsstatus from "./oppfolgingsstatus";
-import Personalia from "./personalia";
-import veileder from "./veileder";
-import Ytelsestatus from "./ytelsestatus";
+import {
+    CV,
+    Jobbsokerkompetanse,
+    Oppfolgingsstatus,
+    Personalia,
+    veileder,
+    Ytelsestatus
+} from './no-data';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable

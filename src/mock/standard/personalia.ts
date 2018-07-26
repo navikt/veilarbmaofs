@@ -1,6 +1,8 @@
-// tslint:disable
+// tslint:disable object-literal-sort-keys
+import {JSONValue} from "yet-another-fetch-mock/dist/types/types";
+import {PersonaliaInfo} from "../../app/datatyper/personalia";
 
-const Personalia = {
+const personalia: PersonaliaInfo & JSONValue = {
     "fornavn": "BRUCE",
     "mellomnavn": "BATTY",
     "etternavn": "WAYNE",
@@ -13,7 +15,7 @@ const Personalia = {
         "mellomnavn": null,
         "etternavn": "BANNER",
         "sammensattNavn": "BRUCE BANNER",
-        "fodselsnummer": "10108000398",
+        "fodselsnummer": "10108000391",
         "fodselsdato": "2016-04-17",
         "dodsdato": null,
         "harSammeBosted": true,
@@ -23,7 +25,7 @@ const Personalia = {
         "mellomnavn": null,
         "etternavn": "BOSCH",
         "sammensattNavn": "HARRY BOSCH",
-        "fodselsnummer": "10108000398",
+        "fodselsnummer": "10108000392",
         "fodselsdato": "2014-05-24",
         "dodsdato": null,
         "harSammeBosted": false,
@@ -54,17 +56,7 @@ const Personalia = {
         "sivilstand": "Gift",
         "fraDato": "2016-08-04"
     },
-    "partner": {
-        "fornavn": "TALIA",
-        "mellomnavn": "AL",
-        "etternavn": "GHUL",
-        "sammensattNavn": "THALIA AL GHUL",
-        "fodselsnummer": "10108000398",
-        "fodselsdato": "1979-06-09",
-        "dodsdato": null,
-        "harSammeBosted": true,
-        "kjonn": "M"
-    },
+    "partner": null,
     "bostedsadresse": {
         "strukturertAdresse": {
             "Gateadresse": {
@@ -96,4 +88,4 @@ const Personalia = {
     "kjonn": "K"
 };
 
-export default Personalia;
+export default personalia;

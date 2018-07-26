@@ -1,17 +1,13 @@
+import {Element, Normaltekst} from 'nav-frontend-typografi';
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined, omit} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-
-import { Element, Normaltekst } from 'nav-frontend-typografi';
-import {formaterDato} from "../utils";
+import {formaterDato, safeMap} from "../utils";
 
 function Verv(props: Pick<ArenaPerson, 'verv'>) {
-    if (isNullOrUndefined(props.verv)) {
-        return null;
-    }
+    const {verv: arenaVerv, ...rest} = props;
 
-    const vervliste = props.verv.map((verv, index) => (
+    const vervliste = safeMap(arenaVerv, (verv, index) => (
         <div key={`verv-${index}`} className="underinformasjon">
             <Element>
                 {verv.organisasjon}
@@ -23,7 +19,7 @@ function Verv(props: Pick<ArenaPerson, 'verv'>) {
     ));
 
     return (
-        <Informasjonsbolk header="Verv" headerTypo="ingress" {...omit(props, 'verv')}>
+        <Informasjonsbolk header="Verv" headerTypo="ingress" {...rest}>
             {vervliste}
         </Informasjonsbolk>
     );
