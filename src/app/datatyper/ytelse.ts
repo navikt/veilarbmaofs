@@ -26,5 +26,4 @@ export interface YtelseType {
 export interface YtelseDataType {
     oppfolgingskontrakter: OppfolgingskontrakterType[];
     vedtaksliste: VedtakType[];
-    // ytelser: YtelseType[];
 }

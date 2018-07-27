@@ -76,7 +76,7 @@ function AdresseVisning(prop: PersonaliaBostedsadresse) {
     return (
         <>
             <Normaltekst>
-                {`${gatenavn} ${nummer}${bokstav}`}
+                {`${gatenavn || ''} ${nummer}${bokstav}`}
             </Normaltekst>
             <Normaltekst>
                 {`${postnummer} ${poststed}`}
