@@ -1,4 +1,4 @@
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface PersonaliaBarn {
     fornavn: string;
@@ -45,7 +45,7 @@ export interface PersonaliaStrukturertAdresse {
             kommunenummer: string;
             gatenavn: StringOrNothing;
             bolignummer: StringOrNothing;
-            gatenummer: number;
+            gatenummer: OrNothing<number>;
         }
     }
 }
@@ -80,10 +80,10 @@ export interface PersonaliaInfo {
     statsborgerskap: string;
     sikkerhetstiltak: StringOrNothing;
     sivilstand: PersonaliaSivilstand;
-    partner: PersonaliaPartner;
+    partner: OrNothing<PersonaliaPartner>;
     bostedsadresse: PersonaliaBostedsadresse;
-    midlertidigAdresseNorge: PersonaliaStrukturertAdresse;
-    midlertidigAdresseUtland: PersonaliaStrukturertAdresse;
+    midlertidigAdresseNorge: OrNothing<PersonaliaStrukturertAdresse>;
+    midlertidigAdresseUtland: OrNothing<PersonaliaStrukturertAdresse>;
     postAdresse: PersonaliaPostadresse;
     egenAnsatt: boolean;
     kjonn: string;

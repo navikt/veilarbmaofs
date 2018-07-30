@@ -1,6 +1,6 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import {Normaltekst} from 'nav-frontend-typografi';
 import * as React from 'react';
-
+import {safeMap} from "../utils";
 import Informasjonsbolk from "./informasjonsbolk";
 
 interface Props<T> {
@@ -9,8 +9,9 @@ interface Props<T> {
 }
 
 function InformasjonsbolkListe<T>(props: Props<T>) {
-    const { header, list, ...rest} = props;
-    const elementer = list.map((element: T) => (
+    const {header, list, ...rest} = props;
+
+    const elementer = safeMap(list, (element: T) => (
         <Normaltekst key={element as any}>
             {element}
         </Normaltekst>

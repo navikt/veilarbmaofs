@@ -48,7 +48,7 @@ function MidlertidigNorge(props: Pick<PersonaliaInfo, 'midlertidigAdresseNorge'>
             <Element>
                 Midlertidig adresse Norge
             </Element>
-            <AdresseVisning strukturertAdresse={props.midlertidigAdresseNorge.strukturertAdresse}/>
+            <AdresseVisning strukturertAdresse={props.midlertidigAdresseNorge!.strukturertAdresse}/>
         </div>
     );
 }
@@ -63,7 +63,7 @@ function MidlertidigUtland(props: Pick<PersonaliaInfo, 'midlertidigAdresseUtland
             <Element>
                 Midlertidig adresse Utland
             </Element>
-            <AdresseVisning strukturertAdresse={props.midlertidigAdresseUtland.strukturertAdresse}/>
+            <AdresseVisning strukturertAdresse={props.midlertidigAdresseUtland!.strukturertAdresse}/>
         </div>
     );
 }
@@ -76,7 +76,7 @@ function AdresseVisning(prop: PersonaliaBostedsadresse) {
     return (
         <>
             <Normaltekst>
-                {`${gatenavn} ${nummer}${bokstav}`}
+                {`${gatenavn || ''} ${nummer}${bokstav}`}
             </Normaltekst>
             <Normaltekst>
                 {`${postnummer} ${poststed}`}

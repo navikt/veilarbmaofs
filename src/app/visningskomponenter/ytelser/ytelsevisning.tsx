@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {OppfolgingskontrakterType, VedtakType, YtelseDataType} from "../../datatyper/ytelse";
 import {OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER} from "../../konstanter";
-import EMDASH from "../../utils/emdash.js";
+import EMDASH from "../../utils/emdash";
 import Grid from "../../utils/grid";
 import Innsatsgruppe from "./innsatsgruppe";
 import Vedtaksliste from "./vedtaksliste";
@@ -20,7 +20,7 @@ function YtelseVisning(props: {data: {ytelser: YtelseDataType}}) {
     const {oppfolgingskontrakter, vedtaksliste} = props.data.ytelser;
     const aktivVedtak = getVedtakForVisning(vedtaksliste);
     const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
-    
+
     return (
         <>
         <Grid columns={1} gap="0.5rem">

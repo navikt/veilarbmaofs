@@ -41,7 +41,8 @@
     "test:coverage": "echo not implemented",
     "eject": "react-scripts eject",
     "heroku-serve": "serve -s build -l $PORT",
-    "heroku-postbuild": "node _scripts/preHeroku.js && cross-env REACT_APP_MOCK=true npm run build && node _scripts/postHeroku.js"
+    "heroku-postbuild": "node _scripts/preHeroku.js && cross-env REACT_APP_MOCK=true npm run build && node _scripts/postHeroku.js",
+    "tslint:fix": "tslint -c tslint.json 'src/**/*.ts*' --fix"
   },
   "devDependencies": {
     "@nutgaard/react-scripts": "0.0.8-beta.4",

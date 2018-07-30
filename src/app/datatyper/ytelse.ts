@@ -1,4 +1,4 @@
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface OppfolgingskontrakterType {
     innsatsgrupper: StringOrNothing[];
@@ -16,7 +16,7 @@ export interface VedtakType {
     vedtakstype: StringOrNothing;
     status: StringOrNothing;
     fradato: DatoType;
-    tildato: DatoType;
+    tildato?: OrNothing<DatoType>;
 }
 
 export interface YtelseType {
@@ -26,5 +26,4 @@ export interface YtelseType {
 export interface YtelseDataType {
     oppfolgingskontrakter: OppfolgingskontrakterType[];
     vedtaksliste: VedtakType[];
-    ytelser: YtelseType[];
 }

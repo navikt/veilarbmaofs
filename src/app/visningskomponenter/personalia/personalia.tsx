@@ -36,7 +36,7 @@ function Personalia(props: { data: { personalia: PersonaliaInfo } }) {
                     midlertidigAdresseUtland={midlertidigAdresseUtland}
                 />
                 <InformasjonsbolkEnkel header="Telefon" value={telefon} />
-                <InformasjonsbolkEnkel header="Epost" value={epost} />
+                <InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
                 <InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
                 <InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
                 <Sivilstand sivilstand={sivilstand} />

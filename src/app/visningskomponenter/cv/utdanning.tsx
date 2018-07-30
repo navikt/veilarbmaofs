@@ -1,17 +1,13 @@
+import {Element, Normaltekst} from 'nav-frontend-typografi';
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
-import {isNullOrUndefined, omit} from "../../utils/util";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-
-import { Element, Normaltekst } from 'nav-frontend-typografi';
-import {formaterDato} from "../utils";
+import {formaterDato, safeMap} from "../utils";
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
-    if (isNullOrUndefined(props.utdanning)) {
-        return null;
-    }
+    const {utdanning: arenaUtdanning, ...rest} = props;
 
-    const utdanninger = props.utdanning.map((utdanning, index) => (
+    const utdanninger = safeMap(arenaUtdanning, (utdanning, index) => (
         <div key={`utdanning-${index}`} className="underinformasjon">
             <Element className="typo-element">
                 {utdanning.utdannelsessted}
@@ -24,7 +20,7 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     ));
 
     return (
-        <Informasjonsbolk header="Utdanning" headerTypo="ingress" {...omit(props, 'utdanning')}>
+        <Informasjonsbolk header="Utdanning" headerTypo="ingress" {...rest}>
             {utdanninger}
         </Informasjonsbolk>
     );

@@ -1,6 +1,6 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-
+import EMDASH from "../../utils/emdash";
 import { isNullOrUndefined } from '../../utils/util';
 import { StringOrNothing } from '../felles-typer';
 import Informasjonsbolk from './informasjonsbolk';
@@ -9,18 +9,19 @@ interface Props {
     header: string;
     value?: StringOrNothing;
     defaultValue?: string;
+    className?: string;
 }
 
 function InformasjonsbolkEnkel(props: Props) {
-    if (isNullOrUndefined(props.value) && isNullOrUndefined(props.defaultValue)) {
-        return null;
-    }
-
     const { value, defaultValue, ...rest } = props;
+    let content: string | React.ReactElement<Props> = EMDASH;
+    if (!(isNullOrUndefined(props.value) && isNullOrUndefined(props.defaultValue))) {
+        content = <Normaltekst>{value || defaultValue}</Normaltekst>;
+    }
 
     return (
         <Informasjonsbolk {...rest}>
-            <Normaltekst>{value || defaultValue}</Normaltekst>
+            {content}
         </Informasjonsbolk>
     );
 }
