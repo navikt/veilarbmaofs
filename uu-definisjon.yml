@@ -1,0 +1,7 @@
+links:
+- link: 'https://veilarbmaofs.herokuapp.com/'
+  options:
+    commands:
+    - waitFor: '.apne-lukke-knapp'
+    - clickOn: '.apne-lukke-knapp'
+    - waitFor: '.informasjonsvisning'
