@@ -1,6 +1,6 @@
 import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
 
-export interface PersonaliaBarn {
+export interface GrunnPersonalia {
     fornavn: string;
     mellomnavn: StringOrNothing;
     etternavn: string;
@@ -8,8 +8,11 @@ export interface PersonaliaBarn {
     fodselsnummer: string;
     fodselsdato: string;
     dodsdato: StringOrNothing;
-    harSammeBosted: boolean;
     kjonn: string;
+}
+
+export interface PersonaliaBarn extends  GrunnPersonalia{
+    harSammeBosted: boolean;
 }
 
 export interface PersonaliaEnhet {
@@ -22,16 +25,8 @@ export interface PersonaliaSivilstand {
     fraDato: StringOrNothing;
 }
 
-export interface PersonaliaPartner {
-    fornavn: string;
-    mellomnavn: StringOrNothing;
-    etternavn: string;
-    sammensattNavn: string;
-    fodselsnummer: string;
-    fodselsdato: string;
-    dodsdato: StringOrNothing;
+export interface PersonaliaPartner extends GrunnPersonalia{
     harSammeBosted: boolean;
-    kjonn: string;
 }
 export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
@@ -62,14 +57,7 @@ interface PersonaliaPostadresse {
     }
 }
 
-export interface PersonaliaInfo {
-    fornavn: string;
-    mellomnavn: StringOrNothing;
-    etternavn: string,
-    sammensattNavn: string;
-    fodselsnummer: string;
-    fodselsdato: string;
-    dodsdato: StringOrNothing,
+export interface PersonaliaInfo extends GrunnPersonalia{
     barn: PersonaliaBarn[];
     diskresjonskode: StringOrNothing;
     kontonummer: string;
@@ -86,6 +74,5 @@ export interface PersonaliaInfo {
     midlertidigAdresseUtland: OrNothing<PersonaliaStrukturertAdresse>;
     postAdresse: PersonaliaPostadresse;
     egenAnsatt: boolean;
-    kjonn: string;
 
 }

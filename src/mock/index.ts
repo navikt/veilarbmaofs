@@ -6,7 +6,7 @@ import {
     Personalia,
     veileder,
     Ytelsestatus
-} from './no-data';
+} from './standard';
 
 const loggingMiddleware: Middleware = (request, response) => {
     // tslint:disable
