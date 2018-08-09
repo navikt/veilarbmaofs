@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {PersonaliaInfo} from "../datatyper/personalia";
-import {finAllderstekst} from "../utils/date-utils";
+import {finnAldersTekst} from "../utils/date-utils";
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import Etiketter from "./etiketter";
 import KvinneIkon from './kvinne.svg';
@@ -14,7 +14,7 @@ function Icon(prop: {kjonn: string}){
 }
 
 function NavnOgAlder(prop: { personalia: PersonaliaInfo }){
-    const aldersvisning = finAllderstekst(prop.personalia);
+    const aldersvisning = finnAldersTekst(prop.personalia);
 
     return <h1 className="basisinfo__navnogalder typo-innholdstittel">
         {prop.personalia.sammensattNavn}

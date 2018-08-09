@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { finAllderstekst } from '../../utils/date-utils';
+import { finnAldersTekst } from '../../utils/date-utils';
 import { isNullOrUndefined } from '../../utils/util';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
@@ -9,7 +9,7 @@ import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {
     const { harSammeBosted, sammensattNavn, fodselsnummer, kjonn} = props.barn;
     const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
-    const alder = finAllderstekst(props.barn);
+    const alder = finnAldersTekst(props.barn);
     const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
     return (

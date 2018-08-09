@@ -5,7 +5,7 @@ export function kalkulerAlder(fodselsdato: Date): number {
     return new Date(diff).getUTCFullYear() - 1970;
 }
 
-export function finAllderstekst(personalia: GrunnPersonalia): string {
+export function finnAldersTekst(personalia: GrunnPersonalia): string {
     if(personalia.dodsdato){
         return '(DØD)'
     }
