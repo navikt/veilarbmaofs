@@ -6,9 +6,21 @@ import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 import { Normaltekst } from 'nav-frontend-typografi';
 import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
 
+function BorSammen(props: { barn: PersonaliaBarn }) {
+    if(props.barn.dodsdato) {
+        return null;
+    }
+    const borSammen =  props.barn.harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
+
+    return (
+        <Normaltekst>
+            {borSammen}
+        </Normaltekst>
+    )
+}
+
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {
-    const { harSammeBosted, sammensattNavn, fodselsnummer, kjonn} = props.barn;
-    const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
+    const { sammensattNavn, fodselsnummer, kjonn} = props.barn;
     const alder = finnAldersTekst(props.barn);
     const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
@@ -20,9 +32,7 @@ function EnkeltBarn(props: { barn: PersonaliaBarn }) {
             <Normaltekst>
                 {fodselsnummer}
             </Normaltekst>
-            <Normaltekst>
-                {borSammen}
-            </Normaltekst>
+            <BorSammen barn={props.barn} />
         </div>
     );
 }
