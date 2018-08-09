@@ -24,7 +24,7 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner>}) {
     return (
         <Informasjonsbolk header="Partner" {...rest}>
             <Normaltekst>{borSammen}</Normaltekst>
-            <Normaltekst>{`${sammensattNavn} (${alder})`}</Normaltekst>
+            <Normaltekst>{`${sammensattNavn} ${alder}`}</Normaltekst>
             <Normaltekst>{fodselsnummer}</Normaltekst>
         </Informasjonsbolk>
     );

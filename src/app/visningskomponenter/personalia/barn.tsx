@@ -15,7 +15,7 @@ function EnkeltBarn(props: { barn: PersonaliaBarn }) {
     return (
         <div className="underinformasjon">
             <Normaltekst>
-                {`${sammensattNavn} (${alder}), ${lesbartKjonn}`}
+                {`${sammensattNavn} ${alder}, ${lesbartKjonn}`}
             </Normaltekst>
             <Normaltekst>
                 {fodselsnummer}

@@ -7,8 +7,8 @@ export function kalkulerAlder(fodselsdato: Date): number {
 
 export function finAllderstekst(personalia: GrunnPersonalia): string {
     if(personalia.dodsdato){
-        return 'død'
+        return '(DØD)'
     }
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
-    return `${alder}`;
+    return `${alder} år`;
 }
