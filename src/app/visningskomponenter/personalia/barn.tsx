@@ -7,10 +7,12 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
 
 function BorSammen(props: { barn: PersonaliaBarn }) {
-    if(props.barn.dodsdato) {
+    const { dodsdato, harSammeBosted } = props.barn;
+
+    if(dodsdato) {
         return null;
     }
-    const borSammen =  props.barn.harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
+    const borSammen =  harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
 
     return (
         <Normaltekst>
