@@ -37,7 +37,7 @@ const personalia: PersonaliaInfo & JSONValue = {
         "sammensattNavn": "SATOSHI NAKAMOTO",
         "fodselsnummer": "10108000398",
         "fodselsdato": "2005-10-04",
-        "dodsdato": null,
+        "dodsdato": "2010-10-04",
         "harSammeBosted": true,
         "kjonn": "K"
     }],

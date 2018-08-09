@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {PersonaliaInfo} from "../datatyper/personalia";
-import {kalkulerAlder} from "../utils/date-utils";
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import {finnAldersTekst} from "../utils/date-utils";
 import ApneLukkeKnapp from './apne-lukke-knapp';
 import Etiketter from "./etiketter";
 import KvinneIkon from './kvinne.svg';
@@ -14,12 +13,11 @@ function Icon(prop: {kjonn: string}){
     return <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>
 }
 
-function NavnOgAlder(prop: {navn: string, dodsdato: StringOrNothing, fodselsdato: string}){
-    const alder = kalkulerAlder(new Date(prop.fodselsdato));
-    const aldersvisning = prop.dodsdato ? '(DØD)' : `${alder} år`;
+function NavnOgAlder(prop: { personalia: PersonaliaInfo }){
+    const aldersvisning = finnAldersTekst(prop.personalia);
 
     return <h1 className="basisinfo__navnogalder typo-innholdstittel">
-        {prop.navn}
+        {prop.personalia.sammensattNavn}
         <span className="basisinfo__alder">{aldersvisning}</span>
     </h1>
 }
@@ -33,9 +31,7 @@ export function renderBasisInfo({personalia}: { personalia: PersonaliaInfo }) {
         <>
         <Icon kjonn={personalia.kjonn}/>
         <div className="basisinfo__personalia">
-            <NavnOgAlder navn={personalia.sammensattNavn}
-                         dodsdato={personalia.dodsdato}
-                         fodselsdato={personalia.fodselsdato}/>
+            <NavnOgAlder personalia={personalia}/>
             <Etiketter person={personalia}/>
             <Fodelsnummer fnr={personalia.fodselsnummer}/>
         </div>
