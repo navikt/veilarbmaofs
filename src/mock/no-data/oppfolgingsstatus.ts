@@ -7,6 +7,8 @@ const oppfolingstatus: OppfolgingData & JSONValue = {
         navn: "NAV TestHeim",
         enhetId: "007"
     },
-    veilederId: "Z123456"
+    veilederId: "Z123456",
+    formidlingsgruppe: null,
+    servicegruppe: null
 };
 export default oppfolingstatus

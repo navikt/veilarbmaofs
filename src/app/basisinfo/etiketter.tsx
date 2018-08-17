@@ -1,28 +1,29 @@
-import {EtikettAdvarsel} from "nav-frontend-etiketter";
+import {EtikettAdvarsel, EtikettInfo} from "nav-frontend-etiketter";
 import * as React from 'react';
+import {OppfolgingData} from "../datatyper/oppfolging";
 import {PersonaliaInfo} from "../datatyper/personalia";
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import hiddenIf from "../utils/hidden-if";
 import './etiketter.less';
 
-type Props = Pick<PersonaliaInfo, 'diskresjonskode'>
-    & Pick<PersonaliaInfo, 'dodsdato'>
-    & Pick<PersonaliaInfo, 'sikkerhetstiltak'>
-    & Pick<PersonaliaInfo, 'egenAnsatt'>;
+const Advarsel = hiddenIf(EtikettAdvarsel);
+const Info = hiddenIf(EtikettInfo);
 
-function EtikettWrapper(props : {hidden: boolean, etikettStr: StringOrNothing}) {
-    if (props.hidden) {
-        return null;
-    }
-    return <EtikettAdvarsel>{props.etikettStr}</EtikettAdvarsel>
+function trengerVurdering(oppfolging: OppfolgingData) {
+    return oppfolging.formidlingsgruppe !== 'ISERV' && oppfolging.servicegruppe === 'IVURD';
+}
+function trengerAEV(oppfolging: OppfolgingData) {
+    return oppfolging.formidlingsgruppe !== 'ISERV' && oppfolging.servicegruppe === 'BKART';
 }
 
-function Etiketter(props: {person: Props}) {
-    const { diskresjonskode, /*dodsdato,*/ sikkerhetstiltak, egenAnsatt } = props.person;
+function Etiketter(props: {person: PersonaliaInfo, oppfolging: OppfolgingData}) {
+    const { diskresjonskode, sikkerhetstiltak, egenAnsatt } = props.person;
 
     return <div className="etikett-container">
-        <EtikettWrapper hidden={!diskresjonskode} etikettStr={`Kode ${diskresjonskode}`}/>
-        <EtikettWrapper hidden={!sikkerhetstiltak} etikettStr={sikkerhetstiltak}/>
-        <EtikettWrapper hidden={!egenAnsatt} etikettStr={'Egen ansatt'}/>
+        <Advarsel hidden={!diskresjonskode}>Kode {diskresjonskode}</Advarsel>
+        <Advarsel hidden={!sikkerhetstiltak}>{sikkerhetstiltak}</Advarsel>
+        <Advarsel hidden={!egenAnsatt}>Egen ansatt</Advarsel>
+        <Info hidden={!trengerVurdering(props.oppfolging)} className="etikett--info2">Trenger vurdering</Info>
+        <Info hidden={!trengerAEV(props.oppfolging)} className="etikett--info2">Behov for AEV</Info>
     </div>;
 }
 
