@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {OppfolgingData} from "../datatyper/oppfolging";
 import {PersonaliaInfo} from "../datatyper/personalia";
 import {finnAldersTekst} from "../utils/date-utils";
 import ApneLukkeKnapp from './apne-lukke-knapp';
@@ -26,16 +27,21 @@ function Fodelsnummer(prop: {fnr: string}){
     return <span className="basisinfo__fodselsnummer">{prop.fnr}</span>
 }
 
-export function renderBasisInfo({personalia}: { personalia: PersonaliaInfo }) {
+export interface BasisinfoData {
+    oppfolging: OppfolgingData;
+    personalia: PersonaliaInfo;
+}
+
+export function renderBasisInfo({ personalia, oppfolging }: BasisinfoData) {
     return (
         <>
-        <Icon kjonn={personalia.kjonn}/>
-        <div className="basisinfo__personalia">
-            <NavnOgAlder personalia={personalia}/>
-            <Etiketter person={personalia}/>
-            <Fodelsnummer fnr={personalia.fodselsnummer}/>
-        </div>
-        <ApneLukkeKnapp/>
+            <Icon kjonn={personalia.kjonn}/>
+            <div className="basisinfo__personalia">
+                <NavnOgAlder personalia={personalia}/>
+                <Etiketter person={personalia} oppfolging={oppfolging}/>
+                <Fodelsnummer fnr={personalia.fodselsnummer}/>
+            </div>
+            <ApneLukkeKnapp/>
         </>
     );
 }
