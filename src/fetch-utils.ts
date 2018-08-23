@@ -36,6 +36,9 @@ function fetchJson<T>(url: string): Promise<T | Error> {
             if (!resp.ok) {
                 return new Error(resp.statusText);
             }
+            if(resp.status === 204){
+                return null;
+            }
             return resp.json();
         }, (error) => {
             return new Error(error);
