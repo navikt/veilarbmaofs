@@ -1,16 +1,16 @@
 import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
-// import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia from "./app/visningskomponenter/personalia/personalia";
 import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
 import {ArenaPerson} from "./app/datatyper/arenaperson";
-// import {KartleggingData} from "./app/datatyper/kartlegging";
+import {KartleggingData} from "./app/datatyper/kartlegging";
 import {OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {YtelseDataType} from "./app/datatyper/ytelse";
+import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 
@@ -66,12 +66,12 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
          }),
          id: 'Oppfølging',
      },
-     // {
-     //     component: Jobbsokerkompetanse,
-     //     dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
-     //         jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
-     //     }),
-     //     id: 'Jobbsøkerkompetanse',
-     // }
+     {
+         component: Jobbsokerkompetanse,
+         dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
+             jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
+         }),
+         id: 'Jobbsøkerkompetanse',
+     }
  ];
 }
