@@ -30,15 +30,16 @@ function Fodelsnummer(prop: {fnr: string}){
 export interface BasisinfoData {
     oppfolging: OppfolgingData;
     personalia: PersonaliaInfo;
+    feature: { "mao.trenger_vurdering": boolean }
 }
 
-export function renderBasisInfo({ personalia, oppfolging }: BasisinfoData) {
+export function renderBasisInfo({ personalia, oppfolging, feature }: BasisinfoData) {
     return (
         <>
             <Icon kjonn={personalia.kjonn}/>
             <div className="basisinfo__personalia">
                 <NavnOgAlder personalia={personalia}/>
-                <Etiketter person={personalia} oppfolging={oppfolging}/>
+                <Etiketter personalia={personalia} oppfolging={oppfolging} feature={feature}/>
                 <Fodelsnummer fnr={personalia.fodselsnummer}/>
             </div>
             <ApneLukkeKnapp/>

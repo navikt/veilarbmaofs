@@ -42,3 +42,4 @@ mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
+mock.get('/feature', { "mao.trenger_vurdering": true });
