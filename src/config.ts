@@ -9,8 +9,10 @@ import {ArenaPerson} from "./app/datatyper/arenaperson";
 import {KartleggingData} from "./app/datatyper/kartlegging";
 import {OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
+import {RegistreringsData} from "./app/datatyper/registreringsData";
 import {YtelseDataType} from "./app/datatyper/ytelse";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
+import {Registrering} from "./app/visningskomponenter/registrering/Registrering";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 
@@ -27,39 +29,51 @@ export interface FetchContext {
 export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
     return [
         {
-            component: CV,
-            dataSource: getData<{ cv: ArenaPerson }>({
-                cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+         component: Registrering,
+            dataSource: getData<{ registrering: RegistreringsData}>({
+                registrering: {
+                    fallback: {
+                        teksterForBesvarelse: [],
+                    },
+                    url: `/veilarbregistrering/api/registrering?fnr=${context.fnr}`
+                }
             }),
-            id: 'CV',
-        },
-        {
-            component: Jobbonsker,
-            dataSource: getData<{ jobbonsker: ArenaPerson }>({
-                jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
-            }),
-            id: 'Jobbønsker',
-        },
-        {
-            component: Personalia,
-            dataSource: getData<{ personalia: PersonaliaInfo }>({
-                personalia: `/veilarbperson/api/person/${context.fnr}`
-            }),
-            id: 'Personalia',
-        },
-        {
-            component: YtelseVisning,
-            dataSource: getData<{ ytelser: YtelseDataType }>({
-                ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
-            }),
-            id: 'Ytelser',
-        },
-        {
-            component: Oppfolging,
-            dataSource: getData<{
-                oppfolging: OppfolgingData,
-                personalia: PersonaliaInfo,
-                ytelser: YtelseDataType
+         id: 'Registrering',
+     },
+     {
+         component: CV,
+         dataSource: getData<{ cv: ArenaPerson }>({
+             cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+         }),
+         id: 'CV',
+     },
+     {
+         component: Jobbonsker,
+         dataSource: getData<{ jobbonsker: ArenaPerson }>({
+             jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+         }),
+         id: 'Jobbønsker',
+     },
+     {
+         component: Personalia,
+         dataSource: getData<{ personalia: PersonaliaInfo }>({
+             personalia: `/veilarbperson/api/person/${context.fnr}`
+         }),
+         id: 'Personalia',
+     },
+     {
+         component: YtelseVisning,
+         dataSource: getData<{ ytelser: YtelseDataType }>({
+             ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+         }),
+         id: 'Ytelser',
+     },
+     {
+         component: Oppfolging,
+         dataSource: getData<{
+             oppfolging: OppfolgingData,
+             personalia: PersonaliaInfo,
+             ytelser: YtelseDataType
             }>({
                 oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
                 personalia: `/veilarbperson/api/person/${context.fnr}`,
