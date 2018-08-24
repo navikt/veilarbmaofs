@@ -1,3 +1,5 @@
+import {FetchContext} from "../../config";
+import {SourceConfigEntry} from "../../fetch-utils";
 import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
 
 export interface OppfolgingskontrakterType {
@@ -26,4 +28,14 @@ export interface YtelseType {
 export interface YtelseDataType {
     oppfolgingskontrakter: OppfolgingskontrakterType[];
     vedtaksliste: VedtakType[];
+}
+
+export function createYtelseDataSourceConfig(context: FetchContext): SourceConfigEntry<YtelseDataType> {
+    return {
+        fallback: {
+            oppfolgingskontrakter: [],
+            vedtaksliste: []
+        },
+        url: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+    };
 }

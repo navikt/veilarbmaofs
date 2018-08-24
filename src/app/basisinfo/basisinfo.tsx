@@ -8,7 +8,11 @@ import './basisinfo.less';
 
 function Basisinfo({fnr}: AppProps) {
     const sourceConfig: SourceConfig<BasisinfoData> = {
-        feature: '/feature/?feature=mao.trenger_vurdering',
+        feature: {
+            allwaysUseFallback: true,
+            fallback: { "mao.trenger_vurdering": false },
+            url: '/feature/?feature=mao.trenger_vurdering'
+        },
         oppfolging: createOppfolgingDataSourceConfig({ fnr }),
         personalia: `/veilarbperson/api/person/${fnr}`
     };

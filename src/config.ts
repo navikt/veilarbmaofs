@@ -6,10 +6,10 @@ import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
 import {ArenaPerson, createArenaPersonSourceConfig} from "./app/datatyper/arenaperson";
-import {KartleggingData} from "./app/datatyper/kartlegging";
+import {createKartleggingDataSourceConfig, KartleggingData} from "./app/datatyper/kartlegging";
 import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
-import {YtelseDataType} from "./app/datatyper/ytelse";
+import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 
 export type Datasource<T> = () => Promise<Data<T>>;
@@ -50,7 +50,7 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
         {
             component: YtelseVisning,
             dataSource: getData<{ ytelser: YtelseDataType }>({
-                ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+                ytelser: createYtelseDataSourceConfig(context)
             }),
             id: 'Ytelser',
         },
@@ -63,25 +63,14 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
             }>({
                 oppfolging: createOppfolgingDataSourceConfig(context),
                 personalia: `/veilarbperson/api/person/${context.fnr}`,
-                ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+                ytelser: createYtelseDataSourceConfig(context)
             }),
             id: 'Oppfølging',
         },
         {
             component: Jobbsokerkompetanse,
             dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
-                jobbsokerkompetanse: {
-                    fallback: {
-                        besvarelse: [],
-                        besvarelseDato: null,
-                        kulepunkter: [],
-                        oppsummering: null,
-                        oppsummeringKey: null,
-                        raad: [],
-                        underOppfolging: null,
-                    },
-                    url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
-                }
+                jobbsokerkompetanse: createKartleggingDataSourceConfig(context)
             }),
             id: 'Jobbsøkerkompetanse',
         }

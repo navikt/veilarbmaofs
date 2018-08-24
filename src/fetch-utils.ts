@@ -1,8 +1,9 @@
 import fetch from './fetch-cache';
 
 interface SourceConfigObject<U> {
+    allwaysUseFallback?: boolean;
     url: string;
-    fallback: U
+    fallback: U | ((error?: string, resp?: Response) => U)
 }
 export type SourceConfigEntry<T> = string | SourceConfigObject<T>;
 export type SourceConfig<T> = {
@@ -35,11 +36,21 @@ export function getData<T>(sourceConfig: SourceConfig<T>): () => Promise<Data<T>
 }
 
 function createErrorHandler<T>(config: SourceConfigEntry<T>) {
-    return (reason: string) => {
+    return (reason?: string, resp?: Response) => {
         if (typeof config === 'string') {
             return new Error(reason);
         } else {
-            return config.fallback;
+            const fallbackFn = typeof config.fallback === 'function' ? config.fallback : (a?: string, b?: Response) => config.fallback;
+
+            if (config.allwaysUseFallback) {
+                return fallbackFn(reason, resp);
+            } else {
+                if (resp && resp.status >= 500) {
+                    return new Error(reason);
+                } else {
+                    return fallbackFn(reason, resp);
+                }
+            }
         }
     };
 }
@@ -51,7 +62,7 @@ function fetchJson<T>(config: SourceConfigEntry<T>): Promise<T | Error> {
     return fetch(url, { credentials: "include" })
         .then((resp) => {
             if (!resp.ok) {
-                return errorHandler(resp.statusText);
+                return errorHandler(undefined, resp);
             }
 
             return resp.json();

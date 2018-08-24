@@ -1,3 +1,5 @@
+import {FetchContext} from "../../config";
+import {SourceConfigEntry} from "../../fetch-utils";
 import {OrNothing} from "../visningskomponenter/felles-typer";
 
 interface SvarAlternativ {
@@ -39,4 +41,19 @@ export interface KartleggingData {
     oppsummeringKey: OrNothing<string>;
     raad: Raad[];
     underOppfolging: OrNothing<boolean>;
+}
+
+export function createKartleggingDataSourceConfig(context: FetchContext): SourceConfigEntry<KartleggingData> {
+    return {
+        fallback: {
+            besvarelse: [],
+            besvarelseDato: null,
+            kulepunkter: [],
+            oppsummering: null,
+            oppsummeringKey: null,
+            raad: [],
+            underOppfolging: null,
+        },
+        url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
+    }
 }

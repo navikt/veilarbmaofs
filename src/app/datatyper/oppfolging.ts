@@ -18,6 +18,7 @@ export interface OppfolgingData {
 
 export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingData> {
     return {
+        allwaysUseFallback: true,
         fallback: {
             formidlingsgruppe: null,
             oppfolgingsenhet: {
