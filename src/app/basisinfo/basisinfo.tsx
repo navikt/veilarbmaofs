@@ -5,14 +5,8 @@ import Datafetcher from "../utils/datafetcher";
 import {BasisinfoData, renderBasisInfo} from "./basisinfo-visning";
 import './basisinfo.less';
 
-interface BasisinfoConfig {
-    feature: string;
-    oppfolging: string;
-    personalia: string;
-}
-
 function Basisinfo({fnr}: AppProps) {
-    const sourceConfig: SourceConfig<BasisinfoConfig> = {
+    const sourceConfig: SourceConfig<BasisinfoData> = {
         feature: '/feature/?feature=mao.trenger_vurdering',
         oppfolging: `/veilarboppfolging/api/person/${fnr}/oppfolgingsstatus`,
         personalia: `/veilarbperson/api/person/${fnr}`

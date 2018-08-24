@@ -1,8 +1,12 @@
 import fetch from './fetch-cache';
 
-
+interface SourceConfigObject<U> {
+    url: string;
+    fallback: U
+}
+type SourceConfigEntry<T> = string | SourceConfigObject<T>;
 export type SourceConfig<T> = {
-    [P in keyof T]: string;
+    [P in keyof T]: SourceConfigEntry<T[P]>;
 }
 
 export type Data<T> = {
@@ -30,21 +34,25 @@ export function getData<T>(sourceConfig: SourceConfig<T>): () => Promise<Data<T>
     });
 }
 
-function fetchJson<T>(url: string): Promise<T | Error> {
+function fetchJson<T>(config: SourceConfigEntry<T>): Promise<T | Error> {
+    const url = typeof config === 'string' ? config : config.url;
+
     return fetch(url, { credentials: "include" })
         .then((resp) => {
             if (!resp.ok) {
                 return new Error(resp.statusText);
             }
-            if(resp.status === 204){
-                return null;
-            }
+
             return resp.json();
         }, (error) => {
             return new Error(error);
         })
         .catch((error) => {
-            return new Error(error);
+            if (typeof config === 'string') {
+                return new Error(error);
+            } else {
+                return config.fallback;
+            }
         });
 }
 
