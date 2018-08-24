@@ -35,6 +35,7 @@
   },
   "scripts": {
     "start": "cross-env REACT_APP_MOCK=true react-scripts start",
+    "watch": "react-scripts start",
     "build": "react-scripts build",
     "lint": "echo not implemented, part of the build script",
     "test": "react-scripts test --env=jsdom",

@@ -5,9 +5,9 @@ import Personalia from "./app/visningskomponenter/personalia/personalia";
 import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
-import {ArenaPerson} from "./app/datatyper/arenaperson";
+import {ArenaPerson, createArenaPersonSourceConfig} from "./app/datatyper/arenaperson";
 import {KartleggingData} from "./app/datatyper/kartlegging";
-import {OppfolgingData} from "./app/datatyper/oppfolging";
+import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {YtelseDataType} from "./app/datatyper/ytelse";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
@@ -29,14 +29,14 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
         {
             component: CV,
             dataSource: getData<{ cv: ArenaPerson }>({
-                cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+                cv: createArenaPersonSourceConfig(context)
             }),
             id: 'CV',
         },
         {
             component: Jobbonsker,
             dataSource: getData<{ jobbonsker: ArenaPerson }>({
-                jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+                jobbonsker: createArenaPersonSourceConfig(context)
             }),
             id: 'Jobbønsker',
         },
@@ -61,7 +61,7 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
                 personalia: PersonaliaInfo,
                 ytelser: YtelseDataType
             }>({
-                oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
+                oppfolging: createOppfolgingDataSourceConfig(context),
                 personalia: `/veilarbperson/api/person/${context.fnr}`,
                 ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
             }),
