@@ -21,12 +21,11 @@ export function Registrering(props: Props) {
             </Normaltekst>
         )
     }
-    const opprettetDato = registrering.opprettetDato;
-    const sporsmalsliste = registrering.teksterForBesvarelse;
+
     return (
         <>
-            <Header opprettetDato={opprettetDato}/>
-            <SporsmalsListe teksterForBesvarelse={sporsmalsliste}/>
+            <Header opprettetDato={registrering.opprettetDato}/>
+            <SporsmalsListe teksterForBesvarelse={registrering.teksterForBesvarelse}/>
         </>
     )
 }
