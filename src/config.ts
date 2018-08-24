@@ -15,7 +15,7 @@ import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/j
 export type Datasource<T> = () => Promise<Data<T>>;
 
 export interface IInformasjonsElement<T> {
-    component: React.ComponentType<{ data: T}>;
+    component: React.ComponentType<{ data: T }>;
     dataSource: Datasource<T>;
     id: string;
 }
@@ -25,53 +25,65 @@ export interface FetchContext {
 }
 
 export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
- return [
-     {
-         component: CV,
-         dataSource: getData<{ cv: ArenaPerson }>({
-             cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
-         }),
-         id: 'CV',
-     },
-     {
-         component: Jobbonsker,
-         dataSource: getData<{ jobbonsker: ArenaPerson }>({
-             jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
-         }),
-         id: 'Jobbønsker',
-     },
-     {
-         component: Personalia,
-         dataSource: getData<{ personalia: PersonaliaInfo }>({
-             personalia: `/veilarbperson/api/person/${context.fnr}`
-         }),
-         id: 'Personalia',
-     },
-     {
-         component: YtelseVisning,
-         dataSource: getData<{ ytelser: YtelseDataType }>({
-             ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
-         }),
-         id: 'Ytelser',
-     },
-     {
-         component: Oppfolging,
-         dataSource: getData<{
-             oppfolging: OppfolgingData,
-             personalia: PersonaliaInfo,
-             ytelser: YtelseDataType }>({
-                 oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
-                 personalia: `/veilarbperson/api/person/${context.fnr}`,
-                 ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
-         }),
-         id: 'Oppfølging',
-     },
-     {
-         component: Jobbsokerkompetanse,
-         dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
-             jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
-         }),
-         id: 'Jobbsøkerkompetanse',
-     }
- ];
+    return [
+        {
+            component: CV,
+            dataSource: getData<{ cv: ArenaPerson }>({
+                cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+            }),
+            id: 'CV',
+        },
+        {
+            component: Jobbonsker,
+            dataSource: getData<{ jobbonsker: ArenaPerson }>({
+                jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+            }),
+            id: 'Jobbønsker',
+        },
+        {
+            component: Personalia,
+            dataSource: getData<{ personalia: PersonaliaInfo }>({
+                personalia: `/veilarbperson/api/person/${context.fnr}`
+            }),
+            id: 'Personalia',
+        },
+        {
+            component: YtelseVisning,
+            dataSource: getData<{ ytelser: YtelseDataType }>({
+                ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+            }),
+            id: 'Ytelser',
+        },
+        {
+            component: Oppfolging,
+            dataSource: getData<{
+                oppfolging: OppfolgingData,
+                personalia: PersonaliaInfo,
+                ytelser: YtelseDataType
+            }>({
+                oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
+                personalia: `/veilarbperson/api/person/${context.fnr}`,
+                ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
+            }),
+            id: 'Oppfølging',
+        },
+        {
+            component: Jobbsokerkompetanse,
+            dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
+                jobbsokerkompetanse: {
+                    fallback: {
+                        besvarelse: [],
+                        besvarelseDato: null,
+                        kulepunkter: [],
+                        oppsummering: null,
+                        oppsummeringKey: null,
+                        raad: [],
+                        underOppfolging: null,
+                    },
+                    url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
+                }
+            }),
+            id: 'Jobbsøkerkompetanse',
+        }
+    ];
 }

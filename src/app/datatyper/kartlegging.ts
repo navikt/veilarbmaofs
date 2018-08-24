@@ -33,11 +33,10 @@ interface Kulepunkt {
 
 export interface KartleggingData {
     besvarelse: Besvarelse[];
-    besvarelseDato: string;
+    besvarelseDato: OrNothing<string>;
     kulepunkter: Kulepunkt[];
     oppsummering: OrNothing<string>;
     oppsummeringKey: OrNothing<string>;
     raad: Raad[];
-    underOppfolging: boolean;
-
+    underOppfolging: OrNothing<boolean>;
 }
