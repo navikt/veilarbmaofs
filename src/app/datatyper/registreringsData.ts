@@ -1,10 +1,5 @@
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
-
 export interface RegistreringsData {
-    id: number,
-    opprettetDato: string,
-    enigIOppsummering: boolean,
-    oppsummering: StringOrNothing,
+    opprettetDato?: string,
     teksterForBesvarelse: Sporsmal[],
 }
 
