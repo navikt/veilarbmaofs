@@ -9,8 +9,10 @@ import {ArenaPerson, createArenaPersonSourceConfig} from "./app/datatyper/arenap
 import {createKartleggingDataSourceConfig, KartleggingData} from "./app/datatyper/kartlegging";
 import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
+import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
 import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
+import {Registrering} from "./app/visningskomponenter/registrering/Registrering";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 
@@ -26,6 +28,13 @@ export interface FetchContext {
 
 export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
     return [
+        {
+            component: Registrering,
+            dataSource: getData<{ registrering: RegistreringsData}>({
+                registrering: createRegistreringsDataSourceConfig(context)
+            }),
+            id: 'Registrering',
+        },
         {
             component: CV,
             dataSource: getData<{ cv: ArenaPerson }>({
