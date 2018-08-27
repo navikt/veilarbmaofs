@@ -21,7 +21,9 @@ const loggingMiddleware: Middleware = (request, response) => {
 
     try {
         console.log('response', JSON.parse(response.body));
-    } catch (e) {}
+    } catch (e) {
+        console.log('response', response);
+    }
 
     console.groupEnd();
     // tslint:enable

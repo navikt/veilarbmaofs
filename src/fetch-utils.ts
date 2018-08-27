@@ -1,10 +1,11 @@
 import fetch from './fetch-cache';
 
 interface SourceConfigObject<U> {
+    allwaysUseFallback?: boolean;
     url: string;
-    fallback: U
+    fallback: U | ((error?: string, resp?: Response) => U)
 }
-type SourceConfigEntry<T> = string | SourceConfigObject<T>;
+export type SourceConfigEntry<T> = string | SourceConfigObject<T>;
 export type SourceConfig<T> = {
     [P in keyof T]: SourceConfigEntry<T[P]>;
 }
@@ -34,26 +35,39 @@ export function getData<T>(sourceConfig: SourceConfig<T>): () => Promise<Data<T>
     });
 }
 
+function createErrorHandler<T>(config: SourceConfigEntry<T>) {
+    return (reason?: string, resp?: Response) => {
+        if (typeof config === 'string') {
+            return new Error(reason);
+        } else {
+            const fallbackFn = typeof config.fallback === 'function' ? config.fallback : (a?: string, b?: Response) => config.fallback;
+
+            if (config.allwaysUseFallback) {
+                return fallbackFn(reason, resp);
+            } else {
+                if (resp && resp.status >= 500) {
+                    return new Error(reason);
+                } else {
+                    return fallbackFn(reason, resp);
+                }
+            }
+        }
+    };
+}
+
 function fetchJson<T>(config: SourceConfigEntry<T>): Promise<T | Error> {
     const url = typeof config === 'string' ? config : config.url;
+    const errorHandler = createErrorHandler(config);
 
     return fetch(url, { credentials: "include" })
         .then((resp) => {
             if (!resp.ok) {
-                return new Error(resp.statusText);
+                return errorHandler(undefined, resp);
             }
 
             return resp.json();
-        }, (error) => {
-            return new Error(error);
-        })
-        .catch((error) => {
-            if (typeof config === 'string') {
-                return new Error(error);
-            } else {
-                return config.fallback;
-            }
-        });
+        }, errorHandler)
+        .catch(errorHandler);
 }
 
 export function getJson(url: string): () => Promise<any> {

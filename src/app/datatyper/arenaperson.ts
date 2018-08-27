@@ -1,4 +1,6 @@
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import {FetchContext} from "../../config";
+import {SourceConfigEntry} from "../../fetch-utils";
+import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
 
 interface Verv {
     fraDato: string;
@@ -91,11 +93,11 @@ export interface ArenaPerson {
     statsborgerskap: string;
     samtykkeDato: string;
     samtykkeStatus: string;
-    disponererBil: boolean;
+    disponererBil: OrNothing<boolean>;
     verv: Verv[];
     beskrivelse: StringOrNothing;
     kandidatnummer: StringOrNothing
-    sistEndret: string;
+    sistEndret: StringOrNothing;
     adresse: {
         landkode: string;
         postnr: string;
@@ -118,4 +120,49 @@ export interface ArenaPerson {
     arbeidstidsordningJobbonsker: ArbeidstidsordningJobbonsker[];
     epost: StringOrNothing
     kurs: Kurs[]
+}
+
+export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
+    return {
+        fallback: {
+            personId: -1,
+            fodselsdato: "",
+            fodselsnummer: "",
+            erFodselsnummerDnr: false,
+            formidlingsgruppekode: "",
+            etternavn: "",
+            fornavn: "",
+            statsborgerskap: "",
+            samtykkeDato: "",
+            samtykkeStatus: "",
+            disponererBil: null,
+            verv: [],
+            beskrivelse: null,
+            kandidatnummer: null,
+            sistEndret: null,
+            adresse: {
+                landkode: "",
+                postnr: "",
+                poststednavn: "",
+                kommunenr: -1,
+                adrlinje1: "",
+                adrlinje2: null,
+                adrlinje3: null
+            },
+            utdanning: [],
+            yrkeserfaring: [],
+            forerkort: [],
+            sertifikater: [],
+            sprak: [],
+            kompetanse: [],
+            geografiJobbonsker: [],
+            yrkeJobbonsker: [],
+            heltidDeltidJobbonsker: [],
+            ansettelsesforholdJobbonsker: [],
+            arbeidstidsordningJobbonsker: [],
+            epost: null,
+            kurs: [],
+        },
+        url: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+    };
 }
