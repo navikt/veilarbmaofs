@@ -11,6 +11,7 @@ import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
 import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
+import {Features} from "./app/persondetaljer";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import {Registrering} from "./app/visningskomponenter/registrering/Registrering";
 

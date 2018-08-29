@@ -28,8 +28,6 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
         const apen = this.props.context.apen;
         const fetchContext: FetchContext = { fnr : this.props.fnr };
 
-
-
         return (
             <React.Fragment key={this.props.fnr}>
                 <Tilbakelenke enhet={this.props.enhet}/>
