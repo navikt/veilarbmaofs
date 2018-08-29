@@ -26,15 +26,8 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
-    return [
-        {
-            component: Registrering,
-            dataSource: getData<{ registrering: RegistreringsData}>({
-                registrering: createRegistreringsDataSourceConfig(context)
-            }),
-            id: 'Registrering',
-        },
+export function getConfig(context: FetchContext, features: Features): Array<IInformasjonsElement<any>> {
+    const bolker = [
         {
             component: CV,
             dataSource: getData<{ cv: ArenaPerson }>({
@@ -84,4 +77,18 @@ export function getConfig(context: FetchContext): Array<IInformasjonsElement<any
             id: 'Jobbsøkerkompetanse',
         }
     ];
+
+    if (features["mao.vise_registrering"]) {
+        const registrering = {
+            component: Registrering,
+            dataSource: getData<{ registrering: RegistreringsData}>({
+                registrering: createRegistreringsDataSourceConfig(context)
+            }),
+            id: 'Registrering',
+        };
+
+        return  [ registrering, ...bolker ];
+    }
+
+    return bolker;
 }

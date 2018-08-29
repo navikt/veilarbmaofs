@@ -4,6 +4,7 @@ import {FetchContext, getConfig, IInformasjonsElement} from "../../config";
 import {AppContext, AppContextProp, IAppContext, withAppContext} from "../context";
 import Datafetcher from "../utils/datafetcher";
 
+import {Features} from "../persondetaljer";
 import './informasjonsvisning.less';
 
 const noop = () => {}; // tslint:disable-line
@@ -28,11 +29,12 @@ function lagVisningBolk<T>(context: IAppContext) {
 
 interface Props {
     fetchContext: FetchContext;
+    features: Features;
 }
 
 class Informasjonsvisning extends React.Component<AppContextProp & Props> {
     public render() {
-        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext)
+        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext, this.props.features)
             .map(lagVisningBolk(this.props.context));
 
         return (
