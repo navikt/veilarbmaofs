@@ -46,7 +46,7 @@ function Oppfolging(props: OppfolgingProps) {
                                        defaultValue={EMDASH}/>
                 <Veileder veilederId={oppfolging.veilederId}/>
                 <InformasjonsbolkEnkel header="Geografisk enhet"
-                                       value={toStrPersonalia(personalia.behandlendeEnhet)}
+                                       value={toStrPersonalia(personalia.geografiskEnhet)}
                                        defaultValue={EMDASH}/>
                 <InformasjonsbolkEnkel header="Oppfølgingsenhet"
                                        value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
