@@ -12,6 +12,16 @@ import Informasjonsvisning from "./visningskomponenter/informasjonsvisning";
 import './persondetaljer.less';
 
 import { UnmountClosed as Collapse } from 'react-collapse';
+import {getData, SourceConfig} from "../fetch-utils";
+import Datafetcher from "./utils/datafetcher";
+
+export interface Features {
+    [key: string]: boolean
+}
+
+interface FeaturesReq {
+    features: Features
+}
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
     public render() {
@@ -28,13 +38,41 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
                     })}
                 >
                     <Basisinfo fnr={this.props.fnr} />
-                    <Collapse isOpened={apen} className="informasjonsvisning" hasNestedCollapse={true}>
-                        <Informasjonsvisning fetchContext={fetchContext} />
-                    </Collapse>
+                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen}/>
                 </div>
             </React.Fragment>
         )
     }
+}
+interface Props {
+    fetchContext: FetchContext;
+    isOpened: boolean;
+
+}
+function UtvidetInfo(props: Props) {
+    const sourceConfig: SourceConfig<FeaturesReq> = {
+        features: {
+            allwaysUseFallback: true,
+            fallback: { "mao.vise_registrering": false},
+            url: '/feature/?feature=mao.vise_registrering'
+        }
+    };
+
+    const data = getData<FeaturesReq>(sourceConfig);
+
+    return (
+        <Datafetcher data={data} loader={returnNull}>
+            {(a: FeaturesReq) =>
+                <Collapse isOpened={props.isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
+                    <Informasjonsvisning fetchContext={props.fetchContext} features={a.features} />
+                </Collapse>
+            }
+        </Datafetcher>
+    )
+}
+
+function returnNull() {
+    return null;
 }
 
 export default withAppContext<AppProps>(AppContext, Persondetaljer);
