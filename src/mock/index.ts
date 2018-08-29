@@ -4,6 +4,7 @@ import {
     Jobbsokerkompetanse,
     Oppfolgingsstatus,
     Personalia,
+    Registering,
     veileder,
     Ytelsestatus
 } from './standard';
@@ -20,7 +21,9 @@ const loggingMiddleware: Middleware = (request, response) => {
 
     try {
         console.log('response', JSON.parse(response.body));
-    } catch (e) {}
+    } catch (e) {
+        console.log('response', response);
+    }
 
     console.groupEnd();
     // tslint:enable
@@ -42,3 +45,5 @@ mock.get('/pam-arena/rest/arenaperson/hentForFnr', CV);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
+mock.get('/veilarbregistrering/api/registrering', Registering);
+mock.get('/feature', { "mao.trenger_vurdering": true, "mao.vise_registrering": true });

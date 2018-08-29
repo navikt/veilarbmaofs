@@ -1,16 +1,14 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import EMDASH from "../../utils/emdash";
-import {isNullOrUndefined} from "../../utils/util";
+import {StringOrNothing} from "../felles-typer";
 import {formaterDato} from "../utils";
 
-function SistEndret(props: Pick<ArenaPerson, 'sistEndret'>) {
-    if (isNullOrUndefined(props.sistEndret)) {
-        return <>{EMDASH}</>;
-    }
+interface SistEndretProps {
+    sistEndret: StringOrNothing;
+}
 
-    const formattertTidspunkt = formaterDato(props.sistEndret);
+function SistEndret(props: SistEndretProps) {
+    const formattertTidspunkt = formaterDato(props.sistEndret!);
 
     return (
         <Normaltekst className="italic-gra">

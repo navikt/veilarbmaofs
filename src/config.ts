@@ -1,21 +1,24 @@
 import CV from "./app/visningskomponenter/cv/cv";
 import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
-// import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import Oppfolging from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia from "./app/visningskomponenter/personalia/personalia";
 import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
 import {Data, getData} from "./fetch-utils";
 
-import {ArenaPerson} from "./app/datatyper/arenaperson";
-// import {KartleggingData} from "./app/datatyper/kartlegging";
-import {OppfolgingData} from "./app/datatyper/oppfolging";
+import {ArenaPerson, createArenaPersonSourceConfig} from "./app/datatyper/arenaperson";
+import {createKartleggingDataSourceConfig, KartleggingData} from "./app/datatyper/kartlegging";
+import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/oppfolging";
 import {PersonaliaInfo} from "./app/datatyper/personalia";
-import {YtelseDataType} from "./app/datatyper/ytelse";
+import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
+import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
+import {Features} from "./app/persondetaljer";
+import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
+import {Registrering} from "./app/visningskomponenter/registrering/Registrering";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 
 export interface IInformasjonsElement<T> {
-    component: React.ComponentType<{ data: T}>;
+    component: React.ComponentType<{ data: T }>;
     dataSource: Datasource<T>;
     id: string;
 }
@@ -24,54 +27,69 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext): Array<IInformasjonsElement<any>> {
- return [
-     {
-         component: CV,
-         dataSource: getData<{ cv: ArenaPerson }>({
-             cv: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
-         }),
-         id: 'CV',
-     },
-     {
-         component: Jobbonsker,
-         dataSource: getData<{ jobbonsker: ArenaPerson }>({
-             jobbonsker: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
-         }),
-         id: 'Jobbønsker',
-     },
-     {
-         component: Personalia,
-         dataSource: getData<{ personalia: PersonaliaInfo }>({
-             personalia: `/veilarbperson/api/person/${context.fnr}`
-         }),
-         id: 'Personalia',
-     },
-     {
-         component: YtelseVisning,
-         dataSource: getData<{ ytelser: YtelseDataType }>({
-             ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
-         }),
-         id: 'Ytelser',
-     },
-     {
-         component: Oppfolging,
-         dataSource: getData<{
-             oppfolging: OppfolgingData,
-             personalia: PersonaliaInfo,
-             ytelser: YtelseDataType }>({
-                 oppfolging: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`,
-                 personalia: `/veilarbperson/api/person/${context.fnr}`,
-                 ytelser: `/veilarboppfolging/api/person/${context.fnr}/ytelser`
-         }),
-         id: 'Oppfølging',
-     },
-     // {
-     //     component: Jobbsokerkompetanse,
-     //     dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
-     //         jobbsokerkompetanse: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
-     //     }),
-     //     id: 'Jobbsøkerkompetanse',
-     // }
- ];
+export function getConfig(context: FetchContext, features: Features): Array<IInformasjonsElement<any>> {
+    const bolker = [
+        {
+            component: CV,
+            dataSource: getData<{ cv: ArenaPerson }>({
+                cv: createArenaPersonSourceConfig(context)
+            }),
+            id: 'CV',
+        },
+        {
+            component: Jobbonsker,
+            dataSource: getData<{ jobbonsker: ArenaPerson }>({
+                jobbonsker: createArenaPersonSourceConfig(context)
+            }),
+            id: 'Jobbønsker',
+        },
+        {
+            component: Personalia,
+            dataSource: getData<{ personalia: PersonaliaInfo }>({
+                personalia: `/veilarbperson/api/person/${context.fnr}`
+            }),
+            id: 'Personalia',
+        },
+        {
+            component: YtelseVisning,
+            dataSource: getData<{ ytelser: YtelseDataType }>({
+                ytelser: createYtelseDataSourceConfig(context)
+            }),
+            id: 'Ytelser',
+        },
+        {
+            component: Oppfolging,
+            dataSource: getData<{
+                oppfolging: OppfolgingData,
+                personalia: PersonaliaInfo,
+                ytelser: YtelseDataType
+            }>({
+                oppfolging: createOppfolgingDataSourceConfig(context),
+                personalia: `/veilarbperson/api/person/${context.fnr}`,
+                ytelser: createYtelseDataSourceConfig(context)
+            }),
+            id: 'Oppfølging',
+        },
+        {
+            component: Jobbsokerkompetanse,
+            dataSource: getData<{ jobbsokerkompetanse: KartleggingData }>({
+                jobbsokerkompetanse: createKartleggingDataSourceConfig(context)
+            }),
+            id: 'Jobbsøkerkompetanse',
+        }
+    ];
+
+    if (features["mao.vise_registrering"]) {
+        const registrering = {
+            component: Registrering,
+            dataSource: getData<{ registrering: RegistreringsData}>({
+                registrering: createRegistreringsDataSourceConfig(context)
+            }),
+            id: 'Registrering',
+        };
+
+        return  [ registrering, ...bolker ];
+    }
+
+    return bolker;
 }
