@@ -62,7 +62,7 @@ export interface PersonaliaInfo extends GrunnPersonalia{
     diskresjonskode: StringOrNothing;
     kontonummer: string;
     geografiskTilknytning: string;
-    behandlendeEnhet: PersonaliaEnhet;
+    geografiskEnhet: PersonaliaEnhet;
     telefon: string;
     epost: StringOrNothing;
     statsborgerskap: string;

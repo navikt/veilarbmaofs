@@ -44,7 +44,7 @@ const personalia: PersonaliaInfo & JSONValue = {
     "diskresjonskode": '6',
     "kontonummer": "12345678910",
     "geografiskTilknytning": "0106",
-    "behandlendeEnhet": {
+    "geografiskEnhet": {
         "enhetsnummer": "0106",
         "navn": "NAV Fredrikstad"
     },
