@@ -1,8 +1,15 @@
 import {FetchContext} from "../../config";
 
-export interface RegistreringsData {
-    opprettetDato?: string,
+export interface Registrering {
+    opprettetDato: string,
     teksterForBesvarelse: Sporsmal[],
+}
+export interface Profilering {
+    jobbetSammenhengendeSeksAvTolvSisteManeder: boolean
+}
+export interface RegistreringsData {
+    registrering?: Registrering,
+    profilering?: Profilering,
 }
 
 export interface Sporsmal {
@@ -14,7 +21,6 @@ export interface Sporsmal {
 export function createRegistreringsDataSourceConfig(context: FetchContext) {
     return {
         fallback: {
-            teksterForBesvarelse: [],
         },
         url: `/veilarbregistrering/api/registrering?fnr=${context.fnr}`
     };
