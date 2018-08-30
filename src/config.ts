@@ -13,7 +13,7 @@ import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/data
 import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
 import {Features} from "./app/persondetaljer";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
-import {Registrering} from "./app/visningskomponenter/registrering/Registrering";
+import {Registrering} from "./app/visningskomponenter/registrering/registrering";
 
 export type Datasource<T> = () => Promise<Data<T>>;
 

@@ -1,13 +1,16 @@
 import {Normaltekst} from "nav-frontend-typografi";
 import * as React from "react";
-import {RegistreringsData, Sporsmal} from "../../datatyper/registreringsData";
+import {Registrering, Sporsmal} from "../../datatyper/registreringsData";
 import FloatGrid from "../../utils/float-grid";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import {visEmdashHvisNull} from "../utils";
 
+export function SporsmalsListe(props: {registrering?: Registrering}) {
+    if(!props.registrering || !props.registrering.teksterForBesvarelse) {
+        return null;
+    }
 
-export function SporsmalsListe(props: Pick<RegistreringsData, "teksterForBesvarelse">) {
-    const sporsmaal = props.teksterForBesvarelse;
+    const sporsmaal = props.registrering.teksterForBesvarelse;
 
     return (
         <FloatGrid columns={2} gap={8}>

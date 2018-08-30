@@ -1,5 +1,6 @@
 import * as React from "react";
 import {RegistreringsData} from "../../datatyper/registreringsData";
+import {Profilering} from "./profilering";
 import {Header} from "./registrert";
 import {SporsmalsListe} from "./sporsmolvisning";
 
@@ -11,12 +12,13 @@ interface Props {
 }
 
 export function Registrering(props: Props) {
-    const registrering = props.data.registrering;
+    const {registrering, profilering} = props.data.registrering;
 
     return (
         <>
-            <Header opprettetDato={registrering.opprettetDato}/>
-            <SporsmalsListe teksterForBesvarelse={registrering.teksterForBesvarelse}/>
+            <Header registrering={registrering}/>
+            <SporsmalsListe registrering={registrering}/>
+            <Profilering  profilering={profilering}/>
         </>
     )
 }
