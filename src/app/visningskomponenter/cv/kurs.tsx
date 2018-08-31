@@ -6,8 +6,8 @@ import {formaterDato, safeMap} from "../utils";
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     const {kurs: arenaKurs, ...rest} = props;
-
-    const kurs = safeMap(arenaKurs, (enkeltKurs, index) => (
+    const sortedKurs = arenaKurs.sort((a, b) => b.fraDato.localeCompare(a.fraDato));
+    const kurs = safeMap(sortedKurs, (enkeltKurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
             <Element>
                 {enkeltKurs.tittel}

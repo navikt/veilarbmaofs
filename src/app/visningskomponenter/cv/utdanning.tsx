@@ -6,8 +6,8 @@ import {formaterDato, safeMap} from "../utils";
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     const {utdanning: arenaUtdanning, ...rest} = props;
-
-    const utdanninger = safeMap(arenaUtdanning, (utdanning, index) => (
+    const sortedUtdanning = arenaUtdanning.sort((a, b) => b.tilDato.localeCompare(a.tilDato));
+    const utdanninger = safeMap(sortedUtdanning, (utdanning, index) => (
         <div key={`utdanning-${index}`} className="underinformasjon">
             <Element className="typo-element">
                 {utdanning.utdannelsessted}
