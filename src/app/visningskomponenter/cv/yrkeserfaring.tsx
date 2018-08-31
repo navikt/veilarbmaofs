@@ -6,7 +6,8 @@ import {formaterDato, safeMap} from "../utils";
 
 function Yrkeserfaring(props: Pick<ArenaPerson, 'yrkeserfaring'>) {
     const {yrkeserfaring: arenaErfaring, ...rest} = props;
-    const erfaringer = safeMap(arenaErfaring, (erfaring, index) => (
+    const sortedErfaringer = arenaErfaring.sort((a, b) => b.tilDato.localeCompare(a.tilDato));
+    const erfaringer = safeMap(sortedErfaringer, (erfaring, index) => (
         <div key={`yrkeserfaring-${index}`} className="underinformasjon">
             <Element>
                 {erfaring.arbeidsgiver}
