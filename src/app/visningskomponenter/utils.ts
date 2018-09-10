@@ -38,7 +38,7 @@ export function formaterDato( datoObjekt: DatoType | string | undefined | null )
     return lokalDatoStreng.replace(/\.\s/g,'.');  // erstattes '. ' med '.' så får vi resultat dato som: dd.mon.yyyy
 }
 
-export function safeSort(a: string | undefined | null, b: string | undefined | null) {
+export function safeSort(a: StringOrNothing , b: StringOrNothing) {
     if (a) {
         return b ? a.localeCompare(b) : -1;
     } else if (b) {
