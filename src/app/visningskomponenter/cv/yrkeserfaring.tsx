@@ -1,12 +1,12 @@
-import {Element, Normaltekst} from 'nav-frontend-typografi';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {formaterDato, safeMap} from "../utils";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import { formaterDato, safeMap, safeSort } from '../utils';
 
 function Yrkeserfaring(props: Pick<ArenaPerson, 'yrkeserfaring'>) {
     const {yrkeserfaring: arenaErfaring, ...rest} = props;
-    const sortedErfaringer = arenaErfaring.sort((a, b) => b.tilDato.localeCompare(a.tilDato));
+    const sortedErfaringer = arenaErfaring.sort((a, b) => safeSort(b.tilDato, a.tilDato));
     const erfaringer = safeMap(sortedErfaringer, (erfaring, index) => (
         <div key={`yrkeserfaring-${index}`} className="underinformasjon">
             <Element>

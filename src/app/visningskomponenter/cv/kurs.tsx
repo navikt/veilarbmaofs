@@ -1,12 +1,12 @@
-import {Element, Normaltekst} from 'nav-frontend-typografi';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {formaterDato, safeMap} from "../utils";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import { formaterDato, safeMap, safeSort } from '../utils';
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     const {kurs: arenaKurs, ...rest} = props;
-    const sortedKurs = arenaKurs.sort((a, b) => b.fraDato.localeCompare(a.fraDato));
+    const sortedKurs = arenaKurs.sort((a, b) => safeSort(b.fraDato, a.fraDato));
     const kurs = safeMap(sortedKurs, (enkeltKurs, index) => (
         <div key={`kurs-${index}`} className="underinformasjon">
             <Element>
