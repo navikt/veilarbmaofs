@@ -4,16 +4,18 @@ import {FetchContext, getConfig, IInformasjonsElement} from "../../config";
 import {AppContext, AppContextProp, IAppContext, withAppContext} from "../context";
 import Datafetcher from "../utils/datafetcher";
 
-import {Features} from "../persondetaljer";
+import {Feature} from "../persondetaljer";
 import './informasjonsvisning.less';
 
-const noop = () => {}; // tslint:disable-line
+function onClick(id: string) {
+    return () => (window as any).frontendlogger.event('maofs.lamel-click', {'lamel': id}, {});
+}
 
 function VisningsBolk<DATA>(props: IInformasjonsElement<DATA> & AppContextProp) {
     const Component = props.component;
 
     return (
-        <Ekspanderbartpanel tittel={props.id} onClick={noop} tittelProps="undertittel">
+        <Ekspanderbartpanel tittel={props.id} onClick={onClick(props.id)} tittelProps="undertittel">
             <Datafetcher data={props.dataSource}>
                 {(data: DATA) => <Component data={data}/>}
             </Datafetcher>
@@ -29,12 +31,12 @@ function lagVisningBolk<T>(context: IAppContext) {
 
 interface Props {
     fetchContext: FetchContext;
-    features: Features;
+    feature: Feature;
 }
 
 class Informasjonsvisning extends React.Component<AppContextProp & Props> {
     public render() {
-        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext, this.props.features)
+        const renderElementer: React.ReactNode[] = getConfig(this.props.fetchContext, this.props.feature)
             .map(lagVisningBolk(this.props.context));
 
         return (

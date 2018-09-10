@@ -11,7 +11,7 @@ import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
 import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
-import {Features} from "./app/persondetaljer";
+import {Feature} from "./app/persondetaljer";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import {Registrering} from "./app/visningskomponenter/registrering/registrering";
 
@@ -27,7 +27,7 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext, features: Features): Array<IInformasjonsElement<any>> {
+export function getConfig(context: FetchContext, feature: Feature): Array<IInformasjonsElement<any>> {
     const bolker = [
         {
             component: CV,
@@ -79,7 +79,7 @@ export function getConfig(context: FetchContext, features: Features): Array<IInf
         }
     ];
 
-    if (features["mao.vise_registrering"]) {
+    if (feature["mao.vise_registrering"]) {
         const registrering = {
             component: Registrering,
             dataSource: getData<{ registrering: RegistreringsData}>({
