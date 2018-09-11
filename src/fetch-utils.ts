@@ -30,7 +30,7 @@ export function getData<T>(sourceConfig: SourceConfig<T>): () => Promise<Data<T>
         };
 
         Object.keys(sourceConfig)
-            .forEach((key) => fetchJson(sourceConfig[key])
+            .forEach((key) => fetchJson(key, sourceConfig[key])
                 .then(handleResponse(key), handleResponse(key)));
     });
 }
@@ -55,11 +55,11 @@ function createErrorHandler<T>(config: SourceConfigEntry<T>) {
     };
 }
 
-function fetchJson<T>(config: SourceConfigEntry<T>): Promise<T | Error> {
+function fetchJson<T>(key: string, config: SourceConfigEntry<T>): Promise<T | Error> {
     const url = typeof config === 'string' ? config : config.url;
     const errorHandler = createErrorHandler(config);
 
-    return fetch(url, { credentials: "include" })
+    return fetch(key, url, { credentials: "include" })
         .then((resp) => {
             if (!resp.ok) {
                 return errorHandler(undefined, resp);
@@ -68,8 +68,4 @@ function fetchJson<T>(config: SourceConfigEntry<T>): Promise<T | Error> {
             return resp.json();
         }, errorHandler)
         .catch(errorHandler);
-}
-
-export function getJson(url: string): () => Promise<any> {
-    return () => fetchJson<any>(url);
 }

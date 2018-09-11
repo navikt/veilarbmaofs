@@ -10,15 +10,19 @@ export interface AppProps {
 }
 
 class Application extends React.Component<AppProps> {
-  public render() {
-    return (
-      <div className="veilarbmaofs">
-          <AppProvider>
-              <Persondetaljer {...this.props}/>
-          </AppProvider>
-      </div>
-    );
-  }
+    public componentDidMount(){
+        (window as any).frontendlogger.event('maofs.visning', {}, {});
+    }
+
+    public render() {
+        return (
+            <div className="veilarbmaofs">
+                <AppProvider>
+                    <Persondetaljer {...this.props}/>
+                </AppProvider>
+            </div>
+        );
+    }
 }
 
 export default Application;

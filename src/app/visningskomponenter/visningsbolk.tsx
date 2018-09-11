@@ -1,0 +1,38 @@
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import * as React from 'react';
+import {IInformasjonsElement} from "../../config";
+import {AppContextProp} from "../context";
+import Datafetcher from "../utils/datafetcher";
+
+interface VisningsbolkState{
+    apen: boolean;
+}
+
+type Props<DATA> = IInformasjonsElement<DATA> & AppContextProp;
+
+export class VisningsBolk<DATA> extends React.Component<Props<DATA>, VisningsbolkState>{
+
+    constructor(props: Props<DATA>){
+        super(props);
+        this.state = { apen: false };
+        this.onClick = this.onClick.bind(this);
+    }
+
+    public onClick(){
+        this.setState({apen: !this.state.apen});
+        const eventType = this.state.apen ? "open" : "close";
+        (window as any).frontendlogger.event('maofs.lamel-click', {'lamel': this.props.id, "type": eventType}, {});
+    }
+
+    public render() {
+        const Component = this.props.component;
+
+        return (
+            <Ekspanderbartpanel tittel={this.props.id} onClick={this.onClick} tittelProps="undertittel">
+                <Datafetcher data={this.props.dataSource}>
+                    {(data: DATA) => <Component data={data}/>}
+                </Datafetcher>
+            </Ekspanderbartpanel>
+        );
+    }
+}

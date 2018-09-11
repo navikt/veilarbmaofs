@@ -15,12 +15,12 @@ import { UnmountClosed as Collapse } from 'react-collapse';
 import {getData, SourceConfig} from "../fetch-utils";
 import Datafetcher from "./utils/datafetcher";
 
-export interface Features {
+export interface Feature {
     [key: string]: boolean
 }
 
 interface FeaturesReq {
-    features: Features
+    feature: Feature
 }
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
@@ -51,7 +51,7 @@ interface Props {
 }
 function UtvidetInfo(props: Props) {
     const sourceConfig: SourceConfig<FeaturesReq> = {
-        features: {
+        feature: {
             allwaysUseFallback: true,
             fallback: { "mao.vise_registrering": false},
             url: '/feature/?feature=mao.vise_registrering'
@@ -64,7 +64,7 @@ function UtvidetInfo(props: Props) {
         <Datafetcher data={data} loader={returnNull}>
             {(a: FeaturesReq) =>
                 <Collapse isOpened={props.isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
-                    <Informasjonsvisning fetchContext={props.fetchContext} features={a.features} />
+                    <Informasjonsvisning fetchContext={props.fetchContext} feature={a.feature} />
                 </Collapse>
             }
         </Datafetcher>
