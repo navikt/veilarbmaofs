@@ -30,7 +30,9 @@
     </div>
   </body>
   <script type="application/javascript">
-      window.frontendlogger = { info: function(){}, warn: function(){}, error: function(){}, event: function(){}};
+      window.frontendlogger = { info: function(){}, warn: function(){}, error: function(){}, event: function(){
+            console.log("event-triggered", arguments)
+          }};
       window.frontendlogger.appname = 'veilarbmaofs'; // this will be overwritten i veilarpersonflatefs
   </script>
   <script>
