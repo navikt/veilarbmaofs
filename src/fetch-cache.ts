@@ -4,8 +4,8 @@ function createCacheKey(input: RequestInfo, init?: RequestInit): string {
 
 function logTimeSince(key: string, startTime: Date) {
     const end = new Date();
-    (window as any).frontendlogger.event(`maofs.responseTime.${key}`,
-        {'value': end.getTime() - startTime.getTime()}, {});
+    (window as any).frontendlogger.event('maofs.responseTime',
+        {'value': end.getTime() - startTime.getTime()}, {'key' : key});
 }
 
 interface ICache {
