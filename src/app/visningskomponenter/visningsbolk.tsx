@@ -19,9 +19,10 @@ export class VisningsBolk<DATA> extends React.Component<Props<DATA>, Visningsbol
     }
 
     public onClick(){
-        this.setState({apen: !this.state.apen});
-        const eventType = this.state.apen ? "open" : "close";
-        (window as any).frontendlogger.event('maofs.lamel-click', {'lamel': this.props.id, "type": eventType}, {});
+        const apen = !this.state.apen;
+        this.setState({apen});
+        const eventType = apen ? "open" : "close";
+        (window as any).frontendlogger.event('maofs.lamell-click', {'lamell': this.props.id, "type": eventType}, {});
     }
 
     public render() {
