@@ -11,7 +11,7 @@ export interface AppProps {
 
 class Application extends React.Component<AppProps> {
     public componentDidMount(){
-        (window as any).frontendlogger.event('maofs.visning', {}, {});
+        (window as any).frontendlogger.event('maofs.visning.v2', {}, {});
     }
 
     public render() {
