@@ -18,7 +18,7 @@ interface Props {
 
 class Informasjonsvisning extends React.Component<AppContextProp & Props> {
     public componentDidMount() {
-        (window as any).frontendlogger.event('maofs.detaljer', {}, {});
+        (window as any).frontendlogger.event('maofs.detaljer.v2', {}, {});
     }
 
     public render() {
