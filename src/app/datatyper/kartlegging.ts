@@ -54,6 +54,6 @@ export function createKartleggingDataSourceConfig(context: FetchContext): Source
             raad: [],
             underOppfolging: null,
         },
-        url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
+        url: `/veilarbjobbsokerkompetanse/api/hentSomInternBruker?fnr=${context.fnr}`
     }
 }
