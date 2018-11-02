@@ -40,7 +40,9 @@ function createErrorHandler<T>(config: SourceConfigEntry<T>) {
         if (typeof config === 'string') {
             return new Error(reason);
         } else {
-            const fallbackFn = typeof config.fallback === 'function' ? config.fallback : (a?: string, b?: Response) => config.fallback;
+            const fallbackFn : any =
+                typeof config.fallback === 'function' ?
+                config.fallback : (a?: string, b?: Response) => config.fallback;
 
             if (config.allwaysUseFallback) {
                 return fallbackFn(reason, resp);
