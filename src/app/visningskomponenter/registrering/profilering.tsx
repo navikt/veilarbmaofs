@@ -8,6 +8,7 @@ interface Props {
 }
 
 export function Profilering(props: Props) {
+
     if (!props.profilering) {
         return null;
     }

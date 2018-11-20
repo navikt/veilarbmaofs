@@ -12,13 +12,14 @@ interface Props {
 }
 
 export function Registrering(props: Props) {
-    const {registrering, profilering} = props.data.registrering;
+
+    const { registrering, profilering } = props.data.registrering;
 
     return (
         <>
             <Header registrering={registrering}/>
             <SporsmalsListe registrering={registrering}/>
-            <Profilering  profilering={profilering}/>
+            <Profilering profilering={profilering ? profilering : (registrering && registrering.profilering)}/>
         </>
     )
 }
