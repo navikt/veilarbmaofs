@@ -17,3 +17,5 @@ fasitResources:
   - alias: loadbalancer:veilarbmaofs
     resourceType: loadbalancerconfig
 team: oppfolging
+alertProfiles:
+  - common-java-modules
