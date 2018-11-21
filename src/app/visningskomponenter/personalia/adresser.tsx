@@ -1,20 +1,23 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import {PersonaliaBostedsadresse, PersonaliaInfo} from "../../datatyper/personalia";
+import EMDASH from "../../utils/emdash";
 import {isNullOrUndefined} from "../../utils/util";
 import NormalTekstWrapper from "../felles-komponenter/normaltekstwrapper";
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
-    if (isNullOrUndefined(props.bostedsadresse)) {
+    if (isNullOrUndefined(props.bostedsadresse)){
         return null;
     }
+
+    const harAdresse = !isNullOrUndefined(props.bostedsadresse.strukturertAdresse.Gateadresse);
 
     return (
         <div className="underinformasjon">
             <Element>
                 Folkeregistrert postadresse
             </Element>
-            <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/>
+            {harAdresse ? <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/> : <>{EMDASH}</>}
         </div>
     );
 }
@@ -69,7 +72,7 @@ function MidlertidigUtland(props: Pick<PersonaliaInfo, 'midlertidigAdresseUtland
 }
 
 function AdresseVisning(prop: PersonaliaBostedsadresse) {
-    const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.strukturertAdresse.Gateadresse;
+    const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.strukturertAdresse.Gateadresse!;
     const nummer = husnummer ? husnummer : '';
     const bokstav = husbokstav ? husbokstav : '';
 
