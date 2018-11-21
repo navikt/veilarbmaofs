@@ -28,20 +28,23 @@ export interface PersonaliaSivilstand {
 export interface PersonaliaPartner extends GrunnPersonalia{
     harSammeBosted: boolean;
 }
+
+interface Gateadresse {
+    landkode: string;
+    tilleggsadresse: StringOrNothing;
+    postnummer: string;
+    poststed: string;
+    husnummer: number;
+    husbokstav: StringOrNothing;
+    kommunenummer: string;
+    gatenavn: StringOrNothing;
+    bolignummer: StringOrNothing;
+    gatenummer: OrNothing<number>;
+}
+
 export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
-        Gateadresse: {
-            landkode: string;
-            tilleggsadresse: StringOrNothing;
-            postnummer: string;
-            poststed: string;
-            husnummer: number;
-            husbokstav: StringOrNothing;
-            kommunenummer: string;
-            gatenavn: StringOrNothing;
-            bolignummer: StringOrNothing;
-            gatenummer: OrNothing<number>;
-        }
+        Gateadresse: OrNothing<Gateadresse>
     }
 }
 
