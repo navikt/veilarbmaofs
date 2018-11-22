@@ -24,6 +24,11 @@ const registering: RegistreringsData & JSONValue = {
             "konseptId": 147188,
             "styrk08": "5142"
         },
+        "profilering": {
+            "jobbetSammenhengendeSeksAvTolvSisteManeder": true,
+            "alder": 49,
+            "innsatsgruppe": "STANDARD_INNSATS"
+        },
         "teksterForBesvarelse": [
             {
                 "sporsmalId": "dinSituasjon",
@@ -61,11 +66,6 @@ const registering: RegistreringsData & JSONValue = {
                 "svar": "Nei"
             }
         ]
-    },
-    "profilering": {
-        "jobbetSammenhengendeSeksAvTolvSisteManeder": true,
-        "alder": 49,
-        "innsatsgruppe": "STANDARD_INNSATS"
     },
     "teksterForBesvarelse": [
         {
