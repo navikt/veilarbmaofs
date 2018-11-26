@@ -1,30 +1,41 @@
 import * as React from 'react';
 import {getData, SourceConfig} from "../../fetch-utils";
 import {AppProps} from "../application";
-import {createOppfolgingDataSourceConfig} from "../datatyper/oppfolging";
+import {OppfolgingData} from "../datatyper/oppfolging";
+import {PersonaliaInfo} from "../datatyper/personalia";
 import Datafetcher from "../utils/datafetcher";
-import {BasisinfoData, renderBasisInfo} from "./basisinfo-visning";
+import {renderBasisInfo} from "./basisinfo-visning";
 import './basisinfo.less';
 
-function Basisinfo({fnr}: AppProps) {
+interface BasisinfoData {
+    personalia: PersonaliaInfo;
+    feature: { "mao.trenger_vurdering": boolean }
+}
+
+interface BasisinfoProps {
+    oppfolging: OppfolgingData;
+}
+
+type Props = AppProps & BasisinfoProps;
+
+function Basisinfo({fnr, oppfolging}: Props) {
     const sourceConfig: SourceConfig<BasisinfoData> = {
         feature: {
             allwaysUseFallback: true,
             fallback: { "mao.trenger_vurdering": false },
             url: '/feature/?feature=mao.trenger_vurdering'
         },
-        oppfolging: createOppfolgingDataSourceConfig({ fnr }),
         personalia: `/veilarbperson/api/person/${fnr}`
     };
 
     const data = getData<BasisinfoData>(sourceConfig);
 
     return (
-        <>
         <Datafetcher data={data}>
-            {renderBasisInfo}
+            {(a: BasisinfoData) => {
+                return renderBasisInfo({ personalia: a.personalia, feature: a.feature, oppfolging });
+            }}
         </Datafetcher>
-        </>
     );
 }
 
