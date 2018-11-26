@@ -27,7 +27,11 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext, feature: Feature): Array<IInformasjonsElement<any>> {
+function erBrukerSykmeldt(oppfolging: OppfolgingData): boolean {
+    return oppfolging.formidlingsgruppe === "IARBS" && oppfolging.servicegruppe === "VURDI";
+}
+
+export function getConfig(context: FetchContext, feature: Feature, oppfolging: OppfolgingData): Array<IInformasjonsElement<any>> {
     const bolker = [
         {
             component: CV,
@@ -85,7 +89,7 @@ export function getConfig(context: FetchContext, feature: Feature): Array<IInfor
             dataSource: getData<{ registrering: RegistreringsData}>({
                 registrering: createRegistreringsDataSourceConfig(context)
             }),
-            id: 'Registrering',
+            id: erBrukerSykmeldt(oppfolging) ? 'Overgang fra sykefravær' : 'Registrering',
         };
 
         return  [ registrering, ...bolker ];

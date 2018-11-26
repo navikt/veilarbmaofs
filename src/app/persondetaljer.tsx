@@ -13,14 +13,16 @@ import './persondetaljer.less';
 
 import { UnmountClosed as Collapse } from 'react-collapse';
 import {getData, SourceConfig} from "../fetch-utils";
+import {createOppfolgingDataSourceConfig, OppfolgingData} from "./datatyper/oppfolging";
 import Datafetcher from "./utils/datafetcher";
 
 export interface Feature {
-    [key: string]: boolean
+    [key: string]: boolean;
 }
 
-interface FeaturesReq {
-    feature: Feature
+interface UtvidetInfoData {
+    feature: Feature;
+    oppfolging: OppfolgingData;
 }
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
@@ -50,21 +52,22 @@ interface Props {
 
 }
 function UtvidetInfo(props: Props) {
-    const sourceConfig: SourceConfig<FeaturesReq> = {
+    const sourceConfig: SourceConfig<UtvidetInfoData> = {
         feature: {
             allwaysUseFallback: true,
             fallback: { "mao.vise_registrering": false},
             url: '/feature/?feature=mao.vise_registrering'
-        }
+        },
+        oppfolging: createOppfolgingDataSourceConfig(props.fetchContext),
     };
 
-    const data = getData<FeaturesReq>(sourceConfig);
+    const data = getData<UtvidetInfoData>(sourceConfig);
 
     return (
         <Datafetcher data={data} loader={returnNull}>
-            {(a: FeaturesReq) =>
+            {(a: UtvidetInfoData) =>
                 <Collapse isOpened={props.isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
-                    <Informasjonsvisning fetchContext={props.fetchContext} feature={a.feature} />
+                    <Informasjonsvisning fetchContext={props.fetchContext} feature={a.feature} oppfolging={a.oppfolging} />
                 </Collapse>
             }
         </Datafetcher>

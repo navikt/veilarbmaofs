@@ -8,7 +8,7 @@ const oppfolingstatus: OppfolgingData & JSONValue = {
         enhetId: "007"
     },
     veilederId: "Z123456",
-    formidlingsgruppe: 'ARBS',
-    servicegruppe: 'BKART'
+    formidlingsgruppe: "ARBS",
+    servicegruppe: "BKART"
 };
 export default oppfolingstatus
