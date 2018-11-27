@@ -31,7 +31,8 @@
     "react": "^16.4.1",
     "react-collapse": "^4.0.3",
     "react-dom": "^16.4.1",
-    "react-motion": "^0.5.2"
+    "react-motion": "^0.5.2",
+    "serve": "^9.1.0"
   },
   "scripts": {
     "start": "cross-env REACT_APP_MOCK=true react-scripts-ts start",
@@ -55,7 +56,6 @@
     "@types/react-dom": "^16.0.6",
     "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.5",
-    "serve": "^9.1.0",
     "tslint": "^5.10.0",
     "typescript": "^3.0.3",
     "yet-another-fetch-mock": "^2.3.3"
