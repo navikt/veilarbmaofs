@@ -18,4 +18,4 @@ fasitResources:
     resourceType: loadbalancerconfig
 team: oppfolging
 alertProfiles:
-  - basic
+  - minimal
