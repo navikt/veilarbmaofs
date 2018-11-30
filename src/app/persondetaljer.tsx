@@ -13,20 +13,33 @@ import './persondetaljer.less';
 
 import { UnmountClosed as Collapse } from 'react-collapse';
 import {getData, SourceConfig} from "../fetch-utils";
+import {createOppfolgingDataSourceConfig, OppfolgingData} from "./datatyper/oppfolging";
 import Datafetcher from "./utils/datafetcher";
 
 export interface Feature {
-    [key: string]: boolean
+    [key: string]: boolean;
 }
 
-interface FeaturesReq {
-    feature: Feature
+interface PersondetaljerData {
+    oppfolging: OppfolgingData;
+    feature: Feature;
 }
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
     public render() {
         const apen = this.props.context.apen;
         const fetchContext: FetchContext = { fnr : this.props.fnr };
+
+        const sourceConfig: SourceConfig<PersondetaljerData> = {
+            feature: {
+                allwaysUseFallback: true,
+                fallback: { "mao.vise_registrering": false},
+                url: '/feature/?feature=mao.vise_registrering'
+            },
+            oppfolging: createOppfolgingDataSourceConfig(fetchContext)
+        };
+
+        const data = getData<PersondetaljerData>(sourceConfig);
 
         return (
             <React.Fragment key={this.props.fnr}>
@@ -37,42 +50,40 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
                         'lukket': !apen
                     })}
                 >
-                    <Basisinfo fnr={this.props.fnr} />
-                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen}/>
+                    <Datafetcher data={data}>
+                        {(a: PersondetaljerData) => {
+                            return (
+                                <>
+                                    <Basisinfo fnr={this.props.fnr} oppfolging={a.oppfolging}/>
+                                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen} feature={a.feature} oppfolging={a.oppfolging}/>
+                                </>
+                            );
+                        }}
+                    </Datafetcher>
                 </div>
             </React.Fragment>
         )
     }
 }
+
 interface Props {
     fetchContext: FetchContext;
     isOpened: boolean;
-
+    oppfolging: OppfolgingData;
+    feature: Feature;
 }
-function UtvidetInfo(props: Props) {
-    const sourceConfig: SourceConfig<FeaturesReq> = {
-        feature: {
-            allwaysUseFallback: true,
-            fallback: { "mao.vise_registrering": false},
-            url: '/feature/?feature=mao.vise_registrering'
-        }
-    };
 
-    const data = getData<FeaturesReq>(sourceConfig);
+function UtvidetInfo(props: Props) {
+
+    const { isOpened, fetchContext, feature, oppfolging } = props;
 
     return (
-        <Datafetcher data={data} loader={returnNull}>
-            {(a: FeaturesReq) =>
-                <Collapse isOpened={props.isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
-                    <Informasjonsvisning fetchContext={props.fetchContext} feature={a.feature} />
-                </Collapse>
-            }
-        </Datafetcher>
-    )
+        <Collapse isOpened={isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
+            <Informasjonsvisning fetchContext={fetchContext} feature={feature} oppfolging={oppfolging} />
+        </Collapse>
+    );
+
 }
 
-function returnNull() {
-    return null;
-}
 
 export default withAppContext<AppProps>(AppContext, Persondetaljer);

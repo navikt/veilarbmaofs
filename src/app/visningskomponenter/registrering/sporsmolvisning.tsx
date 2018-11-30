@@ -6,6 +6,7 @@ import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import {visEmdashHvisNull} from "../utils";
 
 export function SporsmalsListe(props: {registrering?: Registrering}) {
+
     if(!props.registrering || !props.registrering.teksterForBesvarelse) {
         return null;
     }
