@@ -9,6 +9,7 @@ const oppfolingstatus: OppfolgingData & JSONValue = {
     },
     veilederId: "Z123456",
     formidlingsgruppe: null,
-    servicegruppe: null
+    servicegruppe: null,
+    hovedmaalkode: "Skaffe arbeid"
 };
 export default oppfolingstatus

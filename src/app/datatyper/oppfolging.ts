@@ -14,6 +14,7 @@ export interface OppfolgingData {
     veilederId: StringOrNothing;
     formidlingsgruppe: OrNothing<Formidlingsgruppe>;
     servicegruppe: OrNothing<Servicegruppe>;
+    hovedmaalkode: StringOrNothing;
 }
 
 export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingData> {
@@ -26,7 +27,8 @@ export function createOppfolgingDataSourceConfig(context: FetchContext): SourceC
                 navn: null
             },
             servicegruppe: null,
-            veilederId: null
+            veilederId: null,
+            hovedmaalkode: null
         },
         url: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`
     };

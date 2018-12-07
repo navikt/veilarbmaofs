@@ -11,7 +11,7 @@ import {Veileder} from "./veileder";
 interface OppfolgingProps {
     data: {
         oppfolging: OppfolgingData,
-        ytelser: YtelseDataType
+        ytelser: YtelseDataType,
         personalia: PersonaliaInfo
     }
 }
@@ -50,6 +50,9 @@ function Oppfolging(props: OppfolgingProps) {
                                        defaultValue={EMDASH}/>
                 <InformasjonsbolkEnkel header="Oppfølgingsenhet"
                                        value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
+                                       defaultValue={EMDASH}/>
+                <InformasjonsbolkEnkel header="Hovedmål"
+                                       value={oppfolging.hovedmaalkode}
                                        defaultValue={EMDASH}/>
             </Grid>
         </>
