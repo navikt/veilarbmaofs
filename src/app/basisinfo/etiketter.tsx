@@ -1,10 +1,10 @@
 import {EtikettAdvarsel, EtikettInfo} from "nav-frontend-etiketter";
 import * as React from 'react';
+import {Feature} from "../persondetaljer";
 import {erBrukerSykmeldt, trengerAEV, trengerVurdering} from "../utils/arena-status-utils";
 import hiddenIf from "../utils/hidden-if";
 import {BasisinfoData} from "./basisinfo-visning";
 import './etiketter.less';
-import {Feature} from "../persondetaljer";
 
 const Advarsel = hiddenIf(EtikettAdvarsel);
 const Info = hiddenIf(EtikettInfo);
