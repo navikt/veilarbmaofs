@@ -1,21 +1,16 @@
 import {EtikettAdvarsel, EtikettInfo} from "nav-frontend-etiketter";
 import * as React from 'react';
+import {erBrukerSykmeldt, trengerAEV, trengerVurdering} from "../utils/arena-status-utils";
 import hiddenIf from "../utils/hidden-if";
 import {BasisinfoData} from "./basisinfo-visning";
 import './etiketter.less';
+import {Feature} from "../persondetaljer";
 
 const Advarsel = hiddenIf(EtikettAdvarsel);
 const Info = hiddenIf(EtikettInfo);
 
-function featurePa(props: BasisinfoData) {
-    return props.feature["mao.trenger_vurdering"];
-}
-
-function trengerVurdering(props: BasisinfoData) {
-    return props.oppfolging.formidlingsgruppe !== 'ISERV' && props.oppfolging.servicegruppe === 'IVURD';
-}
-function trengerAEV(props: BasisinfoData) {
-    return props.oppfolging.formidlingsgruppe !== 'ISERV' && props.oppfolging.servicegruppe === 'BKART';
+function featurePa(feature: Feature) {
+    return feature["mao.sykmeldt_med_arbeidsgiver"];
 }
 
 function Etiketter(props: BasisinfoData) {
@@ -25,8 +20,9 @@ function Etiketter(props: BasisinfoData) {
         <Advarsel hidden={!diskresjonskode}>Kode {diskresjonskode}</Advarsel>
         <Advarsel hidden={!sikkerhetstiltak}>{sikkerhetstiltak}</Advarsel>
         <Advarsel hidden={!egenAnsatt}>Egen ansatt</Advarsel>
-        <Info hidden={!(featurePa(props) && trengerVurdering(props))} className="etikett--info2">Trenger vurdering</Info>
-        <Info hidden={!(featurePa(props) && trengerAEV(props))} className="etikett--info2">Behov for AEV</Info>
+        <Info hidden={!(trengerVurdering(props.oppfolging))} className="etikett--info2">Trenger vurdering</Info>
+        <Info hidden={!(trengerAEV(props.oppfolging))} className="etikett--info2">Behov for AEV</Info>
+        <Info hidden={!(featurePa(props.feature) && erBrukerSykmeldt(props.oppfolging))} className="etikett--info2">Sykmeldt</Info>
     </div>;
 }
 
