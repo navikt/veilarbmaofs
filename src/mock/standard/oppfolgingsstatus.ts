@@ -10,6 +10,6 @@ const oppfolingstatus: OppfolgingData & JSONValue = {
     veilederId: "Z123456",
     formidlingsgruppe: "ARBS",
     servicegruppe: "BKART",
-    hovedmaalkode: "Skaffe arbeid"
+    hovedmaalkode: "BEHOLDEA"
 };
 export default oppfolingstatus
