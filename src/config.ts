@@ -86,7 +86,7 @@ export function getConfig(context: FetchContext, feature: Feature, oppfolging: O
             dataSource: getData<{ registrering: RegistreringsData}>({
                 registrering: createRegistreringsDataSourceConfig(context)
             }),
-            id: erBrukerSykmeldt(oppfolging) ? 'Overgang fra sykefravær' : 'Registrering',
+            id: erBrukerSykmeldt(oppfolging) ? 'Registrering fra sykefravær' : 'Registrering',
         };
 
         return  [ registrering, ...bolker ];
