@@ -9,7 +9,7 @@ import './basisinfo.less';
 
 interface BasisinfoData {
     personalia: PersonaliaInfo;
-    feature: { "mao.trenger_vurdering": boolean }
+    feature: { "mao.sykmeldt_med_arbeidsgiver": boolean }
 }
 
 interface BasisinfoProps {
@@ -22,8 +22,8 @@ function Basisinfo({fnr, oppfolging}: Props) {
     const sourceConfig: SourceConfig<BasisinfoData> = {
         feature: {
             allwaysUseFallback: true,
-            fallback: { "mao.trenger_vurdering": false },
-            url: '/feature/?feature=mao.trenger_vurdering'
+            fallback: { "mao.sykmeldt_med_arbeidsgiver": false },
+            url: '/feature/?feature=mao.sykmeldt_med_arbeidsgiver'
         },
         personalia: `/veilarbperson/api/person/${fnr}`
     };

@@ -30,7 +30,7 @@ function Fodelsnummer(prop: {fnr: string}){
 export interface BasisinfoData {
     oppfolging: OppfolgingData;
     personalia: PersonaliaInfo;
-    feature: { "mao.trenger_vurdering": boolean }
+    feature: { "mao.sykmeldt_med_arbeidsgiver": boolean }
 }
 
 export function renderBasisInfo({ personalia, oppfolging, feature }: BasisinfoData) {
