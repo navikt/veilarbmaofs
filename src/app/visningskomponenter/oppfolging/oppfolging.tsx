@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {OppfolgingData, OppfolgingEnhet} from "../../datatyper/oppfolging";
+import {Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingData, OppfolgingEnhet} from "../../datatyper/oppfolging";
 import {PersonaliaEnhet, PersonaliaInfo} from "../../datatyper/personalia";
 import {YtelseDataType} from "../../datatyper/ytelse";
 import EMDASH from "../../utils/emdash";
 import Grid from "../../utils/grid";
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
-import {StringOrNothing} from "../felles-typer";
+import {OrNothing, StringOrNothing} from "../felles-typer";
 import {Veileder} from "./veileder";
 
 interface OppfolgingProps {
     data: {
         oppfolging: OppfolgingData,
-        ytelser: YtelseDataType
+        ytelser: YtelseDataType,
         personalia: PersonaliaInfo
     }
 }
@@ -36,6 +36,10 @@ function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNothing
     return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : null;
 }
 
+function getHovedmaalkodeTekst(hovedmaalkode: OrNothing<Hovedmaalgruppe> ): StringOrNothing {
+    return hovedmaalkode != null ? HovedmaalkodeMap[hovedmaalkode] : null;
+}
+
 function Oppfolging(props: OppfolgingProps) {
     const {oppfolging, personalia, ytelser} = props.data;
 
@@ -50,6 +54,9 @@ function Oppfolging(props: OppfolgingProps) {
                                        defaultValue={EMDASH}/>
                 <InformasjonsbolkEnkel header="Oppfølgingsenhet"
                                        value={toStrOppfolging(oppfolging.oppfolgingsenhet)}
+                                       defaultValue={EMDASH}/>
+                <InformasjonsbolkEnkel header="Hovedmål"
+                                       value={getHovedmaalkodeTekst(oppfolging.hovedmaalkode)}
                                        defaultValue={EMDASH}/>
             </Grid>
         </>
