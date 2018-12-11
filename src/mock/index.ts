@@ -46,4 +46,4 @@ mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstat
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
 mock.get('/veilarbregistrering/api/registrering', Registering);
-mock.get('/feature', { "mao.trenger_vurdering": true, "mao.vise_registrering": true });
+mock.get('/veilarbpersonflatefs/api/feature', { "mao.trenger_vurdering": true, "mao.vise_registrering": true, "mao.sykmeldt_med_arbeidsgiver": true });

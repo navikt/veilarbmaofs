@@ -23,7 +23,7 @@ function Basisinfo({fnr, oppfolging}: Props) {
         feature: {
             allwaysUseFallback: true,
             fallback: { "mao.sykmeldt_med_arbeidsgiver": false },
-            url: '/feature/?feature=mao.sykmeldt_med_arbeidsgiver'
+            url: '/veilarbpersonflatefs/api/feature?feature=mao.sykmeldt_med_arbeidsgiver'
         },
         personalia: `/veilarbperson/api/person/${fnr}`
     };
