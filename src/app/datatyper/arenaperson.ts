@@ -14,34 +14,21 @@ interface Utdanning {
     tilDato: string;
     utdannelsessted: string;
     alternativtUtdanningsnavn: string;
-    nusKode: string;
-    nusKodeUtdanningsnavn: string;
 }
 
 interface Yrkeserfaring {
     fraDato: string;
     tilDato: string;
-    styrkKode: string;
     styrkKodeStillingstittel: string;
-    utelukketForFremtiden: boolean;
     arbeidsgiver: string;
-    alternativStillingstittel: string;
 }
 
 interface Sertifikat {
-    fraDato: string;
-    tilDato: StringOrNothing
-    sertifikatKode: string;
     sertifikatKodeNavn: string;
-    alternativtNavn: StringOrNothing;
-    utsteder: string;
 }
 
 interface Kompetanse {
-    fraDato: string;
     beskrivelse: StringOrNothing
-    alternativTekst: StringOrNothing
-    kompetanseKode: string;
     kompetanseKodeTekst: string;
 }
 
@@ -73,30 +60,14 @@ export interface ArbeidstidsordningJobbonsker {
 
 interface Kurs {
     fraDato: string;
-    tilDato: StringOrNothing
     tittel: string;
     arrangor: string;
-    omfang: {
-        verdi: number
-        enhet: StringOrNothing
-    }
 }
 
 export interface ArenaPerson {
-    personId: number;
-    fodselsdato: string;
-    fodselsnummer: string;
-    erFodselsnummerDnr: boolean;
-    formidlingsgruppekode: string;
-    etternavn: string;
-    fornavn: string;
-    statsborgerskap: string;
-    samtykkeDato: string;
-    samtykkeStatus: string;
     disponererBil: OrNothing<boolean>;
     verv: Verv[];
     beskrivelse: StringOrNothing;
-    kandidatnummer: StringOrNothing
     sistEndret: StringOrNothing;
     adresse: {
         landkode: string;
@@ -118,23 +89,18 @@ export interface ArenaPerson {
     heltidDeltidJobbonsker: HeltidDeltidJobbonsker[];
     ansettelsesforholdJobbonsker: AnsettelsesforholdJobbonsker[];
     arbeidstidsordningJobbonsker: ArbeidstidsordningJobbonsker[];
-    epost: StringOrNothing
     kurs: Kurs[]
 }
 
 export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
     return {
         fallback: {
-            personId: -1,
             fodselsdato: "",
             fodselsnummer: "",
-            erFodselsnummerDnr: false,
             formidlingsgruppekode: "",
             etternavn: "",
             fornavn: "",
             statsborgerskap: "",
-            samtykkeDato: "",
-            samtykkeStatus: "",
             disponererBil: null,
             verv: [],
             beskrivelse: null,

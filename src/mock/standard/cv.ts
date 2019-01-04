@@ -3,19 +3,9 @@ import {JSONValue} from "yet-another-fetch-mock";
 import {ArenaPerson} from "../../app/datatyper/arenaperson";
 
 const CV: ArenaPerson & JSONValue = {
-    "personId": 6369,
-    "fodselsdato": "1980-03-17",
     "fodselsnummer": "17038046195",
-    "erFodselsnummerDnr": false,
-    "formidlingsgruppekode": "ARBS",
-    "etternavn": "ARNTSEN",
-    "fornavn": "SVERRE PETTER",
-    "statsborgerskap": "NO",
-    "samtykkeDato": "2016-02-02",
-    "samtykkeStatus": "J",
     "disponererBil": false,
     "beskrivelse": null,
-    "kandidatnummer": "AH030609",
     "sistEndret": "2018-06-19T09:59:41",
     "adresse": {
         "landkode": "NO",
@@ -26,265 +16,161 @@ const CV: ArenaPerson & JSONValue = {
         "adrlinje2": "",
         "adrlinje3": ""
     },
-    "epost": "",
     "utdanning": [{
         "fraDato": "2000-08-01",
         "tilDato": "2004-05-01",
         "utdannelsessted": "Høyskolen i Agder",
         "alternativtUtdanningsnavn": "Barchelor i ingeniørfag, studieretning datateknikk",
-        "nusKode": "654130",
-        "nusKodeUtdanningsnavn": "Bachelor, IT og logistikk, treårig"
     }, {
         "fraDato": "1996-08-01",
         "tilDato": "1999-06-01",
         "utdannelsessted": "Fredrik 2. VGS i Fredrikstad",
         "alternativtUtdanningsnavn": "VGS Allmennfaglig med studiekompetanse",
-        "nusKode": "301101",
-        "nusKodeUtdanningsnavn": "Allmenne, økonomiske og administrative fag, grunnkurs"
     }, {
         "fraDato": "1999-08-01",
         "tilDato": "1999-12-01",
         "utdannelsessted": " Garnison Porsanger",
         "alternativtUtdanningsnavn": "Førstegangstjeneste i Heimevernet",
-        "nusKode": "682199",
-        "nusKodeUtdanningsnavn": "Militære fag, lavere nivå"
     }],
     "yrkeserfaring": [{
         "fraDato": "2004-07-01",
         "tilDato": "2012-05-01",
         "arbeidsgiver": "Diverse",
-        "alternativStillingstittel": "Web-utviklere",
-        "styrkKode": "3514.02",
         "styrkKodeStillingstittel": "Webmaster",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "2004-01-01",
         "tilDato": "2015-12-01",
         "arbeidsgiver": "Diverse",
-        "alternativStillingstittel": "Tekniker (IT)",
-        "styrkKode": "3511.04",
         "styrkKodeStillingstittel": "Datatekniker",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "1998-12-01",
         "tilDato": "2012-05-01",
         "arbeidsgiver": "Amelti Systems, Amelti Development",
-        "alternativStillingstittel": "Programmerer",
-        "styrkKode": "2512.01",
         "styrkKodeStillingstittel": "Programmerer (data)",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "1999-03-01",
         "tilDato": "2015-12-01",
         "arbeidsgiver": "Diverse",
-        "alternativStillingstittel": "IT-rådgiver",
-        "styrkKode": "2511.01",
         "styrkKodeStillingstittel": "IT-rådgiver",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "2005-01-01",
         "tilDato": "2015-12-01",
         "arbeidsgiver": "Diverse",
-        "alternativStillingstittel": "Nettverks- og systemtekniker, IKT",
-        "styrkKode": "3513.01",
         "styrkKodeStillingstittel": "EDB-systemkonsulent",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "2013-09-01",
         "tilDato": "2015-08-01",
         "arbeidsgiver": "ABB/ Dovre",
-        "alternativStillingstittel": "Prosjektingeniør",
-        "styrkKode": "2512.02",
         "styrkKodeStillingstittel": "Programvareutvikler",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "2013-09-01",
         "tilDato": "2015-08-01",
         "arbeidsgiver": "ABB / Dovre ",
-        "alternativStillingstittel": "Prosjektingeniør (olje)",
-        "styrkKode": "3117.48",
         "styrkKodeStillingstittel": "Prosjektingeniør (olje)",
-        "utelukketForFremtiden": false
     }, {
         "fraDato": "2008-01-01",
         "tilDato": "2015-07-01",
         "arbeidsgiver": "Diverse",
-        "alternativStillingstittel": "Systemkonsulent",
-        "styrkKode": "2511.18",
         "styrkKodeStillingstittel": "Systemkonsulent",
-        "utelukketForFremtiden": false
     }],
     "sertifikater": [],
-    "forerkort": [],
+    "forerkort": [
+        {
+            "sertifikatKodeNavn": "Førerkort: Kl. B (personbil/varebil)",
+        },
+        {
+            "sertifikatKodeNavn": "Førerkort: Kl. A (tung motorsykkel)",
+        }
+    ],
     "kompetanse": [{
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140821",
         "kompetanseKodeTekst": "Grunnleggende IT-forståelse",
-        "alternativTekst": "Grunnleggende IT-forståelse"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140829",
         "kompetanseKodeTekst": "Word",
-        "alternativTekst": "Word"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140830",
         "kompetanseKodeTekst": "Excel",
-        "alternativTekst": "Excel"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140202",
         "kompetanseKodeTekst": "Mikroprosessorer",
-        "alternativTekst": "Mikroprosessorer"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140101",
         "kompetanseKodeTekst": "Databaser",
-        "alternativTekst": "Databaser"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140822",
         "kompetanseKodeTekst": "Bruk av datamaskiner, operativsystem",
-        "alternativTekst": "Bruk av datamaskiner, operativsystem"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140401",
         "kompetanseKodeTekst": "Nettverksarbeid generelt",
-        "alternativTekst": "Nettverksarbeid generelt"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140201",
         "kompetanseKodeTekst": "Datateknikk",
-        "alternativTekst": "Datateknikk"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140203",
         "kompetanseKodeTekst": "Objektorientert analyse",
-        "alternativTekst": "Objektorientert analyse"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140828",
         "kompetanseKodeTekst": "Datakort / IT-kompetanse",
-        "alternativTekst": "Datakort / IT-kompetanse"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140503",
         "kompetanseKodeTekst": "Programmering generelt",
-        "alternativTekst": "Programmering generelt"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKode": "3140402",
         "kompetanseKodeTekst": "Nettverkskommunikasjon",
-        "alternativTekst": "Nettverkskommunikasjon"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140827",
         "kompetanseKodeTekst": "Internett og e-post",
-        "alternativTekst": "Internett og e-post"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140825",
         "kompetanseKodeTekst": "Database",
-        "alternativTekst": "Database"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "32821",
         "kompetanseKodeTekst": "Teknisk tegning",
-        "alternativTekst": "Teknisk tegning"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140604",
         "kompetanseKodeTekst": "Programvareutvikling",
-        "alternativTekst": "Programvareutvikling"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140603",
         "kompetanseKodeTekst": "Objektorientert systemutvikling",
-        "alternativTekst": "Objektorientert systemutvikling"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3140605",
         "kompetanseKodeTekst": "Systemutvikling generelt",
-        "alternativTekst": "Systemutvikling generelt"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3280404",
         "kompetanseKodeTekst": "Elektronikkarbeid",
-        "alternativTekst": "Elektronikkarbeid"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": null,
-        "kompetanseKode": "3030312",
         "kompetanseKodeTekst": "Oljeproduksjon",
-        "alternativTekst": "Oljeproduksjon"
     }],
     "sprak": [{
-        "fraDato": "2015-09-03",
         "beskrivelse": "Meget bra",
-        "kompetanseKode": "4201",
         "kompetanseKodeTekst": "Engelsk",
-        "alternativTekst": "Engelsk"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "Morsmål",
-        "kompetanseKode": "4103",
         "kompetanseKodeTekst": "Bokmål",
-        "alternativTekst": "Norsk bokmål"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "God",
-        "kompetanseKode": "4206",
         "kompetanseKodeTekst": "Tysk",
-        "alternativTekst": "Tysk"
     }, {
-        "fraDato": "2015-09-03",
         "beskrivelse": "God",
-        "kompetanseKode": "4102",
         "kompetanseKodeTekst": "Nynorsk",
-        "alternativTekst": "Nynorsk"
     }],
     "kurs": [{
         "fraDato": "1999-08-01",
-        "tilDato": null,
         "arrangor": "HV",
-        "omfang": {"verdi": 20, "enhet": "TIME"},
         "tittel": "Vekterkurs"
     }, {
         "fraDato": "2015-05-01",
-        "tilDato": null,
         "arrangor": "ABB",
-        "omfang": {"verdi": 1, "enhet": "DAG"},
         "tittel": "FSE, Lavspenning og høyspenning"
     }, {
         "fraDato": "2015-02-01",
-        "tilDato": null,
         "arrangor": "ABB University",
-        "omfang": {"verdi": 4, "enhet": "DAG"},
         "tittel": "UNITROL 6080 Cold Commissioning"
     }, {
         "fraDato": "2015-03-01",
-        "tilDato": null,
         "arrangor": "Trainor",
-        "omfang": {"verdi": 3, "enhet": "DAG"},
         "tittel": "Ex basic"
     }],
     "verv": [],
