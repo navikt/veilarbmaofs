@@ -11,7 +11,6 @@ import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/
 import {PersonaliaInfo} from "./app/datatyper/personalia";
 import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
 import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
-import {Feature} from "./app/persondetaljer";
 import {erBrukerSykmeldt} from "./app/utils/arena-status-utils";
 import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
 import {Registrering} from "./app/visningskomponenter/registrering/registrering";
@@ -28,8 +27,15 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext, feature: Feature, oppfolging: OppfolgingData): Array<IInformasjonsElement<any>> {
-    const bolker = [
+export function getConfig(context: FetchContext, oppfolging: OppfolgingData): Array<IInformasjonsElement<any>> {
+    return [
+        {
+            component: Registrering,
+            dataSource: getData<{ registrering: RegistreringsData}>({
+                registrering: createRegistreringsDataSourceConfig(context)
+            }),
+            id: erBrukerSykmeldt(oppfolging) ? 'Registrering fra sykefravær' : 'Registrering',
+        },
         {
             component: CV,
             dataSource: getData<{ cv: ArenaPerson }>({
@@ -79,18 +85,4 @@ export function getConfig(context: FetchContext, feature: Feature, oppfolging: O
             id: 'Jobbsøkerkompetanse',
         }
     ];
-
-    if (feature["mao.vise_registrering"]) {
-        const registrering = {
-            component: Registrering,
-            dataSource: getData<{ registrering: RegistreringsData}>({
-                registrering: createRegistreringsDataSourceConfig(context)
-            }),
-            id: erBrukerSykmeldt(oppfolging) ? 'Registrering fra sykefravær' : 'Registrering',
-        };
-
-        return  [ registrering, ...bolker ];
-    }
-
-    return bolker;
 }
