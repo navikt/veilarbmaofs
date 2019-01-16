@@ -2,7 +2,6 @@ import * as React from 'react';
 import {FetchContext, getConfig, IInformasjonsElement} from "../../config";
 import {AppContext, AppContextProp, IAppContext, withAppContext} from "../context";
 import {OppfolgingData} from "../datatyper/oppfolging";
-import {Feature} from "../persondetaljer";
 import './informasjonsvisning.less';
 import {VisningsBolk} from "./visningsbolk";
 
@@ -14,7 +13,6 @@ function lagVisningBolk<T>(context: IAppContext) {
 
 interface Props {
     fetchContext: FetchContext;
-    feature: Feature;
     oppfolging: OppfolgingData;
 }
 
@@ -25,9 +23,9 @@ class Informasjonsvisning extends React.Component<AppContextProp & Props> {
 
     public render() {
 
-        const { fetchContext, feature, oppfolging, context } = this.props;
+        const { fetchContext, oppfolging, context } = this.props;
 
-        const renderElementer: React.ReactNode[] = getConfig(fetchContext, feature, oppfolging)
+        const renderElementer: React.ReactNode[] = getConfig(fetchContext, oppfolging)
             .map(lagVisningBolk(context));
 
         return (
