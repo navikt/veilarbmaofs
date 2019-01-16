@@ -16,7 +16,7 @@ export function Veileder(props: VeilederProps) {
     if (!veilederId) {
         return <div {...rest}>
             <InformasjonsbolkEnkel header="Veileder" defaultValue={EMDASH}/>
-        </div>;
+    </div>;
     }
 
     const sourceConfig: SourceConfig<{ veileder: VeilederData }> = {

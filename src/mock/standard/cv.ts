@@ -1,519 +1,256 @@
 // tslint:disable object-literal-sort-keys
 import {JSONValue} from "yet-another-fetch-mock";
-import {ArenaPerson} from "../../app/datatyper/arenaperson";
+import {ArenaPerson, KursVarighetEnhet} from "../../app/datatyper/arenaperson";
 
 const CV: ArenaPerson & JSONValue = {
-    "fodselsnummer": "17038046195",
-    "disponererBil": false,
-    "beskrivelse": null,
-    "sistEndret": "2018-06-19T09:59:41",
-    "adresse": {
-        "landkode": "NO",
-        "postnr": "1684",
-        "poststednavn": "VESTERØY",
-        "kommunenr": 111,
-        "adrlinje1": "Kattekløva 14",
-        "adrlinje2": "",
-        "adrlinje3": ""
-    },
-    "utdanning": [{
-        "fraDato": "2000-08-01",
-        "tilDato": "2004-05-01",
-        "utdannelsessted": "Høyskolen i Agder",
-        "alternativtUtdanningsnavn": "Barchelor i ingeniørfag, studieretning datateknikk",
-    }, {
-        "fraDato": "1996-08-01",
-        "tilDato": "1999-06-01",
-        "utdannelsessted": "Fredrik 2. VGS i Fredrikstad",
-        "alternativtUtdanningsnavn": "VGS Allmennfaglig med studiekompetanse",
-    }, {
-        "fraDato": "1999-08-01",
-        "tilDato": "1999-12-01",
-        "utdannelsessted": " Garnison Porsanger",
-        "alternativtUtdanningsnavn": "Førstegangstjeneste i Heimevernet",
-    }],
-    "yrkeserfaring": [{
-        "fraDato": "2004-07-01",
-        "tilDato": "2012-05-01",
-        "arbeidsgiver": "Diverse",
-        "styrkKodeStillingstittel": "Webmaster",
-    }, {
-        "fraDato": "2004-01-01",
-        "tilDato": "2015-12-01",
-        "arbeidsgiver": "Diverse",
-        "styrkKodeStillingstittel": "Datatekniker",
-    }, {
-        "fraDato": "1998-12-01",
-        "tilDato": "2012-05-01",
-        "arbeidsgiver": "Amelti Systems, Amelti Development",
-        "styrkKodeStillingstittel": "Programmerer (data)",
-    }, {
-        "fraDato": "1999-03-01",
-        "tilDato": "2015-12-01",
-        "arbeidsgiver": "Diverse",
-        "styrkKodeStillingstittel": "IT-rådgiver",
-    }, {
-        "fraDato": "2005-01-01",
-        "tilDato": "2015-12-01",
-        "arbeidsgiver": "Diverse",
-        "styrkKodeStillingstittel": "EDB-systemkonsulent",
-    }, {
-        "fraDato": "2013-09-01",
-        "tilDato": "2015-08-01",
-        "arbeidsgiver": "ABB/ Dovre",
-        "styrkKodeStillingstittel": "Programvareutvikler",
-    }, {
-        "fraDato": "2013-09-01",
-        "tilDato": "2015-08-01",
-        "arbeidsgiver": "ABB / Dovre ",
-        "styrkKodeStillingstittel": "Prosjektingeniør (olje)",
-    }, {
-        "fraDato": "2008-01-01",
-        "tilDato": "2015-07-01",
-        "arbeidsgiver": "Diverse",
-        "styrkKodeStillingstittel": "Systemkonsulent",
-    }],
-    "sertifikater": [],
-    "forerkort": [
+    "sistEndret": "2019-01-15T07:52:35.456+01:00",
+    "synligForArbeidsgiver": false,
+    "sammendrag": "Jeg er en naritime executive som har master grad og bachlor grad .Har vart teknisk direktor i mange ar og flyttet hjem til Norge hvor jeg soker arbeide innenfor then maritime sektor ,Har gode referanser og vatriert seiling og onshore based artbeide,",
+    "arbeidserfaring": [
         {
-            "sertifikatKodeNavn": "Førerkort: Kl. B (personbil/varebil)",
-        },
-        {
-            "sertifikatKodeNavn": "Førerkort: Kl. A (tung motorsykkel)",
+            "tittel": "Maskinsjef",
+            "arbeidsgiver": "viola enviromental",
+            "sted": null,
+            "beskrivelse": null,
+            "fraDato": "2010-04",
+            "tilDato": "2017-06"
         }
     ],
-    "kompetanse": [{
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Grunnleggende IT-forståelse",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Word",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Excel",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Mikroprosessorer",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Databaser",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Bruk av datamaskiner, operativsystem",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Nettverksarbeid generelt",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Datateknikk",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Objektorientert analyse",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Datakort / IT-kompetanse",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Programmering generelt",
-    }, {
-        "beskrivelse": "Her er en beskrivelse",
-        "kompetanseKodeTekst": "Nettverkskommunikasjon",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Internett og e-post",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Database",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Teknisk tegning",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Programvareutvikling",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Objektorientert systemutvikling",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Systemutvikling generelt",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Elektronikkarbeid",
-    }, {
-        "beskrivelse": null,
-        "kompetanseKodeTekst": "Oljeproduksjon",
-    }],
-    "sprak": [{
-        "beskrivelse": "Meget bra",
-        "kompetanseKodeTekst": "Engelsk",
-    }, {
-        "beskrivelse": "Morsmål",
-        "kompetanseKodeTekst": "Bokmål",
-    }, {
-        "beskrivelse": "God",
-        "kompetanseKodeTekst": "Tysk",
-    }, {
-        "beskrivelse": "God",
-        "kompetanseKodeTekst": "Nynorsk",
-    }],
-    "kurs": [{
-        "fraDato": "1999-08-01",
-        "arrangor": "HV",
-        "tittel": "Vekterkurs"
-    }, {
-        "fraDato": "2015-05-01",
-        "arrangor": "ABB",
-        "tittel": "FSE, Lavspenning og høyspenning"
-    }, {
-        "fraDato": "2015-02-01",
-        "arrangor": "ABB University",
-        "tittel": "UNITROL 6080 Cold Commissioning"
-    }, {
-        "fraDato": "2015-03-01",
-        "arrangor": "Trainor",
-        "tittel": "Ex basic"
-    }],
-    "verv": [],
-    "geografiJobbonsker": [{"geografiKode": "NO03", "geografiKodeTekst": "Oslo"}, {
-        "geografiKode": "NO12.1201.1",
-        "geografiKodeTekst": "Bergen/Bydel Fana"
-    }, {"geografiKode": "NO01.0111", "geografiKodeTekst": "Hvaler"}, {
-        "geografiKode": "NO01",
-        "geografiKodeTekst": "Østfold"
-    }],
-    "yrkeJobbonsker": [{
-        "styrkKode": "2166.03",
-        "styrkBeskrivelse": "Web-designer",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.03",
-        "styrkBeskrivelse": "Systemutvikler",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.04",
-        "styrkBeskrivelse": "Datatekniker",
-        "primaertJobbonske": false
-    }, {"styrkKode": "2511.01", "styrkBeskrivelse": "IT-rådgiver", "primaertJobbonske": false}, {
-        "styrkKode": "2512.01",
-        "styrkBeskrivelse": "Programmerer (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.01",
-        "styrkBeskrivelse": "Driftskonsulent (IT)",
-        "primaertJobbonske": false
-    }, {"styrkKode": "3514.02", "styrkBeskrivelse": "Webmaster", "primaertJobbonske": false}, {
-        "styrkKode": "3511.03",
-        "styrkBeskrivelse": "Dataingeniør",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2512.02",
-        "styrkBeskrivelse": "Programvareutvikler",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.04",
-        "styrkBeskrivelse": "Nettverkskonsulent (programmering)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.05",
-        "styrkBeskrivelse": "Web-publisher (programmering)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.01",
-        "styrkBeskrivelse": "Multimediaprogrammerer",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2514.01",
-        "styrkBeskrivelse": "Applikasjonsprogrammerer",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.01",
-        "styrkBeskrivelse": "IT-konsulent",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2521.01",
-        "styrkBeskrivelse": "Dataadministrator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2522.01",
-        "styrkBeskrivelse": "Systemadministrator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2529.01",
-        "styrkBeskrivelse": "Sikkerhetsspesialist (IKT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.02",
-        "styrkBeskrivelse": "Driftstekniker (IT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.01",
-        "styrkBeskrivelse": "Brukerstøtte IKT",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3513.01",
-        "styrkBeskrivelse": "EDB-systemkonsulent",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3514.01",
-        "styrkBeskrivelse": "Webkoordinator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.06",
-        "styrkBeskrivelse": "Avdelingsingeniør (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.07",
-        "styrkBeskrivelse": "Datakonsulent (drift)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.08",
-        "styrkBeskrivelse": "Datamaskinoperatør",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.09",
-        "styrkBeskrivelse": "Dataservicetekniker",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.10",
-        "styrkBeskrivelse": "Driftsadministrator (IT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.11",
-        "styrkBeskrivelse": "Driftsassistent (EDB)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.12",
-        "styrkBeskrivelse": "Driftsfullmektig (EDB)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.14",
-        "styrkBeskrivelse": "Driftsutvikler (IT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.15",
-        "styrkBeskrivelse": "EDB-ingeniør",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.16",
-        "styrkBeskrivelse": "EDB-konsulent",
-        "primaertJobbonske": false
-    }, {"styrkKode": "3511.17", "styrkBeskrivelse": "EDB-opeatør", "primaertJobbonske": false}, {
-        "styrkKode": "3511.18",
-        "styrkBeskrivelse": "Ingeniør (IT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.19",
-        "styrkBeskrivelse": "IT-medarbeider",
-        "primaertJobbonske": false
-    }, {"styrkKode": "3511.20", "styrkBeskrivelse": "IT-operatør", "primaertJobbonske": false}, {
-        "styrkKode": "3511.21",
-        "styrkBeskrivelse": "Konsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.22",
-        "styrkBeskrivelse": "Programmeringsassistent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.23",
-        "styrkBeskrivelse": "Seniorserviceingeniør (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3511.25",
-        "styrkBeskrivelse": "Terminalansvarlig (EDB)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.02",
-        "styrkBeskrivelse": "IT-brukerkonsulent",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.03",
-        "styrkBeskrivelse": "Leder IT brukerstøtte",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.04",
-        "styrkBeskrivelse": "Kundekonsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.05",
-        "styrkBeskrivelse": "PC-konsulent",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.06",
-        "styrkBeskrivelse": "Datakonsulent (support)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.07",
-        "styrkBeskrivelse": "Driftskonsulent (IT support)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3512.08",
-        "styrkBeskrivelse": "Kundestøtte (IKT)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3513.02",
-        "styrkBeskrivelse": "Nettverkskonsulent (IT-drift)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3513.03",
-        "styrkBeskrivelse": "Nettverkstekniker",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3513.04",
-        "styrkBeskrivelse": "Systemassistent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3513.05",
-        "styrkBeskrivelse": "Systemtekniker (IKT-drift)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "3522.03",
-        "styrkBeskrivelse": "Kundekonsulent (telekommunikasjon)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2153.02",
-        "styrkBeskrivelse": "Avdelingsingeniør (telekommunikasjon)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2153.03",
-        "styrkBeskrivelse": "Driftsingeniør, sivil (telekommunikasjon)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2153.04",
-        "styrkBeskrivelse": "Fagsjef (sivilingeniør, telekommunikasjon)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2153.12",
-        "styrkBeskrivelse": "Produktutvikler (telekommunikasjon)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2434.03",
-        "styrkBeskrivelse": "Salgsrepresentant (datamaskiner)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.07",
-        "styrkBeskrivelse": "IT-prosjektleder",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.08",
-        "styrkBeskrivelse": "IT-systemingeniør",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.09",
-        "styrkBeskrivelse": "IT-teamleder",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.11",
-        "styrkBeskrivelse": "Prosjektkoordinator (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.12",
-        "styrkBeskrivelse": "Senior konsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.15",
-        "styrkBeskrivelse": "Spesialkonsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.14",
-        "styrkBeskrivelse": "Sjefskonsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.17",
-        "styrkBeskrivelse": "Systemarkitekt",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2511.18",
-        "styrkBeskrivelse": "Systemkonsulent",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2512.03",
-        "styrkBeskrivelse": "Datakonsulent (programmering)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2512.04",
-        "styrkBeskrivelse": "Kybernetiker",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.03",
-        "styrkBeskrivelse": "Dataspillprogrammerer",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.02",
-        "styrkBeskrivelse": "Animasjonsprogrammerer",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2513.06",
-        "styrkBeskrivelse": "Web-redaktør (programmering)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.03",
-        "styrkBeskrivelse": "Dokumentkoordinator (EDB)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.04",
-        "styrkBeskrivelse": "Fagkonsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.05",
-        "styrkBeskrivelse": "Førstekonsulent (data)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.07",
-        "styrkBeskrivelse": "Programvaretester",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2519.08",
-        "styrkBeskrivelse": "Systemtester",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2521.02",
-        "styrkBeskrivelse": "Databaseadministrator (administrativ databehandling)",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2521.03",
-        "styrkBeskrivelse": "Databasedesigner",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2522.02",
-        "styrkBeskrivelse": "Systemkoordinator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2522.03",
-        "styrkBeskrivelse": "Systemoperatør",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2522.04",
-        "styrkBeskrivelse": "IT-koordinator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2522.05",
-        "styrkBeskrivelse": "Nettverksadministrator",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2529.02",
-        "styrkBeskrivelse": "IT-ansvarlig",
-        "primaertJobbonske": false
-    }, {
-        "styrkKode": "2529.03",
-        "styrkBeskrivelse": "Systemansvarlig",
-        "primaertJobbonske": true
-    }, {"styrkKode": "3118.02", "styrkBeskrivelse": "Teknisk tegner (maskin)", "primaertJobbonske": false}],
-    "heltidDeltidJobbonsker": [{"heltidDeltidKode": "1.2", "heltidDeltidKodeTekst": "Heltid"}],
-    "ansettelsesforholdJobbonsker": [{
-        "ansettelsesforholdKode": "2.4",
-        "ansettelsesforholdKodeTekst": "Fast stilling"
-    }, {"ansettelsesforholdKode": "2.1", "ansettelsesforholdKodeTekst": "Vikar"}, {
-        "ansettelsesforholdKode": "2.3",
-        "ansettelsesforholdKodeTekst": "Prosjekt"
-    }],
-    "arbeidstidsordningJobbonsker": [{
-        "arbeidstidsordningKode": "3.1",
-        "arbeidstidsordningKodeTekst": "Dagtid"
-    }, {"arbeidstidsordningKode": "3.3", "arbeidstidsordningKodeTekst": "Turnus"}, {
-        "arbeidstidsordningKode": "3.6",
-        "arbeidstidsordningKodeTekst": "Skiftordning"
-    }, {"arbeidstidsordningKode": "3.7", "arbeidstidsordningKodeTekst": "Kveldstid"}],
-    "_links": {"self": {"href": "https://app-q6.adeo.no/pam-arena/rest/arenaperson/hentForFnr?fnr=17038046195"}}
+    "utdanning": [
+        {
+            "tittel": "Andre servicefag, andre, uspesifisert utdanningsgruppe, høyere nivå",
+            "studiested": "Pasific University",
+            "beskrivelse": null,
+            "fraDato": "1999-06",
+            "tilDato": "2003-06"
+        },
+        {
+            "tittel": "Cand.scient.-utdanning, mekanikk",
+            "studiested": "Pasific university",
+            "beskrivelse": null,
+            "fraDato": "1999-06",
+            "tilDato": "2003-06"
+        },
+        {
+            "tittel": "Teknisk fagskole, linje for maritime fag og fiskerifag, toårig",
+            "studiested": "arendal maritime hoyskole",
+            "beskrivelse": null,
+            "fraDato": "1989-06",
+            "tilDato": "1993-06"
+        }
+    ],
+    "annenErfaring": [
+        {
+            "rolle": "maskinsjef steam",
+            "beskrivelse": "maskinsjef steam for brovig tank rederi",
+            "fraDato": "1988-02",
+            "tilDato": null
+        },
+        {
+            "rolle": "vice presidet ",
+            "beskrivelse": "vice presidet  for new england pump and valve",
+            "fraDato": "2007-08",
+            "tilDato": "2009-05"
+        },
+        {
+            "rolle": "technical director",
+            "beskrivelse": "technical director for cunard cruise line",
+            "fraDato": "2003-05",
+            "tilDato": "2007-09"
+        },
+        {
+            "rolle": "technical director",
+            "beskrivelse": "technical director for norwegian cruise line",
+            "fraDato": "2005-07",
+            "tilDato": "2007-06"
+        },
+        {
+            "rolle": "maskinsjef",
+            "beskrivelse": "maskinsjef for crystal cruise",
+            "fraDato": "1991-04",
+            "tilDato": "2003-05"
+        }
+    ],
+    "forerkort": [
+        {
+            "klasse": "B",
+            "fraDato": "2017-08-01",
+            "utloperDato": "2118-12-01"
+        }
+    ],
+    "kurs": [
+        {
+            "tittel": "huet",
+            "arrangor": "falk",
+            "fraDato": "2016-10",
+            "varighet": {
+                "varighet": 1,
+                "tidsenhet": KursVarighetEnhet.UKE
+            }
+        },
+        {
+            "tittel": "dynamik posisjonering",
+            "arrangor": "kongsberg",
+            "fraDato": "2010-08",
+            "varighet": {
+                "varighet": 3,
+                "tidsenhet": KursVarighetEnhet.MANED
+            }
+        }
+    ],
+    "sertifikater": [
+        {
+            "tittel": "Sikkerhetskurs: Diverse spesialkurs",
+            "utsteder": null,
+            "gjennomfortDato": "2018-05",
+            "utloperDato": "2118-12"
+        },
+        {
+            "tittel": "Maskinoffisersertifikat: Klasse 1",
+            "utsteder": null,
+            "gjennomfortDato": "2014-12",
+            "utloperDato": "2118-12"
+        },
+        {
+            "tittel": "Kjelpassersertifikat: Rødt sertifikat",
+            "utsteder": null,
+            "gjennomfortDato": "1974-07",
+            "utloperDato": "2118-12"
+        }
+    ],
+    "sprak": [
+        {
+            "sprak": "Dansk",
+            "muntligNiva": "Godt",
+            "skriftligNiva": "Godt"
+        },
+        {
+            "sprak": "Svensk",
+            "muntligNiva": "Godt",
+            "skriftligNiva": "Godt"
+        },
+        {
+            "sprak": "Engelsk",
+            "muntligNiva": "Godt",
+            "skriftligNiva": "Godt"
+        },
+        {
+            "sprak": "Tysk",
+            "muntligNiva": "Godt",
+            "skriftligNiva": "Godt"
+        }
+    ],
+    "jobbprofil": {
+        "sistEndret": "2019-01-15T07:52:35.462+01:00",
+        "onsketYrke": [],
+        "onsketArbeidssted": [
+            {
+                "stedsnavn": "Søgne",
+                "kode": "NO10.1018"
+            },
+            {
+                "stedsnavn": "Østfold",
+                "kode": "NO01"
+            },
+            {
+                "stedsnavn": "Akershus",
+                "kode": "NO02"
+            },
+            {
+                "stedsnavn": "Oslo",
+                "kode": "NO03"
+            },
+            {
+                "stedsnavn": "Oppland",
+                "kode": "NO05"
+            },
+            {
+                "stedsnavn": "Buskerud",
+                "kode": "NO06"
+            },
+            {
+                "stedsnavn": "Vestfold",
+                "kode": "NO07"
+            },
+            {
+                "stedsnavn": "Telemark",
+                "kode": "NO08"
+            },
+            {
+                "stedsnavn": "Aust-Agder",
+                "kode": "NO09"
+            },
+            {
+                "stedsnavn": "Vest-Agder",
+                "kode": "NO10"
+            },
+            {
+                "stedsnavn": "Rogaland",
+                "kode": "NO11"
+            },
+            {
+                "stedsnavn": "Hordaland",
+                "kode": "NO12"
+            },
+            {
+                "stedsnavn": "Sogn og Fjordane",
+                "kode": "NO14"
+            },
+            {
+                "stedsnavn": "Møre og Romsdal",
+                "kode": "NO15"
+            },
+            {
+                "stedsnavn": "Nordland",
+                "kode": "NO18"
+            },
+            {
+                "stedsnavn": "Finnmark",
+                "kode": "NO20"
+            },
+            {
+                "stedsnavn": "Øvrige områder",
+                "kode": "NO99"
+            },
+            {
+                "stedsnavn": "Trøndelag",
+                "kode": "NO50"
+            }
+        ],
+        "onsketAnsettelsesform": [
+            {
+                "tittel": "VIKARIAT"
+            },
+            {
+                "tittel": "ENGASJEMENT"
+            },
+            {
+                "tittel": "PROSJEKT"
+            },
+            {
+                "tittel": "FAST"
+            },
+            {
+                "tittel": "SESONG"
+            }
+        ],
+        "onsketArbeidstidsordning": [
+            {
+                "tittel": "TURNUS"
+            },
+            {
+                "tittel": "VAKT"
+            },
+            {
+                "tittel": "SKIFT"
+            }
+        ],
+        "heltidDeltid": {
+            "heltid": true,
+            "deltid": false
+        },
+        "kompetanse": []
+    }
 };
 
 export default CV;

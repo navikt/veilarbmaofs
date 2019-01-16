@@ -2,7 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { ArenaPerson } from '../../datatyper/arenaperson';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
-import { formaterDato, safeMap, safeSort } from '../utils';
+import { formaterDato, formaterVarighet, safeMap, safeSort } from '../utils';
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     const {kurs: arenaKurs, ...rest} = props;
@@ -14,6 +14,7 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
             </Element>
             <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
             <Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>
+            <Normaltekst>Varighet: {formaterVarighet(enkeltKurs.varighet)}</Normaltekst>
         </div>
     ));
 

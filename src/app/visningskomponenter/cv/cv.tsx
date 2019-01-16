@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
 import FloatGrid from "../../utils/float-grid";
+import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
 import SistEndret from "../felles-komponenter/sist-endret";
-import Beskrivelse from "./beskrivelse";
+import AnnenErfaring from "./annen-erfaring";
+import Arbeidserfaring from "./arbeidserfaring";
 import Forerkort from "./forerkort";
-import Kompetanse from "./kompetanse";
 import Kurs from "./kurs";
+import Sammendrag from "./sammendrag";
 import Sertifikater from "./sertifikater";
 import Sprak from "./sprak";
 import Utdanning from "./utdanning";
-import Verv from "./verv";
-import Yrkeserfaring from "./yrkeserfaring";
 
 interface Props {
     data: {
@@ -19,21 +19,21 @@ interface Props {
 }
 
 function CV(props: Props) {
-    const { beskrivelse, yrkeserfaring, utdanning, sertifikater, forerkort, disponererBil, sprak, kompetanse, kurs, verv, sistEndret } = props.data.cv;
+    const { sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
 
     return (
         <>
-            <SistEndret sistEndret={sistEndret} />
-            <Beskrivelse beskrivelse={beskrivelse} />
+            <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
+            <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={synligForArbeidsgiver ? 'Ja' : 'Nei'}/>
+            <Sammendrag sammendrag={sammendrag} />
             <FloatGrid columns={2} gap={8}>
-                <Yrkeserfaring yrkeserfaring={yrkeserfaring} />
+                <Arbeidserfaring arbeidserfaring={arbeidserfaring} />
+                <AnnenErfaring annenErfaring={annenErfaring} />
                 <Utdanning utdanning={utdanning} />
-                <Sertifikater sertifikater={sertifikater} />
-                <Forerkort forerkort={forerkort} disponererBil={disponererBil} />
-                <Sprak sprak={sprak} />
-                <Kompetanse kompetanse={kompetanse} />
                 <Kurs kurs={kurs} />
-                <Verv verv={verv}/>
+                <Sertifikater sertifikater={sertifikater} />
+                <Forerkort forerkort={forerkort} />
+                <Sprak sprak={sprak} />
             </FloatGrid>
         </>
     );

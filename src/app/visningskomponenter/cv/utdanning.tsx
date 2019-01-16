@@ -10,12 +10,12 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     const utdanninger = safeMap(sortedUtdanning, (utdanning, index) => (
         <div key={`utdanning-${index}`} className="underinformasjon">
             <Element className="typo-element">
-                {utdanning.utdannelsessted}
+                {utdanning.tittel}
             </Element>
 
-            <Normaltekst>{utdanning.alternativtUtdanningsnavn}</Normaltekst>
-            <Normaltekst>Fra: {formaterDato(utdanning.fraDato)}</Normaltekst>
-            <Normaltekst>Til: {formaterDato(utdanning.tilDato)}</Normaltekst>
+            <Normaltekst>{utdanning.studiested}</Normaltekst>
+            <Normaltekst>Fra: {formaterDato(utdanning.fraDato, true)}</Normaltekst>
+            <Normaltekst>Til: {formaterDato(utdanning.tilDato, true)}</Normaltekst>
         </div>
     ));
 

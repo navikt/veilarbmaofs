@@ -5,10 +5,11 @@ import {formaterDato} from "../utils";
 
 interface SistEndretProps {
     sistEndret: StringOrNothing;
+    onlyYearAndMonth: boolean;
 }
 
 function SistEndret(props: SistEndretProps) {
-    const formattertTidspunkt = formaterDato(props.sistEndret!);
+    const formattertTidspunkt = formaterDato(props.sistEndret, props.onlyYearAndMonth);
 
     return (
         <Normaltekst className="italic-gra">
