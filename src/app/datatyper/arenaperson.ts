@@ -1,168 +1,149 @@
 import {FetchContext} from "../../config";
 import {SourceConfigEntry} from "../../fetch-utils";
-import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
+import {StringOrNothing} from "../visningskomponenter/felles-typer";
 
-interface Verv {
-    fraDato: string;
-    tilDato: string;
-    organisasjon: string;
-    tittel: string;
-}
+
+type YearMonth = StringOrNothing; // er på formatet YYYY-MM
+type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
 
 interface Utdanning {
-    fraDato: string;
-    tilDato: string;
-    utdannelsessted: string;
-    alternativtUtdanningsnavn: string;
-    nusKode: string;
-    nusKodeUtdanningsnavn: string;
+    tittel?: string;
+    studiested: StringOrNothing;
+    beskrivelse: StringOrNothing;
+    fraDato: YearMonth;
+    tilDato: YearMonth;
 }
 
-interface Yrkeserfaring {
-    fraDato: string;
-    tilDato: string;
-    styrkKode: string;
-    styrkKodeStillingstittel: string;
-    utelukketForFremtiden: boolean;
-    arbeidsgiver: string;
-    alternativStillingstittel: string;
+interface Arbeidserfaring {
+    tittel: StringOrNothing;
+    arbeidsgiver: StringOrNothing;
+    sted: StringOrNothing;
+    beskrivelse: StringOrNothing;
+    fraDato: YearMonth;
+    tilDato: YearMonth;
+}
+
+interface AnnenErfaring {
+    rolle: StringOrNothing;
+    beskrivelse: StringOrNothing;
+    fraDato: YearMonth;
+    tilDato: YearMonth;
+}
+
+interface Forerkort {
+    klasse: StringOrNothing;
+    fraDato: YearMonthDay;
+    utloperDato: YearMonthDay;
 }
 
 interface Sertifikat {
-    fraDato: string;
-    tilDato: StringOrNothing
-    sertifikatKode: string;
-    sertifikatKodeNavn: string;
-    alternativtNavn: StringOrNothing;
-    utsteder: string;
+    tittel: StringOrNothing,
+    utsteder: StringOrNothing;
+    gjennomfortDato: YearMonth;
+    utloperDato: YearMonth;
 }
 
-interface Kompetanse {
-    fraDato: string;
-    beskrivelse: StringOrNothing
-    alternativTekst: StringOrNothing
-    kompetanseKode: string;
-    kompetanseKodeTekst: string;
-}
-
-export interface GeografiJobbonsker {
-    geografiKodeTekst: string;
-    geografiKode: string;
-}
-
-export interface YrkeJobbonsker {
-    styrkKode: string;
-    styrkBeskrivelse: string;
-    primaertJobbonske: boolean;
-}
-
-export interface HeltidDeltidJobbonsker {
-    heltidDeltidKode: string;
-    heltidDeltidKodeTekst: string;
-}
-
-export interface AnsettelsesforholdJobbonsker {
-    ansettelsesforholdKodeTekst: string;
-    ansettelsesforholdKode: string;
-}
-
-export interface ArbeidstidsordningJobbonsker {
-    arbeidstidsordningKode: string;
-    arbeidstidsordningKodeTekst: string;
+interface Sprak {
+    sprak: StringOrNothing;
+    muntligNiva: StringOrNothing;
+    skriftligNiva: StringOrNothing;
 }
 
 interface Kurs {
-    fraDato: string;
-    tilDato: StringOrNothing
+    tittel: StringOrNothing;
+    arrangor: StringOrNothing;
+    fraDato: YearMonth;
+    varighet: Kursvarighet;
+}
+
+export interface Kursvarighet {
+    varighet: number;
+    tidsenhet: KursVarighetEnhet;
+}
+
+export enum KursVarighetEnhet {
+    TIME = "TIME",
+    DAG = "DAG",
+    UKE = "UKE",
+    MANED = "MANED",
+}
+
+interface Jobbprofil {
+    sistEndret: StringOrNothing;
+    onsketYrke: JobbprofilYrke[];
+    onsketArbeidssted: JobbprofilArbeidssted[];
+    onsketAnsettelsesform: JobbprofilAnsettelsesform[];
+    onsketArbeidstidsordning: JobbprofilArbeidstidsordning[];
+    heltidDeltid: JobbprofilHeltidDeltid;
+    kompetanse: JobbprofilKompetanse[];
+}
+
+interface JobbprofilYrke {
     tittel: string;
-    arrangor: string;
-    omfang: {
-        verdi: number
-        enhet: StringOrNothing
-    }
+}
+
+interface JobbprofilArbeidssted {
+    stedsnavn: string;
+    kode: string;
+}
+
+interface JobbprofilAnsettelsesform {
+    tittel: string;
+}
+
+interface JobbprofilArbeidstidsordning {
+    tittel: string;
+}
+
+interface JobbprofilHeltidDeltid {
+    heltid: boolean;
+    deltid: boolean;
+}
+
+interface JobbprofilKompetanse {
+    tittel: string;
 }
 
 export interface ArenaPerson {
-    personId: number;
-    fodselsdato: string;
-    fodselsnummer: string;
-    erFodselsnummerDnr: boolean;
-    formidlingsgruppekode: string;
-    etternavn: string;
-    fornavn: string;
-    statsborgerskap: string;
-    samtykkeDato: string;
-    samtykkeStatus: string;
-    disponererBil: OrNothing<boolean>;
-    verv: Verv[];
-    beskrivelse: StringOrNothing;
-    kandidatnummer: StringOrNothing
     sistEndret: StringOrNothing;
-    adresse: {
-        landkode: string;
-        postnr: string;
-        poststednavn: string;
-        kommunenr: number;
-        adrlinje1: string;
-        adrlinje2: StringOrNothing
-        adrlinje3: StringOrNothing
-    };
+    synligForArbeidsgiver: boolean;
+    sammendrag: StringOrNothing;
+    arbeidserfaring: Arbeidserfaring[];
     utdanning: Utdanning[];
-    yrkeserfaring: Yrkeserfaring[];
-    forerkort: Sertifikat[];
+    annenErfaring: AnnenErfaring[];
+    forerkort: Forerkort[];
+    kurs: Kurs[];
     sertifikater: Sertifikat[];
-    sprak: Kompetanse[];
-    kompetanse: Kompetanse[];
-    geografiJobbonsker: GeografiJobbonsker[];
-    yrkeJobbonsker: YrkeJobbonsker[];
-    heltidDeltidJobbonsker: HeltidDeltidJobbonsker[];
-    ansettelsesforholdJobbonsker: AnsettelsesforholdJobbonsker[];
-    arbeidstidsordningJobbonsker: ArbeidstidsordningJobbonsker[];
-    epost: StringOrNothing
-    kurs: Kurs[]
+    sprak: Sprak[];
+    jobbprofil: Jobbprofil;
 }
 
 export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
     return {
         fallback: {
-            personId: -1,
-            fodselsdato: "",
-            fodselsnummer: "",
-            erFodselsnummerDnr: false,
-            formidlingsgruppekode: "",
-            etternavn: "",
-            fornavn: "",
-            statsborgerskap: "",
-            samtykkeDato: "",
-            samtykkeStatus: "",
-            disponererBil: null,
-            verv: [],
-            beskrivelse: null,
-            kandidatnummer: null,
             sistEndret: null,
-            adresse: {
-                landkode: "",
-                postnr: "",
-                poststednavn: "",
-                kommunenr: -1,
-                adrlinje1: "",
-                adrlinje2: null,
-                adrlinje3: null
-            },
+            synligForArbeidsgiver: false,
+            sammendrag: null,
+            arbeidserfaring: [],
             utdanning: [],
-            yrkeserfaring: [],
+            annenErfaring: [],
             forerkort: [],
+            kurs: [],
             sertifikater: [],
             sprak: [],
-            kompetanse: [],
-            geografiJobbonsker: [],
-            yrkeJobbonsker: [],
-            heltidDeltidJobbonsker: [],
-            ansettelsesforholdJobbonsker: [],
-            arbeidstidsordningJobbonsker: [],
-            epost: null,
-            kurs: [],
+            jobbprofil: {
+                sistEndret: null,
+                onsketYrke: [],
+                onsketArbeidssted: [],
+                onsketAnsettelsesform: [],
+                onsketArbeidstidsordning: [],
+                heltidDeltid: {
+                    heltid: false,
+                    deltid: false,
+                },
+                kompetanse: [],
+            },
         },
-        url: `/pam-arena/rest/arenaperson/hentForFnr?fnr=${context.fnr}`
+        url: `/pam-cv-api/rest/v1/arbeidssoker/${context.fnr}`
     };
 }

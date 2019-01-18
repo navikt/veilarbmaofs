@@ -1,5 +1,5 @@
 import CV from "./app/visningskomponenter/cv/cv";
-import Jobbonsker from "./app/visningskomponenter/jobbonsker/jobbonsker";
+import Jobbprofil from "./app/visningskomponenter/jobbprofil/jobbprofil";
 import Oppfolging from "./app/visningskomponenter/oppfolging/oppfolging";
 import Personalia from "./app/visningskomponenter/personalia/personalia";
 import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
@@ -44,11 +44,11 @@ export function getConfig(context: FetchContext, oppfolging: OppfolgingData): Ar
             id: 'CV',
         },
         {
-            component: Jobbonsker,
-            dataSource: getData<{ jobbonsker: ArenaPerson }>({
-                jobbonsker: createArenaPersonSourceConfig(context)
+            component: Jobbprofil,
+            dataSource: getData<{ jobbprofil: Pick<ArenaPerson, 'jobbprofil'> }>({
+                jobbprofil: createArenaPersonSourceConfig(context)
             }),
-            id: 'Jobbønsker',
+            id: 'Jobbprofil',
         },
         {
             component: Personalia,

@@ -1,3 +1,4 @@
+import {Kursvarighet, KursVarighetEnhet} from "../datatyper/arenaperson";
 import EMDASH from "../utils/emdash";
 import {isNullOrUndefined} from "../utils/util";
 import {StringOrNothing} from "./felles-typer";
@@ -21,7 +22,7 @@ export interface DatoType {
     day: string
 }
 
-export function formaterDato( datoObjekt: DatoType | string | undefined | null ) {
+export function formaterDato( datoObjekt: DatoType | string | undefined | null, onlyYearMonth?: boolean ) {
     if (isNullOrUndefined(datoObjekt)) {
         return EMDASH;
     }
@@ -32,8 +33,9 @@ export function formaterDato( datoObjekt: DatoType | string | undefined | null )
     } else {
         lokalDato = new Date(Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day)));
     }
-
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const shortOption = { year: 'numeric', month: 'short' };
+    const longOption = { year: 'numeric', month: 'short', day: 'numeric' };
+    const options = onlyYearMonth ? shortOption : longOption;
     const lokalDatoStreng = lokalDato.toLocaleDateString('no-NO', options);  // Resultat dato format: dd. mon. yyyy
     return lokalDatoStreng.replace(/\.\s/g,'.');  // erstattes '. ' med '.' så får vi resultat dato som: dd.mon.yyyy
 }
@@ -46,4 +48,31 @@ export function safeSort(a: StringOrNothing , b: StringOrNothing) {
     } else {
         return 0;
     }
+}
+
+export function formaterVarighet(varighet: Kursvarighet): string {
+    if (varighet.varighet == null || (varighet.tidsenhet == null)) {
+        return EMDASH;
+    }
+    const storreEnnEn = varighet.varighet > 1;
+    let enhetTekst = '';
+
+    switch (varighet.tidsenhet) {
+        case KursVarighetEnhet.TIME:
+            enhetTekst = storreEnnEn ? 'timer' : 'time';
+            break;
+        case KursVarighetEnhet.DAG:
+            enhetTekst = storreEnnEn ? 'dager' : 'dag';
+            break;
+        case KursVarighetEnhet.UKE:
+            enhetTekst = storreEnnEn ? 'uker' : 'uke';
+            break;
+        case KursVarighetEnhet.MANED:
+            enhetTekst = storreEnnEn ? 'måneder' : 'måned';
+            break;
+        default:
+            return EMDASH;
+    }
+
+    return `${varighet.varighet} ${enhetTekst}`;
 }

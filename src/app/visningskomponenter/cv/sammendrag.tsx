@@ -4,12 +4,12 @@ import {ArenaPerson} from "../../datatyper/arenaperson";
 import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
 import {visEmdashHvisNull} from "../utils";
 
-function Beskrivelse(props: Pick<ArenaPerson, 'beskrivelse'>) {
+function Sammendrag(props: Pick<ArenaPerson, 'sammendrag'>) {
     return (
-        <Informasjonsbolk header="Beskrivelse" headerTypo="ingress">
-            <Normaltekst className="underinformasjon">{visEmdashHvisNull(props.beskrivelse)}</Normaltekst>
+        <Informasjonsbolk header="Sammendrag" headerTypo="ingress">
+            <Normaltekst className="underinformasjon">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
         </Informasjonsbolk>
     );
 }
 
-export default Beskrivelse;
+export default Sammendrag;
