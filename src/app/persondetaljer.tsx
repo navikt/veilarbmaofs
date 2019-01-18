@@ -22,7 +22,6 @@ export interface Feature {
 
 interface PersondetaljerData {
     oppfolging: OppfolgingData;
-    feature: Feature;
 }
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
@@ -31,11 +30,6 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
         const fetchContext: FetchContext = { fnr : this.props.fnr };
 
         const sourceConfig: SourceConfig<PersondetaljerData> = {
-            feature: {
-                allwaysUseFallback: true,
-                fallback: { "mao.vise_registrering": false},
-                url: '/feature/?feature=mao.vise_registrering'
-            },
             oppfolging: createOppfolgingDataSourceConfig(fetchContext)
         };
 
@@ -55,7 +49,7 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
                             return (
                                 <>
                                     <Basisinfo fnr={this.props.fnr} oppfolging={a.oppfolging}/>
-                                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen} feature={a.feature} oppfolging={a.oppfolging}/>
+                                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen} oppfolging={a.oppfolging}/>
                                 </>
                             );
                         }}
@@ -70,16 +64,15 @@ interface Props {
     fetchContext: FetchContext;
     isOpened: boolean;
     oppfolging: OppfolgingData;
-    feature: Feature;
 }
 
 function UtvidetInfo(props: Props) {
 
-    const { isOpened, fetchContext, feature, oppfolging } = props;
+    const { isOpened, fetchContext, oppfolging } = props;
 
     return (
         <Collapse isOpened={isOpened} className="informasjonsvisning" hasNestedCollapse={true}>
-            <Informasjonsvisning fetchContext={fetchContext} feature={feature} oppfolging={oppfolging} />
+            <Informasjonsvisning fetchContext={fetchContext} oppfolging={oppfolging} />
         </Collapse>
     );
 
