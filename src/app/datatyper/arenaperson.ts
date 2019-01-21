@@ -53,7 +53,7 @@ interface Kurs {
     tittel: StringOrNothing;
     arrangor: StringOrNothing;
     fraDato: YearMonth;
-    varighet: Kursvarighet;
+    varighet?: Kursvarighet;
 }
 
 export interface Kursvarighet {

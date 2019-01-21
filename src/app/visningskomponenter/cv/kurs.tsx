@@ -14,7 +14,7 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
             </Element>
             <Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
             <Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>
-            <Normaltekst>Varighet: {formaterVarighet(enkeltKurs.varighet)}</Normaltekst>
+            {enkeltKurs.varighet &&  <Normaltekst>Varighet: {formaterVarighet(enkeltKurs.varighet)}</Normaltekst>}
         </div>
     ));
 
