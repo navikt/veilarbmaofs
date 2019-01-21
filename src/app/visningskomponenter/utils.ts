@@ -33,11 +33,12 @@ export function formaterDato( datoObjekt: DatoType | string | undefined | null, 
     } else {
         lokalDato = new Date(Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day)));
     }
+
     const shortOption = { year: 'numeric', month: 'short' };
     const longOption = { year: 'numeric', month: 'short', day: 'numeric' };
     const options = onlyYearMonth ? shortOption : longOption;
-    const lokalDatoStreng = lokalDato.toLocaleDateString('no-NO', options);  // Resultat dato format: dd. mon. yyyy
-    return lokalDatoStreng.replace(/\.\s/g,'.');  // erstattes '. ' med '.' så får vi resultat dato som: dd.mon.yyyy
+
+    return lokalDato.toLocaleDateString('no-NO', options);
 }
 
 export function safeSort(a: StringOrNothing , b: StringOrNothing) {
