@@ -91,11 +91,7 @@ const CV: ArenaPerson & JSONValue = {
         {
             "tittel": "dynamik posisjonering",
             "arrangor": "kongsberg",
-            "fraDato": "2010-08",
-            "varighet": {
-                "varighet": 3,
-                "tidsenhet": KursVarighetEnhet.MANED
-            }
+            "fraDato": "2010-08"
         }
     ],
     "sertifikater": [
