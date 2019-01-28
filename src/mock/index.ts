@@ -30,10 +30,21 @@ const loggingMiddleware: Middleware = (request, response) => {
     return response;
 };
 
+const failureMock = FetchMock.configure({
+    enableFallback: false,
+    middleware: MiddlewareUtils.combine(
+        MiddlewareUtils.failurerateMiddleware(1, { status: 204 }),
+        MiddlewareUtils.delayMiddleware(500),
+        loggingMiddleware
+    )
+});
+
+failureMock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', CV);
+
 const mock = FetchMock.configure({
     enableFallback: true,
     middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.delayMiddleware(1500),
+        MiddlewareUtils.delayMiddleware(500),
         loggingMiddleware
     )
 });
@@ -41,9 +52,9 @@ const mock = FetchMock.configure({
 mock.get('/veilarbveileder/api/veileder/:veilederId',
     (handler:HandlerArgument) => veileder(handler.pathParams.veilederId));
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
-mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', CV);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
 mock.get('/veilarbregistrering/api/registrering', Registering);
 mock.get('/veilarbpersonflatefs/api/feature', { "mao.trenger_vurdering": true, "mao.vise_registrering": true, "mao.sykmeldt_med_arbeidsgiver": true });
+

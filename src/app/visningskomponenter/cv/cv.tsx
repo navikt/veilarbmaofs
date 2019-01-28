@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {ArenaPerson} from "../../datatyper/arenaperson";
+import EMDASH from '../../utils/emdash';
 import FloatGrid from "../../utils/float-grid";
 import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
 import SistEndret from "../felles-komponenter/sist-endret";
@@ -21,10 +22,12 @@ interface Props {
 function CV(props: Props) {
     const { sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
 
+    const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
+
     return (
         <>
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
-            <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={synligForArbeidsgiver ? 'Ja' : 'Nei'}/>
+            <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={erSynlig}/>
             <Sammendrag sammendrag={sammendrag} />
             <FloatGrid columns={2} gap={8}>
                 <Arbeidserfaring arbeidserfaring={arbeidserfaring} />

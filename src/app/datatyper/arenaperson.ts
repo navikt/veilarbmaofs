@@ -1,7 +1,6 @@
 import {FetchContext} from "../../config";
-import {SourceConfigEntry} from "../../fetch-utils";
+import { SourceConfigEntry } from "../../fetch-utils";
 import {StringOrNothing} from "../visningskomponenter/felles-typer";
-
 
 type YearMonth = StringOrNothing; // er på formatet YYYY-MM
 type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
@@ -106,7 +105,7 @@ interface JobbprofilKompetanse {
 
 export interface ArenaPerson {
     sistEndret: StringOrNothing;
-    synligForArbeidsgiver: boolean;
+    synligForArbeidsgiver: boolean | null;
     sammendrag: StringOrNothing;
     arbeidserfaring: Arbeidserfaring[];
     utdanning: Utdanning[];
@@ -122,7 +121,7 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
     return {
         fallback: {
             sistEndret: null,
-            synligForArbeidsgiver: false,
+            synligForArbeidsgiver: null,
             sammendrag: null,
             arbeidserfaring: [],
             utdanning: [],
