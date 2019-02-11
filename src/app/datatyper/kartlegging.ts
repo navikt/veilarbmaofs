@@ -1,6 +1,6 @@
-import {FetchContext} from "../../config";
-import {SourceConfigEntry} from "../../fetch-utils";
-import {OrNothing} from "../visningskomponenter/felles-typer";
+import { FetchContext } from '../../config';
+import { SourceConfigEntry } from '../../fetch-utils';
+import { OrNothing } from '../visningskomponenter/felles-typer';
 
 interface SvarAlternativ {
     svarAlternativKey: string;
@@ -55,5 +55,5 @@ export function createKartleggingDataSourceConfig(context: FetchContext): Source
             underOppfolging: null,
         },
         url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${context.fnr}`
-    }
+    };
 }

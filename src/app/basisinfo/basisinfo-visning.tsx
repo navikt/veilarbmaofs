@@ -1,36 +1,36 @@
 import * as React from 'react';
-import {OppfolgingData} from "../datatyper/oppfolging";
-import {PersonaliaInfo} from "../datatyper/personalia";
-import {finnAldersTekst} from "../utils/date-utils";
+import { OppfolgingData } from '../datatyper/oppfolging';
+import { PersonaliaInfo } from '../datatyper/personalia';
+import { finnAldersTekst } from '../utils/date-utils';
 import ApneLukkeKnapp from './apne-lukke-knapp';
-import Etiketter from "./etiketter";
+import Etiketter from './etiketter';
 import KvinneIkon from './kvinne.svg';
 import MannIkon from './mann.svg';
 
-function Icon(prop: {kjonn: string}){
-    const ikon = prop.kjonn === "K" ? KvinneIkon : MannIkon;
+function Icon(prop: {kjonn: string}) {
+    const ikon = prop.kjonn === 'K' ? KvinneIkon : MannIkon;
     const ikonTekst = `ikon ${prop.kjonn === 'K' ? 'kvinne' : 'mann'}`;
 
-    return <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>
+    return <img src={ikon} className="basisinfo__ikon" alt={ikonTekst}/>;
 }
 
-function NavnOgAlder(prop: { personalia: PersonaliaInfo }){
+function NavnOgAlder(prop: { personalia: PersonaliaInfo }) {
     const aldersvisning = finnAldersTekst(prop.personalia);
 
     return <h1 className="basisinfo__navnogalder typo-innholdstittel">
         {prop.personalia.sammensattNavn}
         <span className="basisinfo__alder">{aldersvisning}</span>
-    </h1>
+    </h1>;
 }
 
-function Fodelsnummer(prop: {fnr: string}){
-    return <span className="basisinfo__fodselsnummer">{prop.fnr}</span>
+function Fodelsnummer(prop: {fnr: string}) {
+    return <span className="basisinfo__fodselsnummer">{prop.fnr}</span>;
 }
 
 export interface BasisinfoData {
     oppfolging: OppfolgingData;
     personalia: PersonaliaInfo;
-    feature: { "mao.sykmeldt_med_arbeidsgiver": boolean }
+    feature: { 'mao.sykmeldt_med_arbeidsgiver': boolean };
 }
 
 export function renderBasisInfo({ personalia, oppfolging, feature }: BasisinfoData) {

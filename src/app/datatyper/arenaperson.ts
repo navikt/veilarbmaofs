@@ -1,6 +1,6 @@
-import {FetchContext} from "../../config";
-import { SourceConfigEntry } from "../../fetch-utils";
-import {StringOrNothing} from "../visningskomponenter/felles-typer";
+import { FetchContext } from '../../config';
+import { SourceConfigEntry } from '../../fetch-utils';
+import { StringOrNothing } from '../visningskomponenter/felles-typer';
 
 type YearMonth = StringOrNothing; // er på formatet YYYY-MM
 type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
@@ -36,7 +36,7 @@ interface Forerkort {
 }
 
 interface Sertifikat {
-    tittel: StringOrNothing,
+    tittel: StringOrNothing;
     utsteder: StringOrNothing;
     gjennomfortDato: YearMonth;
     utloperDato: YearMonth;
@@ -61,10 +61,10 @@ export interface Kursvarighet {
 }
 
 export enum KursVarighetEnhet {
-    TIME = "TIME",
-    DAG = "DAG",
-    UKE = "UKE",
-    MANED = "MANED",
+    TIME = 'TIME',
+    DAG = 'DAG',
+    UKE = 'UKE',
+    MANED = 'MANED',
 }
 
 interface Jobbprofil {

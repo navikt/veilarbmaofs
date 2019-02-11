@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface FloatGridProps {
     columns: number;
@@ -35,7 +35,7 @@ function FloatGrid({columns, gap, children}: FloatGridProps) {
         <div className="floatgrid clearfix" style={containerStyle}>
             {columnsChildren}
         </div>
-    )
+    );
 }
 
 export default FloatGrid;

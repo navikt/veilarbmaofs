@@ -1,4 +1,4 @@
-import {GrunnPersonalia} from "../datatyper/personalia";
+import { GrunnPersonalia } from '../datatyper/personalia';
 
 export function kalkulerAlder(fodselsdato: Date): number {
     const diff = Date.now() - fodselsdato.getTime();
@@ -6,8 +6,8 @@ export function kalkulerAlder(fodselsdato: Date): number {
 }
 
 export function finnAldersTekst(personalia: GrunnPersonalia): string {
-    if(personalia.dodsdato){
-        return '(DØD)'
+    if(personalia.dodsdato) {
+        return '(DØD)';
     }
     const alder = kalkulerAlder(new Date(personalia.fodselsdato));
     return `${alder} år`;

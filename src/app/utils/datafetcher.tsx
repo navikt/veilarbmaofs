@@ -1,13 +1,13 @@
-import AlertStripeAdvarselSolid from "nav-frontend-alertstriper/lib/advarsel-solid-alertstripe";
-import NavFrontendSpinner from "nav-frontend-spinner";
+import AlertStripeAdvarselSolid from 'nav-frontend-alertstriper/lib/advarsel-solid-alertstripe';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 import * as React from 'react';
-import { Datasource } from "../../config";
-import { Data } from "../../fetch-utils";
+import { Datasource } from '../../config';
+import { Data } from '../../fetch-utils';
 
 interface Props<T> {
     data: Datasource<T>;
     children: (data: T) => React.ReactNode;
-    loader?: React.ComponentType
+    loader?: React.ComponentType;
 }
 
 interface State<T> {
@@ -37,7 +37,7 @@ class Datafetcher<T> extends React.Component<Props<T>, State<T>> {
             })
             .catch((error: Error) => {
                 if (this.amIStillhere) {
-                    this.setState({ error: true })
+                    this.setState({ error: true });
                 }
             });
     }
@@ -49,7 +49,6 @@ class Datafetcher<T> extends React.Component<Props<T>, State<T>> {
     public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         this.setState({ error: true });
     }
-
 
     public render() {
         if (this.state.error) {

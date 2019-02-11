@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { KartleggingData } from "../../datatyper/kartlegging";
-import Grid from "../../utils/grid";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import InformasjonsbolkPunktliste from "../felles-komponenter/informasjonsbolk-punktliste";
-import SistEndret from "../felles-komponenter/sist-endret";
-import {safeMap} from "../utils";
-import { RaadVisning } from "./raad-visning";
+import { KartleggingData } from '../../datatyper/kartlegging';
+import Grid from '../../utils/grid';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import InformasjonsbolkPunktliste from '../felles-komponenter/informasjonsbolk-punktliste';
+import SistEndret from '../felles-komponenter/sist-endret';
+import { safeMap } from '../utils';
+import { RaadVisning } from './raad-visning';
 
 function Jobbsokerkompetanse(props: { data: { jobbsokerkompetanse: KartleggingData }}) {
     const { besvarelseDato, kulepunkter, raad } = props.data.jobbsokerkompetanse;
 
-    const kulepunktListe = kulepunkter.map(punkt => punkt.kulepunkt);
+    const kulepunktListe = kulepunkter.map((punkt) => punkt.kulepunkt);
     const raadliste = safeMap(raad,(rad, index) => (
         <li key={index}>
             <RaadVisning raad={rad} />

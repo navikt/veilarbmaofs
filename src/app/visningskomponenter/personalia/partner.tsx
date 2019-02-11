@@ -1,11 +1,11 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {PersonaliaPartner} from "../../datatyper/personalia";
-import { finnAldersTekst } from "../../utils/date-utils";
+import { PersonaliaPartner } from '../../datatyper/personalia';
+import { finnAldersTekst } from '../../utils/date-utils';
 import EMDASH from '../../utils/emdash';
-import {isNullOrUndefined} from "../../utils/util";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {OrNothing} from "../felles-typer";
+import { isNullOrUndefined } from '../../utils/util';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import { OrNothing } from '../felles-typer';
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner>}) {
     const { partner, ...rest} = props;
@@ -19,7 +19,6 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner>}) {
     const { harSammeBosted, sammensattNavn, fodselsnummer} = partner!;
     const borSammen = harSammeBosted ? 'Bor med partner' : 'Bor ikke med partner';
     const alder = finnAldersTekst(partner!);
-
 
     return (
         <Informasjonsbolk header="Partner" {...rest}>

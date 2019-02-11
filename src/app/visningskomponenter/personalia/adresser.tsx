@@ -1,12 +1,12 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {PersonaliaBostedsadresse, PersonaliaInfo} from "../../datatyper/personalia";
-import EMDASH from "../../utils/emdash";
-import {isNullOrUndefined} from "../../utils/util";
-import NormalTekstWrapper from "../felles-komponenter/normaltekstwrapper";
+import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../datatyper/personalia';
+import EMDASH from '../../utils/emdash';
+import { isNullOrUndefined } from '../../utils/util';
+import NormalTekstWrapper from '../felles-komponenter/normaltekstwrapper';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
-    if (isNullOrUndefined(props.bostedsadresse)){
+    if (isNullOrUndefined(props.bostedsadresse)) {
         return null;
     }
 
@@ -102,4 +102,3 @@ function Adresser(props: Props) {
 }
 
 export default Adresser;
-

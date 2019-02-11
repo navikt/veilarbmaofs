@@ -1,7 +1,7 @@
-import {OppfolgingData} from "../datatyper/oppfolging";
+import { OppfolgingData } from '../datatyper/oppfolging';
 
 export function erBrukerSykmeldt(oppfolging: OppfolgingData): boolean {
-    return oppfolging.formidlingsgruppe === "IARBS" && oppfolging.servicegruppe === "VURDI";
+    return oppfolging.formidlingsgruppe === 'IARBS' && oppfolging.servicegruppe === 'VURDI';
 }
 
 export function trengerVurdering(oppfolging: OppfolgingData): boolean {

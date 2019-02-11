@@ -1,8 +1,8 @@
-import {Normaltekst} from 'nav-frontend-typografi';
+import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import {formaterDato, safeMap} from "../utils";
+import { ArenaPerson } from '../../datatyper/arenaperson';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import { formaterDato, safeMap } from '../utils';
 
 type Props = Pick<ArenaPerson, 'sertifikater'>;
 

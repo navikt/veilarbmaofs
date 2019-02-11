@@ -5,13 +5,13 @@ function createCacheKey(input: RequestInfo, init?: RequestInit): string {
 function logTimeSince(key: string, startTime: Date) {
     const end = new Date();
     (window as any).frontendlogger.event('maofs.responseTime.v2',
-        {'value': end.getTime() - startTime.getTime()}, {'key' : key});
+        {value: end.getTime() - startTime.getTime()}, {key});
 }
 
-interface ICache {
-    [key: string]: Promise<Response>
+interface Cache {
+    [key: string]: Promise<Response>;
 }
-const cache: ICache = {};
+const cache: Cache = {};
 
 export default function fetch(key: string, input: RequestInfo, init?: RequestInit): Promise<Response> {
    const cacheKey: string = createCacheKey(input, init);
@@ -39,6 +39,6 @@ export default function fetch(key: string, input: RequestInfo, init?: RequestIni
    return resp
        .then((response) => {
            logTimeSince(key, start);
-           return response.clone()
+           return response.clone();
        });
 }

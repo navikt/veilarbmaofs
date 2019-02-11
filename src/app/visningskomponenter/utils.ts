@@ -1,7 +1,7 @@
-import {Kursvarighet, KursVarighetEnhet} from "../datatyper/arenaperson";
-import EMDASH from "../utils/emdash";
-import {isNullOrUndefined} from "../utils/util";
-import {StringOrNothing} from "./felles-typer";
+import { Kursvarighet, KursVarighetEnhet } from '../datatyper/arenaperson';
+import EMDASH from '../utils/emdash';
+import { isNullOrUndefined } from '../utils/util';
+import { StringOrNothing } from './felles-typer';
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {
     return verdi ? verdi : EMDASH;
@@ -17,9 +17,9 @@ export function safeMap<T, S>(verdi: T[] | null, fn: (t: T, i: number, ) => S): 
 }
 
 export interface DatoType {
-    year: string,
-    month: string,
-    day: string
+    year: string;
+    month: string;
+    day: string;
 }
 
 export function formaterDato( datoObjekt: DatoType | string | undefined | null, onlyYearMonth?: boolean ) {

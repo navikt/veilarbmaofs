@@ -1,11 +1,11 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {Registrering} from "../../datatyper/registreringsData";
-import {isNullOrUndefined} from "../../utils/util";
-import {formaterDato} from "../utils";
+import { Registrering } from '../../datatyper/registreringsData';
+import { isNullOrUndefined } from '../../utils/util';
+import { formaterDato } from '../utils';
 
-function RegistrertTid(props:  Pick<Registrering, 'opprettetDato'>) {
-    if(isNullOrUndefined(props.opprettetDato)){
+function RegistrertTid(props: Pick<Registrering, 'opprettetDato'>) {
+    if(isNullOrUndefined(props.opprettetDato)) {
         return null;
     }
 

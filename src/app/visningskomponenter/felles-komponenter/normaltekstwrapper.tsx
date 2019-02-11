@@ -1,9 +1,9 @@
-import Normaltekst from "nav-frontend-typografi/lib/normaltekst";
+import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import * as React from 'react';
-import EMDASH from "../../utils/emdash";
+import EMDASH from '../../utils/emdash';
 
 interface ChildProps {
-    children?: React.ReactNode
+    children?: React.ReactNode;
 }
 
 function notNullChildren<T>(Comp: React.ComponentType<T & ChildProps>) {
@@ -12,7 +12,7 @@ function notNullChildren<T>(Comp: React.ComponentType<T & ChildProps>) {
             return <>{EMDASH}</>;
         }
         return <Comp {...props}/>;
-    }
+    };
 }
 
 const NormalTekstWrapper = notNullChildren(Normaltekst);
