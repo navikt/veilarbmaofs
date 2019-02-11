@@ -17,31 +17,33 @@ const removeCssHashPlugin = {
 
             if (options.filename && options.filename.endsWith('.css')) {
                 options.filename = "static/css/[name].css";
-                options.chunkFilename = "static/css/[name].chunk.css";
             }
 
         });
+
         return webpackConfig;
     }
 };
 
 module.exports = {
     plugins: [
-        { plugin: CracoLessPlugin,
-            options: {
-                lessLoaderOptions: {
-                    loader: new NpmImportPlugin({ prefix: '~' })
-                }
-            }
-        },
+        { plugin: CracoLessPlugin },
         { plugin: removeCssHashPlugin },
     ],
     webpack: {
         configure: {
+            optimization: {
+                splitChunks: {
+                    cacheGroups: {
+                        default: false,
+                        vendors: false
+                    },
+                },
+                runtimeChunk: false
+            },
             output: {
                 path: BUILD_PATH,
                 filename: 'static/js/[name].js',
-                chunkFilename: 'static/js/[name].chunk.js',
             },
         }
     }
