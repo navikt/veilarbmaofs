@@ -1,19 +1,19 @@
 import * as React from 'react';
-import {OppfolgingskontrakterType, VedtakType, YtelseDataType} from "../../datatyper/ytelse";
-import {OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER} from "../../konstanter";
-import EMDASH from "../../utils/emdash";
-import Grid from "../../utils/grid";
-import Innsatsgruppe from "./innsatsgruppe";
-import Vedtaksliste from "./vedtaksliste";
+import { OppfolgingskontrakterType, VedtakType, YtelseDataType } from '../../datatyper/ytelse';
+import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../konstanter';
+import EMDASH from '../../utils/emdash';
+import Grid from '../../utils/grid';
+import Innsatsgruppe from './innsatsgruppe';
+import Vedtaksliste from './vedtaksliste';
 
 export const getInnsatsgruppeVisningstekst = (InnstatsgruppeListe: OppfolgingskontrakterType[]) => {
     const aktiveOppfolgingskontrakter =
-        InnstatsgruppeListe && InnstatsgruppeListe.filter(kontrakt => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
+        InnstatsgruppeListe && InnstatsgruppeListe.filter((kontrakt) => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
     return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : EMDASH;
 };
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
-    return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
+    return vedtaksliste.filter((vedtak) => vedtak.status === VEDTAKSSTATUSER.iverksatt);
 };
 
 function YtelseVisning(props: {data: {ytelser: YtelseDataType}}) {

@@ -1,6 +1,6 @@
-import * as cls from"classnames";
-import TypografiBase from 'nav-frontend-typografi';
 import * as React from 'react';
+import cls from 'classnames';
+import TypografiBase from 'nav-frontend-typografi';
 
 interface Props {
     header: string;
@@ -13,7 +13,7 @@ function Informasjonsbolk(props: Props) {
     const { header, headerTypo = 'element', children, className, ...rest } = props;
 
     return (
-        <div className={cls("informasjonsbolk", className)} {...rest}>
+        <div className={cls('informasjonsbolk', className)} {...rest}>
             <TypografiBase type={headerTypo} >{header}</TypografiBase>
             { children }
         </div>

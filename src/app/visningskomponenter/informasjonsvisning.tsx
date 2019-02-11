@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {FetchContext, getConfig, IInformasjonsElement} from "../../config";
-import {AppContext, AppContextProp, IAppContext, withAppContext} from "../context";
-import {OppfolgingData} from "../datatyper/oppfolging";
+import { FetchContext, getConfig, InformasjonsElement } from '../../config';
+import { AppContext, AppContextProp, withAppContext } from '../context';
+import { OppfolgingData } from '../datatyper/oppfolging';
 import './informasjonsvisning.less';
-import {VisningsBolk} from "./visningsbolk";
+import { VisningsBolk } from './visningsbolk';
 
-function lagVisningBolk<T>(context: IAppContext) {
-    return (element: IInformasjonsElement<T>, index: number) => (
+function lagVisningBolk<T>(context: AppContext) {
+    return (element: InformasjonsElement<T>, index: number) => (
         <VisningsBolk {...element} key={index} context={context}/>
     );
 }

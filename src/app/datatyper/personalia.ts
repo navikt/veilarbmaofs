@@ -1,4 +1,4 @@
-import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
+import { OrNothing, StringOrNothing } from '../visningskomponenter/felles-typer';
 
 export interface GrunnPersonalia {
     fornavn: string;
@@ -11,7 +11,7 @@ export interface GrunnPersonalia {
     kjonn: string;
 }
 
-export interface PersonaliaBarn extends  GrunnPersonalia{
+export interface PersonaliaBarn extends  GrunnPersonalia {
     harSammeBosted: boolean;
 }
 
@@ -25,7 +25,7 @@ export interface PersonaliaSivilstand {
     fraDato: StringOrNothing;
 }
 
-export interface PersonaliaPartner extends GrunnPersonalia{
+export interface PersonaliaPartner extends GrunnPersonalia {
     harSammeBosted: boolean;
 }
 
@@ -45,7 +45,7 @@ interface Gateadresse {
 export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
         Gateadresse: OrNothing<Gateadresse>
-    }
+    };
 }
 
 export type PersonaliaBostedsadresse = PersonaliaStrukturertAdresse;
@@ -57,10 +57,10 @@ interface PersonaliaPostadresse {
         adresselinje3: StringOrNothing;
         adresselinje4: StringOrNothing;
         landkode: string;
-    }
+    };
 }
 
-export interface PersonaliaInfo extends GrunnPersonalia{
+export interface PersonaliaInfo extends GrunnPersonalia {
     barn: PersonaliaBarn[];
     diskresjonskode: StringOrNothing;
     kontonummer: string;

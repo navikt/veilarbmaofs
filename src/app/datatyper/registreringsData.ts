@@ -1,18 +1,18 @@
-import {FetchContext} from "../../config";
+import { FetchContext } from '../../config';
 
 export interface OrdinaerRegistrering {
-    opprettetDato: string,
-    teksterForBesvarelse: Sporsmal[],
-    profilering?: Profilering,
+    opprettetDato: string;
+    teksterForBesvarelse: Sporsmal[];
+    profilering?: Profilering;
 }
 
 export interface SykmeldtRegistrering {
-    opprettetDato: string,
+    opprettetDato: string;
     teksterForBesvarelse: Sporsmal[];
 }
 
 export interface Profilering {
-    jobbetSammenhengendeSeksAvTolvSisteManeder: boolean
+    jobbetSammenhengendeSeksAvTolvSisteManeder: boolean;
 }
 
 export enum RegistreringType {
@@ -23,15 +23,15 @@ export enum RegistreringType {
 export type Registrering = OrdinaerRegistrering | SykmeldtRegistrering;
 
 export interface RegistreringsData {
-    type?: RegistreringType,
-    registrering?: Registrering,
-    profilering?: Profilering, // TODO: profilering skal flyttes til OrdinaerRegistrering, dette feltet er kun midlertidig
+    type?: RegistreringType;
+    registrering?: Registrering;
+    profilering?: Profilering; // TODO: profilering skal flyttes til OrdinaerRegistrering, dette feltet er kun midlertidig
 }
 
 export interface Sporsmal {
-    sporsmalId: string,
-    sporsmal: string,
-    svar: string
+    sporsmalId: string;
+    sporsmal: string;
+    svar: string;
 }
 
 export function createRegistreringsDataSourceConfig(context: FetchContext) {

@@ -1,6 +1,6 @@
-import {FetchContext} from "../../config";
-import {SourceConfigEntry} from "../../fetch-utils";
-import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
+import { FetchContext } from '../../config';
+import { SourceConfigEntry } from '../../fetch-utils';
+import { OrNothing, StringOrNothing } from '../visningskomponenter/felles-typer';
 
 export interface OppfolgingEnhet {
     navn: StringOrNothing;
@@ -16,11 +16,11 @@ export const HovedmaalkodeMap = {
 };
 
 export interface OppfolgingData {
-    oppfolgingsenhet: OppfolgingEnhet,
+    oppfolgingsenhet: OppfolgingEnhet;
     veilederId: StringOrNothing;
     formidlingsgruppe: OrNothing<Formidlingsgruppe>;
     servicegruppe: OrNothing<Servicegruppe>;
-    hovedmaalkode:  OrNothing<Hovedmaalgruppe>;
+    hovedmaalkode: OrNothing<Hovedmaalgruppe>;
 }
 
 export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingData> {

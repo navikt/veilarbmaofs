@@ -1,21 +1,20 @@
-import * as React from "react";
-import {OrdinaerRegistrering, RegistreringsData, RegistreringType} from "../../datatyper/registreringsData";
-import {Profilering} from "./profilering";
-import {Header} from "./registrert";
-import {SporsmalsListe} from "./sporsmolvisning";
-
+import * as React from 'react';
+import { OrdinaerRegistrering, RegistreringsData, RegistreringType } from '../../datatyper/registreringsData';
+import { Profilering } from './profilering';
+import { Header } from './registrert';
+import { SporsmalsListe } from './sporsmolvisning';
 
 interface Props {
     data: {
         registrering: RegistreringsData
-    }
+    };
 }
 
-function lagProfilering(registreringsData: RegistreringsData){
+function lagProfilering(registreringsData: RegistreringsData) {
 
     const { type, profilering } = registreringsData;
 
-    if(type === RegistreringType.ORDINAER){
+    if(type === RegistreringType.ORDINAER) {
 
         const registrering = registreringsData.registrering as OrdinaerRegistrering;
 

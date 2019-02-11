@@ -1,6 +1,6 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import EMDASH from "../../utils/emdash";
+import EMDASH from '../../utils/emdash';
 import { isNullOrUndefined } from '../../utils/util';
 import { StringOrNothing } from '../felles-typer';
 import Informasjonsbolk from './informasjonsbolk';

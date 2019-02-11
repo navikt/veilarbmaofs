@@ -1,4 +1,4 @@
-import FetchMock, {HandlerArgument, Middleware, MiddlewareUtils} from "yet-another-fetch-mock";
+import FetchMock, { HandlerArgument, Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
 import {
     CV,
     Jobbsokerkompetanse,
@@ -50,11 +50,10 @@ const mock = FetchMock.configure({
 });
 
 mock.get('/veilarbveileder/api/veileder/:veilederId',
-    (handler:HandlerArgument) => veileder(handler.pathParams.veilederId));
+    (handler: HandlerArgument) => veileder(handler.pathParams.veilederId));
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
 mock.get('/veilarbregistrering/api/registrering', Registering);
-mock.get('/veilarbpersonflatefs/api/feature', { "mao.trenger_vurdering": true, "mao.vise_registrering": true, "mao.sykmeldt_med_arbeidsgiver": true });
-
+mock.get('/veilarbpersonflatefs/api/feature', { 'mao.trenger_vurdering': true, 'mao.vise_registrering': true, 'mao.sykmeldt_med_arbeidsgiver': true });

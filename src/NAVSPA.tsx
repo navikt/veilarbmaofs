@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-interface INAVSPAScope {
+interface NAVSPAScope {
     [name: string]: NAVSPAApp;
 }
 type NAVSPAApp = (element: HTMLElement, props: any) => void;
@@ -15,23 +15,27 @@ export default class NAVSPA {
 
     public static importer<PROPS>(name: string): React.ComponentType<PROPS> {
         class NAVSPAImporter extends React.Component<PROPS> { // tslint:disable-line
-            private el: HTMLElement;
+            private el: HTMLElement | null = null;
 
             public componentWillUnmount() {
-                ReactDOM.unmountComponentAtNode(this.el);
+                if (this.el) {
+                    ReactDOM.unmountComponentAtNode(this.el);
+                }
             }
 
             public componentDidMount() {
-                NAVSPA.scope[name](this.el, this.props);
+                if (this.el) {
+                    NAVSPA.scope[name](this.el, this.props);
+                }
             }
 
             public render() {
-                return <div ref={this.saveRef}/>
+                return <div ref={this.saveRef}/>;
             }
 
             private saveRef = (el: HTMLDivElement) => {
                 this.el = el;
-            };
+            }
         }
 
         return NAVSPAImporter;
@@ -41,5 +45,5 @@ export default class NAVSPA {
         NAVSPA.scope[name](element, props);
     }
 
-    private static scope: INAVSPAScope = (global as any)['NAVSPA'] = (global as any)['NAVSPA'] || {}; // tslint:disable-line
+    private static scope: NAVSPAScope = (global as any)['NAVSPA'] = (global as any)['NAVSPA'] || {}; // tslint:disable-line
 }

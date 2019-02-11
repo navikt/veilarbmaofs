@@ -1,23 +1,24 @@
-import CV from "./app/visningskomponenter/cv/cv";
-import Jobbprofil from "./app/visningskomponenter/jobbprofil/jobbprofil";
-import Oppfolging from "./app/visningskomponenter/oppfolging/oppfolging";
-import Personalia from "./app/visningskomponenter/personalia/personalia";
-import YtelseVisning from "./app/visningskomponenter/ytelser/ytelsevisning";
-import {Data, getData} from "./fetch-utils";
+import * as React from 'react';
+import CV from './app/visningskomponenter/cv/cv';
+import Jobbprofil from './app/visningskomponenter/jobbprofil/jobbprofil';
+import Oppfolging from './app/visningskomponenter/oppfolging/oppfolging';
+import Personalia from './app/visningskomponenter/personalia/personalia';
+import YtelseVisning from './app/visningskomponenter/ytelser/ytelsevisning';
+import { Data, getData } from './fetch-utils';
 
-import {ArenaPerson, createArenaPersonSourceConfig} from "./app/datatyper/arenaperson";
-import {createKartleggingDataSourceConfig, KartleggingData} from "./app/datatyper/kartlegging";
-import {createOppfolgingDataSourceConfig, OppfolgingData} from "./app/datatyper/oppfolging";
-import {PersonaliaInfo} from "./app/datatyper/personalia";
-import {createRegistreringsDataSourceConfig, RegistreringsData} from "./app/datatyper/registreringsData";
-import {createYtelseDataSourceConfig, YtelseDataType} from "./app/datatyper/ytelse";
-import {erBrukerSykmeldt} from "./app/utils/arena-status-utils";
-import Jobbsokerkompetanse from "./app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse";
-import {Registrering} from "./app/visningskomponenter/registrering/registrering";
+import { ArenaPerson, createArenaPersonSourceConfig } from './app/datatyper/arenaperson';
+import { createKartleggingDataSourceConfig, KartleggingData } from './app/datatyper/kartlegging';
+import { createOppfolgingDataSourceConfig, OppfolgingData } from './app/datatyper/oppfolging';
+import { PersonaliaInfo } from './app/datatyper/personalia';
+import { createRegistreringsDataSourceConfig, RegistreringsData } from './app/datatyper/registreringsData';
+import { createYtelseDataSourceConfig, YtelseDataType } from './app/datatyper/ytelse';
+import { erBrukerSykmeldt } from './app/utils/arena-status-utils';
+import Jobbsokerkompetanse from './app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse';
+import { Registrering } from './app/visningskomponenter/registrering/registrering';
 
 export type Datasource<T> = () => Promise<Data<T>>;
 
-export interface IInformasjonsElement<T> {
+export interface InformasjonsElement<T> {
     component: React.ComponentType<{ data: T }>;
     dataSource: Datasource<T>;
     id: string;
@@ -27,7 +28,7 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext, oppfolging: OppfolgingData): Array<IInformasjonsElement<any>> {
+export function getConfig(context: FetchContext, oppfolging: OppfolgingData): Array<InformasjonsElement<any>> {
     return [
         {
             component: Registrering,

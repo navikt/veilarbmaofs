@@ -1,10 +1,10 @@
-import { Normaltekst } from "nav-frontend-typografi";
-import Element from "nav-frontend-typografi/lib/element";
+import { Normaltekst } from 'nav-frontend-typografi';
+import Element from 'nav-frontend-typografi/lib/element';
 import * as React from 'react';
-import {Raad, RaadAktivitet} from "../../datatyper/kartlegging";
-import {skillUtTipsTilDegFraTekst} from "../../utils/util";
-import {Ekspanderbar} from "../felles-komponenter/ekspanderbar";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
+import { Raad, RaadAktivitet } from '../../datatyper/kartlegging';
+import { skillUtTipsTilDegFraTekst } from '../../utils/util';
+import { Ekspanderbar } from '../felles-komponenter/ekspanderbar';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
 function RaadAktivitetsvisning(props: { data: RaadAktivitet[], hidden: boolean }) {
     const aktiviteter = props.hidden ? null :
@@ -30,5 +30,5 @@ export function RaadVisning(props: { raad: Raad }) {
                 <RaadAktivitetsvisning data={raadAktiviteter} hidden={false}/>
             </Ekspanderbar>
         </>
-    </Informasjonsbolk>
+    </Informasjonsbolk>;
 }

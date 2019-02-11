@@ -1,6 +1,6 @@
-import {FetchContext} from "../../config";
-import {SourceConfigEntry} from "../../fetch-utils";
-import {OrNothing, StringOrNothing} from "../visningskomponenter/felles-typer";
+import { FetchContext } from '../../config';
+import { SourceConfigEntry } from '../../fetch-utils';
+import { OrNothing, StringOrNothing } from '../visningskomponenter/felles-typer';
 
 export interface OppfolgingskontrakterType {
     innsatsgrupper: StringOrNothing[];
@@ -8,9 +8,9 @@ export interface OppfolgingskontrakterType {
 }
 
 export interface DatoType {
-    year: string,
-    month: string,
-    day: string
+    year: string;
+    month: string;
+    day: string;
 }
 
 export interface VedtakType {

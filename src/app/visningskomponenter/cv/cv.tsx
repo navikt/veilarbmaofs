@@ -1,22 +1,22 @@
 import * as React from 'react';
-import {ArenaPerson} from "../../datatyper/arenaperson";
+import { ArenaPerson } from '../../datatyper/arenaperson';
 import EMDASH from '../../utils/emdash';
-import FloatGrid from "../../utils/float-grid";
-import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
-import SistEndret from "../felles-komponenter/sist-endret";
-import AnnenErfaring from "./annen-erfaring";
-import Arbeidserfaring from "./arbeidserfaring";
-import Forerkort from "./forerkort";
-import Kurs from "./kurs";
-import Sammendrag from "./sammendrag";
-import Sertifikater from "./sertifikater";
-import Sprak from "./sprak";
-import Utdanning from "./utdanning";
+import FloatGrid from '../../utils/float-grid';
+import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
+import SistEndret from '../felles-komponenter/sist-endret';
+import AnnenErfaring from './annen-erfaring';
+import Arbeidserfaring from './arbeidserfaring';
+import Forerkort from './forerkort';
+import Kurs from './kurs';
+import Sammendrag from './sammendrag';
+import Sertifikater from './sertifikater';
+import Sprak from './sprak';
+import Utdanning from './utdanning';
 
 interface Props {
     data: {
         cv: ArenaPerson
-    }
+    };
 }
 
 function CV(props: Props) {

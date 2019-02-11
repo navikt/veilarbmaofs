@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {YtelseDataType} from "../../datatyper/ytelse";
-import Grid from "../../utils/grid";
-import Informasjonsbolk from "../felles-komponenter/informasjonsbolk";
-import InformasjonsbolkEnkel from "../felles-komponenter/informasjonsbolk-enkel";
-import NormalTekstWrapper from "../felles-komponenter/normaltekstwrapper";
-import {formaterDato, safeMap, visEmdashHvisNull} from "../utils";
+import { YtelseDataType } from '../../datatyper/ytelse';
+import Grid from '../../utils/grid';
+import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
+import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
+import NormalTekstWrapper from '../felles-komponenter/normaltekstwrapper';
+import { formaterDato, safeMap, visEmdashHvisNull } from '../utils';
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     const vedtakliste = safeMap(props.vedtaksliste, (vedtak, index) => (

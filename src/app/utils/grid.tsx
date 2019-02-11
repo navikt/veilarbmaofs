@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import './grid.less';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
@@ -24,7 +23,7 @@ class Grid extends React.Component<Props> {
             msGridRows: rows
         };
 
-        const placedChildren = React.Children.map(this.props.children, (child: React.ReactElement<any>, index: number) => {
+        const placedChildren = React.Children.map(this.props.children, (child: any, index: number) => {
             const rawRow = Math.floor(index / this.props.columns) + 1;
             const rawColumn = (index % this.props.columns) + 1;
 

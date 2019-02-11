@@ -1,11 +1,11 @@
-import {Normaltekst} from 'nav-frontend-typografi';
+import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-import {safeMap} from "../utils";
-import Informasjonsbolk from "./informasjonsbolk";
+import { safeMap } from '../utils';
+import Informasjonsbolk from './informasjonsbolk';
 
 interface Props<T> {
     header: string;
-    list: T[]
+    list: T[];
 }
 
 function InformasjonsbolkListe<T>(props: Props<T>) {

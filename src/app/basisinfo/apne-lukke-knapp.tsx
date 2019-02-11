@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import './apne-lukke-knapp.less';
 
-import {AppContext, AppContextProp, withAppContext} from "../context";
+import { AppContext, AppContextProp, withAppContext } from '../context';
 
 function ApneLukkeKnapp(props: AppContextProp) {
     const apen = props.context.apen;

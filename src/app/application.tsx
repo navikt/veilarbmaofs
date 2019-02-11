@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Persondetaljer from "./persondetaljer";
+import Persondetaljer from './persondetaljer';
 
 import './application.less';
-import AppProvider from "./context";
+import AppProvider from './context';
 
 export interface AppProps {
     fnr: string;
@@ -10,7 +10,7 @@ export interface AppProps {
 }
 
 class Application extends React.Component<AppProps> {
-    public componentDidMount(){
+    public componentDidMount() {
         (window as any).frontendlogger.event('maofs.visning.v2', {}, {});
     }
 

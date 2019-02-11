@@ -4,7 +4,7 @@ import { isNullOrUndefined } from '../../utils/util';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';
-import {PersonaliaBarn, PersonaliaInfo} from "../../datatyper/personalia";
+import { PersonaliaBarn, PersonaliaInfo } from '../../datatyper/personalia';
 
 function BorSammen(props: { barn: PersonaliaBarn }) {
     const { dodsdato, harSammeBosted } = props.barn;
@@ -18,7 +18,7 @@ function BorSammen(props: { barn: PersonaliaBarn }) {
         <Normaltekst>
             {borSammen}
         </Normaltekst>
-    )
+    );
 }
 
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {

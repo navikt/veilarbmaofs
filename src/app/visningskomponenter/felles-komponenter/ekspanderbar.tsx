@@ -1,8 +1,8 @@
-import NavFrontendChevron from "nav-frontend-chevron";
-import Normaltekst from "nav-frontend-typografi/lib/normaltekst";
+import NavFrontendChevron from 'nav-frontend-chevron';
+import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import * as React from 'react';
-import {Collapse} from "react-collapse";
-import './ekspanderbar.less'
+import { Collapse } from 'react-collapse';
+import './ekspanderbar.less';
 
 interface State {
     apen: boolean;

@@ -10,6 +10,6 @@ export default function hiddenIf<PROPS>(Component: React.ComponentType<PROPS>): 
         if (hidden) {
             return null;
         }
-        return <Component {...rest} />
-    }
+        return <Component {...rest} />;
+    };
 }

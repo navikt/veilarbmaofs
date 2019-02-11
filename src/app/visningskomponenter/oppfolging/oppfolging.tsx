@@ -1,19 +1,19 @@
 import * as React from 'react';
-import {Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingData, OppfolgingEnhet} from "../../datatyper/oppfolging";
-import {PersonaliaEnhet, PersonaliaInfo} from "../../datatyper/personalia";
-import {YtelseDataType} from "../../datatyper/ytelse";
-import EMDASH from "../../utils/emdash";
-import Grid from "../../utils/grid";
+import { Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingData, OppfolgingEnhet } from '../../datatyper/oppfolging';
+import { PersonaliaEnhet, PersonaliaInfo } from '../../datatyper/personalia';
+import { YtelseDataType } from '../../datatyper/ytelse';
+import EMDASH from '../../utils/emdash';
+import Grid from '../../utils/grid';
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
-import {OrNothing, StringOrNothing} from "../felles-typer";
-import {Veileder} from "./veileder";
+import { OrNothing, StringOrNothing } from '../felles-typer';
+import { Veileder } from './veileder';
 
 interface OppfolgingProps {
     data: {
         oppfolging: OppfolgingData,
         ytelser: YtelseDataType,
         personalia: PersonaliaInfo
-    }
+    };
 }
 
 function toStrOppfolging(enhet?: OppfolgingEnhet | null): StringOrNothing {
@@ -32,7 +32,7 @@ function toStrPersonalia(enhet?: PersonaliaEnhet | null): StringOrNothing {
 
 function getInnsatsgruppeVisningstekst(ytelser: YtelseDataType): StringOrNothing {
     const aktiveOppfolgingskontrakter =
-        ytelser.oppfolgingskontrakter.filter(kontrakt => kontrakt.status === "Aktiv");
+        ytelser.oppfolgingskontrakter.filter((kontrakt) => kontrakt.status === 'Aktiv');
     return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : null;
 }
 

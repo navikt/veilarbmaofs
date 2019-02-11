@@ -5,7 +5,7 @@ interface State {
     valgteKnapper: string[];
 }
 
-export interface IAppContext {
+export interface AppContext {
     apen: boolean;
     valgteKnapper: string[];
     toggleApen(): void;
@@ -13,16 +13,15 @@ export interface IAppContext {
 }
 
 export interface AppContextProp {
-    context: IAppContext
+    context: AppContext;
 }
 
-export const AppContext = React.createContext<IAppContext>({
+export const AppContext = React.createContext<AppContext>({
     apen: false,
     toggleApen: () => {}, // tslint:disable-line
     toggleKnapp: () => {}, // tslint:disable-line
     valgteKnapper: [],
 });
-
 
 class AppProvider extends React.Component<{}, State> {
     public state: State = {
@@ -53,7 +52,7 @@ class AppProvider extends React.Component<{}, State> {
     }
 
     public render() {
-        const context: IAppContext = {
+        const context: AppContext = {
             ...this.state,
             toggleApen: this.toggleApen,
             toggleKnapp: this.toggleKnapp
@@ -67,20 +66,18 @@ class AppProvider extends React.Component<{}, State> {
     }
 }
 
-
-export function withAppContext<PROPS>(context: React.Context<IAppContext>, component: React.ComponentType<AppContextProp & PROPS>): React.ComponentType<PROPS> {
+export function withAppContext<PROPS>(context: React.Context<AppContext>, component: React.ComponentType<AppContextProp & PROPS>): React.ComponentType<PROPS> {
     const Context = context;
     const Component = component;
     return (props: PROPS) => {
         return (
             <Context.Consumer>
-                {(contextValue: IAppContext) => (
+                {(contextValue: AppContext) => (
                     <Component {...props} context={contextValue} />
                 )}
             </Context.Consumer>
         );
     };
 }
-
 
 export default AppProvider;

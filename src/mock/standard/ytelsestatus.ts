@@ -1,16 +1,16 @@
 // tslint:disable object-literal-sort-keys
-import {JSONValue} from "yet-another-fetch-mock";
-import {YtelseDataType} from "../../app/datatyper/ytelse";
+import { JSONValue } from 'yet-another-fetch-mock';
+import { YtelseDataType } from '../../app/datatyper/ytelse';
 
 const ytelsestatus: YtelseDataType & JSONValue = {
     oppfolgingskontrakter:
         [{
-            innsatsgrupper: ["Spesielt tilpasset innsats"],
-            status: "Aktiv",
+            innsatsgrupper: ['Spesielt tilpasset innsats'],
+            status: 'Aktiv',
         },
             {
-                innsatsgrupper: ["Spesielt tilpasset innsats"],
-                status: "Lukket",
+                innsatsgrupper: ['Spesielt tilpasset innsats'],
+                status: 'Lukket',
             }],
     vedtaksliste:
         [{
@@ -20,13 +20,13 @@ const ytelsestatus: YtelseDataType & JSONValue = {
                 month: '2',
                 year: '2018',
             },
-            status: "Iverksatt",
+            status: 'Iverksatt',
             tildato: {
                 day: '12',
                 month: '10',
                 year: '2018'
             },
-            vedtakstype: "Eksamensgebyr / Ny rettighet"
+            vedtakstype: 'Eksamensgebyr / Ny rettighet'
         }, {
             aktivitetsfase: null,
             fradato: {
@@ -34,18 +34,18 @@ const ytelsestatus: YtelseDataType & JSONValue = {
                 month: '2',
                 year: '2018',
             },
-            status: "Iverksatt",
+            status: 'Iverksatt',
             tildato: null,
-            vedtakstype: "Arbeidsavklaringspenger / Endring"
+            vedtakstype: 'Arbeidsavklaringspenger / Endring'
         }, {
-            aktivitetsfase: "Under arbeidsavklaring",
+            aktivitetsfase: 'Under arbeidsavklaring',
             fradato: {
                 day: '19',
                 month: '2',
                 year: '2018',
             },
-            status: "Avsluttet",
-            vedtakstype: "Arbeidsavklaringspenger / Ny rettighet"
+            status: 'Avsluttet',
+            vedtakstype: 'Arbeidsavklaringspenger / Ny rettighet'
         }]
 };
 

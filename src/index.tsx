@@ -11,5 +11,4 @@ if (process.env.REACT_APP_MOCK === 'true') {
 }
 // tslint:enable
 
-
 NAVSPA.eksporter('veilarbmaofs', Application);
