@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Registrering } from '../../datatyper/registreringsData';
 import { isNullOrUndefined } from '../../utils/util';
 import RegistrertTid from './registrert-tid';
+import RegistrertAv from './registrert-av';
 
 export function Header(props: {registrering?: Registrering}) {
     if(!props.registrering || isNullOrUndefined(props.registrering.opprettetDato)) {
@@ -17,6 +18,7 @@ export function Header(props: {registrering?: Registrering}) {
         <>
             <Ingress> Brukerens svar fra registreringen </Ingress>
             <RegistrertTid opprettetDato={props.registrering.opprettetDato}/>
+            <RegistrertAv registrering={props.registrering}/>
         </>
     );
 }

@@ -1,14 +1,24 @@
 import { FetchContext } from '../../config';
 
+export interface Veileder {
+    ident: string;
+    enhet: {
+        id: string;
+        navn: string;
+    };
+}
+
 export interface OrdinaerRegistrering {
     opprettetDato: string;
     teksterForBesvarelse: Sporsmal[];
     profilering?: Profilering;
+    manueltRegistrertAv?: Veileder | null;
 }
 
 export interface SykmeldtRegistrering {
     opprettetDato: string;
     teksterForBesvarelse: Sporsmal[];
+    manueltRegistrertAv?: Veileder | null;
 }
 
 export interface Profilering {
@@ -25,7 +35,6 @@ export type Registrering = OrdinaerRegistrering | SykmeldtRegistrering;
 export interface RegistreringsData {
     type?: RegistreringType;
     registrering?: Registrering;
-    profilering?: Profilering; // TODO: profilering skal flyttes til OrdinaerRegistrering, dette feltet er kun midlertidig
 }
 
 export interface Sporsmal {

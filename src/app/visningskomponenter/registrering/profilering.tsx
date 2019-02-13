@@ -1,15 +1,21 @@
 import * as React from 'react';
 import { Element, Ingress, Normaltekst } from 'nav-frontend-typografi';
-import { Profilering as ProfileringData } from '../../datatyper/registreringsData';
+import { OrdinaerRegistrering, Registrering } from '../../datatyper/registreringsData';
 import FloatGrid from '../../utils/float-grid';
 
 interface Props {
-    profilering?: ProfileringData;
+    registrering: Registrering | undefined;
 }
 
 export function Profilering(props: Props) {
 
-    if (!props.profilering) {
+    if (!props.registrering) {
+        return null;
+    }
+
+    const ordinaerRegistrering = props.registrering as OrdinaerRegistrering;
+
+    if (!ordinaerRegistrering.profilering) {
         return null;
     }
 
@@ -19,7 +25,7 @@ export function Profilering(props: Props) {
             <FloatGrid columns={2} gap={8}>
                 <div>
                     <Element> Brukeren har vært sammenhengende i jobb minst 6 av de siste 12 måneder </Element>
-                    <Normaltekst>{props.profilering.jobbetSammenhengendeSeksAvTolvSisteManeder ? 'Ja' : 'Nei'} </Normaltekst>
+                    <Normaltekst>{ordinaerRegistrering.profilering.jobbetSammenhengendeSeksAvTolvSisteManeder ? 'Ja' : 'Nei'} </Normaltekst>
                 </div>
             </FloatGrid>
         </>

@@ -9,6 +9,13 @@ export const ordinaerRegistering: RegistreringsData & JSONValue = {
         opprettetDato: '2018-08-30T09:17:28.386804+02:00',
         enigIOppsummering: true,
         oppsummering: null,
+        manueltRegistrertAv: {
+            ident: 'Z21345567',
+            enhet: {
+                id: '1234',
+                navn: 'NAV TESTHEIM'
+            }
+        },
         besvarelse: {
             utdanning: 'VIDEREGAENDE_FAGBREV_SVENNEBREV',
             utdanningBestatt: 'JA',
