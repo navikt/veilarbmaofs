@@ -30,16 +30,14 @@ const loggingMiddleware: Middleware = (request, response) => {
     return response;
 };
 
-const failureMock = FetchMock.configure({
-    enableFallback: false,
-    middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.failurerateMiddleware(1, { status: 204 }),
-        MiddlewareUtils.delayMiddleware(500),
-        loggingMiddleware
-    )
-});
-
-failureMock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', CV);
+// const failureMock = FetchMock.configure({
+//     enableFallback: false,
+//     middleware: MiddlewareUtils.combine(
+//         MiddlewareUtils.failurerateMiddleware(1, { status: 204 }),
+//         MiddlewareUtils.delayMiddleware(500),
+//         loggingMiddleware
+//     )
+// });
 
 const mock = FetchMock.configure({
     enableFallback: true,
@@ -49,6 +47,7 @@ const mock = FetchMock.configure({
     )
 });
 
+mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', CV);
 mock.get('/veilarbveileder/api/veileder/:veilederId',
     (handler: HandlerArgument) => veileder(handler.pathParams.veilederId));
 mock.get('/veilarbperson/api/person/:fnr', Personalia);

@@ -42,10 +42,18 @@ interface Sertifikat {
     utloperDato: YearMonth;
 }
 
+export enum SprakNiva {
+    IKKE_OPPGITT = 'IKKE_OPPGITT',
+    NYBEGYNNER = 'NYBEGYNNER',
+    GODT = 'GODT',
+    VELDIG_GODT = 'VELDIG_GODT',
+    FOERSTESPRAAK = 'FOERSTESPRAAK'
+}
+
 interface Sprak {
     sprak: StringOrNothing;
-    muntligNiva: StringOrNothing;
-    skriftligNiva: StringOrNothing;
+    muntligNiva: string | SprakNiva; // String er lagt til for bakoverkompatibilitet
+    skriftligNiva: string | SprakNiva; // String er lagt til for bakoverkompatibilitet
 }
 
 interface Kurs {
