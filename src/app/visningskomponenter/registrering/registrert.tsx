@@ -6,7 +6,10 @@ import RegistrertTid from './registrert-tid';
 import RegistrertAv from './registrert-av';
 
 export function Header(props: {registrering?: Registrering}) {
-    if(!props.registrering || isNullOrUndefined(props.registrering.opprettetDato)) {
+
+    const { registrering } = props;
+
+    if(!registrering || isNullOrUndefined(registrering.opprettetDato)) {
         return(
             <Normaltekst>
                 Brukeren har ikke registrert seg gjennom den nye registreringsløsningen.
@@ -14,11 +17,13 @@ export function Header(props: {registrering?: Registrering}) {
         );
     }
 
+    const ingressTekst = registrering.manueltRegistrertAv ? 'Registrert av NAV' : 'Brukerens svar fra registreringen';
+
     return(
         <>
-            <Ingress> Brukerens svar fra registreringen </Ingress>
-            <RegistrertTid opprettetDato={props.registrering.opprettetDato}/>
-            <RegistrertAv registrering={props.registrering}/>
+            <Ingress>{ingressTekst}</Ingress>
+            <RegistrertTid opprettetDato={registrering.opprettetDato}/>
+            <RegistrertAv registrering={registrering}/>
         </>
     );
 }
