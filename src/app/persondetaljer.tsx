@@ -22,19 +22,23 @@ export interface Feature {
 
 interface PersondetaljerData {
     oppfolging: OppfolgingData;
+    feature: { 'modia.layout_med_visittkort': boolean };
 }
 
 class Persondetaljer extends React.Component<AppContextProp & AppProps> {
-    public render() {
+
+    lagNyLayout(oppfolgingData: OppfolgingData, fetchContext: FetchContext) {
+        return (
+            <React.Fragment key={this.props.fnr}>
+                <div className="informasjonsvisning">
+                    <Informasjonsvisning fetchContext={fetchContext} oppfolging={oppfolgingData} />
+                </div>
+            </React.Fragment>
+        );
+    }
+
+    lagLayout(oppfolgingData: OppfolgingData, fetchContext: FetchContext) {
         const apen = this.props.context.apen;
-        const fetchContext: FetchContext = { fnr : this.props.fnr };
-
-        const sourceConfig: SourceConfig<PersondetaljerData> = {
-            oppfolging: createOppfolgingDataSourceConfig(fetchContext)
-        };
-
-        const data = getData<PersondetaljerData>(sourceConfig);
-
         return (
             <React.Fragment key={this.props.fnr}>
                 <Tilbakelenke enhet={this.props.enhet}/>
@@ -44,19 +48,37 @@ class Persondetaljer extends React.Component<AppContextProp & AppProps> {
                         lukket: !apen
                     })}
                 >
-                    <Datafetcher data={data}>
-                        {(a: PersondetaljerData) => {
-                            return (
-                                <>
-                                    <Basisinfo fnr={this.props.fnr} oppfolging={a.oppfolging}/>
-                                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen} oppfolging={a.oppfolging}/>
-                                </>
-                            );
-                        }}
-                    </Datafetcher>
+                    <Basisinfo fnr={this.props.fnr} oppfolging={oppfolgingData}/>
+                    <UtvidetInfo fetchContext={fetchContext} isOpened={apen} oppfolging={oppfolgingData}/>
                 </div>
             </React.Fragment>
         );
+    }
+
+     render() {
+
+         const fetchContext: FetchContext = { fnr : this.props.fnr };
+
+         const sourceConfig: SourceConfig<PersondetaljerData> = {
+             feature: {
+                 allwaysUseFallback: true,
+                 fallback: { 'modia.layout_med_visittkort': false },
+                 url: '/veilarbpersonflatefs/api/feature?feature=modia.layout_med_visittkort'
+             },
+             oppfolging: createOppfolgingDataSourceConfig(fetchContext)
+         };
+
+         const data = getData<PersondetaljerData>(sourceConfig);
+
+         return (
+             <Datafetcher data={data}>
+                 {(personDetaljerData: PersondetaljerData) => {
+                     return personDetaljerData.feature['modia.layout_med_visittkort'] ?
+                         this.lagNyLayout(personDetaljerData.oppfolging, fetchContext) :
+                         this.lagLayout(personDetaljerData.oppfolging, fetchContext);
+                 }}
+             </Datafetcher>
+         );
     }
 }
 
