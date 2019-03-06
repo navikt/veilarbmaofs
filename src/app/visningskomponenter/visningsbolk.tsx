@@ -4,11 +4,15 @@ import { InformasjonsElement } from '../../config';
 import { AppContextProp } from '../context';
 import Datafetcher from '../utils/datafetcher';
 
+interface VisningsbolkProps {
+    defaultApen?: boolean;
+}
+
 interface VisningsbolkState {
     apen: boolean;
 }
 
-type Props<DATA> = InformasjonsElement<DATA> & AppContextProp;
+type Props<DATA> = InformasjonsElement<DATA> & AppContextProp & VisningsbolkProps;
 
 export class VisningsBolk<DATA> extends React.Component<Props<DATA>, VisningsbolkState> {
 
@@ -26,11 +30,12 @@ export class VisningsBolk<DATA> extends React.Component<Props<DATA>, Visningsbol
     }
 
     public render() {
+        const { id, defaultApen, dataSource } = this.props;
         const Component = this.props.component;
 
         return (
-            <Ekspanderbartpanel tittel={this.props.id} onClick={this.onClick} tittelProps="undertittel">
-                <Datafetcher data={this.props.dataSource}>
+            <Ekspanderbartpanel tittel={id} apen={defaultApen} onClick={this.onClick} tittelProps="undertittel">
+                <Datafetcher data={dataSource}>
                     {(data: DATA) => <Component data={data}/>}
                 </Datafetcher>
             </Ekspanderbartpanel>

@@ -6,9 +6,18 @@ import './informasjonsvisning.less';
 import { VisningsBolk } from './visningsbolk';
 
 function lagVisningBolk<T>(context: AppContext) {
-    return (element: InformasjonsElement<T>, index: number) => (
-        <VisningsBolk {...element} key={index} context={context}/>
-    );
+    return (element: InformasjonsElement<T>, index: number) => {
+        const erRegistreringBolk = element.id.indexOf('Registrering') >= 0;
+        const apneRegistreringBolk = window.location.search.indexOf('visRegistreringDetaljer') >= 0;
+        return (
+            <VisningsBolk
+                {...element}
+                key={index}
+                context={context}
+                defaultApen={erRegistreringBolk && apneRegistreringBolk}
+            />
+        );
+    };
 }
 
 interface Props {
