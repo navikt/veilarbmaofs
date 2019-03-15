@@ -9,13 +9,13 @@ ModalWrapper.setAppElement(document.getElementById('app'));
 
 export function PersonverninformasjonUtskrift(props: {registrering: RegistreringsData}) {
     const {type, registrering} = props.registrering;
-    const manueltRegistrertAv = registrering && registrering.manueltRegistrertAv;
-    const ordinaerManuellRegistrering = type && type === 'ORDINAER' && manueltRegistrertAv;
-    const sykmeldtManuellRegistrering = type && type === 'SYKMELDT' && manueltRegistrertAv;
+    const erManuell = registrering && registrering.manueltRegistrertAv;
 
-    if(!ordinaerManuellRegistrering || !sykmeldtManuellRegistrering) {
+    if(!erManuell && false) {
         return null;
     }
+    const ordinaerManuellRegistrering = type && type === 'ORDINAER';
+    const sykmeldtManuellRegistrering = type && type === 'SYKMELDT' ;
     const [visPrintModal, setVisPrintModal] = useState(false);
     return (
         <>
@@ -31,8 +31,8 @@ export function PersonverninformasjonUtskrift(props: {registrering: Registrering
                     <header/>
                 </div>
                 <div className="section-to-print">
-                    {sykmeldtManuellRegistrering && <PersonverninformasjonSykmeldt/>}
-                    {ordinaerManuellRegistrering && <PersonverninformasjonManuell/>}
+                    {(sykmeldtManuellRegistrering || true) && <PersonverninformasjonSykmeldt/> }
+                    {(ordinaerManuellRegistrering || true) && <PersonverninformasjonManuell/>}
                 </div>
                 <button className="herps" onClick={()=>window.print()}>Skriv ut</button>
             </ModalWrapper>

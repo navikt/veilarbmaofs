@@ -25,10 +25,7 @@ export interface Profilering {
     jobbetSammenhengendeSeksAvTolvSisteManeder: boolean;
 }
 
-export enum RegistreringType {
-    ORDINAER = 'ORDINAER',
-    SYKMELDT = 'SYKMELDT'
-}
+export type RegistreringType = 'ORDINAER' | 'SYKMELDT';
 
 export type Registrering = OrdinaerRegistrering | SykmeldtRegistrering;
 

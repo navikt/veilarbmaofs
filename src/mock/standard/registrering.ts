@@ -4,6 +4,7 @@ import { JSONValue } from 'yet-another-fetch-mock';
 import { RegistreringsData } from '../../app/datatyper/registreringsData';
 
 export const ordinaerRegistering: RegistreringsData & JSONValue = {
+    type: 'ORDINAER',
     registrering: {
         id: 596,
         opprettetDato: '2018-08-30T09:17:28.386804+02:00',
