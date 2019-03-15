@@ -27,3 +27,21 @@
 .break-all {
   word-break: break-all;
 }
+
+
+@media print {
+  .veilarbmaofs {
+
+    .persondetaljer,
+    .lukknapp,
+    .herps {
+      display: none;
+    }
+
+    .section-to-print {
+      left: 0;
+      top: 0;
+    }
+  }
+
+}
