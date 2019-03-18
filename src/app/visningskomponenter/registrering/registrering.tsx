@@ -18,9 +18,9 @@ export function Registrering(props: Props) {
     return (
         <>
             <Header registrering={registrering} />
-            <PersonverninformasjonUtskrift registrering={props.data.registrering}/>
             <SporsmalsListe registrering={registrering} />
             <Profilering registrering={registrering} />
+            <PersonverninformasjonUtskrift registrering={props.data.registrering}/>
         </>
     );
 }

@@ -1,0 +1,52 @@
+@import (reference) "~nav-frontend-core/less/_variabler";
+.veilarbmaofs {
+
+  .utskrift {
+    margin-top: 1rem;
+
+    .utskrift-knapp {
+      font-weight: normal;
+      text-transform: none;
+      padding: 0 1rem;
+      border-radius: 0.25rem;
+
+      .utskrift-knapp__ikon {
+        margin: 0 0.3rem 0.2rem 0.2rem;
+      }
+    }
+
+    .utskrift-knapp:hover {
+      .utskrift-knapp__ikon {
+        margin: 0 0.3rem 0.2rem 0.2rem;
+        filter: invert(1) sepia(1) saturate(17%) brightness(1) contrast(200%);
+      }
+    }
+  }
+
+  .personverninformasjon-modal {
+    max-width: 40rem;
+
+    &__header {
+      border-bottom: 1px solid @navGra40;
+      padding-bottom: 1rem;
+    }
+
+    &__innhold {
+      padding: 1rem 0.5rem 1rem 0.5rem;
+
+      ul {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      p {
+        margin-left: 1.5rem;
+      }
+
+      h2 {
+        margin-top: 0.3rem;
+        margin-left: 0.7rem;
+      }
+    }
+  }
+}

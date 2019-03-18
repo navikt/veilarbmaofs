@@ -9,11 +9,6 @@
       html, body {
         margin: 0;
       }
-      #app {
-        max-width: 70rem;
-        width: 100%;
-        margin: 0 auto;
-      }
     </style>
   </head>
   <body onload="initFnr()">
@@ -26,7 +21,7 @@
         <input type="text" name="fnr" id="fnr" />
         <button>Søk</button>
       </form>
-      <div id="app"></div>
+      <div id="modal-a11y-wrapper" class="veilarbpersonflatefs"></div>
     </div>
   </body>
   <script type="application/javascript">
@@ -42,7 +37,7 @@
     }
 
     function render(fnr) {
-        return NAVSPA['veilarbmaofs'](document.getElementById('app'), {fnr: fnr, enhet:'1234'});
+        return NAVSPA['veilarbmaofs'](document.getElementById('modal-a11y-wrapper'), {fnr: fnr, enhet:'1234'});
     }
 
     function onSubmit() {
