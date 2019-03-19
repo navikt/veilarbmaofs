@@ -1,6 +1,10 @@
 @import (reference) "~nav-frontend-core/less/_variabler";
 .veilarbmaofs {
 
+  .modal__overlay {
+    display: block;
+  }
+
   .utskrift {
     margin-top: 1rem;
 
@@ -11,20 +15,29 @@
       border-radius: 0.25rem;
 
       .utskrift-knapp__ikon {
-        margin: 0 0.3rem 0.2rem 0.2rem;
+        margin: 0 0.35rem -0.2rem 0.2rem;
+        g {
+          fill: none
+        }
       }
     }
 
     .utskrift-knapp:hover {
       .utskrift-knapp__ikon {
-        margin: 0 0.3rem 0.2rem 0.2rem;
-        filter: invert(1) sepia(1) saturate(17%) brightness(1) contrast(200%);
+        g {
+          fill: #0067C5;
+          #bottom {
+            fill:none;
+          }
+        }
+
       }
     }
   }
 
   .personverninformasjon-modal {
     max-width: 40rem;
+    margin: 0 auto;
 
     &__header {
       border-bottom: 1px solid @navGra40;

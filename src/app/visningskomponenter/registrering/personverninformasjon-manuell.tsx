@@ -1,40 +1,48 @@
 import React from 'react';
-import { Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi';
+import { Innholdstittel, Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi';
 
 export function PersonverninformasjonManuell() {
     return (
         <div className="personverninformasjon-modal__innhold">
-            <Sidetittel>Ordinaer manuell registrering</Sidetittel>
+            <Innholdstittel>Når du har registrert deg</Innholdstittel>
             <ul>
+
                 <li>får du hjelp til å komme i jobb</li>
+                <li>kan du søke om dagpenger eller annen økonomisk støtte</li>
                 <li>vil arbeidsgivere finne deg i CV-basen vår</li>
-                <li>kan du bruke vår nettjenester for å komme raskere i jobb</li>
-                <li>får du din egen aktivitetsplan</li>
+                <li>kan du få varsler om ledige stillinger</li>
+                <li>kan du bruke din egen aktivitetsplan</li>
             </ul>
-            <Undertittel>Rettigheter</Undertittel>
+            <Systemtittel>Rettigheter</Systemtittel>
+            <ul>
+                <li>Du har krav på at NAV vurderer behovet ditt for veiledning. Dette er en rettighet du har etter NAV-loven § 14a se https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a.</li>
+                <li>Du får et brev der du kan lese mer om tjenestene vi foreslår for deg.</li>
+            </ul>
+            <Systemtittel>Plikter</Systemtittel>
+            <ul>
+                <li>Du må sende meldekort hver 14. dag. Det er et krav for å få oppfølging og økonomisk støtte.</li>
+                <li>Du må være aktiv arbeidssøker, søke på ledige stillinger og holde CV-en oppdatert.</li>
+            </ul>
+            <Systemtittel>Dine opplysninger</Systemtittel>
             <Normaltekst>
-                {`NAV skal vurdere hva slags oppfølging du trenger for å komme i jobb. Dette er en rettighet du har etter NAV-loven § 14a. Du får et vedtak med vår vurdering av hva slags oppfplging du trenger.`}
-            </Normaltekst>
-            <Undertittel>Plikter</Undertittel>
+                NAV vurderer hva slags veiledning du trenger når du registrerer deg som jobbsøker. For å gjøre denne vurderingen må vi ha opplysninger om
                 <ul>
-                    <li>Sende meldekort hver 14. dag. Det er et krav for å få oppfølging og økonomisk støtte.</li>
-                    <li>Være aktiv arbeidssøker, søke på ledige stillinger og holde CV-en oppdatert.</li>
+                    <li>alderen din</li>
+                    <li>du har vært i jobb</li>
+                    <li>utdanningen din</li>
+                    <li>eventuelle utfordringer</li>
                 </ul>
-                <Systemtittel>Hva skjer når du registrerer deg?</Systemtittel>
-                <Normaltekst>
-                    Når du registrerer deg som arbeidssøker vurderer vi hva slags oppfølging og tjenester vi mener du trenger. Vurderingene blir gjort ut fra opplysninger om:
-                    <ul>
-                        <li>alderen din</li>
-                        <li>du har vært i jobb de siste månedene</li>
-                        <li>du har vært registrert hos NAV de siste 2 årene</li>
-                        <li>du har utfordringer med helse din eller andre forhold som gjør det vanskelig å komme i jobb</li>
-                        <li>du har utdanning</li>
-                    </ul>
-                    Disse opplysningene og det vi vet om arbeidssøkere i omtrent samme situasjon som deg gjør at vi kan anta noe om mulighetene til å finne en jobb.
-                    Vi vet noe om hvilke tjenester fra NAV som vu tror kan passe fo deg.
-                    NAV bruker anonymiserte personopplysninger om arbeidssøkere til å
-                    lage offentlig statistikk om arbeidsmarkedet.
-                </Normaltekst>
-            </div>
+                Vi har også opplysninger om arbeidssøkere i omtrent samme situasjon som deg. Det gjør at vi kan anta noe om mulighetene dine til å finne en jobb. På bakgrunn av dette blir det laget et automatisk forslag til hvilke tjenester vi tror kan passe for deg. En veileder vurderer forslaget og sender deg et vedtak i posten.
+            </Normaltekst>
+            <Undertittel>Har du allerede registrert en CV eller jobbprofil på arbeidsplassen.nav.no?</Undertittel>
+            <Normaltekst>
+                Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og jobbprofil. CV-en og jobbprofilen blir tilgjengelig for veilederen som skal vurdere dine behov. Du må derfor endre opplysninger du ikke ønsker å dele på https://arbeidsplassen.nav.no/ før du starter registreringen.
+            </Normaltekst>
+            <Undertittel>Behandling av personopplysninger </Undertittel>
+            <Normaltekst>Opplysningene dine blir lagret etter arkivloven. NAV bruker anonymiserte personopplysninger om arbeidssøkere til å lage offentlig statistikk om arbeidsmarkedet.
+                Les mer om hvordan NAV behandler personopplysninger på https://www.nav.no/personvern.
+            </Normaltekst>
+            <Normaltekst><strong>Tips! </strong>Du må fullføre registreringen før du kan søke om dagpenger.</Normaltekst>
+        </div>
     );
 }
