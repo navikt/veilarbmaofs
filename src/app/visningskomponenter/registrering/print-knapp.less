@@ -23,18 +23,18 @@
     border-radius: 0.25rem;
   }
 
+  .utskrift-knapp__ikon {
+    margin: 0 0.35rem -0.2rem 0.2rem;
+    .stroke-color-fill-white(@navBla);
+  }
+
+
   .utskrift-knapp {
     text-transform: none;
     padding: 0.25rem 1rem;
-
-    .utskrift-knapp__ikon {
-      margin: 0 0.35rem -0.2rem 0.2rem;
-      .stroke-color-fill-white(@navBla);
-    }
   }
 
   .utskrift-knapp:hover {
-
     .utskrift-knapp__ikon {
       .fill(@navBla);
       #bottom {
@@ -44,13 +44,11 @@
   }
 
   .utskrift-knapp:active {
-
     .utskrift-knapp__ikon {
      .stroke-color-fill-white(@navDypBla);
       #bottom {
-        fill: none;
+        fill: white;
       }
     }
-
   }
 }
