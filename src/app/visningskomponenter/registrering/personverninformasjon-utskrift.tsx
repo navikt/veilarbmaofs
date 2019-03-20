@@ -10,8 +10,6 @@ import './print-knapp.less';
 import { PrintKnappModal } from './print-knapp-modal';
 import hiddenIf from '../../utils/hidden-if';
 
-ModalWrapper.setAppElement('#modal-a11y-wrapper');
-
 function erSykmeldt(type?: RegistreringType) {
     return type && type === 'SYKMELDT';
 }
