@@ -1,43 +1,50 @@
 import React, { useState } from 'react';
-import { RegistreringsData } from '../../datatyper/registreringsData';
+import { RegistreringType } from '../../datatyper/registreringsData';
 import ModalWrapper from 'nav-frontend-modal';
 import { Flatknapp } from 'nav-frontend-knapper';
-import { PersonverninformasjonSykmeldt } from './personverninformasjon-sykmeldt';
-import { PersonverninformasjonManuell } from './personverninformasjon-manuell';
+import PersonverninformasjonSykmeldt from './personverninformasjon-sykmeldt';
+import PersonverninformasjonManuell from './personverninformasjon-manuell';
 import './personverninformasjon.less';
 import { ReactComponent as PrintIcon } from './printer.svg';
+import './print-knapp.less';
 import { PrintKnappModal } from './print-knapp-modal';
+import hiddenIf from '../../utils/hidden-if';
 
 ModalWrapper.setAppElement('#modal-a11y-wrapper');
 
-export function PersonverninformasjonUtskrift(props: {registrering: RegistreringsData}) {
-    const {type, registrering} = props.registrering;
-    const erManuell = registrering && registrering.manueltRegistrertAv;
+function erSykmeldt(type?: RegistreringType) {
+    return type && type === 'SYKMELDT';
+}
 
-    if(!erManuell) {
-        return null;
-    }
-    const ordinaerManuellRegistrering = type && type === 'ORDINAER';
-    const sykmeldtManuellRegistrering = type && type === 'SYKMELDT';
-    const [visPrintModal, setVisPrintModal] = useState(false);
+function erOrdinaer(type?: RegistreringType) {
+    return type && type === 'ORDINAER';
+}
+
+function PersonverninformasjonUtskrift(props: {type?: RegistreringType}) {
+    const [visPrintModal, setVisPrintModal] = useState<boolean>(false);
     return (
-        <div className="utskrift">
-            <Flatknapp onClick={()=>setVisPrintModal(true)} htmlType="button" className="utskrift-knapp">
-               <PrintIcon className="utskrift-knapp__ikon"/>
+        <>
+            <Flatknapp
+                onClick={() =>setVisPrintModal(true)}
+                htmlType="button"
+                className="utskrift-knapp btn--mt1 btn--radius025"
+            >
+                <PrintIcon className="utskrift-knapp__ikon"/>
                 Personverninformasjon, rettigheter og plikter
-             </Flatknapp>
+            </Flatknapp>
             <ModalWrapper
+                portalClassName="veilarbmaofs"
                 className="personverninformasjon-modal"
-                contentLabel="Vindu for att printe personvernsting" // TODO SKRIV NOE BEDRE HER
+                contentLabel="PersonverninformasjonPrintModal" // TODO SKRIV NOE BEDRE HER
                 isOpen={visPrintModal}
                 onRequestClose={() => setVisPrintModal(false)}
-                closeButton={true}
-                portalClassName="veilarbmaofs"
             >
                 <PrintKnappModal/>
-                {(sykmeldtManuellRegistrering || true) && <PersonverninformasjonSykmeldt/>}
-                {(ordinaerManuellRegistrering && false)  && <PersonverninformasjonManuell/>}
+                <PersonverninformasjonSykmeldt hidden={!erSykmeldt(props.type)}/>
+                <PersonverninformasjonManuell hidden={!erOrdinaer(props.type)}/>
             </ModalWrapper>
-        </div>
+        </>
     );
 }
+
+export default hiddenIf(PersonverninformasjonUtskrift);

@@ -30,14 +30,15 @@
 
 
 @media print {
-
-  * {
-    display: none !important;
-  }
-
   .veilarbmaofs .personverninformasjon-modal__header,
   .veilarbmaofs .lukknapp,
-  .veilarbpersonflatefs[aria-hidden='true'] {
+  #modal-a11y-wrapper {
     display: none;
+  }
+
+  .veilarbmaofs {
+    .personverninformasjon-modal {
+      a[href]:after { content: none !important; }
+    }
   }
 }
