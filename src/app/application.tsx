@@ -3,6 +3,9 @@ import Persondetaljer from './persondetaljer';
 
 import './application.less';
 import AppProvider from './context';
+import ModalWrapper from 'nav-frontend-modal';
+
+ModalWrapper.setAppElement(document.getElementById('modal-a11y-wrapper'));
 
 export interface AppProps {
     fnr: string;

@@ -27,3 +27,20 @@
 .break-all {
   word-break: break-all;
 }
+
+
+@media print {
+  @page{margin:0 auto;} //FJERNE HEADER OG FOOTER I CHROME
+
+  .veilarbmaofs .personverninformasjon-modal__header,
+  .veilarbmaofs .lukknapp,
+  #modal-a11y-wrapper {
+    display: none;
+  }
+
+  .veilarbmaofs {
+    .personverninformasjon-modal {
+      a[href]:after { content: none !important; }
+    }
+  }
+}
