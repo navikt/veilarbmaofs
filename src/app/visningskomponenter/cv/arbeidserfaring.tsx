@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ArenaPerson } from '../../datatyper/arenaperson';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 import { formaterDato, safeMap, safeSort } from '../utils';
+import Hide from '../../utils/hide';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
     const {arbeidserfaring: arenaErfaring, ...rest} = props;
@@ -14,6 +15,9 @@ function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
             </Element>
 
             <Normaltekst>{erfaring.tittel}</Normaltekst>
+            <Hide if={erfaring.beskrivelse == null}>
+                <Normaltekst className="italic">{erfaring.beskrivelse}</Normaltekst>
+            </Hide>
             <Normaltekst>Fra: {formaterDato(erfaring.fraDato, true)}</Normaltekst>
             <Normaltekst>Til: {formaterDato(erfaring.tilDato, true)}</Normaltekst>
         </div>
