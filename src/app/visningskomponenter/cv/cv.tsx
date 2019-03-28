@@ -12,6 +12,7 @@ import Sammendrag from './sammendrag';
 import Sertifikater from './sertifikater';
 import Sprak from './sprak';
 import Utdanning from './utdanning';
+import Fagdokumentasjon from './fagdokumentasjoner';
 
 interface Props {
     data: {
@@ -20,7 +21,7 @@ interface Props {
 }
 
 function CV(props: Props) {
-    const { sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
+    const { fagdokumentasjoner, sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
 
     const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
 
@@ -37,6 +38,7 @@ function CV(props: Props) {
                 <Sertifikater sertifikater={sertifikater} />
                 <Forerkort forerkort={forerkort} />
                 <Sprak sprak={sprak} />
+                <Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
             </FloatGrid>
         </>
     );

@@ -1,6 +1,6 @@
 // tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock';
-import { ArenaPerson, KursVarighetEnhet } from '../../app/datatyper/arenaperson';
+import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../app/datatyper/arenaperson';
 
 const CV: ArenaPerson & JSONValue = {
     sistEndret: '2019-01-15T07:52:35.456+01:00',
@@ -14,6 +14,16 @@ const CV: ArenaPerson & JSONValue = {
             beskrivelse: 'Beskrivelse av arbeidserfaring',
             fraDato: '2010-04',
             tilDato: '2017-06'
+        }
+    ],
+    fagdokumentasjoner: [
+        {
+            type: FagdokumentType.MESTERBREV,
+            tittel: null
+        },
+        {
+            type: FagdokumentType.SVENNEBREV_FAGBREV,
+            tittel: 'Tittelen kommer her'
         }
     ],
     utdanning: [

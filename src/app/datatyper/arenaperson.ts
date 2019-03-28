@@ -1,6 +1,7 @@
 import { FetchContext } from '../../config';
 import { SourceConfigEntry } from '../../fetch-utils';
 import { StringOrNothing } from '../visningskomponenter/felles-typer';
+import Fagdokumentasjon from '../visningskomponenter/cv/fagdokumentasjoner';
 
 type YearMonth = StringOrNothing; // er på formatet YYYY-MM
 type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
@@ -111,6 +112,19 @@ interface JobbprofilKompetanse {
     tittel: string;
 }
 
+export enum FagdokumentType {
+    SVENNEBREV_FAGBREV = 'SVENNEBREV_FAGBREV',
+    MESTERBREV = 'MESTERBREV',
+    AUTORISASJON = 'AUTORISASJON'
+}
+
+export interface Fagdokumentasjon {
+    id?: string;
+    tittel: string | null;
+    konseptId?: string;
+    type: FagdokumentType;
+}
+
 export interface ArenaPerson {
     sistEndret: StringOrNothing;
     synligForArbeidsgiver: boolean | null;
@@ -123,6 +137,7 @@ export interface ArenaPerson {
     sertifikater: Sertifikat[];
     sprak: Sprak[];
     jobbprofil: Jobbprofil;
+    fagdokumentasjoner?: Fagdokumentasjon[];
 }
 
 export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
