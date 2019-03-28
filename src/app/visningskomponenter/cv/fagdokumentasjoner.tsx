@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ArenaPerson, FagdokumentType } from '../../datatyper/arenaperson';
+import { ArenaPerson, Fagdokumentasjon, FagdokumentType } from '../../datatyper/arenaperson';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
+import EMDASH from '../../utils/emdash';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 
@@ -18,13 +19,8 @@ const fagdokumentTypeTilTekst = (fagdokumentType: FagdokumentType): string => {
     }
 };
 
-function Fagdokumentasjoner(props: Props) {
-
-    if (!props.fagdokumentasjoner) {
-        return null;
-    }
-
-    const dokumentasjoner = props.fagdokumentasjoner.map((fagdokument, idx) => {
+const mapFagdokumentasjonerTilViews = (fagdokumentasjoner: Fagdokumentasjon[]) => {
+    return fagdokumentasjoner.map((fagdokument, idx) => {
         return (
             <div key={`fagdokument-${idx}`} className="underinformasjon">
                 <Element>
@@ -34,6 +30,13 @@ function Fagdokumentasjoner(props: Props) {
             </div>
         );
     });
+};
+
+function Fagdokumentasjoner(props: Props) {
+    const { fagdokumentasjoner } = props;
+    const dokumentasjoner = fagdokumentasjoner ?
+        mapFagdokumentasjonerTilViews(fagdokumentasjoner)
+        : (EMDASH);
 
     return (
         <Informasjonsbolk header="Fagdokumentasjoner" headerTypo="ingress">
