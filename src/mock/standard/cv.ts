@@ -11,7 +11,7 @@ const CV: ArenaPerson & JSONValue = {
             tittel: 'Maskinsjef',
             arbeidsgiver: 'viola enviromental',
             sted: null,
-            beskrivelse: null,
+            beskrivelse: 'Beskrivelse av arbeidserfaring',
             fraDato: '2010-04',
             tilDato: '2017-06'
         }
@@ -30,7 +30,7 @@ const CV: ArenaPerson & JSONValue = {
         {
             tittel: 'Andre servicefag, andre, uspesifisert utdanningsgruppe, høyere nivå',
             studiested: 'Pasific University',
-            beskrivelse: null,
+            beskrivelse: 'Beskrivelse av utdanning',
             fraDato: '1999-06',
             tilDato: '2003-06'
         },

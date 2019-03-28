@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ArenaPerson, FagdokumentType } from '../../datatyper/arenaperson';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 

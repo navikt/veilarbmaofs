@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ArenaPerson } from '../../datatyper/arenaperson';
 import Informasjonsbolk from '../felles-komponenter/informasjonsbolk';
 import { formaterDato, safeMap, safeSort } from '../utils';
+import Hide from '../../utils/hide';
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     const {utdanning: arenaUtdanning, ...rest} = props;
@@ -14,6 +15,9 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
             </Element>
 
             <Normaltekst>{utdanning.studiested}</Normaltekst>
+            <Hide if={utdanning.beskrivelse == null}>
+                <Normaltekst className="italic">{utdanning.beskrivelse}</Normaltekst>
+            </Hide>
             <Normaltekst>Fra: {formaterDato(utdanning.fraDato, true)}</Normaltekst>
             <Normaltekst>Til: {formaterDato(utdanning.tilDato, true)}</Normaltekst>
         </div>
