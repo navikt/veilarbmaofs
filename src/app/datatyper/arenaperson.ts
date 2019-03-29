@@ -76,7 +76,7 @@ export enum KursVarighetEnhet {
     MANED = 'MANED',
 }
 
-interface Jobbprofil {
+export interface Jobbprofil {
     sistEndret: StringOrNothing;
     onsketYrke: JobbprofilYrke[];
     onsketArbeidssted: JobbprofilArbeidssted[];
@@ -140,32 +140,44 @@ export interface ArenaPerson {
     fagdokumentasjoner?: Fagdokumentasjon[];
 }
 
-export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
+export type CVFeilMelding = 'Ikke registrert' | 'Ikke tilgang';
+
+export type CVResponse = ArenaPerson | CVFeilMelding;
+
+export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<CVResponse> {
     return {
-        fallback: {
-            sistEndret: null,
-            synligForArbeidsgiver: null,
-            sammendrag: null,
-            arbeidserfaring: [],
-            utdanning: [],
-            annenErfaring: [],
-            forerkort: [],
-            kurs: [],
-            sertifikater: [],
-            sprak: [],
-            jobbprofil: {
+        url: `/pam-cv-api/rest/v1/arbeidssoker/${context.fnr}`,
+        fallback: (error?: string, resp?: Response) => {
+            if (resp && (resp.status === 404 || resp.status === 204)) {
+                return 'Ikke registrert';
+            }
+            if (resp && resp.status === 403) {
+                return 'Ikke tilgang';
+            }
+            return {
                 sistEndret: null,
-                onsketYrke: [],
-                onsketArbeidssted: [],
-                onsketAnsettelsesform: [],
-                onsketArbeidstidsordning: [],
-                heltidDeltid: {
-                    heltid: false,
-                    deltid: false,
+                synligForArbeidsgiver: null,
+                sammendrag: null,
+                arbeidserfaring: [],
+                utdanning: [],
+                annenErfaring: [],
+                forerkort: [],
+                kurs: [],
+                sertifikater: [],
+                sprak: [],
+                jobbprofil: {
+                    sistEndret: null,
+                    onsketYrke: [],
+                    onsketArbeidssted: [],
+                    onsketAnsettelsesform: [],
+                    onsketArbeidstidsordning: [],
+                    heltidDeltid: {
+                        heltid: false,
+                        deltid: false,
+                    },
+                    kompetanse: [],
                 },
-                kompetanse: [],
-            },
-        },
-        url: `/pam-cv-api/rest/v1/arbeidssoker/${context.fnr}`
+            };
+        }
     };
 }

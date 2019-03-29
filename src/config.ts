@@ -6,7 +6,11 @@ import Personalia from './app/visningskomponenter/personalia/personalia';
 import YtelseVisning from './app/visningskomponenter/ytelser/ytelsevisning';
 import { Data, getData } from './fetch-utils';
 
-import { ArenaPerson, createArenaPersonSourceConfig } from './app/datatyper/arenaperson';
+import {
+    ArenaPerson,
+    createArenaPersonSourceConfig,
+    CVFeilMelding, CVResponse,
+} from './app/datatyper/arenaperson';
 import { createKartleggingDataSourceConfig, KartleggingData } from './app/datatyper/kartlegging';
 import { createOppfolgingDataSourceConfig, OppfolgingData } from './app/datatyper/oppfolging';
 import { PersonaliaInfo } from './app/datatyper/personalia';
@@ -39,14 +43,14 @@ export function getConfig(context: FetchContext, oppfolging: OppfolgingData): Ar
         },
         {
             component: CV,
-            dataSource: getData<{ cv: ArenaPerson }>({
+            dataSource: getData<{ cv: CVResponse }>({
                 cv: createArenaPersonSourceConfig(context)
             }),
             id: 'CV',
         },
         {
             component: Jobbprofil,
-            dataSource: getData<{ jobbprofil: Pick<ArenaPerson, 'jobbprofil'> }>({
+            dataSource: getData<{ jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding }>({
                 jobbprofil: createArenaPersonSourceConfig(context)
             }),
             id: 'Jobbprofil',

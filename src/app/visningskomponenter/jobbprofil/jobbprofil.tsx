@@ -1,10 +1,32 @@
 import * as React from 'react';
-import { ArenaPerson } from '../../datatyper/arenaperson';
+import { ArenaPerson, CVFeilMelding } from '../../datatyper/arenaperson';
 import Grid from '../../utils/grid';
 import InformasjonsbolkListe from '../felles-komponenter/informasjonsbolk-liste';
 import SistEndret from '../felles-komponenter/sist-endret';
+import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 
-function Jobbprofil(props: { data: { jobbprofil: Pick<ArenaPerson, 'jobbprofil'>} }) {
+interface JobbprofilProps {
+    jobbprofil: Pick<ArenaPerson, 'jobbprofil'> | CVFeilMelding;
+}
+
+function Jobbprofil(props: { data: JobbprofilProps }) {
+    if (props.data.jobbprofil === 'Ikke registrert') {
+        return <AlertStripeInfoSolid type="info">Denne personen har ikke registrert CV</AlertStripeInfoSolid>;
+    }
+
+    if(props.data.jobbprofil === 'Ikke tilgang') {
+        return (
+            <AlertStripeInfoSolid type="info">
+                Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
+                <ul>
+                    <li>Bruker er ikke under arbeidsrettet oppfølging</li>
+                    <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang</li>
+                    <li>Du har ikke riktige rettigheter til å se på denne brukeren</li>
+                </ul>
+            </AlertStripeInfoSolid>
+        );
+    }
+
     const {
         sistEndret,
         onsketYrke,
@@ -13,7 +35,7 @@ function Jobbprofil(props: { data: { jobbprofil: Pick<ArenaPerson, 'jobbprofil'>
         onsketArbeidstidsordning,
         heltidDeltid,
         kompetanse
-    } = props.data.jobbprofil.jobbprofil;
+    } = (props.data.jobbprofil as Pick<ArenaPerson, 'jobbprofil'>).jobbprofil;
 
     const arbeidssted = onsketArbeidssted.map((sted) => sted.stedsnavn);
     const yrker = onsketYrke.map((yrke) => yrke.tittel);
