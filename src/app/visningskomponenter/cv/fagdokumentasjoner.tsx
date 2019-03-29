@@ -20,7 +20,7 @@ const fagdokumentTypeTilTekst = (fagdokumentType: FagdokumentType): string => {
 };
 
 const mapFagdokumentasjonerTilViews = (fagdokumentasjoner: Fagdokumentasjon[]) => {
-    return fagdokumentasjoner.map((fagdokument, idx) => {
+    return fagdokumentasjoner && fagdokumentasjoner.map((fagdokument, idx) => {
         return (
             <div key={`fagdokument-${idx}`} className="underinformasjon">
                 <Element>
@@ -34,7 +34,7 @@ const mapFagdokumentasjonerTilViews = (fagdokumentasjoner: Fagdokumentasjon[]) =
 
 function Fagdokumentasjoner(props: Props) {
     const { fagdokumentasjoner } = props;
-    const dokumentasjoner = fagdokumentasjoner ?
+    const dokumentasjoner = fagdokumentasjoner && fagdokumentasjoner.length > 0 ?
         mapFagdokumentasjonerTilViews(fagdokumentasjoner)
         : (EMDASH);
 

@@ -137,7 +137,7 @@ export interface ArenaPerson {
     sertifikater: Sertifikat[];
     sprak: Sprak[];
     jobbprofil: Jobbprofil;
-    fagdokumentasjoner?: Fagdokumentasjon[];
+    fagdokumentasjoner?: Fagdokumentasjon[]; // TODO: ? er lagt til for bakoverkompatibilitet, kan fjernes
 }
 
 export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<ArenaPerson> {
@@ -153,6 +153,7 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
             kurs: [],
             sertifikater: [],
             sprak: [],
+            fagdokumentasjoner: [],
             jobbprofil: {
                 sistEndret: null,
                 onsketYrke: [],
