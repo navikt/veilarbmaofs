@@ -11,7 +11,11 @@ interface JobbprofilProps {
 
 function Jobbprofil(props: { data: JobbprofilProps }) {
     if (props.data.jobbprofil === 'Ikke registrert') {
-        return <AlertStripeInfoSolid type="info">Denne personen har ikke registrert CV</AlertStripeInfoSolid>;
+        return (
+            <AlertStripeInfoSolid type="info">
+                Denne personen har ikke registrert CV
+            </AlertStripeInfoSolid>
+        );
     }
 
     if(props.data.jobbprofil === 'Ikke tilgang') {

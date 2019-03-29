@@ -43,7 +43,18 @@ function CV(props: Props) {
         );
     }
 
-    const { fagdokumentasjoner, sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
+    const {
+        fagdokumentasjoner,
+        sammendrag,
+        arbeidserfaring,
+        annenErfaring,
+        utdanning,
+        sertifikater,
+        forerkort,
+        sprak,
+        kurs,
+        sistEndret,
+        synligForArbeidsgiver } = props.data.cv;
 
     const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
 
