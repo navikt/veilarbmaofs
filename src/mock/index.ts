@@ -1,6 +1,11 @@
-import FetchMock, { HandlerArgument, Middleware, MiddlewareUtils } from 'yet-another-fetch-mock';
+import FetchMock, {
+    HandlerArgument,
+    Middleware,
+    MiddlewareUtils,
+} from 'yet-another-fetch-mock';
 import {
-    CV, Features,
+    CV,
+    Features,
     Jobbsokerkompetanse,
     Oppfolgingsstatus,
     Personalia,

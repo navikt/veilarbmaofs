@@ -40,9 +40,9 @@ function createErrorHandler<T>(config: SourceConfigEntry<T>) {
         if (typeof config === 'string') {
             return new Error(reason);
         } else {
-            const fallbackFn: any =
+            const fallbackFn: (a?: string, b?: Response) => T  =
                 typeof config.fallback === 'function' ?
-                config.fallback : (a?: string, b?: Response) => config.fallback;
+                    (config.fallback as (a?: string, b?: Response) => T) : (a?: string, b?: Response) => config.fallback as T;
 
             if (config.allwaysUseFallback) {
                 return fallbackFn(reason, resp);
@@ -63,11 +63,10 @@ function fetchJson<T>(key: string, config: SourceConfigEntry<T>): Promise<T | Er
 
     return fetch(key, url, { credentials: 'include' })
         .then((resp) => {
-            if (!resp.ok) {
-                return errorHandler(undefined, resp);
+            if (resp.status === 200) {
+                return resp.json();
             }
-
-            return resp.json();
+            return errorHandler(undefined, resp);
         }, errorHandler)
         .catch(errorHandler);
 }

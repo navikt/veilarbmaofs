@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ArenaPerson } from '../../datatyper/arenaperson';
+import { CVResponse } from '../../datatyper/arenaperson';
 import EMDASH from '../../utils/emdash';
 import FloatGrid from '../../utils/float-grid';
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
@@ -13,15 +13,48 @@ import Sertifikater from './sertifikater';
 import Sprak from './sprak';
 import Utdanning from './utdanning';
 import Fagdokumentasjon from './fagdokumentasjoner';
+import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 
 interface Props {
     data: {
-        cv: ArenaPerson
+        cv: CVResponse
     };
 }
 
 function CV(props: Props) {
-    const { fagdokumentasjoner, sammendrag, arbeidserfaring, annenErfaring, utdanning, sertifikater, forerkort, sprak, kurs, sistEndret, synligForArbeidsgiver } = props.data.cv;
+    if (props.data.cv === 'Ikke registrert') {
+        return (
+            <AlertStripeInfoSolid type="info">
+                Denne personen har ikke registrert CV
+            </AlertStripeInfoSolid>
+        );
+    }
+
+    if(props.data.cv === 'Ikke tilgang') {
+        return (
+            <AlertStripeInfoSolid type="info">
+                Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
+                <ul>
+                    <li>Bruker er ikke under arbeidsrettet oppfølging</li>
+                    <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang</li>
+                    <li>Du har ikke riktige rettigheter til å se på denne brukeren</li>
+                </ul>
+            </AlertStripeInfoSolid>
+        );
+    }
+
+    const {
+        fagdokumentasjoner,
+        sammendrag,
+        arbeidserfaring,
+        annenErfaring,
+        utdanning,
+        sertifikater,
+        forerkort,
+        sprak,
+        kurs,
+        sistEndret,
+        synligForArbeidsgiver } = props.data.cv;
 
     const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
 
