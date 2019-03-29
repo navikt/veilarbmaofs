@@ -14,6 +14,7 @@ const CV: ArenaPerson & JSONValue = {
             utloperDato: '2118-12-01'
         }
     ],
+    fagdokumentasjoner: [],
     annenErfaring: [],
     kurs: [],
     sertifikater: [],

@@ -137,7 +137,7 @@ export interface ArenaPerson {
     sertifikater: Sertifikat[];
     sprak: Sprak[];
     jobbprofil: Jobbprofil;
-    fagdokumentasjoner?: Fagdokumentasjon[];
+    fagdokumentasjoner?: Fagdokumentasjon[]; // TODO: ? er lagt til for bakoverkompatibilitet, kan fjernes
 }
 
 export type CVFeilMelding = 'Ikke registrert' | 'Ikke tilgang';
@@ -159,6 +159,7 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
                 synligForArbeidsgiver: null,
                 sammendrag: null,
                 arbeidserfaring: [],
+                fagdokumentasjoner: [],
                 utdanning: [],
                 annenErfaring: [],
                 forerkort: [],
