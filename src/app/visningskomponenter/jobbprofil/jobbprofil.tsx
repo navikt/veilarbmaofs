@@ -13,7 +13,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
     if (props.data.jobbprofil === 'Ikke registrert') {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV
+                Denne personen har ikke registrert jobbprofil
             </AlertStripeInfoSolid>
         );
     }
@@ -21,7 +21,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
     if(props.data.jobbprofil === 'Ikke tilgang') {
         return (
             <AlertStripeInfoSolid type="info">
-                Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
+                Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
                 <ul>
                     <li>Bruker er ikke under arbeidsrettet oppfølging</li>
                     <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang</li>
