@@ -151,7 +151,7 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
             if (resp && (resp.status === 404 || resp.status === 204)) {
                 return 'Ikke registrert';
             }
-            if (resp && resp.status === 403) {
+            if (resp && resp.status === 401) {
                 return 'Ikke tilgang';
             }
             return {
