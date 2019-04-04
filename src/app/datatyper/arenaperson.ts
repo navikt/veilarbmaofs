@@ -148,10 +148,11 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
     return {
         url: `/pam-cv-api/rest/v1/arbeidssoker/${context.fnr}`,
         fallback: (error?: string, resp?: Response) => {
-            if (resp && (resp.status === 404 || resp.status === 204)) {
+            const status = resp && resp.status;
+            if (status === 404 || status === 204) {
                 return 'Ikke registrert';
             }
-            if (resp && resp.status === 401) {
+            if (status === 403 || status === 401) {
                 return 'Ikke tilgang';
             }
             return {
