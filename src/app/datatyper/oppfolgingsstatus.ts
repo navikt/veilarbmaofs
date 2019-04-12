@@ -15,7 +15,7 @@ export const HovedmaalkodeMap = {
     BEHOLDEA: 'Beholde arbeid'
 };
 
-export interface OppfolgingData {
+export interface OppfolgingsstatusData {
     oppfolgingsenhet: OppfolgingEnhet;
     veilederId: StringOrNothing;
     formidlingsgruppe: OrNothing<Formidlingsgruppe>;
@@ -23,7 +23,7 @@ export interface OppfolgingData {
     hovedmaalkode: OrNothing<Hovedmaalgruppe>;
 }
 
-export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingData> {
+export function createOppfolgingsstatusDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingsstatusData> {
     return {
         allwaysUseFallback: true,
         fallback: {

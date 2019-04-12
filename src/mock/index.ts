@@ -11,7 +11,8 @@ import {
     Personalia,
     Registering,
     veileder,
-    Ytelsestatus
+    Ytelsestatus,
+    Oppfolging
 } from './standard';
 
 const loggingMiddleware: Middleware = (request, response) => {
@@ -59,5 +60,6 @@ mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
+mock.get('/veilarboppfolging/api/oppfolging', Oppfolging);
 mock.get('/veilarbregistrering/api/registrering', Registering);
 mock.get('/veilarbpersonflatefs/api/feature', Features);

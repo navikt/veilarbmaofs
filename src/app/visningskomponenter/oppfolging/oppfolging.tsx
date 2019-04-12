@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingData, OppfolgingEnhet } from '../../datatyper/oppfolging';
+import { Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingsstatusData, OppfolgingEnhet } from '../../datatyper/oppfolgingsstatus';
 import { PersonaliaEnhet, PersonaliaInfo } from '../../datatyper/personalia';
 import { YtelseDataType } from '../../datatyper/ytelse';
 import EMDASH from '../../utils/emdash';
@@ -10,7 +10,7 @@ import { Veileder } from './veileder';
 
 interface OppfolgingProps {
     data: {
-        oppfolging: OppfolgingData,
+        oppfolging: OppfolgingsstatusData,
         ytelser: YtelseDataType,
         personalia: PersonaliaInfo
     };

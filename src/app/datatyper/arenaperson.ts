@@ -140,7 +140,11 @@ export interface ArenaPerson {
     fagdokumentasjoner?: Fagdokumentasjon[]; // TODO: ? er lagt til for bakoverkompatibilitet, kan fjernes
 }
 
-export type CVFeilMelding = 'Ikke registrert' | 'Ikke tilgang';
+export enum CVFeilMelding  {
+    IKKE_REGISTRERT = 'Ikke registrert',
+    IKKE_TILLGANG = 'Ikke tilgang',
+    IKKE_UNDER_OPPFOLGING = 'Ikke under opppfolging'
+}
 
 export type CVResponse = ArenaPerson | CVFeilMelding;
 
@@ -150,10 +154,10 @@ export function createArenaPersonSourceConfig(context: FetchContext): SourceConf
         fallback: (error?: string, resp?: Response) => {
             const status = resp && resp.status;
             if (status === 404 || status === 204) {
-                return 'Ikke registrert';
+                return CVFeilMelding.IKKE_REGISTRERT;
             }
             if (status === 403 || status === 401) {
-                return 'Ikke tilgang';
+                return CVFeilMelding.IKKE_TILLGANG;
             }
             return {
                 sistEndret: null,

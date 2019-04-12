@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getData, SourceConfig } from '../../fetch-utils';
 import { AppProps } from '../application';
-import { OppfolgingData } from '../datatyper/oppfolging';
+import { OppfolgingsstatusData } from '../datatyper/oppfolgingsstatus';
 import { PersonaliaInfo } from '../datatyper/personalia';
 import Datafetcher from '../utils/datafetcher';
 import { renderBasisInfo } from './basisinfo-visning';
@@ -13,7 +13,7 @@ interface BasisinfoData {
 }
 
 interface BasisinfoProps {
-    oppfolging: OppfolgingData;
+    oppfolging: OppfolgingsstatusData;
 }
 
 type Props = AppProps & BasisinfoProps;

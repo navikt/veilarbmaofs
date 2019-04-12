@@ -1,12 +1,12 @@
-import { OppfolgingData } from '../datatyper/oppfolging';
+import { OppfolgingsstatusData } from '../datatyper/oppfolgingsstatus';
 
-export function erBrukerSykmeldt(oppfolging: OppfolgingData): boolean {
+export function erBrukerSykmeldt(oppfolging: OppfolgingsstatusData): boolean {
     return oppfolging.formidlingsgruppe === 'IARBS' && oppfolging.servicegruppe === 'VURDI';
 }
 
-export function trengerVurdering(oppfolging: OppfolgingData): boolean {
+export function trengerVurdering(oppfolging: OppfolgingsstatusData): boolean {
     return oppfolging.formidlingsgruppe !== 'ISERV' && oppfolging.servicegruppe === 'IVURD';
 }
-export function trengerAEV(oppfolging: OppfolgingData): boolean {
+export function trengerAEV(oppfolging: OppfolgingsstatusData): boolean {
     return oppfolging.formidlingsgruppe !== 'ISERV' && oppfolging.servicegruppe === 'BKART';
 }
