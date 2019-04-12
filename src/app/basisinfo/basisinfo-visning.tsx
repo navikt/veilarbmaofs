@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { OppfolgingData } from '../datatyper/oppfolging';
+import { OppfolgingsstatusData } from '../datatyper/oppfolgingsstatus';
 import { PersonaliaInfo } from '../datatyper/personalia';
 import { finnAldersTekst } from '../utils/date-utils';
 import ApneLukkeKnapp from './apne-lukke-knapp';
@@ -28,7 +28,7 @@ function Fodelsnummer(prop: {fnr: string}) {
 }
 
 export interface BasisinfoData {
-    oppfolging: OppfolgingData;
+    oppfolging: OppfolgingsstatusData;
     personalia: PersonaliaInfo;
     feature: { 'mao.sykmeldt_med_arbeidsgiver': boolean };
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CVResponse } from '../../datatyper/arenaperson';
+import {CVFeilMelding, CVResponse} from '../../datatyper/arenaperson';
 import EMDASH from '../../utils/emdash';
 import FloatGrid from '../../utils/float-grid';
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
@@ -22,7 +22,15 @@ interface Props {
 }
 
 function CV(props: Props) {
-    if (props.data.cv === 'Ikke registrert') {
+    if (props.data.cv === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
+        return (
+            <AlertStripeInfoSolid type="info">
+                Bruker er ikke under arbeidsrettet oppfølging
+            </AlertStripeInfoSolid>
+        );
+    }
+
+    if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert CV
@@ -30,14 +38,12 @@ function CV(props: Props) {
         );
     }
 
-    if(props.data.cv === 'Ikke tilgang') {
+    if(props.data.cv === CVFeilMelding.IKKE_TILLGANG) {
         return (
             <AlertStripeInfoSolid type="info">
                 Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
                 <ul>
-                    <li>Bruker er ikke under arbeidsrettet oppfølging</li>
-                    <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang</li>
-                    <li>Du har ikke riktige rettigheter til å se på denne brukeren</li>
+                    <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang. Be bruker gå inn på nav.no og oppdatere CV'en sin.</li>
                 </ul>
             </AlertStripeInfoSolid>
         );
