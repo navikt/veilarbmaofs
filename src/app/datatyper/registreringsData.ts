@@ -8,18 +8,17 @@ export interface Veileder {
     };
 }
 
-export interface OrdinaerRegistrering {
+interface RegistreringBase {
     opprettetDato: string;
     teksterForBesvarelse: Sporsmal[];
-    profilering?: Profilering;
     manueltRegistrertAv?: Veileder | null;
 }
 
-export interface SykmeldtRegistrering {
-    opprettetDato: string;
-    teksterForBesvarelse: Sporsmal[];
-    manueltRegistrertAv?: Veileder | null;
+export interface OrdinaerRegistrering extends RegistreringBase {
+    profilering?: Profilering;
 }
+
+export type SykmeldtRegistrering = RegistreringBase;
 
 export interface Profilering {
     jobbetSammenhengendeSeksAvTolvSisteManeder: boolean;

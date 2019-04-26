@@ -14,8 +14,9 @@ import { createYtelseDataSourceConfig, YtelseDataType } from './app/datatyper/yt
 import { erBrukerSykmeldt } from './app/utils/arena-status-utils';
 import Jobbsokerkompetanse from './app/visningskomponenter/jobbsokerkompetanse/jobbsokerkompetanse';
 import { Registrering } from './app/visningskomponenter/registrering/registrering';
-import { OppfolgingData } from './app/datatyper/oppfolgingData';
+import { createOppfolgingDataSourceConfig, OppfolgingData } from './app/datatyper/oppfolgingData';
 import Oppfolging from './app/visningskomponenter/oppfolging/oppfolging';
+import { Aktorid } from './app/datatyper/aktorid';
 
 export type Datasource<T> =() => Promise<Data<T>>;
 
@@ -40,16 +41,31 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
         },
         {
             component: CV,
-            dataSource: oppfolging.underOppfolging ? getData<{ cv: CVResponse }>({
-                    cv: createArenaPersonSourceConfig(context)}) :
-                () => new Promise((resolve) => ( resolve({cv: CVFeilMelding.IKKE_UNDER_OPPFOLGING}))),
+            dataSource: oppfolging.underOppfolging
+                ? getData<{
+                    cv: CVResponse
+                    oppfolging: OppfolgingData
+                    aktorId: Aktorid
+                }>({
+                    cv: createArenaPersonSourceConfig(context),
+                    oppfolging: createOppfolgingDataSourceConfig(context),
+                    aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`
+                })
+                : () =>  Promise.resolve({cv: CVFeilMelding.IKKE_UNDER_OPPFOLGING}),
             id: 'CV',
         },
         {
             component: Jobbprofil,
-            dataSource: oppfolging.underOppfolging ? getData<{ jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding }>({
-                    jobbprofil: createArenaPersonSourceConfig(context)}) :
-                () => new Promise((resolve) => ( resolve({jobbprofil: CVFeilMelding.IKKE_UNDER_OPPFOLGING}))),
+            dataSource: oppfolging.underOppfolging
+                ? getData<{
+                    jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding
+                    oppfolging: OppfolgingData
+                    aktorId: Aktorid
+                }>({
+                    jobbprofil: createArenaPersonSourceConfig(context),
+                    oppfolging: createOppfolgingDataSourceConfig(context),
+                    aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`})
+                : () => Promise.resolve({jobbprofil: CVFeilMelding.IKKE_UNDER_OPPFOLGING}),
             id: 'Jobbprofil',
         },
         {

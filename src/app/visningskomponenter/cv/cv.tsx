@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CVFeilMelding, CVResponse} from '../../datatyper/arenaperson';
+import { CVFeilMelding, CVResponse } from '../../datatyper/arenaperson';
 import EMDASH from '../../utils/emdash';
 import FloatGrid from '../../utils/float-grid';
 import InformasjonsbolkEnkel from '../felles-komponenter/informasjonsbolk-enkel';
@@ -14,14 +14,26 @@ import Sprak from './sprak';
 import Utdanning from './utdanning';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
+import { finnNaisDomene } from '../../utils/miljo-utils';
+import Lenke from 'nav-frontend-lenker';
+import { RedigerCV } from './rediger-cv';
+import { OppfolgingData } from '../../datatyper/oppfolgingData';
+import { Aktorid } from '../../datatyper/aktorid';
 
 interface Props {
     data: {
-        cv: CVResponse
+        cv: CVResponse,
+        oppfolging: OppfolgingData,
+        aktorId: Aktorid
     };
 }
 
+export function byggCVUrl(aktorId: string) {
+ return `https://pam-cv-veileder${finnNaisDomene()}cv/${aktorId}`;
+}
+
 function CV(props: Props) {
+
     if (props.data.cv === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
         return (
             <AlertStripeInfoSolid type="info">
@@ -29,11 +41,14 @@ function CV(props: Props) {
             </AlertStripeInfoSolid>
         );
     }
+    const aktorId = props.data.aktorId.aktorId;
+    const cvUrl = byggCVUrl(aktorId || '');
+    const erManuell = props.data.oppfolging.manuell;
 
     if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV
+                Denne personen har ikke registrert CV.{erManuell && aktorId && <Lenke href={cvUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
@@ -66,6 +81,7 @@ function CV(props: Props) {
 
     return (
         <>
+            <RedigerCV erManuell={erManuell} cvRegistreringsLenke={cvUrl}/>
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
             <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={erSynlig}/>
             <Sammendrag sammendrag={sammendrag} />
