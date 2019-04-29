@@ -19,6 +19,7 @@ import Lenke from 'nav-frontend-lenker';
 import { RedigerCV } from './rediger-cv';
 import { OppfolgingData } from '../../datatyper/oppfolgingData';
 import { Aktorid } from '../../datatyper/aktorid';
+import './cv.less';
 
 interface Props {
     data: {
@@ -28,8 +29,8 @@ interface Props {
     };
 }
 
-export function byggCVUrl(aktorId: string) {
- return `https://pam-cv-veileder${finnNaisDomene()}cv/${aktorId}`;
+export function byggPamUrl(aktorId: string, path: string) {
+ return `https://pam-cv-veileder${finnNaisDomene()}${path}/${aktorId}`;
 }
 
 function CV(props: Props) {
@@ -42,7 +43,7 @@ function CV(props: Props) {
         );
     }
     const aktorId = props.data.aktorId.aktorId;
-    const cvUrl = byggCVUrl(aktorId || '');
+    const cvUrl = byggPamUrl(aktorId || '', 'cv');
     const erManuell = props.data.oppfolging.manuell;
 
     if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {

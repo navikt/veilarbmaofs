@@ -7,7 +7,7 @@ import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import { OppfolgingData } from '../../datatyper/oppfolgingData';
 import { Aktorid } from '../../datatyper/aktorid';
 import Lenke from 'nav-frontend-lenker';
-import { byggCVUrl } from '../cv/cv';
+import { byggPamUrl } from '../cv/cv';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 
 interface JobbprofilProps {
@@ -20,7 +20,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
 
     const erManuell = props.data.oppfolging.manuell;
     const aktorId = props.data.aktorId.aktorId;
-    const pamUrl = byggCVUrl(aktorId || '');
+    const pamUrl = byggPamUrl(aktorId || '', 'jobbprofil');
 
     if (props.data.jobbprofil === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
         return (
