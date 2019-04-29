@@ -5,5 +5,9 @@ export function RedigerCV(props: {erManuell: boolean, cvRegistreringsLenke: stri
     if(!props.erManuell) {
         return null;
     }
-    return <Lenke href={props.cvRegistreringsLenke}>Rediger CV</Lenke>;
+    return (
+        <Lenke href={props.cvRegistreringsLenke} className="endrecv-lenke" target="_blank">
+            <span>Endre CV</span>
+        </Lenke>
+    );
 }

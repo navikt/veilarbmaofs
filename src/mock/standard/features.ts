@@ -1,6 +1,6 @@
 
 const features = {
-    'mao.sykmeldt_med_arbeidsgiver': true
+    'veilarbmaofs.manuell_cv_registrering': true
 };
 
 export default features;

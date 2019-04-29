@@ -19,17 +19,19 @@ import Lenke from 'nav-frontend-lenker';
 import { RedigerCV } from './rediger-cv';
 import { OppfolgingData } from '../../datatyper/oppfolgingData';
 import { Aktorid } from '../../datatyper/aktorid';
+import './cv.less';
 
 interface Props {
     data: {
         cv: CVResponse,
         oppfolging: OppfolgingData,
         aktorId: Aktorid
+        feature: { 'veilarbmaofs.manuell_cv_registrering': boolean };
     };
 }
 
-export function byggCVUrl(aktorId: string) {
- return `https://pam-cv-veileder${finnNaisDomene()}cv/${aktorId}`;
+export function byggPamUrl(aktorId: string, path: string) {
+ return `https://pam-cv-veileder${finnNaisDomene()}${path}/${aktorId}`;
 }
 
 function CV(props: Props) {
@@ -42,13 +44,14 @@ function CV(props: Props) {
         );
     }
     const aktorId = props.data.aktorId.aktorId;
-    const cvUrl = byggCVUrl(aktorId || '');
+    const cvUrl = byggPamUrl(aktorId || '', 'cv');
     const erManuell = props.data.oppfolging.manuell;
+    const feature = Object.keys(props.data.feature).find((key) => key ==='veilarbmaofs.manuell_cv_registrering');
 
     if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV.{erManuell && aktorId && <Lenke href={cvUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke href={cvUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
@@ -81,7 +84,7 @@ function CV(props: Props) {
 
     return (
         <>
-            <RedigerCV erManuell={erManuell} cvRegistreringsLenke={cvUrl}/>
+            {feature && <RedigerCV erManuell={erManuell} cvRegistreringsLenke={cvUrl}/>}
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
             <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={erSynlig}/>
             <Sammendrag sammendrag={sammendrag} />
