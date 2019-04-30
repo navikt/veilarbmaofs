@@ -46,9 +46,9 @@ function CV(props: Props) {
     const aktorId = props.data.aktorId.aktorId;
     const cvUrl = byggPamUrl(aktorId || '', 'cv');
     const erManuell = props.data.oppfolging.manuell;
-    const feature = Object.keys(props.data.feature).find((key) => key ==='veilarbmaofs.manuell_cv_registrering');
+    const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
 
-    if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
+    if (!props.data.cv || props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke href={cvUrl}>Registrer her</Lenke>}
