@@ -48,7 +48,7 @@ function CV(props: Props) {
     const erManuell = props.data.oppfolging.manuell;
     const feature = Object.keys(props.data.feature).find((key) => key ==='veilarbmaofs.manuell_cv_registrering');
 
-    if (props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
+    if (!props.data.cv || props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke href={cvUrl}>Registrer her</Lenke>}
