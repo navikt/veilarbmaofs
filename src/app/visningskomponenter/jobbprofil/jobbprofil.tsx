@@ -7,20 +7,17 @@ import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import { OppfolgingData } from '../../datatyper/oppfolgingData';
 import { Aktorid } from '../../datatyper/aktorid';
 import Lenke from 'nav-frontend-lenker';
-import { byggCVUrl } from '../cv/cv';
+import { byggPamUrl } from '../cv/cv';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 
 interface JobbprofilProps {
     jobbprofil: Pick<ArenaPerson, 'jobbprofil'> | CVFeilMelding;
     oppfolging: OppfolgingData;
     aktorId: Aktorid;
+    feature: {'veilarbmaofs.manuell_cv_registrering': boolean };
 }
 
 function Jobbprofil(props: { data: JobbprofilProps }) {
-
-    const erManuell = props.data.oppfolging.manuell;
-    const aktorId = props.data.aktorId.aktorId;
-    const pamUrl = byggCVUrl(aktorId || '');
 
     if (props.data.jobbprofil === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
         return (
@@ -30,10 +27,14 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
         );
     }
 
-    if (props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
+    const erManuell = props.data.oppfolging.manuell;
+    const aktorId = props.data.aktorId.aktorId;
+    const pamUrl = byggPamUrl(aktorId || '', 'jobbprofil');
+    const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
+    if (!props.data.jobbprofil || props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert jobbprofil {erManuell && aktorId && <Lenke href={pamUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert jobbprofil {erManuell && aktorId && feature && <Lenke href={pamUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
@@ -71,7 +72,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
 
     return (
         <>
-            <RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl}/>
+            {feature && <RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl}/>}
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
             <Grid columns={3} gap="0.5rem">
                 <InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />
