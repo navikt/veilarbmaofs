@@ -11,7 +11,8 @@ function logTimeSince(key: string, startTime: Date) {
 interface Cache {
     [key: string]: Promise<Response>;
 }
-const cache: Cache = {};
+export const cache: Cache = {};
+
 
 export default function fetch(key: string, input: RequestInfo, init?: RequestInit): Promise<Response> {
    const cacheKey: string = createCacheKey(input, init);
