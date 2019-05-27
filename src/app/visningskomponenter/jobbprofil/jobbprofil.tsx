@@ -19,7 +19,7 @@ interface JobbprofilProps {
 
 function Jobbprofil(props: { data: JobbprofilProps }) {
 
-    if (props.data.jobbprofil === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
+    if (!props.data.oppfolging.underOppfolging) {
         return (
             <AlertStripeInfoSolid type="info">
                 Bruker er ikke under arbeidsrettet oppfølging
@@ -27,7 +27,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
         );
     }
 
-    const erManuell = props.data.oppfolging.manuell;
+    const erManuell = props.data.oppfolging.erManuell;
     const aktorId = props.data.aktorId.aktorId;
     const pamUrl = byggPamUrl(aktorId || '', 'jobbprofil');
     const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];

@@ -143,7 +143,6 @@ export interface ArenaPerson {
 export enum CVFeilMelding  {
     IKKE_REGISTRERT = 'Ikke registrert',
     IKKE_TILLGANG = 'Ikke tilgang',
-    IKKE_UNDER_OPPFOLGING = 'Ikke under opppfolging'
 }
 
 export type CVResponse = ArenaPerson | CVFeilMelding;

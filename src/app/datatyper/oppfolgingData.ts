@@ -4,7 +4,7 @@ import {SourceConfigEntry} from "../../fetch-utils";
 
 export interface OppfolgingData {
     underOppfolging: boolean;
-    manuell: boolean;
+    erManuell: boolean;
 }
 
 
@@ -13,8 +13,8 @@ export function createOppfolgingDataSourceConfig(context: FetchContext): SourceC
         allwaysUseFallback: true,
         fallback: {
             underOppfolging: false,
-            manuell: false
+            erManuell: false
         },
-        url: `/veilarboppfolging/api/oppfolging?fnr=${context.fnr}`
+        url: `/veilarboppfolging/api/underoppfolging?fnr=${context.fnr}`
     };
 }
