@@ -7,7 +7,6 @@ import './persondetaljer.less';
 import { getData, SourceConfig } from '../fetch-utils';
 import { createOppfolgingsstatusDataSourceConfig, OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
 import Datafetcher from './utils/datafetcher';
-import { createOppfolgingDataSourceConfig, OppfolgingData } from './datatyper/oppfolgingData';
 
 export interface Feature {
     [key: string]: boolean;
@@ -15,25 +14,22 @@ export interface Feature {
 
 interface PersondetaljerData {
     oppfolgingStatus: OppfolgingsstatusData;
-    oppfolging: OppfolgingData;
 }
 
 function Persondetaljer(props: AppContextProp & AppProps) {
     const fetchContext: FetchContext = { fnr : props.fnr };
     const sourceConfig: SourceConfig<PersondetaljerData> = {
-        oppfolgingStatus: createOppfolgingsstatusDataSourceConfig(fetchContext),
-        oppfolging: createOppfolgingDataSourceConfig(fetchContext)
+        oppfolgingStatus: createOppfolgingsstatusDataSourceConfig(fetchContext)
     };
 
     const data = getData<PersondetaljerData>(sourceConfig);
 
-    function lagNyLayout(oppfolgingstatusData: OppfolgingsstatusData, oppfolging: OppfolgingData) {
+    function lagNyLayout(oppfolgingstatusData: OppfolgingsstatusData) {
         return (
             <div key={props.fnr} className="informasjonsvisning">
                 <Informasjonsvisning
                     fetchContext={fetchContext}
                     oppfolgingstatus={oppfolgingstatusData}
-                    oppfolging={oppfolging}
                 />
             </div>
         );
@@ -41,7 +37,7 @@ function Persondetaljer(props: AppContextProp & AppProps) {
     return (
         <Datafetcher data={data}>
             {(personDetaljerData: PersondetaljerData) =>
-                lagNyLayout(personDetaljerData.oppfolgingStatus, personDetaljerData.oppfolging)}
+                lagNyLayout(personDetaljerData.oppfolgingStatus)}
         </Datafetcher>
     );
 }

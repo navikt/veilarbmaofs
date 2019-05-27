@@ -36,7 +36,7 @@ export function byggPamUrl(aktorId: string, path: string) {
 
 function CV(props: Props) {
 
-    if (props.data.cv === CVFeilMelding.IKKE_UNDER_OPPFOLGING) {
+    if (!props.data.oppfolging.underOppfolging) {
         return (
             <AlertStripeInfoSolid type="info">
                 Bruker er ikke under arbeidsrettet oppfølging
@@ -45,7 +45,7 @@ function CV(props: Props) {
     }
     const aktorId = props.data.aktorId.aktorId;
     const cvUrl = byggPamUrl(aktorId || '', 'cv');
-    const erManuell = props.data.oppfolging.manuell;
+    const erManuell = props.data.oppfolging.erManuell;
     const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
 
     if (!props.data.cv || props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {

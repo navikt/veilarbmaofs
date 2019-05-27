@@ -30,7 +30,7 @@ export interface FetchContext {
     fnr: string;
 }
 
-export function getConfig(context: FetchContext, oppfolgingstatus: OppfolgingsstatusData, oppfolging: OppfolgingData): Array<InformasjonsElement<any>> {
+export function getConfig(context: FetchContext, oppfolgingstatus: OppfolgingsstatusData): Array<InformasjonsElement<any>> {
     return [
         {
             component: Registrering,
@@ -41,8 +41,7 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
         },
         {
             component: CV,
-            dataSource: oppfolging.underOppfolging
-                ? getData<{
+            dataSource: getData<{
                     cv: CVResponse
                     oppfolging: OppfolgingData
                     aktorId: Aktorid
@@ -52,14 +51,12 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
                     oppfolging: createOppfolgingDataSourceConfig(context),
                     aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`,
                     feature:  '/veilarbpersonflatefs/api/feature?feature=veilarbmaofs.manuell_cv_registrering'
-                })
-                : () =>  Promise.resolve({cv: CVFeilMelding.IKKE_UNDER_OPPFOLGING}),
+                }),
             id: 'CV',
         },
         {
             component: Jobbprofil,
-            dataSource: oppfolging.underOppfolging
-                ? getData<{
+            dataSource: getData<{
                     jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding
                     oppfolging: OppfolgingData
                     aktorId: Aktorid
@@ -70,8 +67,7 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
                     aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`,
                     feature:  '/veilarbpersonflatefs/api/feature?feature=veilarbmaofs.manuell_cv_registrering'
 
-                })
-                : () => Promise.resolve({jobbprofil: CVFeilMelding.IKKE_UNDER_OPPFOLGING}),
+                }),
             id: 'Jobbprofil',
         },
         {
