@@ -34,7 +34,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
     if (!props.data.jobbprofil || props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert jobbprofil {erManuell && aktorId && feature && <Lenke href={pamUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert jobbprofil {erManuell && aktorId && feature && <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }

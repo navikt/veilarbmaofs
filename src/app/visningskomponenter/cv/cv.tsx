@@ -51,7 +51,7 @@ function CV(props: Props) {
     if (!props.data.cv || props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke href={cvUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke target="_blank" href={cvUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
