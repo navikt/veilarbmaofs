@@ -7,7 +7,7 @@ interface Props {
     registrering: Registrering | undefined;
 }
 
-export function Profilering(props: Props) {
+export function JobbetSammenhengende(props: Props) {
 
     if (!props.registrering) {
         return null;

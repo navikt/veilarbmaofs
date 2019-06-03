@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RegistreringsData } from '../../datatyper/registreringsData';
-import { Profilering } from './profilering';
+import { JobbetSammenhengende } from './jobbetsammenhengende';
 import { Header } from './registrert';
 import { SporsmalsListe } from './sporsmolvisning';
 import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
+import { ForeslattProfilering } from './foreslatt-profilering';
 
 interface Props {
     data: {
@@ -19,8 +20,9 @@ export function Registrering(props: Props) {
         <>
             <Header registrering={registrering} />
             <SporsmalsListe registrering={registrering} />
-            <Profilering registrering={registrering} />
+            <JobbetSammenhengende registrering={registrering} />
             <PersonverninformasjonUtskrift type={type} hidden={!registrering || !registrering.manueltRegistrertAv} />
+            <ForeslattProfilering registrering={registrering}/>
         </>
     );
 }

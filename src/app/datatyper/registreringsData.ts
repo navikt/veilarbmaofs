@@ -20,8 +20,11 @@ export interface OrdinaerRegistrering extends RegistreringBase {
 
 export type SykmeldtRegistrering = RegistreringBase;
 
+export type InnsatsgruppeType = 'STANDARD_INNSATS' | 'SITUASJONSBESTEMT_INNSATS' | 'BEHOV_FOR_ARBEIDSEVNEVURDERING';
+
 export interface Profilering {
     jobbetSammenhengendeSeksAvTolvSisteManeder: boolean;
+    innsatsgruppe: InnsatsgruppeType;
 }
 
 export type RegistreringType = 'ORDINAER' | 'SYKMELDT';
