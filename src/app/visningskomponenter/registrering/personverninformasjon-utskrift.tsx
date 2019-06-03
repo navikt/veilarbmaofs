@@ -25,7 +25,7 @@ function PersonverninformasjonUtskrift(props: {type?: RegistreringType}) {
             <Flatknapp
                 onClick={() =>setVisPrintModal(true)}
                 htmlType="button"
-                className="utskrift-knapp btn--mt1 btn--radius025"
+                className="utskrift-knapp btn--radius025"
             >
                 <PrintIcon className="utskrift-knapp__ikon"/>
                 Personverninformasjon, rettigheter og plikter

@@ -34,7 +34,7 @@ export const ordinaerRegistering: RegistreringsData & JSONValue = {
         profilering: {
             jobbetSammenhengendeSeksAvTolvSisteManeder: true,
             alder: 49,
-            innsatsgruppe: 'STANDARD_INNSATS'
+            innsatsgruppe: 'BEHOV_FOR_ARBEIDSEVNEVURDERING'
         },
         teksterForBesvarelse: [
             {
