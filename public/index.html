@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Veilarbmaofs</title>
+    <script type="application/javascript">
+        window.frontendlogger = { info: function(){}, warn: function(){}, error: function(){}, event: function(){
+                console.log("event-triggered", arguments)
+            }};
+        window.frontendlogger.appname = 'veilarbmaofs'; // this will be overwritten i veilarpersonflatefs
+    </script>
     <style>
       html, body {
         margin: 0;
+        background-color: #F4F4F4;
+      }
+      .main {
+        width: 1200px;
+        margin: 5rem auto 0 auto;
       }
     </style>
   </head>
@@ -16,35 +27,7 @@
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
-      <form onsubmit="return onSubmit()">
-        <label for="fnr">Fnr: </label>
-        <input type="text" name="fnr" id="fnr" />
-        <button>Søk</button>
-      </form>
       <div id="modal-a11y-wrapper" class="veilarbpersonflatefs"></div>
     </div>
   </body>
-  <script type="application/javascript">
-      window.frontendlogger = { info: function(){}, warn: function(){}, error: function(){}, event: function(){
-            console.log("event-triggered", arguments)
-          }};
-      window.frontendlogger.appname = 'veilarbmaofs'; // this will be overwritten i veilarpersonflatefs
-  </script>
-  <script>
-    const defaultFnr = "10108000398";
-    function initFnr() {
-        document.getElementById('fnr').value = defaultFnr;
-    }
-
-    function render(fnr) {
-        return NAVSPA['veilarbmaofs'](document.getElementById('modal-a11y-wrapper'), {fnr: fnr, enhet:'1234'});
-    }
-
-    function onSubmit() {
-        render(document.getElementById('fnr').value);
-        return false;
-    }
-
-    render(defaultFnr);
-  </script>
 </html>
