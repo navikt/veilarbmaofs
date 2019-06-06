@@ -31,7 +31,8 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
     const aktorId = props.data.aktorId.aktorId;
     const pamUrl = byggPamUrl(aktorId || '', 'jobbprofil');
     const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
-    if (!props.data.jobbprofil || props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
+
+    if (!(props.data.jobbprofil as Pick<ArenaPerson, 'jobbprofil'>).jobbprofil || props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert jobbprofil {erManuell && aktorId && feature && <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
