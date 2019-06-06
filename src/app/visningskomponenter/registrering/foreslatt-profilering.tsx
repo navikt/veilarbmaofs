@@ -20,7 +20,7 @@ export function ForeslattProfilering(props: Props) {
     }
 
     return (
-        <Panel border>
+        <Panel border className="informasjonsbolk">
             <Ingress>Forslag om brukers muligheter og behov (resultat fra profilering)</Ingress>
             <Normaltekst>{innsatsgruppeBeskrivelse(ordinaerRegistrering.profilering.innsatsgruppe)}</Normaltekst>
         </Panel>
