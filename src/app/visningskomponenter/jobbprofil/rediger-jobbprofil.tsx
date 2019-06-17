@@ -6,7 +6,7 @@ export function RedigerJobbprofil(props: {erManuell: boolean, jobbprofilRegistre
         return null;
     }
     return (
-        <Lenke href={props.jobbprofilRegistreringsLenke} className="endrecv-lenke" target="_blank">
+        <Lenke href={props.jobbprofilRegistreringsLenke} className="endre-lenke" target="_blank">
             <span>Endre jobbprofil </span>
         </Lenke>
     );
