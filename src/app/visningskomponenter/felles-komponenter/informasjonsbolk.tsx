@@ -14,7 +14,7 @@ function Informasjonsbolk(props: Props) {
 
     return (
         <div className={cls('informasjonsbolk', className)} {...rest}>
-            <TypografiBase type={headerTypo} >{header}</TypografiBase>
+            <TypografiBase type={headerTypo}>{header}</TypografiBase>
             { children }
         </div>
     );

@@ -1,6 +1,4 @@
 
-const features = {
-    'veilarbmaofs.manuell_cv_registrering': true
-};
+const features = {};
 
 export default features;

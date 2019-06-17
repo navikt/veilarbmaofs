@@ -4,6 +4,6 @@ import { OppfolgingData } from '../../app/datatyper/oppfolgingData';
 
 const oppfolging: OppfolgingData & JSONValue = {
     erManuell: true,
-    underOppfolging: false,
+    underOppfolging: true,
 };
 export default oppfolging;
