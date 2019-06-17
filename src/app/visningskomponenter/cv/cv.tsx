@@ -20,13 +20,13 @@ import { RedigerCV } from './rediger-cv';
 import { OppfolgingData } from '../../datatyper/oppfolgingData';
 import { Aktorid } from '../../datatyper/aktorid';
 import './cv.less';
+import { LastNedCV } from './last-ned-cv';
 
 interface Props {
     data: {
         cv: CVResponse,
         oppfolging: OppfolgingData,
         aktorId: Aktorid
-        feature: { 'veilarbmaofs.manuell_cv_registrering': boolean };
     };
 }
 
@@ -44,14 +44,15 @@ function CV(props: Props) {
         );
     }
     const aktorId = props.data.aktorId.aktorId;
-    const cvUrl = byggPamUrl(aktorId || '', 'cv');
+    const endreCvUrl = byggPamUrl(aktorId || '', 'cv');
+    const lastNedCvUrl = byggPamUrl(aktorId || '', 'cv/pdf');
     const erManuell = props.data.oppfolging.erManuell;
-    const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
 
     if (!props.data.cv || props.data.cv === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV.{erManuell && aktorId && feature && <Lenke target="_blank" href={cvUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert CV.
+                {erManuell && aktorId && <Lenke target="_blank" href={endreCvUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
@@ -84,7 +85,8 @@ function CV(props: Props) {
 
     return (
         <>
-            {feature && <RedigerCV erManuell={erManuell} cvRegistreringsLenke={cvUrl}/>}
+            <LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl}/>
+            <RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl}/>
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
             <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={erSynlig}/>
             <Sammendrag sammendrag={sammendrag} />

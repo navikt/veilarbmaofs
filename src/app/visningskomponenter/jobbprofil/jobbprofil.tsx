@@ -14,7 +14,6 @@ interface JobbprofilProps {
     jobbprofil: Pick<ArenaPerson, 'jobbprofil'> | CVFeilMelding;
     oppfolging: OppfolgingData;
     aktorId: Aktorid;
-    feature: {'veilarbmaofs.manuell_cv_registrering': boolean };
 }
 
 function Jobbprofil(props: { data: JobbprofilProps }) {
@@ -30,12 +29,12 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
     const erManuell = props.data.oppfolging.erManuell;
     const aktorId = props.data.aktorId.aktorId;
     const pamUrl = byggPamUrl(aktorId || '', 'jobbprofil');
-    const feature = props.data.feature['veilarbmaofs.manuell_cv_registrering'];
 
     if (!(props.data.jobbprofil as Pick<ArenaPerson, 'jobbprofil'>).jobbprofil || props.data.jobbprofil === CVFeilMelding.IKKE_REGISTRERT) {
         return (
             <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert jobbprofil {erManuell && aktorId && feature && <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
+                Denne personen har ikke registrert jobbprofil.
+                {erManuell && aktorId && <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
     }
@@ -45,7 +44,10 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
             <AlertStripeInfoSolid type="info">
                 Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
                 <ul>
-                    <li>Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang. Be bruker gå inn på nav.no og oppdatere CV'en sin.</li>
+                    <li>
+                        Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang.
+                        Be bruker gå inn på nav.no og oppdatere CV'en sin.
+                    </li>
                 </ul>
             </AlertStripeInfoSolid>
         );
@@ -73,7 +75,7 @@ function Jobbprofil(props: { data: JobbprofilProps }) {
 
     return (
         <>
-            {feature && <RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl}/>}
+            <RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl}/>
             <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
             <Grid columns={3} gap="0.5rem">
                 <InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />

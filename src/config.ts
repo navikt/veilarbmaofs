@@ -45,12 +45,10 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
                     cv: CVResponse
                     oppfolging: OppfolgingData
                     aktorId: Aktorid
-                    feature: {'veilarbmaofs.manuell_cv_registrering': boolean}
                 }>({
                     cv: createArenaPersonSourceConfig(context),
                     oppfolging: createOppfolgingDataSourceConfig(context),
                     aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`,
-                    feature:  '/veilarbpersonflatefs/api/feature?feature=veilarbmaofs.manuell_cv_registrering'
                 }),
             id: 'CV',
         },
@@ -60,13 +58,10 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
                     jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding
                     oppfolging: OppfolgingData
                     aktorId: Aktorid
-                    feature: {'veilarbmaofs.manuell_cv_registrering': boolean}
                 }>({
                     jobbprofil: createArenaPersonSourceConfig(context),
                     oppfolging: createOppfolgingDataSourceConfig(context),
                     aktorId:  `/veilarbperson/api/person/aktorid?fnr=${context.fnr}`,
-                    feature:  '/veilarbpersonflatefs/api/feature?feature=veilarbmaofs.manuell_cv_registrering'
-
                 }),
             id: 'Jobbprofil',
         },
