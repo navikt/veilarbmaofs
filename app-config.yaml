@@ -1,5 +1,6 @@
 # ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
 image: docker.adeo.no:5000/fo/veilarbmaofs
+team: voff
 replicas:
   min: 2
   max: 4
@@ -16,6 +17,5 @@ fasitResources:
   used:
   - alias: loadbalancer:veilarbmaofs
     resourceType: loadbalancerconfig
-team: biff
 alertProfiles:
   - minimal
