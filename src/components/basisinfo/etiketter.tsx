@@ -1,8 +1,8 @@
 import { EtikettAdvarsel, EtikettInfo } from 'nav-frontend-etiketter';
-import * as React from 'react';
+import React from 'react';
 import { Feature } from '../persondetaljer';
 import { erBrukerSykmeldt, trengerAEV, trengerVurdering } from '../../utils/arena-status-utils';
-import hiddenIf from '../../utils/hidden-if';
+import hiddenIf from '../hidden-if';
 import { BasisinfoData } from './basisinfo-visning';
 import './etiketter.less';
 

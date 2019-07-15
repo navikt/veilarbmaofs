@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { CVFeilMelding, CVResponse } from '../../../rest/datatyper/arenaperson';
 import EMDASH from '../../../utils/emdash';
-import FloatGrid from '../../../utils/float-grid';
+import FloatGrid from '../../float-grid';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import SistEndret from '../../felles/sist-endret';
 import AnnenErfaring from './annen-erfaring';

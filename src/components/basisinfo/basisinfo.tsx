@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { getData, SourceConfig } from '../../utils/fetch-utils';
 import { AppProps } from '../../app';
 import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
-import Datafetcher from '../../utils/datafetcher';
+import Datafetcher from '../datafetcher';
 import { renderBasisInfo } from './basisinfo-visning';
 import './basisinfo.less';
 

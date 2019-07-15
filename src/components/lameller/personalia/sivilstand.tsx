@@ -1,5 +1,5 @@
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { PersonaliaSivilstand } from '../../../rest/datatyper/personalia';
 import { isNullOrUndefined } from '../../../utils/util';
 import Dato from '../../felles/dato';

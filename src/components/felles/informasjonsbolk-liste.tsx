@@ -1,5 +1,5 @@
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { safeMap } from '../utils';
 import Informasjonsbolk from './informasjonsbolk';
 

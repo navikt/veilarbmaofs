@@ -1,5 +1,5 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import EMDASH from '../../../utils/emdash';
 import { isNullOrUndefined } from '../../../utils/util';

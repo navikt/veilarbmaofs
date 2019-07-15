@@ -1,5 +1,5 @@
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { PersonaliaPartner } from '../../../rest/datatyper/personalia';
 import { finnAldersTekst } from '../../../utils/date-utils';
 import EMDASH from '../../../utils/emdash';

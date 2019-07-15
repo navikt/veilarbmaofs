@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { OppfolgingskontrakterType, VedtakType, YtelseDataType } from '../../../rest/datatyper/ytelse';
 import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../../utils/konstanter';
 import EMDASH from '../../../utils/emdash';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import Innsatsgruppe from './innsatsgruppe';
 import Vedtaksliste from './vedtaksliste';
 

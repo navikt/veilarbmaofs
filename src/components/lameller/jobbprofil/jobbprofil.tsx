@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { ArenaPerson, CVFeilMelding } from '../../../rest/datatyper/arenaperson';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import InformasjonsbolkListe from '../../felles/informasjonsbolk-liste';
 import SistEndret from '../../felles/sist-endret';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';

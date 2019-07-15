@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import CV from '../components/lameller/cv/cv';
 import Jobbprofil from '../components/lameller/jobbprofil/jobbprofil';
 import Personalia from '../components/lameller/personalia/personalia';

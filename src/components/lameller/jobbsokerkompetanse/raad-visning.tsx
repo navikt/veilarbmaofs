@@ -1,6 +1,6 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import Element from 'nav-frontend-typografi/lib/element';
-import * as React from 'react';
+import React from 'react';
 import { Raad, RaadAktivitet } from '../../../rest/datatyper/kartlegging';
 import { skillUtTipsTilDegFraTekst } from '../../../utils/util';
 import { Ekspanderbar } from '../../felles/ekspanderbar';

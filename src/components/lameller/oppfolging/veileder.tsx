@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { getData, SourceConfig } from '../../../utils/fetch-utils';
 import { VeilederData } from '../../../rest/datatyper/veileder';
-import Datafetcher from '../../../utils/datafetcher';
+import Datafetcher from '../../datafetcher';
 import EMDASH from '../../../utils/emdash';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import { StringOrNothing } from '../../../utils/felles-typer';

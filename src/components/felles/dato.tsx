@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { isNullOrUndefined } from '../../utils/util';
 
 import { Normaltekst } from 'nav-frontend-typografi';

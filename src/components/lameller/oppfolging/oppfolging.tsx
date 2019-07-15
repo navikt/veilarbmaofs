@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Hovedmaalgruppe, HovedmaalkodeMap, OppfolgingsstatusData, OppfolgingEnhet } from '../../../rest/datatyper/oppfolgingsstatus';
 import { PersonaliaEnhet, PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import { YtelseDataType } from '../../../rest/datatyper/ytelse';
 import EMDASH from '../../../utils/emdash';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import { OrNothing, StringOrNothing } from '../../../utils/felles-typer';
 import { Veileder } from './veileder';

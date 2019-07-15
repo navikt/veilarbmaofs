@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import { InformasjonsElement } from '../utils/config';
 import { AppContextProp } from '../context';
-import Datafetcher from '../utils/datafetcher';
+import Datafetcher from './datafetcher';
 
 interface VisningsbolkProps {
     defaultApen?: boolean;

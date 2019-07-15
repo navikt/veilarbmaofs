@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { isNullOrUndefined } from '../../../utils/util';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { StringOrNothing } from '../../../utils/felles-typer';

@@ -1,6 +1,6 @@
 import { VenstreChevron } from 'nav-frontend-chevron';
 import Lenke from 'nav-frontend-lenker';
-import * as React from 'react';
+import React from 'react';
 
 interface Props {
     enhet?: string;

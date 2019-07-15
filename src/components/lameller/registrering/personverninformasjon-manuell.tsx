@@ -1,6 +1,6 @@
 import React from 'react';
 import { Innholdstittel, Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi';
-import hiddenIf from '../../../utils/hidden-if';
+import hiddenIf from '../../hidden-if';
 
 function PersonverninformasjonManuell() {
     return (

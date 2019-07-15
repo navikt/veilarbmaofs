@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Ingress, Normaltekst } from 'nav-frontend-typografi';
 import { InnsatsgruppeType, OrdinaerRegistrering, Registrering } from '../../../rest/datatyper/registreringsData';
 import { Panel } from 'nav-frontend-paneler';
