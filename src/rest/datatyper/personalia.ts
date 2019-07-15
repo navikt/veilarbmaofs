@@ -1,4 +1,4 @@
-import { OrNothing, StringOrNothing } from '../../components/felles-typer';
+import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
 
 export interface GrunnPersonalia {
     fornavn: string;

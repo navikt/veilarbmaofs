@@ -6,10 +6,7 @@ import { RegistreringsData } from '../../rest/datatyper/registreringsData';
 export const ordinaerRegistering: RegistreringsData & JSONValue = {
     type: 'ORDINAER',
     registrering: {
-        id: 596,
         opprettetDato: '2018-08-30T09:17:28.386804+02:00',
-        enigIOppsummering: true,
-        oppsummering: null,
         manueltRegistrertAv: {
             ident: 'Z21345567',
             enhet: {
@@ -26,14 +23,8 @@ export const ordinaerRegistering: RegistreringsData & JSONValue = {
             sisteStilling: 'INGEN_SVAR',
             dinSituasjon: 'DELTIDSJOBB_VIL_MER'
         },
-        sisteStilling: {
-            label: 'Fotpleier',
-            konseptId: 147188,
-            styrk08: '5142'
-        },
         profilering: {
             jobbetSammenhengendeSeksAvTolvSisteManeder: true,
-            alder: 49,
             innsatsgruppe: 'BEHOV_FOR_ARBEIDSEVNEVURDERING'
         },
         teksterForBesvarelse: [
@@ -78,7 +69,6 @@ export const ordinaerRegistering: RegistreringsData & JSONValue = {
 
 export const sykmeldtRegistering: RegistreringsData & JSONValue = {
     registrering: {
-        id: 597,
         opprettetDato: '2018-08-30T09:17:28.386804+02:00',
         besvarelse: {
             fremtidigSituasjon:       'NY_ARBEIDSGIVER',
