@@ -3,7 +3,9 @@ import React from 'react';
 import './app.less';
 import { cache } from './utils/fetch-cache';
 import StoreProvider from './stores/store-provider';
-import Test from './test';
+import AppProvider from './context';
+import Persondetaljer from './components/persondetaljer';
+import { Paneler } from './components/nye-paneler/paneler';
 
 export interface AppProps {
     fnr: string;
@@ -32,12 +34,12 @@ class App extends React.Component<AppProps> {
     public render() {
         return (
             <StoreProvider>
-                <Test/>
-                {/*<div className="veilarbmaofs">*/}
-                    {/*<AppProvider>*/}
-                        {/*<Persondetaljer {...this.props}/>*/}
-                    {/*</AppProvider>*/}
-                {/*</div>*/}
+                <div className="veilarbmaofs">
+                    <AppProvider>
+                        <Paneler/>
+                        <Persondetaljer {...this.props}/>
+                    </AppProvider>
+                </div>
             </StoreProvider>
         );
     }
