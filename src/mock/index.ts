@@ -9,10 +9,9 @@ import {
     Jobbsokerkompetanse,
     Oppfolgingsstatus,
     Personalia,
-    Registering,
     veileder,
     Ytelsestatus,
-    Oppfolging
+    Oppfolging, Registering
 } from './standard';
 
 const loggingMiddleware: Middleware = (request, response) => {

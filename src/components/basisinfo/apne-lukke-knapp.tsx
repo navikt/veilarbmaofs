@@ -1,5 +1,5 @@
 import Chevron from 'nav-frontend-chevron';
-import * as React from 'react';
+import React from 'react';
 
 import './apne-lukke-knapp.less';
 

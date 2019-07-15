@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { YtelseDataType } from '../../../rest/datatyper/ytelse';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import NormalTekstWrapper from '../../felles/normaltekstwrapper';

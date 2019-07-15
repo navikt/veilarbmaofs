@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FetchContext } from '../utils/config';
 import { AppContext, AppContextProp, withAppContext } from '../context';
 import { AppProps } from '../app';
@@ -6,7 +6,7 @@ import Informasjonsvisning from './informasjonsvisning';
 import './persondetaljer.less';
 import { getData, SourceConfig } from '../utils/fetch-utils';
 import { createOppfolgingsstatusDataSourceConfig, OppfolgingsstatusData } from '../rest/datatyper/oppfolgingsstatus';
-import Datafetcher from '../utils/datafetcher';
+import Datafetcher from './datafetcher';
 
 export interface Feature {
     [key: string]: boolean;

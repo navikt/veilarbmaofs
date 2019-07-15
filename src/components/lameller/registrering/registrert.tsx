@@ -1,5 +1,5 @@
 import { Ingress, Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { Registrering } from '../../../rest/datatyper/registreringsData';
 import { isNullOrUndefined } from '../../../utils/util';
 import RegistrertTid from './registrert-tid';

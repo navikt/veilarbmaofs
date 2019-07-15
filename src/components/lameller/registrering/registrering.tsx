@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { RegistreringsData } from '../../../rest/datatyper/registreringsData';
 import { JobbetSammenhengende } from './jobbetsammenhengende';
 import { Header } from './registrert';

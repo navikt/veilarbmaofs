@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import { kalkulerAlder } from '../../../utils/date-utils';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import Adresser from './adresser';
 import Barn from './barn';

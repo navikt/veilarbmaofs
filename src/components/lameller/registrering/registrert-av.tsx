@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Registrering } from '../../../rest/datatyper/registreringsData';
 

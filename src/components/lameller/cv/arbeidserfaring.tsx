@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { formaterDato, safeMap, safeSort } from '../../utils';
-import Hide from '../../../utils/hide';
+import Hide from '../../hide';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
     const {arbeidserfaring: arenaErfaring, ...rest} = props;

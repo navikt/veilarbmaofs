@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { Element, Ingress, Normaltekst } from 'nav-frontend-typografi';
 import { OrdinaerRegistrering, Registrering } from '../../../rest/datatyper/registreringsData';
-import FloatGrid from '../../../utils/float-grid';
+import FloatGrid from '../../float-grid';
 
 interface Props {
     registrering: Registrering | undefined;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FetchContext, getConfig, InformasjonsElement } from '../utils/config';
 import { AppContext, AppContextProp, withAppContext } from '../context';
 import './informasjonsvisning.less';

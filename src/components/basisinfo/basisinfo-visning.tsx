@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import { finnAldersTekst } from '../../utils/date-utils';

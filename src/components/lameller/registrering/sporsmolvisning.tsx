@@ -1,7 +1,7 @@
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { Registrering, Sporsmal } from '../../../rest/datatyper/registreringsData';
-import FloatGrid from '../../../utils/float-grid';
+import FloatGrid from '../../float-grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { visEmdashHvisNull } from '../../utils';
 

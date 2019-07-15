@@ -1,5 +1,5 @@
 import { Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { StringOrNothing } from '../../utils/felles-typer';
 import { formaterDato } from '../utils';
 

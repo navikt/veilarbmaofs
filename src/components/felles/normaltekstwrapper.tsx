@@ -1,5 +1,5 @@
 import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
-import * as React from 'react';
+import React from 'react';
 import EMDASH from '../../utils/emdash';
 
 interface ChildProps {

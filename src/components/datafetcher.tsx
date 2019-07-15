@@ -1,8 +1,8 @@
 import AlertStripeAdvarselSolid from 'nav-frontend-alertstriper/lib/advarsel-solid-alertstripe';
 import NavFrontendSpinner from 'nav-frontend-spinner';
-import * as React from 'react';
-import { Datasource } from './config';
-import { Data } from './fetch-utils';
+import React from 'react';
+import { Datasource } from '../utils/config';
+import { Data } from '../utils/fetch-utils';
 
 interface Props<T> {
     data: Datasource<T>;

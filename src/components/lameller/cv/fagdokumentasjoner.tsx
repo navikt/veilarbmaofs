@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ArenaPerson, Fagdokumentasjon, FagdokumentType } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { Element, Normaltekst } from 'nav-frontend-typografi';

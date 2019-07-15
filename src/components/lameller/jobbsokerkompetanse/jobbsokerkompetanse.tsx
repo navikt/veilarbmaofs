@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { KartleggingData } from '../../../rest/datatyper/kartlegging';
-import Grid from '../../../utils/grid';
+import Grid from '../../grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import InformasjonsbolkPunktliste from '../../felles/informasjonsbolk-punktliste';
 import SistEndret from '../../felles/sist-endret';

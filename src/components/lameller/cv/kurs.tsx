@@ -1,5 +1,5 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
+import React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { formaterDato, formaterVarighet, safeMap, safeSort } from '../../utils';
