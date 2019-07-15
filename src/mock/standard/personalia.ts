@@ -1,4 +1,3 @@
-// tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock/dist/types/types';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 
