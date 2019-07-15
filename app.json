@@ -1,16 +1,19 @@
 {
   "name": "veilarbmaofs",
   "scripts": {},
-  "env": {},
-  "formation": {
-    "web": {
-      "quantity": 1
+  "env": {
+    "NODE_ENV": {
+      "value": "development"
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "value": "false"
+    },
+    "YARN_PRODUCTION": {
+      "value": "false"
     }
   },
+  "formation": {},
   "addons": [],
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ]
+  "buildpacks": []
 }
+
