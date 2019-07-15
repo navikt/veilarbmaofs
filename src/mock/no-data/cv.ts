@@ -1,5 +1,5 @@
 import { JSONValue } from 'yet-another-fetch-mock';
-import { ArenaPerson } from '../../app/datatyper/arenaperson';
+import { ArenaPerson } from '../../rest/datatyper/arenaperson';
 
 const CV: ArenaPerson & JSONValue = {
     sistEndret: null,

@@ -12,6 +12,7 @@
     "interface-name": [true, "never-prefix"],
     "ordered-imports": false,
     "only-arrow-functions": [true, "allow-declarations"],
+    "no-trailing-whitespace": false,
     "jsx-alignment": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,

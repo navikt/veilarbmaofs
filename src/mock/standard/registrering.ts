@@ -1,7 +1,7 @@
 // tslint:disable object-literal-sort-keys
 
 import { JSONValue } from 'yet-another-fetch-mock';
-import { RegistreringsData } from '../../app/datatyper/registreringsData';
+import { RegistreringsData } from '../../rest/datatyper/registreringsData';
 
 export const ordinaerRegistering: RegistreringsData & JSONValue = {
     type: 'ORDINAER',

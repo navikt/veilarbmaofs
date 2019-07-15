@@ -1,6 +1,6 @@
 // tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock/dist/types/types';
-import { PersonaliaInfo } from '../../app/datatyper/personalia';
+import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 
 const personalia: PersonaliaInfo & JSONValue = {
     fornavn: 'BRUCE',

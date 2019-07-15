@@ -1,6 +1,6 @@
 // tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock';
-import { YtelseDataType } from '../../app/datatyper/ytelse';
+import { YtelseDataType } from '../../rest/datatyper/ytelse';
 
 const ytelsestatus: YtelseDataType & JSONValue = {
     oppfolgingskontrakter:

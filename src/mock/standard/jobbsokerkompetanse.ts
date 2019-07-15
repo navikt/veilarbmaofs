@@ -1,6 +1,6 @@
 // tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock';
-import { KartleggingData } from '../../app/datatyper/kartlegging';
+import { KartleggingData } from '../../rest/datatyper/kartlegging';
 
 const jobbsokerkompetanse: KartleggingData & JSONValue = {
     underOppfolging: false,
