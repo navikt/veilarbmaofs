@@ -1,6 +1,6 @@
 import { FetchContext } from '../../utils/config';
 import { SourceConfigEntry } from '../../utils/fetch-utils';
-import { OrNothing, StringOrNothing } from '../../components/felles-typer';
+import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
 
 export interface OppfolgingskontrakterType {
     innsatsgrupper: StringOrNothing[];

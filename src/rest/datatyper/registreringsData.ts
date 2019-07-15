@@ -12,6 +12,7 @@ interface RegistreringBase {
     opprettetDato: string;
     teksterForBesvarelse: Sporsmal[];
     manueltRegistrertAv?: Veileder | null;
+    besvarelse: any; // TODO: Fix typing
 }
 
 export interface OrdinaerRegistrering extends RegistreringBase {

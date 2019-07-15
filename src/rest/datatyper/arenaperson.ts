@@ -1,7 +1,7 @@
 import { FetchContext } from '../../utils/config';
 import { SourceConfigEntry } from '../../utils/fetch-utils';
-import { StringOrNothing } from '../../components/felles-typer';
-import Fagdokumentasjon from '../../components/cv/fagdokumentasjoner';
+import { StringOrNothing } from '../../utils/felles-typer';
+import Fagdokumentasjon from '../../components/lameller/cv/fagdokumentasjoner';
 
 type YearMonth = StringOrNothing; // er på formatet YYYY-MM
 type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD

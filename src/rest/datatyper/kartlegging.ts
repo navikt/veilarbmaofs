@@ -1,6 +1,6 @@
 import { FetchContext } from '../../utils/config';
 import { SourceConfigEntry } from '../../utils/fetch-utils';
-import { OrNothing } from '../../components/felles-typer';
+import { OrNothing } from '../../utils/felles-typer';
 
 interface SvarAlternativ {
     svarAlternativKey: string;

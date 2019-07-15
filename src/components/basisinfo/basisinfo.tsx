@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getData, SourceConfig } from '../../utils/fetch-utils';
-import { AppProps } from '../../application';
+import { AppProps } from '../../app';
 import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import Datafetcher from '../../utils/datafetcher';

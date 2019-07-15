@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FetchContext } from '../utils/config';
 import { AppContext, AppContextProp, withAppContext } from '../context';
-import { AppProps } from '../application';
+import { AppProps } from '../app';
 import Informasjonsvisning from './informasjonsvisning';
 import './persondetaljer.less';
 import { getData, SourceConfig } from '../utils/fetch-utils';

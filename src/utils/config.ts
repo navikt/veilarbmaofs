@@ -1,8 +1,8 @@
 import * as React from 'react';
-import CV from '../components/cv/cv';
-import Jobbprofil from '../components/jobbprofil/jobbprofil';
-import Personalia from '../components/personalia/personalia';
-import YtelseVisning from '../components/ytelser/ytelsevisning';
+import CV from '../components/lameller/cv/cv';
+import Jobbprofil from '../components/lameller/jobbprofil/jobbprofil';
+import Personalia from '../components/lameller/personalia/personalia';
+import YtelseVisning from '../components/lameller/ytelser/ytelsevisning';
 import { Data, getData } from './fetch-utils';
 
 import { ArenaPerson, createArenaPersonSourceConfig, CVFeilMelding, CVResponse, } from '../rest/datatyper/arenaperson';
@@ -12,10 +12,10 @@ import { PersonaliaInfo } from '../rest/datatyper/personalia';
 import { createRegistreringsDataSourceConfig, RegistreringsData } from '../rest/datatyper/registreringsData';
 import { createYtelseDataSourceConfig, YtelseDataType } from '../rest/datatyper/ytelse';
 import { erBrukerSykmeldt } from './arena-status-utils';
-import Jobbsokerkompetanse from '../components/jobbsokerkompetanse/jobbsokerkompetanse';
-import { Registrering } from '../components/registrering/registrering';
+import Jobbsokerkompetanse from '../components/lameller/jobbsokerkompetanse/jobbsokerkompetanse';
+import { Registrering } from '../components/lameller/registrering/registrering';
 import { createOppfolgingDataSourceConfig, OppfolgingData } from '../rest/datatyper/oppfolgingData';
-import Oppfolging from '../components/oppfolging/oppfolging';
+import Oppfolging from '../components/lameller/oppfolging/oppfolging';
 import { Aktorid } from '../rest/datatyper/aktorid';
 
 export type Datasource<T> =() => Promise<Data<T>>;
