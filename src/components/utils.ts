@@ -6,9 +6,11 @@ import { StringOrNothing } from '../utils/felles-typer';
 export function visEmdashHvisNull(verdi: StringOrNothing) {
     return verdi ? verdi : EMDASH;
 }
+
 export function visEmdashHvisTom<T>(verdi: T[]): T[] | string {
     return verdi.length > 0 ? verdi : EMDASH;
 }
+
 export function safeMap<T, S>(verdi: T[] | null, fn: (t: T, i: number, ) => S): S[] | string {
     if (verdi == null) {
         return EMDASH;

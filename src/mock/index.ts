@@ -55,10 +55,10 @@ const mock = FetchMock.configure({
 mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', CV);
 mock.get('/veilarbveileder/api/veileder/:veilederId',
     (handler: HandlerArgument) => veileder(handler.pathParams.veilederId));
-mock.get('/veilarbperson/api/person/aktorid?fnr=:fnr', {aktorId: '1234567'});
+mock.get('/veilarbperson/api/person/aktorid', {aktorId: '1234567'});
 mock.get('/veilarbperson/api/person/:fnr', Personalia);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', Oppfolgingsstatus);
-mock.get('/veilarbjobbsokerkompetanse/api/hent?fnr=:fnr', Jobbsokerkompetanse);
+mock.get('/veilarbjobbsokerkompetanse/api/hent', Jobbsokerkompetanse);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', Ytelsestatus);
 mock.get('/veilarboppfolging/api/underoppfolging', Oppfolging);
 mock.get('/veilarbregistrering/api/registrering', Registering);
