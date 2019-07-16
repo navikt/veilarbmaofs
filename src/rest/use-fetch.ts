@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FetchInfo, FetchState, FetchStatus } from './utils';
 
-interface Fetch<D, FP> extends FetchState<D> {
+export interface Fetch<D = any, FP = any> extends FetchState<D> {
     fetch: (fetchParams: FP) => void;
 }
 
@@ -36,6 +36,8 @@ const useFetch = <D = {}, FP = any>(createFetchInfo: (fetchParams: FP) => FetchI
         const { url, ...restInfo } = fetchInfo;
 
         setFetchState(createPendingFetchState());
+
+        console.log('Fetching', url); // tslint:disable-line
 
         fetch(url, restInfo)
             .then(async (res) => {

@@ -4,7 +4,7 @@ import Grid from '../../grid';
 import InformasjonsbolkListe from '../../felles/informasjonsbolk-liste';
 import SistEndret from '../../felles/sist-endret';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
-import { OppfolgingData } from '../../../rest/datatyper/oppfolgingData';
+import { UnderOppfolgingData } from '../../../rest/datatyper/underOppfolgingData';
 import { Aktorid } from '../../../rest/datatyper/aktorid';
 import Lenke from 'nav-frontend-lenker';
 import { byggPamUrl } from '../cv/cv';
@@ -12,7 +12,7 @@ import { RedigerJobbprofil } from './rediger-jobbprofil';
 
 interface JobbprofilProps {
     jobbprofil: Pick<ArenaPerson, 'jobbprofil'> | CVFeilMelding;
-    oppfolging: OppfolgingData;
+    oppfolging: UnderOppfolgingData;
     aktorId: Aktorid;
 }
 

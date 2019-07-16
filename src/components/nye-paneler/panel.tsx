@@ -6,7 +6,7 @@ interface PanelProps {
     name: string;
     tittel: string;
     defaultOpen?: boolean;
-    children: React.ReactNode;
+    children?: any;
 }
 
 const Panel = (props: PanelProps) => {

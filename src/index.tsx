@@ -14,8 +14,8 @@ if (!(global as any)._babelPolyfill) {
 }
 
 if (env.isAppMocked || env.isAppOnHeroku) {
-    require('./mock');
     ReactDOM.render(<App fnr={fnr} enhet={enhet}/>, document.getElementById('main'));
+    require('./mock');
 } else {
     NAVSPA.eksporter('veilarbmaofs', App);
 }

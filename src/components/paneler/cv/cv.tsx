@@ -17,7 +17,7 @@ import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import { finnNaisDomene } from '../../../utils/miljo-utils';
 import Lenke from 'nav-frontend-lenker';
 import { RedigerCV } from './rediger-cv';
-import { OppfolgingData } from '../../../rest/datatyper/oppfolgingData';
+import { UnderOppfolgingData } from '../../../rest/datatyper/underOppfolgingData';
 import { Aktorid } from '../../../rest/datatyper/aktorid';
 import './cv.less';
 import { LastNedCV } from './last-ned-cv';
@@ -25,7 +25,7 @@ import { LastNedCV } from './last-ned-cv';
 interface Props {
     data: {
         cv: CVResponse,
-        oppfolging: OppfolgingData,
+        oppfolging: UnderOppfolgingData,
         aktorId: Aktorid
     };
 }

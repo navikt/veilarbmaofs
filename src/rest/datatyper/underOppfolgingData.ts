@@ -2,13 +2,13 @@
 import {FetchContext} from "../../utils/config";
 import {SourceConfigEntry} from "../../utils/fetch-utils";
 
-export interface OppfolgingData {
+export interface UnderOppfolgingData {
     underOppfolging: boolean;
     erManuell: boolean;
 }
 
 
-export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingData> {
+export function createOppfolgingDataSourceConfig(context: FetchContext): SourceConfigEntry<UnderOppfolgingData> {
     return {
         allwaysUseFallback: true,
         fallback: {
