@@ -1,33 +1,50 @@
-@import "../node_modules/nav-frontend-core/less/core";
-@import "../node_modules/nav-frontend-typografi-style/src/index";
+@import "~nav-frontend-core/less/core";
+@import "~nav-frontend-typografi-style/src/index";
 
 .veilarbmaofs {
-  .typo-normal-mixin();
-  color: @navMorkGra;
-  font-family: @font-family;
-  line-height: @line-height-base;
 
-  button:hover {
-    cursor: pointer;
-  }
-}
+	.typo-normal-mixin();
+	color: @navMorkGra;
+	font-family: @font-family;
+	line-height: @line-height-base;
 
-.break-all {
-  word-break: break-all;
-}
+	.informasjonsbolk {
+		margin: 1rem 0 1rem 0;
+	}
 
+	.underinformasjon {
+		margin-bottom: 1rem;
+	}
 
-@media print {
-  @page{margin:0 auto;} //FJERNE HEADER OG FOOTER I CHROME
+	.italic-gra {
+		color: @navGra60;
+		font-style: italic;
+	}
 
-  .veilarbmaofs .personverninformasjon-modal__header,
-  .veilarbmaofs .lukknapp {
-    display: none;
-  }
+	.italic {
+		font-style: italic;
+	}
 
-  .veilarbmaofs {
-    .personverninformasjon-modal {
-      a[href]:after { content: none !important; }
-    }
-  }
+	.break-all {
+		word-break: break-all;
+	}
+
+	@media print {
+		@page {
+			margin: 0 auto;
+		}
+
+		//FJERNE HEADER OG FOOTER I CHROME
+		.personverninformasjon-modal__header,
+		.lukknapp {
+			display: none;
+		}
+
+		.personverninformasjon-modal {
+			a[href]:after {
+				content: none !important;
+			}
+		}
+	}
+
 }
