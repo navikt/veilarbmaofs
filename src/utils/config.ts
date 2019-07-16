@@ -14,7 +14,7 @@ import { createYtelseDataSourceConfig, YtelseDataType } from '../rest/datatyper/
 import { erBrukerSykmeldt } from './arena-status-utils';
 import Jobbsokerkompetanse from '../components/paneler/jobbsokerkompetanse/jobbsokerkompetanse';
 import { Registrering } from '../components/paneler/registrering/registrering';
-import { createOppfolgingDataSourceConfig, OppfolgingData } from '../rest/datatyper/oppfolgingData';
+import { createOppfolgingDataSourceConfig, UnderOppfolgingData } from '../rest/datatyper/underOppfolgingData';
 import Oppfolging from '../components/paneler/oppfolging/oppfolging';
 import { Aktorid } from '../rest/datatyper/aktorid';
 
@@ -43,7 +43,7 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
             component: CV,
             dataSource: getData<{
                     cv: CVResponse
-                    oppfolging: OppfolgingData
+                    oppfolging: UnderOppfolgingData
                     aktorId: Aktorid
                 }>({
                     cv: createArenaPersonSourceConfig(context),
@@ -56,7 +56,7 @@ export function getConfig(context: FetchContext, oppfolgingstatus: Oppfolgingsst
             component: Jobbprofil,
             dataSource: getData<{
                     jobbprofil: Pick<ArenaPerson, 'jobbprofil'>| CVFeilMelding
-                    oppfolging: OppfolgingData
+                    oppfolging: UnderOppfolgingData
                     aktorId: Aktorid
                 }>({
                     jobbprofil: createArenaPersonSourceConfig(context),

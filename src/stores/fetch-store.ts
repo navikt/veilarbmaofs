@@ -1,6 +1,6 @@
 import createUseContext from 'constate';
 import { RegistreringsData } from '../rest/datatyper/registreringsData';
-import useFetch from '../rest/useFetch';
+import useFetch from '../rest/use-fetch';
 import {
     FnrFetchParams,
     HentVeilederFetchParams,
@@ -8,7 +8,7 @@ import {
     lagHentCvFetchInfo, lagHentJobbsokerkompetanseFetchInfo,
     lagHentOppfolgingsstatusFetchInfo,
     lagHentPersonaliaFetchInfo,
-    lagHentRegistreringFetchInfo, lagHentOppfolgingFetchInfo,
+    lagHentRegistreringFetchInfo, lagHentUnderOppfolgingFetchInfo,
     lagHentVeilederFetchInfo, lagHentYtelserFetchInfo
 } from '../rest/api';
 import { PersonaliaInfo } from '../rest/datatyper/personalia';
@@ -16,7 +16,7 @@ import { ArenaPerson } from '../rest/datatyper/arenaperson';
 import { VeilederData } from '../rest/datatyper/veileder';
 import { OppfolgingsstatusData } from '../rest/datatyper/oppfolgingsstatus';
 import { KartleggingData } from '../rest/datatyper/kartlegging';
-import { OppfolgingData } from '../rest/datatyper/oppfolgingData';
+import { UnderOppfolgingData } from '../rest/datatyper/underOppfolgingData';
 import { YtelseDataType } from '../rest/datatyper/ytelse';
 
 function useFetchStore() {
@@ -28,11 +28,11 @@ function useFetchStore() {
     const oppfolgingsstatus = useFetch<OppfolgingsstatusData, FnrFetchParams>(lagHentOppfolgingsstatusFetchInfo);
     const jobbsokerkompetanse = useFetch<KartleggingData, FnrFetchParams>(lagHentJobbsokerkompetanseFetchInfo);
     const ytelser = useFetch<YtelseDataType, FnrFetchParams>(lagHentYtelserFetchInfo);
-    const oppfolging = useFetch<OppfolgingData, FnrFetchParams>(lagHentOppfolgingFetchInfo);
+    const underOppfolging = useFetch<UnderOppfolgingData, FnrFetchParams>(lagHentUnderOppfolgingFetchInfo);
 
     return {
         registrering, personalia, cv, veileder, aktorId,
-        oppfolgingsstatus, jobbsokerkompetanse, ytelser, oppfolging
+        oppfolgingsstatus, jobbsokerkompetanse, ytelser, underOppfolging
     };
 }
 

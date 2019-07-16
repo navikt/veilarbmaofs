@@ -5,7 +5,7 @@ export interface FnrFetchParams {
 }
 
 export interface HentVeilederFetchParams {
-    veilderId: string;
+    veilederId: string;
 }
 
 export const lagHentPersonaliaFetchInfo = (params: FnrFetchParams): FetchInfo => ({
@@ -21,7 +21,7 @@ export const lagHentCvFetchInfo = (params: FnrFetchParams): FetchInfo => ({
 });
 
 export const lagHentVeilederFetchInfo = (params: HentVeilederFetchParams): FetchInfo => ({
-    url: `/veilarbveileder/api/veileder/${params.veilderId}`,
+    url: `/veilarbveileder/api/veileder/${params.veilederId}`,
 });
 
 export const lagHentAktorIdFetchInfo = (params: FnrFetchParams): FetchInfo => ({
@@ -40,6 +40,6 @@ export const lagHentYtelserFetchInfo = (params: FnrFetchParams): FetchInfo => ({
     url: `/veilarboppfolging/api/person/${params.fnr}/ytelser`,
 });
 
-export const lagHentOppfolgingFetchInfo = (params: FnrFetchParams): FetchInfo => ({
+export const lagHentUnderOppfolgingFetchInfo = (params: FnrFetchParams): FetchInfo => ({
     url: `/veilarboppfolging/api/underoppfolging?fnr=${params.fnr}`,
 });

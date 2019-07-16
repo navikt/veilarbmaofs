@@ -1,8 +1,8 @@
 // tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock';
-import { OppfolgingData } from '../../rest/datatyper/oppfolgingData';
+import { UnderOppfolgingData } from '../../rest/datatyper/underOppfolgingData';
 
-const oppfolging: OppfolgingData & JSONValue = {
+const oppfolging: UnderOppfolgingData & JSONValue = {
     erManuell: true,
     underOppfolging: true,
 };
