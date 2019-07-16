@@ -32,3 +32,7 @@ export const hasFinished = (fetch: FetchState<any>): boolean => {
 export const hasFailed = (fetch: FetchState<any>): boolean => {
     return fetch.error != null;
 };
+
+export const hasData = (fetch: FetchState<any>): boolean => {
+    return fetch.data != null;
+};
