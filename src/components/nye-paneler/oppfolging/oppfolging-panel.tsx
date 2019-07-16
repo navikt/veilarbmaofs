@@ -21,7 +21,7 @@ function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusData | nu
         return null;
     }
 
-    const { oppfolgingsenhet: { enhetId, navn } } = oppfolgingsstatus;
+    const {oppfolgingsenhet: {enhetId, navn}} = oppfolgingsstatus;
     return `${enhetId} ${navn}`;
 }
 
@@ -30,7 +30,7 @@ function hentGeografiskEnhetTekst(personalia: PersonaliaInfo | null): StringOrNo
         return null;
     }
 
-    const { geografiskEnhet: { enhetsnummer, navn } } = personalia;
+    const {geografiskEnhet: {enhetsnummer, navn}} = personalia;
     return `${enhetsnummer} ${navn}`;
 }
 
@@ -91,7 +91,7 @@ const OppfolgingPanelInnhold = () => {
     return (
         <Laster avhengigheter={[oppfolgingsstatus, veileder, personalia, ytelser]}>
             {() =>
-                (<Grid columns={4} gap="0.5rem">
+                <Grid columns={4} gap="0.5rem">
                     <InformasjonsbolkEnkel
                         header="Innsatsgruppe"
                         value={hentInnsatsgruppeTekst(ytelser.data)}
@@ -117,7 +117,7 @@ const OppfolgingPanelInnhold = () => {
                         value={hentHovedmaalkodeTekst(oppfolgingsstatus.data)}
                         defaultValue={EMDASH}
                     />
-                </Grid>)
+                </Grid>
             }
         </Laster>
     );
