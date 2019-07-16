@@ -1,7 +1,7 @@
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
-import EMDASH from '../utils/emdash';
-import { isNullOrUndefined } from '../utils/util';
-import { StringOrNothing } from '../utils/felles-typer';
+import EMDASH from './emdash';
+import { isNullOrUndefined } from './index';
+import { StringOrNothing } from './felles-typer';
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {
     return verdi ? verdi : EMDASH;

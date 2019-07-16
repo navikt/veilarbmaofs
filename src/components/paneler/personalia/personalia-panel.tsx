@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Panel from '../panel';
-import Grid from '../../grid';
+import Grid from '../../felles/grid';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
-import { Laster } from '../../datalasting/laster';
-import { Feilmelding } from '../../datalasting/feilmelding';
+import { Laster } from '../../felles/laster';
+import { Feilmelding } from '../../felles/feilmelding';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
 import { hasData } from '../../../rest/utils';

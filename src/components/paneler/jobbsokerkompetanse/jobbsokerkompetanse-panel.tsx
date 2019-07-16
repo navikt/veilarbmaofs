@@ -3,13 +3,13 @@ import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
 import { hasData } from '../../../rest/utils';
-import { Laster } from '../../datalasting/laster';
-import { Feilmelding } from '../../datalasting/feilmelding';
+import { Laster } from '../../felles/laster';
+import { Feilmelding } from '../../felles/feilmelding';
 import SistEndret from '../../felles/sist-endret';
-import Grid from '../../grid';
+import Grid from '../../felles/grid';
 import InformasjonsbolkPunktliste from '../../felles/informasjonsbolk-punktliste';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap } from '../../utils';
+import { safeMap } from '../../../utils/utils';
 import { RaadVisning } from './raad-visning';
 
 const JobbsokerkompetansePanelInnhold = () => {

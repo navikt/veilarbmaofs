@@ -2,7 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { ArenaPerson, SprakNiva } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap } from '../../utils';
+import { safeMap } from '../../../utils/utils';
 
 // String er lagt til for bakoverkompatibilitet
 function mapSprakNivaTilTekst(sprakNiva: SprakNiva | string): string {

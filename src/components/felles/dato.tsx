@@ -1,10 +1,10 @@
 import React from 'react';
-import { isNullOrUndefined } from '../../utils/util';
+import { isNullOrUndefined } from '../../utils/index';
 
 import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../utils/emdash';
 import { StringOrNothing } from '../../utils/felles-typer';
-import { formaterDato } from '../utils';
+import { formaterDato } from '../../utils/utils';
 
 function Dato(props: { dato: StringOrNothing }) {
     if (isNullOrUndefined(props.dato)) {

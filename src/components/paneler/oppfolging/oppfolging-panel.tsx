@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { hasData } from '../../../rest/utils';
-import { Laster } from '../../datalasting/laster';
+import { Laster } from '../../felles/laster';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import EMDASH from '../../../utils/emdash';
-import Grid from '../../grid';
+import Grid from '../../felles/grid';
 import {
     HovedmaalkodeMap,
     OppfolgingsstatusData

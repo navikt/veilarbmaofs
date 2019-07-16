@@ -3,7 +3,7 @@ import React from 'react';
 import { PersonaliaPartner } from '../../../rest/datatyper/personalia';
 import { finnAldersTekst } from '../../../utils/date-utils';
 import EMDASH from '../../../utils/emdash';
-import { isNullOrUndefined } from '../../../utils/util';
+import { isNullOrUndefined } from '../../../utils/index';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { OrNothing } from '../../../utils/felles-typer';
 

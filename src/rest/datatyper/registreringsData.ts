@@ -1,5 +1,3 @@
-import { FetchContext } from '../../utils/config';
-
 export interface Veileder {
     ident: string;
     enhet: {
@@ -41,12 +39,4 @@ export interface Sporsmal {
     sporsmalId: string;
     sporsmal: string;
     svar: string;
-}
-
-export function createRegistreringsDataSourceConfig(context: FetchContext) {
-    return {
-        fallback: {
-        },
-        url: `/veilarbregistrering/api/registrering?fnr=${context.fnr}`
-    };
 }

@@ -1,7 +1,7 @@
 import { Ingress, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { Registrering } from '../../../rest/datatyper/registreringsData';
-import { isNullOrUndefined } from '../../../utils/util';
+import { isNullOrUndefined } from '../../../utils/index';
 import RegistrertTid from './registrert-tid';
 import RegistrertAv from './registrert-av';
 
