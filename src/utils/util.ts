@@ -1,3 +1,5 @@
+import { finnNaisDomene } from './miljo-utils';
+
 export function isNullOrUndefined(param: string | object | null | undefined): boolean {
     return param === undefined || param === null;
 }
@@ -18,4 +20,8 @@ export function omit<S>(obj: S, ...props: string[]) {
             acc[key] = obj[key];
             return acc;
         }, {});
+}
+
+export function byggPamUrl(aktorId: string, path: string) {
+    return `https://pam-cv-veileder${finnNaisDomene()}${path}/${aktorId}`;
 }

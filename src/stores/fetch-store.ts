@@ -22,7 +22,7 @@ import { YtelseDataType } from '../rest/datatyper/ytelse';
 function useFetchStore() {
     const registrering = useFetch<RegistreringsData, FnrFetchParams>(lagHentRegistreringFetchInfo);
     const personalia = useFetch<PersonaliaInfo, FnrFetchParams>(lagHentPersonaliaFetchInfo);
-    const cv = useFetch<ArenaPerson, FnrFetchParams>(lagHentCvFetchInfo);
+    const cvOgJobbprofil = useFetch<ArenaPerson, FnrFetchParams>(lagHentCvFetchInfo);
     const veileder = useFetch<VeilederData, HentVeilederFetchParams>(lagHentVeilederFetchInfo);
     const aktorId = useFetch<{aktorId: string}, FnrFetchParams>(lagHentAktorIdFetchInfo);
     const oppfolgingsstatus = useFetch<OppfolgingsstatusData, FnrFetchParams>(lagHentOppfolgingsstatusFetchInfo);
@@ -31,7 +31,7 @@ function useFetchStore() {
     const underOppfolging = useFetch<UnderOppfolgingData, FnrFetchParams>(lagHentUnderOppfolgingFetchInfo);
 
     return {
-        registrering, personalia, cv, veileder, aktorId,
+        registrering, personalia, cvOgJobbprofil, veileder, aktorId,
         oppfolgingsstatus, jobbsokerkompetanse, ytelser, underOppfolging
     };
 }
