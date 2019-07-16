@@ -1,6 +1,6 @@
 import React from 'react';
 import { finnAldersTekst } from '../../../utils/date-utils';
-import { isNullOrUndefined } from '../../../utils/util';
+import { isNullOrUndefined } from '../../../utils/index';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';

@@ -1,7 +1,7 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { PersonaliaSivilstand } from '../../../rest/datatyper/personalia';
-import { isNullOrUndefined } from '../../../utils/util';
+import { isNullOrUndefined } from '../../../utils/index';
 import Dato from '../../felles/dato';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 

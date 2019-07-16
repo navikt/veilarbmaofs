@@ -3,8 +3,8 @@ import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
 import { hasData } from '../../../rest/utils';
-import { Laster } from '../../datalasting/laster';
-import { Feilmelding } from '../../datalasting/feilmelding';
+import { Laster } from '../../felles/laster';
+import { Feilmelding } from '../../felles/feilmelding';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../felles/sist-endret';
@@ -13,7 +13,7 @@ import { LastNedCV } from './last-ned-cv';
 import { RedigerCV } from './rediger-cv';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import Sammendrag from './sammendrag';
-import FloatGrid from '../../float-grid';
+import FloatGrid from '../../felles/float-grid';
 import Arbeidserfaring from './arbeidserfaring';
 import AnnenErfaring from './annen-erfaring';
 import Utdanning from './utdanning';
@@ -23,7 +23,7 @@ import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import './cv-panel.less';
-import { byggPamUrl } from '../../../utils/util';
+import { byggPamUrl } from '../../../utils/index';
 
 const CvPanelInnhold = () => {
     const {cvOgJobbprofil, underOppfolging, aktorId} = useFetchStoreContext();

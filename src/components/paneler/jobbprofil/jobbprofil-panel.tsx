@@ -3,15 +3,15 @@ import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
 import { hasData } from '../../../rest/utils';
-import { Laster } from '../../datalasting/laster';
-import { Feilmelding } from '../../datalasting/feilmelding';
+import { Laster } from '../../felles/laster';
+import { Feilmelding } from '../../felles/feilmelding';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import { RedigerJobbprofil } from '../../paneler/jobbprofil/rediger-jobbprofil';
 import SistEndret from '../../felles/sist-endret';
-import Grid from '../../grid';
+import Grid from '../../felles/grid';
 import InformasjonsbolkListe from '../../felles/informasjonsbolk-liste';
-import { byggPamUrl } from '../../../utils/util';
+import { byggPamUrl } from '../../../utils/index';
 
 const JobbprofilPanelInnhold = () => {
     const {cvOgJobbprofil, underOppfolging, aktorId} = useFetchStoreContext();

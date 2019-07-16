@@ -1,5 +1,3 @@
-import { FetchContext } from '../../utils/config';
-import { SourceConfigEntry } from '../../utils/fetch-utils';
 import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
 
 export interface OppfolgingEnhet {
@@ -21,21 +19,4 @@ export interface OppfolgingsstatusData {
     formidlingsgruppe: OrNothing<Formidlingsgruppe>;
     servicegruppe: OrNothing<Servicegruppe>;
     hovedmaalkode: OrNothing<Hovedmaalgruppe>;
-}
-
-export function createOppfolgingsstatusDataSourceConfig(context: FetchContext): SourceConfigEntry<OppfolgingsstatusData> {
-    return {
-        allwaysUseFallback: true,
-        fallback: {
-            formidlingsgruppe: null,
-            oppfolgingsenhet: {
-                enhetId: null,
-                navn: null
-            },
-            servicegruppe: null,
-            veilederId: null,
-            hovedmaalkode: null
-        },
-        url: `/veilarboppfolging/api/person/${context.fnr}/oppfolgingsstatus`
-    };
 }

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import StoreProvider from './stores/store-provider';
-import AppProvider from './context';
-import Persondetaljer from './components/persondetaljer';
-import { Paneler } from './components/nye-paneler/paneler';
+import { Paneler } from './components/paneler/paneler';
 import { logEvent } from './utils/frontend-logger';
 import './app.less';
 
@@ -27,10 +25,7 @@ const App = (props: AppProps) => {
     return (
         <StoreProvider fnr={props.fnr} enhetId={props.enhet}>
             <div className="veilarbmaofs">
-                <AppProvider>
-                    <Paneler/>
-                    <Persondetaljer {...props}/>
-                </AppProvider>
+                <Paneler/>
             </div>
         </StoreProvider>
     );

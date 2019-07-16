@@ -1,7 +1,4 @@
-import { FetchContext } from '../../utils/config';
-import { SourceConfigEntry } from '../../utils/fetch-utils';
 import { StringOrNothing } from '../../utils/felles-typer';
-import Fagdokumentasjon from '../../components/paneler/cv/fagdokumentasjoner';
 
 type YearMonth = StringOrNothing; // er på formatet YYYY-MM
 type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
@@ -137,52 +134,5 @@ export interface ArenaPerson {
     sertifikater: Sertifikat[];
     sprak: Sprak[];
     jobbprofil: Jobbprofil;
-    fagdokumentasjoner?: Fagdokumentasjon[]; // TODO: ? er lagt til for bakoverkompatibilitet, kan fjernes
-}
-
-export enum CVFeilMelding  {
-    IKKE_REGISTRERT = 'Ikke registrert',
-    IKKE_TILLGANG = 'Ikke tilgang',
-}
-
-export type CVResponse = ArenaPerson | CVFeilMelding;
-
-export function createArenaPersonSourceConfig(context: FetchContext): SourceConfigEntry<CVResponse> {
-    return {
-        url: `/pam-cv-api/rest/v1/arbeidssoker/${context.fnr}`,
-        fallback: (error?: string, resp?: Response) => {
-            const status = resp && resp.status;
-            if (status === 404 || status === 204) {
-                return CVFeilMelding.IKKE_REGISTRERT;
-            }
-            if (status === 403 || status === 401) {
-                return CVFeilMelding.IKKE_TILLGANG;
-            }
-            return {
-                sistEndret: null,
-                synligForArbeidsgiver: null,
-                sammendrag: null,
-                arbeidserfaring: [],
-                fagdokumentasjoner: [],
-                utdanning: [],
-                annenErfaring: [],
-                forerkort: [],
-                kurs: [],
-                sertifikater: [],
-                sprak: [],
-                jobbprofil: {
-                    sistEndret: null,
-                    onsketYrke: [],
-                    onsketArbeidssted: [],
-                    onsketAnsettelsesform: [],
-                    onsketArbeidstidsordning: [],
-                    heltidDeltid: {
-                        heltid: false,
-                        deltid: false,
-                    },
-                    kompetanse: [],
-                },
-            };
-        }
-    };
+    fagdokumentasjoner?: Fagdokumentasjon[];
 }

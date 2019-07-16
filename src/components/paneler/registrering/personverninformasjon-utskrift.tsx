@@ -8,7 +8,7 @@ import './personverninformasjon.less';
 import { ReactComponent as PrintIcon } from './printer.svg';
 import './print-knapp.less';
 import { PrintKnappModal } from './print-knapp-modal';
-import hiddenIf from '../../hidden-if';
+import hiddenIf from '../../felles/hidden-if';
 
 function erSykmeldt(type?: RegistreringType) {
     return type && type === 'SYKMELDT';

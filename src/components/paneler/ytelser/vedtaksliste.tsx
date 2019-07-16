@@ -1,10 +1,11 @@
 import React from 'react';
 import { YtelseDataType } from '../../../rest/datatyper/ytelse';
-import Grid from '../../grid';
+import Grid from '../../felles/grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
-import NormalTekstWrapper from '../../felles/normaltekstwrapper';
-import { formaterDato, safeMap, visEmdashHvisNull } from '../../utils';
+import { formaterDato, safeMap, visEmdashHvisNull } from '../../../utils/utils';
+import { Normaltekst } from 'nav-frontend-typografi';
+import EMDASH from '../../../utils/emdash';
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     const vedtakliste = safeMap(props.vedtaksliste, (vedtak, index) => (
@@ -13,8 +14,8 @@ function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
             <InformasjonsbolkEnkel header="Vedtakstatus" value={visEmdashHvisNull(vedtak.status)}/>
             <InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)}/>
             <Informasjonsbolk header="Vedtaksperiode" {...props}>
-                <NormalTekstWrapper>{vedtak.fradato && `Fra: ${formaterDato(vedtak.fradato)}`}</NormalTekstWrapper>
-                <NormalTekstWrapper>{vedtak.tildato && `Til: ${formaterDato(vedtak.tildato)}`}</NormalTekstWrapper>
+                <Normaltekst>{vedtak.fradato ? `Fra: ${formaterDato(vedtak.fradato)}` : EMDASH}</Normaltekst>
+                <Normaltekst>{vedtak.tildato ? `Til: ${formaterDato(vedtak.tildato)}` : EMDASH}</Normaltekst>
             </Informasjonsbolk>
         </Grid>
     ));

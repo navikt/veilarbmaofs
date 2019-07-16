@@ -1,9 +1,9 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import EMDASH from '../../../utils/emdash';
-import { isNullOrUndefined } from '../../../utils/util';
-import NormalTekstWrapper from '../../felles/normaltekstwrapper';
+import { isNullOrUndefined } from '../../../utils';
+import { visEmdashHvisNull } from '../../../utils/utils';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {
@@ -32,11 +32,11 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
     return (
         <div className="underinformasjon">
             <Element> Postadresse </Element>
-            <NormalTekstWrapper> {adresselinje1} </NormalTekstWrapper>
-            <NormalTekstWrapper> {adresselinje2} </NormalTekstWrapper>
-            <NormalTekstWrapper> {adresselinje3} </NormalTekstWrapper>
-            <NormalTekstWrapper> {adresselinje4} </NormalTekstWrapper>
-            <NormalTekstWrapper> {landkode} </NormalTekstWrapper>
+            <Normaltekst> {visEmdashHvisNull(adresselinje1)} </Normaltekst>
+            <Normaltekst> {visEmdashHvisNull(adresselinje2)} </Normaltekst>
+            <Normaltekst> {visEmdashHvisNull(adresselinje3)} </Normaltekst>
+            <Normaltekst> {visEmdashHvisNull(adresselinje4)} </Normaltekst>
+            <Normaltekst> {visEmdashHvisNull(landkode)} </Normaltekst>
         </div>
     );
 }
