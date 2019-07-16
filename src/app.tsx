@@ -1,48 +1,39 @@
-import React from 'react';
-
-import './app.less';
-import { cache } from './utils/fetch-cache';
+import React, { useEffect } from 'react';
 import StoreProvider from './stores/store-provider';
 import AppProvider from './context';
 import Persondetaljer from './components/persondetaljer';
 import { Paneler } from './components/nye-paneler/paneler';
+import { logEvent } from './utils/frontend-logger';
+import './app.less';
 
 export interface AppProps {
     fnr: string;
     enhet?: string;
 }
 
-class App extends React.Component<AppProps> {
-    constructor(props: AppProps) {
-        super(props);
-        this.clearCache = this.clearCache.bind(this);
+const App = (props: AppProps) => {
+
+    function clearCache() {
+        // TODO: Clear fetch-store
+        // Object.keys(cache).forEach((key) => delete cache[key]);
     }
 
-    clearCache() {
-        Object.keys(cache).forEach((key) => delete cache[key]);
-    }
+    useEffect(() => {
+        logEvent('maofs.visning.v2');
+        window.addEventListener('rerenderMao', clearCache);
+        return () => window.removeEventListener('rerenderMao', clearCache);
+    }, []);
 
-    public componentDidMount() {
-        (window as any).frontendlogger.event('maofs.visning.v2', {}, {});
-        (window as any).addEventListener('rerenderMao', this.clearCache);
-    }
-
-    public componentWillMount() {
-        (window as any).removeEventListener('rerenderMao', this.clearCache);
-    }
-
-    public render() {
-        return (
-            <StoreProvider>
-                <div className="veilarbmaofs">
-                    <AppProvider>
-                        <Paneler/>
-                        <Persondetaljer {...this.props}/>
-                    </AppProvider>
-                </div>
-            </StoreProvider>
-        );
-    }
-}
+    return (
+        <StoreProvider fnr={props.fnr} enhetId={props.enhet}>
+            <div className="veilarbmaofs">
+                <AppProvider>
+                    <Paneler/>
+                    <Persondetaljer {...props}/>
+                </AppProvider>
+            </div>
+        </StoreProvider>
+    );
+};
 
 export default App;

@@ -4,9 +4,9 @@ import Lenke from 'nav-frontend-lenker';
 export function LastNedCV(props: {erManuell: boolean, lastNedCvLenke: string}) {
 
     const handleOnLastNedLenkeClicked = () => {
-        (window as any).frontendlogger.event('veilarbmaofs.metrikker.last-ned-cv', {
-            erManuell: props.erManuell
-        }, {});
+        // (window as any).frontendlogger.event('veilarbmaofs.metrikker.last-ned-cv', {
+        //     erManuell: props.erManuell
+        // }, {});
     };
 
     return (

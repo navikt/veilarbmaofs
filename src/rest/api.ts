@@ -40,6 +40,6 @@ export const lagHentYtelserFetchInfo = (params: FnrFetchParams): FetchInfo => ({
     url: `/veilarboppfolging/api/person/${params.fnr}/ytelser`,
 });
 
-export const lagHentUnderOppfolgingFetchInfo = (params: FnrFetchParams): FetchInfo => ({
+export const lagHentOppfolgingFetchInfo = (params: FnrFetchParams): FetchInfo => ({
     url: `/veilarboppfolging/api/underoppfolging?fnr=${params.fnr}`,
 });

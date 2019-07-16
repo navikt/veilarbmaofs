@@ -3,9 +3,9 @@ function createCacheKey(input: RequestInfo, init?: RequestInit): string {
 }
 
 function logTimeSince(key: string, startTime: Date) {
-    const end = new Date();
-    (window as any).frontendlogger.event('maofs.responseTime.v2',
-        {value: end.getTime() - startTime.getTime()}, {key});
+    // const end = new Date();
+    // (window as any).frontendlogger.event('maofs.responseTime.v2',
+    //     {value: end.getTime() - startTime.getTime()}, {key});
 }
 
 interface Cache {
