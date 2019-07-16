@@ -1,55 +1,54 @@
-@import (reference) "../../../../node_modules/nav-frontend-core/less/_variabler";
+@import "~nav-frontend-core/less/_variabler";
 
 .veilarbmaofs {
 
-  .fill(@color) {
-    fill: @color;
-  }
+	.fill(@color) {
+		fill: @color;
+	}
 
-  .stroke-color-fill-white(@color) {
-    stroke: @color;
-    .fill(white);
-  }
+	.stroke-color-fill-white(@color) {
+		stroke: @color;
+		.fill(white);
+	}
 
-  .div--pl1 {
-    padding-left: 1rem;
-  }
+	.div--pl1 {
+		padding-left: 1rem;
+	}
 
-  .btn--mt1 {
-    margin-top: 1rem;
-  }
+	.btn--mt1 {
+		margin-top: 1rem;
+	}
 
-  .btn--radius025 {
-    border-radius: 0.25rem;
-  }
+	.btn--radius025 {
+		border-radius: 0.25rem;
+	}
 
-  .utskrift-knapp__ikon {
-    margin: 0 0.35rem -0.2rem 0.2rem;
-    .stroke-color-fill-white(@navBla);
-  }
+	.utskrift-knapp__ikon {
+		margin: 0 0.35rem -0.2rem 0.2rem;
+		.stroke-color-fill-white(@navBla);
+	}
 
+	.utskrift-knapp {
+		text-transform: none;
+		padding: 0.25rem 1rem;
+		margin: 1rem 0;
+	}
 
-  .utskrift-knapp {
-    text-transform: none;
-    padding: 0.25rem 1rem;
-    margin: 1rem 0;
-  }
+	.utskrift-knapp:hover {
+		.utskrift-knapp__ikon {
+			.fill(@navBla);
+			#bottom {
+				fill: none;
+			}
+		}
+	}
 
-  .utskrift-knapp:hover {
-    .utskrift-knapp__ikon {
-      .fill(@navBla);
-      #bottom {
-        fill: none;
-      }
-    }
-  }
-
-  .utskrift-knapp:active {
-    .utskrift-knapp__ikon {
-     .stroke-color-fill-white(@navDypBla);
-      #bottom {
-        fill: white;
-      }
-    }
-  }
+	.utskrift-knapp:active {
+		.utskrift-knapp__ikon {
+			.stroke-color-fill-white(@navDypBla);
+			#bottom {
+				fill: white;
+			}
+		}
+	}
 }
