@@ -1,6 +1,6 @@
-import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
-import { safeMap } from '../../utils/index';
+import { Normaltekst } from 'nav-frontend-typografi';
+import { safeMap } from '../../utils';
 import Informasjonsbolk from './informasjonsbolk';
 
 interface Props<T> {

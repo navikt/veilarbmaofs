@@ -1,8 +1,8 @@
+import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import Element from 'nav-frontend-typografi/lib/element';
-import React from 'react';
 import { Raad, RaadAktivitet } from '../../../rest/datatyper/kartlegging';
-import { skillUtTipsTilDegFraTekst } from '../../../utils/index';
+import { skillUtTipsTilDegFraTekst } from '../../../utils';
 import { Ekspanderbar } from '../../felles/ekspanderbar';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 

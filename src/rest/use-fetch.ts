@@ -6,14 +6,12 @@ export interface Fetch<D = any, FP = any> extends FetchState<D> {
     reset: () => void;
 }
 
-const createInitialFetchState = (): FetchState<any> => {
-    return {
-        status: FetchStatus.NOT_STARTED,
-        error: null,
-        data: null as any,
-        httpCode: -1,
-    };
-};
+const createInitialFetchState = (): FetchState<any> => ({
+    status: FetchStatus.NOT_STARTED,
+    error: null,
+    data: null as any,
+    httpCode: -1,
+});
 
 const createPendingFetchState = (): FetchState<any> => ({
     status: FetchStatus.PENDING,

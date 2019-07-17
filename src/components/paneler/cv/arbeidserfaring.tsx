@@ -1,10 +1,9 @@
+import React from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
-import * as React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap} from '../../../utils/index';
 import Hide from '../../felles/hide';
-import { formaterDato, safeSort } from '../../../utils';
+import { formaterDato, safeSort, safeMap } from '../../../utils';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
     const {arbeidserfaring: arenaErfaring, ...rest} = props;

@@ -2,8 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap} from '../../../utils/index';
-import { formaterDato, safeSort } from '../../../utils';
+import { formaterDato, safeSort, safeMap } from '../../../utils';
 
 function AnnenErfaring(props: Pick<ArenaPerson, 'annenErfaring'>) {
     const {annenErfaring: arenaErfaring, ...rest} = props;

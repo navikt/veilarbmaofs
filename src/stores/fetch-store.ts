@@ -18,13 +18,14 @@ import { OppfolgingsstatusData } from '../rest/datatyper/oppfolgingsstatus';
 import { KartleggingData } from '../rest/datatyper/kartlegging';
 import { UnderOppfolgingData } from '../rest/datatyper/underOppfolgingData';
 import { YtelseDataType } from '../rest/datatyper/ytelse';
+import { Aktorid } from '../rest/datatyper/aktorid';
 
 function useFetchStore() {
     const registrering = useFetch<RegistreringsData, FnrFetchParams>(lagHentRegistreringFetchInfo);
     const personalia = useFetch<PersonaliaInfo, FnrFetchParams>(lagHentPersonaliaFetchInfo);
     const cvOgJobbprofil = useFetch<ArenaPerson, FnrFetchParams>(lagHentCvFetchInfo);
     const veileder = useFetch<VeilederData, HentVeilederFetchParams>(lagHentVeilederFetchInfo);
-    const aktorId = useFetch<{aktorId: string}, FnrFetchParams>(lagHentAktorIdFetchInfo);
+    const aktorId = useFetch<Aktorid, FnrFetchParams>(lagHentAktorIdFetchInfo);
     const oppfolgingsstatus = useFetch<OppfolgingsstatusData, FnrFetchParams>(lagHentOppfolgingsstatusFetchInfo);
     const jobbsokerkompetanse = useFetch<KartleggingData, FnrFetchParams>(lagHentJobbsokerkompetanseFetchInfo);
     const ytelser = useFetch<YtelseDataType, FnrFetchParams>(lagHentYtelserFetchInfo);

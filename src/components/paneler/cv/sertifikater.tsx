@@ -1,9 +1,8 @@
-import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap } from '../../../utils/index';
-import { formaterDato } from '../../../utils';
+import { formaterDato, safeMap } from '../../../utils';
 
 type Props = Pick<ArenaPerson, 'sertifikater'>;
 

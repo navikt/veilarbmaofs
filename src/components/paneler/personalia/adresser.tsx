@@ -2,8 +2,7 @@ import React from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import EMDASH from '../../../utils/emdash';
-import { isNullOrUndefined } from '../../../utils';
-import { visEmdashHvisNull } from '../../../utils/index';
+import { isNullOrUndefined, visEmdashHvisNull } from '../../../utils';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {
@@ -17,7 +16,7 @@ function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsad
             <Element>
                 Folkeregistrert postadresse
             </Element>
-            {harAdresse ? <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/> : <>{EMDASH}</>}
+            {harAdresse ? <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/> : EMDASH}
         </div>
     );
 }
