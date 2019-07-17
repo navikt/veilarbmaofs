@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
-import { hasData } from '../../../rest/utils';
+import { FetchState, hasData, isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
 import EMDASH from '../../../utils/emdash';
@@ -64,17 +64,21 @@ function hentHovedmaalkodeTekst(oppfolgingsstatus: OppfolgingsstatusData | null)
 const OppfolgingPanelInnhold = () => {
     const {oppfolgingsstatus, veileder, personalia, ytelser} = useFetchStoreContext();
     const {fnr} = useAppStoreContext();
+    const avhengigheter = [
+        oppfolgingsstatus, personalia, ytelser,
+        hasData(oppfolgingsstatus) ? veileder : null
+    ].filter(f => f != null) as FetchState[];
 
     useEffect(() => {
-        if (!hasData(oppfolgingsstatus)) {
+        if (isNotStarted(oppfolgingsstatus)) {
             oppfolgingsstatus.fetch({fnr});
         }
 
-        if (!hasData(personalia)) {
+        if (isNotStarted(personalia)) {
             personalia.fetch({fnr});
         }
 
-        if (!hasData(ytelser)) {
+        if (isNotStarted(ytelser)) {
             ytelser.fetch({fnr});
         }
     }, []);
@@ -89,7 +93,7 @@ const OppfolgingPanelInnhold = () => {
     }, [oppfolgingsstatus.status]);
 
     return (
-        <Laster avhengigheter={[oppfolgingsstatus, veileder, personalia, ytelser]}>
+        <Laster avhengigheter={avhengigheter}>
             {() =>
                 <Grid columns={4} gap="0.5rem">
                     <InformasjonsbolkEnkel

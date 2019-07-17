@@ -6,7 +6,7 @@ import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { hasData } from '../../../rest/utils';
+import { isNotStarted } from '../../../rest/utils';
 import { kalkulerAlder } from '../../../utils/date-utils';
 import Adresser from './adresser';
 import Sivilstand from './sivilstand';
@@ -20,7 +20,7 @@ const PersonaliaPanelInnhold = () => {
     const {fnr} = useAppStoreContext();
 
     useEffect(() => {
-        if (!hasData(personalia)) {
+        if (isNotStarted(personalia)) {
             personalia.fetch({fnr});
         }
     }, []);

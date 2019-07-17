@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { hasData } from '../../../rest/utils';
+import { isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import Grid from '../../felles/grid';
@@ -27,7 +27,7 @@ const YtelserPanelInnhold = () => {
     const {fnr} = useAppStoreContext();
 
     useEffect(() => {
-        if (!hasData(ytelser)) {
+        if (isNotStarted(ytelser)) {
             ytelser.fetch({fnr});
         }
     }, []);

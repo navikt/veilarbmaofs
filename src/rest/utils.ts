@@ -29,6 +29,10 @@ export const hasAnyFailed = (fetch: FetchState | FetchState[]): boolean => {
     return hasFailed(fetch);
 };
 
+export const isNotStarted = (fetch: FetchState): boolean => {
+    return fetch.status === FetchStatus.NOT_STARTED;
+};
+
 export const isNotStartedOrPending = (fetch: FetchState): boolean => {
     return fetch.status === FetchStatus.NOT_STARTED || fetch.status === FetchStatus.PENDING;
 };
@@ -38,7 +42,7 @@ export const hasFinished = (fetch: FetchState): boolean => {
 };
 
 export const hasFailed = (fetch: FetchState): boolean => {
-    return fetch.error != null;
+    return fetch.error != null || fetch.httpCode >= 400;
 };
 
 export const hasData = (fetch: FetchState): boolean => {
