@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import StoreProvider from './stores/store-provider';
 import { Paneler } from './components/paneler/paneler';
 import { logEvent } from './utils/frontend-logger';
+import { useFetchStoreContext } from './stores/fetch-store';
 import './app.less';
 
 export interface AppProps {
@@ -10,10 +11,10 @@ export interface AppProps {
 }
 
 const App = (props: AppProps) => {
+    const fetchStore = useFetchStoreContext();
 
     function clearCache() {
-        // TODO: Clear fetch-store
-        // Object.keys(cache).forEach((key) => delete cache[key]);
+        Object.entries(fetchStore).forEach((fetch: any) => fetch.reset());
     }
 
     useEffect(() => {
