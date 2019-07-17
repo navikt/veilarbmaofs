@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { isNotStarted } from '../../../rest/utils';
+import { hasData, isNotStarted } from '../../../rest/utils';
 import { Feilmelding } from '../../felles/feilmelding';
 import { Laster } from '../../felles/laster';
 import { Header } from './registrert';
@@ -11,6 +11,7 @@ import { JobbetSammenhengende } from './jobbetsammenhengende';
 import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
 import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../felles/show';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 const RegistreringPanelInnhold = () => {
     const {registrering} = useFetchStoreContext();
@@ -26,6 +27,14 @@ const RegistreringPanelInnhold = () => {
         <Laster avhengigheter={registrering}>
             <Feilmelding avhengigheter={registrering}>
                 {() => {
+                    if (!hasData(registrering)) {
+                        return (
+                            <Normaltekst>
+                                Brukeren har ikke registrert seg gjennom den nye registreringsløsningen.
+                            </Normaltekst>
+                        );
+                    }
+
                     const { registrering: brukerRegistrering, type } = registrering.data;
 
                     return (

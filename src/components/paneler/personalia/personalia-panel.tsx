@@ -6,12 +6,13 @@ import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { isNotStarted } from '../../../rest/utils';
+import { hasData, isNotStarted } from '../../../rest/utils';
 import { kalkulerAlder } from '../../../utils/date-utils';
 import Adresser from './adresser';
 import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 const MAX_ALDER_BARN = 21;
 
@@ -29,6 +30,11 @@ const PersonaliaPanelInnhold = () => {
         <Laster avhengigheter={personalia}>
             <Feilmelding avhengigheter={personalia}>
                 {() => {
+
+                    if (!hasData(personalia)) {
+                        return <Normaltekst>Ingen data tilgjengelig</Normaltekst>;
+                    }
+
                     const {
                         bostedsadresse,
                         postAdresse,
