@@ -3,6 +3,7 @@ import { ArenaPerson, Fagdokumentasjon, FagdokumentType } from '../../../rest/da
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../utils/emdash';
+import { visEmdashHvisNull } from '../../../utils';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 
@@ -26,7 +27,7 @@ const mapFagdokumentasjonerTilViews = (fagdokumentasjoner: Fagdokumentasjon[]) =
                 <Element>
                     {fagdokumentTypeTilTekst(fagdokument.type)}
                 </Element>
-                <Normaltekst>{fagdokument.tittel}</Normaltekst>
+                <Normaltekst>{visEmdashHvisNull(fagdokument.tittel)}</Normaltekst>
             </div>
         );
     });

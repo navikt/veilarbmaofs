@@ -1,7 +1,7 @@
 class Environment {
 
     get isAppMocked() {
-        return process.env.REACT_APP_MOCK;
+        return process.env.REACT_APP_MOCK === 'true';
     }
 
     get isAppOnHeroku() {
