@@ -61,12 +61,16 @@ function hentHovedmaalkodeTekst(oppfolgingsstatus: OppfolgingsstatusData | null)
     return HovedmaalkodeMap[oppfolgingsstatus.hovedmaalkode];
 }
 
+function skalHenteVeileder(oppfolgingsstatus: FetchState<OppfolgingsstatusData>) {
+    return hasData(oppfolgingsstatus) && oppfolgingsstatus.data.veilederId != null;
+}
+
 const OppfolgingPanelInnhold = () => {
     const {oppfolgingsstatus, veileder, personalia, ytelser} = useFetchStoreContext();
     const {fnr} = useAppStoreContext();
     const avhengigheter = [
         oppfolgingsstatus, personalia, ytelser,
-        hasData(oppfolgingsstatus) ? veileder : null
+        skalHenteVeileder(oppfolgingsstatus) ? veileder : null
     ].filter(f => f != null) as FetchState[];
 
     useEffect(() => {
@@ -84,11 +88,9 @@ const OppfolgingPanelInnhold = () => {
     }, []);
 
     useEffect(() => {
-        if (hasData(oppfolgingsstatus)) {
-            const veilederId = oppfolgingsstatus.data.veilederId;
-            if (veilederId) {
-                veileder.fetch({veilederId});
-            }
+        if (skalHenteVeileder(oppfolgingsstatus)) {
+            const veilederId = oppfolgingsstatus.data.veilederId as string;
+            veileder.fetch({veilederId});
         }
     }, [oppfolgingsstatus.status]);
 
