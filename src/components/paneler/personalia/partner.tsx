@@ -1,9 +1,9 @@
-import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaPartner } from '../../../rest/datatyper/personalia';
 import { finnAldersTekst } from '../../../utils/date-utils';
 import EMDASH from '../../../utils/emdash';
-import { isNullOrUndefined } from '../../../utils/index';
+import { isNullOrUndefined } from '../../../utils';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { OrNothing } from '../../../utils/felles-typer';
 

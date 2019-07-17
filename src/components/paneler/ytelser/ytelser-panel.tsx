@@ -47,12 +47,10 @@ const YtelserPanelInnhold = () => {
                     const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
 
                     return (
-                        <>
-                            <Grid columns={1} gap="0.5rem">
-                                <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
-                                <Vedtaksliste vedtaksliste={aktivVedtak} />
-                            </Grid>
-                        </>
+                        <Grid columns={1} gap="0.5rem">
+                            <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
+                            <Vedtaksliste vedtaksliste={aktivVedtak} />
+                        </Grid>
                     );
                 }}
             </Feilmelding>

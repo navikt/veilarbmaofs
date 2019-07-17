@@ -1,5 +1,5 @@
 import React from 'react';
-import { isNullOrUndefined } from '../../../utils/index';
+import { isNullOrUndefined } from '../../../utils';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { StringOrNothing } from '../../../utils/felles-typer';
 

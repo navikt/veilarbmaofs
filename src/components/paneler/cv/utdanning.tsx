@@ -2,9 +2,8 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap} from '../../../utils/index';
+import { safeMap, formaterDato, safeSort } from '../../../utils';
 import Hide from '../../felles/hide';
-import { formaterDato, safeSort } from '../../../utils';
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
     const {utdanning: arenaUtdanning, ...rest} = props;
