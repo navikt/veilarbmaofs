@@ -3,6 +3,7 @@ import { FetchInfo, FetchState, FetchStatus } from './utils';
 
 export interface Fetch<D = any, FP = any> extends FetchState<D> {
     fetch: (fetchParams: FP) => void;
+    reset: () => void;
 }
 
 const createInitialFetchState = (): FetchState<any> => {
@@ -37,20 +38,20 @@ const useFetch = <D = {}, FP = any>(createFetchInfo: (fetchParams: FP) => FetchI
 
         setFetchState(createPendingFetchState());
 
-        console.log('Fetching', url); // tslint:disable-line
-
         fetch(url, restInfo)
             .then(async (res) => {
 
                 const httpCode = res.status;
 
-                // TODO: Sjekk på status før omgjøring til json
-
-                try {
-                    const data = await res.json();
-                    setFetchState(createFinishedFetchState(data, null, httpCode));
-                } catch (error) {
-                    setFetchState(createFinishedFetchState(null as any, error, httpCode));
+                if (httpCode === 200) {
+                    try {
+                        const data = await res.json();
+                        setFetchState(createFinishedFetchState(data, null, httpCode));
+                    } catch (error) {
+                        setFetchState(createFinishedFetchState(null as any, error, httpCode));
+                    }
+                } else {
+                    setFetchState(createFinishedFetchState(null as any, null, httpCode));
                 }
 
             })
@@ -59,7 +60,11 @@ const useFetch = <D = {}, FP = any>(createFetchInfo: (fetchParams: FP) => FetchI
             });
     };
 
-    return { ...fetchState, fetch: apiFetch };
+    const reset = () => {
+        setFetchState(createInitialFetchState());
+    };
+
+    return { ...fetchState, fetch: apiFetch, reset };
 };
 
 export default useFetch;
