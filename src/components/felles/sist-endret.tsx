@@ -1,7 +1,7 @@
 import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { StringOrNothing } from '../../utils/felles-typer';
-import { formaterDato } from '../../utils/utils';
+import { formaterDato } from '../../utils/index';
 
 interface SistEndretProps {
     sistEndret: StringOrNothing;

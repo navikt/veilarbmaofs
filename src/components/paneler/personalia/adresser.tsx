@@ -3,7 +3,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../rest/datatyper/personalia';
 import EMDASH from '../../../utils/emdash';
 import { isNullOrUndefined } from '../../../utils';
-import { visEmdashHvisNull } from '../../../utils/utils';
+import { visEmdashHvisNull } from '../../../utils/index';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {

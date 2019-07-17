@@ -4,7 +4,7 @@ import { isNullOrUndefined } from '../../utils/index';
 import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../utils/emdash';
 import { StringOrNothing } from '../../utils/felles-typer';
-import { formaterDato } from '../../utils/utils';
+import { formaterDato } from '../../utils/index';
 
 function Dato(props: { dato: StringOrNothing }) {
     if (isNullOrUndefined(props.dato)) {

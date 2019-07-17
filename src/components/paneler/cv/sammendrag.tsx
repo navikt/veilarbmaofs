@@ -2,7 +2,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { visEmdashHvisNull } from '../../../utils/utils';
+import { visEmdashHvisNull } from '../../../utils/index';
 
 function Sammendrag(props: Pick<ArenaPerson, 'sammendrag'>) {
     return (

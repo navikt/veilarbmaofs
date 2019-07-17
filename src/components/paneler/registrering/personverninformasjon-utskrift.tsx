@@ -4,11 +4,11 @@ import ModalWrapper from 'nav-frontend-modal';
 import { Flatknapp } from 'nav-frontend-knapper';
 import PersonverninformasjonSykmeldt from './personverninformasjon-sykmeldt';
 import PersonverninformasjonManuell from './personverninformasjon-manuell';
-import './personverninformasjon.less';
 import { ReactComponent as PrintIcon } from './printer.svg';
-import './print-knapp.less';
 import { PrintKnappModal } from './print-knapp-modal';
-import hiddenIf from '../../felles/hidden-if';
+import './personverninformasjon.less';
+import './print-knapp.less';
+import Show from '../../felles/show';
 
 function erSykmeldt(type?: RegistreringType) {
     return type && type === 'SYKMELDT';
@@ -38,11 +38,15 @@ function PersonverninformasjonUtskrift(props: {type?: RegistreringType}) {
                 onRequestClose={() => setVisPrintModal(false)}
             >
                 <PrintKnappModal/>
-                <PersonverninformasjonSykmeldt hidden={!erSykmeldt(props.type)}/>
-                <PersonverninformasjonManuell hidden={!erOrdinaer(props.type)}/>
+                <Show if={erSykmeldt(props.type)}>
+                    <PersonverninformasjonSykmeldt/>
+                </Show>
+                <Show if={erOrdinaer(props.type)}>
+                    <PersonverninformasjonManuell/>
+                </Show>
             </ModalWrapper>
         </>
     );
 }
 
-export default hiddenIf(PersonverninformasjonUtskrift);
+export default PersonverninformasjonUtskrift;

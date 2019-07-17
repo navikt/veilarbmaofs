@@ -10,6 +10,7 @@ import { SporsmalsListe } from './sporsmolvisning';
 import { JobbetSammenhengende } from './jobbetsammenhengende';
 import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
 import { ForeslattProfilering } from './foreslatt-profilering';
+import Show from '../../felles/show';
 
 const RegistreringPanelInnhold = () => {
     const {registrering} = useFetchStoreContext();
@@ -32,9 +33,9 @@ const RegistreringPanelInnhold = () => {
                             <Header registrering={brukerRegistrering} />
                             <SporsmalsListe registrering={brukerRegistrering} />
                             <JobbetSammenhengende registrering={brukerRegistrering} />
-                            <PersonverninformasjonUtskrift
-                                type={type} hidden={!brukerRegistrering || !brukerRegistrering.manueltRegistrertAv}
-                            />
+                            <Show if={brukerRegistrering && brukerRegistrering.manueltRegistrertAv != null}>
+                                <PersonverninformasjonUtskrift type={type} />
+                            </Show>
                             <ForeslattProfilering registrering={brukerRegistrering}/>
                         </>
                     );

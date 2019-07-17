@@ -1,6 +1,5 @@
 import React from 'react';
 import { Innholdstittel, Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi';
-import hiddenIf from '../../felles/hidden-if';
 
 function PersonverninformasjonSykmeldt() {
     return (
@@ -25,4 +24,4 @@ function PersonverninformasjonSykmeldt() {
     );
 }
 
-export default hiddenIf(PersonverninformasjonSykmeldt);
+export default PersonverninformasjonSykmeldt;

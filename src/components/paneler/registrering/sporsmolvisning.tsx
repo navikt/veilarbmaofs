@@ -3,7 +3,7 @@ import React from 'react';
 import { Registrering, Sporsmal } from '../../../rest/datatyper/registreringsData';
 import FloatGrid from '../../felles/float-grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { visEmdashHvisNull } from '../../../utils/utils';
+import { visEmdashHvisNull } from '../../../utils/index';
 
 export function SporsmalsListe(props: {registrering?: Registrering}) {
 
