@@ -2,7 +2,8 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { ArenaPerson } from '../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { formaterDato, safeMap, visEmdashHvisNull } from '../../../utils/utils';
+import { visEmdashHvisNull } from '../../../utils/index';
+import { formaterDato, safeMap } from '../../../utils';
 
 type Props = Pick<ArenaPerson, 'forerkort'>;
 

@@ -3,9 +3,10 @@ import { YtelseDataType } from '../../../rest/datatyper/ytelse';
 import Grid from '../../felles/grid';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import InformasjonsbolkEnkel from '../../felles/informasjonsbolk-enkel';
-import { formaterDato, safeMap, visEmdashHvisNull } from '../../../utils/utils';
+import { visEmdashHvisNull } from '../../../utils/index';
 import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../utils/emdash';
+import { formaterDato, safeMap } from '../../../utils';
 
 function Vedtaksliste(props: Pick<YtelseDataType, 'vedtaksliste'>) {
     const vedtakliste = safeMap(props.vedtaksliste, (vedtak, index) => (

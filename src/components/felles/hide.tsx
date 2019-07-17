@@ -1,12 +1,8 @@
-import React from 'react';
-
 interface HideProps {
-    if: boolean;
-    children: React.ReactNode;
+    if?: boolean;
+    children?: any;
 }
 
-class Hide extends React.Component<HideProps> {
-    render() { return this.props.if ? null : this.props.children; }
-}
+const Hide = (props: HideProps) => props.if ? null : props.children;
 
 export default Hide;

@@ -9,7 +9,7 @@ import SistEndret from '../../felles/sist-endret';
 import Grid from '../../felles/grid';
 import InformasjonsbolkPunktliste from '../../felles/informasjonsbolk-punktliste';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap } from '../../../utils/utils';
+import { safeMap } from '../../../utils/index';
 import { RaadVisning } from './raad-visning';
 
 const JobbsokerkompetansePanelInnhold = () => {
