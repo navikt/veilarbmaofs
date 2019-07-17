@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { isNotStarted } from '../../../rest/utils';
+import { hasData, isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import SistEndret from '../../felles/sist-endret';
@@ -11,6 +11,7 @@ import InformasjonsbolkPunktliste from '../../felles/informasjonsbolk-punktliste
 import Informasjonsbolk from '../../felles/informasjonsbolk';
 import { safeMap } from '../../../utils';
 import { RaadVisning } from './raad-visning';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 const JobbsokerkompetansePanelInnhold = () => {
     const {jobbsokerkompetanse} = useFetchStoreContext();
@@ -26,9 +27,14 @@ const JobbsokerkompetansePanelInnhold = () => {
         <Laster avhengigheter={jobbsokerkompetanse}>
             <Feilmelding avhengigheter={jobbsokerkompetanse}>
                 {() => {
-                    const { besvarelseDato, kulepunkter, raad } = jobbsokerkompetanse.data;
 
+                    if (!hasData(jobbsokerkompetanse)) {
+                        return <Normaltekst>Ingen data tilgjengelig</Normaltekst>;
+                    }
+
+                    const { besvarelseDato, kulepunkter, raad } = jobbsokerkompetanse.data;
                     const kulepunktListe = kulepunkter.map((punkt) => punkt.kulepunkt);
+
                     const raadliste = safeMap(raad,(rad, index) => (
                         <li key={index}>
                             <RaadVisning raad={rad} />

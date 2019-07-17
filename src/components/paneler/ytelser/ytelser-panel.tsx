@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { isNotStarted } from '../../../rest/utils';
+import { hasData, isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import Grid from '../../felles/grid';
@@ -11,6 +11,7 @@ import Vedtaksliste from '../../paneler/ytelser/vedtaksliste';
 import { OppfolgingskontrakterType, VedtakType } from '../../../rest/datatyper/ytelse';
 import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../../utils/konstanter';
 import EMDASH from '../../../utils/emdash';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 export const getInnsatsgruppeVisningstekst = (innstatsgruppeListe: OppfolgingskontrakterType[]) => {
     const aktiveOppfolgingskontrakter =
@@ -36,6 +37,11 @@ const YtelserPanelInnhold = () => {
         <Laster avhengigheter={ytelser}>
             <Feilmelding avhengigheter={ytelser}>
                 {() => {
+
+                    if (!hasData(ytelser)) {
+                        return <Normaltekst>Ingen data tilgjengelig</Normaltekst>;
+                    }
+
                     const {oppfolgingskontrakter, vedtaksliste} = ytelser.data;
                     const aktivVedtak = getVedtakForVisning(vedtaksliste);
                     const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);

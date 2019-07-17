@@ -1,29 +1,22 @@
-import { Ingress, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import { Ingress } from 'nav-frontend-typografi';
 import { Registrering } from '../../../rest/datatyper/registreringsData';
-import { isNullOrUndefined } from '../../../utils';
 import RegistrertTid from './registrert-tid';
 import RegistrertAv from './registrert-av';
 
 export function Header(props: {registrering?: Registrering}) {
 
-    const { registrering } = props;
-
-    if(!registrering || isNullOrUndefined(registrering.opprettetDato)) {
-        return(
-            <Normaltekst>
-                Brukeren har ikke registrert seg gjennom den nye registreringsløsningen.
-            </Normaltekst>
-        );
+    if(!props.registrering) {
+        return null;
     }
 
-    const ingressTekst = registrering.manueltRegistrertAv ? 'Registrert av NAV' : 'Brukerens svar fra registreringen';
+    const ingressTekst = props.registrering.manueltRegistrertAv ? 'Registrert av NAV' : 'Brukerens svar fra registreringen';
 
     return(
         <>
             <Ingress>{ingressTekst}</Ingress>
-            <RegistrertTid opprettetDato={registrering.opprettetDato}/>
-            <RegistrertAv registrering={registrering}/>
+            <RegistrertTid opprettetDato={props.registrering.opprettetDato}/>
+            <RegistrertAv registrering={props.registrering}/>
         </>
     );
 }
