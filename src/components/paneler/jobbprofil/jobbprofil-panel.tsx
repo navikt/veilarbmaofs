@@ -2,29 +2,29 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { hasData } from '../../../rest/utils';
+import { hasData, isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
-import { RedigerJobbprofil } from '../../paneler/jobbprofil/rediger-jobbprofil';
+import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../felles/sist-endret';
 import Grid from '../../felles/grid';
 import InformasjonsbolkListe from '../../felles/informasjonsbolk-liste';
-import { byggPamUrl } from '../../../utils/index';
+import { byggPamUrl } from '../../../utils';
 
 const JobbprofilPanelInnhold = () => {
     const {cvOgJobbprofil, underOppfolging, aktorId} = useFetchStoreContext();
     const {fnr} = useAppStoreContext();
 
     useEffect(() => {
-        if (!hasData(cvOgJobbprofil)) {
+        if (isNotStarted(cvOgJobbprofil)) {
             cvOgJobbprofil.fetch({fnr});
         }
-        if (!hasData(underOppfolging)) {
+        if (isNotStarted(underOppfolging)) {
             underOppfolging.fetch({fnr});
         }
-        if (!hasData(aktorId)) {
+        if (isNotStarted(aktorId)) {
             aktorId.fetch({fnr});
         }
     }, []);

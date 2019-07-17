@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { hasData } from '../../../rest/utils';
+import { isNotStarted } from '../../../rest/utils';
 import { Laster } from '../../felles/laster';
 import { Feilmelding } from '../../felles/feilmelding';
 import SistEndret from '../../felles/sist-endret';
 import Grid from '../../felles/grid';
 import InformasjonsbolkPunktliste from '../../felles/informasjonsbolk-punktliste';
 import Informasjonsbolk from '../../felles/informasjonsbolk';
-import { safeMap } from '../../../utils/index';
+import { safeMap } from '../../../utils';
 import { RaadVisning } from './raad-visning';
 
 const JobbsokerkompetansePanelInnhold = () => {
@@ -17,7 +17,7 @@ const JobbsokerkompetansePanelInnhold = () => {
     const {fnr} = useAppStoreContext();
 
     useEffect(() => {
-        if (!hasData(jobbsokerkompetanse)) {
+        if (isNotStarted(jobbsokerkompetanse)) {
             jobbsokerkompetanse.fetch({fnr});
         }
     }, []);

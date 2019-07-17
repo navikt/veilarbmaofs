@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Panel from '../panel';
 import { useFetchStoreContext } from '../../../stores/fetch-store';
 import { useAppStoreContext } from '../../../stores/app-store';
-import { hasData } from '../../../rest/utils';
+import { isNotStarted } from '../../../rest/utils';
 import { Feilmelding } from '../../felles/feilmelding';
 import { Laster } from '../../felles/laster';
 import { Header } from './registrert';
@@ -17,7 +17,7 @@ const RegistreringPanelInnhold = () => {
     const {fnr} = useAppStoreContext();
 
     useEffect(() => {
-        if (!hasData(registrering)) {
+        if (isNotStarted(registrering)) {
             registrering.fetch({fnr});
         }
     }, []);
