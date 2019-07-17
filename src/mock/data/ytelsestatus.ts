@@ -1,4 +1,3 @@
-// tslint:disable object-literal-sort-keys
 import { JSONValue } from 'yet-another-fetch-mock';
 import { YtelseDataType } from '../../rest/datatyper/ytelse';
 
