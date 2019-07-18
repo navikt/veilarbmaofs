@@ -39,6 +39,7 @@ const CvPanelInnhold = () => {
         if (isNotStarted(aktorId)) {
             aktorId.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

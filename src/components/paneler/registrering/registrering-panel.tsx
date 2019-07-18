@@ -21,6 +21,7 @@ const RegistreringPanelInnhold = () => {
         if (isNotStarted(registrering)) {
             registrering.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

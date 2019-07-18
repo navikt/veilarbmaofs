@@ -21,6 +21,7 @@ const App = (props: AppProps) => {
         logEvent('maofs.visning.v2');
         window.addEventListener('rerenderMao', clearCache);
         return () => window.removeEventListener('rerenderMao', clearCache);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

@@ -85,6 +85,7 @@ const OppfolgingPanelInnhold = () => {
         if (isNotStarted(ytelser)) {
             ytelser.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -92,6 +93,7 @@ const OppfolgingPanelInnhold = () => {
             const veilederId = oppfolgingsstatus.data.veilederId as string;
             veileder.fetch({veilederId});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [oppfolgingsstatus.status]);
 
     return (

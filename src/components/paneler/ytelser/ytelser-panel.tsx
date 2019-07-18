@@ -31,6 +31,7 @@ const YtelserPanelInnhold = () => {
         if (isNotStarted(ytelser)) {
             ytelser.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
