@@ -13,12 +13,12 @@
     "heroku-serve": "node heroku-server.js"
   },
   "dependencies": {
-    "@craco/craco": "^3.6.0",
+    "@craco/craco": "^5.2.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "classnames": "^2.2.6",
     "constate": "^1.2.0",
-    "craco-less": "^1.7.0",
+    "craco-less": "^1.9.0",
     "lodash.throttle": "^4.1.1",
     "nav-frontend-alertstriper": "^1.0.34",
     "nav-frontend-alertstriper-style": "^0.2.53",
@@ -52,7 +52,7 @@
     "react-dom": "^16.8.6",
     "react-modal": "^3.9.1",
     "react-motion": "^0.5.2",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^3.0.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
@@ -65,7 +65,7 @@
     "express": "^4.17.1",
     "tslint": "^5.18.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.5.3",
+    "typescript": "3.4.5",
     "yet-another-fetch-mock": "^2.4.1"
   },
   "browserslist": [

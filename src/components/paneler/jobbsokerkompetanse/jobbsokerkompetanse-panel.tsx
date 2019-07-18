@@ -21,6 +21,7 @@ const JobbsokerkompetansePanelInnhold = () => {
         if (isNotStarted(jobbsokerkompetanse)) {
             jobbsokerkompetanse.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

@@ -24,6 +24,7 @@ const PersonaliaPanelInnhold = () => {
         if (isNotStarted(personalia)) {
             personalia.fetch({fnr});
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
