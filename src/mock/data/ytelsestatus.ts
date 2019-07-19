@@ -1,7 +1,7 @@
 import { JSONValue } from 'yet-another-fetch-mock';
-import { YtelseDataType } from '../../rest/datatyper/ytelse';
+import { YtelseData } from '../../rest/datatyper/ytelse';
 
-const ytelsestatus: YtelseDataType & JSONValue = {
+const ytelsestatus: YtelseData & JSONValue = {
     oppfolgingskontrakter:
         [{
             innsatsgrupper: ['Spesielt tilpasset innsats'],

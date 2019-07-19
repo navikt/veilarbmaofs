@@ -1,23 +1,44 @@
 import React from 'react';
-import YtelserPanel from './ytelser/ytelser-panel';
-import RegistreringPanel from './registrering/registrering-panel';
-import CvPanel from './cv/cv-panel';
-import JobbprofilPanel from './jobbprofil/jobbprofil-panel';
-import PersonaliaPanel from './personalia/personalia-panel';
-import OppfolgingPanel from './oppfolging/oppfolging-panel';
-import JobbsokerkompetansePanel from './jobbsokerkompetanse/jobbsokerkompetanse-panel';
+import RegistreringPanel from './innhold/registrering/registrering-panel-innhold';
+import CvPanel from './innhold/cv/cv-panel-innhold';
+import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
+import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
+import JobbsokerkompetansePanel from './innhold/jobbsokerkompetanse/jobbsokerkompetanse-panel-innhold';
 import './paneler.less';
+import Panel from './panel';
+import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
+import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
 
 export const Paneler = () => {
     return (
         <div className="paneler">
-            <RegistreringPanel/>
-            <CvPanel/>
-            <JobbprofilPanel/>
-            <PersonaliaPanel/>
-            <YtelserPanel/>
-            <OppfolgingPanel/>
-            <JobbsokerkompetansePanel/>
+            <Panel name="registrering" tittel="Registrering">
+                <RegistreringPanel/>
+            </Panel>
+
+            <Panel name="cv" tittel="CV">
+                <CvPanel/>
+            </Panel>
+
+            <Panel name="jobbprofil" tittel="Jobbprofil">
+                <JobbprofilPanelInnhold/>
+            </Panel>
+
+            <Panel name="personalia" tittel="Personalia">
+                <PersonaliaPanelInnhold/>
+            </Panel>
+
+            <Panel name="ytelser" tittel="Ytelser">
+                <YtelserPanelInnhold/>
+            </Panel>
+
+            <Panel name="oppfolging" tittel="Oppfølging">
+                <OppfolgingPanelInnhold/>
+            </Panel>
+
+            <Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
+                <JobbsokerkompetansePanel/>
+            </Panel>
         </div>
     );
 };

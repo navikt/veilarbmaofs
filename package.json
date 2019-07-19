@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@craco/craco": "^5.2.1",
+    "@nutgaard/use-fetch": "^1.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "classnames": "^2.2.6",
-    "constate": "^1.2.0",
     "craco-less": "^1.9.0",
     "lodash.throttle": "^4.1.1",
     "nav-frontend-alertstriper": "^1.0.34",

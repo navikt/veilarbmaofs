@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import StoreProvider from './stores/store-provider';
 import { Paneler } from './components/paneler/paneler';
 import { logEvent } from './utils/frontend-logger';
-import { useFetchStoreContext } from './stores/fetch-store';
 import './app.less';
 
 export interface AppProps {
@@ -11,17 +10,15 @@ export interface AppProps {
 }
 
 const App = (props: AppProps) => {
-    const fetchStore = useFetchStoreContext();
 
-    function clearCache() {
-        Object.entries(fetchStore).forEach((fetch: any) => fetch.reset());
+    function refetch() {
+        console.log('refetching....'); // tslint:disable-line
     }
 
     useEffect(() => {
         logEvent('maofs.visning.v2');
-        window.addEventListener('rerenderMao', clearCache);
-        return () => window.removeEventListener('rerenderMao', clearCache);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        window.addEventListener('rerenderMao', refetch);
+        return () => window.removeEventListener('rerenderMao', refetch);
     }, []);
 
     return (
