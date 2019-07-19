@@ -23,7 +23,7 @@ export interface YtelseType {
     rettighetsperiode: StringOrNothing;
 }
 
-export interface YtelseDataType {
+export interface YtelseData {
     oppfolgingskontrakter: OppfolgingskontrakterType[];
     vedtaksliste: VedtakType[];
 }

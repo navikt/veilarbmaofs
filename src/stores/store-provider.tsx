@@ -1,6 +1,5 @@
 import React from 'react';
-import { useAppStoreContext } from './app-store';
-import { useFetchStoreContext } from './fetch-store';
+import appStoreContext from './app-store';
 
 interface StoreProviderProps {
     fnr: string;
@@ -10,11 +9,9 @@ interface StoreProviderProps {
 
 const StoreProvider = (props: StoreProviderProps) => {
     return (
-        <useAppStoreContext.Provider fnr={props.fnr} enhetId={props.enhetId}>
-            <useFetchStoreContext.Provider>
-                {props.children}
-            </useFetchStoreContext.Provider>
-        </useAppStoreContext.Provider>
+        <appStoreContext.Provider value={{ fnr: props.fnr, enhetId: props.enhetId }}>
+            {props.children}
+        </appStoreContext.Provider>
     );
 };
 

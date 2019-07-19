@@ -1,7 +1,7 @@
 import { JSONValue } from 'yet-another-fetch-mock';
-import { Aktorid } from '../../rest/datatyper/aktorid';
+import { AktorId } from '../../rest/datatyper/aktor-id';
 
-const aktorId: Aktorid & JSONValue = {
+const aktorId: AktorId & JSONValue = {
     aktorId : '1234567',
 };
 

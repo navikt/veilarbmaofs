@@ -1,10 +1,16 @@
-import { useState } from 'react';
-import createUseContext from 'constate';
+import React, { useContext } from 'react';
 
-function useAppStore(initalValues: { fnr: string, enhetId?: string}) {
-    const [fnr, setFnr] = useState(initalValues.fnr);
-    const [enhetId, setEnhetId] = useState(initalValues.enhetId);
-    return { fnr, setFnr, enhetId, setEnhetId};
+interface AppStore {
+    fnr: string;
+    enhetId?: string;
 }
 
-export const useAppStoreContext = createUseContext(useAppStore);
+const initialStore = {
+    fnr: ''
+};
+
+const appStoreContext = React.createContext<AppStore>(initialStore);
+
+export const useAppStore = () => useContext(appStoreContext);
+
+export default appStoreContext;

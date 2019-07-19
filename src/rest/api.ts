@@ -1,45 +1,28 @@
-import { FetchInfo } from './utils';
+import useFetch, { Config } from '@nutgaard/use-fetch';
+import { PersonaliaInfo } from './datatyper/personalia';
+import { RegistreringsData } from './datatyper/registreringsData';
+import { ArenaPerson } from './datatyper/arenaperson';
+import { VeilederData } from './datatyper/veileder';
+import { AktorId } from './datatyper/aktor-id';
+import { OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
+import { KartleggingData } from './datatyper/kartlegging';
+import { YtelseData } from './datatyper/ytelse';
+import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 
-export interface FnrFetchParams {
-    fnr: string;
-}
+export const useFetchRegistrering = (fnr: string) => useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
 
-export interface HentVeilederFetchParams {
-    veilederId: string;
-}
+export const useFetchCvOgJobbprofil = (fnr: string) => useFetch<ArenaPerson>(`/pam-cv-api/rest/v1/arbeidssoker/${fnr}`);
 
-export const lagHentPersonaliaFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarbperson/api/person/${params.fnr}`,
-});
+export const useFetchVeileder = (veilederId: string, config?: Config) => useFetch<VeilederData>(`/veilarbveileder/api/veileder/${veilederId}`, {}, config);
 
-export const lagHentRegistreringFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarbregistrering/api/registrering?fnr=${params.fnr}`,
-});
+export const useFetchAktorId = (fnr: string) => useFetch<AktorId>(`/veilarbperson/api/person/aktorid?fnr=${fnr}`);
 
-export const lagHentCvFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/pam-cv-api/rest/v1/arbeidssoker/${params.fnr}`,
-});
+export const useFetchOppfolgingsstatus = (fnr: string) => useFetch<OppfolgingsstatusData>(`/veilarboppfolging/api/person/${fnr}/oppfolgingsstatus`);
 
-export const lagHentVeilederFetchInfo = (params: HentVeilederFetchParams): FetchInfo => ({
-    url: `/veilarbveileder/api/veileder/${params.veilederId}`,
-});
+export const useFetchJobbsokerkompetanse = (fnr: string) => useFetch<KartleggingData>(`/veilarbjobbsokerkompetanse/api/hent?fnr=${fnr}`);
 
-export const lagHentAktorIdFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarbperson/api/person/aktorid?fnr=${params.fnr}`,
-});
+export const useFetchYtelser = (fnr: string) => useFetch<YtelseData>(`/veilarboppfolging/api/person/${fnr}/ytelser`);
 
-export const lagHentOppfolgingsstatusFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarboppfolging/api/person/${params.fnr}/oppfolgingsstatus`,
-});
+export const useFetchUnderOppfolging = (fnr: string) => useFetch<UnderOppfolgingData>(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`);
 
-export const lagHentJobbsokerkompetanseFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarbjobbsokerkompetanse/api/hent?fnr=${params.fnr}`,
-});
-
-export const lagHentYtelserFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarboppfolging/api/person/${params.fnr}/ytelser`,
-});
-
-export const lagHentUnderOppfolgingFetchInfo = (params: FnrFetchParams): FetchInfo => ({
-    url: `/veilarboppfolging/api/underoppfolging?fnr=${params.fnr}`,
-});
+export const useFetchPersonalia = (fnr: string) => useFetch<PersonaliaInfo>(`/veilarbperson/api/person/${fnr}`);
