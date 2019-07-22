@@ -2,6 +2,8 @@
 @import "~nav-frontend-typografi-style/src/index";
 
 .veilarbmaofs {
+	max-width: 1200px;
+	margin: 0 auto;
 
 	.typo-normal-mixin();
 	color: @navMorkGra;
@@ -27,6 +29,10 @@
 
 	.break-all {
 		word-break: break-all;
+	}
+
+	@media (max-width: 1232px) {
+		margin: 0 1rem;
 	}
 
 	@media print {

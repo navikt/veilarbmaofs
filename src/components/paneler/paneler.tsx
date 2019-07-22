@@ -4,15 +4,25 @@ import CvPanel from './innhold/cv/cv-panel-innhold';
 import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
 import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
 import JobbsokerkompetansePanel from './innhold/jobbsokerkompetanse/jobbsokerkompetanse-panel-innhold';
-import './paneler.less';
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
+import { useFetchOppfolgingsstatus } from '../../rest/api';
+import { useAppStore } from '../../stores/app-store';
+import { hasData } from '@nutgaard/use-fetch';
+import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
+import './paneler.less';
 
 export const Paneler = () => {
+    const { fnr } = useAppStore();
+    const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
+    const registreringPanelNavn = hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
+        ? 'Registrering fra sykefravær'
+        : 'Registrering';
+
     return (
         <div className="paneler">
-            <Panel name="registrering" tittel="Registrering">
+            <Panel name="registrering" tittel={registreringPanelNavn}>
                 <RegistreringPanel/>
             </Panel>
 

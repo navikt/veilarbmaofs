@@ -34,8 +34,8 @@ const loggingMiddleware: Middleware = (request, response) => {
 // const failureMock = FetchMock.configure({
 //     enableFallback: false,
 //     middleware: MiddlewareUtils.combine(
-//         MiddlewareUtils.failurerateMiddleware(1, { status: 204 }),
-//         MiddlewareUtils.delayMiddleware(500),
+//         MiddlewareUtils.failurerateMiddleware(1, { status: 403 }),
+//         MiddlewareUtils.delayMiddleware(404),
 //         loggingMiddleware
 //     )
 // });
