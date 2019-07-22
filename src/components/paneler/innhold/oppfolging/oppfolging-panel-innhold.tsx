@@ -13,7 +13,7 @@ import { VeilederData } from '../../../../rest/datatyper/veileder';
 import { useAppStore } from '../../../../stores/app-store';
 import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder, useFetchYtelser } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
-import { getData } from '../../../../rest/utils';
+import { hasData, isPending } from '@nutgaard/use-fetch';
 
 function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
     if (!oppfolgingsstatus || !oppfolgingsstatus.oppfolgingsenhet) {
@@ -68,40 +68,45 @@ const OppfolgingPanelInnhold = () => {
     const ytelser = useFetchYtelser(fnr);
 
     useEffect(() => {
-        if (!oppfolgingsstatus.data.isNothing()) {
-            veileder.refetch();
+        if (hasData(oppfolgingsstatus)) {
+            veileder.rerun();
         }
-    }, [oppfolgingsstatus.data]);
+    }, [oppfolgingsstatus, veileder]);
 
-    if (oppfolgingsstatus.isLoading || personalia.isLoading || ytelser.isLoading) {
+    if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(ytelser)) {
         return <Laster/>;
     }
+
+    const ytelserData = hasData(ytelser) ? ytelser.data : null;
+    const veilederData = hasData(veileder) ? veileder.data : null;
+    const personaliaData = hasData(personalia) ? personalia.data : null;
+    const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
     return (
         <Grid columns={4} gap="0.5rem">
             <InformasjonsbolkEnkel
                 header="Innsatsgruppe"
-                value={hentInnsatsgruppeTekst(getData(ytelser))}
+                value={hentInnsatsgruppeTekst(ytelserData)}
                 defaultValue={EMDASH}
             />
             <InformasjonsbolkEnkel
                 header="Veileder"
-                value={hentVeilederTekst(getData(veileder))}
+                value={hentVeilederTekst(veilederData)}
                 defaultValue={EMDASH}
             />
             <InformasjonsbolkEnkel
                 header="Geografisk enhet"
-                value={hentGeografiskEnhetTekst(getData(personalia))}
+                value={hentGeografiskEnhetTekst(personaliaData)}
                 defaultValue={EMDASH}
             />
             <InformasjonsbolkEnkel
                 header="Oppfølgingsenhet"
-                value={hentOppfolgingsEnhetTekst(getData(oppfolgingsstatus))}
+                value={hentOppfolgingsEnhetTekst(oppfolgingsstatusData)}
                 defaultValue={EMDASH}
             />
             <InformasjonsbolkEnkel
                 header="Hovedmål"
-                value={hentHovedmaalkodeTekst(getData(oppfolgingsstatus))}
+                value={hentHovedmaalkodeTekst(oppfolgingsstatusData)}
                 defaultValue={EMDASH}
             />
         </Grid>

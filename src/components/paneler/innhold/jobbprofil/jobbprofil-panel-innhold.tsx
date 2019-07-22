@@ -9,7 +9,7 @@ import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { getData } from '../../../../rest/utils';
+import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
 
 const JobbprofilPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -17,29 +17,29 @@ const JobbprofilPanelInnhold = () => {
     const underOppfolging = useFetchUnderOppfolging(fnr);
     const aktorId = useFetchAktorId(fnr);
 
-    if (cvOgJobbprofil.isLoading || underOppfolging.isLoading || aktorId.isLoading) {
+    if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
         return <Laster/>;
-    } else if (cvOgJobbprofil.isError || underOppfolging.isError || aktorId.isError) {
+    } else if (hasError(cvOgJobbprofil) || hasError(underOppfolging) || hasError(aktorId)) {
         return <Feilmelding/>;
-    } else if (!underOppfolging.isLoading && underOppfolging.data.isNothing()) {
+    } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
             <AlertStripeInfoSolid type="info">
                 Bruker er ikke under arbeidsrettet oppfølging
             </AlertStripeInfoSolid>
         );
-    } else if (cvOgJobbprofil.data.isNothing() || underOppfolging.data.isNothing() || aktorId.data.isNothing()) {
+    } else if (!hasData(cvOgJobbprofil) || !hasData(underOppfolging) || !hasData(aktorId)) {
         return <NoData/>;
     }
 
-    const cvOgJobbprofilData = getData(cvOgJobbprofil);
-    const underOppfolgingData = getData(underOppfolging);
-    const aktorIdData = getData(aktorId);
+    const cvOgJobbprofilData = cvOgJobbprofil.data;
+    const underOppfolgingData = underOppfolging.data;
+    const aktorIdData = aktorId.data;
 
     const erManuell = underOppfolgingData.erManuell;
     const brukerAktorId = aktorIdData.aktorId;
     const pamUrl = byggPamUrl(brukerAktorId || '', 'jobbprofil');
 
-    if (cvOgJobbprofil.httpCode === 404 || cvOgJobbprofil.httpCode === 204) {
+    if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert jobbprofil.
@@ -47,7 +47,7 @@ const JobbprofilPanelInnhold = () => {
                 <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
-    } else if (cvOgJobbprofil.httpCode === 403 || cvOgJobbprofil.httpCode === 401) {
+    } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
             <AlertStripeInfoSolid type="info">
                 Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være

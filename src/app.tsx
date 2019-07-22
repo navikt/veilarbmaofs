@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import StoreProvider from './stores/store-provider';
 import { Paneler } from './components/paneler/paneler';
 import { logEvent } from './utils/frontend-logger';
+import { cache } from '@nutgaard/use-fetch';
 import './app.less';
 
 export interface AppProps {
@@ -9,16 +10,16 @@ export interface AppProps {
     enhet?: string;
 }
 
-const App = (props: AppProps) => {
+function clearCache() {
+    cache.clear();
+}
 
-    function refetch() {
-        console.log('refetching....'); // tslint:disable-line
-    }
+const App = (props: AppProps) => {
 
     useEffect(() => {
         logEvent('maofs.visning.v2');
-        window.addEventListener('rerenderMao', refetch);
-        return () => window.removeEventListener('rerenderMao', refetch);
+        window.addEventListener('rerenderMao', clearCache);
+        return () => window.removeEventListener('rerenderMao', clearCache);
     }, []);
 
     return (

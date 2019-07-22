@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import { getData } from '../../../../rest/utils';
 import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
@@ -20,7 +19,8 @@ import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import { byggPamUrl } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
-import { Laster, NoData, Feilmelding } from '../../../felles/fetch';
+import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
+import { hasData, hasError, isPending } from '@nutgaard/use-fetch';
 import './cv-panel-innhold.less';
 
 const CvPanelInnhold = () => {
@@ -29,37 +29,37 @@ const CvPanelInnhold = () => {
     const underOppfolging = useFetchUnderOppfolging(fnr);
     const aktorId = useFetchAktorId(fnr);
 
-    if (cvOgJobbprofil.isLoading || underOppfolging.isLoading || aktorId.isLoading) {
+    if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
         return <Laster/>;
-    } else if (cvOgJobbprofil.isError || underOppfolging.isError || aktorId.isError) {
+    } else if (hasError(cvOgJobbprofil) || hasError(underOppfolging) || hasError(aktorId)) {
         return <Feilmelding/>;
-    } else if (!underOppfolging.isLoading && underOppfolging.data.isNothing()) {
+    } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
             <AlertStripeInfoSolid type="info">
                 Bruker er ikke under arbeidsrettet oppfølging
             </AlertStripeInfoSolid>
         );
-    } else if (cvOgJobbprofil.data.isNothing() || underOppfolging.data.isNothing() || aktorId.data.isNothing()) {
+    } else if (!hasData(cvOgJobbprofil) || !hasData(underOppfolging) || !hasData(aktorId)) {
         return <NoData/>;
     }
 
-    const cvOgJobbprofilData = getData(cvOgJobbprofil);
-    const underOppfolgingData = getData(underOppfolging);
-    const aktorIdData = getData(aktorId);
+    const cvOgJobbprofilData = cvOgJobbprofil.data;
+    const underOppfolgingData = underOppfolging.data;
+    const aktorIdData = aktorId.data;
 
     const erManuell = underOppfolgingData.erManuell;
     const brukerAktorId = aktorIdData.aktorId;
     const endreCvUrl = byggPamUrl(brukerAktorId || '', 'cv');
     const lastNedCvUrl = byggPamUrl(brukerAktorId || '', 'cv/pdf');
 
-    if (cvOgJobbprofil.httpCode === 404 || cvOgJobbprofil.httpCode === 204) {
+    if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
         return (
             <AlertStripeInfoSolid type="info">
                 Denne personen har ikke registrert CV.
                 {erManuell && aktorId && <Lenke target="_blank" href={endreCvUrl}>Registrer her</Lenke>}
             </AlertStripeInfoSolid>
         );
-    } else if (cvOgJobbprofil.httpCode === 403 || cvOgJobbprofil.httpCode === 401) {
+    } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
             <AlertStripeInfoSolid type="info">
                 Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
