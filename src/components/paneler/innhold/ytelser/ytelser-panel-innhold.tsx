@@ -8,6 +8,7 @@ import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../../../uti
 import EMDASH from '../../../../utils/emdash';
 import { useFetchYtelser } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
+import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
 
 export const getInnsatsgruppeVisningstekst = (innstatsgruppeListe: OppfolgingskontrakterType[]) => {
     const aktiveOppfolgingskontrakter =
@@ -23,24 +24,24 @@ const YtelserPanelInnhold = () => {
     const {fnr} = useAppStore();
     const ytelser = useFetchYtelser(fnr);
 
-    if (ytelser.isLoading) {
+    if (isPending(ytelser)) {
         return <Laster/>;
-    } else if (ytelser.isError) {
+    } else if (hasError(ytelser)) {
         return <Feilmelding/>;
+    } else if (!hasData(ytelser)) {
+        return <NoData/>;
     }
 
-    return ytelser.data.map(ytelserData => {
-        const {oppfolgingskontrakter, vedtaksliste} = ytelserData;
-        const aktivVedtak = getVedtakForVisning(vedtaksliste);
-        const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
+    const {oppfolgingskontrakter, vedtaksliste} = ytelser.data;
+    const aktivVedtak = getVedtakForVisning(vedtaksliste);
+    const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
 
-        return (
-            <Grid columns={1} gap="0.5rem">
-                <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
-                <Vedtaksliste vedtaksliste={aktivVedtak} />
-            </Grid>
-        );
-    }).withDefault(<NoData/>);
+    return (
+        <Grid columns={1} gap="0.5rem">
+            <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
+            <Vedtaksliste vedtaksliste={aktivVedtak} />
+        </Grid>
+    );
 };
 
 export default YtelserPanelInnhold;

@@ -8,31 +8,33 @@ import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../../felles/show';
 import { useFetchRegistrering } from '../../../../rest/api';
 import { Laster, NoData, Feilmelding } from '../../../felles/fetch';
+import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
 
 const RegistreringPanelInnhold = () => {
     const {fnr} = useAppStore();
     const registrering = useFetchRegistrering(fnr);
 
-    if (registrering.isLoading) {
+    if (isPending(registrering)) {
         return <Laster/>;
-    } else if (registrering.isError) {
+    } else if (hasError(registrering)) {
         return <Feilmelding/>;
+    } else if (!hasData(registrering)) {
+        return <NoData/>;
     }
 
-    return registrering.data.map(registreringData => {
-        const { registrering: brukerRegistrering, type } = registreringData;
-        return (
-            <>
-                <Header registrering={brukerRegistrering} />
-                <SporsmalsListe registrering={brukerRegistrering} />
-                <JobbetSammenhengende registrering={brukerRegistrering} />
-                <Show if={brukerRegistrering && brukerRegistrering.manueltRegistrertAv != null}>
-                    <PersonverninformasjonUtskrift type={type} />
-                </Show>
-                <ForeslattProfilering registrering={brukerRegistrering}/>
-            </>
-        );
-    }).withDefault(<NoData/>);
+    const { registrering: brukerRegistrering, type } = registrering.data;
+
+    return (
+        <>
+            <Header registrering={brukerRegistrering} />
+            <SporsmalsListe registrering={brukerRegistrering} />
+            <JobbetSammenhengende registrering={brukerRegistrering} />
+            <Show if={brukerRegistrering && brukerRegistrering.manueltRegistrertAv != null}>
+                <PersonverninformasjonUtskrift type={type} />
+            </Show>
+            <ForeslattProfilering registrering={brukerRegistrering}/>
+        </>
+    );
 };
 
 export default RegistreringPanelInnhold;
