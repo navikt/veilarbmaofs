@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@craco/craco": "^5.2.1",
-    "@nutgaard/use-fetch": "^2.2.0",
+    "@nutgaard/use-fetch": "^2.2.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "classnames": "^2.2.6",

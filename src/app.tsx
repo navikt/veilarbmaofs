@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import StoreProvider from './stores/store-provider';
 import { Paneler } from './components/paneler/paneler';
-import { logEvent } from './utils/frontend-logger';
-import { cache } from '@nutgaard/use-fetch';
+import { cache, isPending } from '@nutgaard/use-fetch';
+import { useFetchOppfolgingsstatus } from './rest/api';
+import { Laster } from './components/felles/fetch';
 import './app.less';
 
 export interface AppProps {
@@ -10,22 +11,28 @@ export interface AppProps {
     enhet?: string;
 }
 
-function clearCache() {
-    cache.clear();
-}
-
 const App = (props: AppProps) => {
+    const oppfolgingstatus = useFetchOppfolgingsstatus(props.fnr);
+    const [renderKey, setRenderKey] = useState(0);
+
+    function rerender() {
+        cache.clear();
+        setRenderKey((key) => key + 1);
+    }
 
     useEffect(() => {
-        logEvent('maofs.visning.v2');
-        window.addEventListener('rerenderMao', clearCache);
-        return () => window.removeEventListener('rerenderMao', clearCache);
+        window.addEventListener('rerenderMao', rerender);
+        return () => window.removeEventListener('rerenderMao', rerender);
     }, []);
+
+    if (isPending(oppfolgingstatus)) {
+        return <Laster/>;
+    }
 
     return (
         <StoreProvider fnr={props.fnr} enhetId={props.enhet}>
             <div className="veilarbmaofs">
-                <Paneler/>
+                <Paneler key={renderKey}/>
             </div>
         </StoreProvider>
     );
