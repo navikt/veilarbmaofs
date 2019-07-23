@@ -15,7 +15,7 @@ import {
 //     middleware: MiddlewareUtils.combine(
 //         MiddlewareUtils.failurerateMiddleware(1, { status: 403 }),
 //         MiddlewareUtils.delayMiddleware(404),
-//         loggingMiddleware
+//         MiddlewareUtils.loggingMiddleware()
 //     )
 // });
 
