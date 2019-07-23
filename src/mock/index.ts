@@ -10,14 +10,16 @@ import {
 } from './data';
 
 // Use this when you need to mock different status codes
-// const failureMock = FetchMock.configure({
-//     enableFallback: false,
-//     middleware: MiddlewareUtils.combine(
-//         MiddlewareUtils.failurerateMiddleware(1, { status: 403 }),
-//         MiddlewareUtils.delayMiddleware(404),
-//         loggingMiddleware
-//     )
-// });
+// @ts-ignore
+// eslint-disable-next-line
+const failureMock = FetchMock.configure({
+    enableFallback: false,
+    middleware: MiddlewareUtils.combine(
+        MiddlewareUtils.failurerateMiddleware(1, { status: 403 }),
+        MiddlewareUtils.delayMiddleware(404),
+        MiddlewareUtils.loggingMiddleware()
+    )
+});
 
 const mock = FetchMock.configure({
     enableFallback: true,

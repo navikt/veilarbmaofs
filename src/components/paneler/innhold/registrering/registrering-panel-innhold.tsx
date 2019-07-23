@@ -8,7 +8,8 @@ import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../../felles/show';
 import { useFetchRegistrering } from '../../../../rest/api';
 import { Laster, NoData, Feilmelding } from '../../../felles/fetch';
-import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
+import { isPending, hasError } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 const RegistreringPanelInnhold = () => {
     const {fnr} = useAppStore();

@@ -9,7 +9,8 @@ import Partner from './partner';
 import Barn from './barn';
 import { useFetchPersonalia } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
+import { isPending, hasError } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 const MAX_ALDER_BARN = 21;
 

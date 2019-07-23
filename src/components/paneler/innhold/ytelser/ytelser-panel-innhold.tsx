@@ -8,7 +8,8 @@ import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../../../uti
 import EMDASH from '../../../../utils/emdash';
 import { useFetchYtelser } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
+import { isPending, hasError } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 export const getInnsatsgruppeVisningstekst = (innstatsgruppeListe: OppfolgingskontrakterType[]) => {
     const aktiveOppfolgingskontrakter =

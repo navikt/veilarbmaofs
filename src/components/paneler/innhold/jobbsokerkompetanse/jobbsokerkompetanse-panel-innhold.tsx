@@ -8,7 +8,8 @@ import { safeMap } from '../../../../utils';
 import { RaadVisning } from './raad-visning';
 import { useFetchJobbsokerkompetanse } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
+import { isPending, hasError } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 const JobbsokerkompetansePanelInnhold = () => {
     const {fnr} = useAppStore();
