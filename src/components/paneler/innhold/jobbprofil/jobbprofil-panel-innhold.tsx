@@ -8,8 +8,9 @@ import Grid from '../../../felles/grid';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
-import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasData, isPending, hasError } from '@nutgaard/use-fetch';
+import { Feilmelding, Laster } from '../../../felles/fetch';
+import { isPending, hasError } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 const JobbprofilPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -19,7 +20,7 @@ const JobbprofilPanelInnhold = () => {
 
     if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
         return <Laster/>;
-    } else if (hasError(cvOgJobbprofil) || hasError(underOppfolging) || hasError(aktorId)) {
+    } else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
         return <Feilmelding/>;
     } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
@@ -27,11 +28,8 @@ const JobbprofilPanelInnhold = () => {
                 Bruker er ikke under arbeidsrettet oppfølging
             </AlertStripeInfoSolid>
         );
-    } else if (!hasData(cvOgJobbprofil) || !hasData(underOppfolging) || !hasData(aktorId)) {
-        return <NoData/>;
     }
 
-    const cvOgJobbprofilData = cvOgJobbprofil.data;
     const underOppfolgingData = underOppfolging.data;
     const aktorIdData = aktorId.data;
 
@@ -59,6 +57,8 @@ const JobbprofilPanelInnhold = () => {
                 </ul>
             </AlertStripeInfoSolid>
         );
+    } else if (!hasData(cvOgJobbprofil)) {
+        return <Feilmelding/>;
     }
 
     const {
@@ -69,7 +69,7 @@ const JobbprofilPanelInnhold = () => {
         onsketArbeidstidsordning,
         heltidDeltid,
         kompetanse
-    } = cvOgJobbprofilData.jobbprofil;
+    } = cvOgJobbprofil.data.jobbprofil;
 
     const arbeidssted = onsketArbeidssted.map((sted) => sted.stedsnavn);
     const yrker = onsketYrke.map((yrke) => yrke.tittel);

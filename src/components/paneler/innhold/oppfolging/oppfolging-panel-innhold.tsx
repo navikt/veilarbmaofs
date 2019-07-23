@@ -13,7 +13,8 @@ import { VeilederData } from '../../../../rest/datatyper/veileder';
 import { useAppStore } from '../../../../stores/app-store';
 import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder, useFetchYtelser } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
-import { hasData, isPending } from '@nutgaard/use-fetch';
+import { isPending } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 
 function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
     if (!oppfolgingsstatus || !oppfolgingsstatus.oppfolgingsenhet) {

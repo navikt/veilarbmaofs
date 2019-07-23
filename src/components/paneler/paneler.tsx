@@ -9,8 +9,8 @@ import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
 import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
-import { hasData } from '@nutgaard/use-fetch';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
+import { hasData } from '../../rest/utils';
 import './paneler.less';
 
 export const Paneler = () => {

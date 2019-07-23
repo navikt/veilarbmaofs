@@ -19,8 +19,9 @@ import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import { byggPamUrl } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
-import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasData, hasError, isPending } from '@nutgaard/use-fetch';
+import { Feilmelding, Laster } from '../../../felles/fetch';
+import { hasError, isPending } from '@nutgaard/use-fetch';
+import { hasData } from '../../../../rest/utils';
 import './cv-panel-innhold.less';
 
 const CvPanelInnhold = () => {
@@ -31,7 +32,7 @@ const CvPanelInnhold = () => {
 
     if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
         return <Laster/>;
-    } else if (hasError(cvOgJobbprofil) || hasError(underOppfolging) || hasError(aktorId)) {
+    } else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
         return <Feilmelding/>;
     } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
@@ -39,11 +40,8 @@ const CvPanelInnhold = () => {
                 Bruker er ikke under arbeidsrettet oppfølging
             </AlertStripeInfoSolid>
         );
-    } else if (!hasData(cvOgJobbprofil) || !hasData(underOppfolging) || !hasData(aktorId)) {
-        return <NoData/>;
     }
 
-    const cvOgJobbprofilData = cvOgJobbprofil.data;
     const underOppfolgingData = underOppfolging.data;
     const aktorIdData = aktorId.data;
 
@@ -71,6 +69,8 @@ const CvPanelInnhold = () => {
                 </ul>
             </AlertStripeInfoSolid>
         );
+    } else if (!hasData(cvOgJobbprofil)) {
+        return <Feilmelding/>;
     }
 
     const {
@@ -85,7 +85,7 @@ const CvPanelInnhold = () => {
         kurs,
         sistEndret,
         synligForArbeidsgiver
-    } = cvOgJobbprofilData;
+    } = cvOgJobbprofil.data;
 
     const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
 
