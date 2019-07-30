@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
+import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
 import EMDASH from '../../../../utils/emdash';
@@ -36,9 +36,9 @@ const CvPanelInnhold = () => {
         return <Feilmelding/>;
     } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
-            <AlertStripeInfoSolid type="info">
+            <AlertStripeInfo>
                 Bruker er ikke under arbeidsrettet oppfølging
-            </AlertStripeInfoSolid>
+            </AlertStripeInfo>
         );
     }
 
@@ -52,14 +52,14 @@ const CvPanelInnhold = () => {
 
     if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
         return (
-            <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert CV.
+            <AlertStripeInfo>
+                Denne personen har ikke registrert CV.&nbsp;&nbsp;
                 {erManuell && aktorId && <Lenke target="_blank" href={endreCvUrl}>Registrer her</Lenke>}
-            </AlertStripeInfoSolid>
+            </AlertStripeInfo>
         );
     } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
-            <AlertStripeInfoSolid type="info">
+            <AlertStripeInfo>
                 Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
                 <ul>
                     <li>
@@ -67,7 +67,7 @@ const CvPanelInnhold = () => {
                         Be bruker gå inn på nav.no og oppdatere CV'en sin.
                     </li>
                 </ul>
-            </AlertStripeInfoSolid>
+            </AlertStripeInfo>
         );
     } else if (!hasData(cvOgJobbprofil)) {
         return <Feilmelding/>;

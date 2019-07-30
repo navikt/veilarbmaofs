@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import AlertStripeInfoSolid from 'nav-frontend-alertstriper';
+import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../../felles/sist-endret';
@@ -24,9 +24,9 @@ const JobbprofilPanelInnhold = () => {
         return <Feilmelding/>;
     } else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
         return (
-            <AlertStripeInfoSolid type="info">
+            <AlertStripeInfo>
                 Bruker er ikke under arbeidsrettet oppfølging
-            </AlertStripeInfoSolid>
+            </AlertStripeInfo>
         );
     }
 
@@ -39,15 +39,14 @@ const JobbprofilPanelInnhold = () => {
 
     if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
         return (
-            <AlertStripeInfoSolid type="info">
-                Denne personen har ikke registrert jobbprofil.
-                {erManuell && brukerAktorId &&
-                <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
-            </AlertStripeInfoSolid>
+            <AlertStripeInfo>
+                Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
+                {erManuell && brukerAktorId && <Lenke target="_blank" href={pamUrl}>Registrer her</Lenke>}
+            </AlertStripeInfo>
         );
     } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
-            <AlertStripeInfoSolid type="info">
+            <AlertStripeInfo>
                 Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
                 <ul>
                     <li>
@@ -55,7 +54,7 @@ const JobbprofilPanelInnhold = () => {
                         Be bruker gå inn på nav.no og oppdatere CV'en sin.
                     </li>
                 </ul>
-            </AlertStripeInfoSolid>
+            </AlertStripeInfo>
         );
     } else if (!hasData(cvOgJobbprofil)) {
         return <Feilmelding/>;
