@@ -8,12 +8,13 @@ import { OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
 import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
+import { OrNothing } from '../utils/felles-typer';
 
 export const useFetchRegistrering = (fnr: string) => useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
 
 export const useFetchCvOgJobbprofil = (fnr: string) => useFetch<ArenaPerson>(`/pam-cv-api/rest/v1/arbeidssoker/${fnr}`);
 
-export const useFetchVeileder = (veilederId: string, config?: Config) => useFetch<VeilederData>(`/veilarbveileder/api/veileder/${veilederId}`, {}, config);
+export const useFetchVeileder = (veilederId: OrNothing<string>, config?: Config) => useFetch<VeilederData>(`/veilarbveileder/api/veileder/${veilederId}`, {}, config);
 
 export const useFetchAktorId = (fnr: string) => useFetch<AktorId>(`/veilarbperson/api/person/aktorid?fnr=${fnr}`);
 

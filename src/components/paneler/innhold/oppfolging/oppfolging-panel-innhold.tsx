@@ -64,15 +64,18 @@ function hentHovedmaalkodeTekst(oppfolgingsstatus: OppfolgingsstatusData | null)
 const OppfolgingPanelInnhold = () => {
     const {fnr} = useAppStore();
     const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
-    const veileder = useFetchVeileder(fnr, { lazy: true });
     const personalia = useFetchPersonalia(fnr);
     const ytelser = useFetchYtelser(fnr);
+    const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
+    const veileder = useFetchVeileder(veilederId, { lazy: true });
 
     useEffect(() => {
-        if (hasData(oppfolgingsstatus)) {
+        if (!hasData(veileder) && veilederId != null) {
             veileder.rerun();
         }
-    }, [oppfolgingsstatus, veileder]);
+        // TODO: Når use-fetch memoiseres riktig, så legg til alle dependencies
+        // eslint-disable-next-line
+    }, [oppfolgingsstatus.status]);
 
     if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(ytelser)) {
         return <Laster/>;
