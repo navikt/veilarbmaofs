@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@craco/craco": "^5.2.1",
+    "@navikt/navspa": "^1.0.3",
     "@nutgaard/use-async": "^2.1.2",
     "@nutgaard/use-fetch": "^2.2.2",
     "babel-polyfill": "^6.26.0",
