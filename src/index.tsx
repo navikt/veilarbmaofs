@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
-import NAVSPA from './components/NAVSPA';
-import env from './utils/environment';
+import NAVSPA from '@navikt/navspa';
 import ModalWrapper from 'nav-frontend-modal';
+import App from './app';
+import env from './utils/environment';
 import { fnr, enhet } from './mock/app';
 
 ModalWrapper.setAppElement(document.getElementById('modal-a11y-wrapper'));
