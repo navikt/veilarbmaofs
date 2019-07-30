@@ -1,7 +1,7 @@
 import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
-import { formaterDato, isNullOrUndefined } from '../../../../utils/index';
+import { formaterDato, isNullOrUndefined } from '../../../../utils';
 
 function RegistrertTid(props: Pick<Registrering, 'opprettetDato'>) {
     if(isNullOrUndefined(props.opprettetDato)) {

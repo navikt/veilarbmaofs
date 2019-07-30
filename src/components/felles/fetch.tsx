@@ -1,7 +1,9 @@
 import React from 'react';
+import cls from 'classnames';
 import { AlertStripeAdvarselSolid } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
+import './fetch.less';
 
 export const Feilmelding = (props: { tekst?: string }) => (
     <AlertStripeAdvarselSolid>
@@ -9,7 +11,11 @@ export const Feilmelding = (props: { tekst?: string }) => (
     </AlertStripeAdvarselSolid>
 );
 
-export const Laster = () => <NavFrontendSpinner type="XL"/>;
+export const Laster = (props: { midtstilt?: boolean }) => (
+    <div className={cls({ 'laster--midtstilt': props.midtstilt })}>
+        <NavFrontendSpinner type="XL"/>
+    </div>
+);
 
 export const NoData = (props: { tekst?: string }) => (
     <Normaltekst>

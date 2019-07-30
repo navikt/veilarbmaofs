@@ -25,14 +25,12 @@ const App = (props: AppProps) => {
         return () => window.removeEventListener('rerenderMao', rerender);
     }, []);
 
-    if (isPending(oppfolgingstatus)) {
-        return <Laster/>;
-    }
-
     return (
         <StoreProvider fnr={props.fnr} enhetId={props.enhet}>
             <div className="veilarbmaofs">
-                <Paneler key={renderKey}/>
+                {isPending(oppfolgingstatus)
+                    ? <Laster midtstilt={true}/>
+                    : <Paneler key={renderKey}/>}
             </div>
         </StoreProvider>
     );

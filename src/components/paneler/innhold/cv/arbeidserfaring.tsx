@@ -3,7 +3,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import Hide from '../../../felles/hide';
-import { formaterDato, safeSort, safeMap } from '../../../../utils/index';
+import { formaterDato, safeSort, safeMap } from '../../../../utils';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
     const {arbeidserfaring: arenaErfaring, ...rest} = props;

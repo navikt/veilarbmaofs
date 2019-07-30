@@ -2,8 +2,8 @@ import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import Element from 'nav-frontend-typografi/lib/element';
 import { Raad, RaadAktivitet } from '../../../../rest/datatyper/kartlegging';
-import { skillUtTipsTilDegFraTekst } from '../../../../utils/index';
-import { Ekspanderbar } from '../../../felles/ekspanderbar';
+import { skillUtTipsTilDegFraTekst } from '../../../../utils';
+import { Ekspanderbar } from './ekspanderbar';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 function RaadAktivitetsvisning(props: { data: RaadAktivitet[], hidden: boolean }) {
