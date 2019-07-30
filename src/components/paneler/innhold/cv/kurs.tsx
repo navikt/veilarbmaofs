@@ -2,7 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { formaterDato, formaterVarighet, safeSort, safeMap } from '../../../../utils/index';
+import { formaterDato, formaterVarighet, safeSort, safeMap } from '../../../../utils';
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
     const {kurs: arenaKurs, ...rest} = props;

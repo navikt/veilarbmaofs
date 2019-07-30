@@ -5,7 +5,7 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
-import { formaterDato, safeMap, visEmdashHvisNull } from '../../../../utils/index';
+import { formaterDato, safeMap, visEmdashHvisNull } from '../../../../utils';
 
 function Vedtaksliste(props: Pick<YtelseData, 'vedtaksliste'>) {
     const vedtakliste = safeMap(props.vedtaksliste, (vedtak, index) => (

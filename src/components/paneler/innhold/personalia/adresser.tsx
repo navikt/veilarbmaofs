@@ -2,7 +2,7 @@ import React from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../../rest/datatyper/personalia';
 import EMDASH from '../../../../utils/emdash';
-import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils/index';
+import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {

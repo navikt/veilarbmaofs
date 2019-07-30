@@ -3,7 +3,7 @@ import { ArenaPerson, Fagdokumentasjon, FagdokumentType } from '../../../../rest
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
-import { visEmdashHvisNull } from '../../../../utils/index';
+import { visEmdashHvisNull } from '../../../../utils';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 
