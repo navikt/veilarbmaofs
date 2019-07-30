@@ -1,7 +1,8 @@
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
 import {
     aktorIdMock,
-    cvMock, featuresMock,
+    cvMock,
+    featuresMock,
     jobbsokerkompetanseMock,
     oppfolgingMock,
     oppfolgingsstatusMock,

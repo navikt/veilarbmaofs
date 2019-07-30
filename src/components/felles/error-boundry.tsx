@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertStripeAdvarselSolid } from 'nav-frontend-alertstriper';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 
 interface ErrorBoundryProps {
     message: string;
@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component<ErrorBoundryProps, ErrorBoundryState
 
     render() {
         if (this.state.hasError) {
-            return <AlertStripeAdvarselSolid>{this.props.message}</AlertStripeAdvarselSolid>;
+            return <AlertStripeAdvarsel>{this.props.message}</AlertStripeAdvarsel>;
         }
 
         return this.props.children;
