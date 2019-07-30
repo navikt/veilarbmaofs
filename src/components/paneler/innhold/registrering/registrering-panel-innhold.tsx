@@ -20,7 +20,7 @@ const RegistreringPanelInnhold = () => {
     } else if (hasError(registrering)) {
         return <Feilmelding/>;
     } else if (!hasData(registrering)) {
-        return <NoData/>;
+        return <NoData tekst="Brukeren har ikke registrert seg gjennom den nye registreringsløsningen."/>;
     }
 
     const { registrering: brukerRegistrering, type } = registrering.data;

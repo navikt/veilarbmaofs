@@ -2,22 +2,14 @@ import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
 import {
     aktorIdMock,
     cvMock, featuresMock,
-    jobbsokerkompetanseMock, oppfolgingMock,
+    jobbsokerkompetanseMock,
+    oppfolgingMock,
     oppfolgingsstatusMock,
-    personaliaMock, registeringMock,
+    personaliaMock,
+    registeringMock,
     veilederMock,
     ytelsestatusMock
 } from './data';
-
-// Use this when you need to mock different status codes
-// const failureMock = FetchMock.configure({
-//     enableFallback: false,
-//     middleware: MiddlewareUtils.combine(
-//         MiddlewareUtils.failurerateMiddleware(1, { status: 403 }),
-//         MiddlewareUtils.delayMiddleware(404),
-//         MiddlewareUtils.loggingMiddleware()
-//     )
-// });
 
 const mock = FetchMock.configure({
     enableFallback: true,
