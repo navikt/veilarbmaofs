@@ -9,8 +9,14 @@ import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
-import { isPending, hasError } from '@nutgaard/use-fetch';
+import { isPending, hasError, WithData, FetchResult } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
+
+const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
+    const withData = cvOgJobbprofil as WithData<ArenaPerson>;
+    return withData.data && withData.data.jobbprofil != null;
+};
 
 const JobbprofilPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -37,7 +43,7 @@ const JobbprofilPanelInnhold = () => {
     const brukerAktorId = aktorIdData.aktorId;
     const pamUrl = byggPamUrl(brukerAktorId || '', 'jobbprofil');
 
-    if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
+    if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204 || !harJobbprofilData(cvOgJobbprofil)) {
         return (
             <AlertStripeInfo>
                 Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
