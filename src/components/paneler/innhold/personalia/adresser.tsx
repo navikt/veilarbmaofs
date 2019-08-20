@@ -1,22 +1,53 @@
 import React from 'react';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
-import { PersonaliaBostedsadresse, PersonaliaInfo } from '../../../../rest/datatyper/personalia';
+import {
+    Gateadresse,
+    Matrikkeladresse,
+    PersonaliaInfo,
+    PersonaliaStrukturertMidlertidigAdresse
+} from '../../../../rest/datatyper/personalia';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
+import { OrNothing } from '../../../../utils/felles-typer';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
     if (isNullOrUndefined(props.bostedsadresse)) {
         return null;
     }
 
-    const harAdresse = !isNullOrUndefined(props.bostedsadresse.strukturertAdresse.Gateadresse);
+    const adresse = props.bostedsadresse.strukturertAdresse.Gateadresse!;
 
     return (
         <div className="underinformasjon">
             <Element>
                 Folkeregistrert postadresse
             </Element>
-            {harAdresse ? <AdresseVisning strukturertAdresse={props.bostedsadresse.strukturertAdresse}/> : EMDASH}
+            {!isNullOrUndefined(adresse) ? <GateAdresse adresse={adresse}/> : EMDASH}
+        </div>
+    );
+}
+
+interface MidlertidigAdresseVisningProps {
+    overskrift: string;
+    midlertidigAdresse: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
+}
+
+function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
+    if (isNullOrUndefined(props.midlertidigAdresse)) {
+        return null;
+    }
+
+    const strukturertAdresse = props.midlertidigAdresse!.strukturertAdresse;
+
+    return (
+        <div className="underinformasjon">
+            <Element>
+                {props.overskrift}
+            </Element>
+            {strukturertAdresse.Matrikkeladresse
+                ? <MatrikkelAdresse adresse={strukturertAdresse.Matrikkeladresse}/>
+                : <GateAdresse adresse={strukturertAdresse.Gateadresse!}/>
+            }
         </div>
     );
 }
@@ -26,7 +57,7 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
         return null;
     }
 
-    const { adresselinje1, adresselinje2, adresselinje3, adresselinje4, landkode } = props.postAdresse.ustrukturertAdresse;
+    const {adresselinje1, adresselinje2, adresselinje3, adresselinje4, landkode} = props.postAdresse.ustrukturertAdresse;
 
     return (
         <div className="underinformasjon">
@@ -40,62 +71,57 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
     );
 }
 
-function MidlertidigNorge(props: Pick<PersonaliaInfo, 'midlertidigAdresseNorge'>) {
-    if (isNullOrUndefined(props.midlertidigAdresseNorge)) {
-        return null;
-    }
-
-    return (
-        <div className="underinformasjon">
-            <Element>
-                Midlertidig adresse Norge
-            </Element>
-            <AdresseVisning strukturertAdresse={props.midlertidigAdresseNorge!.strukturertAdresse}/>
-        </div>
-    );
-}
-
-function MidlertidigUtland(props: Pick<PersonaliaInfo, 'midlertidigAdresseUtland'>) {
-    if (isNullOrUndefined(props.midlertidigAdresseUtland)) {
-        return null;
-    }
-
-    return (
-        <div className="underinformasjon">
-            <Element>
-                Midlertidig adresse Utland
-            </Element>
-            <AdresseVisning strukturertAdresse={props.midlertidigAdresseUtland!.strukturertAdresse}/>
-        </div>
-    );
-}
-
-function AdresseVisning(prop: PersonaliaBostedsadresse) {
-    const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.strukturertAdresse.Gateadresse!;
-    const nummer = husnummer ? husnummer : '';
-    const bokstav = husbokstav ? husbokstav : '';
-
+function MatrikkelAdresse(props: { adresse: Matrikkeladresse }) {
+    const {
+        postnummer, poststed, landkode,
+        gardsnummer, bruksnummer, festenummer,
+        undernummer, eiendomsnavn, tilleggsadresse
+    } = props.adresse;
     return (
         <>
             <Normaltekst>
-                {`${gatenavn || ''} ${nummer}${bokstav}`}
+                Gårdsnummer: {gardsnummer}<br/>
+                Bruksnummer: {bruksnummer}<br/>
+                Festenummer: {festenummer}<br/>
+                Undernummer: {undernummer}<br/>
+                Eiendomsnavn: {eiendomsnavn}<br/>
+                Tilleggsadresse: {tilleggsadresse}<br/>
+            </Normaltekst>
+            <Normaltekst>
+                {`${postnummer || ''} ${poststed || ''}, ${landkode || ''}`}
+            </Normaltekst>
+        </>
+    );
+}
+
+function GateAdresse(prop: { adresse: Gateadresse }) {
+    const {gatenavn, husnummer, husbokstav, postnummer, poststed} = prop.adresse;
+    return (
+        <>
+            <Normaltekst>
+                {`${gatenavn || ''} ${husnummer || ''}${husbokstav || ''}`}
             </Normaltekst>
             <Normaltekst>
                 {`${postnummer} ${poststed}`}
             </Normaltekst>
-        </>);
+        </>
+    );
 }
 
-type Props = Pick<PersonaliaInfo, 'bostedsadresse'> & Pick<PersonaliaInfo, 'postAdresse'> & Pick<PersonaliaInfo, 'midlertidigAdresseNorge'> & Pick<PersonaliaInfo, 'midlertidigAdresseUtland'>;
+type Props =
+    Pick<PersonaliaInfo, 'bostedsadresse'>
+    & Pick<PersonaliaInfo, 'postAdresse'>
+    & Pick<PersonaliaInfo, 'midlertidigAdresseNorge'>
+    & Pick<PersonaliaInfo, 'midlertidigAdresseUtland'>;
 
 function Adresser(props: Props) {
-    const { bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, ...rest} = props;
+    const {bostedsadresse, postAdresse, midlertidigAdresseNorge, midlertidigAdresseUtland, ...rest} = props;
     return (
         <div {...rest}>
             <SammensattFolkeregistrertAdresse bostedsadresse={bostedsadresse}/>
             <PostAdresse postAdresse={postAdresse}/>
-            <MidlertidigNorge midlertidigAdresseNorge={midlertidigAdresseNorge}/>
-            <MidlertidigUtland midlertidigAdresseUtland={midlertidigAdresseUtland}/>
+            <MidlertidigAdresseVisning overskrift="Midlertidig adresse Norge" midlertidigAdresse={midlertidigAdresseNorge}/>
+            <MidlertidigAdresseVisning overskrift="Midlertidig adresse Utland" midlertidigAdresse={midlertidigAdresseUtland}/>
         </div>
     );
 }

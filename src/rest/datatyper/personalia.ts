@@ -29,7 +29,7 @@ export interface PersonaliaPartner extends GrunnPersonalia {
     harSammeBosted: boolean;
 }
 
-interface Gateadresse {
+export interface Gateadresse {
     landkode: string;
     tilleggsadresse: StringOrNothing;
     postnummer: string;
@@ -42,9 +42,31 @@ interface Gateadresse {
     gatenummer: OrNothing<number>;
 }
 
+export interface Matrikkeladresse {
+    bruksnummer: OrNothing<string>;
+    eiendomsnavn: OrNothing<string>;
+    festenummer: OrNothing<string>;
+    gardsnummer: OrNothing<string>;
+    kommunenummer: OrNothing<string>;
+    landkode: OrNothing<string>;
+    postnummer: OrNothing<string>;
+    poststed: OrNothing<string>;
+    seksjonsnummer: OrNothing<string>;
+    tilleggsadresse: OrNothing<string>;
+    undernummer: OrNothing<string>;
+}
+
 export interface PersonaliaStrukturertAdresse {
     strukturertAdresse: {
-        Gateadresse: OrNothing<Gateadresse>
+        Gateadresse: OrNothing<Gateadresse>;
+    };
+}
+
+export interface PersonaliaStrukturertMidlertidigAdresse {
+    strukturertAdresse: {
+        // Midlertidig adresse kan ha enten Gateadresse eller Matrikkeladresse
+        Gateadresse: OrNothing<Gateadresse>;
+        Matrikkeladresse: OrNothing<Matrikkeladresse>;
     };
 }
 
@@ -73,8 +95,8 @@ export interface PersonaliaInfo extends GrunnPersonalia {
     sivilstand: PersonaliaSivilstand;
     partner: OrNothing<PersonaliaPartner>;
     bostedsadresse: PersonaliaBostedsadresse;
-    midlertidigAdresseNorge: OrNothing<PersonaliaStrukturertAdresse>;
-    midlertidigAdresseUtland: OrNothing<PersonaliaStrukturertAdresse>;
+    midlertidigAdresseNorge: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
+    midlertidigAdresseUtland: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
     postAdresse: PersonaliaPostadresse;
     egenAnsatt: boolean;
 
