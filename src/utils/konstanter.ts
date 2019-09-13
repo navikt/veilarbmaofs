@@ -1,16 +1,16 @@
 export const APP_NAME = 'veilarbmaofs';
 
 export const VEDTAKSSTATUSER = {
-    avsluttet: 'Avsluttet',
-    iverksatt: 'Iverksatt'
+	avsluttet: 'Avsluttet',
+	iverksatt: 'Iverksatt'
 };
 
 export const YTELSESTATUSER = {
-    aktiv: 'Aktiv',
-    inaktiv: 'Inaktiv'
+	aktiv: 'Aktiv',
+	inaktiv: 'Inaktiv'
 };
 
 export const OPPFOLGINGSKONTRAKTER_STATUSER = {
-    aktiv: 'Aktiv',
-    lukket: 'Lukket'
+	aktiv: 'Aktiv',
+	lukket: 'Lukket'
 };

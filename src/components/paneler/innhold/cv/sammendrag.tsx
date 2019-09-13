@@ -7,7 +7,7 @@ import { visEmdashHvisNull } from '../../../../utils';
 function Sammendrag(props: Pick<ArenaPerson, 'sammendrag'>) {
     return (
         <Informasjonsbolk header="Sammendrag" headerTypo="ingress">
-            <Normaltekst className="underinformasjon">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
+            <Normaltekst className="underinformasjon cv-sammendrag">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
         </Informasjonsbolk>
     );
 }

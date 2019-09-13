@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
 interface AppStore {
-    fnr: string;
-    enhetId?: string;
+	fnr: string;
+	enhetId?: string;
 }
 
 const initialStore = {
-    fnr: ''
+	fnr: ''
 };
 
 const appStoreContext = React.createContext<AppStore>(initialStore);

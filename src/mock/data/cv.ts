@@ -4,7 +4,7 @@ import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/data
 const CV: ArenaPerson & JSONValue = {
     sistEndret: '2019-01-15T07:52:35.456+01:00',
     synligForArbeidsgiver: false,
-    sammendrag: 'Jeg er en naritime executive som har master grad og bachlor grad .Har vart teknisk direktor i mange ar og flyttet hjem til Norge hvor jeg soker arbeide innenfor then maritime sektor ,Har gode referanser og vatriert seiling og onshore based artbeide,',
+    sammendrag: 'Jeg er en maritime executive som har master grad og bachlor grad. Har vart teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
     arbeidserfaring: [
         {
             tittel: 'Maskinsjef',
