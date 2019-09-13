@@ -1,6 +1,7 @@
 {
   "extends": ["tslint:recommended", "tslint-react"],
   "rules": {
+    "indent": [true, "tabs", 4],
     "whitespace": [true, "check-module"],
     "triple-equals": [true, "allow-null-check"],
     "curly": [true, "ignore-same-line"],

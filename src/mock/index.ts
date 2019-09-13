@@ -1,23 +1,23 @@
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock';
 import {
-    aktorIdMock,
-    cvMock,
-    featuresMock,
-    jobbsokerkompetanseMock,
-    oppfolgingMock,
-    oppfolgingsstatusMock,
-    personaliaMock,
-    registeringMock,
-    veilederMock,
-    ytelsestatusMock
+	aktorIdMock,
+	cvMock,
+	featuresMock,
+	jobbsokerkompetanseMock,
+	oppfolgingMock,
+	oppfolgingsstatusMock,
+	personaliaMock,
+	registeringMock,
+	veilederMock,
+	ytelsestatusMock
 } from './data';
 
 const mock = FetchMock.configure({
-    enableFallback: true,
-    middleware: MiddlewareUtils.combine(
-        MiddlewareUtils.delayMiddleware(500),
-        MiddlewareUtils.loggingMiddleware()
-    )
+	enableFallback: true,
+	middleware: MiddlewareUtils.combine(
+		MiddlewareUtils.delayMiddleware(500),
+		MiddlewareUtils.loggingMiddleware()
+	)
 });
 
 mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', cvMock);

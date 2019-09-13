@@ -3,10 +3,8 @@ import { useAppStore } from '../../../../stores/app-store';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
-import EMDASH from '../../../../utils/emdash';
 import { LastNedCV } from './last-ned-cv';
 import { RedigerCV } from './rediger-cv';
-import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import Sammendrag from './sammendrag';
 import FloatGrid from '../../../felles/float-grid';
 import Arbeidserfaring from './arbeidserfaring';
@@ -23,6 +21,8 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import './cv-panel-innhold.less';
+import {CvIkkeSynligInfo} from "./cv-ikke-synlig-info";
+import { SynlighetForArbeidsgiver } from './synlighet-for-arbeidsgiver';
 
 const CvPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -84,17 +84,20 @@ const CvPanelInnhold = () => {
         sprak,
         kurs,
         sistEndret,
-        synligForArbeidsgiver
+        synligForArbeidsgiver,
+        jobbprofil
     } = cvOgJobbprofil.data;
 
-    const erSynlig = synligForArbeidsgiver != null ? (synligForArbeidsgiver ? 'Ja' : 'Nei') : EMDASH;
+    const erCvSynligForArbeidsgiver = synligForArbeidsgiver || false;
+    const harJobbprofil = jobbprofil != null;
 
     return (
         <>
             <LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl}/>
             <RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl}/>
-            <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false}/>
-            <InformasjonsbolkEnkel header="Synlig for arbeidsgiver" value={erSynlig}/>
+            <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-s"/>
+            <SynlighetForArbeidsgiver erSynlig={erCvSynligForArbeidsgiver}/>
+            <CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} harJobbprofil={harJobbprofil}/>
             <Sammendrag sammendrag={sammendrag}/>
             <FloatGrid columns={2} gap={8}>
                 <Arbeidserfaring arbeidserfaring={arbeidserfaring}/>
