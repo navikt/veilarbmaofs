@@ -19,10 +19,10 @@ export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
 	}
 
 	return (
-		<AlertStripeInfo className="cv-ikke-synlig">
+		<AlertStripeInfo className="cv-ikke-synlig blokk-l">
 			{props.harJobbprofil ? harJobbprofileTekst : harIkkeJobbprofileTekst}
 			<br/>
-			Les mer om <a href="https://navno.sharepoint.com/sites/fag-og-ytelser-arbeid-markedsarbeid/SitePages/Vi-varsle-brukere-som-ikke-har-synlig-CV.aspx">synlig CV</a>
+			Les mer om <a href="https://navno.sharepoint.com/sites/fag-og-ytelser-arbeid-markedsarbeid/SitePages/Vi-varsle-brukere-som-ikke-har-synlig-CV.aspx">synlig CV</a>.
 		</AlertStripeInfo>
 	);
 };
