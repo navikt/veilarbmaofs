@@ -95,7 +95,7 @@ const CvPanelInnhold = () => {
         <>
             <LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl}/>
             <RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl}/>
-            <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-s"/>
+            <SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs"/>
             <SynlighetForArbeidsgiver erSynlig={erCvSynligForArbeidsgiver}/>
             <CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} harJobbprofil={harJobbprofil}/>
             <Sammendrag sammendrag={sammendrag}/>
