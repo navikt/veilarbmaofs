@@ -7,11 +7,11 @@ interface CvIkkeSynligInfoProps {
 }
 
 const harJobbprofileTekst = 'Hvis brukeren vil at CV-en skal være synlig for arbeidsgivere, '
-	+ 'sjekk Arena om brukeren står som "ikke-match nav.no" eller "fritatt for kandidatsøk. ';
+	+ 'sjekk Arena om brukeren står som "ikke-match nav.no" eller "fritatt for kandidatsøk".';
 
 const harIkkeJobbprofileTekst = 'Hvis brukeren vil at CV-en skal være synlig for arbeidsgivere, '
 	+ 'må brukeren fylle ut jobbprofil. Sjekk i tillegg Arena om brukeren står '
-	+ 'som "ikke-match nav.no" eller "fritatt for kandidatsøk". ';
+	+ 'som "ikke-match nav.no" eller "fritatt for kandidatsøk".';
 
 export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
 	if (props.erSynlig) {

@@ -1,3 +1,5 @@
+@import "~nav-frontend-core/less/_variabler";
+
 .veilarbmaofs {
 	.endre-lenke {
 		background: url('rediger.svg') no-repeat center left;
@@ -31,10 +33,18 @@
 	}
 
 	.cv-sammendrag {
-		width: 50%;
+		width: 100%;
 	}
 
 	.cv-ikke-synlig {
-		width: 50%;
+		width: 100%;	}
+
+	@media (min-width: @screen-md-min) {
+		.cv-sammendrag {
+			width: 50%;
+		}
+		.cv-ikke-synlig {
+			width: 50%;
+		}
 	}
 }
