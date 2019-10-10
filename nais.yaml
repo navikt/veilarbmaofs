@@ -2,7 +2,7 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: veilarbmaofs
-  namespace: {{namespace}}
+  namespace: default
   cluster:
     - prod-fss
   labels:
@@ -28,5 +28,5 @@ spec:
       cpu: "1"
       memory: 1Gi
   ingresses:
-    - https://veilarbmaofs.nais.preprod.local
+    - https://veilarbmaofs.nais.adeo.no
     - https://app.adeo.no/veilarbmaofs
