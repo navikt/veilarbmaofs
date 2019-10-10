@@ -25,7 +25,7 @@ spec:
       cpu: 500m
       memory: 500Mi
     limits:
-      cpu: 1
+      cpu: "1"
       memory: 1Gi
   ingresses:
     - https://veilarbmaofs.nais.preprod.local
