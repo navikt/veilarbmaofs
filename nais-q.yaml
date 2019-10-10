@@ -1,0 +1,32 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: veilarbmaofs
+  namespace: {{namespace}}
+  cluster:
+    - dev-fss
+  labels:
+    team: pto
+spec:
+  image: docker.pkg.github.com/navikt/veilarbmaofs/veilarbmaofs:{{version}}
+  port: 80
+  liveness:
+    path: /isAlive
+    initialDelay: 15
+  readiness:
+    path: /isReady
+    initialDelay: 15
+  replicas:
+    min: 1
+    max: 2
+    cpuThresholdPercentage: 75
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingresses:
+    - https://veilarbmaofs-{{namespace}}.nais.preprod.local
+    - https://app-{{namespace}}.adeo.no/veilarbmaofs
