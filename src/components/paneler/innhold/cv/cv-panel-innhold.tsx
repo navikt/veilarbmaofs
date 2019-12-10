@@ -20,9 +20,9 @@ import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import './cv-panel-innhold.less';
-import {CvIkkeSynligInfo} from "./cv-ikke-synlig-info";
+import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import { SynlighetForArbeidsgiver } from './synlighet-for-arbeidsgiver';
+import './cv-panel-innhold.less';
 
 const CvPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -59,14 +59,14 @@ const CvPanelInnhold = () => {
         );
     } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
-            <AlertStripeInfo>
-                Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
+            <AlertStripeInfo className="cv-alert-ikke-tilgang">
+                Du kan ikke se CV-en, be brukeren om å:
                 <ul>
-                    <li>
-                        Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang.
-                        Be bruker gå inn på nav.no og oppdatere CV'en sin.
-                    </li>
+                    <li>logge inn på arbeidsplassen.no</li>
+                    <li>lese teksten om at du må dele CV-en med NAV</li>
+                    <li>gå videre og gjennomføre det tjenesten ber om</li>
                 </ul>
+                Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
             </AlertStripeInfo>
         );
     } else if (!hasData(cvOgJobbprofil)) {
