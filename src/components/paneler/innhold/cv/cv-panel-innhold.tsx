@@ -20,9 +20,9 @@ import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import './cv-panel-innhold.less';
-import {CvIkkeSynligInfo} from "./cv-ikke-synlig-info";
+import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import { SynlighetForArbeidsgiver } from './synlighet-for-arbeidsgiver';
+import './cv-panel-innhold.less';
 
 const CvPanelInnhold = () => {
     const {fnr} = useAppStore();
@@ -59,14 +59,16 @@ const CvPanelInnhold = () => {
         );
     } else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
         return (
-            <AlertStripeInfo>
-                Du har ikke tilgang til å se CV for denne brukeren. Årsaker kan være
+            <AlertStripeInfo className="cv-alert-ikke-tilgang">
+                Du kan ikke se CV-en til denne brukeren.
                 <ul>
                     <li>
-                        Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang.
-                        Be bruker gå inn på nav.no og oppdatere CV'en sin.
+                        Be brukeren logge inn på&nbsp;
+                        <a href="https://arbeidsplassen.no" rel="noopener noreferrer" target="_blank">arbeidsplassen.no</a>
+                        &nbsp;og oppdatere CV-en sin.
                     </li>
                 </ul>
+                Da får brukeren informasjon om NAVs behandlingsgrunnlag, som er et krav for at du skal få tilgang.
             </AlertStripeInfo>
         );
     } else if (!hasData(cvOgJobbprofil)) {
