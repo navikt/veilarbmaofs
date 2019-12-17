@@ -5,11 +5,11 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { visEmdashHvisNull } from '../../../../utils';
 
 function Sammendrag(props: Pick<ArenaPerson, 'sammendrag'>) {
-    return (
-        <Informasjonsbolk header="Sammendrag" headerTypo="ingress">
-            <Normaltekst className="underinformasjon cv-sammendrag">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
-        </Informasjonsbolk>
-    );
+	return (
+		<Informasjonsbolk header="Sammendrag" headerTypo="ingress">
+			<Normaltekst className="underinformasjon cv-sammendrag">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
+		</Informasjonsbolk>
+	);
 }
 
 export default Sammendrag;

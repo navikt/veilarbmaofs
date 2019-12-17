@@ -1,5 +1,4 @@
 class Environment {
-
 	get nodeEnv(): string | undefined {
 		return process.env.NODE_ENV;
 	}

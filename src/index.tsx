@@ -9,12 +9,12 @@ import { fnr, enhet } from './mock/app';
 ModalWrapper.setAppElement(document.getElementById('modal-a11y-wrapper'));
 
 if (!(global as any)._babelPolyfill) {
-    require('babel-polyfill');
+	require('babel-polyfill');
 }
 
 if (env.isAppInDevelopment || env.isAppOnHeroku) {
-    require('./mock');
-    ReactDOM.render(<App fnr={fnr} enhet={enhet}/>, document.getElementById('main'));
+	require('./mock');
+	ReactDOM.render(<App fnr={fnr} enhet={enhet} />, document.getElementById('main'));
 } else {
-    NAVSPA.eksporter('veilarbmaofs', App);
+	NAVSPA.eksporter('veilarbmaofs', App);
 }

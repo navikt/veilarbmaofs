@@ -14,10 +14,7 @@ import {
 
 const mock = FetchMock.configure({
 	enableFallback: true,
-	middleware: MiddlewareUtils.combine(
-		MiddlewareUtils.delayMiddleware(500),
-		MiddlewareUtils.loggingMiddleware()
-	)
+	middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(500), MiddlewareUtils.loggingMiddleware())
 });
 
 mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', cvMock);

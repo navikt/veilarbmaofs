@@ -1,5 +1,4 @@
-
 export interface UnderOppfolgingData {
-    underOppfolging: boolean;
-    erManuell: boolean;
+	underOppfolging: boolean;
+	erManuell: boolean;
 }

@@ -6,20 +6,18 @@ import Dato from '../../../felles/dato';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
-    if (isNullOrUndefined(props.sivilstand)) {
-        return null;
-    }
+	if (isNullOrUndefined(props.sivilstand)) {
+		return null;
+	}
 
-    const { sivilstand, ...rest} = props;
+	const { sivilstand, ...rest } = props;
 
-    return (
-        <Informasjonsbolk header="Sivilstand" {...rest}>
-            <Normaltekst>
-                {sivilstand.sivilstand}
-            </Normaltekst>
-            <Dato dato={sivilstand.fraDato}/>
-        </Informasjonsbolk>
-    );
+	return (
+		<Informasjonsbolk header="Sivilstand" {...rest}>
+			<Normaltekst>{sivilstand.sivilstand}</Normaltekst>
+			<Dato dato={sivilstand.fraDato} />
+		</Informasjonsbolk>
+	);
 }
 
 export default Sivilstand;

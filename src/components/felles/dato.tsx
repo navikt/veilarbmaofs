@@ -5,15 +5,11 @@ import { StringOrNothing } from '../../utils/felles-typer';
 import { formaterDato, isNullOrUndefined } from '../../utils';
 
 function Dato(props: { dato: StringOrNothing }) {
-    if (isNullOrUndefined(props.dato)) {
-        return <>{EMDASH}</>;
-    }
+	if (isNullOrUndefined(props.dato)) {
+		return <>{EMDASH}</>;
+	}
 
-    return (
-        <Normaltekst>
-            Fra: {formaterDato(props.dato!)}
-        </Normaltekst>
-    );
+	return <Normaltekst>Fra: {formaterDato(props.dato!)}</Normaltekst>;
 }
 
 export default Dato;

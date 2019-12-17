@@ -12,37 +12,38 @@ import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 
 export const getInnsatsgruppeVisningstekst = (innstatsgruppeListe: OppfolgingskontrakterType[]) => {
-    const aktiveOppfolgingskontrakter =
-        innstatsgruppeListe && innstatsgruppeListe.filter((kontrakt) => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
-    return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : EMDASH;
+	const aktiveOppfolgingskontrakter =
+		innstatsgruppeListe &&
+		innstatsgruppeListe.filter(kontrakt => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
+	return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : EMDASH;
 };
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
-    return vedtaksliste.filter((vedtak) => vedtak.status === VEDTAKSSTATUSER.iverksatt);
+	return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
 };
 
 const YtelserPanelInnhold = () => {
-    const {fnr} = useAppStore();
-    const ytelser = useFetchYtelser(fnr);
+	const { fnr } = useAppStore();
+	const ytelser = useFetchYtelser(fnr);
 
-    if (isPending(ytelser)) {
-        return <Laster/>;
-    } else if (hasError(ytelser)) {
-        return <Feilmelding/>;
-    } else if (!hasData(ytelser)) {
-        return <NoData/>;
-    }
+	if (isPending(ytelser)) {
+		return <Laster />;
+	} else if (hasError(ytelser)) {
+		return <Feilmelding />;
+	} else if (!hasData(ytelser)) {
+		return <NoData />;
+	}
 
-    const {oppfolgingskontrakter, vedtaksliste} = ytelser.data;
-    const aktivVedtak = getVedtakForVisning(vedtaksliste);
-    const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
+	const { oppfolgingskontrakter, vedtaksliste } = ytelser.data;
+	const aktivVedtak = getVedtakForVisning(vedtaksliste);
+	const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
 
-    return (
-        <Grid columns={1} gap="0.5rem">
-            <Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
-            <Vedtaksliste vedtaksliste={aktivVedtak} />
-        </Grid>
-    );
+	return (
+		<Grid columns={1} gap="0.5rem">
+			<Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
+			<Vedtaksliste vedtaksliste={aktivVedtak} />
+		</Grid>
+	);
 };
 
 export default YtelserPanelInnhold;
