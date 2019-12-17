@@ -18,7 +18,7 @@ export function skillUtTipsTilDegFraTekst(tekst: string): string[] {
 
 export function omit<S>(obj: S, ...props: string[]) {
 	return Object.keys(obj)
-		.filter((key) => !props.includes(key))
+		.filter(key => !props.includes(key))
 		.reduce((acc, key) => {
 			acc[key] = obj[key];
 			return acc;
@@ -37,7 +37,7 @@ export function visEmdashHvisTom<T>(verdi: T[]): T[] | string {
 	return verdi.length > 0 ? verdi : EMDASH;
 }
 
-export function safeMap<T, S>(verdi: T[] | null, fn: (t: T, i: number,) => S): S[] | string {
+export function safeMap<T, S>(verdi: T[] | null, fn: (t: T, i: number) => S): S[] | string {
 	if (verdi == null) {
 		return EMDASH;
 	}
@@ -59,11 +59,13 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 	if (typeof datoObjekt === 'string') {
 		lokalDato = new Date(datoObjekt);
 	} else {
-		lokalDato = new Date(Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day)));
+		lokalDato = new Date(
+			Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day))
+		);
 	}
 
-	const shortOption = {year: 'numeric', month: 'short'};
-	const longOption = {year: 'numeric', month: 'short', day: 'numeric'};
+	const shortOption = { year: 'numeric', month: 'short' };
+	const longOption = { year: 'numeric', month: 'short', day: 'numeric' };
 	const options = onlyYearMonth ? shortOption : longOption;
 
 	return lokalDato.toLocaleDateString('no-NO', options);
@@ -80,7 +82,7 @@ export function safeSort(a: StringOrNothing, b: StringOrNothing) {
 }
 
 export function formaterVarighet(varighet: Kursvarighet): string {
-	if (varighet.varighet == null || (varighet.tidsenhet == null)) {
+	if (varighet.varighet == null || varighet.tidsenhet == null) {
 		return EMDASH;
 	}
 	const storreEnnEn = varighet.varighet > 1;

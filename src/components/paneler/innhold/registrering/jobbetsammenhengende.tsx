@@ -4,31 +4,31 @@ import { OrdinaerRegistrering, Registrering } from '../../../../rest/datatyper/r
 import FloatGrid from '../../../felles/float-grid';
 
 interface Props {
-    registrering: Registrering | undefined;
+	registrering: Registrering | undefined;
 }
 
 export function JobbetSammenhengende(props: Props) {
+	if (!props.registrering) {
+		return null;
+	}
 
-    if (!props.registrering) {
-        return null;
-    }
+	const ordinaerRegistrering = props.registrering as OrdinaerRegistrering;
 
-    const ordinaerRegistrering = props.registrering as OrdinaerRegistrering;
+	if (!ordinaerRegistrering.profilering) {
+		return null;
+	}
 
-    if (!ordinaerRegistrering.profilering) {
-        return null;
-    }
-
-    return (
-        <>
-            <Ingress>Hentet fra Aa-registeret</Ingress>
-            <FloatGrid columns={2} gap={8}>
-                <div>
-                    <Element> Brukeren har vært sammenhengende i jobb minst 6 av de siste 12 måneder </Element>
-                    <Normaltekst>{ordinaerRegistrering.profilering.jobbetSammenhengendeSeksAvTolvSisteManeder ? 'Ja' : 'Nei'} </Normaltekst>
-                </div>
-            </FloatGrid>
-        </>
-
-    );
+	return (
+		<>
+			<Ingress>Hentet fra Aa-registeret</Ingress>
+			<FloatGrid columns={2} gap={8}>
+				<div>
+					<Element> Brukeren har vært sammenhengende i jobb minst 6 av de siste 12 måneder </Element>
+					<Normaltekst>
+						{ordinaerRegistrering.profilering.jobbetSammenhengendeSeksAvTolvSisteManeder ? 'Ja' : 'Nei'}{' '}
+					</Normaltekst>
+				</div>
+			</FloatGrid>
+		</>
+	);
 }

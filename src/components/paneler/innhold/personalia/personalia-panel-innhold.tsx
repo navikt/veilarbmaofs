@@ -15,51 +15,52 @@ import { hasData } from '../../../../rest/utils';
 const MAX_ALDER_BARN = 21;
 
 const PersonaliaPanelInnhold = () => {
-    const {fnr} = useAppStore();
-    const personalia = useFetchPersonalia(fnr);
+	const { fnr } = useAppStore();
+	const personalia = useFetchPersonalia(fnr);
 
-    if (isPending(personalia)) {
-        return <Laster/>;
-    } else if (hasError(personalia)) {
-        return <Feilmelding/>;
-    } else if (!hasData(personalia)) {
-        return <NoData/>;
-    }
+	if (isPending(personalia)) {
+		return <Laster />;
+	} else if (hasError(personalia)) {
+		return <Feilmelding />;
+	} else if (!hasData(personalia)) {
+		return <NoData />;
+	}
 
-    const {
-        bostedsadresse,
-        postAdresse,
-        midlertidigAdresseNorge,
-        midlertidigAdresseUtland,
-        telefon,
-        epost,
-        kontonummer,
-        statsborgerskap,
-        sivilstand,
-        partner,
-        barn
-    } = personalia.data;
+	const {
+		bostedsadresse,
+		postAdresse,
+		midlertidigAdresseNorge,
+		midlertidigAdresseUtland,
+		telefon,
+		epost,
+		kontonummer,
+		statsborgerskap,
+		sivilstand,
+		partner,
+		barn
+	} = personalia.data;
 
-    const filtrertBarneListe = barn.filter((enkeltBarn) =>
-        kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
+	const filtrertBarneListe = barn.filter(
+		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN
+	);
 
-    return (
-        <Grid columns={5} gap="0.5rem">
-            <Adresser
-                bostedsadresse={bostedsadresse}
-                postAdresse={postAdresse}
-                midlertidigAdresseNorge={midlertidigAdresseNorge}
-                midlertidigAdresseUtland={midlertidigAdresseUtland}
-            />
-            <InformasjonsbolkEnkel header="Telefon" value={telefon}/>
-            <InformasjonsbolkEnkel header="Epost" value={epost} className="break-all"/>
-            <InformasjonsbolkEnkel header="Kontonummer" value={kontonummer}/>
-            <InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap}/>
-            <Sivilstand sivilstand={sivilstand}/>
-            <Partner partner={partner}/>
-            <Barn barn={filtrertBarneListe}/>
-        </Grid>
-    );
+	return (
+		<Grid columns={5} gap="0.5rem">
+			<Adresser
+				bostedsadresse={bostedsadresse}
+				postAdresse={postAdresse}
+				midlertidigAdresseNorge={midlertidigAdresseNorge}
+				midlertidigAdresseUtland={midlertidigAdresseUtland}
+			/>
+			<InformasjonsbolkEnkel header="Telefon" value={telefon} />
+			<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
+			<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
+			<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
+			<Sivilstand sivilstand={sivilstand} />
+			<Partner partner={partner} />
+			<Barn barn={filtrertBarneListe} />
+		</Grid>
+	);
 };
 
 export default PersonaliaPanelInnhold;

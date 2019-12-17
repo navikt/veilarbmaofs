@@ -14,41 +14,42 @@ import { hasData } from '../../rest/utils';
 import './paneler.less';
 
 export const Paneler = () => {
-    const { fnr } = useAppStore();
-    const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
-    const registreringPanelNavn = hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
-        ? 'Registrering fra sykefravær'
-        : 'Registrering';
+	const { fnr } = useAppStore();
+	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
+	const registreringPanelNavn =
+		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
+			? 'Registrering fra sykefravær'
+			: 'Registrering';
 
-    return (
-        <div className="paneler">
-            <Panel name="registrering" tittel={registreringPanelNavn}>
-                <RegistreringPanel/>
-            </Panel>
+	return (
+		<div className="paneler">
+			<Panel name="registrering" tittel={registreringPanelNavn}>
+				<RegistreringPanel />
+			</Panel>
 
-            <Panel name="cv" tittel="CV">
-                <CvPanel/>
-            </Panel>
+			<Panel name="cv" tittel="CV">
+				<CvPanel />
+			</Panel>
 
-            <Panel name="jobbprofil" tittel="Jobbprofil">
-                <JobbprofilPanelInnhold/>
-            </Panel>
+			<Panel name="jobbprofil" tittel="Jobbprofil">
+				<JobbprofilPanelInnhold />
+			</Panel>
 
-            <Panel name="personalia" tittel="Personalia">
-                <PersonaliaPanelInnhold/>
-            </Panel>
+			<Panel name="personalia" tittel="Personalia">
+				<PersonaliaPanelInnhold />
+			</Panel>
 
-            <Panel name="ytelser" tittel="Ytelser">
-                <YtelserPanelInnhold/>
-            </Panel>
+			<Panel name="ytelser" tittel="Ytelser">
+				<YtelserPanelInnhold />
+			</Panel>
 
-            <Panel name="oppfolging" tittel="Oppfølging">
-                <OppfolgingPanelInnhold/>
-            </Panel>
+			<Panel name="oppfolging" tittel="Oppfølging">
+				<OppfolgingPanelInnhold />
+			</Panel>
 
-            <Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
-                <JobbsokerkompetansePanel/>
-            </Panel>
-        </div>
-    );
+			<Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
+				<JobbsokerkompetansePanel />
+			</Panel>
+		</div>
+	);
 };

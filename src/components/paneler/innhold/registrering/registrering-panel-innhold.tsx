@@ -12,30 +12,30 @@ import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 
 const RegistreringPanelInnhold = () => {
-    const {fnr} = useAppStore();
-    const registrering = useFetchRegistrering(fnr);
+	const { fnr } = useAppStore();
+	const registrering = useFetchRegistrering(fnr);
 
-    if (isPending(registrering)) {
-        return <Laster/>;
-    } else if (hasError(registrering)) {
-        return <Feilmelding/>;
-    } else if (!hasData(registrering)) {
-        return <NoData tekst="Brukeren har ikke registrert seg gjennom den nye registreringsløsningen."/>;
-    }
+	if (isPending(registrering)) {
+		return <Laster />;
+	} else if (hasError(registrering)) {
+		return <Feilmelding />;
+	} else if (!hasData(registrering)) {
+		return <NoData tekst="Brukeren har ikke registrert seg gjennom den nye registreringsløsningen." />;
+	}
 
-    const { registrering: brukerRegistrering, type } = registrering.data;
+	const { registrering: brukerRegistrering, type } = registrering.data;
 
-    return (
-        <>
-            <Header registrering={brukerRegistrering} />
-            <SporsmalsListe registrering={brukerRegistrering} />
-            <JobbetSammenhengende registrering={brukerRegistrering} />
-            <Show if={brukerRegistrering && brukerRegistrering.manueltRegistrertAv != null}>
-                <PersonverninformasjonUtskrift type={type} />
-            </Show>
-            <ForeslattProfilering registrering={brukerRegistrering}/>
-        </>
-    );
+	return (
+		<>
+			<Header registrering={brukerRegistrering} />
+			<SporsmalsListe registrering={brukerRegistrering} />
+			<JobbetSammenhengende registrering={brukerRegistrering} />
+			<Show if={brukerRegistrering && brukerRegistrering.manueltRegistrertAv != null}>
+				<PersonverninformasjonUtskrift type={type} />
+			</Show>
+			<ForeslattProfilering registrering={brukerRegistrering} />
+		</>
+	);
 };
 
 export default RegistreringPanelInnhold;
