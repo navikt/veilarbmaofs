@@ -2,13 +2,19 @@
 @import "~nav-frontend-typografi-style/src/index";
 
 .veilarbmaofs {
-	max-width: 1200px;
-	margin: 0 auto;
+	flex-grow: 1;
+	width: 100%;
+	background-color: #F4F4F4;
 
 	.typo-normal-mixin();
 	color: @navMorkGra;
 	font-family: @font-family;
 	line-height: @line-height-base;
+
+	&__container {
+		max-width: 1200px;
+		margin: 2rem auto;
+	}
 
 	.informasjonsbolk {
 		margin: 1rem 0 1rem 0;

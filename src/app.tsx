@@ -28,9 +28,11 @@ const App = (props: AppProps) => {
     return (
         <StoreProvider fnr={props.fnr} enhetId={props.enhet}>
             <div className="veilarbmaofs">
-                {isPending(oppfolgingstatus)
-                    ? <Laster midtstilt={true}/>
-                    : <Paneler key={renderKey}/>}
+                <div className="veilarbmaofs__container">
+                    {isPending(oppfolgingstatus)
+                        ? <Laster midtstilt={true}/>
+                        : <Paneler key={renderKey}/>}
+                </div>
             </div>
         </StoreProvider>
     );
