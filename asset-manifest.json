@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/veilarbmaofs/static/css/main.css",
+    "main.js": "/veilarbmaofs/static/js/main.js",
+    "main.js.map": "/veilarbmaofs/static/js/main.js.map",
+    "index.html": "/veilarbmaofs/index.html",
+    "precache-manifest.fc77478edf354e2269fa70f9b072164e.js": "/veilarbmaofs/precache-manifest.fc77478edf354e2269fa70f9b072164e.js",
+    "service-worker.js": "/veilarbmaofs/service-worker.js",
+    "static/css/main.css.map": "/veilarbmaofs/static/css/main.css.map",
+    "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.a0d6689d.svg",
+    "static/media/printer.f2de876d.svg": "/veilarbmaofs/static/media/printer.f2de876d.svg"
+  }
+}
