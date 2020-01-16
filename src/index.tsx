@@ -12,7 +12,7 @@ if (!(global as any)._babelPolyfill) {
 	require('babel-polyfill');
 }
 
-if (env.isAppInDevelopment || env.isAppOnHeroku) {
+if (env.isMocked) {
 	require('./mock');
 	ReactDOM.render(<App fnr={fnr} enhet={enhet} />, document.getElementById('main'));
 } else {
