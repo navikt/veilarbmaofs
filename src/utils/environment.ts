@@ -1,14 +1,6 @@
 class Environment {
-	get nodeEnv(): string | undefined {
-		return process.env.NODE_ENV;
-	}
-
-	get isAppInDevelopment(): boolean {
-		return this.nodeEnv === 'development';
-	}
-
-	get isAppOnHeroku(): boolean {
-		return window.location.hostname.endsWith('herokuapp.com');
+	get isMocked(): boolean {
+		return process.env.REACT_APP_DEV === 'true';
 	}
 }
 

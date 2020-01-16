@@ -4,13 +4,12 @@
   "private": true,
   "homepage": "/veilarbmaofs",
   "scripts": {
-    "start": "craco start",
+    "start": "REACT_APP_DEV=true craco start",
     "build": "craco build",
+    "build:mock": "REACT_APP_DEV=true craco build",
     "lint": "tslint 'src/**/*.ts{,x}'",
     "lint:fix": "tslint 'src/**/*.ts{,x}' --fix",
     "test": "echo not implemented",
-    "test:coverage": "echo not implemented",
-    "heroku-serve": "node heroku-server.js",
     "prettier": "prettier --write 'src/**/*.ts{,x}'"
   },
   "dependencies": {
@@ -65,7 +64,6 @@
     "@types/react-collapse": "^4.0.2",
     "@types/react-dom": "^16.8.5",
     "@types/react-modal": "^3.8.2",
-    "express": "^4.17.1",
     "prettier": "^1.19.1",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",
