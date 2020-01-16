@@ -5,6 +5,7 @@ import { cache, isPending } from '@nutgaard/use-fetch';
 import { useFetchOppfolgingsstatus } from './rest/api';
 import { Laster } from './components/felles/fetch';
 import './app.less';
+import { AsyncNAVSPA } from './utils/async-navspa';
 
 export interface AppProps {
 	fnr: string;
@@ -32,6 +33,7 @@ const App = (props: AppProps) => {
 					{isPending(oppfolgingstatus) ? <Laster midtstilt={true} /> : <Paneler key={renderKey} />}
 				</div>
 			</div>
+			<AsyncNAVSPA applicationName="test-cra" applicationBaseUrl="http://localhost:8080/" />
 		</StoreProvider>
 	);
 };
