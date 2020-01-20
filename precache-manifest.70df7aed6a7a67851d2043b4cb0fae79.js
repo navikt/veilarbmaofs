@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "da334ff5a771400e204abad9d9c34534",
+    "revision": "d61105d8355cd41a9954769534589913",
     "url": "/veilarbmaofs/index.html"
   },
   {
