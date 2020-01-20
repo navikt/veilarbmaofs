@@ -12,6 +12,7 @@ import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
 import './paneler.less';
+import { TagView } from '../views/tag-view';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
@@ -49,6 +50,10 @@ export const Paneler = () => {
 
 			<Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
 				<JobbsokerkompetansePanel />
+			</Panel>
+
+			<Panel name="tag-integrasjon" tittel="Tag integrasjon">
+				<TagView />
 			</Panel>
 		</div>
 	);

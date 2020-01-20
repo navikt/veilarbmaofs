@@ -1,6 +1,8 @@
 import React from 'react';
 import loadjs from 'loadjs';
 import NAVSPA from '@navikt/navspa';
+import { Laster } from '../components/felles/fetch';
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 enum AssetLoadState {
 	LOADING_ASSETS,
@@ -16,11 +18,10 @@ interface AsyncNAVSPAState {
 	loadState: AssetLoadState;
 }
 
-export interface AsyncNAVSPAProps {
+type AsyncNAVSPAProps<PROPS> = PROPS & {
 	applicationName: string;
 	applicationBaseUrl: string;
-	timeoutAfter?: number;
-}
+};
 
 function joinUrlWithPath(url: string, path: string): string {
 	const cleanedUrl = url.endsWith('/') ? url.substring(0, url.length - 1) : url;
@@ -52,10 +53,10 @@ function extractPathsToLoadFromManifest(manifest: AssetManifest): string[] {
 	return pathsToLoad;
 }
 
-export class AsyncNAVSPA extends React.Component<AsyncNAVSPAProps, AsyncNAVSPAState> {
+export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PROPS>, AsyncNAVSPAState> {
 	private AsyncApp: any;
 
-	constructor(props: AsyncNAVSPAProps) {
+	constructor(props: AsyncNAVSPAProps<PROPS>) {
 		super(props);
 		this.state = { loadState: AssetLoadState.LOADING_ASSETS };
 		this.AsyncApp = NAVSPA.importer(this.props.applicationName);
@@ -71,16 +72,27 @@ export class AsyncNAVSPA extends React.Component<AsyncNAVSPAProps, AsyncNAVSPASt
 				this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS });
 			});
 
-		loadjs.ready(props.applicationName, () => {
-			this.setState({ loadState: AssetLoadState.ASSETS_LOADED });
+		loadjs.ready(props.applicationName, {
+			success: () => {
+				this.setState({ loadState: AssetLoadState.ASSETS_LOADED });
+			},
+			error: () => {
+				this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS });
+			}
 		});
 	}
 
 	render() {
-		if (this.state.loadState !== AssetLoadState.ASSETS_LOADED) {
-			return null;
+		if (this.state.loadState === AssetLoadState.LOADING_ASSETS) {
+			return <Laster midtstilt={true} />;
+		} else if (this.state.loadState === AssetLoadState.FAILED_TO_LOAD_ASSETS) {
+			return (
+				<AlertStripeFeil>
+					{'Klarte ikke å laste inn ' + this.props.applicationName}
+				</AlertStripeFeil>
+			);
 		}
-		console.log('rendering...');
+
 		return <this.AsyncApp />;
 	}
 }
