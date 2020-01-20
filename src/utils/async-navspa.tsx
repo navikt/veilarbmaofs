@@ -58,28 +58,26 @@ export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PR
 
 	constructor(props: AsyncNAVSPAProps<PROPS>) {
 		super(props);
-		this.state = { loadState: AssetLoadState.LOADING_ASSETS };
-		this.AsyncApp = NAVSPA.importer(this.props.applicationName);
+		this.AsyncApp = NAVSPA.importer(props.applicationName);
 
-		fetchAssetManifest(createAssetManifestUrl(props.applicationBaseUrl))
-			.then(manifest => {
-				const pathsToLoad = extractPathsToLoadFromManifest(manifest);
-				const urlsToLoad = pathsToLoad.map(path => joinUrlWithPath(props.applicationBaseUrl, path));
+		if (!loadjs.isDefined(props.applicationName)) {
+			this.state = { loadState: AssetLoadState.LOADING_ASSETS };
 
-				loadjs(urlsToLoad, props.applicationName);
-			})
-			.catch(() => {
-				this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS });
+			fetchAssetManifest(createAssetManifestUrl(props.applicationBaseUrl))
+				.then(manifest => {
+					const pathsToLoad = extractPathsToLoadFromManifest(manifest);
+					const urlsToLoad = pathsToLoad.map(path => joinUrlWithPath(props.applicationBaseUrl, path));
+					loadjs(urlsToLoad, props.applicationName);
+				})
+				.catch(() => this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS }));
+
+			loadjs.ready(props.applicationName, {
+				success: () => this.setState({ loadState: AssetLoadState.ASSETS_LOADED }),
+				error: () => this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS })
 			});
-
-		loadjs.ready(props.applicationName, {
-			success: () => {
-				this.setState({ loadState: AssetLoadState.ASSETS_LOADED });
-			},
-			error: () => {
-				this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS });
-			}
-		});
+		} else {
+			this.state = { loadState: AssetLoadState.ASSETS_LOADED };
+		}
 	}
 
 	render() {
