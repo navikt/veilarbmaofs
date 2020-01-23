@@ -8,8 +8,8 @@ export function ViewController() {
 	const { view } = useViewStore();
 	const { changeView } = useViewStore();
 
-	useEventListener('visDetaljerSpa', () => changeView(ViewType.DETALJER));
-	useEventListener('visDetaljer', () => changeView(ViewType.TILRETTELEGGINGSBEHOV));
+	useEventListener('veilarbmaofs.visDetaljer', () => changeView(ViewType.DETALJER));
+	useEventListener('veilarbmaofs.visTilretteleggingsbehov', () => changeView(ViewType.TILRETTELEGGINGSBEHOV));
 
 	switch (view) {
 		case ViewType.DETALJER:

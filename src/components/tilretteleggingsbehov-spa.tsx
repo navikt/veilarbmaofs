@@ -9,8 +9,8 @@ interface TilretteleggingsbehovViewSpaProps {
 }
 
 export enum TilretteleggingsbehovViewType {
-	PAGE = 'PAGE',
-	PANEL = 'PANEL'
+	VIS_TILRETTELEGGINGSBEHOV = 'VIS_TILRETTELEGGINGSBEHOV',
+	REGISTRER_TILRETTELEGGINGSBEHOV = 'REGISTRER_TILRETTELEGGINGSBEHOV'
 }
 
 export const TilretteleggingsbehovSpa= (props: { viewType: TilretteleggingsbehovViewType }) => {

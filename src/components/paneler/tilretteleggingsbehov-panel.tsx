@@ -14,7 +14,7 @@ export const TagPanel = () => {
 
 	return (
 		<Panel name="tilretteleggingsbehov" tittel="Tilretteleggingsbehov">
-			<TilretteleggingsbehovSpa viewType={TilretteleggingsbehovViewType.PANEL} />
+			<TilretteleggingsbehovSpa viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
 		</Panel>
 	);
 };
