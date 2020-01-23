@@ -9,6 +9,7 @@ import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 import { OrNothing } from '../utils/felles-typer';
+import { TilretteleggingsbehovToggle } from './datatyper/tilretteleggingsbehov-toggle';
 
 export const useFetchRegistrering = (fnr: string) =>
 	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
@@ -32,3 +33,5 @@ export const useFetchUnderOppfolging = (fnr: string) =>
 	useFetch<UnderOppfolgingData>(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`);
 
 export const useFetchPersonalia = (fnr: string) => useFetch<PersonaliaInfo>(`/veilarbperson/api/person/${fnr}`);
+
+export const useFetchTagIntegrasjonToggle = () => useFetch<TilretteleggingsbehovToggle>('/finn-kandidat-api/pilottilgang');
