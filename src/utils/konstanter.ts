@@ -15,5 +15,5 @@ export const OPPFOLGINGSKONTRAKTER_STATUSER = {
 	lukket: 'Lukket'
 };
 
-export const TILRETTELEGGINGSBEHOV_APPLICATION_NAME = 'registrer-tilretteleggingsbehov';
+export const TILRETTELEGGINGSBEHOV_APPLICATION_NAME = 'tilretteleggingsbehov';
 export const TILRETTELEGGINGSBEHOV_APPLICATION_URL = '/registrer-tilretteleggingsbehov';
