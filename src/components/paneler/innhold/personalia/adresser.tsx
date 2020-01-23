@@ -4,7 +4,7 @@ import {
 	Gateadresse,
 	Matrikkeladresse,
 	PersonaliaInfo,
-	PersonaliaStrukturertMidlertidigAdresse
+	PersonaliaStrukturertMidlertidigAdresse, PostboksadresseNorsk
 } from '../../../../rest/datatyper/personalia';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
@@ -37,14 +37,20 @@ function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
 
 	const strukturertAdresse = props.midlertidigAdresse!.strukturertAdresse;
 
+	let adresseVisning = null;
+
+	if (strukturertAdresse.Matrikkeladresse) {
+		adresseVisning = <MatrikkelAdresse adresse={strukturertAdresse.Matrikkeladresse} />;
+	} else if (strukturertAdresse.Gateadresse) {
+		adresseVisning = <GateAdresse adresse={strukturertAdresse.Gateadresse} />;
+	} else if (strukturertAdresse.PostboksadresseNorsk) {
+		adresseVisning = <PostboksAdresse adresse={strukturertAdresse.PostboksadresseNorsk} />;
+	}
+
 	return (
 		<div className="underinformasjon">
 			<Element>{props.overskrift}</Element>
-			{strukturertAdresse.Matrikkeladresse ? (
-				<MatrikkelAdresse adresse={strukturertAdresse.Matrikkeladresse} />
-			) : (
-				<GateAdresse adresse={strukturertAdresse.Gateadresse!} />
-			)}
+			{adresseVisning}
 		</div>
 	);
 }
@@ -113,6 +119,16 @@ function GateAdresse(prop: { adresse: Gateadresse }) {
 		<>
 			<Normaltekst>{`${gatenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</Normaltekst>
 			<Normaltekst>{`${postnummer} ${poststed}`}</Normaltekst>
+		</>
+	);
+}
+
+function PostboksAdresse(prop: { adresse: PostboksadresseNorsk }) {
+	const { postnummer, poststed, postboksnummer, postboksanlegg } = prop.adresse;
+	return (
+		<>
+			<Normaltekst>{`Postboks ${(postboksnummer || '').trim()} ${postboksanlegg || ''}`}</Normaltekst>
+			<Normaltekst>{`${postnummer || ''} ${poststed || ''}`}</Normaltekst>
 		</>
 	);
 }

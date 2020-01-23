@@ -56,6 +56,15 @@ export interface Matrikkeladresse {
 	undernummer: OrNothing<string>;
 }
 
+export interface PostboksadresseNorsk {
+	landkode: string;
+	postboksanlegg: string | null;
+	postboksnummer: string;
+	postnummer: string;
+	poststed: string;
+	tilleggsadresse: string | null;
+}
+
 export interface PersonaliaStrukturertAdresse {
 	strukturertAdresse: {
 		Gateadresse: OrNothing<Gateadresse>;
@@ -64,9 +73,10 @@ export interface PersonaliaStrukturertAdresse {
 
 export interface PersonaliaStrukturertMidlertidigAdresse {
 	strukturertAdresse: {
-		// Midlertidig adresse kan ha enten Gateadresse eller Matrikkeladresse
+		// Midlertidig adresse kan ha enten Gateadresse, Matrikkeladresse eller PostboksadresseNorsk
 		Gateadresse: OrNothing<Gateadresse>;
 		Matrikkeladresse: OrNothing<Matrikkeladresse>;
+		PostboksadresseNorsk: OrNothing<PostboksadresseNorsk>
 	};
 }
 
