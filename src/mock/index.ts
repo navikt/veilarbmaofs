@@ -9,7 +9,8 @@ import {
 	personaliaMock,
 	registeringMock,
 	veilederMock,
-	ytelsestatusMock
+	ytelsestatusMock,
+	tagFeature
 } from './data';
 
 const mock = FetchMock.configure({
@@ -27,3 +28,4 @@ mock.get('/veilarboppfolging/api/person/:fnr/ytelser', ytelsestatusMock);
 mock.get('/veilarboppfolging/api/underoppfolging', oppfolgingMock);
 mock.get('/veilarbregistrering/api/registrering', registeringMock);
 mock.get('/veilarbpersonflatefs/api/feature', featuresMock);
+mock.get('/finn-kandidat-api/pilottilgang', tagFeature);

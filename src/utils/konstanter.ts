@@ -15,5 +15,5 @@ export const OPPFOLGINGSKONTRAKTER_STATUSER = {
 	lukket: 'Lukket'
 };
 
-export const TAG_APPLICATION_NAME = 'test-cra';
-export const TAG_APPLICATION_URL = 'http://localhost:8080/';
+export const TILRETTELEGGINGSBEHOV_APPLICATION_NAME = 'test-cra';
+export const TILRETTELEGGINGSBEHOV_APPLICATION_URL = 'http://localhost:8080/';

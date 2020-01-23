@@ -3,7 +3,7 @@ import createUseContext from 'constate';
 
 export enum ViewType {
 	DETALJER = 'DETALJER',
-	TAG = 'TAG',
+	TILRETTELEGGINGSBEHOV = 'TILRETTELEGGINGSBEHOV',
 }
 
 export const useViewStore = createUseContext(() => {

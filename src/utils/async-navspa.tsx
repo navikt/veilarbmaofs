@@ -18,10 +18,11 @@ interface AsyncNAVSPAState {
 	loadState: AssetLoadState;
 }
 
-type AsyncNAVSPAProps<PROPS> = PROPS & {
+interface AsyncNAVSPAProps<PROPS> {
 	applicationName: string;
 	applicationBaseUrl: string;
-};
+	spaProps?: PROPS;
+}
 
 function joinUrlWithPath(url: string, path: string): string {
 	const cleanedUrl = url.endsWith('/') ? url.substring(0, url.length - 1) : url;
@@ -91,6 +92,8 @@ export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PR
 			);
 		}
 
-		return <this.AsyncApp />;
+		const spaProps = this.props.spaProps || {};
+
+		return <this.AsyncApp {...spaProps} />;
 	}
 }

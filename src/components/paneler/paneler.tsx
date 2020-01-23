@@ -11,8 +11,8 @@ import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
+import { TagPanel } from './tilretteleggingsbehov-panel';
 import './paneler.less';
-import { TagView } from '../views/tag-view';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
@@ -52,9 +52,7 @@ export const Paneler = () => {
 				<JobbsokerkompetansePanel />
 			</Panel>
 
-			<Panel name="tag-integrasjon" tittel="Tag integrasjon">
-				<TagView />
-			</Panel>
+			<TagPanel />
 		</div>
 	);
 };
