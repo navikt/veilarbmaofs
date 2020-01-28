@@ -3,6 +3,7 @@ import { useViewStore, ViewType } from '../../stores/view-store';
 import { DetaljerView } from './detaljer-view';
 import { TilretteleggingsbehovView } from './tilretteleggingsbehov-view';
 import { useEventListener } from '../../utils';
+import { View } from './view';
 
 export function ViewController() {
 	const { view } = useViewStore();
@@ -13,8 +14,12 @@ export function ViewController() {
 
 	return (
 		<>
-			<DetaljerView  hidden={view !== ViewType.DETALJER} />
-			<TilretteleggingsbehovView hidden={view !== ViewType.TILRETTELEGGINGSBEHOV} />
+			<View hidden={view !== ViewType.DETALJER} className="veilarbmaofs">
+				<DetaljerView />
+			</View>
+			<View hidden={view !== ViewType.TILRETTELEGGINGSBEHOV}>
+				<TilretteleggingsbehovView />
+			</View>
 		</>
 	);
 }
