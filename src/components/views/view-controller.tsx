@@ -11,12 +11,10 @@ export function ViewController() {
 	useEventListener('veilarbmaofs.visDetaljer', () => changeView(ViewType.DETALJER));
 	useEventListener('veilarbmaofs.visTilretteleggingsbehov', () => changeView(ViewType.TILRETTELEGGINGSBEHOV));
 
-	switch (view) {
-		case ViewType.DETALJER:
-			return <DetaljerView />;
-		case ViewType.TILRETTELEGGINGSBEHOV:
-			return <TilretteleggingsbehovView />;
-		default:
-			return <DetaljerView />;
-	}
+	return (
+		<>
+			<DetaljerView  hidden={view !== ViewType.DETALJER} />
+			<TilretteleggingsbehovView hidden={view !== ViewType.TILRETTELEGGINGSBEHOV} />
+		</>
+	);
 }
