@@ -2,6 +2,7 @@ import { finnNaisDomene } from './miljo-utils';
 import { StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
+import { useCallback, useEffect } from 'react';
 
 export function isNullOrUndefined(param: string | object | null | undefined): boolean {
 	return param === undefined || param === null;
@@ -106,4 +107,12 @@ export function formaterVarighet(varighet: Kursvarighet): string {
 	}
 
 	return `${varighet.varighet} ${enhetTekst}`;
+}
+
+export function useEventListener(name: string, listener: () => void) {
+	const callback = useCallback(listener, []);
+	useEffect(() => {
+		window.addEventListener(name, callback);
+		return () => window.removeEventListener(name, callback);
+	}, [callback, name]);
 }

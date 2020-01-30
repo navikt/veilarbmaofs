@@ -10,7 +10,7 @@ export const Feilmelding = (props: { tekst?: string }) => (
 );
 
 export const Laster = (props: { midtstilt?: boolean }) => (
-	<div className={cls({ 'laster--midtstilt': props.midtstilt })}>
+	<div className={cls({ 'veilarbmaofs__laster--midtstilt': props.midtstilt })}>
 		<NavFrontendSpinner type="XL" />
 	</div>
 );
