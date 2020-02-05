@@ -5,7 +5,7 @@ import { hasData } from '../../rest/utils';
 import { isPending } from '@nutgaard/use-async';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 
-export const TagPanel = () => {
+export const TilretteleggingsBehovPanel = (props: { defaultOpen: boolean }) => {
 	const visTagPanel = useFetchTagIntegrasjonToggle();
 
 	if (isPending(visTagPanel) || !hasData(visTagPanel) || !visTagPanel.data.harTilgang) {
@@ -13,7 +13,7 @@ export const TagPanel = () => {
 	}
 
 	return (
-		<Panel name="tilretteleggingsbehov" tittel="Tilretteleggingsbehov">
+		<Panel name="tilretteleggingsbehov" tittel="Tilretteleggingsbehov" defaultOpen={props.defaultOpen}>
 			<TilretteleggingsbehovSpa viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
 		</Panel>
 	);
