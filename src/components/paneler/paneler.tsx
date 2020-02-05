@@ -18,7 +18,7 @@ import { hasHashParam, hasQueryParam } from '../../utils';
 export const Paneler = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
-	const apneRegistrering = hasQueryParam('visRegistreringDetaljer');
+	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
