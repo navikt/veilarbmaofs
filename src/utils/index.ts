@@ -4,6 +4,14 @@ import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
 import { useCallback, useEffect } from 'react';
 
+export const hasHashParam = (parameterName: string): boolean => {
+	return window.location.hash.includes(parameterName);
+};
+
+export const hasQueryParam = (parameterName: string): boolean => {
+	return window.location.search.includes(parameterName);
+};
+
 export function isNullOrUndefined(param: string | object | null | undefined): boolean {
 	return param === undefined || param === null;
 }
