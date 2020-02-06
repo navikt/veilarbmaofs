@@ -12,8 +12,8 @@ import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
 import { TilretteleggingsBehovPanel } from './tilretteleggingsbehov-panel';
-import './paneler.less';
 import { hasHashParam, hasQueryParam } from '../../utils';
+import './paneler.less';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
