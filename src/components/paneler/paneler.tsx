@@ -11,7 +11,7 @@ import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
-import { TilretteleggingsBehovPanel } from './tilretteleggingsbehov-panel';
+import { TilretteleggingsBehovPanel } from './tilretteleggingsbehov-panel/tilretteleggingsbehov-panel';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import './paneler.less';
 
@@ -39,6 +39,8 @@ export const Paneler = () => {
 				<JobbprofilPanelInnhold />
 			</Panel>
 
+			<TilretteleggingsBehovPanel defaultOpen={apneTilrettelegging} />
+
 			<Panel name="personalia" tittel="Personalia">
 				<PersonaliaPanelInnhold />
 			</Panel>
@@ -54,8 +56,6 @@ export const Paneler = () => {
 			<Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
 				<JobbsokerkompetansePanel />
 			</Panel>
-
-			<TilretteleggingsBehovPanel defaultOpen={apneTilrettelegging} />
 		</div>
 	);
 };
