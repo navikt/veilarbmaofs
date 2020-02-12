@@ -9,9 +9,9 @@ import { Undertittel } from 'nav-frontend-typografi';
 import newBadge from './new-badge.svg';
 import './tilretteleggingsbehov-panel.less';
 
-export const TagPanel = () => {
+export const TilretteleggingsBehovPanel = (props: { defaultOpen: boolean }) => {
 	const visTagPanel = useFetchTagIntegrasjonToggle();
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(props.defaultOpen);
 
 	function onClick() {
 		const eventType = !isOpen ? 'open' : 'close';
