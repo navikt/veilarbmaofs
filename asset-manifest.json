@@ -4,10 +4,11 @@
     "main.js": "/veilarbmaofs/static/js/main.js",
     "main.js.map": "/veilarbmaofs/static/js/main.js.map",
     "index.html": "/veilarbmaofs/index.html",
-    "precache-manifest.0498fc7773f1fa01af83432130dba777.js": "/veilarbmaofs/precache-manifest.0498fc7773f1fa01af83432130dba777.js",
+    "precache-manifest.bc8eb2d0a76931e71d55192c165d4968.js": "/veilarbmaofs/precache-manifest.bc8eb2d0a76931e71d55192c165d4968.js",
     "service-worker.js": "/veilarbmaofs/service-worker.js",
     "static/css/main.css.map": "/veilarbmaofs/static/css/main.css.map",
     "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.a0d6689d.svg",
+    "static/media/new-badge.svg": "/veilarbmaofs/static/media/new-badge.ac3b32b7.svg",
     "static/media/printer.f2de876d.svg": "/veilarbmaofs/static/media/printer.f2de876d.svg"
   }
 }
