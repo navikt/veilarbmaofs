@@ -11,12 +11,15 @@ import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
-import { TagPanel } from './tilretteleggingsbehov-panel';
+import { TilretteleggingsBehovPanel } from './tilretteleggingsbehov-panel/tilretteleggingsbehov-panel';
+import { hasHashParam, hasQueryParam } from '../../utils';
 import './paneler.less';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
+	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
+	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'
@@ -24,7 +27,7 @@ export const Paneler = () => {
 
 	return (
 		<div className="paneler">
-			<Panel name="registrering" tittel={registreringPanelNavn}>
+			<Panel name="registrering" tittel={registreringPanelNavn} defaultOpen={apneRegistrering}>
 				<RegistreringPanel />
 			</Panel>
 
@@ -35,6 +38,8 @@ export const Paneler = () => {
 			<Panel name="jobbprofil" tittel="Jobbprofil">
 				<JobbprofilPanelInnhold />
 			</Panel>
+
+			<TilretteleggingsBehovPanel defaultOpen={apneTilrettelegging} />
 
 			<Panel name="personalia" tittel="Personalia">
 				<PersonaliaPanelInnhold />
@@ -51,8 +56,6 @@ export const Paneler = () => {
 			<Panel name="jobbsokerkompetanse" tittel="Jobbsøkerkompetanse">
 				<JobbsokerkompetansePanel />
 			</Panel>
-
-			<TagPanel />
 		</div>
 	);
 };
