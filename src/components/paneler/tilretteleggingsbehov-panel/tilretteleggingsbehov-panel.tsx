@@ -25,7 +25,7 @@ export const TilretteleggingsBehovPanel = (props: { defaultOpen: boolean }) => {
 
 	const heading = (
 		<div className="tag-panel__header">
-			<Undertittel className="tag-panel__tittel">Behov for tilrettelegging</Undertittel>
+			<Undertittel className="tag-panel__tittel ekspanderbartPanel__heading">Behov for tilrettelegging</Undertittel>
 			<img src={newBadge} alt="Nyhet" className="tag-panel__new-badge"/>
 		</div>
 	);
