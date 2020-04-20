@@ -1,23 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2329704fc6421c1a8a287dff16855076",
+    "revision": "792fb9d4d10afe92d4bbfda8e82f26a8",
     "url": "/veilarbmaofs/index.html"
   },
   {
-    "revision": "563fe3943f2b7ee4bdc7",
+    "revision": "8b8485d1ab1dacf1e890",
     "url": "/veilarbmaofs/static/css/main.css"
   },
   {
-    "revision": "563fe3943f2b7ee4bdc7",
+    "revision": "8b8485d1ab1dacf1e890",
     "url": "/veilarbmaofs/static/js/main.js"
   },
   {
     "revision": "85a00e2e9d2a4bfdd472b41769962502",
     "url": "/veilarbmaofs/static/media/last-ned.85a00e2e.svg"
-  },
-  {
-    "revision": "ac3b32b7afb5249f25dd57b02405621f",
-    "url": "/veilarbmaofs/static/media/new-badge.ac3b32b7.svg"
   },
   {
     "revision": "f2de876d58aef7d9aa1caca576c03217",
