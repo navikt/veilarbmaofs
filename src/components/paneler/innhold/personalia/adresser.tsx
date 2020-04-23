@@ -3,8 +3,8 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import {
 	Gateadresse,
 	Matrikkeladresse,
-	PersonaliaInfo,
-	PersonaliaStrukturertMidlertidigAdresse, PostboksadresseNorsk
+	PersonaliaInfo, PersonaliaMidlertidigAdresse, PersonaliaPostadresse, PersonaliaStrukturertMidlertidigAdresse,
+	PostboksadresseNorsk, UstrukturertAdresse
 } from '../../../../rest/datatyper/personalia';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
@@ -27,7 +27,7 @@ function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsad
 
 interface MidlertidigAdresseVisningProps {
 	overskrift: string;
-	midlertidigAdresse: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
+	midlertidigAdresse: OrNothing<PersonaliaMidlertidigAdresse>;
 }
 
 function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
@@ -35,16 +35,22 @@ function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
 		return null;
 	}
 
-	const strukturertAdresse = props.midlertidigAdresse!.strukturertAdresse;
+	const midlertidigAdresse = props.midlertidigAdresse as PersonaliaMidlertidigAdresse;
+	const strukturertAdresse = (midlertidigAdresse as PersonaliaStrukturertMidlertidigAdresse).strukturertAdresse;
+	const ustrukturertAdresse = (midlertidigAdresse as PersonaliaPostadresse).ustrukturertAdresse;
 
 	let adresseVisning = null;
 
-	if (strukturertAdresse.Matrikkeladresse) {
-		adresseVisning = <MatrikkelAdresse adresse={strukturertAdresse.Matrikkeladresse} />;
-	} else if (strukturertAdresse.Gateadresse) {
-		adresseVisning = <GateAdresse adresse={strukturertAdresse.Gateadresse} />;
-	} else if (strukturertAdresse.PostboksadresseNorsk) {
-		adresseVisning = <PostboksAdresse adresse={strukturertAdresse.PostboksadresseNorsk} />;
+	if (strukturertAdresse) {
+		if (strukturertAdresse.Matrikkeladresse) {
+			adresseVisning = <MatrikkelAdresse adresse={strukturertAdresse.Matrikkeladresse} />;
+		} else if (strukturertAdresse.Gateadresse) {
+			adresseVisning = <GateAdresse adresse={strukturertAdresse.Gateadresse} />;
+		} else if (strukturertAdresse.PostboksadresseNorsk) {
+			adresseVisning = <PostboksAdresse adresse={strukturertAdresse.PostboksadresseNorsk} />;
+		}
+	} else if (ustrukturertAdresse) {
+		adresseVisning = <UstrukturertAdresseVisning ustrukturertAdresse={ustrukturertAdresse} />;
 	}
 
 	return (
@@ -55,8 +61,21 @@ function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
 	);
 }
 
-function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
+function PostAdresse(props: { postAdresse: PersonaliaPostadresse }) {
 	if (isNullOrUndefined(props.postAdresse) || isNullOrUndefined(props.postAdresse.ustrukturertAdresse)) {
+		return null;
+	}
+
+	return (
+		<div className="underinformasjon">
+			<Element> Postadresse </Element>
+			<UstrukturertAdresseVisning ustrukturertAdresse={props.postAdresse.ustrukturertAdresse}/>
+		</div>
+	);
+}
+
+function UstrukturertAdresseVisning(props: { ustrukturertAdresse: UstrukturertAdresse }) {
+	if (isNullOrUndefined(props.ustrukturertAdresse)) {
 		return null;
 	}
 
@@ -66,17 +85,16 @@ function PostAdresse(props: Pick<PersonaliaInfo, 'postAdresse'>) {
 		adresselinje3,
 		adresselinje4,
 		landkode
-	} = props.postAdresse.ustrukturertAdresse;
+	} = props.ustrukturertAdresse;
 
 	return (
-		<div className="underinformasjon">
-			<Element> Postadresse </Element>
+		<>
 			<Normaltekst> {visEmdashHvisNull(adresselinje1)} </Normaltekst>
 			<Normaltekst> {visEmdashHvisNull(adresselinje2)} </Normaltekst>
 			<Normaltekst> {visEmdashHvisNull(adresselinje3)} </Normaltekst>
 			<Normaltekst> {visEmdashHvisNull(adresselinje4)} </Normaltekst>
 			<Normaltekst> {visEmdashHvisNull(landkode)} </Normaltekst>
-		</div>
+		</>
 	);
 }
 
