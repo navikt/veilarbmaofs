@@ -80,16 +80,20 @@ export interface PersonaliaStrukturertMidlertidigAdresse {
 	};
 }
 
+export type PersonaliaMidlertidigAdresse = PersonaliaStrukturertMidlertidigAdresse | PersonaliaPostadresse;
+
 export type PersonaliaBostedsadresse = PersonaliaStrukturertAdresse;
 
-interface PersonaliaPostadresse {
-	ustrukturertAdresse: {
-		adresselinje1: string;
-		adresselinje2: StringOrNothing;
-		adresselinje3: StringOrNothing;
-		adresselinje4: StringOrNothing;
-		landkode: string;
-	};
+export interface PersonaliaPostadresse {
+	ustrukturertAdresse: UstrukturertAdresse;
+}
+
+export interface UstrukturertAdresse {
+	adresselinje1: string;
+	adresselinje2: StringOrNothing;
+	adresselinje3: StringOrNothing;
+	adresselinje4: StringOrNothing;
+	landkode: string;
 }
 
 export interface PersonaliaInfo extends GrunnPersonalia {
@@ -105,8 +109,8 @@ export interface PersonaliaInfo extends GrunnPersonalia {
 	sivilstand: PersonaliaSivilstand;
 	partner: OrNothing<PersonaliaPartner>;
 	bostedsadresse: PersonaliaBostedsadresse;
-	midlertidigAdresseNorge: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
-	midlertidigAdresseUtland: OrNothing<PersonaliaStrukturertMidlertidigAdresse>;
+	midlertidigAdresseNorge: OrNothing<PersonaliaMidlertidigAdresse>;
+	midlertidigAdresseUtland: OrNothing<PersonaliaMidlertidigAdresse>;
 	postAdresse: PersonaliaPostadresse;
 	egenAnsatt: boolean;
 }
