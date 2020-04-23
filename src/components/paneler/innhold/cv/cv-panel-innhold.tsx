@@ -46,18 +46,7 @@ const CvPanelInnhold = () => {
 	const endreCvUrl = byggPamUrl(brukerAktorId || '', 'cv');
 	const lastNedCvUrl = byggPamUrl(brukerAktorId || '', 'cv/pdf');
 
-	if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
-		return (
-			<AlertStripeInfo>
-				Denne personen har ikke registrert CV.&nbsp;&nbsp;
-				{erManuell && aktorId && (
-					<Lenke target="_blank" href={endreCvUrl}>
-						Registrer her
-					</Lenke>
-				)}
-			</AlertStripeInfo>
-		);
-	} else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
+	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
 			<AlertStripeInfo className="cv-alert-ikke-tilgang">
 				Du kan ikke se CV-en, be brukeren om å:
@@ -67,6 +56,17 @@ const CvPanelInnhold = () => {
 					<li>gå videre og gjennomføre det tjenesten ber om</li>
 				</ul>
 				Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
+			</AlertStripeInfo>
+		);
+	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
+		return (
+			<AlertStripeInfo>
+				Denne personen har ikke registrert CV.&nbsp;&nbsp;
+				{erManuell && aktorId && (
+					<Lenke target="_blank" href={endreCvUrl}>
+						Registrer her
+					</Lenke>
+				)}
 			</AlertStripeInfo>
 		);
 	} else if (!hasData(cvOgJobbprofil)) {

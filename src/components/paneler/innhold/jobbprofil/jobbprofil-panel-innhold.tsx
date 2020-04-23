@@ -39,18 +39,8 @@ const JobbprofilPanelInnhold = () => {
 	const brukerAktorId = aktorIdData.aktorId;
 	const pamUrl = byggPamUrl(brukerAktorId || '', 'jobbprofil');
 
-	if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204 || !harJobbprofilData(cvOgJobbprofil)) {
-		return (
-			<AlertStripeInfo>
-				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
-				{erManuell && brukerAktorId && (
-					<Lenke target="_blank" href={pamUrl}>
-						Registrer her
-					</Lenke>
-				)}
-			</AlertStripeInfo>
-		);
-	} else if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
+	// Sjekk alltid tilgang først
+	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
 			<AlertStripeInfo>
 				Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
@@ -60,6 +50,17 @@ const JobbprofilPanelInnhold = () => {
 						nav.no og oppdatere CV'en sin.
 					</li>
 				</ul>
+			</AlertStripeInfo>
+		);
+	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204 || !harJobbprofilData(cvOgJobbprofil)) {
+		return (
+			<AlertStripeInfo>
+				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
+				{erManuell && brukerAktorId && (
+					<Lenke target="_blank" href={pamUrl}>
+						Registrer her
+					</Lenke>
+				)}
 			</AlertStripeInfo>
 		);
 	} else if (!hasData(cvOgJobbprofil)) {
