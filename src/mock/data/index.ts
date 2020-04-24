@@ -7,4 +7,5 @@ export { default as veilederMock } from './veileder';
 export { default as ytelsestatusMock } from './ytelsestatus';
 export { default as featuresMock } from './features';
 export { default as oppfolgingMock } from './oppfolging';
+export { default as situasjonMock } from './situasjon';
 export { ordinaerRegistering as registeringMock } from './registrering';

@@ -9,9 +9,13 @@ import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 import { OrNothing } from '../utils/felles-typer';
+import { Situasjon } from './datatyper/situasjonData';
 
 export const useFetchRegistrering = (fnr: string) =>
 	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
+
+export const useFetchSituasjon = (fnr: string) =>
+	useFetch<Situasjon[]>(`/veilarbvedtakinfo/api/situasjonHistorikk?fnr=${fnr}`);
 
 export const useFetchCvOgJobbprofil = (fnr: string) => useFetch<ArenaPerson>(`/pam-cv-api/rest/v1/arbeidssoker/${fnr}`);
 
