@@ -14,6 +14,7 @@ import { hasData } from '../../rest/utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
+import SituasjonPanel from './innhold/situasjon/situasjon-panel';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
@@ -27,6 +28,8 @@ export const Paneler = () => {
 
 	return (
 		<div className="paneler">
+			<SituasjonPanel />
+
 			<Panel name="registrering" tittel={registreringPanelNavn} defaultOpen={apneRegistrering}>
 				<RegistreringPanel />
 			</Panel>
