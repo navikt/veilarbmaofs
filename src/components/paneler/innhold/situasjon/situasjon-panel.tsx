@@ -17,7 +17,6 @@ const SituasjonPanel = () => {
     const registrering: FetchResult<RegistreringsData> = useFetchRegistrering(fnr);
     const situasjonHistorikk: FetchResult<Situasjon[]> = useFetchSituasjon(fnr);
 
-    // bør dette flyttes til paneler.tsx og synk uthenting?
     if (isPending(registrering) || isPending(situasjonHistorikk)) {
         return null;
     } else if (hasError(registrering) || hasError(situasjonHistorikk)) {
@@ -32,7 +31,7 @@ const SituasjonPanel = () => {
 
     let {gjeldende} = situasjonVisningHistorikk;
 
-    const tittel = `Brukers situasjon ${gjeldende.situasjon} (sist endret ${gjeldende.dato})`
+    const tittel = `Brukers situasjon ${gjeldende.situasjon} (sist endret ${formaterDato(gjeldende.dato.toISOString())})`
 
     return (
         <Panel name="situasjon" tittel={tittel}>
@@ -42,7 +41,7 @@ const SituasjonPanel = () => {
 }
 
 export interface SituasjonVisning {
-    dato: string;
+    dato: Date;
     situasjon: string;
 }
 
@@ -56,14 +55,15 @@ export function tilSituasjonVisningHistorikk(situasjoner: Situasjon[], registrer
     if (!regBesvarelse) return null; // TODO logg feil/metrikk?
 
     const regSituasjon: SituasjonVisning[] =
-        [{dato: formaterDato(registrering.opprettetDato),
+        [{dato: new Date(registrering.opprettetDato),
             situasjon: regBesvarelse.svar}];
 
     const historikk = situasjoner.map(sit => {
-        return {dato: formaterDato(sit.opprettet), situasjon: sit.svarTekst};
-    }).concat(regSituasjon);
+        return {dato: new Date(sit.opprettet), situasjon: sit.svarTekst};
+    })
+        .concat(regSituasjon)
+        .sort((a,b) => a.dato < b.dato ? 0 : -1);
 
-    // TODO: sorter først
     const [gjeldende] = historikk.splice(0, 1);
 
     if (historikk.length === 0) return null;
