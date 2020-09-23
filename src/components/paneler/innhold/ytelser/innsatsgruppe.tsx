@@ -1,19 +1,24 @@
 import React from 'react';
-import { isNullOrUndefined } from '../../../../utils';
-import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { StringOrNothing } from '../../../../utils/felles-typer';
+import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
+import { OppfolgingsstatusData } from '../../../../rest/datatyper/oppfolgingsstatus';
+import { servicegruppeKodeTilBeskrivelse } from '../../../../utils/arena-status-utils';
+import EMDASH from '../../../../utils/emdash';
+import { OrNothing } from '../../../../utils/felles-typer';
 
-function Innsatsgruppe(props: { oppfolgingskontrakter: StringOrNothing }) {
-	if (isNullOrUndefined(props.oppfolgingskontrakter)) {
-		return null;
-	}
-	const { oppfolgingskontrakter } = props;
+function Innsatsgruppe(props: { oppfolgingsstatus: OrNothing<OppfolgingsstatusData> }) {
 
-	return (
-		<Informasjonsbolk header="Innsatsgruppe" {...props}>
-			{oppfolgingskontrakter}
-		</Informasjonsbolk>
-	);
+	return (<InformasjonsbolkEnkel
+		header="Innsatsgruppe"
+		value={getInnsatsgruppeVisningstekst(props.oppfolgingsstatus)}
+		defaultValue={EMDASH}
+	/>);
 }
+
+export const getInnsatsgruppeVisningstekst = (oppfolgingsstatus: OrNothing<OppfolgingsstatusData>) => {
+	if (oppfolgingsstatus && oppfolgingsstatus.servicegruppe) {
+		return servicegruppeKodeTilBeskrivelse(oppfolgingsstatus.servicegruppe);
+	}
+	return null;
+};
 
 export default Innsatsgruppe;

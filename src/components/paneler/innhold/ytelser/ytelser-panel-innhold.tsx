@@ -3,20 +3,12 @@ import { useAppStore } from '../../../../stores/app-store';
 import Grid from '../../../felles/grid';
 import Innsatsgruppe from './innsatsgruppe';
 import Vedtaksliste from './vedtaksliste';
-import { OppfolgingskontrakterType, VedtakType } from '../../../../rest/datatyper/ytelse';
-import { OPPFOLGINGSKONTRAKTER_STATUSER, VEDTAKSSTATUSER } from '../../../../utils/konstanter';
-import EMDASH from '../../../../utils/emdash';
-import { useFetchYtelser } from '../../../../rest/api';
+import { VedtakType } from '../../../../rest/datatyper/ytelse';
+import { VEDTAKSSTATUSER } from '../../../../utils/konstanter';
+import { useFetchOppfolgingsstatus, useFetchYtelser } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-
-export const getInnsatsgruppeVisningstekst = (innstatsgruppeListe: OppfolgingskontrakterType[]) => {
-	const aktiveOppfolgingskontrakter =
-		innstatsgruppeListe &&
-		innstatsgruppeListe.filter(kontrakt => kontrakt.status === OPPFOLGINGSKONTRAKTER_STATUSER.aktiv);
-	return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : EMDASH;
-};
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 	return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
@@ -25,23 +17,23 @@ const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 const YtelserPanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const ytelser = useFetchYtelser(fnr);
+	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 
-	if (isPending(ytelser)) {
+	if (isPending(ytelser) || isPending(oppfolgingsstatus)) {
 		return <Laster />;
-	} else if (hasError(ytelser)) {
+	} else if (hasError(ytelser) || hasError(oppfolgingsstatus)) {
 		return <Feilmelding />;
 	} else if (!hasData(ytelser)) {
 		return <NoData />;
 	}
 
-	const { oppfolgingskontrakter, vedtaksliste } = ytelser.data;
+	const { vedtaksliste } = ytelser.data;
 	const aktivVedtak = getVedtakForVisning(vedtaksliste);
-	const aktivInnsatsgruppe = getInnsatsgruppeVisningstekst(oppfolgingskontrakter);
 
 	return (
 		<Grid columns={1} gap="0.5rem">
-			<Innsatsgruppe oppfolgingskontrakter={aktivInnsatsgruppe} />
-			<Vedtaksliste vedtaksliste={aktivVedtak} />
+			<Innsatsgruppe oppfolgingsstatus={oppfolgingsstatus.data}/>
+			<Vedtaksliste vedtaksliste={aktivVedtak}/>
 		</Grid>
 	);
 };

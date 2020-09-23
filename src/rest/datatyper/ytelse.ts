@@ -1,10 +1,5 @@
 import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
 
-export interface OppfolgingskontrakterType {
-	innsatsgrupper: StringOrNothing[];
-	status: string;
-}
-
 export interface DatoType {
 	year: string;
 	month: string;
@@ -19,11 +14,6 @@ export interface VedtakType {
 	tildato?: OrNothing<DatoType>;
 }
 
-export interface YtelseType {
-	rettighetsperiode: StringOrNothing;
-}
-
 export interface YtelseData {
-	oppfolgingskontrakter: OppfolgingskontrakterType[];
 	vedtaksliste: VedtakType[];
 }
