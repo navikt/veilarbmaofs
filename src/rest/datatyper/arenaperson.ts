@@ -40,6 +40,9 @@ interface Sertifikat {
 	utloperDato: YearMonth;
 }
 
+type AnnenGodkjenning = Sertifikat;
+type Godkjenning = Sertifikat;
+
 export enum SprakNiva {
 	IKKE_OPPGITT = 'IKKE_OPPGITT',
 	NYBEGYNNER = 'NYBEGYNNER',
@@ -132,6 +135,8 @@ export interface ArenaPerson {
 	forerkort: Forerkort[];
 	kurs: Kurs[];
 	sertifikater: Sertifikat[];
+	godkjenninger: Godkjenning[];
+	andreGodkjenninger: AnnenGodkjenning[];
 	sprak: Sprak[];
 	jobbprofil: Jobbprofil;
 	fagdokumentasjoner?: Fagdokumentasjon[];
