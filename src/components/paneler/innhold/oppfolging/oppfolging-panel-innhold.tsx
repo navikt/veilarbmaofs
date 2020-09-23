@@ -7,7 +7,7 @@ import { StringOrNothing } from '../../../../utils/felles-typer';
 import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
 import { VeilederData } from '../../../../rest/datatyper/veileder';
 import { useAppStore } from '../../../../stores/app-store';
-import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder, useFetchYtelser } from '../../../../rest/api';
+import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
 import { isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
@@ -55,7 +55,6 @@ const OppfolgingPanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 	const personalia = useFetchPersonalia(fnr);
-	const ytelser = useFetchYtelser(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
 
@@ -67,7 +66,7 @@ const OppfolgingPanelInnhold = () => {
 		// eslint-disable-next-line
 	}, [oppfolgingsstatus.status]);
 
-	if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(ytelser)) {
+	if (isPending(oppfolgingsstatus) || isPending(personalia)) {
 		return <Laster />;
 	}
 
