@@ -17,7 +17,7 @@ const mock = FetchMock.configure({
 	middleware: MiddlewareUtils.combine(MiddlewareUtils.delayMiddleware(500), MiddlewareUtils.loggingMiddleware())
 });
 
-mock.get('/pam-cv-api/rest/v1/arbeidssoker/:fnr', cvMock);
+mock.get('/veilarbperson/api/person/cv_jobbprofil', cvMock);
 mock.get('/veilarbveileder/api/veileder/:veilederId', veilederMock);
 mock.get('/veilarbperson/api/person/aktorid', aktorIdMock);
 mock.get('/veilarbperson/api/person/:fnr', personaliaMock);

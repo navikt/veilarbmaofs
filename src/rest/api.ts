@@ -13,7 +13,7 @@ import { OrNothing } from '../utils/felles-typer';
 export const useFetchRegistrering = (fnr: string) =>
 	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
 
-export const useFetchCvOgJobbprofil = (fnr: string) => useFetch<ArenaPerson>(`/pam-cv-api/rest/v1/arbeidssoker/${fnr}`);
+export const useFetchCvOgJobbprofil = (fnr: string) => useFetch<ArenaPerson>(`/veilarbperson/api/person/cv_jobbprofil?fnr=${fnr}`);
 
 export const useFetchVeileder = (veilederId: OrNothing<string>, config?: Config) =>
 	useFetch<VeilederData>(`/veilarbveileder/api/veileder/${veilederId}`, {}, config);
