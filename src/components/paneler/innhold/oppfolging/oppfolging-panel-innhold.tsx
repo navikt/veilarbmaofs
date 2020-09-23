@@ -5,13 +5,13 @@ import Grid from '../../../felles/grid';
 import { HovedmaalkodeMap, OppfolgingsstatusData } from '../../../../rest/datatyper/oppfolgingsstatus';
 import { StringOrNothing } from '../../../../utils/felles-typer';
 import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
-import { YtelseData } from '../../../../rest/datatyper/ytelse';
 import { VeilederData } from '../../../../rest/datatyper/veileder';
 import { useAppStore } from '../../../../stores/app-store';
 import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder, useFetchYtelser } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
 import { isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import Innsatsgruppe from '../ytelser/innsatsgruppe';
 
 function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
 	if (!oppfolgingsstatus || !oppfolgingsstatus.oppfolgingsenhet) {
@@ -43,16 +43,6 @@ function hentVeilederTekst(veileder: VeilederData | null): StringOrNothing {
 	return `${veileder.ident} ${veileder.navn}`;
 }
 
-function hentInnsatsgruppeTekst(ytelser: YtelseData | null): StringOrNothing {
-	if (!ytelser) {
-		return null;
-	}
-
-	const aktiveOppfolgingskontrakter = ytelser.oppfolgingskontrakter.filter(kontrakt => kontrakt.status === 'Aktiv');
-
-	return aktiveOppfolgingskontrakter.length > 0 ? aktiveOppfolgingskontrakter[0].innsatsgrupper[0] : null;
-}
-
 function hentHovedmaalkodeTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
 	if (!oppfolgingsstatus || !oppfolgingsstatus.hovedmaalkode) {
 		return null;
@@ -81,18 +71,13 @@ const OppfolgingPanelInnhold = () => {
 		return <Laster />;
 	}
 
-	const ytelserData = hasData(ytelser) ? ytelser.data : null;
 	const veilederData = hasData(veileder) ? veileder.data : null;
 	const personaliaData = hasData(personalia) ? personalia.data : null;
 	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
 	return (
 		<Grid columns={4} gap="0.5rem">
-			<InformasjonsbolkEnkel
-				header="Innsatsgruppe"
-				value={hentInnsatsgruppeTekst(ytelserData)}
-				defaultValue={EMDASH}
-			/>
+			<Innsatsgruppe oppfolgingsstatus={oppfolgingsstatusData}/>
 			<InformasjonsbolkEnkel header="Veileder" value={hentVeilederTekst(veilederData)} defaultValue={EMDASH} />
 			<InformasjonsbolkEnkel
 				header="Geografisk enhet"
