@@ -104,26 +104,6 @@ const CV: ArenaPerson & JSONValue = {
 			fraDato: '2010-08'
 		}
 	],
-	sertifikater: [
-		{
-			tittel: 'Sikkerhetskurs: Diverse spesialkurs',
-			utsteder: null,
-			gjennomfortDato: '2018-05',
-			utloperDato: '2118-12'
-		},
-		{
-			tittel: 'Maskinoffisersertifikat: Klasse 1',
-			utsteder: null,
-			gjennomfortDato: '2014-12',
-			utloperDato: '2118-12'
-		},
-		{
-			tittel: 'Kjelpassersertifikat: Rødt sertifikat',
-			utsteder: null,
-			gjennomfortDato: '1974-07',
-			utloperDato: '2118-12'
-		}
-	],
 	godkjenninger: [
 		{
 			tittel: 'Autorisasjon som lege',
