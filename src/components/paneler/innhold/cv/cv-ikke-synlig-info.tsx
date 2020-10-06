@@ -25,7 +25,7 @@ export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
 			{props.harJobbprofil ? harJobbprofileTekst : harIkkeJobbprofileTekst}
 			<br />
 			Les mer om{' '}
-			<a href="https://navno.sharepoint.com/sites/fag-og-ytelser-arbeid-markedsarbeid/SitePages/Vi-varsle-brukere-som-ikke-har-synlig-CV.aspx">
+			<a href="https://navno.sharepoint.com/sites/fag-og-ytelser-arbeid-markedsarbeid/SitePages/Oversikt-over-veileders-tilgang-p%C3%A5-CV-og-jobbprofil.aspx">
 				synlig CV
 			</a>
 			.
