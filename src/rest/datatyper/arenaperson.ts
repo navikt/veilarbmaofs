@@ -33,12 +33,14 @@ interface Forerkort {
 	utloperDato: YearMonthDay;
 }
 
-interface Sertifikat {
+interface Godkjenning {
 	tittel: StringOrNothing;
 	utsteder: StringOrNothing;
 	gjennomfortDato: YearMonth;
 	utloperDato: YearMonth;
 }
+
+type AnnenGodkjenning = Godkjenning;
 
 export enum SprakNiva {
 	IKKE_OPPGITT = 'IKKE_OPPGITT',
@@ -131,7 +133,8 @@ export interface ArenaPerson {
 	annenErfaring: AnnenErfaring[];
 	forerkort: Forerkort[];
 	kurs: Kurs[];
-	sertifikater: Sertifikat[];
+	godkjenninger: Godkjenning[];
+	andreGodkjenninger: AnnenGodkjenning[];
 	sprak: Sprak[];
 	jobbprofil: Jobbprofil;
 	fagdokumentasjoner?: Fagdokumentasjon[];
