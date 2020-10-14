@@ -11,7 +11,8 @@ import Arbeidserfaring from './arbeidserfaring';
 import AnnenErfaring from './annen-erfaring';
 import Utdanning from './utdanning';
 import Kurs from './kurs';
-import Sertifikater from './sertifikater';
+import Godkjenninger from "./godkjenninger";
+import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
@@ -79,7 +80,8 @@ const CvPanelInnhold = () => {
 		arbeidserfaring,
 		annenErfaring,
 		utdanning,
-		sertifikater,
+		godkjenninger,
+		andreGodkjenninger,
 		forerkort,
 		sprak,
 		kurs,
@@ -104,10 +106,11 @@ const CvPanelInnhold = () => {
 				<AnnenErfaring annenErfaring={annenErfaring} />
 				<Utdanning utdanning={utdanning} />
 				<Kurs kurs={kurs} />
-				<Sertifikater sertifikater={sertifikater} />
+				<Godkjenninger godkjenninger={godkjenninger} />
+				<AndreGodkjenninger andreGodkjenninger={andreGodkjenninger} />
 				<Forerkort forerkort={forerkort} />
-				<Sprak sprak={sprak} />
 				<Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
+				<Sprak sprak={sprak} />
 			</FloatGrid>
 		</>
 	);
