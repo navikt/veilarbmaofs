@@ -92,7 +92,7 @@ const JobbprofilPanelInnhold = () => {
 				<InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />
 				<InformasjonsbolkListe header="Yrke" list={yrker} />
 				<InformasjonsbolkListe header="Heltid/Deltid" list={heltidDeltidList} />
-				<InformasjonsbolkListe header="Arbeidstidordning" list={arbeidstid} />
+				<InformasjonsbolkListe header="Arbeidstidsordning" list={arbeidstid} />
 				<InformasjonsbolkListe header="Ansettelsesform" list={ansettelsesform} />
 				<InformasjonsbolkListe header="Kompetanse" list={kompetanser} />
 			</Grid>
