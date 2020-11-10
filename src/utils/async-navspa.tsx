@@ -59,7 +59,6 @@ export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PR
 
 	constructor(props: AsyncNAVSPAProps<PROPS>) {
 		super(props);
-		this.AsyncApp = NAVSPA.importer(props.applicationName);
 
 		if (!loadjs.isDefined(props.applicationName)) {
 			this.state = { loadState: AssetLoadState.LOADING_ASSETS };
@@ -73,10 +72,14 @@ export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PR
 				.catch(() => this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS }));
 
 			loadjs.ready(props.applicationName, {
-				success: () => this.setState({ loadState: AssetLoadState.ASSETS_LOADED }),
+				success: () => {
+					this.AsyncApp = NAVSPA.importer(this.props.applicationName);
+					this.setState({ loadState: AssetLoadState.ASSETS_LOADED });
+				},
 				error: () => this.setState({ loadState: AssetLoadState.FAILED_TO_LOAD_ASSETS })
 			});
 		} else {
+			this.AsyncApp = NAVSPA.importer(this.props.applicationName);
 			this.state = { loadState: AssetLoadState.ASSETS_LOADED };
 		}
 	}
@@ -84,7 +87,7 @@ export class AsyncNAVSPA<PROPS = {}> extends React.Component<AsyncNAVSPAProps<PR
 	render() {
 		if (this.state.loadState === AssetLoadState.LOADING_ASSETS) {
 			return <Laster midtstilt={true} />;
-		} else if (this.state.loadState === AssetLoadState.FAILED_TO_LOAD_ASSETS) {
+		} else if (this.state.loadState === AssetLoadState.FAILED_TO_LOAD_ASSETS || !this.AsyncApp) {
 			return (
 				<AlertStripeFeil>
 					{'Klarte ikke å laste inn ' + this.props.applicationName}
