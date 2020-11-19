@@ -27,4 +27,6 @@ spec:
       memory: 1Gi
   ingresses:
     - https://veilarbmaofs-q1.nais.preprod.local
+    - https://app.dev.adeo.no/veilarbmaofs
+    - https://app-q1.dev.adeo.no/veilarbmaofs
     - https://app-q1.adeo.no/veilarbmaofs
