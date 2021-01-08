@@ -7,6 +7,7 @@ import JobbsokerkompetansePanel from './innhold/jobbsokerkompetanse/jobbsokerkom
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
+import PersonaliaV2PanelInnhold from './innhold/personalia/personaliav2-panel-innhold';
 import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
@@ -45,6 +46,10 @@ export const Paneler = () => {
 
 			<Panel name="personalia" tittel="Personalia">
 				<PersonaliaPanelInnhold />
+			</Panel>
+
+			<Panel name="personaliFraPdl" tittel="PersonaliaV2">
+				<PersonaliaV2PanelInnhold />
 			</Panel>
 
 			<Panel name="ytelser" tittel="Ytelser">

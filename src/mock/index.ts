@@ -9,7 +9,8 @@ import {
 	personaliaMock,
 	registeringMock,
 	veilederMock,
-	ytelsestatusMock
+	ytelsestatusMock,
+	personaliav2Mock,
 } from './data';
 
 const mock = FetchMock.configure({
@@ -21,6 +22,7 @@ mock.get('/veilarbperson/api/person/cv_jobbprofil', cvMock);
 mock.get('/veilarbveileder/api/veileder/:veilederId', veilederMock);
 mock.get('/veilarbperson/api/person/aktorid', aktorIdMock);
 mock.get('/veilarbperson/api/person/:fnr', personaliaMock);
+mock.get('/veilarbperson/api/v2/person/:fnr', personaliav2Mock);
 mock.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', oppfolgingsstatusMock);
 mock.get('/veilarbjobbsokerkompetanse/api/hent', jobbsokerkompetanseMock);
 mock.get('/veilarboppfolging/api/person/:fnr/ytelser', ytelsestatusMock);

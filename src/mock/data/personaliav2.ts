@@ -1,7 +1,7 @@
 import { JSONValue } from 'yet-another-fetch-mock/dist/types/types';
-import { PersonaliaInfo } from '../../rest/datatyper/personalia';
+import { PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
 
-const personalia: PersonaliaInfo & JSONValue = {
+const personalia: PersonaliaV2Info & JSONValue = {
 	fornavn: 'BRUCE',
 	mellomnavn: 'BATTY',
 	etternavn: 'WAYNE',
@@ -45,7 +45,7 @@ const personalia: PersonaliaInfo & JSONValue = {
 		}
 	],
 	diskresjonskode: '6',
-	kontonummer: '12345678910',
+	kontonummer: '12345678911',
 	geografiskTilknytning: '0106',
 	geografiskEnhet: {
 		enhetsnummer: '0106',
@@ -59,33 +59,35 @@ const personalia: PersonaliaInfo & JSONValue = {
 		sivilstand: 'Gift',
 		fraDato: '2016-08-04'
 	},
-	partner: null,
+	partner: {
+		fornavn: 'PHILIPS',
+		mellomnavn: null,
+		etternavn: 'WAYNE',
+		sammensattNavn: 'PHILIPS WAYNE',
+		fodselsnummer: '12108000391',
+		fodselsdato: '1980-12-10',
+		dodsdato: null,
+		harSammeBosted: true,
+		kjonn: 'M'
+	},
 	bostedsadresse: {
-		strukturertAdresse: {
-			Gateadresse: {
-				landkode: 'NORGE',
-				tilleggsadresse: null,
-				postnummer: '1621',
-				poststed: 'GRESSVIK',
-				husnummer: 2228,
-				husbokstav: null,
-				kommunenummer: '0106',
-				gatenavn: 'GATEVEIEN',
-				bolignummer: null,
-				gatenummer: null
-			}
+		vegadresse: {
+			postnummer: '1621',
+			poststed: 'GRESSVIK',
+			husnummer: 2228,
+			husbokstav: null,
+			kommunenummer: '0106',
+			adressenavn: 'GATEVEIEN',
+			tilleggsnavn: null
 		}
 	},
 	midlertidigAdresseNorge: null,
 	midlertidigAdresseUtland: null,
 	postAdresse: {
-		ustrukturertAdresse: {
-			adresselinje1: 'C/O EGEN TEST',
-			adresselinje2: 'SOLVEIEN',
-			adresselinje3: null,
-			adresselinje4: '7318 AGDENES',
-			landkode: 'NORGE'
-		}
+		adresselinje1: 'C/O EGEN TEST',
+		adresselinje2: 'SOLVEIEN',
+		adresselinje3: null,
+		postnummer: '7318'
 	},
 	egenAnsatt: true,
 	kjonn: 'K'

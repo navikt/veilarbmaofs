@@ -9,6 +9,9 @@ import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 import { OrNothing } from '../utils/felles-typer';
+import { PersonaliaV2Info } from './datatyper/personaliav2';
+import { TOGGLES } from './datatyper/feature';
+import { FetchInfo } from './utils';
 
 export const useFetchRegistrering = (fnr: string) =>
 	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
@@ -32,3 +35,10 @@ export const useFetchUnderOppfolging = (fnr: string) =>
 	useFetch<UnderOppfolgingData>(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`);
 
 export const useFetchPersonalia = (fnr: string) => useFetch<PersonaliaInfo>(`/veilarbperson/api/person/${fnr}`);
+
+export const useFetchPersonaliaFraPdl = (fnr: string) => useFetch<PersonaliaV2Info>(`/veilarbperson/api/v2/person/${fnr}`);
+
+export const useFetchFeatureToggle = (): FetchInfo => {
+	const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
+	return { url: `veilarbpersonflatefs/api/feature}/?${toggles}` };
+}
