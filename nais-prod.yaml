@@ -6,25 +6,26 @@ metadata:
   labels:
     team: pto
 spec:
-  image: docker.pkg.github.com/navikt/veilarbmaofs/veilarbmaofs:{{version}}
-  port: 80
-  liveness:
-    path: /isAlive
-    initialDelay: 15
-  readiness:
-    path: /isReady
-    initialDelay: 15
-  replicas:
-    min: 2
-    max: 4
-    cpuThresholdPercentage: 75
-  resources:
-    requests:
-      cpu: 500m
-      memory: 500Mi
-    limits:
-      cpu: "1"
-      memory: 1Gi
+  image: docker.pkg.github.com/navikt/pto-frontend/pto-frontend:43fdd666f3a803f284da73b51e248c91b2760a3d
+  port: 8080
   ingresses:
-    - https://veilarbmaofs.nais.adeo.no
-    - https://app.adeo.no/veilarbmaofs
+    - https://veilarbmaofs.intern.nav.no
+  liveness:
+    path: /internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /internal/isReady
+    initialDelay: 10
+  replicas:
+    min: 1
+    max: 2
+    cpuThresholdPercentage: 75
+  gcp:
+    buckets:
+      - name: veilarbmaofs-prod
+        cascadingDelete: false
+  env:
+    - name: GCS_BUCKET_NAME
+      value: veilarbmaofs-prod
+    - name: CORS_DOMAIN
+      value: "*"
