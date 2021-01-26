@@ -24,7 +24,7 @@ const Panel = (props: PanelProps) => {
      Hvis problemet vedvarer så ta kontakt med brukerstøtte.`;
 
 	return (
-		<Ekspanderbartpanel tittel={tittel} apen={isOpen} onClick={onClick} tittelProps="undertittel">
+		<Ekspanderbartpanel tittel={tittel} apen={isOpen} onClick={onClick}>
 			<ErrorBoundary message={errorMessage}>{children}</ErrorBoundary>
 		</Ekspanderbartpanel>
 	);
