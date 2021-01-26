@@ -86,9 +86,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup node
-          uses: actions/setup-node@v1
-          with:
-            node-version: '14.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
       - name: Install dependencies
         run: npm ci
       - name: Run tests
