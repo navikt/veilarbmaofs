@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
-import { logEvent } from '../../utils/frontend-logger';
 import ErrorBoundary from '../felles/error-boundry';
+import { logger } from '../../utils/logger';
 
 interface PanelProps {
 	name: string;
@@ -16,7 +16,7 @@ const Panel = (props: PanelProps) => {
 
 	function onClick() {
 		const eventType = !isOpen ? 'open' : 'close';
-		logEvent('maofs.lamell-click.v2', {}, { lamell: name, type: eventType });
+		logger.event('maofs.lamell-click.v2', {}, { lamell: name, type: eventType });
 		setIsOpen(!isOpen);
 	}
 
