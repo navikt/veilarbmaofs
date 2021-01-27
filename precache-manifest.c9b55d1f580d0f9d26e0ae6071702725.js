@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bde6303cd13730953d1836a375438bb0",
+    "revision": "d2b7798f2f06693fd6ec0ae23f7be271",
     "url": "/veilarbmaofs/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/veilarbmaofs/static/css/2.a061a9c6.chunk.css"
   },
   {
-    "revision": "dc8efd0fc3bd70692a6f",
-    "url": "/veilarbmaofs/static/css/main.042d3e1b.chunk.css"
+    "revision": "ca2787bad865ae4c92c5",
+    "url": "/veilarbmaofs/static/css/main.c4f9b7a2.chunk.css"
   },
   {
     "revision": "458ef8134fbe59fc2c9e",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dc8efd0fc3bd70692a6f",
+    "revision": "ca2787bad865ae4c92c5",
     "url": "/veilarbmaofs/static/js/main.08945880.chunk.js"
   },
   {

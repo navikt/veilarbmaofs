@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.042d3e1b.chunk.css",
+    "main.css": "/veilarbmaofs/static/css/main.c4f9b7a2.chunk.css",
     "main.js": "/veilarbmaofs/static/js/main.08945880.chunk.js",
     "main.js.map": "/veilarbmaofs/static/js/main.08945880.chunk.js.map",
     "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.23b2144b.js",
@@ -9,10 +9,10 @@
     "static/js/2.fd612ed6.chunk.js": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js",
     "static/js/2.fd612ed6.chunk.js.map": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js.map",
     "index.html": "/veilarbmaofs/index.html",
-    "precache-manifest.61b8eadffc75a3d2903bf342ba18e338.js": "/veilarbmaofs/precache-manifest.61b8eadffc75a3d2903bf342ba18e338.js",
+    "precache-manifest.c9b55d1f580d0f9d26e0ae6071702725.js": "/veilarbmaofs/precache-manifest.c9b55d1f580d0f9d26e0ae6071702725.js",
     "service-worker.js": "/veilarbmaofs/service-worker.js",
     "static/css/2.a061a9c6.chunk.css.map": "/veilarbmaofs/static/css/2.a061a9c6.chunk.css.map",
-    "static/css/main.042d3e1b.chunk.css.map": "/veilarbmaofs/static/css/main.042d3e1b.chunk.css.map",
+    "static/css/main.c4f9b7a2.chunk.css.map": "/veilarbmaofs/static/css/main.c4f9b7a2.chunk.css.map",
     "static/js/2.fd612ed6.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js.LICENSE.txt",
     "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.a0d6689d.svg",
     "static/media/printer.f2de876d.svg": "/veilarbmaofs/static/media/printer.f2de876d.svg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.23b2144b.js",
     "static/css/2.a061a9c6.chunk.css",
     "static/js/2.fd612ed6.chunk.js",
-    "static/css/main.042d3e1b.chunk.css",
+    "static/css/main.c4f9b7a2.chunk.css",
     "static/js/main.08945880.chunk.js"
   ]
 }
