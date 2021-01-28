@@ -20,7 +20,7 @@ const YtelserPanelInnhold = () => {
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 
 	if (isPending(ytelser) || isPending(oppfolgingsstatus)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	} else if (hasError(ytelser) || hasError(oppfolgingsstatus)) {
 		return <Feilmelding />;
 	} else if (!hasData(ytelser)) {

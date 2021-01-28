@@ -16,7 +16,7 @@ const JobbsokerkompetansePanelInnhold = () => {
 	const jobbsokerkompetanse = useFetchJobbsokerkompetanse(fnr);
 
 	if (isPending(jobbsokerkompetanse)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	} else if (hasError(jobbsokerkompetanse)) {
 		return <Feilmelding />;
 	} else if (!hasData(jobbsokerkompetanse)) {
