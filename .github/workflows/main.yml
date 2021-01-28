@@ -63,7 +63,7 @@ jobs:
         env:
           PUBLIC_URL: https://veilarbmaofs.dev.intern.nav.no
       - name: Setup gcloud
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@master
         with:
           service_account_key: ${{ secrets.GCS_SA_KEY_DEV }}
           export_default_credentials: true
@@ -98,7 +98,7 @@ jobs:
         env:
           PUBLIC_URL: https://veilarbmaofs.intern.nav.no
       - name: Setup gcloud
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@master
         with:
           service_account_key: ${{ secrets.GCS_SA_KEY_PROD }}
           export_default_credentials: true
