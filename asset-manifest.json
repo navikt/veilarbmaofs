@@ -1,27 +1,25 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.c4f9b7a2.chunk.css",
-    "main.js": "/veilarbmaofs/static/js/main.08945880.chunk.js",
-    "main.js.map": "/veilarbmaofs/static/js/main.08945880.chunk.js.map",
-    "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.23b2144b.js",
-    "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.23b2144b.js.map",
-    "static/css/2.a061a9c6.chunk.css": "/veilarbmaofs/static/css/2.a061a9c6.chunk.css",
-    "static/js/2.fd612ed6.chunk.js": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js",
-    "static/js/2.fd612ed6.chunk.js.map": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js.map",
+    "main.css": "/veilarbmaofs/static/css/main.1787ac49.chunk.css",
+    "main.js": "/veilarbmaofs/static/js/main.a1509ba2.chunk.js",
+    "main.js.map": "/veilarbmaofs/static/js/main.a1509ba2.chunk.js.map",
+    "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js",
+    "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js.map",
+    "static/css/2.2b0627b4.chunk.css": "/veilarbmaofs/static/css/2.2b0627b4.chunk.css",
+    "static/js/2.01c9289e.chunk.js": "/veilarbmaofs/static/js/2.01c9289e.chunk.js",
+    "static/js/2.01c9289e.chunk.js.map": "/veilarbmaofs/static/js/2.01c9289e.chunk.js.map",
     "index.html": "/veilarbmaofs/index.html",
-    "precache-manifest.c9b55d1f580d0f9d26e0ae6071702725.js": "/veilarbmaofs/precache-manifest.c9b55d1f580d0f9d26e0ae6071702725.js",
-    "service-worker.js": "/veilarbmaofs/service-worker.js",
-    "static/css/2.a061a9c6.chunk.css.map": "/veilarbmaofs/static/css/2.a061a9c6.chunk.css.map",
-    "static/css/main.c4f9b7a2.chunk.css.map": "/veilarbmaofs/static/css/main.c4f9b7a2.chunk.css.map",
-    "static/js/2.fd612ed6.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.fd612ed6.chunk.js.LICENSE.txt",
-    "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.a0d6689d.svg",
-    "static/media/printer.f2de876d.svg": "/veilarbmaofs/static/media/printer.f2de876d.svg"
+    "static/css/2.2b0627b4.chunk.css.map": "/veilarbmaofs/static/css/2.2b0627b4.chunk.css.map",
+    "static/css/main.1787ac49.chunk.css.map": "/veilarbmaofs/static/css/main.1787ac49.chunk.css.map",
+    "static/js/2.01c9289e.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.01c9289e.chunk.js.LICENSE.txt",
+    "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.13d90eee.svg",
+    "static/media/printer.0e81ac40.svg": "/veilarbmaofs/static/media/printer.0e81ac40.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.23b2144b.js",
-    "static/css/2.a061a9c6.chunk.css",
-    "static/js/2.fd612ed6.chunk.js",
-    "static/css/main.c4f9b7a2.chunk.css",
-    "static/js/main.08945880.chunk.js"
+    "static/js/runtime-main.9da9bbd8.js",
+    "static/css/2.2b0627b4.chunk.css",
+    "static/js/2.01c9289e.chunk.js",
+    "static/css/main.1787ac49.chunk.css",
+    "static/js/main.a1509ba2.chunk.js"
   ]
 }
