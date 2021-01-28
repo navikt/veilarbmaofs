@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navspa, AsyncNavspa } from '@navikt/navspa';
@@ -8,10 +9,6 @@ import { fnr, enhet } from './mock/app';
 import { tilretteleggingsbehovSpaConfig } from './components/tilretteleggingsbehov-spa';
 
 ModalWrapper.setAppElement(document.getElementById('modal-a11y-wrapper'));
-
-if (!(global as any)._babelPolyfill) {
-	require('babel-polyfill');
-}
 
 if (env.isMocked) {
 	require('./mock');
