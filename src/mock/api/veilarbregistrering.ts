@@ -1,7 +1,8 @@
-import { JSONValue } from 'yet-another-fetch-mock';
+import { rest } from 'msw';
+import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
 
-export const ordinaerRegistering: RegistreringsData & JSONValue = {
+const ordinaerRegistering: RegistreringsData = {
 	type: 'ORDINAER',
 	registrering: {
 		opprettetDato: '2018-08-30T09:17:28.386804+02:00',
@@ -65,7 +66,9 @@ export const ordinaerRegistering: RegistreringsData & JSONValue = {
 	}
 };
 
-export const sykmeldtRegistering: RegistreringsData & JSONValue = {
+// Kan brukes for å teste sykmeldt registrering istedenfor ordinær registrering
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const sykmeldtRegistering: RegistreringsData = {
 	registrering: {
 		opprettetDato: '2018-08-30T09:17:28.386804+02:00',
 		besvarelse: {
@@ -104,3 +107,9 @@ export const sykmeldtRegistering: RegistreringsData & JSONValue = {
 		]
 	}
 };
+
+export const veilarbregistreringHandlers: RequestHandlersList = [
+	rest.get('/veilarbregistrering/api/registrering', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
+	})
+];

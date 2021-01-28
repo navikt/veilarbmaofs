@@ -1,7 +1,8 @@
-import { JSONValue } from 'yet-another-fetch-mock';
+import { rest } from 'msw';
+import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { KartleggingData } from '../../rest/datatyper/kartlegging';
 
-const jobbsokerkompetanse: KartleggingData & JSONValue = {
+const jobbsokerkompetanse: KartleggingData = {
 	underOppfolging: false,
 	oppsummering: null,
 	oppsummeringKey: null,
@@ -267,4 +268,8 @@ const jobbsokerkompetanse: KartleggingData & JSONValue = {
 	]
 };
 
-export default jobbsokerkompetanse;
+export const veilarbjobbsokerkompetanseHandlers: RequestHandlersList = [
+	rest.get('/veilarbjobbsokerkompetanse/api/hent', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(jobbsokerkompetanse));
+	})
+];

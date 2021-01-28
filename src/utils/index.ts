@@ -118,9 +118,12 @@ export function formaterVarighet(varighet: Kursvarighet): string {
 }
 
 export function useEventListener(name: string, listener: () => void) {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const callback = useCallback(listener, []);
+
 	useEffect(() => {
 		window.addEventListener(name, callback);
 		return () => window.removeEventListener(name, callback);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [callback, name]);
 }
