@@ -17,8 +17,8 @@ spec:
     path: /internal/isReady
     initialDelay: 10
   replicas:
-    min: 1
-    max: 2
+    min: 2
+    max: 4
     cpuThresholdPercentage: 75
   resources:
     limits:
