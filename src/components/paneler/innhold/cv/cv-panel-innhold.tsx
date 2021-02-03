@@ -11,7 +11,7 @@ import Arbeidserfaring from './arbeidserfaring';
 import AnnenErfaring from './annen-erfaring';
 import Utdanning from './utdanning';
 import Kurs from './kurs';
-import Godkjenninger from "./godkjenninger";
+import Godkjenninger from './godkjenninger';
 import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';

@@ -1,11 +1,11 @@
-import { GrunnPersonalia } from '../rest/datatyper/personalia';
+import {StringOrNothing} from "./felles-typer";
 
 export function kalkulerAlder(fodselsdato: Date): number {
 	const diff = Date.now() - fodselsdato.getTime();
 	return new Date(diff).getUTCFullYear() - 1970;
 }
 
-export function finnAldersTekst(personalia: GrunnPersonalia): string {
+export function finnAldersTekst(personalia: { dodsdato: StringOrNothing, fodselsdato: string }): string {
 	if (personalia.dodsdato) {
 		return '(DØD)';
 	}
