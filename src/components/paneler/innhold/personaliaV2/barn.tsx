@@ -1,6 +1,5 @@
 import React from 'react';
-import { finnAldersTekstV2 } from '../../../../utils/date-utils';
-import { isNullOrUndefined } from '../../../../utils';
+import {finnAldersTekst} from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';
@@ -19,7 +18,7 @@ function BorSammen(props: { barn: PersonaliaBarn }) {
 
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {
 	const { forkortetNavn, fodselsnummer, kjonn } = props.barn;
-	const alder = finnAldersTekstV2(props.barn);
+	const alder = finnAldersTekst(props.barn);
 	const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
 	return (

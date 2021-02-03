@@ -23,7 +23,7 @@ export const Paneler = () => {
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
-	const features = useFetchFeatureToggle(PERSONALIA_DATA_FRA_PDL);
+	const features = useFetchFeatureToggle();
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'

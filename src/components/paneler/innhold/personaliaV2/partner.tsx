@@ -1,7 +1,7 @@
 import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaPartner } from '../../../../rest/datatyper/personaliav2';
-import { finnAldersTekstV2 } from '../../../../utils/date-utils';
+import { finnAldersTekst } from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
@@ -18,7 +18,7 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	}
 	const { harSammeBosted, forkortetNavn , fodselsnummer } = partner!;
 	const borSammen = harSammeBosted ? 'Bor med partner' : 'Bor ikke med partner';
-	const alder = finnAldersTekstV2(partner!);
+	const alder = finnAldersTekst(partner!);
 
 	return (
 		<Informasjonsbolk header="Partner" {...rest}>

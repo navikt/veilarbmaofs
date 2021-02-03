@@ -7,7 +7,7 @@ const features: Features = {
 };
 
 export const veilarbpersonflatefsHandlers: RequestHandlersList = [
-	rest.get('/veilarbpersonflatefs/api/feature?', (req, res, ctx) => {
+	rest.get('/veilarbpersonflatefs/api/feature', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(features));
 	})
 ];

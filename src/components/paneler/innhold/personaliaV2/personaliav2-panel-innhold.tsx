@@ -3,12 +3,12 @@ import Grid from '../../../felles/grid';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import { useAppStore } from '../../../../stores/app-store';
 import { kalkulerAlder } from '../../../../utils/date-utils';
-import Adresser from './adresserv2';
+import Adresser from './adresser';
 import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
 import Telefon from './telefon';
-import { useFetchPersonaliaFraPdl } from '../../../../rest/api';
+import { useFetchPersonaliaV2 } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
@@ -17,7 +17,7 @@ const MAX_ALDER_BARN = 21;
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
-	const personaliav2 = useFetchPersonaliaFraPdl(fnr);
+	const personaliav2 = useFetchPersonaliaV2(fnr);
 
 	if (isPending(personaliav2)) {
 		return <Laster />;
