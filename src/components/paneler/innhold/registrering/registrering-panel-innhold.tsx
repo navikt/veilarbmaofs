@@ -16,7 +16,7 @@ const RegistreringPanelInnhold = () => {
 	const registrering = useFetchRegistrering(fnr);
 
 	if (isPending(registrering)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	} else if (hasError(registrering)) {
 		return <Feilmelding />;
 	} else if (!hasData(registrering)) {

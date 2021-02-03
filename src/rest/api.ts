@@ -41,4 +41,4 @@ export const useFetchPersonaliaFraPdl = (fnr: string) => useFetch<PersonaliaV2In
 export const useFetchFeatureToggle = (): FetchInfo => {
 	const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
 	return { url: `veilarbpersonflatefs/api/feature}/?${toggles}` };
-}
+};

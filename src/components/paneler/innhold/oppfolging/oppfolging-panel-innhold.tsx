@@ -67,7 +67,7 @@ const OppfolgingPanelInnhold = () => {
 	}, [oppfolgingsstatus.status]);
 
 	if (isPending(oppfolgingsstatus) || isPending(personalia)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	}
 
 	const veilederData = hasData(veileder) ? veileder.data : null;

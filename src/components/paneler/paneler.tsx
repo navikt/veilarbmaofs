@@ -41,7 +41,7 @@ export const Paneler = () => {
 			</Panel>
 
 			<Panel name="tilretteleggingsbehov" tittel="Behov for tilrettelegging" defaultOpen={apneTilrettelegging}>
-				<TilretteleggingsbehovSpa viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
+				<TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
 			</Panel>
 
 			<Panel name="personalia" tittel="Personalia">

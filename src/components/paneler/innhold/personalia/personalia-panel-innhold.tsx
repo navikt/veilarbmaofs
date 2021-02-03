@@ -19,7 +19,7 @@ const PersonaliaPanelInnhold = () => {
 	const personalia = useFetchPersonalia(fnr);
 
 	if (isPending(personalia)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	} else if (hasError(personalia)) {
 		return <Feilmelding />;
 	} else if (!hasData(personalia)) {

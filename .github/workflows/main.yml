@@ -1,9 +1,6 @@
-name: Test, build, push and deploy
+name: Test, build and upload
 on: push
 env:
-  IMAGE_TAG: ${{ github.sha }}
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/veilarbmaofs
-  PRINT_PAYLOAD: true
   CI: true
   TZ: Europe/Amsterdam
 
@@ -24,29 +21,6 @@ jobs:
       - name: Run tests
         run: npm run test
 
-  test-build-and-push:
-    name: Test, build and push
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build application
-        run: npm run build
-      - name: Build and push Docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker build -t ${IMAGE}:${IMAGE_TAG} .
-          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push ${IMAGE}:${IMAGE_TAG}
-
   update-gh-pages:
     name: Update GitHub pages
     runs-on: ubuntu-latest
@@ -63,56 +37,77 @@ jobs:
       - name: Build mock application
         run: npm run build:mock
       - name: Update GitHub pages
-        uses: peaceiris/actions-gh-pages@v2.9.0
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: build
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./build
 
   deploy-dev:
     name: Deploy application to dev
     if: github.ref == 'refs/heads/dev'
-    needs: test-build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Deploy application to dev
-        uses: nais/deploy/actions/deploy@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Build application
+        run: npm run build
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-fss
-          RESOURCE: nais-dev.yaml
-          VAR: version=${{ env.IMAGE_TAG }}
+          PUBLIC_URL: https://veilarbmaofs.dev.intern.nav.no
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY_DEV }}
+          export_default_credentials: true
+      - name: Upload files to GCS
+        run: gsutil -m rsync -r build gs://veilarbmaofs-dev
       - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release/dev@${{ env.IMAGE_TAG }}
+          tag_name: release/dev@${{ github.sha }}
           release_name: Release to dev
           prerelease: true
 
   deploy-prod:
     name: Deploy application to prod
     if: github.ref == 'refs/heads/master'
-    needs: test-build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Deploy application
-        uses: nais/deploy/actions/deploy@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Build application
+        run: npm run build
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-fss
-          RESOURCE: nais-prod.yaml
-          VAR: version=${{ env.IMAGE_TAG }}
+          PUBLIC_URL: https://veilarbmaofs.intern.nav.no
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCS_SA_KEY_PROD }}
+          export_default_credentials: true
+      - name: Upload files to GCS
+        run: gsutil -m rsync -r build gs://veilarbmaofs-prod
       - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release/prod@${{ env.IMAGE_TAG }}
+          tag_name: release/prod@${{ github.sha }}
           release_name: Release to prod
           prerelease: false

@@ -7,6 +7,7 @@ interface FloatGridProps {
 }
 
 function FloatGrid({ columns, gap, children }: FloatGridProps) {
+	// @ts-ignore
 	const splitChildren = React.Children.map(children, (child, index) => ({ index, child })).reduce(
 		(acc, { child, index }) => {
 			const key = index % columns;

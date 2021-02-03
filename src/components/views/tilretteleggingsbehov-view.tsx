@@ -1,6 +1,8 @@
 import React from 'react';
+import { useAppStore } from '../../stores/app-store';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 
 export const TilretteleggingsbehovView = () => {
-	return <TilretteleggingsbehovSpa viewType={TilretteleggingsbehovViewType.REGISTRER_TILRETTELEGGINGSBEHOV} />;
+	const { fnr } = useAppStore();
+	return <TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.REGISTRER_TILRETTELEGGINGSBEHOV} />;
 };

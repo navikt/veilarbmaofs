@@ -32,7 +32,7 @@ const CvPanelInnhold = () => {
 	const aktorId = useFetchAktorId(fnr);
 
 	if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
-		return <Laster />;
+		return <Laster midtstilt={true} />;
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
 	} else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
