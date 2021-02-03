@@ -7,20 +7,23 @@ import JobbsokerkompetansePanel from './innhold/jobbsokerkompetanse/jobbsokerkom
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
-import PersonaliaV2PanelInnhold from './innhold/personalia/personaliav2-panel-innhold';
-import { useFetchOppfolgingsstatus } from '../../rest/api';
+import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
+import { useFetchFeatureToggle, useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
+import Show from '../felles/show';
+import { PERSONALIA_DATA_FRA_PDL } from '../../rest/datatyper/feature';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
+	const features = useFetchFeatureToggle(PERSONALIA_DATA_FRA_PDL);
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'
@@ -48,9 +51,11 @@ export const Paneler = () => {
 				<PersonaliaPanelInnhold />
 			</Panel>
 
-			<Panel name="personaliFraPdl" tittel="PersonaliaV2">
-				<PersonaliaV2PanelInnhold />
-			</Panel>
+			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL])}>
+				<Panel name="personaliaFraPdl" tittel="PersonaliaV2">
+					<PersonaliaV2PanelInnhold />
+				</Panel>
+			</Show>
 
 			<Panel name="ytelser" tittel="Ytelser">
 				<YtelserPanelInnhold />

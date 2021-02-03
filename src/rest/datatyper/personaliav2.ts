@@ -4,7 +4,7 @@ export interface GrunnPersonalia {
 	fornavn: string;
 	mellomnavn: StringOrNothing;
 	etternavn: string;
-	sammensattNavn: string;
+	forkortetNavn: string;
 	fodselsnummer: string;
 	fodselsdato: string;
 	dodsdato: StringOrNothing;
@@ -30,8 +30,9 @@ export interface PersonaliaPartner extends GrunnPersonalia {
 }
 
 export interface Vegadresse {
+	matrikkelId: OrNothing<number>;
 	postnummer: string;
-	husnummer: number;
+	husnummer: string;
 	husbokstav: StringOrNothing;
 	kommunenummer: string;
 	adressenavn: StringOrNothing;
@@ -39,8 +40,17 @@ export interface Vegadresse {
 	poststed: string;
 }
 
+export interface Matrikkeladresse {
+	matrikkelId: OrNothing<number>;
+	bruksenhetsnummer: string;
+	tilleggsnavn: StringOrNothing;
+	postnummer: string;
+	kommunenummer: string;
+}
+
 export interface PersonaliaBostedsadresse {
 	vegadresse: OrNothing<Vegadresse>;
+	matrikkeladresse: OrNothing<Matrikkeladresse>;
 }
 
 export interface PersonaliaMidlertidigAdresseUtland {
@@ -62,18 +72,14 @@ export interface PersonaliaPostadresse {
 
 export interface PersonaliaV2Info extends GrunnPersonalia {
 	barn: PersonaliaBarn[];
-	diskresjonskode: StringOrNothing;
 	kontonummer: string;
-	geografiskTilknytning: string;
-	geografiskEnhet: PersonaliaEnhet;
-	telefon: string;
+	geografiskEnhet: OrNothing<PersonaliaEnhet>;
+	telefon: string[];
 	epost: StringOrNothing;
 	statsborgerskap: string;
-	sikkerhetstiltak: StringOrNothing;
 	sivilstand: PersonaliaSivilstand;
 	partner: OrNothing<PersonaliaPartner>;
 	bostedsadresse: OrNothing<PersonaliaBostedsadresse>;
 	midlertidigAdresseUtland: OrNothing<PersonaliaMidlertidigAdresseUtland>;
 	postAdresse: OrNothing<PersonaliaPostadresse>;
-	egenAnsatt: boolean;
 }

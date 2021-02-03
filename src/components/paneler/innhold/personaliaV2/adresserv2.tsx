@@ -3,6 +3,7 @@ import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
 import {
+	Matrikkeladresse,
 	PersonaliaMidlertidigAdresseUtland,
 	PersonaliaPostadresse,
 	PersonaliaV2Info,
@@ -15,12 +16,20 @@ function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaV2Info, 'bosteds
 		return null;
 	}
 
-	const adresse = props.bostedsadresse && props.bostedsadresse.vegadresse as Vegadresse;
+	const vegadresse = props.bostedsadresse && props.bostedsadresse.vegadresse as Vegadresse;
+	const matrikkeladrese = props.bostedsadresse && props.bostedsadresse.matrikkeladresse as Matrikkeladresse;
+	let adresseVisning = null;
 
- return (
+	if(vegadresse) {
+		adresseVisning = <VegAdresse adresse={vegadresse}/> ;
+	} else if(matrikkeladrese) {
+		adresseVisning = <MatrikkelAdresse adresse={matrikkeladrese} /> ;
+	}
+
+	return (
 		<div className="underinformasjon">
 			<Element>Folkeregistrert postadresse</Element>
-			{!isNullOrUndefined(adresse) ? <VegAdresse adresse={adresse} /> : EMDASH}
+			{!isNullOrUndefined(adresseVisning) ? adresseVisning : EMDASH}
 		</div>
 	);
 }
@@ -31,6 +40,24 @@ function VegAdresse(prop: { adresse: OrNothing<Vegadresse> }) {
 		<>
 			<Normaltekst>{`${adressenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</Normaltekst>
 			<Normaltekst>{`${postnummer} ${poststed}`}</Normaltekst>
+		</>
+	);
+}
+
+function MatrikkelAdresse(prop: { adresse: OrNothing<Matrikkeladresse> }) {
+	const { bruksenhetsnummer, tilleggsnavn, kommunenummer, postnummer } = prop.adresse as Matrikkeladresse;
+
+	return (
+		<>
+			<Normaltekst>
+				Bruksenhetsnummer: {bruksenhetsnummer}
+				<br />
+				kommunenummer: {kommunenummer}
+				<br />
+				Tilleggsadresse: {tilleggsnavn}
+				<br />
+				Postnummer: {postnummer}
+			</Normaltekst>
 		</>
 	);
 }

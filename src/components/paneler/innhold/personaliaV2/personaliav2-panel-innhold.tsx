@@ -7,6 +7,7 @@ import Adresser from './adresserv2';
 import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
+import Telefon from './telefon';
 import { useFetchPersonaliaFraPdl } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
@@ -39,7 +40,7 @@ const PersonaliaV2PanelInnhold = () => {
 		barn
 	} = personaliav2.data;
 
-	const filtrertBarneListe = barn.filter(
+	const filtrertBarneListe = barn && barn.filter(
 		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN
 	);
 
@@ -50,7 +51,7 @@ const PersonaliaV2PanelInnhold = () => {
 				postAdresse={postAdresse}
 				midlertidigAdresseUtland={midlertidigAdresseUtland}
 			/>
-			<InformasjonsbolkEnkel header="Telefon" value={telefon} />
+			<Telefon telefon={telefon} />
 			<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
 			<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
 			<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
