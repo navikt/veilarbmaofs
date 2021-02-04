@@ -38,4 +38,4 @@ export const useFetchPersonalia = (fnr: string) => useFetch<PersonaliaInfo>(`/ve
 export const useFetchPersonaliaV2 = (fnr: string) => useFetch<PersonaliaV2Info>(`/veilarbperson/api/v2/person/${fnr}`);
 
 const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
-export const useFetchFeatureToggle = () => useFetch<Features>(`veilarbpersonflatefs/api/feature?${toggles}`);
+export const useFetchFeatureToggle = () => useFetch<Features>(`/veilarbpersonflatefs/api/feature?${toggles}`);
