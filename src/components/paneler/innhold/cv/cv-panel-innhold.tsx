@@ -11,7 +11,7 @@ import Arbeidserfaring from './arbeidserfaring';
 import AnnenErfaring from './annen-erfaring';
 import Utdanning from './utdanning';
 import Kurs from './kurs';
-import Godkjenninger from "./godkjenninger";
+import Godkjenninger from './godkjenninger';
 import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';
@@ -35,7 +35,7 @@ const CvPanelInnhold = () => {
 		return <Laster midtstilt={true} />;
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
-	} else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
+	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
 		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
 	}
 

@@ -28,7 +28,7 @@ const JobbprofilPanelInnhold = () => {
 		return <Laster midtstilt={true} />;
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
-	} else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
+	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
 		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
 	}
 

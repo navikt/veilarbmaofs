@@ -3,6 +3,7 @@ import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import { AktorId } from '../../rest/datatyper/aktor-id';
+import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -364,6 +365,101 @@ const personalia: PersonaliaInfo = {
 	kjonn: 'K'
 };
 
+const personaliav2: PersonaliaV2Info = {
+	fornavn: 'BRUCE',
+	mellomnavn: 'BATTY',
+	etternavn: 'WAYNE',
+	forkortetNavn: 'BRUCE BATTY WAYNE',
+	fodselsnummer: '10108000398',
+	fodselsdato: '1974-09-16',
+	dodsdato: null,
+	barn: [
+		{
+			fornavn: 'BRUCE',
+			mellomnavn: null,
+			etternavn: 'BANNER',
+			forkortetNavn: 'BRUCE BANNER',
+			fodselsnummer: '10108000391',
+			fodselsdato: '2016-04-17',
+			dodsdato: null,
+			harSammeBosted: true,
+			kjonn: 'M'
+		},
+		{
+			fornavn: 'HARRY',
+			mellomnavn: null,
+			etternavn: 'BOSCH',
+			forkortetNavn: 'HARRY BOSCH',
+			fodselsnummer: '10108000392',
+			fodselsdato: '2014-05-24',
+			dodsdato: null,
+			harSammeBosted: false,
+			kjonn: 'M'
+		},
+		{
+			fornavn: 'SATOSHI',
+			mellomnavn: null,
+			etternavn: 'NAKAMOTO',
+			forkortetNavn: 'SATOSHI NAKAMOTO',
+			fodselsnummer: '10108000398',
+			fodselsdato: '2005-10-04',
+			dodsdato: '2010-10-04',
+			harSammeBosted: true,
+			kjonn: 'K'
+		}
+	],
+	kontonummer: '12345678911',
+	geografiskEnhet: {
+		enhetsnummer: '0106',
+		navn: 'NAV Fredrikstad'
+	},
+	telefon: ['+4633333333', '+4822222222'],
+	epost: 'tester.scrambling-script@fellesregistre.no',
+	statsborgerskap: 'NORGE',
+	sivilstand: {
+		sivilstand: 'Gift',
+		fraDato: '2016-08-04'
+	},
+	partner: {
+		fornavn: 'PHILIPS',
+		mellomnavn: null,
+		etternavn: 'WAYNE',
+		forkortetNavn: 'PHILIPS WAYNE',
+		fodselsnummer: '12108000391',
+		fodselsdato: '1980-12-10',
+		dodsdato: null,
+		harSammeBosted: true,
+		kjonn: 'M'
+	},
+	bostedsadresse: {
+		vegadresse: {
+		matrikkelId: null,
+		postnummer: '0560',
+		husnummer: '21',
+		husbokstav: 'A',
+		kommunenummer: '0570',
+		adressenavn: 'ARENDALSGATE',
+		tilleggsnavn: 'ARENDAL',
+		poststed: 'OSLO'
+},
+		matrikkeladresse: {
+			matrikkelId: null,
+			bruksenhetsnummer: '45',
+			tilleggsnavn: 'Tilleggsnavn',
+			kommunenummer: '0457',
+			postnummer: '04'
+		}
+	},
+	midlertidigAdresseUtland: null,
+	postAdresse: {
+		adresselinje1: 'C/O EGEN TEST',
+		adresselinje2: 'SOLVEIEN',
+		adresselinje3: null,
+		postnummer: '7318'
+	},
+	kjonn: 'K'
+};
+
 export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
@@ -373,5 +469,8 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	}),
 	rest.get('/veilarbperson/api/person/:fnr', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personalia));
-	})
+	}),
+	rest.get('/veilarbperson/api/v2/person/:fnr', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(personaliav2));
+	}),
 ];
