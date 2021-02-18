@@ -87,11 +87,9 @@ const CvPanelInnhold = () => {
 		kurs,
 		sistEndret,
 		synligForArbeidsgiver,
-		jobbprofil
 	} = cvOgJobbprofil.data;
 
 	const erCvSynligForArbeidsgiver = synligForArbeidsgiver || false;
-	const harJobbprofil = jobbprofil != null;
 
 	return (
 		<>
@@ -99,7 +97,7 @@ const CvPanelInnhold = () => {
 			<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
 			<SynlighetForArbeidsgiver erSynlig={erCvSynligForArbeidsgiver} />
-			<CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} harJobbprofil={harJobbprofil} />
+			<CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} />
 			<Sammendrag sammendrag={sammendrag} />
 			<FloatGrid columns={2} gap={8}>
 				<Arbeidserfaring arbeidserfaring={arbeidserfaring} />
