@@ -3,17 +3,7 @@ import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 
 interface CvIkkeSynligInfoProps {
 	erSynlig: boolean;
-	harJobbprofil: boolean;
 }
-
-const harJobbprofileTekst =
-	'Hvis brukeren vil at CV-en skal være synlig for arbeidsgivere, ' +
-	'sjekk Arena om brukeren står som "ikke-match nav.no" eller "fritatt for kandidatsøk".';
-
-const harIkkeJobbprofileTekst =
-	'Hvis brukeren vil at CV-en skal være synlig for arbeidsgivere, ' +
-	'må brukeren fylle ut jobbprofil. Sjekk i tillegg Arena om brukeren står ' +
-	'som "ikke-match nav.no" eller "fritatt for kandidatsøk".';
 
 export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
 	if (props.erSynlig) {
@@ -22,7 +12,7 @@ export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
 
 	return (
 		<AlertStripeInfo className="cv-ikke-synlig blokk-l">
-			{props.harJobbprofil ? harJobbprofileTekst : harIkkeJobbprofileTekst}
+			Fra 17.2.2021 kan arbeidsgivere kun se CV til jobbsøkere som ikke er under arbeidsrettet oppfølging fra NAV.
 			<br />
 			Les mer om{' '}
 			<a href="https://navno.sharepoint.com/sites/fag-og-ytelser-arbeid-markedsarbeid/SitePages/Oversikt-over-veileders-tilgang-p%C3%A5-CV-og-jobbprofil.aspx">
