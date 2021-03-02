@@ -87,7 +87,7 @@ export interface UtenlandskadresseIFrittFormat {
 	adresselinje3: StringOrNothing;
 	byEllerStedsnavn: StringOrNothing;
 	postkode: StringOrNothing;
-	landskode: StringOrNothing;
+	landkode: StringOrNothing;
 }
 
 export interface Bostedsadresse {

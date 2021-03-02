@@ -35,7 +35,7 @@ const CvPanelInnhold = () => {
 		return <Laster midtstilt={true} />;
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
-	} else if (!isPending(underOppfolging) && !hasData(underOppfolging)) {
+	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
 		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
 	}
 
@@ -87,11 +87,9 @@ const CvPanelInnhold = () => {
 		kurs,
 		sistEndret,
 		synligForArbeidsgiver,
-		jobbprofil
 	} = cvOgJobbprofil.data;
 
 	const erCvSynligForArbeidsgiver = synligForArbeidsgiver || false;
-	const harJobbprofil = jobbprofil != null;
 
 	return (
 		<>
@@ -99,7 +97,7 @@ const CvPanelInnhold = () => {
 			<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
 			<SynlighetForArbeidsgiver erSynlig={erCvSynligForArbeidsgiver} />
-			<CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} harJobbprofil={harJobbprofil} />
+			<CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} />
 			<Sammendrag sammendrag={sammendrag} />
 			<FloatGrid columns={2} gap={8}>
 				<Arbeidserfaring arbeidserfaring={arbeidserfaring} />
