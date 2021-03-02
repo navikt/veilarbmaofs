@@ -31,43 +31,88 @@ export interface PersonaliaPartner extends GrunnPersonalia {
 
 export interface Vegadresse {
 	matrikkelId: OrNothing<number>;
-	postnummer: string;
-	husnummer: string;
+	postnummer: StringOrNothing;
+	husnummer: StringOrNothing;
 	husbokstav: StringOrNothing;
-	kommunenummer: string;
+	kommunenummer: StringOrNothing;
+	kommune: StringOrNothing;
 	adressenavn: StringOrNothing;
 	tilleggsnavn: StringOrNothing;
-	poststed: string;
+	poststed: StringOrNothing;
 }
 
 export interface Matrikkeladresse {
 	matrikkelId: OrNothing<number>;
-	bruksenhetsnummer: string;
+	bruksenhetsnummer: StringOrNothing;
 	tilleggsnavn: StringOrNothing;
-	postnummer: string;
-	kommunenummer: string;
+	postnummer: StringOrNothing;
+	kommunenummer: StringOrNothing;
+	kommune: StringOrNothing;
+	poststed: StringOrNothing;
 }
 
-export interface PersonaliaBostedsadresse {
+export interface Utenlandskadresse {
+	adressenavnNummer: StringOrNothing;
+	bygningEtasjeLeilighet: StringOrNothing;
+	postboksNummerNavn: StringOrNothing;
+	postkode: StringOrNothing;
+	bySted: StringOrNothing;
+	regionDistriktOmraade: StringOrNothing;
+	landkode: StringOrNothing;
+}
+
+export interface Ukjentbosted {
+	bostedskommune: StringOrNothing;
+	kommune: StringOrNothing;
+}
+
+export interface Postboksadresse {
+	postbokseier: StringOrNothing;
+	postboks: StringOrNothing;
+	postnummer: StringOrNothing;
+	poststed: StringOrNothing;
+}
+
+export interface PostadresseIFrittFormat {
+	adresselinje1: StringOrNothing;
+	adresselinje2: StringOrNothing;
+	adresselinje3: StringOrNothing;
+	postnummer: StringOrNothing;
+	poststed: StringOrNothing;
+}
+
+export interface UtenlandskadresseIFrittFormat {
+	adresselinje1: StringOrNothing;
+	adresselinje2: StringOrNothing;
+	adresselinje3: StringOrNothing;
+	byEllerStedsnavn: StringOrNothing;
+	postkode: StringOrNothing;
+	landskode: StringOrNothing;
+}
+
+export interface Bostedsadresse {
+	coAdressenavn: StringOrNothing;
 	vegadresse: OrNothing<Vegadresse>;
 	matrikkeladresse: OrNothing<Matrikkeladresse>;
+	utenlandskAdresse: OrNothing<Utenlandskadresse>;
+	ukjentBosted: OrNothing<Ukjentbosted>;
 }
 
-export interface PersonaliaMidlertidigAdresseUtland {
-	adresselinje1: string;
-	adresselinje2: StringOrNothing;
-	adresselinje3: StringOrNothing;
-	adresselinje4: StringOrNothing;
-	byEllerStednavn: StringOrNothing;
-	postkode: string;
-	landkode: string;
+export interface Oppholdsadresse {
+	coAdressenavn: StringOrNothing;
+	vegadresse: OrNothing<Vegadresse>;
+	matrikkeladresse: OrNothing<Matrikkeladresse>;
+	utenlandskAdresse: OrNothing<Utenlandskadresse>;
 }
 
-export interface PersonaliaPostadresse {
-	adresselinje1: string;
-	adresselinje2: StringOrNothing;
-	adresselinje3: StringOrNothing;
-	postnummer: string;
+export interface Kontaktadresse {
+	type: StringOrNothing;
+	coAdressenavn: StringOrNothing;
+	vegadresse: OrNothing<Vegadresse>;
+	postboksadresse: OrNothing<Postboksadresse>;
+	utenlandskAdresse: OrNothing<Utenlandskadresse>;
+	postadresseIFrittFormat: OrNothing<PostadresseIFrittFormat>;
+	utenlandskAdresseIFrittFormat: OrNothing<UtenlandskadresseIFrittFormat>;
 }
 
 export interface PersonaliaV2Info extends GrunnPersonalia {
@@ -79,7 +124,7 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	statsborgerskap: string;
 	sivilstand: PersonaliaSivilstand;
 	partner: OrNothing<PersonaliaPartner>;
-	bostedsadresse: OrNothing<PersonaliaBostedsadresse>;
-	midlertidigAdresseUtland: OrNothing<PersonaliaMidlertidigAdresseUtland>;
-	postAdresse: OrNothing<PersonaliaPostadresse>;
+	bostedsadresse: OrNothing<Bostedsadresse>;
+	oppholdsadresse: OrNothing<Oppholdsadresse>;
+	kontaktadresser: Kontaktadresse[];
 }

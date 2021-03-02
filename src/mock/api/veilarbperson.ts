@@ -432,31 +432,79 @@ const personaliav2: PersonaliaV2Info = {
 		kjonn: 'M'
 	},
 	bostedsadresse: {
+		coAdressenavn: 'COADRDRESSENAVN',
 		vegadresse: {
-		matrikkelId: null,
-		postnummer: '0560',
-		husnummer: '21',
-		husbokstav: 'A',
-		kommunenummer: '0570',
-		adressenavn: 'ARENDALSGATE',
-		tilleggsnavn: 'ARENDAL',
-		poststed: 'OSLO'
-},
+			matrikkelId: null,
+			postnummer: '0000',
+			husnummer: '21',
+			husbokstav: 'A',
+			kommunenummer: '1111',
+			adressenavn: 'ARENDALSGATE',
+			tilleggsnavn: 'ARENDAL',
+			poststed: 'POSTSTED',
+			kommune: 'KOMMUNE'
+		},
+		matrikkeladresse: null,
+		utenlandskAdresse: null,
+		ukjentBosted: null
+	},
+	oppholdsadresse: {
+		coAdressenavn: null,
+		vegadresse: {
+			matrikkelId: null,
+			postnummer: null,
+			husnummer: null,
+			husbokstav: null,
+			kommunenummer: '1111',
+			adressenavn: 'UTEN FAST BOSTED',
+			tilleggsnavn: null,
+			poststed: null,
+			kommune: 'KOMMUNE'
+		},
 		matrikkeladresse: {
 			matrikkelId: null,
-			bruksenhetsnummer: '45',
-			tilleggsnavn: 'Tilleggsnavn',
-			kommunenummer: '0457',
-			postnummer: '04'
+			bruksenhetsnummer: 'H0203',
+			tilleggsnavn: null,
+			kommunenummer: '1234',
+			postnummer: '0457',
+			poststed: 'POSTSTED',
+			kommune: 'AGDER'
+		},
+		utenlandskAdresse: null
+	},
+	kontaktadresser: [
+		{
+			type: 'Innland',
+			coAdressenavn: null,
+			vegadresse: null,
+			postboksadresse: null,
+			postadresseIFrittFormat: {
+				adresselinje1: 'C/O Egent Test',
+				adresselinje2: 'Adresselinje 2',
+				adresselinje3: 'Adresselinje 3',
+				postnummer: '7123',
+				poststed: 'POSTSTED'
+			},
+			utenlandskAdresse: null,
+			utenlandskAdresseIFrittFormat: null
+		},
+		{
+			type: 'Utland',
+			coAdressenavn: null,
+			vegadresse: null,
+			postboksadresse: null,
+			postadresseIFrittFormat: null,
+			utenlandskAdresse: null,
+			utenlandskAdresseIFrittFormat: {
+				adresselinje1: 'C/O adresse2 Test',
+				adresselinje2: 'Adresselinje 2',
+				adresselinje3: 'Adresselinje 3',
+				byEllerStedsnavn: 'STEDSNAVN',
+				postkode: '1234',
+				landkode: 'LANDKODE'
+			}
 		}
-	},
-	midlertidigAdresseUtland: null,
-	postAdresse: {
-		adresselinje1: 'C/O EGEN TEST',
-		adresselinje2: 'SOLVEIEN',
-		adresselinje3: null,
-		postnummer: '7318'
-	},
+	],
 	kjonn: 'K'
 };
 
