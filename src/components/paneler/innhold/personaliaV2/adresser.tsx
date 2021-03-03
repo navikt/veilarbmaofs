@@ -20,11 +20,11 @@ function BostedsAdresse(props: Pick<PersonaliaV2Info, 'bostedsadresse'>) {
 		return null;
 	}
 
-	const vegadresse = props.bostedsadresse && props.bostedsadresse.vegadresse as Vegadresse;
-	const matrikkeladrese = props.bostedsadresse && props.bostedsadresse.matrikkeladresse as Matrikkeladresse;
-	const utenlandskadresse = props.bostedsadresse && props.bostedsadresse.utenlandskAdresse as Utenlandskadresse;
-	const ukjentbosted = props.bostedsadresse && props.bostedsadresse.ukjentBosted as Ukjentbosted;
-	const coAdressenavn = props.bostedsadresse && props.bostedsadresse.coAdressenavn;
+	const vegadresse = props.bostedsadresse?.vegadresse as Vegadresse;
+	const matrikkeladrese = props.bostedsadresse?.matrikkeladresse as Matrikkeladresse;
+	const utenlandskadresse = props.bostedsadresse?.utenlandskAdresse as Utenlandskadresse;
+	const ukjentbosted = props.bostedsadresse?.ukjentBosted as Ukjentbosted;
+	const coAdressenavn = props.bostedsadresse?.coAdressenavn;
 	let adresseVisning = null;
 
 	if(vegadresse) {
@@ -51,10 +51,10 @@ function OppholdsAdresse(props: Pick<PersonaliaV2Info, 'oppholdsadresse'>) {
 		return null;
 	}
 
-	const vegadresse = props.oppholdsadresse && props.oppholdsadresse.vegadresse as Vegadresse;
-	const matrikkeladrese = props.oppholdsadresse && props.oppholdsadresse.matrikkeladresse as Matrikkeladresse;
-	const utenlandskadresse = props.oppholdsadresse && props.oppholdsadresse.utenlandskAdresse as Utenlandskadresse;
-	const coAdressenavn = props.oppholdsadresse && props.oppholdsadresse.coAdressenavn;
+	const vegadresse = props.oppholdsadresse?.vegadresse as Vegadresse;
+	const matrikkeladrese = props.oppholdsadresse?.matrikkeladresse as Matrikkeladresse;
+	const utenlandskadresse = props.oppholdsadresse?.utenlandskAdresse as Utenlandskadresse;
+	const coAdressenavn = props.oppholdsadresse?.coAdressenavn;
 	let adresseVisning = null;
 
 	if(vegadresse) {
@@ -79,13 +79,13 @@ function KontaktAdresse(props: {kontaktadresse: Kontaktadresse}) {
 		return null;
 	}
 
-	const vegadresse = props.kontaktadresse && props.kontaktadresse.vegadresse as Vegadresse;
-	const postboksadresse = props.kontaktadresse && props.kontaktadresse.postboksadresse as Postboksadresse;
-	const utenlandskadresse = props.kontaktadresse && props.kontaktadresse.utenlandskAdresse as Utenlandskadresse;
-	const postadresseIFrittFormat = props.kontaktadresse && props.kontaktadresse.postadresseIFrittFormat as PostadresseIFrittFormat;
-	const utenlandskAdresseIFrittFormat = props.kontaktadresse && props.kontaktadresse.utenlandskAdresseIFrittFormat as UtenlandskadresseIFrittFormat;
-	const coAdressenavn = props.kontaktadresse && props.kontaktadresse.coAdressenavn;
-	const adresseType = props.kontaktadresse && props.kontaktadresse.type;
+	const vegadresse = props.kontaktadresse?.vegadresse as Vegadresse;
+	const postboksadresse = props.kontaktadresse?.postboksadresse as Postboksadresse;
+	const utenlandskadresse = props.kontaktadresse?.utenlandskAdresse as Utenlandskadresse;
+	const postadresseIFrittFormat = props.kontaktadresse?.postadresseIFrittFormat as PostadresseIFrittFormat;
+	const utenlandskAdresseIFrittFormat = props.kontaktadresse?.utenlandskAdresseIFrittFormat as UtenlandskadresseIFrittFormat;
+	const coAdressenavn = props.kontaktadresse?.coAdressenavn;
+	const adresseType = props.kontaktadresse?.type;
 	let adresseVisning = null;
 
 
