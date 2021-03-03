@@ -25,6 +25,12 @@ export interface PersonaliaSivilstand {
 	fraDato: StringOrNothing;
 }
 
+export interface PersonaliaTelefon {
+	prioritet: string;
+	telefonNr: string;
+	master: string;
+}
+
 export interface PersonaliaPartner extends GrunnPersonalia {
 	harSammeBosted: boolean;
 }
@@ -119,7 +125,7 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	barn: PersonaliaBarn[];
 	kontonummer: string;
 	geografiskEnhet: OrNothing<PersonaliaEnhet>;
-	telefon: string[];
+	telefon: PersonaliaTelefon[];
 	epost: StringOrNothing;
 	statsborgerskap: string;
 	sivilstand: PersonaliaSivilstand;

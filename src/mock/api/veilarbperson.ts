@@ -413,7 +413,17 @@ const personaliav2: PersonaliaV2Info = {
 		enhetsnummer: '0106',
 		navn: 'NAV Fredrikstad'
 	},
-	telefon: ['+4633333333', '+4822222222'],
+	telefon: [
+		{
+			prioritet: '1',
+			telefonNr: '+4633333333',
+			master: 'FREG'
+		},
+		{
+			prioritet: '2',
+			telefonNr: '+4822222222',
+			master: 'KRR'
+		}],
 	epost: 'tester.scrambling-script@fellesregistre.no',
 	statsborgerskap: 'NORGE',
 	sivilstand: {

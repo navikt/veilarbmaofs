@@ -1,23 +1,27 @@
 import React from 'react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { Normaltekst } from 'nav-frontend-typografi';
-import EMDASH from '../../../../utils/emdash';
+import {PersonaliaV2Info, PersonaliaTelefon} from "../../../../rest/datatyper/personaliav2";
 
-function Telefon(props: { telefon: string[] }) {
+function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
+	const { telefonNr, master} = props.telefon;
 
- const { telefon, ...rest } = props;
+	return (
+		<Normaltekst>{`${master}: ${telefonNr}`}</Normaltekst>
+	);
+}
+
+function Telefon(props: Pick<PersonaliaV2Info, 'telefon'>) {
+ 	const { telefon, ...rest } = props;
 
 	if (telefon.length === 0) {
-		return (
-			<Informasjonsbolk header="telefon" {...rest}>
-				{EMDASH}
-			</Informasjonsbolk>
-		);
+		return null;
 	}
+	const telefonListe = telefon.map(telefon => <TelefonNrMedKilde telefon={telefon} key={telefon.telefonNr}/>);
 
- return (
+	return (
 		<Informasjonsbolk header="Telefon" {...rest}>
-			{ telefon.map(telefonnummer => <Normaltekst key={telefonnummer}>{telefonnummer}</Normaltekst>) }
+			{telefonListe}
 		</Informasjonsbolk>
 	);
 }
