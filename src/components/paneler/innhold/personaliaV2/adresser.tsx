@@ -20,10 +20,10 @@ function BostedsAdresse(props: Pick<PersonaliaV2Info, 'bostedsadresse'>) {
 		return null;
 	}
 
-	const vegadresse = props.bostedsadresse?.vegadresse as Vegadresse;
-	const matrikkeladrese = props.bostedsadresse?.matrikkeladresse as Matrikkeladresse;
-	const utenlandskadresse = props.bostedsadresse?.utenlandskAdresse as Utenlandskadresse;
-	const ukjentbosted = props.bostedsadresse?.ukjentBosted as Ukjentbosted;
+	const vegadresse = props.bostedsadresse?.vegadresse;
+	const matrikkeladrese = props.bostedsadresse?.matrikkeladresse;
+	const utenlandskadresse = props.bostedsadresse?.utenlandskAdresse;
+	const ukjentbosted = props.bostedsadresse?.ukjentBosted;
 	const coAdressenavn = props.bostedsadresse?.coAdressenavn;
 	let adresseVisning = null;
 
@@ -51,9 +51,9 @@ function OppholdsAdresse(props: Pick<PersonaliaV2Info, 'oppholdsadresse'>) {
 		return null;
 	}
 
-	const vegadresse = props.oppholdsadresse?.vegadresse as Vegadresse;
-	const matrikkeladrese = props.oppholdsadresse?.matrikkeladresse as Matrikkeladresse;
-	const utenlandskadresse = props.oppholdsadresse?.utenlandskAdresse as Utenlandskadresse;
+	const vegadresse = props.oppholdsadresse?.vegadresse;
+	const matrikkeladrese = props.oppholdsadresse?.matrikkeladresse;
+	const utenlandskadresse = props.oppholdsadresse?.utenlandskAdresse;
 	const coAdressenavn = props.oppholdsadresse?.coAdressenavn;
 	let adresseVisning = null;
 
@@ -79,15 +79,14 @@ function KontaktAdresse(props: {kontaktadresse: Kontaktadresse}) {
 		return null;
 	}
 
-	const vegadresse = props.kontaktadresse?.vegadresse as Vegadresse;
-	const postboksadresse = props.kontaktadresse?.postboksadresse as Postboksadresse;
-	const utenlandskadresse = props.kontaktadresse?.utenlandskAdresse as Utenlandskadresse;
-	const postadresseIFrittFormat = props.kontaktadresse?.postadresseIFrittFormat as PostadresseIFrittFormat;
-	const utenlandskAdresseIFrittFormat = props.kontaktadresse?.utenlandskAdresseIFrittFormat as UtenlandskadresseIFrittFormat;
+	const vegadresse = props.kontaktadresse?.vegadresse;
+	const postboksadresse = props.kontaktadresse?.postboksadresse;
+	const utenlandskadresse = props.kontaktadresse?.utenlandskAdresse;
+	const postadresseIFrittFormat = props.kontaktadresse?.postadresseIFrittFormat;
+	const utenlandskAdresseIFrittFormat = props.kontaktadresse?.utenlandskAdresseIFrittFormat;
 	const coAdressenavn = props.kontaktadresse?.coAdressenavn;
 	const adresseType = props.kontaktadresse?.type;
 	let adresseVisning = null;
-
 
 	if(vegadresse) {
 		adresseVisning = <VegAdresse adresse={vegadresse}/> ;
@@ -171,7 +170,6 @@ function UkjentBosted(prop: { adresse: OrNothing<Ukjentbosted> }) {
 }
 
 function UtenlandskAdresseIFrittFormat(props: { adresse: OrNothing<UtenlandskadresseIFrittFormat> }) {
-
 	const { adresselinje1, adresselinje2, adresselinje3, byEllerStedsnavn, landkode, postkode } = props.adresse as UtenlandskadresseIFrittFormat;
 
 	return (
@@ -186,7 +184,6 @@ function UtenlandskAdresseIFrittFormat(props: { adresse: OrNothing<Utenlandskadr
 }
 
 function PostAdresseIFrittFormat(props: { adresse: OrNothing<PostadresseIFrittFormat> }) {
-
 	const { adresselinje1, adresselinje2, adresselinje3, postnummer, poststed } = props.adresse as PostadresseIFrittFormat;
 
 	return (
@@ -206,6 +203,7 @@ type Props = Pick<PersonaliaV2Info, 'bostedsadresse'> &
 function Adresser(props: Props) {
 	const { bostedsadresse, oppholdsadresse, kontaktadresser, ...rest } = props;
 	const kontaktadresseList = kontaktadresser && kontaktadresser.length!== 0 ? kontaktadresser.map(kontaktadresse => <KontaktAdresse kontaktadresse={kontaktadresse} />) : EMDASH;
+
 	return (
 		<div {...rest}>
 			<BostedsAdresse bostedsadresse={bostedsadresse} />
