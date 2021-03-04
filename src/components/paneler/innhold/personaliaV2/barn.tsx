@@ -1,5 +1,5 @@
 import React from 'react';
-import {finnAldersTekst} from '../../../../utils/date-utils';
+import { finnAldersTekst } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 import { Normaltekst } from 'nav-frontend-typografi';

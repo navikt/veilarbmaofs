@@ -29,8 +29,8 @@ const PersonaliaV2PanelInnhold = () => {
 
 	const {
 		bostedsadresse,
-		postAdresse,
-		midlertidigAdresseUtland,
+		oppholdsadresse,
+		kontaktadresser,
 		telefon,
 		epost,
 		kontonummer,
@@ -46,16 +46,16 @@ const PersonaliaV2PanelInnhold = () => {
 
 	return (
 		<Grid columns={5} gap="0.5rem">
-			<Adresser
-				bostedsadresse={bostedsadresse}
-				postAdresse={postAdresse}
-				midlertidigAdresseUtland={midlertidigAdresseUtland}
-			/>
 			<Telefon telefon={telefon} />
+			<Sivilstand sivilstand={sivilstand} />
 			<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
 			<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
 			<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
-			<Sivilstand sivilstand={sivilstand} />
+			<Adresser
+				bostedsadresse={bostedsadresse}
+				oppholdsadresse={oppholdsadresse}
+				kontaktadresser={kontaktadresser}
+			/>
 			<Partner partner={partner} />
 			<Barn barn={filtrertBarneListe} />
 		</Grid>
