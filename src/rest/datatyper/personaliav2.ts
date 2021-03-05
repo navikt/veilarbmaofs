@@ -11,11 +11,11 @@ export interface GrunnPersonalia {
 	kjonn: string;
 }
 
-export interface PersonaliaBarn extends GrunnPersonalia {
+export interface PersonsBarn extends GrunnPersonalia {
 	harSammeBosted: boolean;
 }
 
-export interface PersonaliaEnhet {
+export interface Enhet {
 	enhetsnummer: string;
 	navn: string;
 }
@@ -121,10 +121,42 @@ export interface Kontaktadresse {
 	utenlandskAdresseIFrittFormat: OrNothing<UtenlandskadresseIFrittFormat>;
 }
 
+export interface VergeNavn {
+	fornavn: StringOrNothing
+	mellomnavn: StringOrNothing;
+	etternavn: StringOrNothing;
+}
+
+export interface VergeEllerFullmektig {
+	navn: VergeNavn;
+	motpartsPersonident: StringOrNothing;
+	omfang: StringOrNothing;
+}
+
+export interface Folkeregistermetadata {
+	ajourholdstidspunkt: StringOrNothing;
+	gyldighetstidspunkt: StringOrNothing;
+}
+
+export interface VergemaalEllerFremtidsfullmakt {
+	type: StringOrNothing;
+	embete: StringOrNothing;
+	vergeEllerFullmektig: VergeEllerFullmektig;
+	folkeregistermetadata: Folkeregistermetadata;
+}
+
+export interface Fullmakter {
+	motpartsPersonident: StringOrNothing;
+	motpartsRolle: StringOrNothing;
+	omraader: string[];
+	gyldigFraOgMed: StringOrNothing;
+	gyldigTilOgMed: StringOrNothing;
+}
+
 export interface PersonaliaV2Info extends GrunnPersonalia {
-	barn: PersonaliaBarn[];
+	barn: PersonsBarn[];
 	kontonummer: string;
-	geografiskEnhet: OrNothing<PersonaliaEnhet>;
+	geografiskEnhet: OrNothing<Enhet>;
 	telefon: PersonaliaTelefon[];
 	epost: StringOrNothing;
 	statsborgerskap: string;
@@ -133,4 +165,6 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
 	kontaktadresser: Kontaktadresse[];
+	vergemaalEllerFremtidsfullmakt: VergemaalEllerFremtidsfullmakt[];
+	fullmakt: Fullmakter[];
 }

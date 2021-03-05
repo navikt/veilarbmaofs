@@ -1,8 +1,7 @@
 import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaSivilstand } from '../../../../rest/datatyper/personalia';
-import { isNullOrUndefined } from '../../../../utils';
-import Dato from '../../../felles/dato';
+import { formaterDato, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
@@ -15,7 +14,7 @@ function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 	return (
 		<Informasjonsbolk header="Sivilstand" {...rest}>
 			<Normaltekst>{sivilstand.sivilstand}</Normaltekst>
-			<Dato dato={sivilstand.fraDato} />
+			{sivilstand.fraDato && <Normaltekst>Fra: {formaterDato(sivilstand.fraDato)}</Normaltekst>}
 		</Informasjonsbolk>
 	);
 }

@@ -17,14 +17,14 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 		);
 	}
 	const { harSammeBosted, forkortetNavn , fodselsnummer } = partner!;
-	const borSammen = harSammeBosted ? 'Bor med partner' : 'Bor ikke med partner';
+	const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
 	const alder = finnAldersTekst(partner!);
 
 	return (
-		<Informasjonsbolk header="Partner" {...rest}>
-			<Normaltekst>{borSammen}</Normaltekst>
+		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
 			<Normaltekst>{`${forkortetNavn} ${alder}`}</Normaltekst>
 			<Normaltekst>{fodselsnummer}</Normaltekst>
+			<Normaltekst>{borSammen}</Normaltekst>
 		</Informasjonsbolk>
 	);
 }

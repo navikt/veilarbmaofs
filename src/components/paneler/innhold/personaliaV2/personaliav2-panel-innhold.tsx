@@ -12,6 +12,8 @@ import { useFetchPersonaliaV2 } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import Vergemaal from "./vergemaal";
+import Fullmakt from "./fullmakt";
 
 const MAX_ALDER_BARN = 21;
 
@@ -37,7 +39,9 @@ const PersonaliaV2PanelInnhold = () => {
 		statsborgerskap,
 		sivilstand,
 		partner,
-		barn
+		barn,
+		vergemaalEllerFremtidsfullmakt,
+		fullmakt
 	} = personaliav2.data;
 
 	const filtrertBarneListe = barn && barn.filter(
@@ -58,6 +62,8 @@ const PersonaliaV2PanelInnhold = () => {
 			/>
 			<Partner partner={partner} />
 			<Barn barn={filtrertBarneListe} />
+			<Vergemaal vergemaalEllerFremtidsfullmakt={vergemaalEllerFremtidsfullmakt} />
+			<Fullmakt fullmakt={fullmakt} />
 		</Grid>
 	);
 };
