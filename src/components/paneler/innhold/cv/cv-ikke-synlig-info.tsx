@@ -1,14 +1,7 @@
 import React from 'react';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 
-interface CvIkkeSynligInfoProps {
-	erSynlig: boolean;
-}
-
-export const CvIkkeSynligInfo = (props: CvIkkeSynligInfoProps) => {
-	if (props.erSynlig) {
-		return null;
-	}
+export const CvIkkeSynligInfo = () => {
 
 	return (
 		<AlertStripeInfo className="cv-ikke-synlig blokk-l">

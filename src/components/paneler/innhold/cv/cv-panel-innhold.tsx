@@ -22,7 +22,6 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
-import { SynlighetForArbeidsgiver } from './synlighet-for-arbeidsgiver';
 import './cv-panel-innhold.less';
 
 const CvPanelInnhold = () => {
@@ -86,18 +85,14 @@ const CvPanelInnhold = () => {
 		sprak,
 		kurs,
 		sistEndret,
-		synligForArbeidsgiver,
 	} = cvOgJobbprofil.data;
-
-	const erCvSynligForArbeidsgiver = synligForArbeidsgiver || false;
 
 	return (
 		<>
 			<LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
 			<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
-			<SynlighetForArbeidsgiver erSynlig={erCvSynligForArbeidsgiver} />
-			<CvIkkeSynligInfo erSynlig={erCvSynligForArbeidsgiver} />
+			<CvIkkeSynligInfo />
 			<Sammendrag sammendrag={sammendrag} />
 			<FloatGrid columns={2} gap={8}>
 				<Arbeidserfaring arbeidserfaring={arbeidserfaring} />

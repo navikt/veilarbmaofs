@@ -126,7 +126,6 @@ export interface Fagdokumentasjon {
 
 export interface ArenaPerson {
 	sistEndret: StringOrNothing;
-	synligForArbeidsgiver: boolean | null;
 	sammendrag: StringOrNothing;
 	arbeidserfaring: Arbeidserfaring[];
 	utdanning: Utdanning[];
