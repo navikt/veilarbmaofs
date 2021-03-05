@@ -11,7 +11,6 @@ const aktorId: AktorId = {
 
 const cvOgJobbprofil: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
-	synligForArbeidsgiver: false,
 	sammendrag:
 		'Jeg er en maritime executive som har master grad og bachlor grad. Har vart teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
 	arbeidserfaring: [
