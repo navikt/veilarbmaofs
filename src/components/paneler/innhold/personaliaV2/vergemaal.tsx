@@ -2,10 +2,10 @@ import React from 'react';
 import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi/lib';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {
-    PersonaliaV2Info,
+    VergeOgFullmaktData,
     VergeEllerFullmektig,
     VergemaalEllerFremtidsfullmakt, VergeNavn
-} from '../../../../rest/datatyper/personaliav2';
+} from '../../../../rest/datatyper/vergeOgFullmakt';
 import { formaterDato, isNotEmptyArray } from "../../../../utils";
 import EMDASH from "../../../../utils/emdash";
 
@@ -52,11 +52,11 @@ function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
     );
 }
 
-function Vergemaal(props: Pick<PersonaliaV2Info, 'vergemaalEllerFremtidsfullmakt'>) {
-    const { vergemaalEllerFremtidsfullmakt, ...rest } = props;
+function Vergemaal(props: Pick<VergeOgFullmaktData, 'vergeEllerFremtidsfullmakt'>) {
+    const { vergeEllerFremtidsfullmakt, ...rest } = props;
 
-    const vergemaalListe = isNotEmptyArray(vergemaalEllerFremtidsfullmakt)
-                                ? vergemaalEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
+    const vergemaalListe = isNotEmptyArray(vergeEllerFremtidsfullmakt)
+                                ? vergeEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
                                 : EMDASH;
 
     return (

@@ -11,6 +11,7 @@ import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 import { OrNothing } from '../utils/felles-typer';
 import { PersonaliaV2Info } from './datatyper/personaliav2';
 import { TOGGLES, Features } from './datatyper/feature';
+import { VergeOgFullmaktData} from "./datatyper/vergeOgFullmakt";
 
 export const useFetchRegistrering = (fnr: string) =>
 	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`);
@@ -36,6 +37,8 @@ export const useFetchUnderOppfolging = (fnr: string) =>
 export const useFetchPersonalia = (fnr: string) => useFetch<PersonaliaInfo>(`/veilarbperson/api/person/${fnr}`);
 
 export const useFetchPersonaliaV2 = (fnr: string) => useFetch<PersonaliaV2Info>(`/veilarbperson/api/v2/person/${fnr}`);
+
+export const useFetchVergOgFullmakt = (fnr: string) => useFetch<VergeOgFullmaktData>(`/veilarbperson/api/v2/person/vergeOgFullmakt/${fnr}`);
 
 const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
 export const useFetchFeatureToggle = () => useFetch<Features>(`/veilarbpersonflatefs/api/feature?${toggles}`);

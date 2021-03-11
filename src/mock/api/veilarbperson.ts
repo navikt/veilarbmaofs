@@ -3,7 +3,8 @@ import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
 import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import { AktorId } from '../../rest/datatyper/aktor-id';
-import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
+import { PersonaliaV2Info } from "../../rest/datatyper/personaliav2";
+import { VergeOgFullmaktData } from "../../rest/datatyper/vergeOgFullmakt";
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -515,8 +516,11 @@ const personaliav2: PersonaliaV2Info = {
 			}
 		}
 	],
-	kjonn: 'K',
-	vergemaalEllerFremtidsfullmakt: [
+	kjonn: 'K'
+};
+
+const mockVergeOgFullmakt: VergeOgFullmaktData = {
+	vergeEllerFremtidsfullmakt: [
 		{
 			type: 'Enslig mindreårig asylsøker',
 			embete: 'Fylkesmannen i Agder',
@@ -526,9 +530,9 @@ const personaliav2: PersonaliaV2Info = {
 					mellomnavn: 'mellomnavn',
 					etternavn: 'etternavn'
 				},
-			motpartsPersonident: '1234567890',
-			omfang: 'Ivareta personens interesser innenfor det personlige og økonomiske området'
-		},
+				motpartsPersonident: '1234567890',
+				omfang: 'Ivareta personens interesser innenfor det personlige og økonomiske området'
+			},
 			folkeregistermetadata: {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
 				gyldighetstidspunkt: '2021-03-02T13:00:42'
@@ -582,5 +586,8 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	}),
 	rest.get('/veilarbperson/api/v2/person/:fnr', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
+	}),
+	rest.get('/veilarbperson/api/v2/person/vergeOgFullmakt/:fnr', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(mockVergeOgFullmakt));
 	}),
 ];

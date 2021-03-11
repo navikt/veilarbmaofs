@@ -1,4 +1,4 @@
-import { Fullmakter, PersonaliaV2Info } from "../../../../rest/datatyper/personaliav2";
+import { Fullmakter, VergeOgFullmaktData } from "../../../../rest/datatyper/vergeOgFullmakt";
 import Informasjonsbolk from "../../../felles/informasjonsbolk";
 import React from "react";
 import {Normaltekst, UndertekstBold} from "nav-frontend-typografi";
@@ -20,7 +20,7 @@ function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
     );
 }
 
-function Fullmakt(props: Pick<PersonaliaV2Info, 'fullmakt'>) {
+function Fullmakt(props: Pick<VergeOgFullmaktData, 'fullmakt'>) {
     const { fullmakt, ...rest } = props;
 
     const fullmaktListe = isNotEmptyArray(fullmakt) ? fullmakt.map((fullmakt,index) => <FullmaktigEllerFullmaktsgiver fullmakt={fullmakt} key={index}/>) : EMDASH;

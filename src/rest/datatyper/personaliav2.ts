@@ -121,38 +121,6 @@ export interface Kontaktadresse {
 	utenlandskAdresseIFrittFormat: OrNothing<UtenlandskadresseIFrittFormat>;
 }
 
-export interface VergeNavn {
-	fornavn: StringOrNothing
-	mellomnavn: StringOrNothing;
-	etternavn: StringOrNothing;
-}
-
-export interface VergeEllerFullmektig {
-	navn: VergeNavn;
-	motpartsPersonident: StringOrNothing;
-	omfang: StringOrNothing;
-}
-
-export interface Folkeregistermetadata {
-	ajourholdstidspunkt: StringOrNothing;
-	gyldighetstidspunkt: StringOrNothing;
-}
-
-export interface VergemaalEllerFremtidsfullmakt {
-	type: StringOrNothing;
-	embete: StringOrNothing;
-	vergeEllerFullmektig: VergeEllerFullmektig;
-	folkeregistermetadata: Folkeregistermetadata;
-}
-
-export interface Fullmakter {
-	motpartsPersonident: StringOrNothing;
-	motpartsRolle: StringOrNothing;
-	omraader: string[];
-	gyldigFraOgMed: StringOrNothing;
-	gyldigTilOgMed: StringOrNothing;
-}
-
 export interface PersonaliaV2Info extends GrunnPersonalia {
 	barn: PersonsBarn[];
 	kontonummer: string;
@@ -165,6 +133,4 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
 	kontaktadresser: Kontaktadresse[];
-	vergemaalEllerFremtidsfullmakt: VergemaalEllerFremtidsfullmakt[];
-	fullmakt: Fullmakter[];
 }
