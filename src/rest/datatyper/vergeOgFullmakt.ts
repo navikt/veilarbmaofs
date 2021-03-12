@@ -1,5 +1,23 @@
 import {StringOrNothing} from "../../utils/felles-typer";
 
+export enum Vergetype {
+    ENSLIG_MINDREAARIG_ASYLSOEKER = "Enslig mindreårig asylsøker",
+    ENSLIG_MINDREAARIG_FLYKTNING = "Enslig mindreårig flyktning inklusive midlertidige saker for denne gruppen",
+    FORVALTNING_UTENFOR_VERGEMAAL = "Forvaltning utenfor vergemål",
+    STADFESTET_FREMTIDSFULLMAKT = "Fremtidsfullmakt",
+    MINDREAARIG = "Mindreårig (unntatt EMF)",
+    MIDLERTIDIG_FOR_MINDREAARIG = "Mindreårig midlertidig (unntatt EMF)",
+    VOKSEN = "Voksen",
+    MIDLERTIDIG_FOR_VOKSEN = "Voksen midlertidig"
+}
+
+export enum VergemaalEllerFullmaktOmfangType {
+    PERSONLIGE_OG_OEKONOMISKE_INTERESSER = "Ivareta personens interesser innenfor det personlige og økonomiske området",
+    UTLENDINGSSAKER = "Ivareta personens interesser innenfor det personlige og økonomiske området herunder utlendingssaken (kun for EMA)",
+    PERSONLIGE_INTERESSER = "Ivareta personens interesser innenfor det personlige området",
+    OEKONOMISKE_INTERESSER = "Ivareta personens interesser innenfor det økonomiske området"
+}
+
 export interface VergeNavn {
     fornavn: StringOrNothing
     mellomnavn: StringOrNothing;
@@ -9,7 +27,7 @@ export interface VergeNavn {
 export interface VergeEllerFullmektig {
     navn: VergeNavn;
     motpartsPersonident: StringOrNothing;
-    omfang: StringOrNothing;
+    omfang: VergemaalEllerFullmaktOmfangType;
 }
 
 export interface Folkeregistermetadata {
@@ -18,7 +36,7 @@ export interface Folkeregistermetadata {
 }
 
 export interface VergemaalEllerFremtidsfullmakt {
-    type: StringOrNothing;
+    type: Vergetype;
     embete: StringOrNothing;
     vergeEllerFullmektig: VergeEllerFullmektig;
     folkeregistermetadata: Folkeregistermetadata;

@@ -1,10 +1,10 @@
-import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
-import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
-import { PersonaliaInfo } from '../../rest/datatyper/personalia';
-import { AktorId } from '../../rest/datatyper/aktor-id';
-import { PersonaliaV2Info } from "../../rest/datatyper/personaliav2";
-import { VergeOgFullmaktData } from "../../rest/datatyper/vergeOgFullmakt";
+import {rest} from 'msw';
+import {RequestHandlersList} from 'msw/lib/types/setupWorker/glossary';
+import {ArenaPerson, FagdokumentType, KursVarighetEnhet} from '../../rest/datatyper/arenaperson';
+import {PersonaliaInfo} from '../../rest/datatyper/personalia';
+import {AktorId} from '../../rest/datatyper/aktor-id';
+import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
+import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -522,7 +522,7 @@ const personaliav2: PersonaliaV2Info = {
 const mockVergeOgFullmakt: VergeOgFullmaktData = {
 	vergeEllerFremtidsfullmakt: [
 		{
-			type: 'Enslig mindreårig asylsøker',
+			type: Vergetype.MINDREAARIG,
 			embete: 'Fylkesmannen i Agder',
 			vergeEllerFullmektig: {
 				navn: {
@@ -531,7 +531,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 					etternavn: 'etternavn'
 				},
 				motpartsPersonident: '1234567890',
-				omfang: 'Ivareta personens interesser innenfor det personlige og økonomiske området'
+				omfang: VergemaalEllerFullmaktOmfangType.OEKONOMISKE_INTERESSER
 			},
 			folkeregistermetadata: {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
@@ -539,7 +539,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 			}
 		},
 		{
-			type: 'Fremtidsfullmakt',
+			type: Vergetype.MIDLERTIDIG_FOR_VOKSEN,
 			embete: 'Fylkesmannen i Agder',
 			vergeEllerFullmektig: {
 				navn: {
@@ -548,7 +548,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 					etternavn: 'etternavn'
 				},
 				motpartsPersonident: '1234567890',
-				omfang: 'Ivareta personens interesser innenfor det personlige området'
+				omfang: VergemaalEllerFullmaktOmfangType.PERSONLIGE_INTERESSER
 			},
 			folkeregistermetadata: {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
