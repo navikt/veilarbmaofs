@@ -14,7 +14,7 @@ function Navn(props: {vergeNavn: VergeNavn}) {
 
     return (
         <div>
-            <Normaltekst>{`${fornavn} ${mellomnavn} ${etternavn}`}</Normaltekst>
+            <Normaltekst>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</Normaltekst>
         </div>
     );
 }

@@ -18,10 +18,17 @@ export enum VergemaalEllerFullmaktOmfangType {
     OEKONOMISKE_INTERESSER = "Ivareta personens interesser innenfor det økonomiske området"
 }
 
-export interface VergeNavn {
-    fornavn: StringOrNothing
+export interface Navn {
+    fornavn: String;
     mellomnavn: StringOrNothing;
-    etternavn: StringOrNothing;
+    etternavn: String;
+    forkortetNavn: String;
+}
+
+export interface VergeNavn {
+    fornavn: String;
+    mellomnavn: StringOrNothing;
+    etternavn: String;
 }
 
 export interface VergeEllerFullmektig {
@@ -44,6 +51,7 @@ export interface VergemaalEllerFremtidsfullmakt {
 
 export interface Fullmakter {
     motpartsPersonident: StringOrNothing;
+    motpartsPersonNavn: Navn;
     motpartsRolle: StringOrNothing;
     omraader: string[];
     gyldigFraOgMed: StringOrNothing;

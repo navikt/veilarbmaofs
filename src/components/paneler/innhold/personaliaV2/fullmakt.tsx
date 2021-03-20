@@ -6,12 +6,14 @@ import {formaterDato, isNotEmptyArray} from "../../../../utils";
 import EMDASH from "../../../../utils/emdash";
 
 function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
-    const {motpartsPersonident, motpartsRolle, omraader, gyldigFraOgMed, gyldigTilOgMed} = props.fullmakt;
+    const {motpartsPersonident, motpartsPersonNavn, motpartsRolle, omraader, gyldigFraOgMed, gyldigTilOgMed} = props.fullmakt;
+    const {fornavn, mellomnavn, etternavn} = motpartsPersonNavn;
 
     return (
         <div>
             <div className="overinformasjon underinformasjon">
                 <UndertekstBold>F{motpartsRolle?.substring(1).toLowerCase()}: {motpartsPersonident}</UndertekstBold>
+                <Normaltekst>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</Normaltekst>
                 <Normaltekst>Gjelder {omraader.join()}</Normaltekst>
                 <Normaltekst>Gyldig fra og med: {formaterDato(gyldigFraOgMed)}</Normaltekst>
                 <Normaltekst>Gyldig til og med: {formaterDato(gyldigTilOgMed)}</Normaltekst>

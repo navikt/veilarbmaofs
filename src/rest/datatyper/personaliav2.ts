@@ -112,7 +112,7 @@ export interface Oppholdsadresse {
 }
 
 export interface Kontaktadresse {
-	type: StringOrNothing;
+	type: String;
 	coAdressenavn: StringOrNothing;
 	vegadresse: OrNothing<Vegadresse>;
 	postboksadresse: OrNothing<Postboksadresse>;

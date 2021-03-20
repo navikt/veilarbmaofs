@@ -535,7 +535,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 			},
 			folkeregistermetadata: {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
-				gyldighetstidspunkt: '2021-03-02T13:00:42'
+				gyldighetstidspunkt: null
 			}
 		},
 		{
@@ -559,6 +559,12 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 	fullmakt: [
 		{
 			motpartsPersonident: '1234567890',
+			motpartsPersonNavn: {
+				fornavn:'OLA',
+				mellomnavn:null,
+				etternavn:'NORDMANN',
+				forkortetNavn:'NORDMANN OLA'
+			},
 			motpartsRolle: 'FULLMEKTIG',
 			omraader: ['AAP', 'DAG'],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
@@ -566,6 +572,12 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 		},
 		{
 			motpartsPersonident: '1234567891',
+			motpartsPersonNavn: {
+				fornavn:'fornavn',
+				mellomnavn:'mellomnavn',
+				etternavn:'etternavn',
+				forkortetNavn:'forkortetNavn'
+			},
 			motpartsRolle: 'FULLMAKTSGIVER',
 			omraader: ['AAP', 'AAR'],
 			gyldigFraOgMed: '2021-03-04T13:00:42',

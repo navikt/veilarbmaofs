@@ -19,13 +19,13 @@ function BorSammen(props: { barn: PersonsBarn }) {
 }
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
-	const { forkortetNavn, fodselsnummer, kjonn } = props.barn;
+	const { fornavn, etternavn, fodselsnummer, kjonn } = props.barn;
 	const alder = finnAldersTekst(props.barn);
 	const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst>{`${forkortetNavn} ${alder}, ${lesbartKjonn}`}</Normaltekst>
+			<Normaltekst>{`${fornavn} ${etternavn} ${alder}, ${lesbartKjonn}`}</Normaltekst>
 			<Normaltekst>{fodselsnummer}</Normaltekst>
 			<BorSammen barn={props.barn} />
 		</div>
