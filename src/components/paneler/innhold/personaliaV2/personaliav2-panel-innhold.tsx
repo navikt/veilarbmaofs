@@ -8,22 +8,29 @@ import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
 import Telefon from './telefon';
-import { useFetchPersonaliaV2 } from '../../../../rest/api';
+import { useFetchPersonaliaV2, useFetchVergOgFullmakt } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import Vergemaal from "./vergemaal";
+import Fullmakt from "./fullmakt";
 
 const MAX_ALDER_BARN = 21;
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const personaliav2 = useFetchPersonaliaV2(fnr);
+	const vergeOgFullmakt = useFetchVergOgFullmakt(fnr);
 
 	if (isPending(personaliav2)) {
 		return <Laster />;
 	} else if (hasError(personaliav2)) {
 		return <Feilmelding />;
 	} else if (!hasData(personaliav2)) {
+		return <NoData />;
+	}
+
+	if (!hasData(vergeOgFullmakt)) {
 		return <NoData />;
 	}
 
@@ -39,6 +46,11 @@ const PersonaliaV2PanelInnhold = () => {
 		partner,
 		barn
 	} = personaliav2.data;
+
+	const {
+		vergeEllerFremtidsfullmakt,
+		fullmakt
+	} = vergeOgFullmakt.data;
 
 	const filtrertBarneListe = barn && barn.filter(
 		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN
@@ -58,6 +70,8 @@ const PersonaliaV2PanelInnhold = () => {
 			/>
 			<Partner partner={partner} />
 			<Barn barn={filtrertBarneListe} />
+			<Vergemaal vergeEllerFremtidsfullmakt={vergeEllerFremtidsfullmakt} />
+			<Fullmakt fullmakt={fullmakt} />
 		</Grid>
 	);
 };

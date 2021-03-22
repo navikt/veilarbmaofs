@@ -11,11 +11,11 @@ export interface GrunnPersonalia {
 	kjonn: string;
 }
 
-export interface PersonaliaBarn extends GrunnPersonalia {
+export interface PersonsBarn extends GrunnPersonalia {
 	harSammeBosted: boolean;
 }
 
-export interface PersonaliaEnhet {
+export interface Enhet {
 	enhetsnummer: string;
 	navn: string;
 }
@@ -112,7 +112,7 @@ export interface Oppholdsadresse {
 }
 
 export interface Kontaktadresse {
-	type: StringOrNothing;
+	type: String;
 	coAdressenavn: StringOrNothing;
 	vegadresse: OrNothing<Vegadresse>;
 	postboksadresse: OrNothing<Postboksadresse>;
@@ -122,9 +122,9 @@ export interface Kontaktadresse {
 }
 
 export interface PersonaliaV2Info extends GrunnPersonalia {
-	barn: PersonaliaBarn[];
+	barn: PersonsBarn[];
 	kontonummer: string;
-	geografiskEnhet: OrNothing<PersonaliaEnhet>;
+	geografiskEnhet: OrNothing<Enhet>;
 	telefon: PersonaliaTelefon[];
 	epost: StringOrNothing;
 	statsborgerskap: string;

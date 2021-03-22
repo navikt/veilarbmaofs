@@ -1,9 +1,10 @@
-import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
-import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
-import { PersonaliaInfo } from '../../rest/datatyper/personalia';
-import { AktorId } from '../../rest/datatyper/aktor-id';
+import {rest} from 'msw';
+import {RequestHandlersList} from 'msw/lib/types/setupWorker/glossary';
+import {ArenaPerson, FagdokumentType, KursVarighetEnhet} from '../../rest/datatyper/arenaperson';
+import {PersonaliaInfo} from '../../rest/datatyper/personalia';
+import {AktorId} from '../../rest/datatyper/aktor-id';
 import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
+import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -517,6 +518,73 @@ const personaliav2: PersonaliaV2Info = {
 	kjonn: 'K'
 };
 
+const mockVergeOgFullmakt: VergeOgFullmaktData = {
+	vergeEllerFremtidsfullmakt: [
+		{
+			type: Vergetype.MINDREAARIG,
+			embete: 'Fylkesmannen i Agder',
+			vergeEllerFullmektig: {
+				navn: {
+					fornavn: 'fornavn',
+					mellomnavn: 'mellomnavn',
+					etternavn: 'etternavn'
+				},
+				motpartsPersonident: '1234567890',
+				omfang: VergemaalEllerFullmaktOmfangType.OEKONOMISKE_INTERESSER
+			},
+			folkeregistermetadata: {
+				ajourholdstidspunkt: '2021-03-02T13:00:42',
+				gyldighetstidspunkt: null
+			}
+		},
+		{
+			type: Vergetype.MIDLERTIDIG_FOR_VOKSEN,
+			embete: 'Fylkesmannen i Agder',
+			vergeEllerFullmektig: {
+				navn: {
+					fornavn: 'fornavn',
+					mellomnavn: 'mellomnavn',
+					etternavn: 'etternavn'
+				},
+				motpartsPersonident: '1234567890',
+				omfang: VergemaalEllerFullmaktOmfangType.PERSONLIGE_INTERESSER
+			},
+			folkeregistermetadata: {
+				ajourholdstidspunkt: '2021-03-02T13:00:42',
+				gyldighetstidspunkt: '2021-03-02T13:00:42'
+			}
+		}
+	],
+	fullmakt: [
+		{
+			motpartsPersonident: '1234567890',
+			motpartsPersonNavn: {
+				fornavn:'OLA',
+				mellomnavn:null,
+				etternavn:'NORDMANN',
+				forkortetNavn:'NORDMANN OLA'
+			},
+			motpartsRolle: 'FULLMEKTIG',
+			omraader: ['AAP', 'DAG'],
+			gyldigFraOgMed: '2021-03-02T13:00:42',
+			gyldigTilOgMed:	'2021-03-03T13:00:42'
+		},
+		{
+			motpartsPersonident: '1234567891',
+			motpartsPersonNavn: {
+				fornavn:'fornavn',
+				mellomnavn:'mellomnavn',
+				etternavn:'etternavn',
+				forkortetNavn:'forkortetNavn'
+			},
+			motpartsRolle: 'FULLMAKTSGIVER',
+			omraader: ['AAP', 'AAR'],
+			gyldigFraOgMed: '2021-03-04T13:00:42',
+			gyldigTilOgMed:	'2021-03-05T13:00:42'
+		}
+	]
+};
+
 export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
@@ -529,5 +597,8 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	}),
 	rest.get('/veilarbperson/api/v2/person/:fnr', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
+	}),
+	rest.get('/veilarbperson/api/v2/person/vergeOgFullmakt/:fnr', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(mockVergeOgFullmakt));
 	}),
 ];

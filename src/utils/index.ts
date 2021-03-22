@@ -16,6 +16,10 @@ export function isNullOrUndefined(param: string | object | null | undefined): bo
 	return param === undefined || param === null;
 }
 
+export function isNotEmptyArray(param: any[]): boolean {
+	return param && param.length !== 0;
+}
+
 // Midlertidig permanent hack for å skille ut "tips til deg:" som vi får fra jobbsøkerkompetanse i feltet raadIngress
 // eksempel-tekst: Du sier at du har lite erfaring som jobbsøker. Vi vil oppfordre deg til å jobbe godt med søknadene dine. Vi gir deg følgende tips:
 export function skillUtTipsTilDegFraTekst(tekst: string): string[] {
