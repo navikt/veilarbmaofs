@@ -14,7 +14,7 @@ function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 	return (
 		<Informasjonsbolk header="Sivilstand" {...rest}>
 			<Normaltekst>{sivilstand.sivilstand}</Normaltekst>
-			{sivilstand.fraDato && <Normaltekst>Fra: {formaterDato(sivilstand.fraDato)}</Normaltekst>}
+			<Normaltekst>Fra: {formaterDato(sivilstand.fraDato)}</Normaltekst>
 		</Informasjonsbolk>
 	);
 }

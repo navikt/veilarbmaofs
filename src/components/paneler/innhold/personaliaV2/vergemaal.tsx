@@ -47,7 +47,7 @@ function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
             <VergeEllerFullmakt vergeEllerFullmektig={vergeEllerFullmektig}/>
             <UndertekstBold className="overinformasjon">Fylkesmannsembete</UndertekstBold>
             <Normaltekst>{embete}</Normaltekst>
-            <Normaltekst>- {formaterDato(gyldighetstidspunkt)}</Normaltekst>
+            <Normaltekst>{formaterDato(gyldighetstidspunkt)}</Normaltekst>
         </div>
     );
 }
