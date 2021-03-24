@@ -5,6 +5,7 @@ import {PersonaliaInfo} from '../../rest/datatyper/personalia';
 import {AktorId} from '../../rest/datatyper/aktor-id';
 import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
 import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
+import {TilrettelagtKommunikasjonData} from "../../rest/datatyper/tilrettelagtKommunikasjon";
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -585,6 +586,11 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 	]
 };
 
+const mockTilrettelagtKommunikasjon: TilrettelagtKommunikasjonData = {
+	talespraak: 'Engelsk',
+	tegnspraak: 'Norsk'
+};
+
 export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
@@ -595,10 +601,13 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/:fnr', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personalia));
 	}),
-	rest.get('/veilarbperson/api/v2/person/:fnr', (req, res, ctx) => {
+	rest.get('/veilarbperson/api/v2/person', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
 	}),
-	rest.get('/veilarbperson/api/v2/person/vergeOgFullmakt/:fnr', (req, res, ctx) => {
+	rest.get('/veilarbperson/api/v2/person/vergeOgFullmakt', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(mockVergeOgFullmakt));
 	}),
+	rest.get('/veilarbperson/api/v2/person/tolk', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(mockTilrettelagtKommunikasjon));
+	})
 ];
