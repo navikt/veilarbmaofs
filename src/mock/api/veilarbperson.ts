@@ -520,7 +520,7 @@ const personaliav2: PersonaliaV2Info = {
 };
 
 const mockVergeOgFullmakt: VergeOgFullmaktData = {
-	vergeEllerFremtidsfullmakt: [
+	vergemaalEllerFremtidsfullmakt: [
 		{
 			type: Vergetype.MINDREAARIG,
 			embete: 'Fylkesmannen i Agder',

@@ -52,11 +52,11 @@ function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
     );
 }
 
-function Vergemaal(props: Pick<VergeOgFullmaktData, 'vergeEllerFremtidsfullmakt'>) {
-    const { vergeEllerFremtidsfullmakt, ...rest } = props;
+function Vergemaal(props: Pick<VergeOgFullmaktData, 'vergemaalEllerFremtidsfullmakt'>) {
+    const { vergemaalEllerFremtidsfullmakt, ...rest } = props;
 
-    const vergemaalListe = isNotEmptyArray(vergeEllerFremtidsfullmakt)
-                                ? vergeEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
+    const vergemaalListe = isNotEmptyArray(vergemaalEllerFremtidsfullmakt)
+                                ? vergemaalEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
                                 : EMDASH;
 
     return (

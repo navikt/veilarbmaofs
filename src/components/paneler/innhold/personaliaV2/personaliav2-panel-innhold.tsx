@@ -32,14 +32,6 @@ const PersonaliaV2PanelInnhold = () => {
 		return <NoData tekst="Ingen persondata tilgjengelig" />;
 	}
 
-	if (!hasData(vergeOgFullmakt)) {
-		return <NoData tekst="Bruker har ikke vergemål eller fullmakt" />;
-	}
-
-	if (!hasData(tilrettelagtKommunikasjon)) {
-		return <NoData tekst="Bruker har ikke behov for språktolk" />
-	}
-
 	const {
 		bostedsadresse,
 		oppholdsadresse,
@@ -53,12 +45,6 @@ const PersonaliaV2PanelInnhold = () => {
 		barn
 	} = personaliav2.data;
 
-	const {
-		vergeEllerFremtidsfullmakt,
-		fullmakt
-	} = vergeOgFullmakt.data;
-
-	const tilrettelagtKommunikasjonData = tilrettelagtKommunikasjon.data;
 
 	const filtrertBarneListe = barn && barn.filter(
 		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN
@@ -78,9 +64,9 @@ const PersonaliaV2PanelInnhold = () => {
 			/>
 			<Partner partner={partner} />
 			<Barn barn={filtrertBarneListe} />
-			<Vergemaal vergeEllerFremtidsfullmakt={vergeEllerFremtidsfullmakt} />
-			<Fullmakt fullmakt={fullmakt} />
-			<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjonData} />
+			{hasData(vergeOgFullmakt) && <Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />}
+			{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
+			{hasData(tilrettelagtKommunikasjon) && <TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />}
 		</Grid>
 	);
 };
