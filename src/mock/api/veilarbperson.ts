@@ -560,13 +560,22 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 		{
 			motpartsPersonident: '1234567890',
 			motpartsPersonNavn: {
-				fornavn:'OLA',
+				fornavn:'Ola',
 				mellomnavn:null,
-				etternavn:'NORDMANN',
-				forkortetNavn:'NORDMANN OLA'
+				etternavn:'Nordmann',
+				forkortetNavn:'Nordmann Ola'
 			},
 			motpartsRolle: 'FULLMEKTIG',
-			omraader: ['AAP', 'DAG'],
+			omraader: [
+				{
+					kode:'AAP',
+					beskrivelse:'Arbeidsavklaringspenger'
+				},
+				{
+					kode:'DAG',
+					beskrivelse:'Dagpenger'
+				}
+			],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
 			gyldigTilOgMed:	'2021-03-03T13:00:42'
 		},
@@ -579,7 +588,16 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 				forkortetNavn:'forkortetNavn'
 			},
 			motpartsRolle: 'FULLMAKTSGIVER',
-			omraader: ['AAP', 'AAR'],
+			omraader:[
+				{
+					kode:'BAR',
+					beskrivelse:'Barnetrygd'
+				},
+				{
+					kode:'HJE',
+					beskrivelse:'Hjelpemidler'
+				}
+			],
 			gyldigFraOgMed: '2021-03-04T13:00:42',
 			gyldigTilOgMed:	'2021-03-05T13:00:42'
 		}
