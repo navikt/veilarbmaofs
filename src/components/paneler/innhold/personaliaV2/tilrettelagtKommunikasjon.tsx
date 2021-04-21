@@ -17,8 +17,8 @@ function TilrettelagtKommunikasjon(props: {tilrettelagtKommunikasjon: Tilrettela
     return(
         <Informasjonsbolk header="Tilrettelagt kommunikasjon" {...rest}>
             <div className="overinformasjon">
-                {talespraak && <Normaltekst>Talespråktolk: {talespraak}</Normaltekst>}
-                {tegnspraak && <Normaltekst> Tegnspråktolk: {tegnspraak}</Normaltekst>}
+                {talespraak && <Normaltekst>Språktolk: {talespraak}</Normaltekst>}
+                {tegnspraak && <Normaltekst>Tegnspråktolk</Normaltekst>}
             </div>
         </Informasjonsbolk>
     );
