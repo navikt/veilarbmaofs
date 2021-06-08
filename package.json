@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@craco/craco": "^6.1.0",
+    "@navikt/fnrvalidator": "^1.1.4",
     "@navikt/frontendlogger": "^2.0.0",
     "@navikt/navspa": "^3.0.1",
     "@nutgaard/use-async": "^2.3.1",
@@ -41,6 +42,8 @@
     "nav-frontend-modal-style": "^0.3.49",
     "nav-frontend-paneler": "^2.0.26",
     "nav-frontend-paneler-style": "^0.3.33",
+    "nav-frontend-skjema": "^4.0.1",
+    "nav-frontend-skjema-style": "^3.0.1",
     "nav-frontend-spinner": "^2.0.12",
     "nav-frontend-spinner-style": "^0.2.9",
     "nav-frontend-tekstomrade": "^2.0.70",

@@ -1,0 +1,160 @@
+@import "~nav-frontend-core/less/_variabler";
+
+.tilbakemelding-modal {
+    width: 500px;
+    position: fixed;
+    right: 25px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 6px 15px 0 rgb(183, 177,  169);
+    border: 1px solid @navLysGra;
+    z-index: 998;
+
+    &__tittel {
+        font-size: 24px !important;
+        line-height: 28px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    &--slide-in {
+        bottom: 100px;
+        animation: 0.33s ease-out slide-in;
+    }
+
+    &--slide-out {
+        opacity: 0;
+        animation: 0.33s ease-out slide-out;
+    }
+
+
+    &--slide-out-takk {
+        bottom: -100px !important;
+		animation: 0.5s ease-in slide-out-takk;
+    }
+
+    &--takk-posisjon {
+        bottom: 24px;
+    }
+
+    &__innhold {
+        padding: 1.25rem;
+    }
+
+    &__innhold-fade-out {
+        animation: 0.2s linear fade-out-innhold;
+    }
+
+    &__innhold--takk {
+        border-radius: 12px;
+        animation: 0.5s linear takk-transition;
+    }
+
+    &__checkbox-element {
+        margin-top: 0.5rem;
+    }
+
+    &__kommentar {
+        margin: 1rem 0;
+
+        &-felt {
+            resize: none;
+            max-height: 200px;
+            width: 100%;
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px @navBlaDarken60;
+            }
+        }
+    }
+
+    &__ekspander {
+        animation: 0.5s ekspander ease-out;
+        overflow: hidden;
+    }
+
+    &__takk-melding-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: center;
+    }
+
+    &__takk-ikon {
+        width: 50px;
+        height: 50px;
+        margin: 0 1rem 0 0;
+    }
+}
+
+@keyframes takk-transition {
+    from {
+        opacity: 0;
+        height: 365px;
+    }
+    to {
+        opacity: 1;
+        height: 80px;
+    }
+}
+
+@keyframes takk-transition-slide-down {
+    from {
+        bottom: inherit;
+    }
+    to {
+        bottom: 24px;
+    }
+}
+
+@keyframes ekspander {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 165px;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0.5;
+        bottom: 50px;
+    }
+    to {
+        opacity: 1;
+        bottom: 100px;
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        bottom: 100px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 80px;
+        opacity: 0;
+    }
+}
+
+
+@keyframes slide-out-takk {
+    0% {
+		bottom: 24px;
+    }
+    100% {
+		bottom: -100px;
+    }
+}
+
+@keyframes fade-out-innhold {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
