@@ -119,7 +119,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 		return (
 			<div className={cls({ 'tilbakemelding-modal__innhold-fade-out': showFadeOutAnimation })}>
 				<Innholdstittel className="blokk-xxs tilbakemelding-modal__tittel">Hva trenger du å vite om brukerens familie?</Innholdstittel>
-				<Element className="tilbakemelding-modal__ingress">Vi skal alltid prøve å begrense mengden informasjon vi har om brukerne våre. Hvor mye informasjon om brukers familie trenger du minimum for oppfølging mot arbeid?</Element>
+				<Element className="blokk-xxs">Vi skal alltid prøve å begrense mengden informasjon vi har om brukerne våre. Hvor mye informasjon om brukers familie trenger du minimum for oppfølging mot arbeid?</Element>
 				<form
 					className="tilbakemelding-modal__ekspander"
 					onSubmit={handleCheckboxFormSubmitted}

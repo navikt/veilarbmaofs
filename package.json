@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@craco/craco": "^6.1.0",
+    "@navikt/fnrvalidator": "^1.1.4",
     "@navikt/frontendlogger": "^2.0.0",
     "@navikt/navspa": "^3.0.1",
     "@nutgaard/use-async": "^2.3.1",
