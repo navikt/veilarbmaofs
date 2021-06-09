@@ -2,59 +2,30 @@ import React, { useEffect } from 'react';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
-import { HovedmaalkodeMap, OppfolgingsstatusData } from '../../../../rest/datatyper/oppfolgingsstatus';
-import { StringOrNothing } from '../../../../utils/felles-typer';
-import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
-import { VeilederData } from '../../../../rest/datatyper/veileder';
 import { useAppStore } from '../../../../stores/app-store';
-import { useFetchOppfolgingsstatus, useFetchPersonalia, useFetchVeileder } from '../../../../rest/api';
+import {
+	useFetchInnsatsbehov,
+	useFetchOppfolgingsstatus,
+	useFetchPersonalia,
+	useFetchVeileder
+} from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
 import { isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import Innsatsgruppe from '../ytelser/innsatsgruppe';
-
-function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
-	if (!oppfolgingsstatus || !oppfolgingsstatus.oppfolgingsenhet) {
-		return null;
-	}
-
-	const {
-		oppfolgingsenhet: { enhetId, navn }
-	} = oppfolgingsstatus;
-	return `${enhetId} ${navn}`;
-}
-
-function hentGeografiskEnhetTekst(personalia: PersonaliaInfo | null): StringOrNothing {
-	if (!personalia || !personalia.geografiskEnhet) {
-		return null;
-	}
-
-	const {
-		geografiskEnhet: { enhetsnummer, navn }
-	} = personalia;
-	return `${enhetsnummer} ${navn}`;
-}
-
-function hentVeilederTekst(veileder: VeilederData | null): StringOrNothing {
-	if (!veileder) {
-		return null;
-	}
-
-	return `${veileder.ident} ${veileder.navn}`;
-}
-
-function hentHovedmaalkodeTekst(oppfolgingsstatus: OppfolgingsstatusData | null): StringOrNothing {
-	if (!oppfolgingsstatus || !oppfolgingsstatus.hovedmaalkode) {
-		return null;
-	}
-
-	return HovedmaalkodeMap[oppfolgingsstatus.hovedmaalkode];
-}
+import {
+	hentGeografiskEnhetTekst,
+	hentOppfolgingsEnhetTekst,
+	hentVeilederTekst,
+	mapHovedmalTilTekst,
+	mapInnsatsgruppeTilTekst,
+	mapServicegruppeTilTekst
+} from '../../../../utils/text-mapper';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 	const personalia = useFetchPersonalia(fnr);
+	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
 
@@ -66,17 +37,27 @@ const OppfolgingPanelInnhold = () => {
 		// eslint-disable-next-line
 	}, [oppfolgingsstatus.status]);
 
-	if (isPending(oppfolgingsstatus) || isPending(personalia)) {
+	if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(innsatsbehov)) {
 		return <Laster midtstilt={true} />;
 	}
 
 	const veilederData = hasData(veileder) ? veileder.data : null;
 	const personaliaData = hasData(personalia) ? personalia.data : null;
+	const innsatsbehovData = hasData(innsatsbehov) ? innsatsbehov.data : null;
 	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
 	return (
 		<Grid columns={4} gap="0.5rem">
-			<Innsatsgruppe oppfolgingsstatus={oppfolgingsstatusData}/>
+			<InformasjonsbolkEnkel
+				header="Servicegruppe"
+				value={mapServicegruppeTilTekst(oppfolgingsstatusData?.servicegruppe)}
+				defaultValue={EMDASH}
+			/>
+			<InformasjonsbolkEnkel
+				header="Innsatsgruppe"
+				value={innsatsbehov.statusCode === 204 ? 'Ikke vurdert' : mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
+				defaultValue={EMDASH}
+			/>
 			<InformasjonsbolkEnkel header="Veileder" value={hentVeilederTekst(veilederData)} defaultValue={EMDASH} />
 			<InformasjonsbolkEnkel
 				header="Geografisk enhet"
@@ -90,7 +71,7 @@ const OppfolgingPanelInnhold = () => {
 			/>
 			<InformasjonsbolkEnkel
 				header="Hovedmål"
-				value={hentHovedmaalkodeTekst(oppfolgingsstatusData)}
+				value={mapHovedmalTilTekst(innsatsbehovData?.hovedmal)}
 				defaultValue={EMDASH}
 			/>
 		</Grid>
