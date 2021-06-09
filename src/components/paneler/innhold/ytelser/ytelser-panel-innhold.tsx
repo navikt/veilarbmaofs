@@ -37,7 +37,7 @@ const YtelserPanelInnhold = () => {
 		<Grid columns={1} gap="0.5rem">
 			<InformasjonsbolkEnkel
 				header="Innsatsgruppe"
-				value={innsatsbehov.statusCode === 204 ? 'Ikke vurdert' : mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
+				value={mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
 				defaultValue={EMDASH}
 			/>
 			<Vedtaksliste vedtaksliste={aktivVedtak}/>

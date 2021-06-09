@@ -7,6 +7,8 @@ import { VeilederData } from '../rest/datatyper/veileder';
 
 export function mapServicegruppeTilTekst(servicegruppe: OrNothing<Servicegruppe>): string {
 	switch (servicegruppe) {
+		case 'IVURD':
+			return 'Ikke vurdert';
 		case 'OPPFI':
 			return 'Helserelatert arbeidsrettet oppfølging i NAV';
 		case 'VURDI':

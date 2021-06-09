@@ -55,7 +55,7 @@ const OppfolgingPanelInnhold = () => {
 			/>
 			<InformasjonsbolkEnkel
 				header="Innsatsgruppe"
-				value={innsatsbehov.statusCode === 204 ? 'Ikke vurdert' : mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
+				value={mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
 				defaultValue={EMDASH}
 			/>
 			<InformasjonsbolkEnkel header="Veileder" value={hentVeilederTekst(veilederData)} defaultValue={EMDASH} />
