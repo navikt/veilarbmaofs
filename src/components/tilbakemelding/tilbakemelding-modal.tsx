@@ -98,11 +98,11 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					Object.keys(CheckboxVerdier).map((key, index) => {
 						return (
 							<Checkbox
-								checked={checkboxListe.includes(index)}
+								checked={checkboxListe.includes(index+1)}
 								label={CheckboxVerdier[key]}
 								value={CheckboxVerdier[key]}
 								key={index}
-								onChange={e => handleCheckboxChanged(index, e)}
+								onChange={e => handleCheckboxChanged(index+1, e)}
 								className="tilbakemelding-modal__checkbox-element"
 							/>
 						)

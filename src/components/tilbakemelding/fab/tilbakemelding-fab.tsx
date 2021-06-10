@@ -45,6 +45,13 @@ export function TilbakemeldingFab() {
 		setHideFab(true);
 		window.localStorage.setItem(TILBAKEMELDING_LOCALSTORAGE_NAME, 'true');
 		logEvent('detaljer.tilbakemelding', {feature: TILBAKEMELDING_FEATURE_TAG, ...tilbakemelding});
+
+		tilbakemelding.checkboxListe.forEach(verdi => {
+			logEvent('detaljer.tilbakemelding.checkboxverdier', {
+				feature: TILBAKEMELDING_FEATURE_TAG,
+				checkboxvalgt: verdi
+			});
+		});
 	};
 
 	const hide = !sporOmTilbakemeldingFeature || harTidligereSendtTilbakemelding() || hideFab;
