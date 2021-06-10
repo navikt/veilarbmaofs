@@ -7,7 +7,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import takkIkon from './takk-ikon.png'
 
 export interface TilbakemeldingProps {
-	checkboxListe: string[];
+	checkboxListe: number[];
 	kommentar: string;
 }
 
@@ -33,7 +33,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 	const [harSendt, setHarSendt] = useState(false);
 	const [kommentar, setKommentar] = useState('');
 	const [showFadeOutAnimation, setShowFadeOutAnimation] = useState(false);
-	const [checkboxListe, setCheckboxListe] = useState<string[]>([]);
+	const [checkboxListe, setCheckboxListe] = useState<number[]>([]);
 
 	const KOMMENTAR_ROWS = 5;
 	const KOMMENTAR_MAX_CHAR = 750;
@@ -66,17 +66,14 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 		}
 	};
 
-	const handleCheckboxChanged = (index: number, verdi: string) => {
-		setCheckboxListe(prevState => {
-			const prevListeCopy = [...prevState];
-			if(prevListeCopy.includes(verdi)){
-				prevListeCopy.splice(index,1);
-			} else {
-				prevListeCopy[index] = verdi;
-			}
-			setCheckboxListe(prevListeCopy);
-			return prevListeCopy;
-		})
+	const handleCheckboxChanged = (verdi: number, el: any) => {
+		if (el.target.checked) {
+			checkboxListe.push(verdi);
+		} else {
+			let index = checkboxListe.indexOf(verdi);
+			checkboxListe.splice(index,1);
+		}
+		setCheckboxListe([...checkboxListe]);
 	};
 
 	const renderTakkMelding = () => {
@@ -101,11 +98,11 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					Object.keys(CheckboxVerdier).map((key, index) => {
 						return (
 							<Checkbox
-								checked={checkboxListe.includes(CheckboxVerdier[key])}
+								checked={checkboxListe.includes(index)}
 								label={CheckboxVerdier[key]}
 								value={CheckboxVerdier[key]}
 								key={index}
-								onChange={e => handleCheckboxChanged(index, e.target.value)}
+								onChange={e => handleCheckboxChanged(index, e)}
 								className="tilbakemelding-modal__checkbox-element"
 							/>
 						)
