@@ -40,18 +40,11 @@ export function TilbakemeldingFab() {
 		}, 1500);
 	};
 
-	const handleCheckboxTilbakemeldingSendt = (tilbakemelding: TilbakemeldingProps) => {
+	const handleCheckboxTilbakemeldingSendt = (tilbakemelding: TilbakemeldingProps, checkboxStatusListe: any) => {
 		startAutoClose();
 		setHideFab(true);
 		window.localStorage.setItem(TILBAKEMELDING_LOCALSTORAGE_NAME, 'true');
-		logEvent('detaljer.tilbakemelding', {feature: TILBAKEMELDING_FEATURE_TAG, ...tilbakemelding});
-
-		tilbakemelding.checkboxListe.forEach(verdi => {
-			logEvent('detaljer.tilbakemelding.checkboxverdier', {
-				feature: TILBAKEMELDING_FEATURE_TAG,
-				checkboxvalgt: verdi
-			});
-		});
+		logEvent('detaljer.tilbakemelding', {feature: TILBAKEMELDING_FEATURE_TAG, ...tilbakemelding, ...checkboxStatusListe});
 	};
 
 	const hide = !sporOmTilbakemeldingFeature || harTidligereSendtTilbakemelding() || hideFab;

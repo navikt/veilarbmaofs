@@ -7,13 +7,13 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import takkIkon from './takk-ikon.png'
 
 export interface TilbakemeldingProps {
-	checkboxListe: number[];
+	checkboxIndexListe: number[];
 	kommentar: string;
 }
 
 interface TilbakemeldingModalProps {
 	open: boolean;
-	onTilbakemeldingSendt: (tilbakemelding: TilbakemeldingProps) => void;
+	onTilbakemeldingSendt: (tilbakemelding: TilbakemeldingProps, checkboxStatusListe: any) => void;
 }
 
 export enum CheckboxVerdier {
@@ -33,12 +33,28 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 	const [harSendt, setHarSendt] = useState(false);
 	const [kommentar, setKommentar] = useState('');
 	const [showFadeOutAnimation, setShowFadeOutAnimation] = useState(false);
-	const [checkboxListe, setCheckboxListe] = useState<number[]>([]);
+	const [checkboxIndexListe, setcheckboxIndexListe] = useState<number[]>([]);
 
 	const KOMMENTAR_ROWS = 5;
 	const KOMMENTAR_MAX_CHAR = 750;
 
 	const { open, onTilbakemeldingSendt } = props;
+
+	const checkboxStatus: any = {};
+
+	function hentValgteCheckbokser(value: number[]) {
+		checkboxStatus.partner_navn = value.includes(1);
+		checkboxStatus.partner_alder =  value.includes(2);
+		checkboxStatus.partner_fodselsdato = value.includes(3);
+		checkboxStatus.partner_fodselsnummer = value.includes(4);
+		checkboxStatus.barnets_navn = value.includes(5);
+		checkboxStatus.barnets_alder = value.includes(6);
+		checkboxStatus.barnets_fodselsdato = value.includes(7);
+		checkboxStatus.barnets_fodselsnummer = value.includes(8);
+		checkboxStatus.barnets_kjonn = value.includes(9);
+
+		return checkboxStatus;
+	}
 
 	useEffect(()=> {
 		if (open && !harBlittVist) {
@@ -58,22 +74,23 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 
 	const handleCheckboxFormSubmitted = (e: any) => {
 		e.preventDefault();
-		if (checkboxListe.length === 0) {
+		if (checkboxIndexListe.length === 0) {
 			setShowFadeOutAnimation(true);
 		} else {
 			setHarSendt(true);
-			onTilbakemeldingSendt({checkboxListe, kommentar});
+			const checkboksStatusListe = hentValgteCheckbokser(checkboxIndexListe);
+			onTilbakemeldingSendt({checkboxIndexListe, kommentar}, checkboksStatusListe);
 		}
 	};
 
 	const handleCheckboxChanged = (verdi: number, el: any) => {
 		if (el.target.checked) {
-			checkboxListe.push(verdi);
+			checkboxIndexListe.push(verdi);
 		} else {
-			let index = checkboxListe.indexOf(verdi);
-			checkboxListe.splice(index,1);
+			let index = checkboxIndexListe.indexOf(verdi);
+			checkboxIndexListe.splice(index,1);
 		}
-		setCheckboxListe([...checkboxListe]);
+		setcheckboxIndexListe([...checkboxIndexListe]);
 	};
 
 	const renderTakkMelding = () => {
@@ -98,7 +115,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					Object.keys(CheckboxVerdier).map((key, index) => {
 						return (
 							<Checkbox
-								checked={checkboxListe.includes(index+1)}
+								checked={checkboxIndexListe.includes(index+1)}
 								label={CheckboxVerdier[key]}
 								value={CheckboxVerdier[key]}
 								key={index}
