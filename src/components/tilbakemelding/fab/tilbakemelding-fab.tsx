@@ -47,7 +47,7 @@ export function TilbakemeldingFab() {
 		logEvent('detaljer.tilbakemelding', {feature: TILBAKEMELDING_FEATURE_TAG, ...tilbakemelding, ...checkboxStatusListe});
 	};
 
-	const hide = !sporOmTilbakemeldingFeature || harTidligereSendtTilbakemelding() || hideFab;
+	const hide = !sporOmTilbakemeldingFeature || !harTidligereSendtTilbakemelding() || hideFab;
 
 	return (
 		<div ref={wrapperDivRef}>

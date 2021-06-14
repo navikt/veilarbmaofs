@@ -5,6 +5,7 @@ import './tilbakemelding-modal.less';
 import { Checkbox, Textarea } from 'nav-frontend-skjema';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import takkIkon from './takk-ikon.png'
+import {isNullOrUndefined} from "../../utils";
 
 export interface TilbakemeldingProps {
 	checkboxIndexListe: number[];
@@ -42,7 +43,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 
 	const checkboxStatus: any = {};
 
-	function hentValgteCheckbokser(value: number[]) {
+	function hentCheckboksStatusListe(value: number[]) {
 		checkboxStatus.partner_navn = value.includes(1);
 		checkboxStatus.partner_alder =  value.includes(2);
 		checkboxStatus.partner_fodselsdato = value.includes(3);
@@ -74,12 +75,11 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 
 	const handleCheckboxFormSubmitted = (e: any) => {
 		e.preventDefault();
-		if (checkboxIndexListe.length === 0) {
-			setShowFadeOutAnimation(true);
-		} else {
+		if ((checkboxIndexListe.length > 0) || (!isNullOrUndefined(kommentar) && kommentar !== '')) {
 			setHarSendt(true);
-			const checkboksStatusListe = hentValgteCheckbokser(checkboxIndexListe);
-			onTilbakemeldingSendt({checkboxIndexListe, kommentar}, checkboksStatusListe);
+			onTilbakemeldingSendt({checkboxIndexListe, kommentar}, hentCheckboksStatusListe(checkboxIndexListe));
+		} else {
+			setShowFadeOutAnimation(true);
 		}
 	};
 
