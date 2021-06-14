@@ -1,5 +1,5 @@
 import React from 'react';
-import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
+import { isNotEmptyArray, isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
 import {
@@ -202,7 +202,9 @@ type Props = Pick<PersonaliaV2Info, 'bostedsadresse'> &
 
 function Adresser(props: Props) {
 	const { bostedsadresse, oppholdsadresse, kontaktadresser, ...rest } = props;
-	const kontaktadresseList = kontaktadresser && kontaktadresser.length!== 0 ? kontaktadresser.map(kontaktadresse => <KontaktAdresse kontaktadresse={kontaktadresse} />) : EMDASH;
+	const kontaktadresseList = isNotEmptyArray(kontaktadresser)
+								? kontaktadresser.map((kontaktadresse, index)  => <KontaktAdresse kontaktadresse={kontaktadresse} key={index} />)
+								: EMDASH;
 
 	return (
 		<div {...rest}>

@@ -6,6 +6,7 @@ import { veilarbpersonHandlers } from './veilarbperson';
 import { veilarbpersonflatefsHandlers } from './veilarbpersonflatefs';
 import { veilarbregistreringHandlers } from './veilarbregistrering';
 import { veilarbveilederHandlers } from './veilarbveileder';
+import { veilarbvedtaksstotteHandlers } from './veilarbvedtaksstotte';
 
 export const allHandlers: RequestHandlersList = [
 	...frontendloggerHandlers,
@@ -14,5 +15,6 @@ export const allHandlers: RequestHandlersList = [
 	...veilarbpersonHandlers,
 	...veilarbpersonflatefsHandlers,
 	...veilarbregistreringHandlers,
-	...veilarbveilederHandlers
+	...veilarbveilederHandlers,
+	...veilarbvedtaksstotteHandlers
 ];
