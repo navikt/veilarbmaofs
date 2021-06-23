@@ -34,6 +34,6 @@ function LenkeBrukerprofil() {
 
 export default LenkeBrukerprofil;
 
-// Modia personoversikt, lenke på localhost https://person-forvalter.nais.preprod.local/?aktoerId=10108000398
+// Modia personoversikt,lenke på localhost https://person-forvalter.nais.preprod.local/?aktoerId=10108000398
 // veilarbmaofs, personalia, lagt inn lenke. på localhost https://person-forvalter.nais.adeo.no/endreperson?aktoerId=10108000398
 //Endre person i preprod: https://person-forvalter.nais.preprod.local/endreperson?aktoerId=04047720066
