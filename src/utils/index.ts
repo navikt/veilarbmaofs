@@ -39,7 +39,12 @@ export function omit<S>(obj: S, ...props: string[]) {
 }
 
 export function byggPamUrl(aktorId: string, path: string) {
-	return `https://pam-cv-veileder${finnNaisDomene()}${path}/${aktorId}`;
+	return `https://pam-cv-veileder.${finnNaisDomene()}/${path}/${aktorId}`;
+}
+export function useUrlNyPersonforvalter(aktoerIdEllerFnr: string) {
+	//Personforvalteren skal takle både aktørid og fnr.
+
+	return `https://person-forvalter.${finnNaisDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
 }
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {

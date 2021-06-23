@@ -8,13 +8,14 @@ import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
 import Telefon from './telefon';
-import {useFetchPersonaliaV2, useFetchSpraakTolk, useFetchVergOgFullmakt} from '../../../../rest/api';
+import { useFetchPersonaliaV2, useFetchSpraakTolk, useFetchVergOgFullmakt } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import Vergemaal from "./vergemaal";
-import Fullmakt from "./fullmakt";
-import TilrettelagtKommunikasjon from "./tilrettelagtKommunikasjon";
+import Vergemaal from './vergemaal';
+import Fullmakt from './fullmakt';
+import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
+import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
 
 const MAX_ALDER_BARN = 21;
 
@@ -45,29 +46,34 @@ const PersonaliaV2PanelInnhold = () => {
 		barn
 	} = personaliav2.data;
 
-
-	const filtrertBarneListe = barn && barn.filter(
-		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN
-	);
+	const filtrertBarneListe =
+		barn && barn.filter(enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
 
 	return (
-		<Grid columns={5} gap="0.5rem">
-			<Telefon telefon={telefon} />
-			<Sivilstand sivilstand={sivilstand} />
-			<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
-			<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
-			<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
-			<Adresser
-				bostedsadresse={bostedsadresse}
-				oppholdsadresse={oppholdsadresse}
-				kontaktadresser={kontaktadresser}
-			/>
-			<Partner partner={partner} />
-			<Barn barn={filtrertBarneListe} />
-			{hasData(vergeOgFullmakt) && <Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />}
-			{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
-			{hasData(tilrettelagtKommunikasjon) && <TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />}
-		</Grid>
+		<>
+			<Grid columns={5} gap="0.5rem">
+				<Telefon telefon={telefon} />
+				<Sivilstand sivilstand={sivilstand} />
+				<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
+				<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
+				<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
+				<Adresser
+					bostedsadresse={bostedsadresse}
+					oppholdsadresse={oppholdsadresse}
+					kontaktadresser={kontaktadresser}
+				/>
+				<Partner partner={partner} />
+				<Barn barn={filtrertBarneListe} />
+				{hasData(vergeOgFullmakt) && (
+					<Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />
+				)}
+				{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
+				{hasData(tilrettelagtKommunikasjon) && (
+					<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
+				)}
+			</Grid>
+			<LenkeBrukerprofil />
+		</>
 	);
 };
 

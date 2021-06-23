@@ -1,5 +1,5 @@
-export const NAIS_PREPROD_SUFFIX = 'preprod.local/';
-export const NAIS_PROD_SUFFIX = 'adeo.no/';
+export const NAIS_PREPROD_SUFFIX = 'preprod.local';
+export const NAIS_PROD_SUFFIX = 'adeo.no';
 
 export function finnNaisMiljoStreng() {
 	const host = window.location.host;
@@ -11,5 +11,5 @@ export function finnNaisMiljoStreng() {
 }
 
 export function finnNaisDomene() {
-	return `.nais.${finnNaisMiljoStreng()}`;
+	return `nais.${finnNaisMiljoStreng()}`;
 }
