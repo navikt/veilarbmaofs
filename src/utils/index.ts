@@ -1,11 +1,8 @@
-import { finnNaisDomene } from './miljo-utils';
+import { finnNaisDomene, finnNavDomene } from './miljo-utils';
 import { StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
 import { useCallback, useEffect } from 'react';
-import { useFetchAktorId } from '../rest/api';
-import { hasData } from '../rest/utils';
-import { hasError } from '@nutgaard/use-fetch';
 
 export const hasHashParam = (parameterName: string): boolean => {
 	return window.location.hash.includes(parameterName);
@@ -47,20 +44,7 @@ export function byggPamUrl(aktorId: string, path: string) {
 export function useUrlNyPersonforvalter(aktoerIdEllerFnr: string) {
 	//Personforvalteren skal takle både aktørid og fnr.
 
-	return `https://person-forvalter.${finnNaisDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
-}
-export function useUrlNyPersonforvalter(fnr: string) {
-	//Personforvalteren skal takle både aktørid og fnr. Parameter heter aktoerId (preprod)
-	const aktoerId = useFetchAktorId(fnr);
-	if (hasError(aktoerId) || !hasData(aktoerId)) {
-		return `https://person-forvalter${finnNaisDomene()}endreperson?aktoerId=${fnr}`;
-	} else {
-		const brukerAktoerId = aktoerId.data.aktorId;
-		if (isNullOrUndefined(brukerAktoerId)) {
-			return `https://person-forvalter${finnNaisDomene()}endreperson?aktoerId=${fnr}`;
-		}
-		return `https://person-forvalter${finnNaisDomene()}endreperson?aktoerId=${brukerAktoerId}`;
-	}
+	return `https://pdl-web.${finnNavDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
 }
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {
