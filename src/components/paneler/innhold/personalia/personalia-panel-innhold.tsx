@@ -11,6 +11,7 @@ import { useFetchPersonalia } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
 
 const MAX_ALDER_BARN = 21;
 
@@ -45,21 +46,24 @@ const PersonaliaPanelInnhold = () => {
 	);
 
 	return (
-		<Grid columns={5} gap="0.5rem">
-			<Adresser
-				bostedsadresse={bostedsadresse}
-				postAdresse={postAdresse}
-				midlertidigAdresseNorge={midlertidigAdresseNorge}
-				midlertidigAdresseUtland={midlertidigAdresseUtland}
-			/>
-			<InformasjonsbolkEnkel header="Telefon" value={telefon} />
-			<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
-			<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
-			<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
-			<Sivilstand sivilstand={sivilstand} />
-			<Partner partner={partner} />
-			<Barn barn={filtrertBarneListe} />
-		</Grid>
+		<>
+			<Grid columns={5} gap="0.5rem">
+				<Adresser
+					bostedsadresse={bostedsadresse}
+					postAdresse={postAdresse}
+					midlertidigAdresseNorge={midlertidigAdresseNorge}
+					midlertidigAdresseUtland={midlertidigAdresseUtland}
+				/>
+				<InformasjonsbolkEnkel header="Telefon" value={telefon} />
+				<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
+				<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
+				<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
+				<Sivilstand sivilstand={sivilstand} />
+				<Partner partner={partner} />
+				<Barn barn={filtrertBarneListe} />
+			</Grid>
+			<LenkeBrukerprofil />
+		</>
 	);
 };
 
