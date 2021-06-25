@@ -41,7 +41,7 @@ export function omit<S>(obj: S, ...props: string[]) {
 export function byggPamUrl(aktorId: string, path: string) {
 	return `https://pam-cv-veileder.${finnNaisDomene()}/${path}/${aktorId}`;
 }
-export function useUrlNyPersonforvalter(aktoerIdEllerFnr: string) {
+export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
 	//Personforvalteren skal takle både aktørid og fnr.
 
 	return `https://pdl-web.${finnNavDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
