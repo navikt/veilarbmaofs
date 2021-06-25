@@ -5,6 +5,7 @@ import { useAppStore } from '../../../../stores/app-store';
 import { useFetchAktorId } from '../../../../rest/api';
 import { hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import Lenke from 'nav-frontend-lenker';
 
 function BrukAktorIdEllerFnr(ident: string) {
 	const aktoerId = useFetchAktorId(ident);
@@ -26,9 +27,9 @@ function LenkeBrukerprofil() {
 	const aktoerIdEllerFnr = BrukAktorIdEllerFnr(fnr);
 	const personforvalterUrl = useUrlNyPersonforvalter(aktoerIdEllerFnr);
 	return (
-		<a className="lenke-brukerprofil" href={personforvalterUrl} target={'_blank'} rel="noreferrer noopener">
+		<Lenke className="lenke-brukerprofil" href={personforvalterUrl} target={'_blank'} rel="noreferrer noopener">
 			<Normaltekst tag="span">Endre personopplysninger</Normaltekst>
-		</a>
+		</Lenke>
 	);
 }
 
