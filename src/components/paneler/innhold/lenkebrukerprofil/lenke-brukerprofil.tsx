@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { isNullOrUndefined, lagPersonforvalterLenke } from '../../../../utils';
+import { lagPersonforvalterLenke } from '../../../../utils';
 import { useAppStore } from '../../../../stores/app-store';
 import { useFetchAktorId } from '../../../../rest/api';
 import { hasData } from '../../../../rest/utils';
