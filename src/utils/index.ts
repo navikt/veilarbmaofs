@@ -43,7 +43,6 @@ export function byggPamUrl(aktorId: string, path: string) {
 }
 export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
 	//Personforvalteren skal takle både aktørid og fnr.
-
 	return `https://pdl-web.${finnInternNavDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
 }
 
