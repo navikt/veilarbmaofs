@@ -1,4 +1,4 @@
-import { finnNaisDomene } from './miljo-utils';
+import { finnNaisDomene, finnInternNavDomene } from './miljo-utils';
 import { StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
@@ -39,7 +39,11 @@ export function omit<S>(obj: S, ...props: string[]) {
 }
 
 export function byggPamUrl(aktorId: string, path: string) {
-	return `https://pam-cv-veileder${finnNaisDomene()}${path}/${aktorId}`;
+	return `https://pam-cv-veileder.${finnNaisDomene()}/${path}/${aktorId}`;
+}
+export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
+	//Personforvalteren skal takle både aktørid og fnr.
+	return `https://pdl-web.${finnInternNavDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
 }
 
 export function visEmdashHvisNull(verdi: StringOrNothing) {

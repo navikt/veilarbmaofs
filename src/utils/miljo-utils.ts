@@ -1,15 +1,19 @@
-export const NAIS_PREPROD_SUFFIX = 'preprod.local/';
-export const NAIS_PROD_SUFFIX = 'adeo.no/';
+export const NAIS_PREPROD_SUFFIX = 'nais.preprod.local';
+export const NAIS_PROD_SUFFIX = 'nais.adeo.no';
 
-export function finnNaisMiljoStreng() {
-	const host = window.location.host;
-	const isProd = !host.includes('-');
-	if (isProd) {
-		return NAIS_PROD_SUFFIX;
-	}
-	return NAIS_PREPROD_SUFFIX;
-}
+export const NAV_INTERN_PREPROD_SUFFIX = 'dev.intern.nav.no';
+export const NAV_INTERN_PROD_SUFFIX = 'intern.nav.no';
+
+const DEV_DOMAINS = ['dev', 'app-q1', 'app-q0', 'localhost'];
+
+const erITestMiljo = (): boolean => {
+	return window.location.hostname.split('.').findIndex(domain => DEV_DOMAINS.includes(domain)) >= 0;
+};
 
 export function finnNaisDomene() {
-	return `.nais.${finnNaisMiljoStreng()}`;
+	return erITestMiljo() ? NAIS_PREPROD_SUFFIX : NAIS_PROD_SUFFIX;
+}
+
+export function finnInternNavDomene() {
+	return erITestMiljo() ? NAV_INTERN_PREPROD_SUFFIX : NAV_INTERN_PROD_SUFFIX;
 }
