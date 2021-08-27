@@ -74,7 +74,7 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 
 	let lokalDato = null;
 	let lokalDatoKunArManed = false;
-	const yearMonthReg = /^\d{4}\-\d{2}$/;
+	const yearMonthReg = /^\d{4}-\d{2}$/;
 	if (typeof datoObjekt === 'string') {
 		lokalDatoKunArManed = yearMonthReg.test(datoObjekt);
 		lokalDato = new Date(datoObjekt);
