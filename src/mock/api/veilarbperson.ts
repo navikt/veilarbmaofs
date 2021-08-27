@@ -108,6 +108,17 @@ const cvOgJobbprofil: ArenaPerson = {
 			}
 		},
 		{
+			tittel: 'grønn',
+			arrangor: 'falk',
+			tidspunkt: '2017-10',
+		},
+		{
+			tittel: 'blå',
+			arrangor: 'falk',
+			fraDato: '2018-10',
+			tidspunkt: '2018-10',
+		},
+		{
 			tittel: 'dynamik posisjonering',
 			arrangor: 'kongsberg',
 			fraDato: '2010-08'

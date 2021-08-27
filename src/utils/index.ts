@@ -73,17 +73,19 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 	}
 
 	let lokalDato = null;
+	let lokalDatoKunArManed = false;
+	const yearMonthReg = /^\d{4}\-\d{2}$/;
 	if (typeof datoObjekt === 'string') {
+		lokalDatoKunArManed = yearMonthReg.test(datoObjekt);
 		lokalDato = new Date(datoObjekt);
 	} else {
 		lokalDato = new Date(
 			Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day))
 		);
 	}
-
 	const shortOption = { year: 'numeric', month: 'short' };
 	const longOption = { year: 'numeric', month: 'short', day: 'numeric' };
-	const options = onlyYearMonth ? shortOption : longOption;
+	const options = onlyYearMonth || lokalDatoKunArManed ? shortOption : longOption;
 
 	return lokalDato.toLocaleDateString('no-NO', options);
 }

@@ -59,7 +59,8 @@ interface Sprak {
 interface Kurs {
 	tittel: StringOrNothing;
 	arrangor: StringOrNothing;
-	fraDato: YearMonth;
+	fraDato?: YearMonth;
+	tidspunkt?: YearMonth;
 	varighet?: Kursvarighet;
 }
 
