@@ -11,7 +11,8 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
 		<div key={`kurs-${index}`} className="underinformasjon">
 			<Element>{enkeltKurs.tittel}</Element>
 			<Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
-			<Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>
+			{enkeltKurs.fraDato && <Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>}
+			{enkeltKurs.tidspunkt && <Normaltekst>Fullført: {formaterDato(enkeltKurs.tidspunkt)}</Normaltekst>}
 			{enkeltKurs.varighet && <Normaltekst>Varighet: {formaterVarighet(enkeltKurs.varighet)}</Normaltekst>}
 		</div>
 	));
