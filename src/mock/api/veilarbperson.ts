@@ -3,7 +3,7 @@ import {RequestHandlersList} from 'msw/lib/types/setupWorker/glossary';
 import {ArenaPerson, FagdokumentType, KursVarighetEnhet} from '../../rest/datatyper/arenaperson';
 import {PersonaliaInfo} from '../../rest/datatyper/personalia';
 import {AktorId} from '../../rest/datatyper/aktor-id';
-import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
+import {Gradering, PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
 import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
 import {TilrettelagtKommunikasjonData} from "../../rest/datatyper/tilrettelagtKommunikasjon";
 
@@ -378,45 +378,54 @@ const personalia: PersonaliaInfo = {
 };
 
 const personaliav2: PersonaliaV2Info = {
-	fornavn: 'BRUCE',
-	mellomnavn: 'BATTY',
-	etternavn: 'WAYNE',
-	forkortetNavn: 'BRUCE BATTY WAYNE',
+	fornavn: 'Bruce',
+	mellomnavn: 'Batty',
+	etternavn: 'Wayne',
+	forkortetNavn: 'Bruce Batty Wayne',
 	fodselsnummer: '10108000398',
 	fodselsdato: '1974-09-16',
 	dodsdato: null,
 	barn: [
 		{
-			fornavn: 'BRUCE',
+			fornavn: 'Bruce',
 			mellomnavn: null,
-			etternavn: 'BANNER',
-			forkortetNavn: 'BRUCE BANNER',
+			etternavn: 'Banner',
+			forkortetNavn: 'Bruce Banner',
 			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: true,
+			gradering: Gradering.UGRADERT,
+			erEgenAnsatt: false,
+			harVeilederTilgang: true,
 			kjonn: 'M'
 		},
 		{
-			fornavn: 'HARRY',
+			fornavn: 'Harry',
 			mellomnavn: null,
-			etternavn: 'BOSCH',
-			forkortetNavn: 'HARRY BOSCH',
+			etternavn: 'Bosch',
+			forkortetNavn: 'Harry Bosch',
 			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
 			dodsdato: null,
-			harSammeBosted: false,
+			harSammeBosted: true,
+			gradering: Gradering.UGRADERT,
+			erEgenAnsatt: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
-			fornavn: 'SATOSHI',
+			fornavn: 'Satoshi',
 			mellomnavn: null,
-			etternavn: 'NAKAMOTO',
-			forkortetNavn: 'SATOSHI NAKAMOTO',
+			etternavn: 'Nakamoto',
+			forkortetNavn: 'Satoshi Nakamoto',
 			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
-			dodsdato: '2010-10-04',
+			dodsdato: null,
 			harSammeBosted: true,
+			erEgenAnsatt: false,
+			harVeilederTilgang: true,
+			gradering: Gradering.STRENGT_FORTROLIG,
 			kjonn: 'K'
 		}
 	],
@@ -437,34 +446,37 @@ const personaliav2: PersonaliaV2Info = {
 			master: 'KRR'
 		}],
 	epost: 'tester.scrambling-script@fellesregistre.no',
-	statsborgerskap: 'NORGE',
+	statsborgerskap: 'Norge',
 	sivilstand: {
 		sivilstand: 'Gift',
 		fraDato: '2016-08-04'
 	},
 	partner: {
-		fornavn: 'PHILIPS',
+		fornavn: 'fornavn',
 		mellomnavn: null,
-		etternavn: 'WAYNE',
-		forkortetNavn: 'PHILIPS WAYNE',
+		etternavn: 'etternavn',
+		forkortetNavn: 'fornavn etternavn',
 		fodselsnummer: '12108000391',
 		fodselsdato: '1980-12-10',
 		dodsdato: null,
 		harSammeBosted: true,
+		erEgenAnsatt: false,
+		harVeilederTilgang: true,
+		gradering: Gradering.FORTROLIG,
 		kjonn: 'M'
 	},
 	bostedsadresse: {
-		coAdressenavn: 'COADRDRESSENAVN',
+		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {
 			matrikkelId: null,
 			postnummer: '0000',
 			husnummer: '21',
 			husbokstav: 'A',
 			kommunenummer: '1111',
-			adressenavn: 'ARENDALSGATE',
-			tilleggsnavn: 'ARENDAL',
-			poststed: 'POSTSTED',
-			kommune: 'KOMMUNE'
+			adressenavn: 'Arendalsegate',
+			tilleggsnavn: 'Arendal',
+			poststed: 'Posted',
+			kommune: 'Kommune'
 		},
 		matrikkeladresse: null,
 		utenlandskAdresse: null,
@@ -478,10 +490,10 @@ const personaliav2: PersonaliaV2Info = {
 			husnummer: null,
 			husbokstav: null,
 			kommunenummer: '1111',
-			adressenavn: 'UTEN FAST BOSTED',
+			adressenavn: 'Uten fast bosted',
 			tilleggsnavn: null,
 			poststed: null,
-			kommune: 'KOMMUNE'
+			kommune: 'Kommune'
 		},
 		matrikkeladresse: {
 			matrikkelId: null,
@@ -489,8 +501,8 @@ const personaliav2: PersonaliaV2Info = {
 			tilleggsnavn: null,
 			kommunenummer: '1234',
 			postnummer: '0457',
-			poststed: 'POSTSTED',
-			kommune: 'AGDER'
+			poststed: 'Posted',
+			kommune: 'Agder'
 		},
 		utenlandskAdresse: null
 	},
@@ -505,7 +517,7 @@ const personaliav2: PersonaliaV2Info = {
 				adresselinje2: 'Adresselinje 2',
 				adresselinje3: 'Adresselinje 3',
 				postnummer: '7123',
-				poststed: 'POSTSTED'
+				poststed: 'Posted'
 			},
 			utenlandskAdresse: null,
 			utenlandskAdresseIFrittFormat: null
@@ -521,9 +533,9 @@ const personaliav2: PersonaliaV2Info = {
 				adresselinje1: 'C/O adresse2 Test',
 				adresselinje2: 'Adresselinje 2',
 				adresselinje3: 'Adresselinje 3',
-				byEllerStedsnavn: 'STEDSNAVN',
+				byEllerStedsnavn: 'Stedsnavn',
 				postkode: '1234',
-				landkode: 'LANDKODE'
+				landkode: 'Landkode'
 			}
 		}
 	],

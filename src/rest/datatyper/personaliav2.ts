@@ -1,18 +1,29 @@
 import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
 
+export enum Gradering {
+	UKJENT = 'UKJENT',
+	UGRADERT = 'UGRADERT',
+	FORTROLIG = 'FORTROLIG',
+	STRENGT_FORTROLIG = 'STRENGT_FORTROLIG',
+	STRENGT_FORTROLIG_UTLAND = 'STRENGT_FORTROLIG_UTLAND'
+}
+
 export interface GrunnPersonalia {
-	fornavn: string;
+	fornavn: StringOrNothing;
 	mellomnavn: StringOrNothing;
-	etternavn: string;
-	forkortetNavn: string;
+	etternavn: StringOrNothing;
+	forkortetNavn: StringOrNothing;
 	fodselsnummer: string;
 	fodselsdato: string;
 	dodsdato: StringOrNothing;
-	kjonn: string;
+	kjonn: StringOrNothing;
 }
 
 export interface PersonsBarn extends GrunnPersonalia {
+	gradering: Gradering;
+	erEgenAnsatt: boolean;
 	harSammeBosted: boolean;
+	harVeilederTilgang: boolean;
 }
 
 export interface Enhet {
@@ -32,7 +43,10 @@ export interface PersonaliaTelefon {
 }
 
 export interface PersonaliaPartner extends GrunnPersonalia {
+	gradering: Gradering;
+	erEgenAnsatt: boolean;
 	harSammeBosted: boolean;
+	harVeilederTilgang: boolean;
 }
 
 export interface Vegadresse {
