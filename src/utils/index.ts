@@ -91,10 +91,12 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 }
 
 export function safeSort(a: StringOrNothing, b: StringOrNothing) {
-	if (a) {
-		return b ? a.localeCompare(b) : -1;
+	if (a && b) {
+		return a.localeCompare(b);
+	} else if (a) {
+		return -1;
 	} else if (b) {
-		return a ? b.localeCompare(a) : 1;
+		return 1;
 	} else {
 		return 0;
 	}
