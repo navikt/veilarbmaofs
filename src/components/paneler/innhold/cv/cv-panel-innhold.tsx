@@ -39,10 +39,8 @@ const CvPanelInnhold = () => {
 	}
 
 	const underOppfolgingData = underOppfolging.data;
-	const aktorIdData = aktorId.data;
-
 	const erManuell = underOppfolgingData.erManuell;
-	const brukerAktorId = aktorIdData.aktorId;
+
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 

@@ -1,4 +1,4 @@
-import { finnNaisDomene, finnInternNavDomene } from './miljo-utils';
+import { finnInternNavDomene } from './miljo-utils';
 import { StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
