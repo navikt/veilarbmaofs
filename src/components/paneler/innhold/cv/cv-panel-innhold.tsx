@@ -16,7 +16,7 @@ import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
-import { byggPamUrl } from '../../../../utils';
+import { byggPamUrl, byggPamUrlGammel } from '../../../../utils';
 import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
@@ -43,8 +43,8 @@ const CvPanelInnhold = () => {
 
 	const erManuell = underOppfolgingData.erManuell;
 	const brukerAktorId = aktorIdData.aktorId;
-	const endreCvUrl = byggPamUrl(brukerAktorId || '', 'cv');
-	const lastNedCvUrl = byggPamUrl(brukerAktorId || '', 'cv/pdf');
+	const endreCvUrl = byggPamUrl(fnr);
+	const lastNedCvUrl = byggPamUrlGammel(brukerAktorId || '', 'cv/pdf');
 
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
@@ -84,7 +84,7 @@ const CvPanelInnhold = () => {
 		forerkort,
 		sprak,
 		kurs,
-		sistEndret,
+		sistEndret
 	} = cvOgJobbprofil.data;
 
 	return (
