@@ -438,12 +438,17 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			prioritet: '1',
 			telefonNr: '+4633333333',
-			master: 'FREG'
+			master: 'Freg'
 		},
 		{
 			prioritet: '2',
 			telefonNr: '+4822222222',
 			master: 'KRR'
+		},
+		{
+			prioritet: '3',
+			telefonNr: '+4822222444',
+			master: 'PDL'
 		}],
 	epost: 'tester.scrambling-script@fellesregistre.no',
 	statsborgerskap: 'Norge',

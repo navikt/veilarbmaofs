@@ -1,15 +1,19 @@
 import React from 'react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { Normaltekst } from 'nav-frontend-typografi';
+import {Normaltekst, Undertekst} from 'nav-frontend-typografi';
 import {PersonaliaV2Info, PersonaliaTelefon} from "../../../../rest/datatyper/personaliav2";
 import EMDASH from '../../../../utils/emdash';
 import { isNotEmptyArray } from "../../../../utils";
+import {hentKilde} from "../../../../utils/konstanter";
 
 function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
 	const { telefonNr, master} = props.telefon;
 
 	return (
-		<Normaltekst>{`${master}: ${telefonNr}`}</Normaltekst>
+		<div className="overinformasjon underinformasjon">
+			<Normaltekst>{telefonNr}</Normaltekst>
+			<Undertekst>{`${hentKilde(master)}`}</Undertekst>
+		</div>
 	);
 }
 

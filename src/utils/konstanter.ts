@@ -21,3 +21,16 @@ export function graderingBeskrivelse(gradering: Gradering) {
 			return null;
 	}
 }
+
+export function hentKilde(master: String) {
+	switch(master) {
+		case 'KRR':
+			return 'Kontakt og reservasjonsregisteret';
+		case 'PDL':
+			return 'NAV';
+		case 'Freg':
+			return 'Folkeregisteret';
+		default:
+			return null;
+	}
+}
