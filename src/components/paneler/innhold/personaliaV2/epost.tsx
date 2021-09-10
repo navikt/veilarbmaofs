@@ -4,18 +4,27 @@ import { isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {PersonaliaEpost} from "../../../../rest/datatyper/personaliav2";
 import {hentKilde} from "../../../../utils/konstanter";
+import EMDASH from "../../../../utils/emdash";
 
 function Epost(props: { epost: PersonaliaEpost }) {
-    if (isNullOrUndefined(props.epost)) {
-        return null;
-    }
-
     const { epost, ...rest } = props;
+
+    if (isNullOrUndefined(props.epost.epostAdresse)) {
+        return (
+            <Informasjonsbolk header="Epost" {...rest}>
+                {EMDASH}
+            </Informasjonsbolk>
+        );
+    }
 
     return (
         <Informasjonsbolk header="Epost" {...rest} className="break-all">
             <Normaltekst>{epost.epostAdresse}</Normaltekst>
-            <Undertekst color='#645f5a'>Registrert {epost.epostSistOppdatert && epost.epostSistOppdatert} <span>{`av ${hentKilde(epost.master)}`}</span> </Undertekst>
+            {epost.epostAdresse &&
+                <Undertekst color='#645f5a'>
+                    <span>Registrert {epost.epostSistOppdatert && epost.epostSistOppdatert}{` av ${hentKilde(epost.master)}`}</span>
+                </Undertekst>
+            }
         </Informasjonsbolk>
     );
 }

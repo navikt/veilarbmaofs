@@ -115,7 +115,6 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'blå',
 			arrangor: 'falk',
-			fraDato: '2018-10',
 			tidspunkt: '2018-10'
 		},
 		{
@@ -454,7 +453,7 @@ const personaliav2: PersonaliaV2Info = {
 			master: 'PDL'
 		}],
 	epost: {
-		epostAdresse:'tester.scrambling-script@fellesregistre.no',
+		epostAdresse:'tester.scrambling@registre.no',
 		epostSistOppdatert:'10.04.2010',
 		master:'KRR'
 	},

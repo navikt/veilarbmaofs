@@ -12,7 +12,11 @@ function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
 	return (
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst>{telefonNr}</Normaltekst>
-			<Undertekst color='#645f5a'>Registrert {registrertDato && registrertDato} <span>{`av ${hentKilde(master)}`}</span> </Undertekst>
+			{telefonNr &&
+				<Undertekst color='#645f5a'>
+					<span>Registrert {registrertDato && registrertDato}{` av ${hentKilde(master)}`}</span>
+				</Undertekst>
+			}
 		</div>
 	);
 }
