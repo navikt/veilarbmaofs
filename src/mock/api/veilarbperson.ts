@@ -395,9 +395,9 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: true,
-			gradering: Gradering.UGRADERT,
+			gradering: Gradering.FORTROLIG,
 			erEgenAnsatt: false,
-			harVeilederTilgang: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
@@ -438,19 +438,26 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			prioritet: '1',
 			telefonNr: '+4633333333',
+			registrertDato: '10.07.2008',
 			master: 'Freg'
 		},
 		{
 			prioritet: '2',
 			telefonNr: '+4822222222',
+			registrertDato: '10.04.2010',
 			master: 'KRR'
 		},
 		{
 			prioritet: '3',
 			telefonNr: '+4822222444',
+			registrertDato: null,
 			master: 'PDL'
 		}],
-	epost: 'tester.scrambling-script@fellesregistre.no',
+	epost: {
+		epostAdresse:'tester.scrambling-script@fellesregistre.no',
+		epostSistOppdatert:'10.04.2010',
+		master:'KRR'
+	},
 	statsborgerskap: 'Norge',
 	sivilstand: {
 		sivilstand: 'Gift',

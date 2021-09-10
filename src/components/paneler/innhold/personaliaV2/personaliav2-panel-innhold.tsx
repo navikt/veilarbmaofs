@@ -16,6 +16,7 @@ import Vergemaal from './vergemaal';
 import Fullmakt from './fullmakt';
 import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
+import Epost from "./epost";
 
 const MAX_ALDER_BARN = 21;
 
@@ -54,7 +55,7 @@ const PersonaliaV2PanelInnhold = () => {
 			<Grid columns={5} gap="0.5rem">
 				<Telefon telefon={telefon} />
 				<Sivilstand sivilstand={sivilstand} />
-				<InformasjonsbolkEnkel header="Epost" value={epost} className="break-all" />
+				<Epost epost={epost}/>
 				<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
 				<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
 				<Adresser

@@ -34,7 +34,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
 					<div>
 						<Normaltekst>{lesbartKjonn}</Normaltekst>
-						<Normaltekst>graderingBeskrivelse(gradering)</Normaltekst>
+						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>
 					:
 					<div>

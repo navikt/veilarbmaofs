@@ -7,12 +7,12 @@ import { isNotEmptyArray } from "../../../../utils";
 import {hentKilde} from "../../../../utils/konstanter";
 
 function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
-	const { telefonNr, master} = props.telefon;
+	const { telefonNr, registrertDato, master} = props.telefon;
 
 	return (
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst>{telefonNr}</Normaltekst>
-			<Undertekst>{`${hentKilde(master)}`}</Undertekst>
+			<Undertekst color='#645f5a'>Registrert {registrertDato && registrertDato} <span>{`av ${hentKilde(master)}`}</span> </Undertekst>
 		</div>
 	);
 }
