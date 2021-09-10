@@ -38,12 +38,8 @@ export function omit<S>(obj: S, ...props: string[]) {
 		}, {});
 }
 
-export function byggPamUrlGammel(aktorId: string, path: string) {
-	return `https://pam-cv-veileder.${finnNaisDomene()}/${path}/${aktorId}`;
-}
-
-export function byggPamUrl(fnr: string) {
-	return `https://pam-personbruker-veileder.${finnInternNavDomene()}?fnr=${fnr}`;
+export function byggPamUrl(fnr: string, path = '') {
+	return `https://pam-personbruker-veileder.${finnInternNavDomene()}${path}?fnr=${fnr}`;
 }
 
 export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
