@@ -14,7 +14,7 @@ const aktorId: AktorId = {
 const cvOgJobbprofil: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
 	sammendrag:
-		'Jeg er en maritime executive som har master grad og bachlor grad. Har vart teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
+		'Jeg er en maritime executive som har mastergrad og bachlorgrad. Har vært teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
 	arbeidserfaring: [
 		{
 			tittel: 'Maskinsjef',
@@ -395,9 +395,9 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: true,
-			gradering: Gradering.UGRADERT,
+			gradering: Gradering.FORTROLIG,
 			erEgenAnsatt: false,
-			harVeilederTilgang: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
@@ -438,15 +438,26 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			prioritet: '1',
 			telefonNr: '+4633333333',
-			master: 'FREG'
+			registrertDato: '10.07.2008',
+			master: 'Freg'
 		},
 		{
 			prioritet: '2',
 			telefonNr: '+4822222222',
+			registrertDato: '10.04.2010',
 			master: 'KRR'
-		}
-	],
-	epost: 'tester.scrambling-script@fellesregistre.no',
+		},
+		{
+			prioritet: '3',
+			telefonNr: '+4822222444',
+			registrertDato: null,
+			master: 'PDL'
+		}],
+	epost: {
+		epostAdresse:'tester.scrambling-script@fellesregistre.no',
+		epostSistOppdatert:'10.04.2010',
+		master:'KRR'
+	},
 	statsborgerskap: 'Norge',
 	sivilstand: {
 		sivilstand: 'Gift',
