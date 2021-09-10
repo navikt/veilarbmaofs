@@ -6,12 +6,11 @@ import { formaterDato, formaterVarighet, safeSort, safeMap } from '../../../../u
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
 	const { kurs: arenaKurs, ...rest } = props;
-	const sortedKurs = arenaKurs.sort((a, b) => safeSort(b.fraDato, a.fraDato));
+	const sortedKurs = arenaKurs.sort((a, b) => safeSort(b.tidspunkt, a.tidspunkt));
 	const kurs = safeMap(sortedKurs, (enkeltKurs, index) => (
 		<div key={`kurs-${index}`} className="underinformasjon">
 			<Element>{enkeltKurs.tittel}</Element>
 			<Normaltekst>{enkeltKurs.arrangor}</Normaltekst>
-			{enkeltKurs.fraDato && <Normaltekst>Fra: {formaterDato(enkeltKurs.fraDato)}</Normaltekst>}
 			{enkeltKurs.tidspunkt && <Normaltekst>Fullført: {formaterDato(enkeltKurs.tidspunkt)}</Normaltekst>}
 			{enkeltKurs.varighet && <Normaltekst>Varighet: {formaterVarighet(enkeltKurs.varighet)}</Normaltekst>}
 		</div>
