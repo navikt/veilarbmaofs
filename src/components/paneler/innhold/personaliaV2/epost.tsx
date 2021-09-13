@@ -5,11 +5,12 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {PersonaliaEpost} from "../../../../rest/datatyper/personaliav2";
 import {hentKilde} from "../../../../utils/konstanter";
 import EMDASH from "../../../../utils/emdash";
+import {OrNothing} from "../../../../utils/felles-typer";
 
-function Epost(props: { epost: PersonaliaEpost }) {
+function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
     const { epost, ...rest } = props;
 
-    if (isNullOrUndefined(props.epost.epostAdresse)) {
+    if (isNullOrUndefined(epost?.epostAdresse)) {
         return (
             <Informasjonsbolk header="Epost" {...rest}>
                 {EMDASH}
@@ -17,14 +18,14 @@ function Epost(props: { epost: PersonaliaEpost }) {
         );
     }
 
+    const {epostAdresse, epostSistOppdatert, master} = epost!;
+
     return (
         <Informasjonsbolk header="Epost" {...rest} className="break-all">
-            <Normaltekst>{epost.epostAdresse}</Normaltekst>
-            {epost.epostAdresse &&
-                <Undertekst color='#645f5a'>
-                    <span>Registrert {epost.epostSistOppdatert && epost.epostSistOppdatert}{` av ${hentKilde(epost.master)}`}</span>
-                </Undertekst>
-            }
+            <Normaltekst>{epostAdresse}</Normaltekst>
+            <Undertekst color='#645f5a'>
+                <span>Registrert {epostSistOppdatert && epostSistOppdatert}{` av ${hentKilde(master)}`}</span>
+            </Undertekst>
         </Informasjonsbolk>
     );
 }

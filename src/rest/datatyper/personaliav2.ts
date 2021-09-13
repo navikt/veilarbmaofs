@@ -139,7 +139,7 @@ export interface Kontaktadresse {
 export interface PersonaliaEpost {
 	epostAdresse: StringOrNothing;
 	epostSistOppdatert: StringOrNothing;
-	master: String;
+	master: StringOrNothing;
 }
 
 export interface PersonaliaV2Info extends GrunnPersonalia {
@@ -147,7 +147,7 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	kontonummer: string;
 	geografiskEnhet: OrNothing<Enhet>;
 	telefon: PersonaliaTelefon[];
-	epost: PersonaliaEpost;
+	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
 	sivilstand: PersonaliaSivilstand;
 	partner: OrNothing<PersonaliaPartner>;

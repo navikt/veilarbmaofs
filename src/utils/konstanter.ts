@@ -1,4 +1,5 @@
 import {Gradering} from "../rest/datatyper/personaliav2";
+import {OrNothing} from "./felles-typer";
 
 export const APP_NAME = 'veilarbmaofs';
 
@@ -22,7 +23,7 @@ export function graderingBeskrivelse(gradering: Gradering) {
 	}
 }
 
-export function hentKilde(master: String) {
+export function hentKilde(master: OrNothing<String>) {
 	switch(master) {
 		case 'KRR':
 			return 'Kontakt og reservasjonsregisteret';
