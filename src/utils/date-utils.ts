@@ -10,5 +10,5 @@ export function finnAldersTekst(personalia: { dodsdato: StringOrNothing, fodsels
 		return '(DØD)';
 	}
 	const alder = kalkulerAlder(new Date(personalia.fodselsdato));
-	return `${alder} år`;
+	return `${alder}`;
 }

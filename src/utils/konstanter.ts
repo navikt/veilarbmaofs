@@ -1,4 +1,5 @@
 import {Gradering} from "../rest/datatyper/personaliav2";
+import {OrNothing} from "./felles-typer";
 
 export const APP_NAME = 'veilarbmaofs';
 
@@ -18,6 +19,19 @@ export function graderingBeskrivelse(gradering: Gradering) {
 		case Gradering.STRENGT_FORTROLIG_UTLAND:
 			return 'Sperret adresse, strengt fortrolig utland';
 		case Gradering.UGRADERT:
+			return null;
+	}
+}
+
+export function hentKilde(master: OrNothing<String>) {
+	switch(master) {
+		case 'KRR':
+			return 'Kontakt og reservasjonsregisteret';
+		case 'PDL':
+			return 'NAV';
+		case 'Freg':
+			return 'Folkeregisteret';
+		default:
 			return null;
 	}
 }

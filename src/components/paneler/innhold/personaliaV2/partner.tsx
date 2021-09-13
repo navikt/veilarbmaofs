@@ -29,7 +29,7 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 					graderingBeskrivelse(gradering)
 					:
 					<div>
-						<Normaltekst>{forkortetNavn}, {alder}</Normaltekst>
+						<Normaltekst>{`${forkortetNavn} (${alder})`}</Normaltekst>
 						<Normaltekst>{borSammen}</Normaltekst>
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>

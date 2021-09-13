@@ -39,6 +39,7 @@ export interface PersonaliaSivilstand {
 export interface PersonaliaTelefon {
 	prioritet: string;
 	telefonNr: string;
+	registrertDato: StringOrNothing;
 	master: string;
 }
 
@@ -135,12 +136,18 @@ export interface Kontaktadresse {
 	utenlandskAdresseIFrittFormat: OrNothing<UtenlandskadresseIFrittFormat>;
 }
 
+export interface PersonaliaEpost {
+	epostAdresse: StringOrNothing;
+	epostSistOppdatert: StringOrNothing;
+	master: StringOrNothing;
+}
+
 export interface PersonaliaV2Info extends GrunnPersonalia {
 	barn: PersonsBarn[];
 	kontonummer: string;
 	geografiskEnhet: OrNothing<Enhet>;
 	telefon: PersonaliaTelefon[];
-	epost: StringOrNothing;
+	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
 	sivilstand: PersonaliaSivilstand;
 	partner: OrNothing<PersonaliaPartner>;

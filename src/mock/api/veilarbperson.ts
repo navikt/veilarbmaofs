@@ -1,11 +1,11 @@
-import {rest} from 'msw';
-import {RequestHandlersList} from 'msw/lib/types/setupWorker/glossary';
-import {ArenaPerson, FagdokumentType, KursVarighetEnhet} from '../../rest/datatyper/arenaperson';
-import {PersonaliaInfo} from '../../rest/datatyper/personalia';
-import {AktorId} from '../../rest/datatyper/aktor-id';
-import {Gradering, PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
-import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
-import {TilrettelagtKommunikasjonData} from "../../rest/datatyper/tilrettelagtKommunikasjon";
+import { rest } from 'msw';
+import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
+import { PersonaliaInfo } from '../../rest/datatyper/personalia';
+import { AktorId } from '../../rest/datatyper/aktor-id';
+import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
+import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
+import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -14,7 +14,7 @@ const aktorId: AktorId = {
 const cvOgJobbprofil: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
 	sammendrag:
-		'Jeg er en maritime executive som har master grad og bachlor grad. Har vart teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
+		'Jeg er en maritime executive som har mastergrad og bachlorgrad. Har vært teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
 	arbeidserfaring: [
 		{
 			tittel: 'Maskinsjef',
@@ -101,7 +101,7 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'huet',
 			arrangor: 'falk',
-			fraDato: '2016-10',
+			tidspunkt: '2016-10',
 			varighet: {
 				varighet: 1,
 				tidsenhet: KursVarighetEnhet.UKE
@@ -110,18 +110,17 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'grønn',
 			arrangor: 'falk',
-			tidspunkt: '2017-10',
+			tidspunkt: '2017-10'
 		},
 		{
 			tittel: 'blå',
 			arrangor: 'falk',
-			fraDato: '2018-10',
-			tidspunkt: '2018-10',
+			tidspunkt: '2018-10'
 		},
 		{
 			tittel: 'dynamik posisjonering',
 			arrangor: 'kongsberg',
-			fraDato: '2010-08'
+			tidspunkt: '2010-08'
 		}
 	],
 	godkjenninger: [
@@ -395,9 +394,9 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: true,
-			gradering: Gradering.UGRADERT,
+			gradering: Gradering.FORTROLIG,
 			erEgenAnsatt: false,
-			harVeilederTilgang: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
@@ -438,14 +437,26 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			prioritet: '1',
 			telefonNr: '+4633333333',
-			master: 'FREG'
+			registrertDato: '10.07.2008',
+			master: 'Freg'
 		},
 		{
 			prioritet: '2',
 			telefonNr: '+4822222222',
+			registrertDato: '10.04.2010',
 			master: 'KRR'
+		},
+		{
+			prioritet: '3',
+			telefonNr: '+4822222444',
+			registrertDato: null,
+			master: 'PDL'
 		}],
-	epost: 'tester.scrambling-script@fellesregistre.no',
+	epost: {
+		epostAdresse:'tester.scrambling@registre.no',
+		epostSistOppdatert:'10.04.2010',
+		master:'KRR'
+	},
 	statsborgerskap: 'Norge',
 	sivilstand: {
 		sivilstand: 'Gift',
@@ -583,46 +594,46 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 		{
 			motpartsPersonident: '1234567890',
 			motpartsPersonNavn: {
-				fornavn:'Ola',
-				mellomnavn:null,
-				etternavn:'Nordmann',
-				forkortetNavn:'Nordmann Ola'
+				fornavn: 'Ola',
+				mellomnavn: null,
+				etternavn: 'Nordmann',
+				forkortetNavn: 'Nordmann Ola'
 			},
 			motpartsRolle: 'FULLMEKTIG',
 			omraader: [
 				{
-					kode:'AAP',
-					beskrivelse:'Arbeidsavklaringspenger'
+					kode: 'AAP',
+					beskrivelse: 'Arbeidsavklaringspenger'
 				},
 				{
-					kode:'DAG',
-					beskrivelse:'Dagpenger'
+					kode: 'DAG',
+					beskrivelse: 'Dagpenger'
 				}
 			],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
-			gyldigTilOgMed:	'2021-03-03T13:00:42'
+			gyldigTilOgMed: '2021-03-03T13:00:42'
 		},
 		{
 			motpartsPersonident: '1234567891',
 			motpartsPersonNavn: {
-				fornavn:'fornavn',
-				mellomnavn:'mellomnavn',
-				etternavn:'etternavn',
-				forkortetNavn:'forkortetNavn'
+				fornavn: 'fornavn',
+				mellomnavn: 'mellomnavn',
+				etternavn: 'etternavn',
+				forkortetNavn: 'forkortetNavn'
 			},
 			motpartsRolle: 'FULLMAKTSGIVER',
-			omraader:[
+			omraader: [
 				{
-					kode:'BAR',
-					beskrivelse:'Barnetrygd'
+					kode: 'BAR',
+					beskrivelse: 'Barnetrygd'
 				},
 				{
-					kode:'HJE',
-					beskrivelse:'Hjelpemidler'
+					kode: 'HJE',
+					beskrivelse: 'Hjelpemidler'
 				}
 			],
 			gyldigFraOgMed: '2021-03-04T13:00:42',
-			gyldigTilOgMed:	'2021-03-05T13:00:42'
+			gyldigTilOgMed: '2021-03-05T13:00:42'
 		}
 	]
 };
