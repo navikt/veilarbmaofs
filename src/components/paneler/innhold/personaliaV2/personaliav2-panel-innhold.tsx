@@ -17,6 +17,7 @@ import Fullmakt from './fullmakt';
 import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
 import Epost from "./epost";
+import { formateStringInUpperAndLowerCase } from "../../../../utils";
 
 const MAX_ALDER_BARN = 21;
 
@@ -57,7 +58,7 @@ const PersonaliaV2PanelInnhold = () => {
 				<Sivilstand sivilstand={sivilstand} />
 				<Epost epost={epost}/>
 				<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
-				<InformasjonsbolkEnkel header="Statsborgerskap" value={statsborgerskap} />
+				<InformasjonsbolkEnkel header="Statsborgerskap" value={formateStringInUpperAndLowerCase(statsborgerskap)} />
 				<Adresser
 					bostedsadresse={bostedsadresse}
 					oppholdsadresse={oppholdsadresse}
