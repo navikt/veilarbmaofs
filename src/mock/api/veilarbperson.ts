@@ -457,10 +457,10 @@ const personaliav2: PersonaliaV2Info = {
 		epostSistOppdatert:'10.04.2010',
 		master:'KRR'
 	},
-	statsborgerskap: 'Norge',
+	statsborgerskap: 'NORGE',
 	sivilstand: {
 		sivilstand: 'Gift',
-		fraDato: '2016-08-04'
+		fraDato: null
 	},
 	partner: {
 		fornavn: 'fornavn',

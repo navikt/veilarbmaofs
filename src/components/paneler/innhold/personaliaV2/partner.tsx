@@ -1,12 +1,12 @@
 import React from 'react';
-import {Normaltekst} from 'nav-frontend-typografi';
-import {Gradering, PersonaliaPartner} from '../../../../rest/datatyper/personaliav2';
+import { Normaltekst } from 'nav-frontend-typografi';
+import { Gradering, PersonaliaPartner } from '../../../../rest/datatyper/personaliav2';
 import {finnAldersTekst} from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
-import {isNullOrUndefined} from '../../../../utils';
+import { formateFirstCharOfEachWordInUppercase, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import {OrNothing} from '../../../../utils/felles-typer';
-import {graderingBeskrivelse} from "../../../../utils/konstanter";
+import { OrNothing } from '../../../../utils/felles-typer';
+import { graderingBeskrivelse } from "../../../../utils/konstanter";
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -29,7 +29,7 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 					graderingBeskrivelse(gradering)
 					:
 					<div>
-						<Normaltekst>{`${forkortetNavn} (${alder})`}</Normaltekst>
+						<Normaltekst>{`${formateFirstCharOfEachWordInUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
 						<Normaltekst>{borSammen}</Normaltekst>
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>
