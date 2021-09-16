@@ -557,6 +557,24 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 			],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
 			gyldigTilOgMed: '2021-03-03T13:00:42'
+		},
+		{
+			motpartsPersonident: '1234567891',
+			motpartsPersonNavn: {
+				fornavn: 'Ola',
+				mellomnavn: null,
+				etternavn: 'Nordmann',
+				forkortetNavn: 'Nordmann Ola'
+			},
+			motpartsRolle: 'FULLMAKTSGIVER',
+			omraader: [
+				{
+					kode: '*',
+					beskrivelse: 'alle ytelser'
+				}
+			],
+			gyldigFraOgMed: '2021-03-04T13:00:42',
+			gyldigTilOgMed: '2021-03-05T13:00:42'
 		}
 	]
 };
