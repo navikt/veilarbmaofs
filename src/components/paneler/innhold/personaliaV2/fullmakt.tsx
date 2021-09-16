@@ -11,12 +11,21 @@ function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
 
     const gjeldendeOmraader = omraader.map((omraade, index) => omraade.beskrivelse).join(', ');
 
+    function hentBeskrivelseForGjeldendeOmraader(): string {
+        if(omraader.length > 0) {
+            if(omraader[0].kode === '*') {
+                return 'alle ytelser'
+            }
+        }
+        return gjeldendeOmraader;
+    }
+
     return (
         <div>
             <div className="overinformasjon underinformasjon">
                 <UndertekstBold>F{motpartsRolle?.substring(1).toLowerCase()}: {motpartsPersonident}</UndertekstBold>
                 <Normaltekst>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</Normaltekst>
-                <Normaltekst>Gjelder {gjeldendeOmraader}</Normaltekst>
+                <Normaltekst>Gjelder {hentBeskrivelseForGjeldendeOmraader}</Normaltekst>
                 <Normaltekst>Gyldig fra og med: {formaterDato(gyldigFraOgMed)}</Normaltekst>
                 <Normaltekst>Gyldig til og med: {formaterDato(gyldigTilOgMed)}</Normaltekst>
             </div>

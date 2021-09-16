@@ -457,10 +457,10 @@ const personaliav2: PersonaliaV2Info = {
 		epostSistOppdatert:'10.04.2010',
 		master:'KRR'
 	},
-	statsborgerskap: 'Norge',
+	statsborgerskap: 'NORGE',
 	sivilstand: {
 		sivilstand: 'Gift',
-		fraDato: '2016-08-04'
+		fraDato: '2012-08-20'
 	},
 	partner: {
 		fornavn: 'fornavn',
@@ -493,46 +493,8 @@ const personaliav2: PersonaliaV2Info = {
 		utenlandskAdresse: null,
 		ukjentBosted: null
 	},
-	oppholdsadresse: {
-		coAdressenavn: null,
-		vegadresse: {
-			matrikkelId: null,
-			postnummer: null,
-			husnummer: null,
-			husbokstav: null,
-			kommunenummer: '1111',
-			adressenavn: 'Uten fast bosted',
-			tilleggsnavn: null,
-			poststed: null,
-			kommune: 'Kommune'
-		},
-		matrikkeladresse: {
-			matrikkelId: null,
-			bruksenhetsnummer: 'H0203',
-			tilleggsnavn: null,
-			kommunenummer: '1234',
-			postnummer: '0457',
-			poststed: 'Posted',
-			kommune: 'Agder'
-		},
-		utenlandskAdresse: null
-	},
+	oppholdsadresse: null,
 	kontaktadresser: [
-		{
-			type: 'Innland',
-			coAdressenavn: null,
-			vegadresse: null,
-			postboksadresse: null,
-			postadresseIFrittFormat: {
-				adresselinje1: 'C/O Egent Test',
-				adresselinje2: 'Adresselinje 2',
-				adresselinje3: 'Adresselinje 3',
-				postnummer: '7123',
-				poststed: 'Posted'
-			},
-			utenlandskAdresse: null,
-			utenlandskAdresseIFrittFormat: null
-		},
 		{
 			type: 'Utland',
 			coAdressenavn: null,
@@ -571,23 +533,6 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
 				gyldighetstidspunkt: null
 			}
-		},
-		{
-			type: Vergetype.MIDLERTIDIG_FOR_VOKSEN,
-			embete: 'Fylkesmannen i Agder',
-			vergeEllerFullmektig: {
-				navn: {
-					fornavn: 'fornavn',
-					mellomnavn: 'mellomnavn',
-					etternavn: 'etternavn'
-				},
-				motpartsPersonident: '1234567890',
-				omfang: VergemaalEllerFullmaktOmfangType.PERSONLIGE_INTERESSER
-			},
-			folkeregistermetadata: {
-				ajourholdstidspunkt: '2021-03-02T13:00:42',
-				gyldighetstidspunkt: '2021-03-02T13:00:42'
-			}
 		}
 	],
 	fullmakt: [
@@ -612,28 +557,6 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 			],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
 			gyldigTilOgMed: '2021-03-03T13:00:42'
-		},
-		{
-			motpartsPersonident: '1234567891',
-			motpartsPersonNavn: {
-				fornavn: 'fornavn',
-				mellomnavn: 'mellomnavn',
-				etternavn: 'etternavn',
-				forkortetNavn: 'forkortetNavn'
-			},
-			motpartsRolle: 'FULLMAKTSGIVER',
-			omraader: [
-				{
-					kode: 'BAR',
-					beskrivelse: 'Barnetrygd'
-				},
-				{
-					kode: 'HJE',
-					beskrivelse: 'Hjelpemidler'
-				}
-			],
-			gyldigFraOgMed: '2021-03-04T13:00:42',
-			gyldigTilOgMed: '2021-03-05T13:00:42'
 		}
 	]
 };

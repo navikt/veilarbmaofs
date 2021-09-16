@@ -2,10 +2,10 @@ import React from 'react';
 import { finnAldersTekst } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
-import { Normaltekst } from 'nav-frontend-typografi';
+import {Normaltekst, UndertekstBold} from 'nav-frontend-typografi';
 import {Gradering, PersonaliaV2Info, PersonsBarn} from '../../../../rest/datatyper/personaliav2';
 import EMDASH from "../../../../utils/emdash";
-import {formaterDato, isNotEmptyArray} from "../../../../utils";
+import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from "../../../../utils";
 import { graderingBeskrivelse } from "../../../../utils/konstanter";
 
 function BorSammen(props: { barn: PersonsBarn }) {
@@ -20,27 +20,26 @@ function BorSammen(props: { barn: PersonsBarn }) {
 }
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
-	const { fornavn, kjonn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
+	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
 	const alder = finnAldersTekst(props.barn);
-	const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
 	return (
 		<div className="overinformasjon underinformasjon">
 			{ erEgenAnsatt && !harVeilederTilgang ?
 				<div>
-					<Normaltekst>{`${lesbartKjonn} (${alder})`}</Normaltekst>
+					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
 					<BorSammen barn={props.barn} />
 				</div>
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
 					<div>
-						<Normaltekst>{lesbartKjonn}</Normaltekst>
+						<UndertekstBold>Barn</UndertekstBold>
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>
 					:
 					<div>
-						<Normaltekst>{`${lesbartKjonn} (${alder})`}</Normaltekst>
-						<Normaltekst>{fornavn}</Normaltekst>
-						<Normaltekst>{formaterDato(fodselsdato)}</Normaltekst>
+						<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
+						<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
+						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
 						<BorSammen barn={props.barn} />
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>

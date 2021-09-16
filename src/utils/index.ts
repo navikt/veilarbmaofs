@@ -1,8 +1,9 @@
 import { finnInternNavDomene } from './miljo-utils';
-import { StringOrNothing } from './felles-typer';
+import { OrNothing, StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
 import { useCallback, useEffect } from 'react';
+import moment from 'moment';
 
 export const hasHashParam = (parameterName: string): boolean => {
 	return window.location.hash.includes(parameterName);
@@ -91,6 +92,10 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 	return lokalDato.toLocaleDateString('no-NO', options);
 }
 
+export function formateLocalDate(date: string | undefined | null) {
+	return moment(date).format('DD.MM.YYYY');
+}
+
 export function safeSort(a: StringOrNothing, b: StringOrNothing) {
 	if (a && b) {
 		return a.localeCompare(b);
@@ -139,4 +144,12 @@ export function useEventListener(name: string, listener: () => void) {
 		return () => window.removeEventListener(name, callback);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [callback, name]);
+}
+
+export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
+	return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : EMDASH;
+}
+
+export function formateFirstCharOfEachWordInUppercase(str: OrNothing<string>) {
+	return str ?  str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }
