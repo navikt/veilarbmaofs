@@ -24,7 +24,7 @@ function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
         <Informasjonsbolk header="Epost" {...rest} className="break-all">
             <Normaltekst>{epostAdresse}</Normaltekst>
             <Undertekst className="kilde-tekst">
-                <span>Registrert {epostSistOppdatert && epostSistOppdatert}{` av ${hentKilde(master)}`}</span>
+                <span>Registrert {epostSistOppdatert && epostSistOppdatert}{` ${hentKilde(master)}`}</span>
             </Undertekst>
         </Informasjonsbolk>
     );

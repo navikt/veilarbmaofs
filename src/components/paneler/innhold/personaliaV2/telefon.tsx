@@ -13,8 +13,8 @@ function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst>{telefonNr}</Normaltekst>
 			{telefonNr &&
-				<Undertekst className="kilde-tekst break-all">
-					<span>Registrert {registrertDato && registrertDato}{` av ${hentKilde(master)}`}</span>
+				<Undertekst className="kilde-tekst">
+					<span>Registrert {registrertDato && registrertDato}{` ${hentKilde(master)}`}</span>
 				</Undertekst>
 			}
 		</div>
