@@ -3,6 +3,7 @@ import { OrNothing, StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
 import { useCallback, useEffect } from 'react';
+import moment from 'moment';
 
 export const hasHashParam = (parameterName: string): boolean => {
 	return window.location.hash.includes(parameterName);
@@ -92,12 +93,7 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 }
 
 export function formateLocalDate(date: string | undefined | null) {
-	if(date) {
-		let localDate = date.split("-");
-		return localDate[2] + "." + localDate[1] + "." + localDate[0];
-	}
-
-	return EMDASH;
+	return moment(date).format('DD.MM.YYYY');
 }
 
 export function safeSort(a: StringOrNothing, b: StringOrNothing) {

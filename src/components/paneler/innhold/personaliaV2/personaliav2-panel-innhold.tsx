@@ -1,31 +1,18 @@
 import React from 'react';
-import Grid from '../../../felles/grid';
-import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import { useAppStore } from '../../../../stores/app-store';
-import { kalkulerAlder } from '../../../../utils/date-utils';
-import Adresser from './adresser';
-import Sivilstand from './sivilstand';
-import Partner from './partner';
-import Barn from './barn';
-import Telefon from './telefon';
-import { useFetchPersonaliaV2, useFetchSpraakTolk, useFetchVergOgFullmakt } from '../../../../rest/api';
+import { useFetchPersonaliaV2 } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import Vergemaal from './vergemaal';
-import Fullmakt from './fullmakt';
-import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
-import Epost from "./epost";
-import { formateStringInUpperAndLowerCase } from "../../../../utils";
-
-const MAX_ALDER_BARN = 21;
+import KontaktInformasjon from './KontaktInformasjon';
+import FamilieRelasjoner from "./FamilieRelasjoner";
+import VergeFullmaktInfo from "./VergeFullmaktInfo";
+import GeneralInfo from "./GeneralInfo";
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const personaliav2 = useFetchPersonaliaV2(fnr);
-	const vergeOgFullmakt = useFetchVergOgFullmakt(fnr);
-	const tilrettelagtKommunikasjon = useFetchSpraakTolk(fnr);
 
 	if (isPending(personaliav2)) {
 		return <Laster />;
@@ -48,32 +35,16 @@ const PersonaliaV2PanelInnhold = () => {
 		barn
 	} = personaliav2.data;
 
-	const filtrertBarneListe =
-		barn && barn.filter(enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
-
 	return (
 		<>
-			<Grid columns={5} gap="0.5rem">
-				<Telefon telefon={telefon} />
-				<Sivilstand sivilstand={sivilstand} />
-				<Epost epost={epost}/>
-				<InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
-				<InformasjonsbolkEnkel header="Statsborgerskap" value={formateStringInUpperAndLowerCase(statsborgerskap)} />
-				<Adresser
-					bostedsadresse={bostedsadresse}
-					oppholdsadresse={oppholdsadresse}
-					kontaktadresser={kontaktadresser}
-				/>
-				<Partner partner={partner} />
-				<Barn barn={filtrertBarneListe} />
-				{hasData(vergeOgFullmakt) && (
-					<Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />
-				)}
-				{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
-				{hasData(tilrettelagtKommunikasjon) && (
-					<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
-				)}
-			</Grid>
+			<div className="personalia-grid">
+				<KontaktInformasjon telefon={telefon} epost={epost} bostedsadresse={bostedsadresse}
+									oppholdsadresse={oppholdsadresse}
+									kontaktadresser={kontaktadresser} />
+				<FamilieRelasjoner sivilstand={sivilstand} partner={partner} barn={barn}/>
+				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap}/>
+				<VergeFullmaktInfo />
+			</div>
 			<LenkeBrukerprofil />
 		</>
 	);

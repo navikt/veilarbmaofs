@@ -20,9 +20,8 @@ function BorSammen(props: { barn: PersonsBarn }) {
 }
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
-	const { fornavn, kjonn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
+	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
 	const alder = finnAldersTekst(props.barn);
-	const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
 
 	return (
 		<div className="overinformasjon underinformasjon">
@@ -38,7 +37,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 					</div>
 					:
 					<div>
-						<UndertekstBold>{`${lesbartKjonn} (${alder})`}</UndertekstBold>
+						<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
 						<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
 						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
 						<BorSammen barn={props.barn} />

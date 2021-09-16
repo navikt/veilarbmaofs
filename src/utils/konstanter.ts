@@ -26,11 +26,11 @@ export function graderingBeskrivelse(gradering: Gradering) {
 export function hentKilde(master: OrNothing<String>) {
 	switch(master) {
 		case 'KRR':
-			return 'Kontakt og reservasjonsregisteret';
+			return 'i Kontakt- og reservasjons-registeret';
 		case 'PDL':
-			return 'NAV';
+			return 'av NAV';
 		case 'Freg':
-			return 'Folkeregisteret';
+			return 'i Folkeregisteret';
 		default:
 			return null;
 	}
