@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.225e083f.chunk.css",
-    "main.js": "/veilarbmaofs/static/js/main.cfbad2ab.chunk.js",
-    "main.js.map": "/veilarbmaofs/static/js/main.cfbad2ab.chunk.js.map",
+    "main.css": "/veilarbmaofs/static/css/main.f5c4c4e6.chunk.css",
+    "main.js": "/veilarbmaofs/static/js/main.b03f0303.chunk.js",
+    "main.js.map": "/veilarbmaofs/static/js/main.b03f0303.chunk.js.map",
     "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js",
     "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js.map",
     "static/css/2.ffaa8a8d.chunk.css": "/veilarbmaofs/static/css/2.ffaa8a8d.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.7adf410a.chunk.js.map": "/veilarbmaofs/static/js/2.7adf410a.chunk.js.map",
     "index.html": "/veilarbmaofs/index.html",
     "static/css/2.ffaa8a8d.chunk.css.map": "/veilarbmaofs/static/css/2.ffaa8a8d.chunk.css.map",
-    "static/css/main.225e083f.chunk.css.map": "/veilarbmaofs/static/css/main.225e083f.chunk.css.map",
+    "static/css/main.f5c4c4e6.chunk.css.map": "/veilarbmaofs/static/css/main.f5c4c4e6.chunk.css.map",
     "static/js/2.7adf410a.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.7adf410a.chunk.js.LICENSE.txt",
     "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.13d90eee.svg",
     "static/media/lukk.ccaa1c74.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74.svg",
@@ -21,7 +21,7 @@
     "static/js/runtime-main.9da9bbd8.js",
     "static/css/2.ffaa8a8d.chunk.css",
     "static/js/2.7adf410a.chunk.js",
-    "static/css/main.225e083f.chunk.css",
-    "static/js/main.cfbad2ab.chunk.js"
+    "static/css/main.f5c4c4e6.chunk.css",
+    "static/js/main.b03f0303.chunk.js"
   ]
 }
