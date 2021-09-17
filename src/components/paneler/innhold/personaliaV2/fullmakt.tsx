@@ -2,7 +2,7 @@ import { Fullmakter, VergeOgFullmaktData } from "../../../../rest/datatyper/verg
 import Informasjonsbolk from "../../../felles/informasjonsbolk";
 import React from "react";
 import {Normaltekst, UndertekstBold} from "nav-frontend-typografi";
-import {formaterDato, isNotEmptyArray} from "../../../../utils";
+import {formateLocalDate, isNotEmptyArray} from "../../../../utils";
 import EMDASH from "../../../../utils/emdash";
 
 function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
@@ -17,8 +17,8 @@ function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
                 <UndertekstBold>F{motpartsRolle?.substring(1).toLowerCase()}: {motpartsPersonident}</UndertekstBold>
                 <Normaltekst>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</Normaltekst>
                 <Normaltekst>{`Gjelder ${gjeldendeOmraader}`}</Normaltekst>
-                <Normaltekst>Gyldig fra og med: {formaterDato(gyldigFraOgMed)}</Normaltekst>
-                <Normaltekst>Gyldig til og med: {formaterDato(gyldigTilOgMed)}</Normaltekst>
+                <Normaltekst>Gyldig fra og med: {formateLocalDate(gyldigFraOgMed)}</Normaltekst>
+                <Normaltekst>Gyldig til og med: {formateLocalDate(gyldigTilOgMed)}</Normaltekst>
             </div>
         </div>
     );

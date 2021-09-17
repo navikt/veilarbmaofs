@@ -6,7 +6,8 @@ import EMDASH from '../../../../utils/emdash';
 import { formateFirstCharOfEachWordInUppercase, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
-import { graderingBeskrivelse } from "../../../../utils/konstanter";
+import {graderingBeskrivelse, graderingKode} from "../../../../utils/konstanter";
+import {EtikettAdvarsel} from "nav-frontend-etiketter";
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -24,14 +25,21 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	return (
 		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
 			{ erEgenAnsatt && !harVeilederTilgang ?
+				<div>
 					<Normaltekst>{borSammen}</Normaltekst>
+					<EtikettAdvarsel mini>Egen ansatt</EtikettAdvarsel>
+				</div>
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
-					graderingBeskrivelse(gradering)
+					<div>
+						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
+					</div>
 					:
 					<div>
 						<Normaltekst>{`${formateFirstCharOfEachWordInUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
 						<Normaltekst>{borSammen}</Normaltekst>
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
 					</div>
 			}
 		</Informasjonsbolk>

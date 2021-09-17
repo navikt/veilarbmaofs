@@ -472,8 +472,8 @@ const personaliav2: PersonaliaV2Info = {
 		dodsdato: null,
 		harSammeBosted: true,
 		erEgenAnsatt: false,
-		harVeilederTilgang: true,
-		gradering: Gradering.FORTROLIG,
+		harVeilederTilgang: false,
+		gradering: Gradering.STRENGT_FORTROLIG,
 		kjonn: 'M'
 	},
 	bostedsadresse: {
