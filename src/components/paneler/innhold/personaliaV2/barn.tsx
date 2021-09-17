@@ -6,7 +6,8 @@ import {Normaltekst, UndertekstBold} from 'nav-frontend-typografi';
 import {Gradering, PersonaliaV2Info, PersonsBarn} from '../../../../rest/datatyper/personaliav2';
 import EMDASH from "../../../../utils/emdash";
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from "../../../../utils";
-import { graderingBeskrivelse } from "../../../../utils/konstanter";
+import { graderingBeskrivelse, graderingKode } from "../../../../utils/konstanter";
+import { EtikettAdvarsel } from "nav-frontend-etiketter";
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -29,11 +30,13 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 				<div>
 					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
 					<BorSammen barn={props.barn} />
+					<EtikettAdvarsel mini>Egen ansatt</EtikettAdvarsel>
 				</div>
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
 					<div>
 						<UndertekstBold>Barn</UndertekstBold>
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
 					</div>
 					:
 					<div>
@@ -42,6 +45,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
 						<BorSammen barn={props.barn} />
 						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
 					</div>
 			}
 		</div>
