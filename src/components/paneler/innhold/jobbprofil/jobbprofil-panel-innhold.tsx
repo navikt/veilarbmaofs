@@ -37,7 +37,7 @@ const JobbprofilPanelInnhold = () => {
 
 	const erManuell = underOppfolgingData.erManuell;
 	const brukerAktorId = aktorIdData.aktorId;
-	const pamUrl = byggPamUrl(brukerAktorId || '', 'jobbprofil');
+	const pamUrl = byggPamUrl(fnr);
 
 	// Sjekk alltid tilgang først
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
@@ -52,7 +52,11 @@ const JobbprofilPanelInnhold = () => {
 				</ul>
 			</AlertStripeInfo>
 		);
-	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204 || !harJobbprofilData(cvOgJobbprofil)) {
+	} else if (
+		cvOgJobbprofil.statusCode === 404 ||
+		cvOgJobbprofil.statusCode === 204 ||
+		!harJobbprofilData(cvOgJobbprofil)
+	) {
 		return (
 			<AlertStripeInfo>
 				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;

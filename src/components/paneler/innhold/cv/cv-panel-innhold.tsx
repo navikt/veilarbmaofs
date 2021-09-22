@@ -39,12 +39,10 @@ const CvPanelInnhold = () => {
 	}
 
 	const underOppfolgingData = underOppfolging.data;
-	const aktorIdData = aktorId.data;
-
 	const erManuell = underOppfolgingData.erManuell;
-	const brukerAktorId = aktorIdData.aktorId;
-	const endreCvUrl = byggPamUrl(brukerAktorId || '', 'cv');
-	const lastNedCvUrl = byggPamUrl(brukerAktorId || '', 'cv/pdf');
+
+	const endreCvUrl = byggPamUrl(fnr);
+	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
@@ -84,7 +82,7 @@ const CvPanelInnhold = () => {
 		forerkort,
 		sprak,
 		kurs,
-		sistEndret,
+		sistEndret
 	} = cvOgJobbprofil.data;
 
 	return (

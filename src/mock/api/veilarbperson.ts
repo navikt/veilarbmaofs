@@ -1,11 +1,11 @@
-import {rest} from 'msw';
-import {RequestHandlersList} from 'msw/lib/types/setupWorker/glossary';
-import {ArenaPerson, FagdokumentType, KursVarighetEnhet} from '../../rest/datatyper/arenaperson';
-import {PersonaliaInfo} from '../../rest/datatyper/personalia';
-import {AktorId} from '../../rest/datatyper/aktor-id';
-import {PersonaliaV2Info} from "../../rest/datatyper/personaliav2";
-import {VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype} from "../../rest/datatyper/vergeOgFullmakt";
-import {TilrettelagtKommunikasjonData} from "../../rest/datatyper/tilrettelagtKommunikasjon";
+import { rest } from 'msw';
+import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
+import { PersonaliaInfo } from '../../rest/datatyper/personalia';
+import { AktorId } from '../../rest/datatyper/aktor-id';
+import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
+import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
+import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -14,7 +14,7 @@ const aktorId: AktorId = {
 const cvOgJobbprofil: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
 	sammendrag:
-		'Jeg er en maritime executive som har master grad og bachlor grad. Har vart teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
+		'Jeg er en maritime executive som har mastergrad og bachlorgrad. Har vært teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
 	arbeidserfaring: [
 		{
 			tittel: 'Maskinsjef',
@@ -101,7 +101,7 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'huet',
 			arrangor: 'falk',
-			fraDato: '2016-10',
+			tidspunkt: '2016-10',
 			varighet: {
 				varighet: 1,
 				tidsenhet: KursVarighetEnhet.UKE
@@ -110,18 +110,17 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'grønn',
 			arrangor: 'falk',
-			tidspunkt: '2017-10',
+			tidspunkt: '2017-10'
 		},
 		{
 			tittel: 'blå',
 			arrangor: 'falk',
-			fraDato: '2018-10',
-			tidspunkt: '2018-10',
+			tidspunkt: '2018-10'
 		},
 		{
 			tittel: 'dynamik posisjonering',
 			arrangor: 'kongsberg',
-			fraDato: '2010-08'
+			tidspunkt: '2010-08'
 		}
 	],
 	godkjenninger: [
@@ -378,45 +377,54 @@ const personalia: PersonaliaInfo = {
 };
 
 const personaliav2: PersonaliaV2Info = {
-	fornavn: 'BRUCE',
-	mellomnavn: 'BATTY',
-	etternavn: 'WAYNE',
-	forkortetNavn: 'BRUCE BATTY WAYNE',
+	fornavn: 'Bruce',
+	mellomnavn: 'Batty',
+	etternavn: 'Wayne',
+	forkortetNavn: 'Bruce Batty Wayne',
 	fodselsnummer: '10108000398',
 	fodselsdato: '1974-09-16',
 	dodsdato: null,
 	barn: [
 		{
-			fornavn: 'BRUCE',
+			fornavn: 'Bruce',
 			mellomnavn: null,
-			etternavn: 'BANNER',
-			forkortetNavn: 'BRUCE BANNER',
+			etternavn: 'Banner',
+			forkortetNavn: 'Bruce Banner',
 			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: true,
+			gradering: Gradering.FORTROLIG,
+			erEgenAnsatt: false,
+			harVeilederTilgang: true,
 			kjonn: 'M'
 		},
 		{
-			fornavn: 'HARRY',
+			fornavn: 'Harry',
 			mellomnavn: null,
-			etternavn: 'BOSCH',
-			forkortetNavn: 'HARRY BOSCH',
+			etternavn: 'Bosch',
+			forkortetNavn: 'Harry Bosch',
 			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
 			dodsdato: null,
-			harSammeBosted: false,
+			harSammeBosted: true,
+			gradering: Gradering.UGRADERT,
+			erEgenAnsatt: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
-			fornavn: 'SATOSHI',
+			fornavn: 'Satoshi',
 			mellomnavn: null,
-			etternavn: 'NAKAMOTO',
-			forkortetNavn: 'SATOSHI NAKAMOTO',
+			etternavn: 'Nakamoto',
+			forkortetNavn: 'Satoshi Nakamoto',
 			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
-			dodsdato: '2010-10-04',
+			dodsdato: null,
 			harSammeBosted: true,
+			erEgenAnsatt: false,
+			harVeilederTilgang: true,
+			gradering: Gradering.STRENGT_FORTROLIG,
 			kjonn: 'K'
 		}
 	],
@@ -429,87 +437,64 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			prioritet: '1',
 			telefonNr: '+4633333333',
-			master: 'FREG'
+			registrertDato: '10.07.2008',
+			master: 'Freg'
 		},
 		{
 			prioritet: '2',
 			telefonNr: '+4822222222',
+			registrertDato: '10.04.2010',
 			master: 'KRR'
+		},
+		{
+			prioritet: '3',
+			telefonNr: '+4822222444',
+			registrertDato: null,
+			master: 'PDL'
 		}],
-	epost: 'tester.scrambling-script@fellesregistre.no',
+	epost: {
+		epostAdresse:'tester.scrambling@registre.no',
+		epostSistOppdatert:'10.04.2010',
+		master:'KRR'
+	},
 	statsborgerskap: 'NORGE',
 	sivilstand: {
 		sivilstand: 'Gift',
-		fraDato: '2016-08-04'
+		fraDato: '2012-08-20'
 	},
 	partner: {
-		fornavn: 'PHILIPS',
+		fornavn: 'fornavn',
 		mellomnavn: null,
-		etternavn: 'WAYNE',
-		forkortetNavn: 'PHILIPS WAYNE',
+		etternavn: 'etternavn',
+		forkortetNavn: 'fornavn etternavn',
 		fodselsnummer: '12108000391',
 		fodselsdato: '1980-12-10',
 		dodsdato: null,
 		harSammeBosted: true,
+		erEgenAnsatt: false,
+		harVeilederTilgang: true,
+		gradering: Gradering.STRENGT_FORTROLIG,
 		kjonn: 'M'
 	},
 	bostedsadresse: {
-		coAdressenavn: 'COADRDRESSENAVN',
+		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {
 			matrikkelId: null,
 			postnummer: '0000',
 			husnummer: '21',
 			husbokstav: 'A',
 			kommunenummer: '1111',
-			adressenavn: 'ARENDALSGATE',
-			tilleggsnavn: 'ARENDAL',
-			poststed: 'POSTSTED',
-			kommune: 'KOMMUNE'
+			adressenavn: 'Arendalsegate',
+			tilleggsnavn: 'Arendal',
+			poststed: 'Posted',
+			kommune: 'Kommune'
 		},
 		matrikkeladresse: null,
 		utenlandskAdresse: null,
 		ukjentBosted: null
 	},
-	oppholdsadresse: {
-		coAdressenavn: null,
-		vegadresse: {
-			matrikkelId: null,
-			postnummer: null,
-			husnummer: null,
-			husbokstav: null,
-			kommunenummer: '1111',
-			adressenavn: 'UTEN FAST BOSTED',
-			tilleggsnavn: null,
-			poststed: null,
-			kommune: 'KOMMUNE'
-		},
-		matrikkeladresse: {
-			matrikkelId: null,
-			bruksenhetsnummer: 'H0203',
-			tilleggsnavn: null,
-			kommunenummer: '1234',
-			postnummer: '0457',
-			poststed: 'POSTSTED',
-			kommune: 'AGDER'
-		},
-		utenlandskAdresse: null
-	},
+	oppholdsadresse: null,
 	kontaktadresser: [
-		{
-			type: 'Innland',
-			coAdressenavn: null,
-			vegadresse: null,
-			postboksadresse: null,
-			postadresseIFrittFormat: {
-				adresselinje1: 'C/O Egent Test',
-				adresselinje2: 'Adresselinje 2',
-				adresselinje3: 'Adresselinje 3',
-				postnummer: '7123',
-				poststed: 'POSTSTED'
-			},
-			utenlandskAdresse: null,
-			utenlandskAdresseIFrittFormat: null
-		},
 		{
 			type: 'Utland',
 			coAdressenavn: null,
@@ -521,9 +506,9 @@ const personaliav2: PersonaliaV2Info = {
 				adresselinje1: 'C/O adresse2 Test',
 				adresselinje2: 'Adresselinje 2',
 				adresselinje3: 'Adresselinje 3',
-				byEllerStedsnavn: 'STEDSNAVN',
+				byEllerStedsnavn: 'Stedsnavn',
 				postkode: '1234',
-				landkode: 'LANDKODE'
+				landkode: 'Landkode'
 			}
 		}
 	],
@@ -548,69 +533,48 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 				ajourholdstidspunkt: '2021-03-02T13:00:42',
 				gyldighetstidspunkt: null
 			}
-		},
-		{
-			type: Vergetype.MIDLERTIDIG_FOR_VOKSEN,
-			embete: 'Fylkesmannen i Agder',
-			vergeEllerFullmektig: {
-				navn: {
-					fornavn: 'fornavn',
-					mellomnavn: 'mellomnavn',
-					etternavn: 'etternavn'
-				},
-				motpartsPersonident: '1234567890',
-				omfang: VergemaalEllerFullmaktOmfangType.PERSONLIGE_INTERESSER
-			},
-			folkeregistermetadata: {
-				ajourholdstidspunkt: '2021-03-02T13:00:42',
-				gyldighetstidspunkt: '2021-03-02T13:00:42'
-			}
 		}
 	],
 	fullmakt: [
 		{
 			motpartsPersonident: '1234567890',
 			motpartsPersonNavn: {
-				fornavn:'Ola',
-				mellomnavn:null,
-				etternavn:'Nordmann',
-				forkortetNavn:'Nordmann Ola'
+				fornavn: 'Ola',
+				mellomnavn: null,
+				etternavn: 'Nordmann',
+				forkortetNavn: 'Nordmann Ola'
 			},
 			motpartsRolle: 'FULLMEKTIG',
 			omraader: [
 				{
-					kode:'AAP',
-					beskrivelse:'Arbeidsavklaringspenger'
+					kode: 'AAP',
+					beskrivelse: 'Arbeidsavklaringspenger'
 				},
 				{
-					kode:'DAG',
-					beskrivelse:'Dagpenger'
+					kode: 'DAG',
+					beskrivelse: 'Dagpenger'
 				}
 			],
 			gyldigFraOgMed: '2021-03-02T13:00:42',
-			gyldigTilOgMed:	'2021-03-03T13:00:42'
+			gyldigTilOgMed: '2021-03-03T13:00:42'
 		},
 		{
 			motpartsPersonident: '1234567891',
 			motpartsPersonNavn: {
-				fornavn:'fornavn',
-				mellomnavn:'mellomnavn',
-				etternavn:'etternavn',
-				forkortetNavn:'forkortetNavn'
+				fornavn: 'Ola',
+				mellomnavn: null,
+				etternavn: 'Nordmann',
+				forkortetNavn: 'Nordmann Ola'
 			},
 			motpartsRolle: 'FULLMAKTSGIVER',
-			omraader:[
+			omraader: [
 				{
-					kode:'BAR',
-					beskrivelse:'Barnetrygd'
-				},
-				{
-					kode:'HJE',
-					beskrivelse:'Hjelpemidler'
+					kode: '*',
+					beskrivelse: 'alle ytelser'
 				}
 			],
 			gyldigFraOgMed: '2021-03-04T13:00:42',
-			gyldigTilOgMed:	'2021-03-05T13:00:42'
+			gyldigTilOgMed: '2021-03-05T13:00:42'
 		}
 	]
 };

@@ -1,8 +1,9 @@
-import { finnNaisDomene, finnInternNavDomene } from './miljo-utils';
-import { StringOrNothing } from './felles-typer';
+import { finnInternNavDomene } from './miljo-utils';
+import { OrNothing, StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
 import { useCallback, useEffect } from 'react';
+import moment from 'moment';
 
 export const hasHashParam = (parameterName: string): boolean => {
 	return window.location.hash.includes(parameterName);
@@ -38,9 +39,10 @@ export function omit<S>(obj: S, ...props: string[]) {
 		}, {});
 }
 
-export function byggPamUrl(aktorId: string, path: string) {
-	return `https://pam-cv-veileder.${finnNaisDomene()}/${path}/${aktorId}`;
+export function byggPamUrl(fnr: string, path = '') {
+	return `https://pam-personbruker-veileder.${finnInternNavDomene()}${path}?fnr=${fnr}`;
 }
+
 export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
 	//Personforvalteren skal takle både aktørid og fnr.
 	return `https://pdl-web.${finnInternNavDomene()}/endreperson?aktoerId=${aktoerIdEllerFnr}`;
@@ -90,11 +92,17 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 	return lokalDato.toLocaleDateString('no-NO', options);
 }
 
+export function formateLocalDate(date: string | undefined | null) {
+	return moment(date).format('DD.MM.YYYY');
+}
+
 export function safeSort(a: StringOrNothing, b: StringOrNothing) {
-	if (a) {
-		return b ? a.localeCompare(b) : -1;
+	if (a && b) {
+		return a.localeCompare(b);
+	} else if (a) {
+		return -1;
 	} else if (b) {
-		return a ? b.localeCompare(a) : 1;
+		return 1;
 	} else {
 		return 0;
 	}
@@ -136,4 +144,12 @@ export function useEventListener(name: string, listener: () => void) {
 		return () => window.removeEventListener(name, callback);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [callback, name]);
+}
+
+export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
+	return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : EMDASH;
+}
+
+export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
+	return str ?  str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }

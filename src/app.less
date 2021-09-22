@@ -49,11 +49,54 @@
 	}
 
 	.break-all {
-		word-break: break-all;
+		width: 280px;
+		word-break: normal;
+		hyphens: auto;
+	}
+
+	.break-all-sm-column {
+		width: 200px;
+		word-break: normal;
+		hyphens: auto;
 	}
 
 	@media (max-width: 1232px) {
 		padding: 0 1rem;
 	}
 
+	.kilde-tekst {
+		color: #645f5a;
+		margin-top: 3px;
+		line-height: 1rem;
+		hyphens: auto;
+		word-break: normal;
+	}
+
+	.personalia-grid {
+		display: grid;
+		gap: 1rem;
+		grid-auto-flow: column;
+	}
+
+	.tooltip:hover {
+		border-color: @redErrorDarken40;
+		background-color: @redErrorLighten40;
+	}
+
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 230px;
+		margin-top: 5px;
+		background-color: @navGra60;
+		color: white;
+		text-align: center;
+		padding: 3px 0;
+		border-radius: 6px;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+	}
 }

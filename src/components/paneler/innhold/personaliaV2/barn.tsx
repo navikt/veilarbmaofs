@@ -1,11 +1,13 @@
 import React from 'react';
-import { finnAldersTekst } from '../../../../utils/date-utils';
+import { finnAlder } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
-import { Normaltekst } from 'nav-frontend-typografi';
-import { PersonsBarn, PersonaliaV2Info } from '../../../../rest/datatyper/personaliav2';
+import {Normaltekst, UndertekstBold} from 'nav-frontend-typografi';
+import {Gradering, PersonaliaV2Info, PersonsBarn} from '../../../../rest/datatyper/personaliav2';
 import EMDASH from "../../../../utils/emdash";
-import { isNotEmptyArray } from "../../../../utils";
+import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from "../../../../utils";
+import { EtikettAdvarsel } from "nav-frontend-etiketter";
+import { etikettGradering } from './etikett-gradering';
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -19,15 +21,31 @@ function BorSammen(props: { barn: PersonsBarn }) {
 }
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
-	const { fornavn, etternavn, fodselsnummer, kjonn } = props.barn;
-	const alder = finnAldersTekst(props.barn);
-	const lesbartKjonn = kjonn === 'M' ? 'Gutt' : 'Jente';
+	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
+	const alder = finnAlder(props.barn);
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst>{`${fornavn} ${etternavn} ${alder}, ${lesbartKjonn}`}</Normaltekst>
-			<Normaltekst>{fodselsnummer}</Normaltekst>
-			<BorSammen barn={props.barn} />
+			{ erEgenAnsatt && !harVeilederTilgang ?
+				<div>
+					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
+					<BorSammen barn={props.barn} />
+					<EtikettAdvarsel mini>Egen ansatt</EtikettAdvarsel>
+				</div>
+				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
+					<div>
+						<UndertekstBold>Barn</UndertekstBold>
+						{etikettGradering(gradering)}
+					</div>
+					:
+					<div>
+						<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
+						<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
+						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
+						<BorSammen barn={props.barn} />
+						{gradering !== Gradering.UGRADERT && etikettGradering(gradering)}
+					</div>
+			}
 		</div>
 	);
 }

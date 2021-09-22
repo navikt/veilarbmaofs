@@ -115,7 +115,7 @@ function VegAdresse(prop: { adresse: OrNothing<Vegadresse> }) {
 		<>
 			<Normaltekst>{`${adressenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</Normaltekst>
 			<Normaltekst>{`${postnummer || ''} ${poststed || ''}`}</Normaltekst>
-			{ kommunenummer && <Normaltekst> {`kommune: ${kommunenummer || ''} ${kommune || ''}`} </Normaltekst> }
+			{ kommunenummer && <Normaltekst> {`Kommune: ${kommunenummer || ''} ${kommune || ''}`} </Normaltekst> }
 		</>
 	);
 }
@@ -128,7 +128,7 @@ function MatrikkelAdresse(prop: { adresse: OrNothing<Matrikkeladresse> }) {
 			{ bruksenhetsnummer && <Normaltekst> {`Bolignummer ${bruksenhetsnummer}`} </Normaltekst> }
 			{ tilleggsnavn && <Normaltekst>  ${tilleggsnavn} </Normaltekst> }
 			{ postnummer && <Normaltekst> {`${postnummer} ${poststed || ''}`} </Normaltekst> }
-			{ kommunenummer && <Normaltekst> {`kommune: ${kommunenummer} ${kommune || ''}`} </Normaltekst> }
+			{ kommunenummer && <Normaltekst> {`Kommune: ${kommunenummer} ${kommune || ''}`} </Normaltekst> }
 		</>
 	);
 }
@@ -164,7 +164,7 @@ function UkjentBosted(prop: { adresse: OrNothing<Ukjentbosted> }) {
 
 	return (
 		<>
-			{ bostedskommune && <Normaltekst> {`kommune: ${bostedskommune} ${kommune || ''}`} </Normaltekst> }
+			{ bostedskommune && <Normaltekst> {`Kommune: ${bostedskommune} ${kommune || ''}`} </Normaltekst> }
 		</>
 	);
 }
