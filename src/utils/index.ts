@@ -150,6 +150,6 @@ export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 	return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : EMDASH;
 }
 
-export function formateFirstCharOfEachWordInUppercase(str: OrNothing<string>) {
+export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
 	return str ?  str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
-import { finnAldersTekst } from '../../../../utils/date-utils';
+import { finnAlder } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 import {Normaltekst, UndertekstBold} from 'nav-frontend-typografi';
 import {Gradering, PersonaliaV2Info, PersonsBarn} from '../../../../rest/datatyper/personaliav2';
 import EMDASH from "../../../../utils/emdash";
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from "../../../../utils";
-import { graderingBeskrivelse, graderingKode } from "../../../../utils/konstanter";
 import { EtikettAdvarsel } from "nav-frontend-etiketter";
+import { etikettGradering } from './etikett-gradering';
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -22,7 +22,7 @@ function BorSammen(props: { barn: PersonsBarn }) {
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
-	const alder = finnAldersTekst(props.barn);
+	const alder = finnAlder(props.barn);
 
 	return (
 		<div className="overinformasjon underinformasjon">
@@ -35,8 +35,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
 					<div>
 						<UndertekstBold>Barn</UndertekstBold>
-						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
+						{etikettGradering(gradering)}
 					</div>
 					:
 					<div>
@@ -44,8 +43,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 						<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
 						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
 						<BorSammen barn={props.barn} />
-						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
+						{gradering !== Gradering.UGRADERT && etikettGradering(gradering)}
 					</div>
 			}
 		</div>

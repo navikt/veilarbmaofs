@@ -1,4 +1,4 @@
-import {StringOrNothing} from "./felles-typer";
+import { StringOrNothing } from "./felles-typer";
 
 export function kalkulerAlder(fodselsdato: Date): number {
 	const diff = Date.now() - fodselsdato.getTime();
@@ -10,5 +10,16 @@ export function finnAldersTekst(personalia: { dodsdato: StringOrNothing, fodsels
 		return '(DØD)';
 	}
 	const alder = kalkulerAlder(new Date(personalia.fodselsdato));
+
+	return `${alder} år`;
+}
+
+export function finnAlder(personalia: { dodsdato: StringOrNothing, fodselsdato: string }): string {
+
+	if (personalia.dodsdato) {
+		return '(DØD)';
+	}
+	const alder = kalkulerAlder(new Date(personalia.fodselsdato));
+
 	return `${alder}`;
 }

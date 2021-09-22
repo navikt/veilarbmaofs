@@ -1,13 +1,16 @@
 import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaPartner } from '../../../../rest/datatyper/personaliav2';
-import {finnAldersTekst} from '../../../../utils/date-utils';
+import { finnAlder } from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
-import { formateFirstCharOfEachWordInUppercase, isNullOrUndefined } from '../../../../utils';
+import {
+	formateFirstCharOfEachWordToUppercase,
+	isNullOrUndefined
+} from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
-import {graderingBeskrivelse, graderingKode} from "../../../../utils/konstanter";
 import {EtikettAdvarsel} from "nav-frontend-etiketter";
+import { etikettGradering } from "./etikett-gradering";
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -20,7 +23,7 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	}
 	const { harSammeBosted, forkortetNavn, gradering, erEgenAnsatt, harVeilederTilgang } = partner!;
 	const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
-	const alder = finnAldersTekst(partner!);
+	const alder = finnAlder(partner!);
 
 	return (
 		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
@@ -30,16 +33,12 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 					<EtikettAdvarsel mini>Egen ansatt</EtikettAdvarsel>
 				</div>
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
-					<div>
-						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
-					</div>
+					<div>{etikettGradering(gradering)}</div>
 					:
 					<div>
-						<Normaltekst>{`${formateFirstCharOfEachWordInUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
+						<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
 						<Normaltekst>{borSammen}</Normaltekst>
-						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-						<EtikettAdvarsel mini>{graderingKode(gradering)}</EtikettAdvarsel>
+						{gradering !== Gradering.UGRADERT && etikettGradering(gradering)}
 					</div>
 			}
 		</Informasjonsbolk>
