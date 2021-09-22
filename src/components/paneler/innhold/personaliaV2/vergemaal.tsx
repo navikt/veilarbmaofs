@@ -9,7 +9,7 @@ import {
     VergemaalEllerFremtidsfullmakt,
     VergemaalEllerFullmaktOmfangType
 } from '../../../../rest/datatyper/vergeOgFullmakt';
-import { formaterDato, isNotEmptyArray } from "../../../../utils";
+import {formateLocalDate, isNotEmptyArray} from "../../../../utils";
 import EMDASH from "../../../../utils/emdash";
 
 function vergetypeBeskrivelse(vergeType: Vergetype) {
@@ -80,7 +80,7 @@ function VergeEllerFullmakt(props: {vergeEllerFullmektig: VergeEllerFullmektig})
 
 function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
     const {type, embete, vergeEllerFullmektig, folkeregistermetadata} = props.vergemaal;
-    const {gyldighetstidspunkt} = folkeregistermetadata;
+    const {ajourholdstidspunkt, gyldighetstidspunkt} = folkeregistermetadata;
 
     return (
         <div className="underinformasjon">
@@ -88,7 +88,9 @@ function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
             <VergeEllerFullmakt vergeEllerFullmektig={vergeEllerFullmektig}/>
             <UndertekstBold className="overinformasjon">Fylkesmannsembete</UndertekstBold>
             <Normaltekst>{embete}</Normaltekst>
-            <Normaltekst>{formaterDato(gyldighetstidspunkt)}</Normaltekst>
+            <Normaltekst>
+                {`${ajourholdstidspunkt && formateLocalDate(ajourholdstidspunkt)} - ${gyldighetstidspunkt? formateLocalDate(gyldighetstidspunkt):''}`}
+            </Normaltekst>
         </div>
     );
 }

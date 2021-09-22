@@ -12,7 +12,7 @@ function GeneralInfo(props: { kontonummer: string, statsborgerskap:string }) {
     const tilrettelagtKommunikasjon = useFetchSpraakTolk(fnr);
 
     return (
-        <div {...rest}>
+        <div {...rest} className="break-all-sm-column">
             <InformasjonsbolkEnkel header="Kontonummer" value={kontonummer} />
             <InformasjonsbolkEnkel header="Statsborgerskap" value={formateStringInUpperAndLowerCase(statsborgerskap)} />
             {hasData(tilrettelagtKommunikasjon) && (

@@ -396,7 +396,7 @@ const personaliav2: PersonaliaV2Info = {
 			harSammeBosted: true,
 			gradering: Gradering.FORTROLIG,
 			erEgenAnsatt: false,
-			harVeilederTilgang: false,
+			harVeilederTilgang: true,
 			kjonn: 'M'
 		},
 		{
@@ -472,7 +472,7 @@ const personaliav2: PersonaliaV2Info = {
 		dodsdato: null,
 		harSammeBosted: true,
 		erEgenAnsatt: false,
-		harVeilederTilgang: false,
+		harVeilederTilgang: true,
 		gradering: Gradering.STRENGT_FORTROLIG,
 		kjonn: 'M'
 	},

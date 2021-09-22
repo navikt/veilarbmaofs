@@ -13,7 +13,7 @@ function FamilieInfo (props: { sivilstand: PersonaliaSivilstand, partner: OrNoth
     const filtrertBarneListe = barn && barn.filter(enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN);
 
     return (
-        <div {...rest}>
+        <div {...rest} className="break-all-sm-column">
             <Sivilstand sivilstand={sivilstand} />
             <Partner partner={partner} />
             <Barn barn={filtrertBarneListe} />
