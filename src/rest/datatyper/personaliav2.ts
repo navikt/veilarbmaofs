@@ -38,6 +38,7 @@ export interface PersonaliaSivilstand {
 
 export interface PersonaliaTelefon {
 	prioritet: string;
+	landkode: StringOrNothing;
 	telefonNr: string;
 	registrertDato: StringOrNothing;
 	master: string;
