@@ -1,5 +1,4 @@
 import { OrNothing, StringOrNothing } from '../../utils/felles-typer';
-import EMDASH from '../../utils/emdash';
 
 export interface OppfolgingEnhet {
 	navn: StringOrNothing;
