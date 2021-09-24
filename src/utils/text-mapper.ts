@@ -1,20 +1,66 @@
 import { Hovedmal, Innsatsgruppe } from '../rest/datatyper/innsatsbehov';
 import EMDASH from './emdash';
-import { OppfolgingsstatusData, Servicegruppe } from '../rest/datatyper/oppfolgingsstatus';
+import {
+	OppfolgingsstatusData,
+	Kvalifiseringsgruppe,
+	erServicegruppe,
+	erInnsatsgruppe, Hovedmaalgruppe
+} from '../rest/datatyper/oppfolgingsstatus';
 import { OrNothing, StringOrNothing } from './felles-typer';
 import { PersonaliaInfo } from '../rest/datatyper/personalia';
 import { VeilederData } from '../rest/datatyper/veileder';
 
-export function mapServicegruppeTilTekst(servicegruppe: OrNothing<Servicegruppe>): string {
-	switch (servicegruppe) {
+export function mapInnsatsgruppeFraArenaTilTekst(kvalifiseringsgruppe: OrNothing<Kvalifiseringsgruppe>): string {
+	if (!erInnsatsgruppe(kvalifiseringsgruppe)) {
+		return EMDASH;
+	}
+
+	switch (kvalifiseringsgruppe) {
+		case 'IKVAL':
+			return 'Standardinnsats';
+		case 'BATT':
+			return 'Spesielt tilpasset innsats';
+		case 'BFORM':
+			return 'Situasjonsbestemt innsats';
+		case 'VARIG':
+			return 'Varig tilpasset innsats';
+		default:
+			return EMDASH;
+	}
+}
+
+export function mapServicegruppeFraArenaTilTekst (kvalifiseringsgruppe: OrNothing<Kvalifiseringsgruppe>): string {
+	if (!erServicegruppe(kvalifiseringsgruppe)) {
+		return EMDASH;
+	}
+
+	switch (kvalifiseringsgruppe) {
+		// servicegrupper
 		case 'IVURD':
 			return 'Ikke vurdert';
+		case 'KAP11':
+			return 'Rettigheter etter Ftrl. Kapittel 11';
 		case 'OPPFI':
 			return 'Helserelatert arbeidsrettet oppfølging i NAV';
 		case 'VURDI':
 			return 'Sykmeldt, oppfølging på arbeidsplassen';
 		case 'VURDU':
 			return 'Sykmeldt uten arbeidsgiver';
+		case 'BKART':
+			return 'Behov for arbeidsevnevurdering';
+		default:
+			return EMDASH;
+	}
+}
+
+export function mapHovedmalFraArenaTilTekst(hovedmal: OrNothing<Hovedmaalgruppe>): string {
+	switch (hovedmal) {
+		case 'BEHOLDEA':
+			return 'Beholde arbeid';
+		case 'OKEDELT':
+			return 'Øke deltakelse eller mål om arbeid';
+		case 'SKAFFEA':
+			return 'Skaffe arbeid';
 		default:
 			return EMDASH;
 	}

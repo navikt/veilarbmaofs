@@ -1,8 +1,6 @@
 
-export interface Innsatsbehov {
-	innsatsgruppe: Innsatsgruppe;
-	hovedmal?: Hovedmal;
-}
+// TODO disse datatypene er ikke i bruk nå, det er datatyper for å hente innsatsgruppe og hovedmål fra
+// veilarbvedtaksstotte. Beholder de til senere siden det er implementert logikk for testk-mapping.
 
 export enum Innsatsgruppe {
 	STANDARD_INNSATS = 'STANDARD_INNSATS',
