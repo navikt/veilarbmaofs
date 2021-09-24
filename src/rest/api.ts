@@ -13,7 +13,6 @@ import { PersonaliaV2Info } from './datatyper/personaliav2';
 import { TOGGLES, Features } from './datatyper/feature';
 import { VergeOgFullmaktData} from "./datatyper/vergeOgFullmakt";
 import { TilrettelagtKommunikasjonData} from "./datatyper/tilrettelagtKommunikasjon";
-import { Innsatsbehov } from './datatyper/innsatsbehov';
 import { APP_NAME } from '../utils/konstanter';
 
 const headers = {
@@ -48,9 +47,6 @@ export const useFetchPersonaliaV2 = (fnr: string) => useFetch<PersonaliaV2Info>(
 export const useFetchVergOgFullmakt = (fnr: string) => useFetch<VergeOgFullmaktData>(`/veilarbperson/api/v2/person/vergeOgFullmakt?fnr=${fnr}`, headers);
 
 export const useFetchSpraakTolk = (fnr: string) => useFetch<TilrettelagtKommunikasjonData>(`/veilarbperson/api/v2/person/tolk?fnr=${fnr}`, headers);
-
-export const useFetchInnsatsbehov = (fnr: string) =>
-	useFetch<Innsatsbehov>(`/veilarbvedtaksstotte/api/innsatsbehov?fnr=${fnr}`, headers);
 
 const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
 
