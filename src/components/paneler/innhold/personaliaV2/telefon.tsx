@@ -9,14 +9,14 @@ import {hentKilde} from "../../../../utils/konstanter";
 function TelefonNrMedKilde(props: {telefon: PersonaliaTelefon}) {
 	const { telefonNr, registrertDato, master} = props.telefon;
 
-	let landkode = props.telefon.landkode;
+	let landkode;
 	let telefonnummer = props.telefon.telefonNr;
 
-	if(master === 'KRR' && telefonNr.length > 8) {
-		if(telefonNr.substring(0,3) == '+47') {
+	if(telefonNr.length > 8) {
+		if(telefonNr.substring(0,3) === '+47') {
 			landkode = '+47';
 			telefonnummer = telefonNr.substring(3);
-		} else if(telefonNr.substring(0,4) == '0047') {
+		} else if(telefonNr.substring(0,4) === '0047') {
 			landkode = '0047';
 			telefonnummer = telefonNr.substring(4);
 		}

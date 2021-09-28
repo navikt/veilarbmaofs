@@ -436,21 +436,18 @@ const personaliav2: PersonaliaV2Info = {
 	telefon: [
 		{
 			prioritet: '1',
-			landkode: '+47',
-			telefonNr: '46333333',
+			telefonNr: '+4746333333',
 			registrertDato: '10.07.2008',
 			master: 'Freg'
 		},
 		{
 			prioritet: '2',
-			landkode: null,
-			telefonNr: '+4748222222',
+			telefonNr: '80022222',
 			registrertDato: '10.04.2010',
 			master: 'KRR'
 		},
 		{
 			prioritet: '3',
-			landkode: '+46',
 			telefonNr: '44222444',
 			registrertDato: null,
 			master: 'PDL'
