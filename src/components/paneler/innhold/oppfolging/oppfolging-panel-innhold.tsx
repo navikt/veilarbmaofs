@@ -4,6 +4,7 @@ import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
+	useFetchInnsatsbehov,
 	useFetchOppfolgingsstatus,
 	useFetchPersonalia,
 	useFetchVeileder
@@ -15,15 +16,16 @@ import {
 	hentGeografiskEnhetTekst,
 	hentOppfolgingsEnhetTekst,
 	hentVeilederTekst,
-	mapHovedmalFraArenaTilTekst,
-	mapInnsatsgruppeFraArenaTilTekst,
-	mapServicegruppeFraArenaTilTekst,
+	mapHovedmalTilTekst,
+	mapInnsatsgruppeTilTekst,
+	mapServicegruppeTilTekst
 } from '../../../../utils/text-mapper';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 	const personalia = useFetchPersonalia(fnr);
+	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
 
@@ -35,24 +37,25 @@ const OppfolgingPanelInnhold = () => {
 		// eslint-disable-next-line
 	}, [oppfolgingsstatus.status]);
 
-	if (isPending(oppfolgingsstatus) || isPending(personalia)) {
+	if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(innsatsbehov)) {
 		return <Laster midtstilt={true} />;
 	}
 
 	const veilederData = hasData(veileder) ? veileder.data : null;
 	const personaliaData = hasData(personalia) ? personalia.data : null;
+	const innsatsbehovData = hasData(innsatsbehov) ? innsatsbehov.data : null;
 	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
 	return (
 		<Grid columns={4} gap="0.5rem">
 			<InformasjonsbolkEnkel
 				header="Servicegruppe"
-				value={mapServicegruppeFraArenaTilTekst(oppfolgingsstatusData?.servicegruppe)}
+				value={mapServicegruppeTilTekst(oppfolgingsstatusData?.servicegruppe)}
 				defaultValue={EMDASH}
 			/>
 			<InformasjonsbolkEnkel
 				header="Innsatsgruppe"
-				value={mapInnsatsgruppeFraArenaTilTekst(oppfolgingsstatusData?.servicegruppe)}
+				value={mapInnsatsgruppeTilTekst(innsatsbehovData?.innsatsgruppe)}
 				defaultValue={EMDASH}
 			/>
 			<InformasjonsbolkEnkel header="Veileder" value={hentVeilederTekst(veilederData)} defaultValue={EMDASH} />
@@ -68,7 +71,7 @@ const OppfolgingPanelInnhold = () => {
 			/>
 			<InformasjonsbolkEnkel
 				header="Hovedmål"
-				value={mapHovedmalFraArenaTilTekst(oppfolgingsstatusData?.hovedmaalkode)}
+				value={mapHovedmalTilTekst(innsatsbehovData?.hovedmal)}
 				defaultValue={EMDASH}
 			/>
 		</Grid>
