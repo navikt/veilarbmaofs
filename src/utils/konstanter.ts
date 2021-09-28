@@ -23,21 +23,6 @@ export function graderingBeskrivelse(gradering: Gradering) {
 	}
 }
 
-export function graderingKode(gradering: Gradering) {
-	switch(gradering) {
-		case Gradering.UKJENT:
-			return 'Ukjent';
-		case Gradering.FORTROLIG:
-			return 'kode 7';
-		case Gradering.STRENGT_FORTROLIG:
-			return 'kode 6';
-		case Gradering.STRENGT_FORTROLIG_UTLAND:
-			return 'kode 19';
-		case Gradering.UGRADERT:
-			return null;
-	}
-}
-
 export function hentKilde(master: OrNothing<String>) {
 	switch(master) {
 		case 'KRR':

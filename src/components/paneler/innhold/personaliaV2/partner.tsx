@@ -9,8 +9,7 @@ import {
 } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
-import {EtikettAdvarsel} from "nav-frontend-etiketter";
-import { etikettGradering } from "./etikett-gradering";
+import { graderingBeskrivelse } from "../../../../utils/konstanter";
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -30,15 +29,14 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 			{ erEgenAnsatt && !harVeilederTilgang ?
 				<div>
 					<Normaltekst>{borSammen}</Normaltekst>
-					<EtikettAdvarsel mini>Egen ansatt</EtikettAdvarsel>
 				</div>
 				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
-					<div>{etikettGradering(gradering)}</div>
+					<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					:
 					<div>
 						<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
 						<Normaltekst>{borSammen}</Normaltekst>
-						{gradering !== Gradering.UGRADERT && etikettGradering(gradering)}
+						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
 					</div>
 			}
 		</Informasjonsbolk>
