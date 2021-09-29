@@ -16,7 +16,7 @@ import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
 import Show from '../felles/show';
-import { PERSONALIA_DATA_FRA_PDL } from '../../rest/datatyper/feature';
+import { PERSONALIA_DATA_FRA_PDL, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 
 export const Paneler = () => {
 	const { fnr } = useAppStore();
@@ -47,12 +47,14 @@ export const Paneler = () => {
 				<TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
 			</Panel>
 
-			<Panel name="personalia" tittel="Personalia">
-				<PersonaliaPanelInnhold />
-			</Panel>
+			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS])}>
+				<Panel name="personalia" tittel="Personalia">
+					<PersonaliaPanelInnhold />
+				</Panel>
+			</Show>
 
 			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL])}>
-				<Panel name="personaliaFraPdl" tittel="PersonaliaV2">
+				<Panel name="personaliaFraPdl" tittel="Personalia">
 					<PersonaliaV2PanelInnhold />
 				</Panel>
 			</Show>
