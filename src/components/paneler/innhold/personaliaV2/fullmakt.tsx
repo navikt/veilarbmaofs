@@ -3,7 +3,6 @@ import Informasjonsbolk from "../../../felles/informasjonsbolk";
 import React from "react";
 import {Normaltekst, UndertekstBold} from "nav-frontend-typografi";
 import {formateLocalDate, isNotEmptyArray} from "../../../../utils";
-import EMDASH from "../../../../utils/emdash";
 
 function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
     const {motpartsPersonident, motpartsPersonNavn, motpartsRolle, omraader, gyldigFraOgMed, gyldigTilOgMed} = props.fullmakt;
@@ -27,7 +26,13 @@ function FullmaktigEllerFullmaktsgiver(props: {fullmakt: Fullmakter}) {
 function Fullmakt(props: Pick<VergeOgFullmaktData, 'fullmakt'>) {
     const { fullmakt, ...rest } = props;
 
-    const fullmaktListe = isNotEmptyArray(fullmakt) ? fullmakt.map((fullmakt,index) => <FullmaktigEllerFullmaktsgiver fullmakt={fullmakt} key={index}/>) : EMDASH;
+    let fullmaktListe;
+
+    if(isNotEmptyArray(fullmakt)){
+        fullmaktListe = fullmakt.map((fullmakt,index) => <FullmaktigEllerFullmaktsgiver fullmakt={fullmakt} key={index}/>);
+    } else {
+        return null;
+    }
 
     return (
         <Informasjonsbolk header="Fullmakter" {...rest}>

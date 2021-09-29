@@ -409,7 +409,7 @@ const personaliav2: PersonaliaV2Info = {
 			dodsdato: null,
 			harSammeBosted: true,
 			gradering: Gradering.UGRADERT,
-			erEgenAnsatt: true,
+			erEgenAnsatt: false,
 			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
@@ -581,7 +581,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 
 const mockTilrettelagtKommunikasjon: TilrettelagtKommunikasjonData = {
 	talespraak: 'Engelsk',
-	tegnspraak: 'Norsk'
+	tegnspraak: null
 };
 
 export const veilarbpersonHandlers: RequestHandlersList = [

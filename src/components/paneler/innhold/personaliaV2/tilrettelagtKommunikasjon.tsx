@@ -7,12 +7,12 @@ import React from "react";
 import {isNullOrUndefined} from "../../../../utils";
 
 function TilrettelagtKommunikasjon(props: {tilrettelagtKommunikasjon: TilrettelagtKommunikasjonData}) {
-    if (isNullOrUndefined(props.tilrettelagtKommunikasjon)) {
-        return null;
-    }
-
     const { tilrettelagtKommunikasjon, ...rest } = props;
     const { talespraak, tegnspraak } = tilrettelagtKommunikasjon;
+
+    if (isNullOrUndefined(talespraak) && isNullOrUndefined(tegnspraak)) {
+        return null;
+    }
 
     return(
         <Informasjonsbolk header="Tilrettelagt kommunikasjon" {...rest}>
