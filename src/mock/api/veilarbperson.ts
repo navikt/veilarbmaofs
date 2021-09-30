@@ -393,10 +393,10 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
-			harSammeBosted: true,
+			harSammeBosted: false,
 			gradering: Gradering.FORTROLIG,
 			erEgenAnsatt: false,
-			harVeilederTilgang: true,
+			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
@@ -409,7 +409,7 @@ const personaliav2: PersonaliaV2Info = {
 			dodsdato: null,
 			harSammeBosted: true,
 			gradering: Gradering.UGRADERT,
-			erEgenAnsatt: true,
+			erEgenAnsatt: false,
 			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
@@ -421,7 +421,7 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
 			dodsdato: null,
-			harSammeBosted: true,
+			harSammeBosted: false,
 			erEgenAnsatt: false,
 			harVeilederTilgang: true,
 			gradering: Gradering.STRENGT_FORTROLIG,
@@ -436,19 +436,19 @@ const personaliav2: PersonaliaV2Info = {
 	telefon: [
 		{
 			prioritet: '1',
-			telefonNr: '+4633333333',
+			telefonNr: '+4746333333',
 			registrertDato: '10.07.2008',
 			master: 'Freg'
 		},
 		{
 			prioritet: '2',
-			telefonNr: '+4822222222',
+			telefonNr: '80022222',
 			registrertDato: '10.04.2010',
 			master: 'KRR'
 		},
 		{
 			prioritet: '3',
-			telefonNr: '+4822222444',
+			telefonNr: '44222444',
 			registrertDato: null,
 			master: 'PDL'
 		}],
@@ -471,9 +471,9 @@ const personaliav2: PersonaliaV2Info = {
 		fodselsdato: '1980-12-10',
 		dodsdato: null,
 		harSammeBosted: true,
-		erEgenAnsatt: false,
-		harVeilederTilgang: true,
-		gradering: Gradering.STRENGT_FORTROLIG,
+		erEgenAnsatt: true,
+		harVeilederTilgang: false,
+		gradering: Gradering.UGRADERT,
 		kjonn: 'M'
 	},
 	bostedsadresse: {
@@ -581,7 +581,7 @@ const mockVergeOgFullmakt: VergeOgFullmaktData = {
 
 const mockTilrettelagtKommunikasjon: TilrettelagtKommunikasjonData = {
 	talespraak: 'Engelsk',
-	tegnspraak: 'Norsk'
+	tegnspraak: null
 };
 
 export const veilarbpersonHandlers: RequestHandlersList = [

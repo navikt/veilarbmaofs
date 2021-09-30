@@ -153,3 +153,38 @@ export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
 	return str ? str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }
+
+export function removeWhitespace(input: string) {
+	return input.replace(/ /g, '');
+}
+
+export function formatNumber(format: string, streng: string) {
+	let result = '';
+	let strengIndex = 0;
+  
+	for (let i = 0; i < format.length; i++) {
+		if (streng[strengIndex] === undefined) {
+			break;
+		}
+		if (format[i] === '#') {
+			result += streng[strengIndex++];
+		} else {
+			result += format[i];
+		}
+	}
+
+	return result;
+}
+
+export function formaterTelefonnummer(landkode: StringOrNothing, telefonnummer: string) {
+	const utenSpace = removeWhitespace(telefonnummer);
+	const formatertLandkode = landkode ? landkode + ' ' : '';
+
+	if (utenSpace.length !== 8) {
+		return telefonnummer;
+	} else if (utenSpace.substring(0, 3) === '800') {
+		return formatertLandkode + formatNumber('### ## ###', utenSpace);
+	} else {
+		return formatertLandkode + formatNumber('## ## ## ##', utenSpace);
+	}
+}

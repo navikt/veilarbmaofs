@@ -10,7 +10,6 @@ import {
     VergemaalEllerFullmaktOmfangType
 } from '../../../../rest/datatyper/vergeOgFullmakt';
 import {formateLocalDate, isNotEmptyArray} from "../../../../utils";
-import EMDASH from "../../../../utils/emdash";
 
 function vergetypeBeskrivelse(vergeType: Vergetype) {
     switch(vergeType) {
@@ -98,15 +97,18 @@ function Verge(props: {vergemaal: VergemaalEllerFremtidsfullmakt}) {
 function Vergemaal(props: Pick<VergeOgFullmaktData, 'vergemaalEllerFremtidsfullmakt'>) {
     const { vergemaalEllerFremtidsfullmakt, ...rest } = props;
 
-    const vergemaalListe = isNotEmptyArray(vergemaalEllerFremtidsfullmakt)
-                                ? vergemaalEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
-                                : EMDASH;
+    let vergemaalListe;
+
+    if(isNotEmptyArray(vergemaalEllerFremtidsfullmakt)){
+        vergemaalListe = vergemaalEllerFremtidsfullmakt.map((vergemaal,index) => <Verge vergemaal={vergemaal} key={index}/>)
+    } else {
+        return null;
+    }
 
     return (
         <Informasjonsbolk header="Bruker er under vergemål" {...rest}>
             {vergemaalListe}
         </Informasjonsbolk>
-
     );
 }
 
