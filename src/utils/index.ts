@@ -39,7 +39,7 @@ export function omit<S>(obj: S, ...props: string[]) {
 		}, {});
 }
 
-export function byggPamUrl(fnr: string, path = '') {
+export function byggPamUrl(fnr: string, path = '/cv') {
 	return `https://pam-personbruker-veileder.${finnInternNavDomene()}${path}?fnr=${fnr}`;
 }
 
@@ -151,5 +151,5 @@ export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 }
 
 export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
-	return str ?  str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
+	return str ? str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }
