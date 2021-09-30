@@ -39,7 +39,7 @@ export function omit<S>(obj: S, ...props: string[]) {
 		}, {});
 }
 
-export function byggPamUrl(fnr: string, path = '') {
+export function byggPamUrl(fnr: string, path = '/cv') {
 	return `https://pam-personbruker-veileder.${finnInternNavDomene()}${path}?fnr=${fnr}`;
 }
 
@@ -151,7 +151,7 @@ export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 }
 
 export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
-	return str ?  str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
+	return str ? str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase()) : EMDASH;
 }
 
 export function removeWhitespace(input: string) {
@@ -182,7 +182,7 @@ export function formaterTelefonnummer(landkode: StringOrNothing, telefonnummer: 
 
 	if (utenSpace.length !== 8) {
 		return telefonnummer;
-	} else if (utenSpace.substring(0,3) === '800') {
+	} else if (utenSpace.substring(0, 3) === '800') {
 		return formatertLandkode + formatNumber('### ## ###', utenSpace);
 	} else {
 		return formatertLandkode + formatNumber('## ## ## ##', utenSpace);
