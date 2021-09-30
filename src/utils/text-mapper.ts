@@ -15,6 +15,10 @@ export function mapServicegruppeTilTekst(servicegruppe: OrNothing<Servicegruppe>
 			return 'Sykmeldt, oppfølging på arbeidsplassen';
 		case 'VURDU':
 			return 'Sykmeldt uten arbeidsgiver';
+		case 'BKART':
+			return 'Behov for arbeidsevnevurdering';
+		case 'KAP11':
+			return 'Rettigheter etter Ftrl. Kapittel 11';
 		default:
 			return EMDASH;
 	}
