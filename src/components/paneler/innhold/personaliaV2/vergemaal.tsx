@@ -3,7 +3,6 @@ import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi/lib';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {
 	Vergetype,
-	VergeNavn,
 	VergeOgFullmaktData,
 	VergeEllerFullmektig,
 	VergemaalEllerFremtidsfullmakt,
