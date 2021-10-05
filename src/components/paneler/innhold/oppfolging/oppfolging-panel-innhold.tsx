@@ -4,6 +4,7 @@ import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
+	useFetchFeatureToggle,
 	useFetchInnsatsbehov,
 	useFetchOppfolgingsstatus,
 	useFetchPersonalia,
@@ -21,6 +22,10 @@ import {
 	mapServicegruppeTilTekst
 } from '../../../../utils/text-mapper';
 import { erInnsatsgruppe } from '../../../../utils/arena-status-utils';
+import { OrNothing } from '../../../../utils/felles-typer';
+import { Hovedmal, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
+import { ArenaHovedmalKode, ArenaServicegruppeKode } from '../../../../rest/datatyper/oppfolgingsstatus';
+import { INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE } from '../../../../rest/datatyper/feature';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -29,6 +34,7 @@ const OppfolgingPanelInnhold = () => {
 	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
+	const features = useFetchFeatureToggle();
 
 	useEffect(() => {
 		if (!hasData(veileder) && veilederId != null) {
@@ -48,18 +54,26 @@ const OppfolgingPanelInnhold = () => {
 	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
 
-	let servicegruppe = oppfolgingsstatusData?.servicegruppe;
-	let innsatsgruppe = innsatsbehovData?.innsatsgruppe;
-	let hovedmal = innsatsbehovData?.hovedmal;
-	// Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål:
-	// Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi innsatsgruppe + hovedmål fra vedtaksstøtte.
-	// Ellers viser vi bare servicegruppe fra Arena, siden det da har blitt satt en servicegruppe i Arena som er
-	// nyere enn innsagsgruppe + hovedmål fra vedtaksstøtte.
-	if (erInnsatsgruppe(oppfolgingsstatusData?.servicegruppe)) {
-		servicegruppe = undefined;
-	} else {
-		innsatsgruppe = undefined;
-		hovedmal = undefined;
+	let servicegruppe: OrNothing<ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
+	let innsatsgruppe: OrNothing<Innsatsgruppe | ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
+	let hovedmal: OrNothing<Hovedmal | ArenaHovedmalKode> = oppfolgingsstatusData?.hovedmaalkode;
+
+	if (hentInnsatsgruppeOgHovedmalFraVedtaksstotte()) {
+		// Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål:
+		// Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi innsatsgruppe + hovedmål fra vedtaksstøtte.
+		// Ellers viser vi bare servicegruppe fra Arena, siden det da har blitt satt en servicegruppe i Arena som er
+		// nyere enn innsagsgruppe + hovedmål fra vedtaksstøtte.
+		if (erInnsatsgruppe(oppfolgingsstatusData?.servicegruppe)) {
+			innsatsgruppe = innsatsbehovData?.innsatsgruppe;
+			hovedmal = innsatsbehovData?.hovedmal;
+		} else {
+			innsatsgruppe = undefined;
+			hovedmal = undefined;
+		}
+	}
+
+	function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
+		return hasData(features) && features.data[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE];
 	}
 
 	return (

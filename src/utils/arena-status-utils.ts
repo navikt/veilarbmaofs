@@ -1,11 +1,11 @@
-import { OppfolgingsstatusData, Servicegruppe } from '../rest/datatyper/oppfolgingsstatus';
+import { OppfolgingsstatusData, ArenaServicegruppeKode } from '../rest/datatyper/oppfolgingsstatus';
 import { OrNothing } from './felles-typer';
 
 export function erBrukerSykmeldt(oppfolging: OppfolgingsstatusData): boolean {
 	return oppfolging.formidlingsgruppe === 'IARBS' && oppfolging.servicegruppe === 'VURDI';
 }
 
-export function erInnsatsgruppe(kvalifiseringsgruppe: OrNothing<Servicegruppe>) {
+export function erInnsatsgruppe(kvalifiseringsgruppe: OrNothing<ArenaServicegruppeKode>) {
 	switch (kvalifiseringsgruppe) {
 		case 'IKVAL':
 		case 'BATT':
