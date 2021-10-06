@@ -4,7 +4,7 @@ import { RegistreringsData } from './datatyper/registreringsData';
 import { ArenaPerson } from './datatyper/arenaperson';
 import { VeilederData } from './datatyper/veileder';
 import { AktorId } from './datatyper/aktor-id';
-import { OppfolgingEnhet, OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
+import { OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
 import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
