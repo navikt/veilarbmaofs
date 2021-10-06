@@ -4,7 +4,7 @@ import { RegistreringsData } from './datatyper/registreringsData';
 import { ArenaPerson } from './datatyper/arenaperson';
 import { VeilederData } from './datatyper/veileder';
 import { AktorId } from './datatyper/aktor-id';
-import { OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
+import { OppfolgingEnhet, OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
 import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
@@ -55,3 +55,7 @@ export const useFetchInnsatsbehov = (fnr: string) =>
 const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
 
 export const useFetchFeatureToggle = () => useFetch<Features>(`/veilarbpersonflatefs/api/feature?${toggles}`, headers);
+
+export function useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr: string) {
+	return useFetch<boolean>(`/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor?fnr=${fnr}`, headers);
+}

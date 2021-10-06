@@ -7,9 +7,15 @@ const innsatsbehov: Innsatsbehov = {
 	hovedmal: Hovedmal.BEHOLDE_ARBEID
 };
 
+const tilhorerBrukerUtrulletKontor = false;
+
 export const veilarbvedtaksstotteHandlers: RequestHandlersList = [
 	rest.get('/veilarbvedtaksstotte/api/innsatsbehov', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(innsatsbehov));
+	}),
+
+	rest.get('/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(tilhorerBrukerUtrulletKontor));
 	}),
 ];
 
