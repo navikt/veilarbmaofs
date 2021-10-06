@@ -62,18 +62,13 @@ const OppfolgingPanelInnhold = () => {
 	let innsatsgruppe: OrNothing<Innsatsgruppe | ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
 	let hovedmal: OrNothing<Hovedmal | ArenaHovedmalKode> = oppfolgingsstatusData?.hovedmaalkode;
 
-    if (hentInnsatsgruppeOgHovedmalFraVedtaksstotte()) {
-        // Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål:
-        // Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi innsatsgruppe + hovedmål fra vedtaksstøtte.
-        // Ellers viser vi bare servicegruppe fra Arena, siden det da har blitt satt en servicegruppe i Arena som er
-        // nyere enn innsagsgruppe + hovedmål fra vedtaksstøtte.
-        if (erInnsatsgruppe(oppfolgingsstatusData?.servicegruppe)) {
-            innsatsgruppe = innsatsbehovData?.innsatsgruppe;
-            hovedmal = innsatsbehovData?.hovedmal;
-        } else {
-            innsatsgruppe = undefined;
-            hovedmal = undefined;
-        }
+    if (hentInnsatsgruppeOgHovedmalFraVedtaksstotte() && erInnsatsgruppe(servicegruppe)) {
+        // Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål
+        // fra vedtaksstøtte dersom det er togglet på. Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi
+        // innsatsgruppe + hovedmål fra vedtaksstøtte. Hvis servicegruppe fra Arena ikke er en innsatsgruppe, så viser
+        // vi ikke innsatsgruppe og hovedmål fra vedtaksstøtte, siden bruker da har fått en nyere status i Arena.
+        innsatsgruppe = innsatsbehovData?.innsatsgruppe;
+        hovedmal = innsatsbehovData?.hovedmal;
     }
 
     function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
