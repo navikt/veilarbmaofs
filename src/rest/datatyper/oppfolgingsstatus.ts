@@ -4,14 +4,14 @@ export interface OppfolgingEnhet {
 	navn: StringOrNothing;
 	enhetId: StringOrNothing;
 }
-export type Formidlingsgruppe = 'ARBS' | 'IARBS' | 'ISERV' | 'PARBS' | 'RARBS';
-export type Servicegruppe = 'BATT' | 'BFORM' | 'BKART' | 'IKVAL' | 'IVURD' | 'KAP11' | 'OPPFI' | 'VARIG' | 'VURDI' | 'VURDU';
-export type Hovedmaalgruppe = 'OKEDELT' | 'SKAFFEA ' | 'BEHOLDEA';
+export type ArenaFormidlingsgruppeKode = 'ARBS' | 'IARBS' | 'ISERV' | 'PARBS' | 'RARBS';
+export type ArenaServicegruppeKode = 'BATT' | 'BFORM' | 'BKART' | 'IKVAL' | 'IVURD' | 'KAP11' | 'OPPFI' | 'VARIG' | 'VURDI' | 'VURDU';
+export type ArenaHovedmalKode = 'OKEDELT' | 'SKAFFEA' | 'BEHOLDEA';
 
 export interface OppfolgingsstatusData {
 	oppfolgingsenhet: OppfolgingEnhet;
 	veilederId: StringOrNothing;
-	formidlingsgruppe: OrNothing<Formidlingsgruppe>;
-	servicegruppe: OrNothing<Servicegruppe>;
-	hovedmaalkode: OrNothing<Hovedmaalgruppe>;
+	formidlingsgruppe: OrNothing<ArenaFormidlingsgruppeKode>;
+	servicegruppe: OrNothing<ArenaServicegruppeKode>;
+	hovedmaalkode: OrNothing<ArenaHovedmalKode>;
 }

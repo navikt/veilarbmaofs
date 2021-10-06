@@ -55,3 +55,7 @@ export const useFetchInnsatsbehov = (fnr: string) =>
 const toggles = TOGGLES.map(element => 'feature=' + element).join('&');
 
 export const useFetchFeatureToggle = () => useFetch<Features>(`/veilarbpersonflatefs/api/feature?${toggles}`, headers);
+
+export function useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr: string) {
+	return useFetch<boolean>(`/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor?fnr=${fnr}`, headers);
+}
