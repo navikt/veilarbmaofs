@@ -17,15 +17,9 @@ jobs:
             - run: npm run build
               env:
                   PUBLIC_URL: https://veilarbmaofs.dev.intern.nav.no
-    deploy-dev:
-        name: Deploy application to q1 fss
-        needs:
-            - build
-        runs-on: ubuntu-latest
-        steps:
             - uses: google-github-actions/setup-gcloud@master
               with:
                   service_account_key: ${{ secrets.GCS_SA_KEY_DEV }}
                   export_default_credentials: true
             - name: Upload files to GCS
-              run: gsutil -m rsync -r build/ gs://veilarbmaofs-dev/
+              run: gsutil -m rsync -r build gs://veilarbmaofs-dev
