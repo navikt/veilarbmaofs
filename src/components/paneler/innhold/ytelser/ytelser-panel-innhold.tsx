@@ -8,9 +8,6 @@ import { useFetchInnsatsbehov, useFetchOppfolgingsstatus, useFetchYtelser } from
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import { mapInnsatsgruppeTilTekst } from '../../../../utils/text-mapper';
-import EMDASH from '../../../../utils/emdash';
-import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 	return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
@@ -32,16 +29,10 @@ const YtelserPanelInnhold = () => {
 
 	const { vedtaksliste } = ytelser.data;
 	const aktivVedtak = getVedtakForVisning(vedtaksliste);
-	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
 
 	return (
 		<Grid columns={1} gap="0.5rem">
-			<InformasjonsbolkEnkel
-				header="Innsatsgruppe"
-				value={mapInnsatsgruppeTilTekst(oppfolgingsstatusData?.servicegruppe)}
-				defaultValue={EMDASH}
-			/>
-			<Vedtaksliste vedtaksliste={aktivVedtak}/>
+			<Vedtaksliste vedtaksliste={aktivVedtak} />
 		</Grid>
 	);
 };
