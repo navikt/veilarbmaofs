@@ -21,16 +21,13 @@ const Panel: React.FC<PanelProps> = ({ defaultOpen, name, id, children, tittel }
 	const onClick = () => {
 		const eventType = !isOpen ? 'open' : 'close';
 		logger.event('maofs.lamell-click.v2', {}, { lamell: name, type: eventType });
-
 		if (isOpen) {
 			fjernSidemenyElement(id);
 		}
-
 		setIsOpen(prev => !prev);
 	};
 
 	useEffect(() => {
-		console.log('hello');
 		if (isSidemenyElementOpen(id) && !isOpen) {
 			setIsOpen(true);
 			panelRef.current!.setState(prevstate => ({ ...prevstate, apen: true }));
