@@ -1,19 +1,31 @@
 @import '~nav-frontend-core/less/_variabler';
 
 .veilarbmaofs {
-	.paneler {
-		margin-bottom: 5rem;
+	.paneler-container {
+		height: calc(100vh - 350px);
 		width: 100%;
-		.ekspanderbartPanel {
-			padding: 1rem;
-		}
+		overflow: scroll;
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 
-		> * {
-			margin-top: 0.75rem;
+		&::-webkit-scrollbar {
+			display: none; /* for Chrome, Safari, and Opera */
 		}
+		.paneler {
+			width: 100%;
+			margin-bottom: 70vh;
 
-		> *:first-child {
-			margin-top: 0;
+			.ekspanderbartPanel {
+				padding: 1rem;
+			}
+
+			> * {
+				margin-top: 0.75rem;
+			}
+
+			> *:first-child {
+				margin-top: 0;
+			}
 		}
 	}
 }

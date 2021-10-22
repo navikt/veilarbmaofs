@@ -31,108 +31,110 @@ export const Paneler: React.FC = () => {
 			: 'Registrering';
 
 	return (
-		<div className="paneler">
-			<Panel
-				key={`panel-${sidemenyElementId.oppfolging}`}
-				name="oppfolging"
-				id={sidemenyElementId.oppfolging}
-				tittel="Oppfølging"
-				defaultOpen={isSidemenyElementOpen(sidemenyElementId.oppfolging)}
-			>
-				<OppfolgingPanelInnhold />
-			</Panel>
-			<Panel
-				key={`panel-${sidemenyElementId.cv}`}
-				name="cv"
-				id={sidemenyElementId.cv}
-				tittel="CV"
-				defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}
-			>
-				<CvPanel />
-			</Panel>
-			<Panel
-				key={`panel-${sidemenyElementId.jobbprofil}`}
-				name="jobbprofil"
-				id={sidemenyElementId.jobbprofil}
-				tittel="Jobbprofil"
-				defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbprofil)}
-			>
-				<JobbprofilPanelInnhold />
-			</Panel>
-
-			<Panel
-				key={`panel-${sidemenyElementId.tilretteleggingsbehov}`}
-				name="tilretteleggingsbehov"
-				id={sidemenyElementId.tilretteleggingsbehov}
-				tittel="Behov for tilrettelegging"
-				defaultOpen={
-					isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
-						? isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
-						: apneTilrettelegging
-				}
-			>
-				<TilretteleggingsbehovSpa
-					fnr={fnr}
-					viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
-				/>
-			</Panel>
-
-			<Panel
-				key={`panel-${sidemenyElementId.ytelser}`}
-				name="ytelser"
-				id={sidemenyElementId.ytelser}
-				tittel="Ytelser"
-				defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
-			>
-				<YtelserPanelInnhold />
-			</Panel>
-
-			<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS]}>
+		<section className="paneler-container">
+			<div className="paneler">
 				<Panel
-					key={`panel-${sidemenyElementId.personalia}`}
-					name="personalia"
-					id={sidemenyElementId.personalia}
-					tittel="Personalia"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
+					key={`panel-${sidemenyElementId.oppfolging}`}
+					name="oppfolging"
+					id={sidemenyElementId.oppfolging}
+					tittel="Oppfølging"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.oppfolging)}
 				>
-					<PersonaliaPanelInnhold />
+					<OppfolgingPanelInnhold />
 				</Panel>
-			</Show>
-			<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL]}>
 				<Panel
-					key={`panel-${sidemenyElementId.personaliaFraPdl}`}
-					name="personaliaFraPdl"
-					id={sidemenyElementId.personaliaFraPdl}
-					tittel="Personalia"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
+					key={`panel-${sidemenyElementId.cv}`}
+					name="cv"
+					id={sidemenyElementId.cv}
+					tittel="CV"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}
 				>
-					<PersonaliaV2PanelInnhold />
+					<CvPanel />
 				</Panel>
-			</Show>
+				<Panel
+					key={`panel-${sidemenyElementId.jobbprofil}`}
+					name="jobbprofil"
+					id={sidemenyElementId.jobbprofil}
+					tittel="Jobbprofil"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbprofil)}
+				>
+					<JobbprofilPanelInnhold />
+				</Panel>
 
-			<Panel
-				key={`panel-${sidemenyElementId.registrering}`}
-				name="registrering"
-				id={sidemenyElementId.registrering}
-				tittel={registreringPanelNavn}
-				defaultOpen={
-					isSidemenyElementOpen(sidemenyElementId.registrering)
-						? isSidemenyElementOpen(sidemenyElementId.registrering)
-						: apneRegistrering
-				}
-			>
-				<RegistreringPanel />
-			</Panel>
+				<Panel
+					key={`panel-${sidemenyElementId.tilretteleggingsbehov}`}
+					name="tilretteleggingsbehov"
+					id={sidemenyElementId.tilretteleggingsbehov}
+					tittel="Behov for tilrettelegging"
+					defaultOpen={
+						isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
+							? isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
+							: apneTilrettelegging
+					}
+				>
+					<TilretteleggingsbehovSpa
+						fnr={fnr}
+						viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
+					/>
+				</Panel>
 
-			<Panel
-				key={`panel-${sidemenyElementId.jobbsokerkompetanse}`}
-				name="jobbsokerkompetanse"
-				id={sidemenyElementId.jobbsokerkompetanse}
-				tittel="Jobbsøkerkompetanse"
-				defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbsokerkompetanse)}
-			>
-				<JobbsokerkompetansePanel />
-			</Panel>
-		</div>
+				<Panel
+					key={`panel-${sidemenyElementId.ytelser}`}
+					name="ytelser"
+					id={sidemenyElementId.ytelser}
+					tittel="Ytelser"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
+				>
+					<YtelserPanelInnhold />
+				</Panel>
+
+				<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personalia}`}
+						name="personalia"
+						id={sidemenyElementId.personalia}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
+					>
+						<PersonaliaPanelInnhold />
+					</Panel>
+				</Show>
+				<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
+						name="personaliaFraPdl"
+						id={sidemenyElementId.personaliaFraPdl}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
+					>
+						<PersonaliaV2PanelInnhold />
+					</Panel>
+				</Show>
+
+				<Panel
+					key={`panel-${sidemenyElementId.registrering}`}
+					name="registrering"
+					id={sidemenyElementId.registrering}
+					tittel={registreringPanelNavn}
+					defaultOpen={
+						isSidemenyElementOpen(sidemenyElementId.registrering)
+							? isSidemenyElementOpen(sidemenyElementId.registrering)
+							: apneRegistrering
+					}
+				>
+					<RegistreringPanel />
+				</Panel>
+
+				<Panel
+					key={`panel-${sidemenyElementId.jobbsokerkompetanse}`}
+					name="jobbsokerkompetanse"
+					id={sidemenyElementId.jobbsokerkompetanse}
+					tittel="Jobbsøkerkompetanse"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbsokerkompetanse)}
+				>
+					<JobbsokerkompetansePanel />
+				</Panel>
+			</div>
+		</section>
 	);
 };

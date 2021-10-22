@@ -21,29 +21,27 @@ export const Sidemeny: React.FC = () => {
 	};
 
 	return (
-		<section className="sidemeny-container">
-			<div className="sidemeny">
-				<h2>Detaljer om bruker</h2>
-				<nav>
-					<ul>
-						{sidemenyElementer.map(
-							sidemenyElement =>
-								skalViseMenyElement(sidemenyElement.id) && (
-									<li key={`sidemenyelement-${sidemenyElement.id}`}>
-										<button
-											onClick={() => {
-												setIsOpenSidemenyElement(sidemenyElement);
-												scrollTilLamell(sidemenyElement.id);
-											}}
-										>
-											{sidemenyElement.name}
-										</button>
-									</li>
-								)
-						)}
-					</ul>
-				</nav>
-			</div>
+		<section className="sidemeny">
+			<h2>Detaljer om bruker</h2>
+			<nav>
+				<ul>
+					{sidemenyElementer.map(
+						sidemenyElement =>
+							skalViseMenyElement(sidemenyElement.id) && (
+								<li key={`sidemenyelement-${sidemenyElement.id}`}>
+									<button
+										onClick={() => {
+											setIsOpenSidemenyElement(sidemenyElement);
+											scrollTilLamell(sidemenyElement.id);
+										}}
+									>
+										{sidemenyElement.name}
+									</button>
+								</li>
+							)
+					)}
+				</ul>
+			</nav>
 		</section>
 	);
 };
