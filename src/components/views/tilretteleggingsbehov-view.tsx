@@ -4,5 +4,7 @@ import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilr
 
 export const TilretteleggingsbehovView = () => {
 	const { fnr } = useAppStore();
-	return <TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.REGISTRER_TILRETTELEGGINGSBEHOV} />;
+	return (
+		<TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.REGISTRER_TILRETTELEGGINGSBEHOV} />
+	);
 };

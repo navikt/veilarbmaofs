@@ -15,7 +15,9 @@ interface TilretteleggingsbehovViewSpaProps {
 export const tilretteleggingsbehovSpaConfig: AsyncSpaConfig = {
 	appName: 'tilretteleggingsbehov',
 	appBaseUrl: '/registrer-tilretteleggingsbehov',
-	loader: <Laster midtstilt={true}/>
+	loader: <Laster midtstilt={true} />
 };
 
-export const TilretteleggingsbehovSpa = AsyncNavspa.importer<TilretteleggingsbehovViewSpaProps>(tilretteleggingsbehovSpaConfig);
+export const TilretteleggingsbehovSpa = AsyncNavspa.importer<TilretteleggingsbehovViewSpaProps>(
+	tilretteleggingsbehovSpaConfig
+);

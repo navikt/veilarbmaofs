@@ -2,7 +2,6 @@ import React from 'react';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 
 export const CvIkkeSynligInfo = () => {
-
 	return (
 		<AlertStripeInfo className="cv-ikke-synlig blokk-l">
 			Fra 17.2.2021 kan arbeidsgivere kun se CV til jobbsøkere som ikke er under arbeidsrettet oppfølging fra NAV.

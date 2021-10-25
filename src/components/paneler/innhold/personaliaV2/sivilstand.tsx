@@ -1,9 +1,9 @@
 import React from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaSivilstand } from '../../../../rest/datatyper/personalia';
-import { formateLocalDate, formateStringInUpperAndLowerCase, isNullOrUndefined} from '../../../../utils';
+import { formateLocalDate, formateStringInUpperAndLowerCase, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import EMDASH from "../../../../utils/emdash";
+import EMDASH from '../../../../utils/emdash';
 
 function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 	const { sivilstand, ...rest } = props;

@@ -1,4 +1,3 @@
-
 export interface Innsatsbehov {
 	innsatsgruppe: Innsatsgruppe;
 	hovedmal?: Hovedmal;
@@ -12,9 +11,8 @@ export enum Innsatsgruppe {
 	VARIG_TILPASSET_INNSATS = 'VARIG_TILPASSET_INNSATS'
 }
 
-export enum  Hovedmal {
+export enum Hovedmal {
 	SKAFFE_ARBEID = 'SKAFFE_ARBEID',
 	BEHOLDE_ARBEID = 'BEHOLDE_ARBEID',
 	OKE_DELTAKELSE = 'OKE_DELTAKELSE'
 }
-

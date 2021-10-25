@@ -1,5 +1,5 @@
-import {Gradering} from "../rest/datatyper/personaliav2";
-import {OrNothing} from "./felles-typer";
+import { Gradering } from '../rest/datatyper/personaliav2';
+import { OrNothing } from './felles-typer';
 
 export const APP_NAME = 'veilarbmaofs';
 
@@ -9,7 +9,7 @@ export const VEDTAKSSTATUSER = {
 };
 
 export function graderingBeskrivelse(gradering: Gradering) {
-	switch(gradering) {
+	switch (gradering) {
 		case Gradering.UKJENT:
 			return 'Sperret adresse, ukjent';
 		case Gradering.FORTROLIG:
@@ -24,7 +24,7 @@ export function graderingBeskrivelse(gradering: Gradering) {
 }
 
 export function hentKilde(master: OrNothing<String>) {
-	switch(master) {
+	switch (master) {
 		case 'KRR':
 			return 'i Kontakt- og reservasjonsregisteret';
 		case 'PDL':
