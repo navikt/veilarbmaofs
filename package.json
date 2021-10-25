@@ -7,7 +7,8 @@
 		"build": "craco build",
 		"build:mock": "cross-env PUBLIC_URL=/veilarbmaofs REACT_APP_DEV=true craco build",
 		"test": "echo not implemented",
-		"prettier": "prettier --write 'src/**/*.ts{,x}'"
+		"prettier": "prettier --write 'src/**/*.ts{,x}'",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@craco/craco": "^6.1.0",
@@ -91,5 +92,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"lint-staged": {
+		"src/**/*.{ts{,x},js,css,md}": "prettier --write"
 	}
 }
