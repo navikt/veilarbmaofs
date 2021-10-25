@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.c9d5e536.chunk.css",
-    "main.js": "/veilarbmaofs/static/js/main.dad81ea0.chunk.js",
-    "main.js.map": "/veilarbmaofs/static/js/main.dad81ea0.chunk.js.map",
+    "main.css": "/veilarbmaofs/static/css/main.b8f794b8.chunk.css",
+    "main.js": "/veilarbmaofs/static/js/main.7c8a99f1.chunk.js",
+    "main.js.map": "/veilarbmaofs/static/js/main.7c8a99f1.chunk.js.map",
     "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js",
     "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.9da9bbd8.js.map",
-    "static/css/2.ffaa8a8d.chunk.css": "/veilarbmaofs/static/css/2.ffaa8a8d.chunk.css",
-    "static/js/2.28997f49.chunk.js": "/veilarbmaofs/static/js/2.28997f49.chunk.js",
-    "static/js/2.28997f49.chunk.js.map": "/veilarbmaofs/static/js/2.28997f49.chunk.js.map",
+    "static/css/2.8f34b21f.chunk.css": "/veilarbmaofs/static/css/2.8f34b21f.chunk.css",
+    "static/js/2.8ebfd9ef.chunk.js": "/veilarbmaofs/static/js/2.8ebfd9ef.chunk.js",
+    "static/js/2.8ebfd9ef.chunk.js.map": "/veilarbmaofs/static/js/2.8ebfd9ef.chunk.js.map",
     "index.html": "/veilarbmaofs/index.html",
-    "static/css/2.ffaa8a8d.chunk.css.map": "/veilarbmaofs/static/css/2.ffaa8a8d.chunk.css.map",
-    "static/css/main.c9d5e536.chunk.css.map": "/veilarbmaofs/static/css/main.c9d5e536.chunk.css.map",
-    "static/js/2.28997f49.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.28997f49.chunk.js.LICENSE.txt",
+    "static/css/2.8f34b21f.chunk.css.map": "/veilarbmaofs/static/css/2.8f34b21f.chunk.css.map",
+    "static/css/main.b8f794b8.chunk.css.map": "/veilarbmaofs/static/css/main.b8f794b8.chunk.css.map",
+    "static/js/2.8ebfd9ef.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.8ebfd9ef.chunk.js.LICENSE.txt",
     "static/media/cv-panel-innhold.less": "/veilarbmaofs/static/media/rediger.13d90eee.svg",
     "static/media/lukk.ccaa1c74.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74.svg",
     "static/media/printer.0e81ac40.svg": "/veilarbmaofs/static/media/printer.0e81ac40.svg",
@@ -19,9 +19,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9da9bbd8.js",
-    "static/css/2.ffaa8a8d.chunk.css",
-    "static/js/2.28997f49.chunk.js",
-    "static/css/main.c9d5e536.chunk.css",
-    "static/js/main.dad81ea0.chunk.js"
+    "static/css/2.8f34b21f.chunk.css",
+    "static/js/2.8ebfd9ef.chunk.js",
+    "static/css/main.b8f794b8.chunk.css",
+    "static/js/main.7c8a99f1.chunk.js"
   ]
 }
