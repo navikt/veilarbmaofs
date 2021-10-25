@@ -1,10 +1,11 @@
-@import "~nav-frontend-core/less/core";
-@import "~nav-frontend-typografi-style/src/index";
+@import '~nav-frontend-core/less/core';
+@import '~nav-frontend-typografi-style/src/index';
 
 .veilarbmaofs {
+	scroll-behavior: smooth !important;
 	flex-grow: 1;
 	width: 100%;
-	background-color: #F4F4F4;
+	background-color: #f4f4f4;
 
 	.ReactCollapse--collapse {
 		transition: none;
@@ -20,6 +21,8 @@
 		width: 100%;
 		max-width: 1200px;
 		margin: 2rem auto;
+		display: flex;
+		align-items: flex-start;
 	}
 
 	&--hidden {
@@ -75,6 +78,6 @@
 	.personalia-grid {
 		display: grid;
 		gap: 1rem;
-		grid-auto-flow: column;
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
