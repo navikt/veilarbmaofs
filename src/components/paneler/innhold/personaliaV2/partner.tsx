@@ -3,13 +3,10 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaPartner } from '../../../../rest/datatyper/personaliav2';
 import { finnAlder } from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
-import {
-	formateFirstCharOfEachWordToUppercase,
-	isNullOrUndefined
-} from '../../../../utils';
+import { formateFirstCharOfEachWordToUppercase, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
-import { graderingBeskrivelse } from "../../../../utils/konstanter";
+import { graderingBeskrivelse } from '../../../../utils/konstanter';
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -26,19 +23,19 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 
 	return (
 		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
-			{ erEgenAnsatt && !harVeilederTilgang ?
+			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
 					<Normaltekst>{borSammen}</Normaltekst>
 				</div>
-				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
+			) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
+				<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+			) : (
+				<div>
+					<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
+					<Normaltekst>{borSammen}</Normaltekst>
 					<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-					:
-					<div>
-						<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
-						<Normaltekst>{borSammen}</Normaltekst>
-						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-					</div>
-			}
+				</div>
+			)}
 		</Informasjonsbolk>
 	);
 }

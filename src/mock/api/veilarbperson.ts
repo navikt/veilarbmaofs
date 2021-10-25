@@ -451,11 +451,12 @@ const personaliav2: PersonaliaV2Info = {
 			telefonNr: '44222444',
 			registrertDato: null,
 			master: 'PDL'
-		}],
+		}
+	],
 	epost: {
-		epostAdresse:'tester.scrambling@registre.no',
-		epostSistOppdatert:'10.04.2010',
-		master:'KRR'
+		epostAdresse: 'tester.scrambling@registre.no',
+		epostSistOppdatert: '10.04.2010',
+		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
 	sivilstand: {

@@ -22,7 +22,7 @@ const App = (props: AppProps) => {
 
 	return (
 		<StoreProvider fnr={props.fnr} enhetId={props.enhet}>
-			<ViewController key={renderKey}/>
+			<ViewController key={renderKey} />
 		</StoreProvider>
 	);
 };

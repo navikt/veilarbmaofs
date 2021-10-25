@@ -44,16 +44,19 @@ export const Paneler = () => {
 			</Panel>
 
 			<Panel name="tilretteleggingsbehov" tittel="Behov for tilrettelegging" defaultOpen={apneTilrettelegging}>
-				<TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
+				<TilretteleggingsbehovSpa
+					fnr={fnr}
+					viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
+				/>
 			</Panel>
 
-			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS])}>
+			<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS]}>
 				<Panel name="personalia" tittel="Personalia">
 					<PersonaliaPanelInnhold />
 				</Panel>
 			</Show>
 
-			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL])}>
+			<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL]}>
 				<Panel name="personaliaFraPdl" tittel="Personalia">
 					<PersonaliaV2PanelInnhold />
 				</Panel>

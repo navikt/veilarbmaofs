@@ -11,9 +11,7 @@ interface StoreProviderProps {
 const StoreProvider = (props: StoreProviderProps) => {
 	return (
 		<AppStoreProvider fnr={props.fnr} enhetId={props.enhetId}>
-			<ViewStoreProvider>
-				{props.children}
-			</ViewStoreProvider>
+			<ViewStoreProvider>{props.children}</ViewStoreProvider>
 		</AppStoreProvider>
 	);
 };

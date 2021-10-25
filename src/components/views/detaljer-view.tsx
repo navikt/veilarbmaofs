@@ -4,7 +4,7 @@ import { Laster } from '../felles/fetch';
 import { Paneler } from '../paneler/paneler';
 import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
-import TilbakemeldingFab from "../tilbakemelding/fab/tilbakemelding-fab";
+import TilbakemeldingFab from '../tilbakemelding/fab/tilbakemelding-fab';
 
 export const DetaljerView = () => {
 	const { fnr } = useAppStore();
@@ -12,11 +12,7 @@ export const DetaljerView = () => {
 
 	return (
 		<div className="veilarbmaofs__container">
-			{
-				isPending(oppfolgingstatus)
-					? <Laster midtstilt={true}/>
-					: <Paneler/>
-			}
+			{isPending(oppfolgingstatus) ? <Laster midtstilt={true} /> : <Paneler />}
 			<TilbakemeldingFab />
 		</div>
 	);

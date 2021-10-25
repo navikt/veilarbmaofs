@@ -76,7 +76,7 @@ export interface PersonaliaStrukturertMidlertidigAdresse {
 		// Midlertidig adresse kan ha enten Gateadresse, Matrikkeladresse eller PostboksadresseNorsk
 		Gateadresse: OrNothing<Gateadresse>;
 		Matrikkeladresse: OrNothing<Matrikkeladresse>;
-		PostboksadresseNorsk: OrNothing<PostboksadresseNorsk>
+		PostboksadresseNorsk: OrNothing<PostboksadresseNorsk>;
 	};
 }
 

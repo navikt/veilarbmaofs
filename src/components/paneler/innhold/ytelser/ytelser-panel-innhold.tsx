@@ -41,7 +41,7 @@ const YtelserPanelInnhold = () => {
 				value={mapInnsatsgruppeTilTekst(oppfolgingsstatusData?.servicegruppe)}
 				defaultValue={EMDASH}
 			/>
-			<Vedtaksliste vedtaksliste={aktivVedtak}/>
+			<Vedtaksliste vedtaksliste={aktivVedtak} />
 		</Grid>
 	);
 };
