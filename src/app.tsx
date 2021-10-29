@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import StoreProvider from './stores/store-provider';
-import { cache } from '@nutgaard/use-fetch';
+import { cache, isPending } from '@nutgaard/use-fetch';
 import { ViewController } from './components/views/view-controller';
 import { useEventListener } from './utils';
 import './app.less';
+import { useFetchFeatureToggle } from './rest/api';
+import { Laster } from './components/felles/fetch';
+import { hasData } from './rest/utils';
+import { initialFeatures } from './rest/datatyper/feature';
 
 export interface AppProps {
 	fnr: string;
@@ -12,6 +16,7 @@ export interface AppProps {
 
 const App = (props: AppProps) => {
 	const [renderKey, setRenderKey] = useState(0);
+	const fetchFeatures = useFetchFeatureToggle();
 
 	function rerender() {
 		cache.clear();
@@ -20,8 +25,17 @@ const App = (props: AppProps) => {
 
 	useEventListener('rerenderMao', rerender);
 
+	if (isPending(fetchFeatures)) {
+		return <Laster midtstilt={true} />;
+	}
+
+	let features = initialFeatures
+	if (hasData(fetchFeatures)) {
+		features = fetchFeatures.data
+	}
+
 	return (
-		<StoreProvider fnr={props.fnr} enhetId={props.enhet}>
+		<StoreProvider fnr={props.fnr} enhetId={props.enhet} features={features}>
 			<ViewController key={renderKey}/>
 		</StoreProvider>
 	);

@@ -2,7 +2,7 @@ import { rest } from 'msw';
 import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
 
-const ordinaerRegistering: RegistreringsData = {
+export const ordinaerRegistering: RegistreringsData = {
 	type: 'ORDINAER',
 	registrering: {
 		opprettetDato: '2018-08-30T09:17:28.386804+02:00',

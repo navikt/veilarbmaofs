@@ -7,13 +7,15 @@ import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
 import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../../felles/show';
 import { useFetchRegistrering } from '../../../../rest/api';
-import { Laster, NoData, Feilmelding } from '../../../felles/fetch';
-import { isPending, hasError } from '@nutgaard/use-fetch';
+import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
+import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
+import { HENT_REGISTRERING_FRA_VEILARBPERSON } from '../../../../rest/datatyper/feature';
 
 const RegistreringPanelInnhold = () => {
-	const { fnr } = useAppStore();
-	const registrering = useFetchRegistrering(fnr);
+	const { fnr, features } = useAppStore();
+
+	const registrering = useFetchRegistrering(fnr, features[HENT_REGISTRERING_FRA_VEILARBPERSON]);
 
 	if (isPending(registrering)) {
 		return <Laster midtstilt={true} />;
@@ -25,6 +27,7 @@ const RegistreringPanelInnhold = () => {
 
 	const { registrering: brukerRegistrering, type } = registrering.data;
 
+	console.log('registrering', registrering)
 	return (
 		<>
 			<Header registrering={brukerRegistrering} />
