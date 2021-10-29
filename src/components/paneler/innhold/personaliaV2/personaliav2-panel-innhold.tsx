@@ -6,9 +6,9 @@ import { isPending, hasError } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
 import KontaktInformasjon from './KontaktInformasjon';
-import FamilieRelasjoner from "./FamilieRelasjoner";
-import VergeFullmaktInfo from "./VergeFullmaktInfo";
-import GeneralInfo from "./GeneralInfo";
+import FamilieRelasjoner from './FamilieRelasjoner';
+import VergeFullmaktInfo from './VergeFullmaktInfo';
+import GeneralInfo from './GeneralInfo';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -38,11 +38,15 @@ const PersonaliaV2PanelInnhold = () => {
 	return (
 		<>
 			<div className="personalia-grid">
-				<KontaktInformasjon telefon={telefon} epost={epost} bostedsadresse={bostedsadresse}
-									oppholdsadresse={oppholdsadresse}
-									kontaktadresser={kontaktadresser} />
-				<FamilieRelasjoner sivilstand={sivilstand} partner={partner} barn={barn}/>
-				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap}/>
+				<KontaktInformasjon
+					telefon={telefon}
+					epost={epost}
+					bostedsadresse={bostedsadresse}
+					oppholdsadresse={oppholdsadresse}
+					kontaktadresser={kontaktadresser}
+				/>
+				<FamilieRelasjoner sivilstand={sivilstand} partner={partner} barn={barn} />
+				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} />
 				<VergeFullmaktInfo />
 			</div>
 			<LenkeBrukerprofil />

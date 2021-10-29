@@ -20,9 +20,5 @@ export function View(props: ViewProps) {
 		return null;
 	}
 
-	return (
-		<div className={cls(props.className, {'veilarbmaofs--hidden': props.hidden})}>
-			{props.children}
-		</div>
-	);
+	return <div className={cls(props.className, { 'veilarbmaofs--hidden': props.hidden })}>{props.children}</div>;
 }

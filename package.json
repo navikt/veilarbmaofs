@@ -7,7 +7,8 @@
 		"build": "craco build",
 		"build:mock": "cross-env PUBLIC_URL=/veilarbmaofs REACT_APP_DEV=true craco build",
 		"test": "echo not implemented",
-		"prettier": "prettier --write 'src/**/*.ts{,x}'"
+		"prettier": "prettier --write 'src/**/*.ts{,x}'",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@craco/craco": "^6.1.0",
@@ -19,7 +20,7 @@
 		"animated-scroll-to": "^2.2.0",
 		"classnames": "^2.3.1",
 		"constate": "^3.1.0",
-		"craco-less": "^1.17.1",
+		"craco-less": "^1.20.0",
 		"loadjs": "^4.2.0",
 		"lodash.throttle": "^4.1.1",
 		"moment": "^2.29.1",
@@ -70,6 +71,7 @@
 		"@types/react-dom": "^17.0.0",
 		"@types/react-modal": "^3.10.6",
 		"cross-env": "^7.0.3",
+		"husky": "^7.0.4",
 		"msw": "^0.26.0",
 		"prettier": "^2.2.1",
 		"typescript": "^4.1.3"
@@ -91,5 +93,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"lint-staged": {
+		"src/**/*.{ts{,x},js,css,md}": "prettier --write"
 	}
 }

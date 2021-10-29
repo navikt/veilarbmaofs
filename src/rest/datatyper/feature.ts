@@ -1,7 +1,8 @@
 export const PERSONALIA_DATA_FRA_PDL = 'veilarbmaofs.personalia.pdl.persondata';
 export const PERSONALIA_DATA_FRA_TPS = 'veilarbmaofs.personalia.tps.persondata';
 export const SPOR_OM_TILBAKEMELDING = 'veilarbmaofs.spor.om.tilbakemelding';
-export const INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE = 'veilarbmaofs.hent_innsatsgruppe_og_hovedmal_fra_vedtaksstotte';
+export const INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE =
+	'veilarbmaofs.hent_innsatsgruppe_og_hovedmal_fra_vedtaksstotte';
 
 export const TOGGLES = [
 	PERSONALIA_DATA_FRA_PDL,
