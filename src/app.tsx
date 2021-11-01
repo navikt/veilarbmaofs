@@ -29,10 +29,7 @@ const App = (props: AppProps) => {
 		return <Laster midtstilt={true} />;
 	}
 
-	let features = initialFeatures
-	if (hasData(fetchFeatures)) {
-		features = fetchFeatures.data
-	}
+	const features = hasData(fetchFeatures) ? fetchFeatures.data : initialFeatures
 
 	return (
 		<StoreProvider fnr={props.fnr} enhetId={props.enhet} features={features}>

@@ -27,7 +27,6 @@ const RegistreringPanelInnhold = () => {
 
 	const { registrering: brukerRegistrering, type } = registrering.data;
 
-	console.log('registrering', registrering)
 	return (
 		<>
 			<Header registrering={brukerRegistrering} />
