@@ -5,9 +5,8 @@ import { logEvent } from '../../../utils/frontend-logger';
 import lukkBilde from './lukk.svg';
 import tilbakemeldingBilde from './tilbakemelding.svg';
 import './tilbakemelding-fab.less';
-import {SPOR_OM_TILBAKEMELDING} from "../../../rest/datatyper/feature";
-import {hasData} from "../../../rest/utils";
-import {useFetchFeatureToggle} from "../../../rest/api";
+import { SPOR_OM_TILBAKEMELDING } from '../../../rest/datatyper/feature';
+import { useAppStore } from '../../../stores/app-store';
 
 // FAB = Floating Action Button
 
@@ -15,9 +14,9 @@ export function TilbakemeldingFab() {
 	const [hideFab, setHideFab] = useState(false);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const wrapperDivRef = useRef<HTMLDivElement>(null);
+	const { features } = useAppStore();
 
-	const useFetchFeatures = useFetchFeatureToggle();
-	const sporOmTilbakemeldingFeature = hasData(useFetchFeatures) && useFetchFeatures.data[SPOR_OM_TILBAKEMELDING];
+	const sporOmTilbakemeldingFeature = features[SPOR_OM_TILBAKEMELDING];
 
 	const TILBAKEMELDING_PREFIX = 'har_sendt_tilbakemelding';
 	const TILBAKEMELDING_FEATURE_TAG = 'familiemedlem_opplysninger_i_detaljer';

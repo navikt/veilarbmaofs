@@ -8,7 +8,7 @@ import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
 import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
-import { useFetchFeatureToggle, useFetchOppfolgingsstatus } from '../../rest/api';
+import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
@@ -19,11 +19,10 @@ import Show from '../felles/show';
 import { PERSONALIA_DATA_FRA_PDL, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 
 export const Paneler = () => {
-	const { fnr } = useAppStore();
+	const { fnr, features } = useAppStore();
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
-	const features = useFetchFeatureToggle();
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'
@@ -47,13 +46,13 @@ export const Paneler = () => {
 				<TilretteleggingsbehovSpa fnr={fnr} viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV} />
 			</Panel>
 
-			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS])}>
+			<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
 				<Panel name="personalia" tittel="Personalia">
 					<PersonaliaPanelInnhold />
 				</Panel>
 			</Show>
 
-			<Show if={(hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL])}>
+			<Show if={features[PERSONALIA_DATA_FRA_PDL]}>
 				<Panel name="personaliaFraPdl" tittel="Personalia">
 					<PersonaliaV2PanelInnhold />
 				</Panel>
