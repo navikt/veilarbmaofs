@@ -103,7 +103,11 @@ const OppfolgingPanelInnhold = () => {
                     defaultValue={EMDASH}
                 />
             </Grid>
-            <Show if={hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte) ? tilhorerBrukerUtrulletKontorForVedtaksstotte.data : false}>
+            <Show if={
+                hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte) ?
+                    (tilhorerBrukerUtrulletKontorForVedtaksstotte.data && !hentInnsatsgruppeOgHovedmalFraVedtaksstotte()) :
+                    false
+            }>
                 <AlertStripeInfo className="alert-hovedmal-vedtaksstotte">
                     Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
                     "Oppfølgingsvedtak".
