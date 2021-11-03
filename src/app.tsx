@@ -4,6 +4,7 @@ import { cache } from '@nutgaard/use-fetch';
 import { ViewController } from './components/views/view-controller';
 import { useEventListener } from './utils';
 import './app.less';
+import FeatureFetcher from './components/feature-fetcher';
 
 export interface AppProps {
 	fnr: string;
@@ -21,9 +22,13 @@ const App = (props: AppProps) => {
 	useEventListener('rerenderMao', rerender);
 
 	return (
-		<StoreProvider fnr={props.fnr} enhetId={props.enhet}>
-			<ViewController key={renderKey}/>
-		</StoreProvider>
+        <main className="app veilarbmaofs">
+            <StoreProvider fnr={props.fnr} enhetId={props.enhet} >
+                <FeatureFetcher>
+                    <ViewController key={renderKey}/>
+                </FeatureFetcher>
+            </StoreProvider>
+        </main>
 	);
 };
 

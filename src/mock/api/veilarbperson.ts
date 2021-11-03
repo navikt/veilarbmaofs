@@ -6,6 +6,7 @@ import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
+import { ordinaerRegistering } from './veilarbregistrering';
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -590,6 +591,9 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	}),
 	rest.get('/veilarbperson/api/person/aktorid', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(aktorId));
+	}),
+	rest.get('/veilarbperson/api/person/registrering', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
 	}),
 	rest.get('/veilarbperson/api/person/:fnr', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personalia));

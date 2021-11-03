@@ -19,8 +19,10 @@ const headers = {
 	headers: { 'Nav-Consumer-Id': APP_NAME }
 };
 
-export const useFetchRegistrering = (fnr: string) =>
-	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`, headers);
+export const useFetchRegistrering = (fnr: string, hentfraVeilarbPerson: boolean = false) => {
+	const url = hentfraVeilarbPerson ? `/veilarbperson/api/person/registrering?fnr=${fnr}` : `/veilarbregistrering/api/registrering?fnr=${fnr}`;
+	return useFetch<RegistreringsData>(url, headers);
+};
 
 export const useFetchCvOgJobbprofil = (fnr: string) =>
 	useFetch<ArenaPerson>(`/veilarbperson/api/person/cv_jobbprofil?fnr=${fnr}`);

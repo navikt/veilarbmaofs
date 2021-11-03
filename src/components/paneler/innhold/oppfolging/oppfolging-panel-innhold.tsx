@@ -5,7 +5,6 @@ import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
     useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
-    useFetchFeatureToggle,
     useFetchInnsatsbehov,
     useFetchOppfolgingsstatus,
     useFetchPersonalia,
@@ -32,13 +31,12 @@ import './oppfolging-panel-innhold.less';
 import Show from '../../../felles/show';
 
 const OppfolgingPanelInnhold = () => {
-	const { fnr } = useAppStore();
+	const { fnr, features } = useAppStore();
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
 	const personalia = useFetchPersonalia(fnr);
 	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
-	const features = useFetchFeatureToggle();
     const tilhorerBrukerUtrulletKontorForVedtaksstotte = useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr);
 
 	useEffect(() => {
@@ -72,7 +70,7 @@ const OppfolgingPanelInnhold = () => {
     }
 
     function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
-        return hasData(features) && features.data[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE];
+        return features[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE];
     }
 
     return (
@@ -105,7 +103,11 @@ const OppfolgingPanelInnhold = () => {
                     defaultValue={EMDASH}
                 />
             </Grid>
-            <Show if={hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte) ? tilhorerBrukerUtrulletKontorForVedtaksstotte.data : false}>
+            <Show if={
+                hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte) ?
+                    (tilhorerBrukerUtrulletKontorForVedtaksstotte.data && !hentInnsatsgruppeOgHovedmalFraVedtaksstotte()) :
+                    false
+            }>
                 <AlertStripeInfo className="alert-hovedmal-vedtaksstotte">
                     Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
                     "Oppfølgingsvedtak".
