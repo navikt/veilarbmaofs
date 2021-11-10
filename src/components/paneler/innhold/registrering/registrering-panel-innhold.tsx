@@ -10,12 +10,11 @@ import { useFetchRegistrering } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
-import { HENT_REGISTRERING_FRA_VEILARBPERSON } from '../../../../rest/datatyper/feature';
 
 const RegistreringPanelInnhold = () => {
-	const { fnr, features } = useAppStore();
+	const { fnr } = useAppStore();
 
-	const registrering = useFetchRegistrering(fnr, features[HENT_REGISTRERING_FRA_VEILARBPERSON]);
+	const registrering = useFetchRegistrering(fnr);
 
 	if (isPending(registrering)) {
 		return <Laster midtstilt={true} />;
