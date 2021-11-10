@@ -7,12 +7,13 @@ import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
 import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../../felles/show';
 import { useFetchRegistrering } from '../../../../rest/api';
-import { Laster, NoData, Feilmelding } from '../../../felles/fetch';
-import { isPending, hasError } from '@nutgaard/use-fetch';
+import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
+import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 
 const RegistreringPanelInnhold = () => {
 	const { fnr } = useAppStore();
+
 	const registrering = useFetchRegistrering(fnr);
 
 	if (isPending(registrering)) {

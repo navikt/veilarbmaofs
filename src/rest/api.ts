@@ -5,7 +5,6 @@ import { ArenaPerson } from './datatyper/arenaperson';
 import { VeilederData } from './datatyper/veileder';
 import { AktorId } from './datatyper/aktor-id';
 import { OppfolgingsstatusData } from './datatyper/oppfolgingsstatus';
-import { KartleggingData } from './datatyper/kartlegging';
 import { YtelseData } from './datatyper/ytelse';
 import { UnderOppfolgingData } from './datatyper/underOppfolgingData';
 import { OrNothing } from '../utils/felles-typer';
@@ -20,8 +19,9 @@ const headers = {
 	headers: { 'Nav-Consumer-Id': APP_NAME }
 };
 
-export const useFetchRegistrering = (fnr: string) =>
-	useFetch<RegistreringsData>(`/veilarbregistrering/api/registrering?fnr=${fnr}`, headers);
+export const useFetchRegistrering = (fnr: string) => {
+	return useFetch<RegistreringsData>(`/veilarbperson/api/person/registrering?fnr=${fnr}`, headers);
+};
 
 export const useFetchCvOgJobbprofil = (fnr: string) =>
 	useFetch<ArenaPerson>(`/veilarbperson/api/person/cv_jobbprofil?fnr=${fnr}`);
@@ -34,9 +34,6 @@ export const useFetchAktorId = (fnr: string) =>
 
 export const useFetchOppfolgingsstatus = (fnr: string) =>
 	useFetch<OppfolgingsstatusData>(`/veilarboppfolging/api/person/${fnr}/oppfolgingsstatus`, headers);
-
-export const useFetchJobbsokerkompetanse = (fnr: string) =>
-	useFetch<KartleggingData>(`/veilarbjobbsokerkompetanse/api/hent?fnr=${fnr}`, headers);
 
 export const useFetchYtelser = (fnr: string) =>
 	useFetch<YtelseData>(`/veilarboppfolging/api/person/${fnr}/ytelser`, headers);

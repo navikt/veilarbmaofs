@@ -14,7 +14,7 @@ export function ViewController() {
 
 	return (
 		<>
-			<View hidden={view !== ViewType.DETALJER} className="veilarbmaofs">
+			<View hidden={view !== ViewType.DETALJER}>
 				<DetaljerView />
 			</View>
 			<View hidden={view !== ViewType.TILRETTELEGGINGSBEHOV}>

@@ -8,7 +8,7 @@ import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
 import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
-import { useFetchFeatureToggle, useFetchOppfolgingsstatus } from '../../rest/api';
+import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasData } from '../../rest/utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
@@ -20,11 +20,10 @@ import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
 
 export const Paneler: React.FC = () => {
-	const { fnr, isSidemenyElementOpen } = useAppStore();
+	const { fnr, isSidemenyElementOpen, features } = useAppStore();
 	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
-	const features = useFetchFeatureToggle();
 	const registreringPanelNavn =
 		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'
@@ -88,7 +87,7 @@ export const Paneler: React.FC = () => {
 					<YtelserPanelInnhold />
 				</Panel>
 
-				<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS]}>
+				<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
 					<Panel
 						key={`panel-${sidemenyElementId.personalia}`}
 						name="personalia"
@@ -99,7 +98,7 @@ export const Paneler: React.FC = () => {
 						<PersonaliaPanelInnhold />
 					</Panel>
 				</Show>
-				<Show if={hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL]}>
+				<Show if={features[PERSONALIA_DATA_FRA_PDL]}>
 					<Panel
 						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
 						name="personaliaFraPdl"

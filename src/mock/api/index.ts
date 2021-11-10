@@ -4,7 +4,6 @@ import { veilarbjobbsokerkompetanseHandlers } from './veilarbjobbsokerkompetanse
 import { veilarboppfolgingHandlers } from './veilarboppfolging';
 import { veilarbpersonHandlers } from './veilarbperson';
 import { veilarbpersonflatefsHandlers } from './veilarbpersonflatefs';
-import { veilarbregistreringHandlers } from './veilarbregistrering';
 import { veilarbveilederHandlers } from './veilarbveileder';
 import { veilarbvedtaksstotteHandlers } from './veilarbvedtaksstotte';
 
@@ -14,7 +13,6 @@ export const allHandlers: RequestHandlersList = [
 	...veilarboppfolgingHandlers,
 	...veilarbpersonHandlers,
 	...veilarbpersonflatefsHandlers,
-	...veilarbregistreringHandlers,
 	...veilarbveilederHandlers,
 	...veilarbvedtaksstotteHandlers
 ];

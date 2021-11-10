@@ -17,3 +17,10 @@ export interface Features {
 	[SPOR_OM_TILBAKEMELDING]: boolean;
 	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: boolean;
 }
+
+export const initialFeatures: Features = {
+	[PERSONALIA_DATA_FRA_PDL]: false,
+	[PERSONALIA_DATA_FRA_TPS]: false,
+	[SPOR_OM_TILBAKEMELDING]: false,
+	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: false
+};
