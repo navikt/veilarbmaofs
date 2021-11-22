@@ -49,7 +49,7 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.registrering
 	},
 	{
-		name: 'Jobbsøker kompetanse',
+		name: 'Jobbsøkerkompetanse',
 		id: sidemenyElementId.jobbsokerkompetanse
 	}
 ];

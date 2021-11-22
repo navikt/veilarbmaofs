@@ -8,8 +8,18 @@
 		max-width: 18rem;
 		background-color: #fff;
 
+		position: sticky;
+		top: 0px;
+		overflow-y: auto;
+		transition: top 0.2s ease 0s, max-height 0.2s ease 0s;
+
 		h2 {
 			margin-left: 1rem;
+
+			&:hover {
+				color: #0067c5;
+				cursor: pointer;
+			}
 		}
 
 		ul {
@@ -17,9 +27,8 @@
 			margin: 0;
 			padding: 0;
 			li {
-				padding: 0.7rem;
-
-				button {
+				a {
+					padding: 0.7rem;
 					display: flex;
 					color: #0067c5;
 					width: 100%;
@@ -34,7 +43,7 @@
 				&:hover {
 					background: #c4ddfd;
 
-					button {
+					a {
 						color: #262626;
 						cursor: pointer;
 					}

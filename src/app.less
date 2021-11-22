@@ -18,11 +18,14 @@
 	line-height: @line-height-base;
 
 	&__container {
-		width: 100%;
-		max-width: 1200px;
-		margin: 2rem auto;
 		display: flex;
 		align-items: flex-start;
+		-moz-box-flex: 1;
+		flex-grow: 1;
+		position: relative;
+		min-height: 30vh;
+		max-width: 67rem;
+		margin: 0px auto;
 	}
 
 	&--hidden {

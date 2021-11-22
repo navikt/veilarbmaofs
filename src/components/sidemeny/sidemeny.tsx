@@ -22,21 +22,23 @@ export const Sidemeny: React.FC = () => {
 
 	return (
 		<section className="sidemeny">
-			<h2>Detaljer om bruker</h2>
+			<h2 onClick={() => scrollTilLamell('internflate')}>Detaljer om bruker</h2>
 			<nav>
 				<ul>
 					{sidemenyElementer.map(
 						sidemenyElement =>
 							skalViseMenyElement(sidemenyElement.id) && (
 								<li key={`sidemenyelement-${sidemenyElement.id}`}>
-									<button
-										onClick={() => {
+									<a
+										onClick={e => {
+											e.preventDefault();
 											setIsOpenSidemenyElement(sidemenyElement);
 											scrollTilLamell(sidemenyElement.id);
 										}}
+										href={`#${sidemenyElement.id}`}
 									>
 										{sidemenyElement.name}
-									</button>
+									</a>
 								</li>
 							)
 					)}
