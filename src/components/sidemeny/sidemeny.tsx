@@ -5,7 +5,7 @@ import { useFetchFeatureToggle } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 
 import './sidemeny.less';
-import { scrollTilLamell, sidemenyElementId } from '../../utils/sidemeny';
+import { scrollTilElement, sidemenyElementId } from '../../utils/sidemeny';
 
 export const Sidemeny: React.FC = () => {
 	const { sidemenyElementer, setIsOpenSidemenyElement } = useAppStore();
@@ -22,7 +22,7 @@ export const Sidemeny: React.FC = () => {
 
 	return (
 		<section className="sidemeny">
-			<h2 onClick={() => scrollTilLamell('internflate')}>Detaljer om bruker</h2>
+			<h2 onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}>Detaljer om bruker</h2>
 			<nav>
 				<ul>
 					{sidemenyElementer.map(
@@ -33,7 +33,7 @@ export const Sidemeny: React.FC = () => {
 										onClick={e => {
 											e.preventDefault();
 											setIsOpenSidemenyElement(sidemenyElement);
-											scrollTilLamell(sidemenyElement.id);
+											scrollTilElement(`#${sidemenyElement.id}`);
 										}}
 										href={`#${sidemenyElement.id}`}
 									>

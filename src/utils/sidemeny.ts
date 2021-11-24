@@ -54,8 +54,8 @@ export const sidemenyElementer: SidemenyElement[] = [
 	}
 ];
 
-export const scrollTilLamell = (id: string) => {
-	document.querySelector(`#${id}`)!.scrollIntoView({
+export const scrollTilElement = (query: string) => {
+	document.querySelector(`${query}`)!.scrollIntoView({
 		block: 'start',
 		behavior: 'smooth'
 	});
