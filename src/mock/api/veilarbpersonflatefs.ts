@@ -2,14 +2,12 @@ import { rest } from 'msw';
 import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import {
 	Features,
-	PERSONALIA_DATA_FRA_PDL,
 	PERSONALIA_DATA_FRA_TPS,
 	SPOR_OM_TILBAKEMELDING,
 	INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE
 } from '../../rest/datatyper/feature';
 
 const features: Features = {
-	[PERSONALIA_DATA_FRA_PDL]: true,
 	[PERSONALIA_DATA_FRA_TPS]: false,
 	[SPOR_OM_TILBAKEMELDING]: true,
 	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: false
