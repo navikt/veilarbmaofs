@@ -1,6 +1,6 @@
 import React from 'react';
 import { hasData } from '../../rest/utils';
-import { PERSONALIA_DATA_FRA_PDL, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
+import { PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 import { useFetchFeatureToggle } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 
@@ -12,7 +12,7 @@ export const Sidemeny: React.FC = () => {
 	const features = useFetchFeatureToggle();
 
 	const visPersonaliaFraTPS = hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS];
-	const visPersonaliaFraPDL = hasData(features) && features.data[PERSONALIA_DATA_FRA_PDL];
+	const visPersonaliaFraPDL = !visPersonaliaFraTPS;
 
 	const skalViseMenyElement = (id: string): boolean => {
 		if (id === sidemenyElementId.personalia) return visPersonaliaFraTPS;

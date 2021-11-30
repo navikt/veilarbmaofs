@@ -15,7 +15,7 @@ import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
 import Show from '../felles/show';
-import { PERSONALIA_DATA_FRA_PDL, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
+import { PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
 
@@ -98,7 +98,7 @@ export const Paneler: React.FC = () => {
 						<PersonaliaPanelInnhold />
 					</Panel>
 				</Show>
-				<Show if={features[PERSONALIA_DATA_FRA_PDL]}>
+				<Show if={!features[PERSONALIA_DATA_FRA_TPS]}>
 					<Panel
 						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
 						name="personaliaFraPdl"
