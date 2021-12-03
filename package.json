@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@craco/craco": "^6.1.0",
+		"@navikt/ds-icons": "^0.6.3",
 		"@navikt/fnrvalidator": "^1.1.4",
 		"@navikt/frontendlogger": "^2.0.0",
 		"@navikt/navspa": "^3.0.1",
@@ -66,7 +67,7 @@
 		"@types/jest": "^26.0.20",
 		"@types/loadjs": "^4.0.0",
 		"@types/node": "^14.14.22",
-		"@types/react": "^17.0.0 ",
+		"@types/react": "^17.0.37 ",
 		"@types/react-collapse": "^5.0.0",
 		"@types/react-dom": "^17.0.0",
 		"@types/react-modal": "^3.10.6",

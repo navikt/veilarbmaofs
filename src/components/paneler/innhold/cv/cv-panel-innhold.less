@@ -1,35 +1,13 @@
 @import '~nav-frontend-core/less/_variabler';
 
 .veilarbmaofs {
-	.last-ned-cv-lenke {
-		::before {
-			font-size: 1rem;
-			content: url('last-ned.svg');
-			position: relative;
-			top: 0.3rem;
+	.cv-panel-lenke {
+		margin-right: 1.5rem;
+
+		svg {
+			height: 1.2rem;
+			width: 1.2rem;
 			margin-right: 0.25rem;
-		}
-		&:hover {
-			::before {
-				content: url('last-ned-fylt.svg');
-			}
-		}
-	}
-
-	.endre-cv-lenke {
-		margin-left: 1.5rem;
-
-		::before {
-			content: url('rediger.svg');
-			position: relative;
-			top: 0.3rem;
-			margin-right: 0.25rem;
-		}
-
-		&:hover {
-			::before {
-				content: url('rediger-fylt.svg');
-			}
 		}
 	}
 
