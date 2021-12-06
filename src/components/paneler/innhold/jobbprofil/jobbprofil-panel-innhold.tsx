@@ -92,7 +92,7 @@ const JobbprofilPanelInnhold = () => {
 		<>
 			<RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
-			<Grid columns={3} gap="0.5rem">
+			<Grid columns={4} gap="1rem">
 				<InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />
 				<InformasjonsbolkListe header="Yrke" list={yrker} />
 				<InformasjonsbolkListe header="Heltid/Deltid" list={heltidDeltidList} />
