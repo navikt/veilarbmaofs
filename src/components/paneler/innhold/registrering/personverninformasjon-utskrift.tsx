@@ -34,8 +34,8 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 				onClick={() => setVisPrintModal(true)}
 				htmlType="button"
 				className="utskrift-knapp btn--radius025"
-				onMouseEnter={isHover(true)}
-				onMouseLeave={isHover(false)}
+				onMouseEnter={() => setHover(true)}
+				onMouseLeave={() => setHover(false)}
 			>
 				{hover ? <PrintFilled /> : <Print />}
 				Personverninformasjon, rettigheter og plikter

@@ -10,12 +10,6 @@ export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string })
 		logger.event('veilarbmaofs.metrikker.last-ned-cv', { erManuell: props.erManuell });
 	};
 
-	function isHover(hoverState: boolean) {
-		return () => {
-			setHover(hoverState);
-		};
-	}
-
 	return (
 		<Lenke
 			onClick={handleOnLastNedLenkeClicked}
@@ -23,7 +17,7 @@ export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string })
 			className="cv-panel-lenke"
 			target="_blank"
 		>
-			<span onMouseEnter={isHover(true)} onMouseLeave={isHover(false)}>
+			<span onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				{hover ? <DownloadFilled /> : <Download />}
 				Last ned CV
 			</span>

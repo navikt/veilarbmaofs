@@ -9,15 +9,9 @@ export function RedigerJobbprofil(props: { erManuell: boolean; jobbprofilRegistr
 		return null;
 	}
 
-	function isHover(hoverState: boolean) {
-		return () => {
-			setHover(hoverState);
-		};
-	}
-
 	return (
 		<Lenke href={props.jobbprofilRegistreringsLenke} className="cv-panel-lenke" target="_blank">
-			<span onMouseEnter={isHover(true)} onMouseLeave={isHover(false)}>
+			<span onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				{hover ? <EditFilled /> : <Edit />}
 				Endre jobbprofil
 			</span>
