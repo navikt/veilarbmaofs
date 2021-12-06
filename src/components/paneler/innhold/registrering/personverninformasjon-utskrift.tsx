@@ -22,12 +22,6 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 	const [visPrintModal, setVisPrintModal] = useState<boolean>(false);
 	const [hover, setHover] = useState(false);
 
-	function isHover(hoverState: boolean) {
-		return () => {
-			setHover(hoverState);
-		};
-	}
-
 	return (
 		<>
 			<Flatknapp
