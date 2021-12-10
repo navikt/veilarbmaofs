@@ -1,7 +1,6 @@
-@import "../../../../../node_modules/nav-frontend-core/less/_variabler";
+@import '../../../../../node_modules/nav-frontend-core/less/_variabler';
 
 .veilarbmaofs {
-
 	.fill(@color) {
 		fill: @color;
 	}
@@ -23,32 +22,15 @@
 		border-radius: 0.25rem;
 	}
 
-	.utskrift-knapp__ikon {
-		margin: 0 0.35rem -0.2rem 0.2rem;
-		.stroke-color-fill-white(@navBla);
-	}
-
 	.utskrift-knapp {
 		text-transform: none;
 		padding: 0.25rem 1rem;
 		margin: 1rem 0;
-	}
 
-	.utskrift-knapp:hover {
-		.utskrift-knapp__ikon {
-			.fill(@navBla);
-			#bottom {
-				fill: none;
-			}
-		}
-	}
-
-	.utskrift-knapp:active {
-		.utskrift-knapp__ikon {
-			.stroke-color-fill-white(@navDypBla);
-			#bottom {
-				fill: white;
-			}
+		svg {
+			height: 1.2rem;
+			width: 1.2rem;
+			margin-right: 0.25rem;
 		}
 	}
 }

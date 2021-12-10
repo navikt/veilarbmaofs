@@ -11,7 +11,8 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
-		"@craco/craco": "^6.1.0",
+		"@craco/craco": "^6.4.2",
+		"@navikt/ds-icons": "^0.6.3",
 		"@navikt/fnrvalidator": "^1.1.4",
 		"@navikt/frontendlogger": "^2.0.0",
 		"@navikt/navspa": "^3.0.1",
@@ -59,14 +60,14 @@
 		"react-dom": "^17.0.1",
 		"react-modal": "^3.12.1",
 		"react-motion": "^0.5.2",
-		"react-scripts": "^4.0.1"
+		"react-scripts": "^4.0.3"
 	},
 	"devDependencies": {
 		"@types/classnames": "^2.2.11",
 		"@types/jest": "^26.0.20",
 		"@types/loadjs": "^4.0.0",
 		"@types/node": "^14.14.22",
-		"@types/react": "^17.0.0 ",
+		"@types/react": "^17.0.37 ",
 		"@types/react-collapse": "^5.0.0",
 		"@types/react-dom": "^17.0.0",
 		"@types/react-modal": "^3.10.6",

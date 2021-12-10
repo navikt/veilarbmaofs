@@ -88,5 +88,5 @@ export function hentVeilederTekst(veileder: VeilederData | null): StringOrNothin
 		return null;
 	}
 
-	return `${veileder.ident} ${veileder.navn}`;
+	return `${veileder.navn}, ${veileder.ident}`;
 }

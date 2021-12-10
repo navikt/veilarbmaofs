@@ -2,11 +2,10 @@
 
 .veilarbmaofs {
 	.paneler-container {
-		height: calc(100vh - 350px);
-		width: 100%;
-		overflow: scroll;
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
+		flex: auto;
+		display: flex;
+		flex-direction: column;
+		margin-right: 0.75rem;
 
 		&::-webkit-scrollbar {
 			display: none; /* for Chrome, Safari, and Opera */

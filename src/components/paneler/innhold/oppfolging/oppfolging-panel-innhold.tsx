@@ -75,7 +75,7 @@ const OppfolgingPanelInnhold = () => {
 
 	return (
 		<>
-			<Grid columns={4} gap="0.5rem">
+			<Grid columns={4} gap="1rem">
 				<InformasjonsbolkEnkel
 					header="Servicegruppe"
 					value={mapServicegruppeTilTekst(servicegruppe)}

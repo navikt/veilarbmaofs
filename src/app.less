@@ -5,6 +5,7 @@
 	scroll-behavior: smooth !important;
 	flex-grow: 1;
 	width: 100%;
+
 	background-color: #f4f4f4;
 
 	.ReactCollapse--collapse {
@@ -18,11 +19,13 @@
 	line-height: @line-height-base;
 
 	&__container {
-		width: 100%;
-		max-width: 1200px;
-		margin: 2rem auto;
+		max-width: 1920px;
+		min-height: 30vh;
+		margin: 0px auto;
+
 		display: flex;
 		align-items: flex-start;
+		-moz-box-flex: 1;
 	}
 
 	&--hidden {
@@ -61,10 +64,6 @@
 		width: 250px;
 		word-break: normal;
 		hyphens: auto;
-	}
-
-	@media (max-width: 1232px) {
-		padding: 0 1rem;
 	}
 
 	.kilde-tekst {

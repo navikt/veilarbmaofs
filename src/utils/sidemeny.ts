@@ -49,13 +49,13 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.registrering
 	},
 	{
-		name: 'Jobbsøker kompetanse',
+		name: 'Jobbsøkerkompetanse',
 		id: sidemenyElementId.jobbsokerkompetanse
 	}
 ];
 
-export const scrollTilLamell = (id: string) => {
-	document.querySelector(`#${id}`)!.scrollIntoView({
+export const scrollTilElement = (query: string) => {
+	document.querySelector(`${query}`)!.scrollIntoView({
 		block: 'start',
 		behavior: 'smooth'
 	});
