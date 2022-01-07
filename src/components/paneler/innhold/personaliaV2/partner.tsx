@@ -23,19 +23,23 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 
 	return (
 		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
-			{erEgenAnsatt && !harVeilederTilgang ? (
-				<div>
-					<Normaltekst>{borSammen}</Normaltekst>
-				</div>
-			) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
-				<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-			) : (
-				<div>
-					<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
-					<Normaltekst>{borSammen}</Normaltekst>
+			<div className="innrykk">
+				{erEgenAnsatt && !harVeilederTilgang ? (
+					<div>
+						<Normaltekst>{borSammen}</Normaltekst>
+					</div>
+				) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
 					<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
-				</div>
-			)}
+				) : (
+					<div>
+						<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(
+							forkortetNavn
+						)} (${alder})`}</Normaltekst>
+						<Normaltekst>{borSammen}</Normaltekst>
+						<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+					</div>
+				)}
+			</div>
 		</Informasjonsbolk>
 	);
 }
