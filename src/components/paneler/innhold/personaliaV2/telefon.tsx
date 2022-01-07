@@ -5,6 +5,7 @@ import { PersonaliaV2Info, PersonaliaTelefon } from '../../../../rest/datatyper/
 import EMDASH from '../../../../utils/emdash';
 import { formaterTelefonnummer, isNotEmptyArray } from '../../../../utils';
 import { hentKilde } from '../../../../utils/konstanter';
+import Kopiknapp from '../../../felles/kopiknapp';
 
 function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 	const { telefonNr, registrertDato, master } = props.telefon;
@@ -24,13 +25,14 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst>{formaterTelefonnummer(landkode, telefonnummer)}</Normaltekst>
+			<Normaltekst className="innrykk">
+				{formaterTelefonnummer(landkode, telefonnummer)}
+				<Kopiknapp kopitekst={props.telefon.telefonNr} />
+			</Normaltekst>
 			{telefonNr && (
 				<Undertekst className="kilde-tekst">
-					<span>
-						Registrert {registrertDato && registrertDato}
-						{` ${hentKilde(master)}`}
-					</span>
+					Registrert {registrertDato && registrertDato}
+					{` ${hentKilde(master)}`}
 				</Undertekst>
 			)}
 		</div>
