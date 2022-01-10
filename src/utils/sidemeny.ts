@@ -11,8 +11,7 @@ export const sidemenyElementId = {
 	ytelser: 'ytelser',
 	personalia: 'personalia',
 	personaliaFraPdl: 'personaliaFraPdl',
-	registrering: 'registrering',
-	jobbsokerkompetanse: 'jobbsokerkompetanse'
+	registrering: 'registrering'
 };
 
 export const sidemenyElementer: SidemenyElement[] = [
@@ -47,10 +46,6 @@ export const sidemenyElementer: SidemenyElement[] = [
 	{
 		name: 'Registrering',
 		id: sidemenyElementId.registrering
-	},
-	{
-		name: 'Jobbsøkerkompetanse',
-		id: sidemenyElementId.jobbsokerkompetanse
 	}
 ];
 

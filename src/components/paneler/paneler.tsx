@@ -3,7 +3,6 @@ import RegistreringPanel from './innhold/registrering/registrering-panel-innhold
 import CvPanel from './innhold/cv/cv-panel-innhold';
 import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
 import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
-import JobbsokerkompetansePanel from './innhold/jobbsokerkompetanse/jobbsokerkompetanse-panel-innhold';
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
@@ -15,7 +14,7 @@ import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
 import Show from '../felles/show';
-import { PERSONALIA_DATA_FRA_PDL, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
+import { PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
 
@@ -112,6 +111,29 @@ export const Paneler: React.FC = () => {
 					<YtelserPanelInnhold />
 				</Panel>
 
+				<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personalia}`}
+						name="personalia"
+						id={sidemenyElementId.personalia}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
+					>
+						<PersonaliaPanelInnhold />
+					</Panel>
+				</Show>
+				<Show if={!features[PERSONALIA_DATA_FRA_TPS]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
+						name="personaliaFraPdl"
+						id={sidemenyElementId.personaliaFraPdl}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
+					>
+						<PersonaliaV2PanelInnhold />
+					</Panel>
+				</Show>
+
 				<Panel
 					key={`panel-${sidemenyElementId.registrering}`}
 					name="registrering"
@@ -124,16 +146,6 @@ export const Paneler: React.FC = () => {
 					}
 				>
 					<RegistreringPanel />
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.jobbsokerkompetanse}`}
-					name="jobbsokerkompetanse"
-					id={sidemenyElementId.jobbsokerkompetanse}
-					tittel="Jobbsøkerkompetanse"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbsokerkompetanse)}
-				>
-					<JobbsokerkompetansePanel />
 				</Panel>
 			</div>
 		</section>
