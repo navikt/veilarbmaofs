@@ -2,6 +2,7 @@ import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navspa, AsyncNavspa } from '@navikt/navspa';
+import '@navikt/ds-css';
 import ModalWrapper from 'nav-frontend-modal';
 import App from './app';
 import env from './utils/environment';

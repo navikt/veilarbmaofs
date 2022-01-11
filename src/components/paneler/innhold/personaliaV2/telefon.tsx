@@ -27,7 +27,7 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">
 				{formaterTelefonnummer(landkode, telefonnummer)}
-				<Kopiknapp kopitekst={props.telefon.telefonNr} />
+				<Kopiknapp kopitekst={props.telefon.telefonNr} type="telefonnummer" />
 			</Normaltekst>
 			{telefonNr && (
 				<Undertekst className="kilde-tekst">

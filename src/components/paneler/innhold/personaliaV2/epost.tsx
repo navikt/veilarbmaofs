@@ -25,7 +25,7 @@ function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
 		<Informasjonsbolk header="Epost" {...rest}>
 			<Normaltekst className="innrykk wrap-anywhere">
 				{epostAdresse}
-				{epostAdresse && <Kopiknapp kopitekst={epostAdresse} />}
+				{epostAdresse && <Kopiknapp kopitekst={epostAdresse} type="epost" />}
 			</Normaltekst>
 			<Undertekst className="kilde-tekst">
 				<span>

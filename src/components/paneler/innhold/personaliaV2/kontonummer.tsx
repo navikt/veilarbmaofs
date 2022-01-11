@@ -16,7 +16,7 @@ function Kontonummer(props: { kontonummer?: string }) {
 		content = (
 			<Normaltekst className="innrykk">
 				{kontonummer}
-				<Kopiknapp kopitekst={props.kontonummer} />
+				<Kopiknapp kopitekst={props.kontonummer} type="kontonummer" />
 			</Normaltekst>
 		);
 	}
