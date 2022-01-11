@@ -8,7 +8,7 @@ function Kopiknapp(props: { kopitekst: string; type: string }) {
 	const [hover, setHover] = useState(false);
 
 	function copyToClipboard() {
-		logger.event('maofs.kopiknapp', {}, { kopiknapp: props.type });
+		logger.event('maofs.kopiknapp', { kopiknapp: props.type });
 		navigator.clipboard.writeText(props.kopitekst);
 	}
 
