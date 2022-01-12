@@ -9,6 +9,8 @@ import KontaktInformasjon from './KontaktInformasjon';
 import FamilieRelasjoner from './FamilieRelasjoner';
 import VergeFullmaktInfo from './VergeFullmaktInfo';
 import GeneralInfo from './GeneralInfo';
+import './personalia-panel-innhold.less';
+import Grid from '../../../felles/grid';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -37,7 +39,7 @@ const PersonaliaV2PanelInnhold = () => {
 
 	return (
 		<>
-			<div className="personalia-grid">
+			<Grid columns={4} gap="1rem">
 				<KontaktInformasjon
 					telefon={telefon}
 					epost={epost}
@@ -47,8 +49,10 @@ const PersonaliaV2PanelInnhold = () => {
 				/>
 				<FamilieRelasjoner sivilstand={sivilstand} partner={partner} barn={barn} />
 				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} />
-				<VergeFullmaktInfo />
-			</div>
+				<div>
+					<VergeFullmaktInfo />
+				</div>
+			</Grid>
 			<LenkeBrukerprofil />
 		</>
 	);

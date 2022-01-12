@@ -10,12 +10,12 @@ function VergeFullmaktInfo() {
 	const vergeOgFullmakt = useFetchVergOgFullmakt(fnr);
 
 	return (
-		<div className="break-all">
+		<>
 			{hasData(vergeOgFullmakt) && (
 				<Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />
 			)}
 			{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
-		</div>
+		</>
 	);
 }
 

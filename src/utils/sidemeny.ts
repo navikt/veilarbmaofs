@@ -24,6 +24,14 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.cv
 	},
 	{
+		name: 'Personalia',
+		id: sidemenyElementId.personalia
+	},
+	{
+		name: 'Personalia',
+		id: sidemenyElementId.personaliaFraPdl
+	},
+	{
 		name: 'Jobbprofil',
 		id: sidemenyElementId.jobbprofil
 	},
@@ -34,14 +42,6 @@ export const sidemenyElementer: SidemenyElement[] = [
 	{
 		name: 'Ytelser',
 		id: sidemenyElementId.ytelser
-	},
-	{
-		name: 'Personalia',
-		id: sidemenyElementId.personalia
-	},
-	{
-		name: 'Personalia',
-		id: sidemenyElementId.personaliaFraPdl
 	},
 	{
 		name: 'Registrering',
