@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import cls from 'classnames';
 import { Innholdstittel, Element } from 'nav-frontend-typografi';
 import './tilbakemelding-modal.less';
-import { Checkbox, Textarea } from 'nav-frontend-skjema';
 import takkIkon from './takk-ikon.png';
 import { isNullOrUndefined } from '../../utils';
-import { Button } from '@navikt/ds-react';
+import { Button, Checkbox, CheckboxGroup, Textarea } from '@navikt/ds-react';
 
 export interface TilbakemeldingProps {
 	checkboxIndexListe: number[];
@@ -106,20 +105,21 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 
 	const CheckboxValg = () => {
 		return (
-			<>
+			<CheckboxGroup hideLegend legend="">
 				{Object.keys(CheckboxVerdier).map((key, index) => {
 					return (
 						<Checkbox
 							checked={checkboxIndexListe.includes(index + 1)}
-							label={CheckboxVerdier[key]}
 							value={CheckboxVerdier[key]}
 							key={index}
 							onChange={e => handleCheckboxChanged(index + 1, e)}
 							className="tilbakemelding-modal__checkbox-element"
-						/>
+						>
+							{CheckboxVerdier[key]}
+						</Checkbox>
 					);
 				})}
-			</>
+			</CheckboxGroup>
 		);
 	};
 
@@ -147,6 +147,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 							maxLength={KOMMENTAR_MAX_CHAR}
 							value={kommentar}
 							onChange={e => handleKommentarChanged(e.target.value)}
+							maxRows={2}
 						/>
 					</div>
 					<Button variant="primary" role="submit" className="knapp--hoved">
