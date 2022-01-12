@@ -21,7 +21,7 @@ function KontaktInformasjon(props: {
 	const { telefon, epost, bostedsadresse, oppholdsadresse, kontaktadresser } = props;
 
 	return (
-		<div className="break-all">
+		<div>
 			<Telefon telefon={telefon} />
 			<Epost epost={epost} />
 			<Adresser

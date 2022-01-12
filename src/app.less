@@ -21,7 +21,7 @@
 	&__container {
 		max-width: 1920px;
 		min-height: 30vh;
-		margin: 0 auto;
+		margin: 0.75rem auto 0;
 
 		display: flex;
 		align-items: flex-start;
@@ -45,6 +45,10 @@
 		margin-top: 0.2rem;
 	}
 
+	.innrykk {
+		padding-left: 0.5rem;
+	}
+
 	.italic-gra {
 		color: @navGra60;
 		font-style: italic;
@@ -54,29 +58,7 @@
 		font-style: italic;
 	}
 
-	.break-all {
-		width: 280px;
-		word-break: normal;
-		hyphens: auto;
-	}
-
-	.break-all-sm-column {
-		width: 250px;
-		word-break: normal;
-		hyphens: auto;
-	}
-
-	.kilde-tekst {
-		color: #645f5a;
-		margin-top: 3px;
-		line-height: 1rem;
-		hyphens: auto;
-		word-break: normal;
-	}
-
-	.personalia-grid {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: repeat(3, 1fr);
+	.wrap-anywhere {
+		overflow-wrap: anywhere;
 	}
 }

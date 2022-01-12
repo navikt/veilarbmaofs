@@ -30,6 +30,7 @@ export const Sidemeny: React.FC = () => {
 							skalViseMenyElement(sidemenyElement.id) && (
 								<li key={`sidemenyelement-${sidemenyElement.id}`}>
 									<a
+										tabIndex={-1}
 										onClick={e => {
 											e.preventDefault();
 											setIsOpenSidemenyElement(sidemenyElement);

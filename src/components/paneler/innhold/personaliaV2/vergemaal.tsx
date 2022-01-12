@@ -75,7 +75,7 @@ function Verge(props: { vergemaal: VergemaalEllerFremtidsfullmakt }) {
 	const { ajourholdstidspunkt, gyldighetstidspunkt } = folkeregistermetadata;
 
 	return (
-		<div className="underinformasjon">
+		<div className="underinformasjon innrykk">
 			<BodyShort className="overinformasjon">{vergetypeBeskrivelse(type)}</BodyShort>
 			<VergeEllerFullmakt vergeEllerFullmektig={vergeEllerFullmektig} />
 			<Detail className="overinformasjon">Fylkesmannsembete</Detail>

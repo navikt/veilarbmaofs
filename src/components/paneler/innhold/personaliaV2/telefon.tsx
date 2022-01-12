@@ -4,6 +4,7 @@ import { PersonaliaV2Info, PersonaliaTelefon } from '../../../../rest/datatyper/
 import EMDASH from '../../../../utils/emdash';
 import { formaterTelefonnummer, isNotEmptyArray } from '../../../../utils';
 import { hentKilde } from '../../../../utils/konstanter';
+import Kopiknapp from '../../../felles/kopiknapp';
 import { BodyShort, Detail } from '@navikt/ds-react';
 
 function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
@@ -24,13 +25,14 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<BodyShort>{formaterTelefonnummer(landkode, telefonnummer)}</BodyShort>
+			<BodyShort className="innrykk">
+				{formaterTelefonnummer(landkode, telefonnummer)}
+				<Kopiknapp kopitekst={props.telefon.telefonNr} type="telefonnummer" />
+			</BodyShort>
 			{telefonNr && (
 				<Detail size="small" className="kilde-tekst">
-					<span>
-						Registrert {registrertDato && registrertDato}
-						{` ${hentKilde(master)}`}
-					</span>
+					Registrert {registrertDato && registrertDato}
+					{` ${hentKilde(master)}`}
 				</Detail>
 			)}
 		</div>

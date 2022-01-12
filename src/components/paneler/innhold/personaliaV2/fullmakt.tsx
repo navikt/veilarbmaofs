@@ -19,7 +19,7 @@ function FullmaktigEllerFullmaktsgiver(props: { fullmakt: Fullmakter }) {
 
 	return (
 		<div>
-			<div className="overinformasjon underinformasjon">
+			<div className="overinformasjon underinformasjon innrykk">
 				<Detail>
 					F{motpartsRolle?.substring(1).toLowerCase()}: {motpartsPersonident}
 				</Detail>

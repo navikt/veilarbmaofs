@@ -18,8 +18,10 @@ function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 
 	return (
 		<Informasjonsbolk header="Sivilstand" {...rest}>
-			<BodyShort>{formateStringInUpperAndLowerCase(sivilstand.sivilstand)}</BodyShort>
-			{sivilstand.fraDato && <BodyShort>Fra: {formateLocalDate(sivilstand.fraDato)}</BodyShort>}
+			<BodyShort className="innrykk">{formateStringInUpperAndLowerCase(sivilstand.sivilstand)}</BodyShort>
+			{sivilstand.fraDato && (
+				<BodyShort className="innrykk">Fra: {formateLocalDate(sivilstand.fraDato)}</BodyShort>
+			)}
 		</Informasjonsbolk>
 	);
 }

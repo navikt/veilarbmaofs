@@ -40,6 +40,7 @@ export const Paneler: React.FC = () => {
 				>
 					<OppfolgingPanelInnhold />
 				</Panel>
+
 				<Panel
 					key={`panel-${sidemenyElementId.cv}`}
 					name="cv"
@@ -49,6 +50,30 @@ export const Paneler: React.FC = () => {
 				>
 					<CvPanel />
 				</Panel>
+
+				<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personalia}`}
+						name="personalia"
+						id={sidemenyElementId.personalia}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
+					>
+						<PersonaliaPanelInnhold />
+					</Panel>
+				</Show>
+				<Show if={!features[PERSONALIA_DATA_FRA_TPS]}>
+					<Panel
+						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
+						name="personaliaFraPdl"
+						id={sidemenyElementId.personaliaFraPdl}
+						tittel="Personalia"
+						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
+					>
+						<PersonaliaV2PanelInnhold />
+					</Panel>
+				</Show>
+
 				<Panel
 					key={`panel-${sidemenyElementId.jobbprofil}`}
 					name="jobbprofil"
@@ -85,29 +110,6 @@ export const Paneler: React.FC = () => {
 				>
 					<YtelserPanelInnhold />
 				</Panel>
-
-				<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
-					<Panel
-						key={`panel-${sidemenyElementId.personalia}`}
-						name="personalia"
-						id={sidemenyElementId.personalia}
-						tittel="Personalia"
-						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
-					>
-						<PersonaliaPanelInnhold />
-					</Panel>
-				</Show>
-				<Show if={!features[PERSONALIA_DATA_FRA_TPS]}>
-					<Panel
-						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
-						name="personaliaFraPdl"
-						id={sidemenyElementId.personaliaFraPdl}
-						tittel="Personalia"
-						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
-					>
-						<PersonaliaV2PanelInnhold />
-					</Panel>
-				</Show>
 
 				<Panel
 					key={`panel-${sidemenyElementId.registrering}`}
