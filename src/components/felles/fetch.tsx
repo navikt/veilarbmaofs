@@ -1,9 +1,8 @@
 import React from 'react';
 import cls from 'classnames';
-import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
 import './fetch.less';
-import { Alert } from '@navikt/ds-react';
+import { Alert, Loader } from '@navikt/ds-react';
 
 export const Feilmelding = (props: { tekst?: string }) => (
 	<Alert variant="warning">{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}</Alert>
@@ -11,7 +10,7 @@ export const Feilmelding = (props: { tekst?: string }) => (
 
 export const Laster = (props: { midtstilt?: boolean }) => (
 	<div className={cls({ 'veilarbmaofs__laster--midtstilt': props.midtstilt })}>
-		<NavFrontendSpinner type="XL" />
+		<Loader size="xlarge" />
 	</div>
 );
 
