@@ -1,7 +1,7 @@
 import React from 'react';
 import { Ingress, Normaltekst } from 'nav-frontend-typografi';
 import { InnsatsgruppeType, OrdinaerRegistrering, Registrering } from '../../../../rest/datatyper/registreringsData';
-import Panel from 'nav-frontend-paneler';
+import { Panel } from '@navikt/ds-react';
 
 interface Props {
 	registrering: Registrering | undefined;
