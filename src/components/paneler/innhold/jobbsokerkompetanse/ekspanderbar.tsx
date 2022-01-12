@@ -1,8 +1,8 @@
-import NavFrontendChevron from 'nav-frontend-chevron';
 import React from 'react';
 import { Collapse } from 'react-collapse';
 import './ekspanderbar.less';
 import { BodyShort } from '@navikt/ds-react';
+import { Collapse as CollapseIcon, Expand as ExpandIcon } from '@navikt/ds-icons';
 
 interface State {
 	apen: boolean;
@@ -29,7 +29,6 @@ export class Ekspanderbar extends React.Component<Props, State> {
 
 	public render() {
 		const apen = this.state.apen;
-		const chevronType = apen ? 'opp' : 'ned';
 
 		return (
 			<>
@@ -37,7 +36,7 @@ export class Ekspanderbar extends React.Component<Props, State> {
 					<BodyShort>
 						{this.props.tekst}
 						<span className="lenketekst">{this.props.lenketekst}</span>
-						<NavFrontendChevron type={chevronType} />
+						{apen ? <CollapseIcon /> : <ExpandIcon />}
 					</BodyShort>
 				</div>
 				<Collapse isOpened={apen}>{this.props.children}</Collapse>
