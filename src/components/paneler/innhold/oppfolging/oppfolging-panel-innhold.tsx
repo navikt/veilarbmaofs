@@ -26,9 +26,9 @@ import { OrNothing } from '../../../../utils/felles-typer';
 import { Hovedmal, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
 import { ArenaHovedmalKode, ArenaServicegruppeKode } from '../../../../rest/datatyper/oppfolgingsstatus';
 import { INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE } from '../../../../rest/datatyper/feature';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import './oppfolging-panel-innhold.less';
 import Show from '../../../felles/show';
+import { Alert } from '@navikt/ds-react';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr, features } = useAppStore();
@@ -111,10 +111,10 @@ const OppfolgingPanelInnhold = () => {
 						: false
 				}
 			>
-				<AlertStripeInfo className="alert-hovedmal-vedtaksstotte">
+				<Alert variant="info" className="alert-hovedmal-vedtaksstotte">
 					Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
 					"Oppfølgingsvedtak".
-				</AlertStripeInfo>
+				</Alert>
 			</Show>
 		</>
 	);

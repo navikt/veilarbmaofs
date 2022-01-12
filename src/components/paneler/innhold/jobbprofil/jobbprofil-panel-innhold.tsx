@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../../felles/sist-endret';
@@ -12,6 +11,7 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { isPending, hasError, WithData, FetchResult } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
+import { Alert } from '@navikt/ds-react';
 
 const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
 	const withData = cvOgJobbprofil as WithData<ArenaPerson>;
@@ -29,7 +29,7 @@ const JobbprofilPanelInnhold = () => {
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
 	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
-		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
+		return <Alert variant="info">Bruker er ikke under arbeidsrettet oppfølging</Alert>;
 	}
 
 	const underOppfolgingData = underOppfolging.data;
@@ -42,7 +42,7 @@ const JobbprofilPanelInnhold = () => {
 	// Sjekk alltid tilgang først
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
-			<AlertStripeInfo>
+			<Alert variant="info">
 				Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
 				<ul>
 					<li>
@@ -50,7 +50,7 @@ const JobbprofilPanelInnhold = () => {
 						nav.no og oppdatere CV'en sin.
 					</li>
 				</ul>
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (
 		cvOgJobbprofil.statusCode === 404 ||
@@ -58,14 +58,14 @@ const JobbprofilPanelInnhold = () => {
 		!harJobbprofilData(cvOgJobbprofil)
 	) {
 		return (
-			<AlertStripeInfo>
+			<Alert variant="info">
 				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
 				{erManuell && brukerAktorId && (
 					<Lenke target="_blank" href={pamUrl}>
 						Registrer her
 					</Lenke>
 				)}
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (!hasData(cvOgJobbprofil)) {
 		return <Feilmelding />;

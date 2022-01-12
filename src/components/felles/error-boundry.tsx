@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
+import { Alert } from '@navikt/ds-react';
 
 interface ErrorBoundryProps {
 	message: string;
@@ -22,9 +22,8 @@ class ErrorBoundary extends React.Component<ErrorBoundryProps, ErrorBoundryState
 
 	render() {
 		if (this.state.hasError) {
-			return <AlertStripeAdvarsel>{this.props.message}</AlertStripeAdvarsel>;
+			return <Alert variant="warning">{this.props.message}</Alert>;
 		}
-
 		return this.props.children;
 	}
 }
