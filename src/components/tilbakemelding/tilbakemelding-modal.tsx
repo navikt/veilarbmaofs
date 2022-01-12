@@ -3,9 +3,9 @@ import cls from 'classnames';
 import { Innholdstittel, Element } from 'nav-frontend-typografi';
 import './tilbakemelding-modal.less';
 import { Checkbox, Textarea } from 'nav-frontend-skjema';
-import { Hovedknapp } from 'nav-frontend-knapper';
 import takkIkon from './takk-ikon.png';
 import { isNullOrUndefined } from '../../utils';
+import { Button } from '@navikt/ds-react';
 
 export interface TilbakemeldingProps {
 	checkboxIndexListe: number[];
@@ -149,9 +149,9 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 							onChange={e => handleKommentarChanged(e.target.value)}
 						/>
 					</div>
-					<Hovedknapp role="submit" className="knapp--hoved">
+					<Button variant="primary" role="submit" className="knapp--hoved">
 						Send
-					</Hovedknapp>
+					</Button>
 				</form>
 			</div>
 		);

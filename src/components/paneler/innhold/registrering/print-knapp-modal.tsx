@@ -1,5 +1,5 @@
-import { Hovedknapp } from 'nav-frontend-knapper';
 import React from 'react';
+import { Button } from '@navikt/ds-react';
 
 export function PrintKnappModal() {
 	const printModal = () => {
@@ -10,9 +10,9 @@ export function PrintKnappModal() {
 
 	return (
 		<div className="personverninformasjon-modal__header">
-			<Hovedknapp htmlType="button" onClick={printModal}>
+			<Button variant="primary" type="button" onClick={printModal}>
 				<span>Skriv ut</span>
-			</Hovedknapp>
+			</Button>
 		</div>
 	);
 }
