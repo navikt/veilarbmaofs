@@ -1,9 +1,9 @@
 import React from 'react';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
+import { Alert } from '@navikt/ds-react';
 
 export const CvIkkeSynligInfo = () => {
 	return (
-		<AlertStripeInfo className="cv-ikke-synlig blokk-l">
+		<Alert variant="info" className="cv-ikke-synlig blokk-l">
 			Fra 17.2.2021 kan arbeidsgivere kun se CV til jobbsøkere som ikke er under arbeidsrettet oppfølging fra NAV.
 			<br />
 			Les mer om{' '}
@@ -11,6 +11,6 @@ export const CvIkkeSynligInfo = () => {
 				synlig CV
 			</a>
 			.
-		</AlertStripeInfo>
+		</Alert>
 	);
 };

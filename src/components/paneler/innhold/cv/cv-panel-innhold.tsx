@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
 import { LastNedCV } from './last-ned-cv';
@@ -23,6 +22,7 @@ import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
+import { Alert } from '@navikt/ds-react';
 
 const CvPanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -35,7 +35,7 @@ const CvPanelInnhold = () => {
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
 	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
-		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
+		return <Alert variant="info">Bruker er ikke under arbeidsrettet oppfølging</Alert>;
 	}
 
 	const underOppfolgingData = underOppfolging.data;
@@ -46,7 +46,7 @@ const CvPanelInnhold = () => {
 
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
-			<AlertStripeInfo className="cv-alert-ikke-tilgang">
+			<Alert variant="info" className="cv-alert-ikke-tilgang">
 				Du kan ikke se CV-en, be brukeren om å:
 				<ul>
 					<li>logge inn på arbeidsplassen.no</li>
@@ -54,18 +54,18 @@ const CvPanelInnhold = () => {
 					<li>gå videre og gjennomføre det tjenesten ber om</li>
 				</ul>
 				Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
 		return (
-			<AlertStripeInfo>
+			<Alert variant="info">
 				Denne personen har ikke registrert CV.&nbsp;&nbsp;
 				{erManuell && aktorId && (
 					<Lenke target="_blank" href={endreCvUrl}>
 						Registrer her
 					</Lenke>
 				)}
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (!hasData(cvOgJobbprofil)) {
 		return <Feilmelding />;
