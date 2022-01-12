@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Lenke from 'nav-frontend-lenker';
 import { Edit, EditFilled } from '@navikt/ds-icons';
+import { Link } from '@navikt/ds-react';
 
 export function RedigerJobbprofil(props: { erManuell: boolean; jobbprofilRegistreringsLenke: string }) {
 	const [hover, setHover] = useState(false);
@@ -10,11 +10,11 @@ export function RedigerJobbprofil(props: { erManuell: boolean; jobbprofilRegistr
 	}
 
 	return (
-		<Lenke href={props.jobbprofilRegistreringsLenke} className="cv-panel-lenke" target="_blank">
+		<Link href={props.jobbprofilRegistreringsLenke} className="cv-panel-lenke" target="_blank">
 			<span onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				{hover ? <EditFilled /> : <Edit />}
 				Endre jobbprofil
 			</span>
-		</Lenke>
+		</Link>
 	);
 }

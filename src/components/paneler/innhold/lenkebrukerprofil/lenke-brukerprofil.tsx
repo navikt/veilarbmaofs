@@ -3,7 +3,7 @@ import { lagPersonforvalterLenke } from '../../../../utils';
 import { useAppStore } from '../../../../stores/app-store';
 import { useFetchAktorId } from '../../../../rest/api';
 import { hasData } from '../../../../rest/utils';
-import Lenke from 'nav-frontend-lenker';
+import { Link } from '@navikt/ds-react';
 
 function LenkeBrukerprofil() {
 	const { fnr } = useAppStore();
@@ -14,9 +14,9 @@ function LenkeBrukerprofil() {
 
 	return (
 		<div className="lenke-brukerprofil">
-			<Lenke href={personforvalterUrl} target={'_blank'} rel="noreferrer noopener">
+			<Link href={personforvalterUrl} target={'_blank'} rel="noreferrer noopener">
 				Endre personopplysninger
-			</Lenke>
+			</Link>
 		</div>
 	);
 }

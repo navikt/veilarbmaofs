@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Lenke from 'nav-frontend-lenker';
 import { logger } from '../../../../utils/logger';
 import { Download, DownloadFilled } from '@navikt/ds-icons';
+import { Link } from '@navikt/ds-react';
 
 export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string }) {
 	const [hover, setHover] = useState(false);
@@ -11,7 +11,7 @@ export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string })
 	};
 
 	return (
-		<Lenke
+		<Link
 			onClick={handleOnLastNedLenkeClicked}
 			href={props.lastNedCvLenke}
 			className="cv-panel-lenke"
@@ -21,6 +21,6 @@ export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string })
 				{hover ? <DownloadFilled /> : <Download />}
 				Last ned CV
 			</span>
-		</Lenke>
+		</Link>
 	);
 }

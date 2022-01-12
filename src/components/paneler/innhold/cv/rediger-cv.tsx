@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Lenke from 'nav-frontend-lenker';
 import { Edit, EditFilled } from '@navikt/ds-icons';
+import { Link } from '@navikt/ds-react';
 
 export function RedigerCV(props: { erManuell: boolean; cvRegistreringsLenke: string }) {
 	const [hover, setHover] = useState(false);
@@ -10,11 +10,11 @@ export function RedigerCV(props: { erManuell: boolean; cvRegistreringsLenke: str
 	}
 
 	return (
-		<Lenke href={props.cvRegistreringsLenke} className="cv-panel-lenke" target="_blank">
+		<Link href={props.cvRegistreringsLenke} className="cv-panel-lenke" target="_blank">
 			<span onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				{hover ? <EditFilled /> : <Edit />}
 				Endre CV
 			</span>
-		</Lenke>
+		</Link>
 	);
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import Lenke from 'nav-frontend-lenker';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../../felles/sist-endret';
 import Grid from '../../../felles/grid';
@@ -11,7 +10,7 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { isPending, hasError, WithData, FetchResult } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
-import { Alert } from '@navikt/ds-react';
+import { Alert, Link } from '@navikt/ds-react';
 
 const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
 	const withData = cvOgJobbprofil as WithData<ArenaPerson>;
@@ -61,9 +60,9 @@ const JobbprofilPanelInnhold = () => {
 			<Alert variant="info">
 				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
 				{erManuell && brukerAktorId && (
-					<Lenke target="_blank" href={pamUrl}>
+					<Link target="_blank" href={pamUrl}>
 						Registrer her
-					</Lenke>
+					</Link>
 				)}
 			</Alert>
 		);

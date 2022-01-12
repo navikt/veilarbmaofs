@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
 import { LastNedCV } from './last-ned-cv';
 import { RedigerCV } from './rediger-cv';
@@ -22,7 +21,7 @@ import { hasError, isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
-import { Alert } from '@navikt/ds-react';
+import { Alert, Link } from '@navikt/ds-react';
 
 const CvPanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -61,9 +60,9 @@ const CvPanelInnhold = () => {
 			<Alert variant="info">
 				Denne personen har ikke registrert CV.&nbsp;&nbsp;
 				{erManuell && aktorId && (
-					<Lenke target="_blank" href={endreCvUrl}>
+					<Link target="_blank" href={endreCvUrl}>
 						Registrer her
-					</Lenke>
+					</Link>
 				)}
 			</Alert>
 		);
