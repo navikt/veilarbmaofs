@@ -1,5 +1,4 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaPartner } from '../../../../rest/datatyper/personaliav2';
 import { finnAlder } from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
@@ -7,6 +6,7 @@ import { formateFirstCharOfEachWordToUppercase, isNullOrUndefined } from '../../
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
 import { graderingBeskrivelse } from '../../../../utils/konstanter';
+import { BodyShort } from '@navikt/ds-react';
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -25,15 +25,15 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 		<Informasjonsbolk header="Partner" className="overinformasjon" {...rest}>
 			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
-					<Normaltekst>{borSammen}</Normaltekst>
+					<BodyShort>{borSammen}</BodyShort>
 				</div>
 			) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
-				<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+				<BodyShort>{graderingBeskrivelse(gradering)}</BodyShort>
 			) : (
 				<div>
-					<Normaltekst>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</Normaltekst>
-					<Normaltekst>{borSammen}</Normaltekst>
-					<Normaltekst>{graderingBeskrivelse(gradering)}</Normaltekst>
+					<BodyShort>{`${formateFirstCharOfEachWordToUppercase(forkortetNavn)} (${alder})`}</BodyShort>
+					<BodyShort>{borSammen}</BodyShort>
+					<BodyShort>{graderingBeskrivelse(gradering)}</BodyShort>
 				</div>
 			)}
 		</Informasjonsbolk>

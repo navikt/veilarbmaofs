@@ -1,9 +1,9 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaSivilstand } from '../../../../rest/datatyper/personalia';
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import EMDASH from '../../../../utils/emdash';
+import { BodyShort } from '@navikt/ds-react';
 
 function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 	const { sivilstand, ...rest } = props;
@@ -18,8 +18,8 @@ function Sivilstand(props: { sivilstand: PersonaliaSivilstand }) {
 
 	return (
 		<Informasjonsbolk header="Sivilstand" {...rest}>
-			<Normaltekst>{formateStringInUpperAndLowerCase(sivilstand.sivilstand)}</Normaltekst>
-			{sivilstand.fraDato && <Normaltekst>Fra: {formateLocalDate(sivilstand.fraDato)}</Normaltekst>}
+			<BodyShort>{formateStringInUpperAndLowerCase(sivilstand.sivilstand)}</BodyShort>
+			{sivilstand.fraDato && <BodyShort>Fra: {formateLocalDate(sivilstand.fraDato)}</BodyShort>}
 		</Informasjonsbolk>
 	);
 }

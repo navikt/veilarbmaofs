@@ -1,6 +1,6 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
+import { BodyShort } from '@navikt/ds-react';
 
 interface RegistrertAvProps {
 	registrering: Registrering;
@@ -14,7 +14,7 @@ const RegistrertAv = (props: RegistrertAvProps) => {
 	const registrertAv = props.registrering.manueltRegistrertAv;
 	const { ident, enhet } = registrertAv;
 
-	return <Normaltekst className="italic-gra">{`Registrert av: ${ident}, ${enhet.id} ${enhet.navn}`}</Normaltekst>;
+	return <BodyShort className="italic-gra">{`Registrert av: ${ident}, ${enhet.id} ${enhet.navn}`}</BodyShort>;
 };
 
 export default RegistrertAv;

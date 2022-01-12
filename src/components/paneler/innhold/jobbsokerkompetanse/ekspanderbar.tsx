@@ -1,8 +1,8 @@
 import NavFrontendChevron from 'nav-frontend-chevron';
-import Normaltekst from 'nav-frontend-typografi/lib/normaltekst';
 import React from 'react';
 import { Collapse } from 'react-collapse';
 import './ekspanderbar.less';
+import { BodyShort } from '@navikt/ds-react';
 
 interface State {
 	apen: boolean;
@@ -34,11 +34,11 @@ export class Ekspanderbar extends React.Component<Props, State> {
 		return (
 			<>
 				<div onClick={this.toggleApen} className="ekspanderbar-lenke">
-					<Normaltekst>
+					<BodyShort>
 						{this.props.tekst}
 						<span className="lenketekst">{this.props.lenketekst}</span>
 						<NavFrontendChevron type={chevronType} />
-					</Normaltekst>
+					</BodyShort>
 				</div>
 				<Collapse isOpened={apen}>{this.props.children}</Collapse>
 			</>

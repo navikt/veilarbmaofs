@@ -1,8 +1,8 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeMap, visEmdashHvisNull } from '../../../../utils';
+import { BodyShort } from '@navikt/ds-react';
 
 type Props = Pick<ArenaPerson, 'forerkort'>;
 
@@ -10,11 +10,11 @@ function Forerkort(props: Props) {
 	const { forerkort, ...rest } = props;
 	const forerkortListe = safeMap(forerkort, (enkeltForerkort, index) => (
 		<div key={`forerkort-${index}`} className="underinformasjon">
-			<Normaltekst key={`forerkort-${index}`} className="underinformasjon">
+			<BodyShort key={`forerkort-${index}`} className="underinformasjon">
 				Klasse: {visEmdashHvisNull(enkeltForerkort.klasse)}
-			</Normaltekst>
-			<Normaltekst>Fra: {formaterDato(enkeltForerkort.fraDato)}</Normaltekst>
-			<Normaltekst>Utløper: {formaterDato(enkeltForerkort.utloperDato)}</Normaltekst>
+			</BodyShort>
+			<BodyShort>Fra: {formaterDato(enkeltForerkort.fraDato)}</BodyShort>
+			<BodyShort>Utløper: {formaterDato(enkeltForerkort.utloperDato)}</BodyShort>
 		</div>
 	));
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import {
 	Gateadresse,
 	Matrikkeladresse,
@@ -13,6 +12,7 @@ import {
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
 import { OrNothing } from '../../../../utils/felles-typer';
+import { BodyShort, Label } from '@navikt/ds-react';
 
 function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsadresse'>) {
 	if (isNullOrUndefined(props.bostedsadresse)) {
@@ -23,7 +23,7 @@ function SammensattFolkeregistrertAdresse(props: Pick<PersonaliaInfo, 'bostedsad
 
 	return (
 		<div className="underinformasjon">
-			<Element>Folkeregistrert postadresse</Element>
+			<Label>Folkeregistrert postadresse</Label>
 			{!isNullOrUndefined(adresse) ? <GateAdresse adresse={adresse} /> : EMDASH}
 		</div>
 	);
@@ -59,7 +59,7 @@ function MidlertidigAdresseVisning(props: MidlertidigAdresseVisningProps) {
 
 	return (
 		<div className="underinformasjon">
-			<Element>{props.overskrift}</Element>
+			<Label>{props.overskrift}</Label>
 			{adresseVisning}
 		</div>
 	);
@@ -72,7 +72,7 @@ function PostAdresse(props: { postAdresse: PersonaliaPostadresse }) {
 
 	return (
 		<div className="underinformasjon">
-			<Element> Postadresse </Element>
+			<Label> Postadresse </Label>
 			<UstrukturertAdresseVisning ustrukturertAdresse={props.postAdresse.ustrukturertAdresse} />
 		</div>
 	);
@@ -87,11 +87,11 @@ function UstrukturertAdresseVisning(props: { ustrukturertAdresse: UstrukturertAd
 
 	return (
 		<>
-			<Normaltekst> {visEmdashHvisNull(adresselinje1)} </Normaltekst>
-			<Normaltekst> {visEmdashHvisNull(adresselinje2)} </Normaltekst>
-			<Normaltekst> {visEmdashHvisNull(adresselinje3)} </Normaltekst>
-			<Normaltekst> {visEmdashHvisNull(adresselinje4)} </Normaltekst>
-			<Normaltekst> {visEmdashHvisNull(landkode)} </Normaltekst>
+			<BodyShort> {visEmdashHvisNull(adresselinje1)} </BodyShort>
+			<BodyShort> {visEmdashHvisNull(adresselinje2)} </BodyShort>
+			<BodyShort> {visEmdashHvisNull(adresselinje3)} </BodyShort>
+			<BodyShort> {visEmdashHvisNull(adresselinje4)} </BodyShort>
+			<BodyShort> {visEmdashHvisNull(landkode)} </BodyShort>
 		</>
 	);
 }
@@ -110,7 +110,7 @@ function MatrikkelAdresse(props: { adresse: Matrikkeladresse }) {
 	} = props.adresse;
 	return (
 		<>
-			<Normaltekst>
+			<BodyShort>
 				Gårdsnummer: {gardsnummer}
 				<br />
 				Bruksnummer: {bruksnummer}
@@ -123,8 +123,8 @@ function MatrikkelAdresse(props: { adresse: Matrikkeladresse }) {
 				<br />
 				Tilleggsadresse: {tilleggsadresse}
 				<br />
-			</Normaltekst>
-			<Normaltekst>{`${postnummer || ''} ${poststed || ''}, ${landkode || ''}`}</Normaltekst>
+			</BodyShort>
+			<BodyShort>{`${postnummer || ''} ${poststed || ''}, ${landkode || ''}`}</BodyShort>
 		</>
 	);
 }
@@ -133,8 +133,8 @@ function GateAdresse(prop: { adresse: Gateadresse }) {
 	const { gatenavn, husnummer, husbokstav, postnummer, poststed } = prop.adresse;
 	return (
 		<>
-			<Normaltekst>{`${gatenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</Normaltekst>
-			<Normaltekst>{`${postnummer} ${poststed}`}</Normaltekst>
+			<BodyShort>{`${gatenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</BodyShort>
+			<BodyShort>{`${postnummer} ${poststed}`}</BodyShort>
 		</>
 	);
 }
@@ -143,8 +143,8 @@ function PostboksAdresse(prop: { adresse: PostboksadresseNorsk }) {
 	const { postnummer, poststed, postboksnummer, postboksanlegg } = prop.adresse;
 	return (
 		<>
-			<Normaltekst>{`Postboks ${(postboksnummer || '').trim()} ${postboksanlegg || ''}`}</Normaltekst>
-			<Normaltekst>{`${postnummer || ''} ${poststed || ''}`}</Normaltekst>
+			<BodyShort>{`Postboks ${(postboksnummer || '').trim()} ${postboksanlegg || ''}`}</BodyShort>
+			<BodyShort>{`${postnummer || ''} ${poststed || ''}`}</BodyShort>
 		</>
 	);
 }

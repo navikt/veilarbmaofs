@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import cls from 'classnames';
-import { Innholdstittel, Element } from 'nav-frontend-typografi';
 import './tilbakemelding-modal.less';
 import takkIkon from './takk-ikon.png';
 import { isNullOrUndefined } from '../../utils';
-import { Button, Checkbox, CheckboxGroup, Textarea } from '@navikt/ds-react';
+import { Button, Checkbox, CheckboxGroup, Heading, Label, Textarea } from '@navikt/ds-react';
 
 export interface TilbakemeldingProps {
 	checkboxIndexListe: number[];
@@ -96,9 +95,9 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 		return (
 			<div className="tilbakemelding-modal__takk-melding-wrapper">
 				<img alt="Takk for din tilbakemelding" className="tilbakemelding-modal__takk-ikon" src={takkIkon} />
-				<Element>
+				<Label>
 					Takk for at du tok deg tid til å gi tilbakemelding. Vi bruker innspillene til å forbedre løsningen.
-				</Element>
+				</Label>
 			</div>
 		);
 	};
@@ -126,13 +125,13 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 	const renderCheckboxValg = () => {
 		return (
 			<div className={cls({ 'tilbakemelding-modal__innhold-fade-out': showFadeOutAnimation })}>
-				<Innholdstittel className="blokk-xxs tilbakemelding-modal__tittel">
+				<Heading size="2xlarge" className="blokk-xxs tilbakemelding-modal__tittel">
 					Hva trenger du å vite om brukerens familie?
-				</Innholdstittel>
-				<Element className="blokk-xxs">
+				</Heading>
+				<Label className="blokk-xxs">
 					Vi skal alltid prøve å begrense mengden informasjon vi har om brukerne våre. Hvor mye informasjon om
 					brukers familie trenger du minimum for oppfølging mot arbeid?
-				</Element>
+				</Label>
 				<form
 					className="tilbakemelding-modal__ekspander"
 					onSubmit={handleCheckboxFormSubmitted}

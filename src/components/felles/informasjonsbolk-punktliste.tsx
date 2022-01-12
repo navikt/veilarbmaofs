@@ -1,7 +1,7 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { safeMap } from '../../utils';
 import Informasjonsbolk from './informasjonsbolk';
+import { BodyShort } from '@navikt/ds-react';
 
 interface Props<T> {
 	header: string;
@@ -14,7 +14,7 @@ function InformasjonsbolkPunktliste<T>(props: Props<T>) {
 
 	const elementer = safeMap(list, (element: T, index: number) => (
 		<li key={index}>
-			<Normaltekst key={element as any}>{element}</Normaltekst>
+			<BodyShort key={element as any}>{element}</BodyShort>
 		</li>
 	));
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaPartner } from '../../../../rest/datatyper/personalia';
 import { finnAldersTekst } from '../../../../utils/date-utils';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { OrNothing } from '../../../../utils/felles-typer';
+import { BodyShort } from '@navikt/ds-react';
 
 function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 	const { partner, ...rest } = props;
@@ -22,9 +22,9 @@ function Partner(props: { partner: OrNothing<PersonaliaPartner> }) {
 
 	return (
 		<Informasjonsbolk header="Partner" {...rest}>
-			<Normaltekst>{borSammen}</Normaltekst>
-			<Normaltekst>{`${sammensattNavn} ${alder}`}</Normaltekst>
-			<Normaltekst>{fodselsnummer}</Normaltekst>
+			<BodyShort>{borSammen}</BodyShort>
+			<BodyShort>{`${sammensattNavn} ${alder}`}</BodyShort>
+			<BodyShort>{fodselsnummer}</BodyShort>
 		</Informasjonsbolk>
 	);
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Ingress } from 'nav-frontend-typografi';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
 import RegistrertTid from './registrert-tid';
 import RegistrertAv from './registrert-av';
+import { Ingress } from '@navikt/ds-react';
 
 export function Header(props: { registrering?: Registrering }) {
 	if (!props.registrering) {

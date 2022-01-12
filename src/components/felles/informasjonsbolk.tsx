@@ -1,6 +1,6 @@
 import React from 'react';
 import cls from 'classnames';
-import TypografiBase from 'nav-frontend-typografi';
+import { Ingress, Label } from '@navikt/ds-react';
 
 interface Props {
 	header: string;
@@ -14,7 +14,8 @@ function Informasjonsbolk(props: Props) {
 
 	return (
 		<div className={cls('informasjonsbolk', className)} {...rest}>
-			<TypografiBase type={headerTypo}>{header}</TypografiBase>
+			{headerTypo === 'ingress' && <Ingress>{header}</Ingress>}
+			{headerTypo === 'element' && <Label>{header}</Label>}
 			{children}
 		</div>
 	);

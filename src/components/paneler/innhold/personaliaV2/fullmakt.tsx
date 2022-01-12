@@ -1,8 +1,8 @@
 import { Fullmakter, VergeOgFullmaktData } from '../../../../rest/datatyper/vergeOgFullmakt';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import React from 'react';
-import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi';
 import { formateLocalDate, isNotEmptyArray } from '../../../../utils';
+import { BodyShort, Detail } from '@navikt/ds-react';
 
 function FullmaktigEllerFullmaktsgiver(props: { fullmakt: Fullmakter }) {
 	const {
@@ -20,13 +20,13 @@ function FullmaktigEllerFullmaktsgiver(props: { fullmakt: Fullmakter }) {
 	return (
 		<div>
 			<div className="overinformasjon underinformasjon">
-				<UndertekstBold>
+				<Detail>
 					F{motpartsRolle?.substring(1).toLowerCase()}: {motpartsPersonident}
-				</UndertekstBold>
-				<Normaltekst>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</Normaltekst>
-				<Normaltekst>{`Gjelder ${gjeldendeOmraader}`}</Normaltekst>
-				<Normaltekst>Gyldig fra og med: {formateLocalDate(gyldigFraOgMed)}</Normaltekst>
-				<Normaltekst>Gyldig til og med: {formateLocalDate(gyldigTilOgMed)}</Normaltekst>
+				</Detail>
+				<BodyShort>{`${fornavn} ${mellomnavn || ''} ${etternavn}`}</BodyShort>
+				<BodyShort>{`Gjelder ${gjeldendeOmraader}`}</BodyShort>
+				<BodyShort>Gyldig fra og med: {formateLocalDate(gyldigFraOgMed)}</BodyShort>
+				<BodyShort>Gyldig til og med: {formateLocalDate(gyldigTilOgMed)}</BodyShort>
 			</div>
 		</div>
 	);

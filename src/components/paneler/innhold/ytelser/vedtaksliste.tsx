@@ -3,9 +3,9 @@ import { YtelseData } from '../../../../rest/datatyper/ytelse';
 import Grid from '../../../felles/grid';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
-import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
 import { formaterDato, safeMap, visEmdashHvisNull } from '../../../../utils';
+import { BodyShort } from '@navikt/ds-react';
 
 function Vedtaksliste(props: Pick<YtelseData, 'vedtaksliste'>) {
 	const vedtakliste = safeMap(props.vedtaksliste, (vedtak, index) => (
@@ -14,8 +14,8 @@ function Vedtaksliste(props: Pick<YtelseData, 'vedtaksliste'>) {
 			<InformasjonsbolkEnkel header="Vedtakstatus" value={visEmdashHvisNull(vedtak.status)} />
 			<InformasjonsbolkEnkel header="Aktivitetsfase" value={visEmdashHvisNull(vedtak.aktivitetsfase)} />
 			<Informasjonsbolk header="Vedtaksperiode" {...props}>
-				<Normaltekst>{vedtak.fradato ? `Fra: ${formaterDato(vedtak.fradato)}` : EMDASH}</Normaltekst>
-				<Normaltekst>{vedtak.tildato ? `Til: ${formaterDato(vedtak.tildato)}` : EMDASH}</Normaltekst>
+				<BodyShort>{vedtak.fradato ? `Fra: ${formaterDato(vedtak.fradato)}` : EMDASH}</BodyShort>
+				<BodyShort>{vedtak.tildato ? `Til: ${formaterDato(vedtak.tildato)}` : EMDASH}</BodyShort>
 			</Informasjonsbolk>
 		</Grid>
 	));

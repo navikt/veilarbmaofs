@@ -1,7 +1,7 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
 import { formaterDato, isNullOrUndefined } from '../../../../utils';
+import { BodyShort } from '@navikt/ds-react';
 
 function RegistrertTid(props: Pick<Registrering, 'opprettetDato'>) {
 	if (isNullOrUndefined(props.opprettetDato)) {
@@ -10,7 +10,7 @@ function RegistrertTid(props: Pick<Registrering, 'opprettetDato'>) {
 
 	const formattertTidspunkt = formaterDato(props.opprettetDato!);
 
-	return <Normaltekst className="italic-gra">{`Registrert: ${formattertTidspunkt}`}</Normaltekst>;
+	return <BodyShort className="italic-gra">{`Registrert: ${formattertTidspunkt}`}</BodyShort>;
 }
 
 export default RegistrertTid;

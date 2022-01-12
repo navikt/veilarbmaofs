@@ -2,9 +2,8 @@ import React from 'react';
 import { finnAldersTekst } from '../../../../utils/date-utils';
 import { isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-
-import { Normaltekst } from 'nav-frontend-typografi';
 import { PersonaliaBarn, PersonaliaInfo } from '../../../../rest/datatyper/personalia';
+import { BodyShort } from '@navikt/ds-react';
 
 function BorSammen(props: { barn: PersonaliaBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -14,7 +13,7 @@ function BorSammen(props: { barn: PersonaliaBarn }) {
 	}
 	const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
 
-	return <Normaltekst>{borSammen}</Normaltekst>;
+	return <BodyShort>{borSammen}</BodyShort>;
 }
 
 function EnkeltBarn(props: { barn: PersonaliaBarn }) {
@@ -24,8 +23,8 @@ function EnkeltBarn(props: { barn: PersonaliaBarn }) {
 
 	return (
 		<div className="underinformasjon">
-			<Normaltekst>{`${sammensattNavn} ${alder}, ${lesbartKjonn}`}</Normaltekst>
-			<Normaltekst>{fodselsnummer}</Normaltekst>
+			<BodyShort>{`${sammensattNavn} ${alder}, ${lesbartKjonn}`}</BodyShort>
+			<BodyShort>{fodselsnummer}</BodyShort>
 			<BorSammen barn={props.barn} />
 		</div>
 	);

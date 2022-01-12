@@ -1,13 +1,13 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { visEmdashHvisNull } from '../../../../utils';
+import { BodyShort } from '@navikt/ds-react';
 
 function Sammendrag(props: Pick<ArenaPerson, 'sammendrag'>) {
 	return (
 		<Informasjonsbolk header="Sammendrag" headerTypo="ingress">
-			<Normaltekst className="underinformasjon cv-sammendrag">{visEmdashHvisNull(props.sammendrag)}</Normaltekst>
+			<BodyShort className="underinformasjon cv-sammendrag">{visEmdashHvisNull(props.sammendrag)}</BodyShort>
 		</Informasjonsbolk>
 	);
 }

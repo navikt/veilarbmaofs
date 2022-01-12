@@ -1,9 +1,9 @@
 import React from 'react';
 import { ArenaPerson, Fagdokumentasjon, FagdokumentType } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
 import { visEmdashHvisNull } from '../../../../utils';
+import { BodyShort, Label } from '@navikt/ds-react';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 
@@ -26,8 +26,8 @@ const mapFagdokumentasjonerTilViews = (fagdokumentasjoner: Fagdokumentasjon[]) =
 		fagdokumentasjoner.map((fagdokument, idx) => {
 			return (
 				<div key={`fagdokument-${idx}`} className="underinformasjon">
-					<Element>{fagdokumentTypeTilTekst(fagdokument.type)}</Element>
-					<Normaltekst>{visEmdashHvisNull(fagdokument.tittel)}</Normaltekst>
+					<Label>{fagdokumentTypeTilTekst(fagdokument.type)}</Label>
+					<BodyShort>{visEmdashHvisNull(fagdokument.tittel)}</BodyShort>
 				</div>
 			);
 		})
