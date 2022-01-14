@@ -125,7 +125,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 	const renderCheckboxValg = () => {
 		return (
 			<div className={cls({ 'tilbakemelding-modal__innhold-fade-out': showFadeOutAnimation })}>
-				<Heading size="2xlarge" className="blokk-xxs tilbakemelding-modal__tittel">
+				<Heading level="1" size="2xlarge" className="blokk-xxs tilbakemelding-modal__tittel">
 					Hva trenger du å vite om brukerens familie?
 				</Heading>
 				<Label className="blokk-xxs">

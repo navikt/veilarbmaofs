@@ -1,10 +1,12 @@
 import React from 'react';
-import { BodyShort, Heading } from '@navikt/ds-react';
+import { BodyShort, Heading, Link } from '@navikt/ds-react';
 
 function PersonverninformasjonManuell() {
 	return (
 		<div className="personverninformasjon-modal__innhold">
-			<Heading size="2xlarge">Når du har registrert deg</Heading>
+			<Heading level="1" size="xlarge">
+				Når du har registrert deg
+			</Heading>
 			<ul>
 				<li>får du hjelp til å komme i jobb</li>
 				<li>kan du søke om dagpenger eller annen økonomisk støtte</li>
@@ -12,24 +14,30 @@ function PersonverninformasjonManuell() {
 				<li>kan du få varsler om ledige stillinger</li>
 				<li>kan du bruke din egen aktivitetsplan</li>
 			</ul>
-			<Heading size="xlarge">Rettigheter</Heading>
+			<Heading level="2" size="large">
+				Rettigheter
+			</Heading>
 			<ul>
 				<li>
 					Du har krav på at NAV vurderer behovet ditt for veiledning. Dette er en rettighet du har etter
 					NAV-loven § 14a se{' '}
-					<a href="https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a">
+					<Link href="https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a">
 						https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a
-					</a>
+					</Link>
 					.
 				</li>
 				<li>Du får et brev der du kan lese mer om tjenestene vi foreslår for deg.</li>
 			</ul>
-			<Heading size="xlarge">Plikter</Heading>
+			<Heading level="2" size="large">
+				Plikter
+			</Heading>
 			<ul>
 				<li>Du må sende meldekort hver 14. dag. Det er et krav for å få oppfølging og økonomisk støtte.</li>
 				<li>Du må være aktiv arbeidssøker, søke på ledige stillinger og holde CV-en oppdatert.</li>
 			</ul>
-			<Heading size="xlarge">Dine opplysninger</Heading>
+			<Heading level="2" size="large">
+				Dine opplysninger
+			</Heading>
 			<BodyShort>
 				NAV vurderer hva slags veiledning du trenger når du registrerer deg som jobbsøker. For å gjøre denne
 				vurderingen må vi ha opplysninger om
@@ -48,20 +56,25 @@ function PersonverninformasjonManuell() {
 				hvilke tjenester vi tror kan passe for deg. En veileder vurderer forslaget og sender deg et vedtak i
 				posten.
 			</BodyShort>
-			<Heading size="medium">Har du allerede registrert en CV eller jobbprofil på arbeidsplassen.nav.no?</Heading>
+			<Heading level="3" size="medium">
+				Har du allerede registrert en CV eller jobbprofil på arbeidsplassen.nav.no?
+			</Heading>
 			<BodyShort>
 				Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og
 				jobbprofil. CV-en og jobbprofilen blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
 				derfor endre opplysninger du ikke ønsker å dele på{' '}
-				<a href="https://arbeidsplassen.nav.no/ ">https://arbeidsplassen.nav.no/</a> før du starter
+				<Link href="https://arbeidsplassen.nav.no/">https://arbeidsplassen.nav.no/</Link> før du starter
 				registreringen.
 			</BodyShort>
-			<Heading size="medium">Behandling av personopplysninger </Heading>
+			<Heading level="3" size="medium">
+				Behandling av personopplysninger
+			</Heading>
 			<div className="blokk-xxs">
 				<BodyShort>
 					Opplysningene dine blir lagret etter arkivloven. NAV bruker anonymiserte personopplysninger om
 					arbeidssøkere til å lage offentlig statistikk om arbeidsmarkedet. Les mer om hvordan NAV behandler
-					personopplysninger på <a href="https://www.nav.no/personvern">https://www.nav.no/personvern</a>.
+					personopplysninger på{' '}
+					<Link href="https://www.nav.no/personvern">https://www.nav.no/personvern</Link>.
 				</BodyShort>
 			</div>
 			<BodyShort>
