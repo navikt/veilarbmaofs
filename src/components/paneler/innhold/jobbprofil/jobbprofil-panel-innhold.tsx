@@ -93,12 +93,12 @@ const JobbprofilPanelInnhold = () => {
 			<RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
 			<Grid columns={4} gap="1rem">
-				<InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />
-				<InformasjonsbolkListe header="Yrke" list={yrker} />
-				<InformasjonsbolkListe header="Heltid/Deltid" list={heltidDeltidList} />
-				<InformasjonsbolkListe header="Arbeidstidsordning" list={arbeidstid} />
+				<InformasjonsbolkListe header="Områder" list={arbeidssted} />
+				<InformasjonsbolkListe header="Jobber og yrker" list={yrker} />
+				<InformasjonsbolkListe header="Heltid eller deltid" list={heltidDeltidList} />
+				<InformasjonsbolkListe header="Arbeidstider" list={arbeidstid} />
 				<InformasjonsbolkListe header="Ansettelsesform" list={ansettelsesform} />
-				<InformasjonsbolkListe header="Kompetanse" list={kompetanser} />
+				<InformasjonsbolkListe header="Kompetanser" list={kompetanser} />
 			</Grid>
 		</>
 	);
