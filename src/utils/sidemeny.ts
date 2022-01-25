@@ -6,7 +6,7 @@ export interface SidemenyElement {
 export const sidemenyElementId = {
 	oppfolging: 'oppfolging',
 	cv: 'cv',
-	jobbprofil: 'jobbprofil',
+	jobbonsker: 'jobbonsker',
 	tilretteleggingsbehov: 'tilretteleggingsbehov',
 	ytelser: 'ytelser',
 	personalia: 'personalia',
@@ -32,8 +32,8 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.personaliaFraPdl
 	},
 	{
-		name: 'Jobbprofil',
-		id: sidemenyElementId.jobbprofil
+		name: 'Jobbønsker',
+		id: sidemenyElementId.jobbonsker
 	},
 	{
 		name: 'Behov for tilrettelegging',

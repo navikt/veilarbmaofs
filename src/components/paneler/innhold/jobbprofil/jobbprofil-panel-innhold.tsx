@@ -59,7 +59,7 @@ const JobbprofilPanelInnhold = () => {
 	) {
 		return (
 			<Alert variant="info">
-				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
+				Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
 				{erManuell && brukerAktorId && (
 					<Lenke target="_blank" href={pamUrl}>
 						Registrer her

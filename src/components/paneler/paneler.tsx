@@ -75,11 +75,11 @@ export const Paneler: React.FC = () => {
 				</Show>
 
 				<Panel
-					key={`panel-${sidemenyElementId.jobbprofil}`}
-					name="jobbprofil"
-					id={sidemenyElementId.jobbprofil}
-					tittel="Jobbprofil"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbprofil)}
+					key={`panel-${sidemenyElementId.jobbonsker}`}
+					name="jobbonsker"
+					id={sidemenyElementId.jobbonsker}
+					tittel="Jobbønsker"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbonsker)}
 				>
 					<JobbprofilPanelInnhold />
 				</Panel>
