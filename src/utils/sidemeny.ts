@@ -36,16 +36,16 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.jobbonsker
 	},
 	{
-		name: 'Behov for tilrettelegging',
-		id: sidemenyElementId.tilretteleggingsbehov
+		name: 'Registrering',
+		id: sidemenyElementId.registrering
 	},
 	{
 		name: 'Ytelser',
 		id: sidemenyElementId.ytelser
 	},
 	{
-		name: 'Registrering',
-		id: sidemenyElementId.registrering
+		name: 'Behov for tilrettelegging',
+		id: sidemenyElementId.tilretteleggingsbehov
 	}
 ];
 

@@ -85,6 +85,30 @@ export const Paneler: React.FC = () => {
 				</Panel>
 
 				<Panel
+					key={`panel-${sidemenyElementId.registrering}`}
+					name="registrering"
+					id={sidemenyElementId.registrering}
+					tittel={registreringPanelNavn}
+					defaultOpen={
+						isSidemenyElementOpen(sidemenyElementId.registrering)
+							? isSidemenyElementOpen(sidemenyElementId.registrering)
+							: apneRegistrering
+					}
+				>
+					<RegistreringPanel />
+				</Panel>
+
+				<Panel
+					key={`panel-${sidemenyElementId.ytelser}`}
+					name="ytelser"
+					id={sidemenyElementId.ytelser}
+					tittel="Ytelser"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
+				>
+					<YtelserPanelInnhold />
+				</Panel>
+
+				<Panel
 					key={`panel-${sidemenyElementId.tilretteleggingsbehov}`}
 					name="tilretteleggingsbehov"
 					id={sidemenyElementId.tilretteleggingsbehov}
@@ -99,30 +123,6 @@ export const Paneler: React.FC = () => {
 						fnr={fnr}
 						viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
 					/>
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.ytelser}`}
-					name="ytelser"
-					id={sidemenyElementId.ytelser}
-					tittel="Ytelser"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
-				>
-					<YtelserPanelInnhold />
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.registrering}`}
-					name="registrering"
-					id={sidemenyElementId.registrering}
-					tittel={registreringPanelNavn}
-					defaultOpen={
-						isSidemenyElementOpen(sidemenyElementId.registrering)
-							? isSidemenyElementOpen(sidemenyElementId.registrering)
-							: apneRegistrering
-					}
-				>
-					<RegistreringPanel />
 				</Panel>
 			</div>
 		</section>
