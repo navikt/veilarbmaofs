@@ -111,7 +111,7 @@ const OppfolgingPanelInnhold = () => {
 						: false
 				}
 			>
-				<Alert variant="info" className="alert-hovedmal-vedtaksstotte">
+				<Alert variant="info" className="alert-hovedmal-vedtaksstotte alertstripe_intern">
 					Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
 					"Oppfølgingsvedtak".
 				</Alert>
