@@ -75,13 +75,37 @@ export const Paneler: React.FC = () => {
 				</Show>
 
 				<Panel
-					key={`panel-${sidemenyElementId.jobbprofil}`}
-					name="jobbprofil"
-					id={sidemenyElementId.jobbprofil}
-					tittel="Jobbprofil"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbprofil)}
+					key={`panel-${sidemenyElementId.jobbonsker}`}
+					name="jobbonsker"
+					id={sidemenyElementId.jobbonsker}
+					tittel="Jobbønsker"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbonsker)}
 				>
 					<JobbprofilPanelInnhold />
+				</Panel>
+
+				<Panel
+					key={`panel-${sidemenyElementId.registrering}`}
+					name="registrering"
+					id={sidemenyElementId.registrering}
+					tittel={registreringPanelNavn}
+					defaultOpen={
+						isSidemenyElementOpen(sidemenyElementId.registrering)
+							? isSidemenyElementOpen(sidemenyElementId.registrering)
+							: apneRegistrering
+					}
+				>
+					<RegistreringPanel />
+				</Panel>
+
+				<Panel
+					key={`panel-${sidemenyElementId.ytelser}`}
+					name="ytelser"
+					id={sidemenyElementId.ytelser}
+					tittel="Ytelser"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
+				>
+					<YtelserPanelInnhold />
 				</Panel>
 
 				<Panel
@@ -99,30 +123,6 @@ export const Paneler: React.FC = () => {
 						fnr={fnr}
 						viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
 					/>
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.ytelser}`}
-					name="ytelser"
-					id={sidemenyElementId.ytelser}
-					tittel="Ytelser"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
-				>
-					<YtelserPanelInnhold />
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.registrering}`}
-					name="registrering"
-					id={sidemenyElementId.registrering}
-					tittel={registreringPanelNavn}
-					defaultOpen={
-						isSidemenyElementOpen(sidemenyElementId.registrering)
-							? isSidemenyElementOpen(sidemenyElementId.registrering)
-							: apneRegistrering
-					}
-				>
-					<RegistreringPanel />
 				</Panel>
 			</div>
 		</section>

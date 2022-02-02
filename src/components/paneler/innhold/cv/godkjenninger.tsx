@@ -19,7 +19,7 @@ function Godkjenninger(props: Props) {
 	));
 
 	return (
-		<Informasjonsbolk header="Godkjenninger i lovregulerte yrker" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Offentlige godkjenninger" headerTypo="ingress" {...rest}>
 			{godkjenningListe}
 		</Informasjonsbolk>
 	);

@@ -35,7 +35,11 @@ const CvPanelInnhold = () => {
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
 	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
-		return <Alert variant="info">Bruker er ikke under arbeidsrettet oppfølging</Alert>;
+		return (
+			<Alert variant="info" className="alertstripe_intern">
+				Bruker er ikke under arbeidsrettet oppfølging
+			</Alert>
+		);
 	}
 
 	const underOppfolgingData = underOppfolging.data;
@@ -46,7 +50,7 @@ const CvPanelInnhold = () => {
 
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
-			<Alert variant="info" className="cv-alert-ikke-tilgang">
+			<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
 				Du kan ikke se CV-en, be brukeren om å:
 				<ul>
 					<li>logge inn på arbeidsplassen.no</li>
@@ -58,7 +62,7 @@ const CvPanelInnhold = () => {
 		);
 	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
 		return (
-			<Alert variant="info">
+			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert CV.&nbsp;&nbsp;
 				{erManuell && aktorId && (
 					<Lenke target="_blank" href={endreCvUrl}>

@@ -22,9 +22,9 @@ function PersonverninformasjonSykmeldt() {
 					behandler personopplysninger på{' '}
 					<a href="https://www.nav.no/personvern">https://www.nav.no/personvern</a>.
 				</Normaltekst>
-				<Undertittel>Har du allerede registrert en CV eller jobbprofil? </Undertittel>
+				<Undertittel>Har du allerede registrert en CV eller jobbønsker? </Undertittel>
 				<Normaltekst>
-					Når du registrerer deg, vil CV-en og jobbprofilen som du har lagt inn på arbeidsplassen.nav.no bli
+					Når du registrerer deg, vil CV-en og jobbønskene som du har lagt inn på arbeidsplassen.nav.no bli
 					delt med veilederen din. Hvis det er opplysninger der som du ikke ønsker å dele, kan du endre dem på{' '}
 					<a href="https://arbeidsplassen.nav.no/">https://arbeidsplassen.nav.no/</a> før du registrerer deg.
 				</Normaltekst>
