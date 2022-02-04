@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../../felles/sist-endret';
@@ -12,6 +11,7 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { isPending, hasError, WithData, FetchResult } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
+import { Alert } from '@navikt/ds-react';
 
 const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
 	const withData = cvOgJobbprofil as WithData<ArenaPerson>;
@@ -29,7 +29,11 @@ const JobbprofilPanelInnhold = () => {
 	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
 		return <Feilmelding />;
 	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
-		return <AlertStripeInfo>Bruker er ikke under arbeidsrettet oppfølging</AlertStripeInfo>;
+		return (
+			<Alert variant="info" className="alertstripe_intern">
+				Bruker er ikke under arbeidsrettet oppfølging
+			</Alert>
+		);
 	}
 
 	const underOppfolgingData = underOppfolging.data;
@@ -42,7 +46,7 @@ const JobbprofilPanelInnhold = () => {
 	// Sjekk alltid tilgang først
 	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
 		return (
-			<AlertStripeInfo>
+			<Alert variant="info" className="alertstripe_intern">
 				Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
 				<ul>
 					<li>
@@ -50,7 +54,7 @@ const JobbprofilPanelInnhold = () => {
 						nav.no og oppdatere CV'en sin.
 					</li>
 				</ul>
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (
 		cvOgJobbprofil.statusCode === 404 ||
@@ -58,14 +62,14 @@ const JobbprofilPanelInnhold = () => {
 		!harJobbprofilData(cvOgJobbprofil)
 	) {
 		return (
-			<AlertStripeInfo>
-				Denne personen har ikke registrert jobbprofil.&nbsp;&nbsp;
+			<Alert variant="info" className="alertstripe_intern">
+				Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
 				{erManuell && brukerAktorId && (
 					<Lenke target="_blank" href={pamUrl}>
 						Registrer her
 					</Lenke>
 				)}
-			</AlertStripeInfo>
+			</Alert>
 		);
 	} else if (!hasData(cvOgJobbprofil)) {
 		return <Feilmelding />;
@@ -92,13 +96,13 @@ const JobbprofilPanelInnhold = () => {
 		<>
 			<RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl} />
 			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
-			<Grid columns={3} gap="0.5rem">
-				<InformasjonsbolkListe header="Arbeidssted" list={arbeidssted} />
-				<InformasjonsbolkListe header="Yrke" list={yrker} />
-				<InformasjonsbolkListe header="Heltid/Deltid" list={heltidDeltidList} />
-				<InformasjonsbolkListe header="Arbeidstidsordning" list={arbeidstid} />
+			<Grid columns={4} gap="1rem">
+				<InformasjonsbolkListe header="Områder" list={arbeidssted} />
+				<InformasjonsbolkListe header="Jobber og yrker" list={yrker} />
+				<InformasjonsbolkListe header="Heltid eller deltid" list={heltidDeltidList} />
+				<InformasjonsbolkListe header="Arbeidstider" list={arbeidstid} />
 				<InformasjonsbolkListe header="Ansettelsesform" list={ansettelsesform} />
-				<InformasjonsbolkListe header="Kompetanse" list={kompetanser} />
+				<InformasjonsbolkListe header="Kompetanser" list={kompetanser} />
 			</Grid>
 		</>
 	);

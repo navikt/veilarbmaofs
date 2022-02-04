@@ -1,12 +1,14 @@
 import React from 'react';
 import cls from 'classnames';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 import { Normaltekst } from 'nav-frontend-typografi';
 import './fetch.less';
+import { Alert } from '@navikt/ds-react';
 
 export const Feilmelding = (props: { tekst?: string }) => (
-	<AlertStripeAdvarsel>{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}</AlertStripeAdvarsel>
+	<Alert variant="warning" className="alertstripe_intern">
+		{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}
+	</Alert>
 );
 
 export const Laster = (props: { midtstilt?: boolean }) => (

@@ -1,11 +1,11 @@
-import { StringOrNothing } from "./felles-typer";
+import { StringOrNothing } from './felles-typer';
 
 export function kalkulerAlder(fodselsdato: Date): number {
 	const diff = Date.now() - fodselsdato.getTime();
 	return new Date(diff).getUTCFullYear() - 1970;
 }
 
-export function finnAldersTekst(personalia: { dodsdato: StringOrNothing, fodselsdato: string }): string {
+export function finnAldersTekst(personalia: { dodsdato: StringOrNothing; fodselsdato: string }): string {
 	if (personalia.dodsdato) {
 		return '(DØD)';
 	}
@@ -14,8 +14,7 @@ export function finnAldersTekst(personalia: { dodsdato: StringOrNothing, fodsels
 	return `${alder} år`;
 }
 
-export function finnAlder(personalia: { dodsdato: StringOrNothing, fodselsdato: string }): string {
-
+export function finnAlder(personalia: { dodsdato: StringOrNothing; fodselsdato: string }): string {
 	if (personalia.dodsdato) {
 		return '(DØD)';
 	}

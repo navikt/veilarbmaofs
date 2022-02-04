@@ -4,31 +4,31 @@ import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
-    useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
-    useFetchInnsatsbehov,
-    useFetchOppfolgingsstatus,
-    useFetchPersonalia,
-    useFetchVeileder
+	useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
+	useFetchInnsatsbehov,
+	useFetchOppfolgingsstatus,
+	useFetchPersonalia,
+	useFetchVeileder
 } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
 import { isPending } from '@nutgaard/use-fetch';
 import { hasData } from '../../../../rest/utils';
 import {
-    hentGeografiskEnhetTekst,
-    hentOppfolgingsEnhetTekst,
-    hentVeilederTekst,
-    mapHovedmalTilTekst,
-    mapInnsatsgruppeTilTekst,
-    mapServicegruppeTilTekst
+	hentGeografiskEnhetTekst,
+	hentOppfolgingsEnhetTekst,
+	hentVeilederTekst,
+	mapHovedmalTilTekst,
+	mapInnsatsgruppeTilTekst,
+	mapServicegruppeTilTekst
 } from '../../../../utils/text-mapper';
 import { erInnsatsgruppe } from '../../../../utils/arena-status-utils';
 import { OrNothing } from '../../../../utils/felles-typer';
 import { Hovedmal, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
 import { ArenaHovedmalKode, ArenaServicegruppeKode } from '../../../../rest/datatyper/oppfolgingsstatus';
 import { INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE } from '../../../../rest/datatyper/feature';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import './oppfolging-panel-innhold.less';
 import Show from '../../../felles/show';
+import { Alert } from '@navikt/ds-react';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr, features } = useAppStore();
@@ -37,7 +37,7 @@ const OppfolgingPanelInnhold = () => {
 	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
-    const tilhorerBrukerUtrulletKontorForVedtaksstotte = useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr);
+	const tilhorerBrukerUtrulletKontorForVedtaksstotte = useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr);
 
 	useEffect(() => {
 		if (!hasData(veileder) && veilederId != null) {
@@ -60,61 +60,64 @@ const OppfolgingPanelInnhold = () => {
 	let innsatsgruppe: OrNothing<Innsatsgruppe | ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
 	let hovedmal: OrNothing<Hovedmal | ArenaHovedmalKode> = oppfolgingsstatusData?.hovedmaalkode;
 
-    if (hentInnsatsgruppeOgHovedmalFraVedtaksstotte() && erInnsatsgruppe(servicegruppe)) {
-        // Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål
-        // fra vedtaksstøtte dersom det er togglet på. Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi
-        // innsatsgruppe + hovedmål fra vedtaksstøtte. Hvis servicegruppe fra Arena ikke er en innsatsgruppe, så viser
-        // vi ikke innsatsgruppe og hovedmål fra vedtaksstøtte, siden bruker da har fått en nyere status i Arena.
-        innsatsgruppe = innsatsbehovData?.innsatsgruppe;
-        hovedmal = innsatsbehovData?.hovedmal;
-    }
+	if (hentInnsatsgruppeOgHovedmalFraVedtaksstotte() && erInnsatsgruppe(servicegruppe)) {
+		// Vi bruker servicegruppe fra Arena som master for om vi skal vise servicegruppe eller innsatsgruppe + hovedmål
+		// fra vedtaksstøtte dersom det er togglet på. Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi
+		// innsatsgruppe + hovedmål fra vedtaksstøtte. Hvis servicegruppe fra Arena ikke er en innsatsgruppe, så viser
+		// vi ikke innsatsgruppe og hovedmål fra vedtaksstøtte, siden bruker da har fått en nyere status i Arena.
+		innsatsgruppe = innsatsbehovData?.innsatsgruppe;
+		hovedmal = innsatsbehovData?.hovedmal;
+	}
 
-    function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
-        return features[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE];
-    }
+	function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
+		return features[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE];
+	}
 
-    return (
-        <>
-            <Grid columns={4} gap="0.5rem">
-                <InformasjonsbolkEnkel
-                    header="Servicegruppe"
-                    value={mapServicegruppeTilTekst(servicegruppe)}
-                    defaultValue={EMDASH}
-                />
-                <InformasjonsbolkEnkel
-                    header="Innsatsgruppe"
-                    value={mapInnsatsgruppeTilTekst(innsatsgruppe)}
-                    defaultValue={EMDASH}
-                />
-                <InformasjonsbolkEnkel header="Veileder" value={hentVeilederTekst(veilederData)} defaultValue={EMDASH}/>
-                <InformasjonsbolkEnkel
-                    header="Geografisk enhet"
-                    value={hentGeografiskEnhetTekst(personaliaData)}
-                    defaultValue={EMDASH}
-                />
-                <InformasjonsbolkEnkel
-                    header="Oppfølgingsenhet"
-                    value={hentOppfolgingsEnhetTekst(oppfolgingsstatusData)}
-                    defaultValue={EMDASH}
-                />
-                <InformasjonsbolkEnkel
-                    header="Hovedmål"
-                    value={mapHovedmalTilTekst(hovedmal)}
-                    defaultValue={EMDASH}
-                />
-            </Grid>
-            <Show if={
-                hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte) ?
-                    (tilhorerBrukerUtrulletKontorForVedtaksstotte.data && !hentInnsatsgruppeOgHovedmalFraVedtaksstotte()) :
-                    false
-            }>
-                <AlertStripeInfo className="alert-hovedmal-vedtaksstotte">
-                    Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
-                    "Oppfølgingsvedtak".
-                </AlertStripeInfo>
-            </Show>
-        </>
-    );
+	return (
+		<>
+			<Grid columns={4} gap="1rem">
+				<InformasjonsbolkEnkel
+					header="Servicegruppe"
+					value={mapServicegruppeTilTekst(servicegruppe)}
+					defaultValue={EMDASH}
+				/>
+				<InformasjonsbolkEnkel
+					header="Innsatsgruppe"
+					value={mapInnsatsgruppeTilTekst(innsatsgruppe)}
+					defaultValue={EMDASH}
+				/>
+				<InformasjonsbolkEnkel
+					header="Veileder"
+					value={hentVeilederTekst(veilederData)}
+					defaultValue={EMDASH}
+				/>
+				<InformasjonsbolkEnkel
+					header="Geografisk enhet"
+					value={hentGeografiskEnhetTekst(personaliaData)}
+					defaultValue={EMDASH}
+				/>
+				<InformasjonsbolkEnkel
+					header="Oppfølgingsenhet"
+					value={hentOppfolgingsEnhetTekst(oppfolgingsstatusData)}
+					defaultValue={EMDASH}
+				/>
+				<InformasjonsbolkEnkel header="Hovedmål" value={mapHovedmalTilTekst(hovedmal)} defaultValue={EMDASH} />
+			</Grid>
+			<Show
+				if={
+					hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte)
+						? tilhorerBrukerUtrulletKontorForVedtaksstotte.data &&
+						  !hentInnsatsgruppeOgHovedmalFraVedtaksstotte()
+						: false
+				}
+			>
+				<Alert variant="info" className="alert-hovedmal-vedtaksstotte alertstripe_intern">
+					Hovedmål fra oppfølgingsvedtak fattet i Modia vises foreløpig ikke her. For å se dette, gå til fanen
+					"Oppfølgingsvedtak".
+				</Alert>
+			</Show>
+		</>
+	);
 };
 
 export default OppfolgingPanelInnhold;

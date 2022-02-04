@@ -48,10 +48,10 @@ function PersonverninformasjonManuell() {
 				hvilke tjenester vi tror kan passe for deg. En veileder vurderer forslaget og sender deg et vedtak i
 				posten.
 			</Normaltekst>
-			<Undertittel>Har du allerede registrert en CV eller jobbprofil på arbeidsplassen.nav.no?</Undertittel>
+			<Undertittel>Har du allerede registrert en CV eller jobbønsker på arbeidsplassen.nav.no?</Undertittel>
 			<Normaltekst>
 				Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og
-				jobbprofil. CV-en og jobbprofilen blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
+				jobbønsker. CV-en og jobbønskene blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
 				derfor endre opplysninger du ikke ønsker å dele på{' '}
 				<a href="https://arbeidsplassen.nav.no/ ">https://arbeidsplassen.nav.no/</a> før du starter
 				registreringen.

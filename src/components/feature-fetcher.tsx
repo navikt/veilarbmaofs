@@ -6,21 +6,20 @@ import { hasData } from '../rest/utils';
 import { useAppStore } from '../stores/app-store';
 
 function FeatureFetcher(props: PropsWithChildren<any>) {
+	const fetchFeatures = useFetchFeatureToggle();
+	const { setFeatures } = useAppStore();
 
-    const fetchFeatures = useFetchFeatureToggle();
-    const {setFeatures} = useAppStore();
+	useEffect(() => {
+		if (hasData(fetchFeatures)) {
+			setFeatures(fetchFeatures.data);
+		}
+	}, [setFeatures, fetchFeatures]);
 
-    useEffect(() => {
-        if (hasData(fetchFeatures)) {
-            setFeatures(fetchFeatures.data);
-        }
-    }, [setFeatures, fetchFeatures]);
+	if (isPending(fetchFeatures)) {
+		return <Laster midtstilt={true} />;
+	}
 
-    if (isPending(fetchFeatures)) {
-        return <Laster midtstilt={true}/>;
-    }
-
-    return props.children;
+	return props.children;
 }
 
 export default FeatureFetcher;

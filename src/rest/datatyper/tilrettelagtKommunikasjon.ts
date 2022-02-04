@@ -1,6 +1,6 @@
-import {StringOrNothing} from "../../utils/felles-typer";
+import { StringOrNothing } from '../../utils/felles-typer';
 
 export interface TilrettelagtKommunikasjonData {
-    talespraak: StringOrNothing;
-    tegnspraak: StringOrNothing;
+	talespraak: StringOrNothing;
+	tegnspraak: StringOrNothing;
 }

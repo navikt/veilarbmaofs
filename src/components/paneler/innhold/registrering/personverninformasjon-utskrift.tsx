@@ -4,11 +4,11 @@ import ModalWrapper from 'nav-frontend-modal';
 import { Flatknapp } from 'nav-frontend-knapper';
 import PersonverninformasjonSykmeldt from './personverninformasjon-sykmeldt';
 import PersonverninformasjonManuell from './personverninformasjon-manuell';
-import { ReactComponent as PrintIcon } from './printer.svg';
 import { PrintKnappModal } from './print-knapp-modal';
 import Show from '../../../felles/show';
 import './personverninformasjon.less';
 import './print-knapp.less';
+import { Print, PrintFilled } from '@navikt/ds-icons';
 
 function erSykmeldt(type?: RegistreringType) {
 	return type && type === 'SYKMELDT';
@@ -20,14 +20,18 @@ function erOrdinaer(type?: RegistreringType) {
 
 function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 	const [visPrintModal, setVisPrintModal] = useState<boolean>(false);
+	const [hover, setHover] = useState(false);
+
 	return (
 		<>
 			<Flatknapp
 				onClick={() => setVisPrintModal(true)}
 				htmlType="button"
 				className="utskrift-knapp btn--radius025"
+				onMouseEnter={() => setHover(true)}
+				onMouseLeave={() => setHover(false)}
 			>
-				<PrintIcon className="utskrift-knapp__ikon" />
+				{hover ? <PrintFilled /> : <Print />}
 				Personverninformasjon, rettigheter og plikter
 			</Flatknapp>
 			<ModalWrapper

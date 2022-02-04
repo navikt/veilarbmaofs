@@ -5,7 +5,17 @@ export interface OppfolgingEnhet {
 	enhetId: StringOrNothing;
 }
 export type ArenaFormidlingsgruppeKode = 'ARBS' | 'IARBS' | 'ISERV' | 'PARBS' | 'RARBS';
-export type ArenaServicegruppeKode = 'BATT' | 'BFORM' | 'BKART' | 'IKVAL' | 'IVURD' | 'KAP11' | 'OPPFI' | 'VARIG' | 'VURDI' | 'VURDU';
+export type ArenaServicegruppeKode =
+	| 'BATT'
+	| 'BFORM'
+	| 'BKART'
+	| 'IKVAL'
+	| 'IVURD'
+	| 'KAP11'
+	| 'OPPFI'
+	| 'VARIG'
+	| 'VURDI'
+	| 'VURDU';
 export type ArenaHovedmalKode = 'OKEDELT' | 'SKAFFEA' | 'BEHOLDEA';
 
 export interface OppfolgingsstatusData {

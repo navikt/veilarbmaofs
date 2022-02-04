@@ -43,7 +43,11 @@ export function TilbakemeldingFab() {
 		startAutoClose();
 		setHideFab(true);
 		window.localStorage.setItem(TILBAKEMELDING_LOCALSTORAGE_NAME, 'true');
-		logEvent('detaljer.tilbakemelding', {feature: TILBAKEMELDING_FEATURE_TAG, ...tilbakemelding, ...checkboxStatusListe});
+		logEvent('detaljer.tilbakemelding', {
+			feature: TILBAKEMELDING_FEATURE_TAG,
+			...tilbakemelding,
+			...checkboxStatusListe
+		});
 	};
 
 	const hide = !sporOmTilbakemeldingFeature || harTidligereSendtTilbakemelding() || hideFab;
@@ -66,10 +70,7 @@ export function TilbakemeldingFab() {
 					/>
 				</button>
 			)}
-			<TilbakemeldingModal
-				open={isModalOpen}
-				onTilbakemeldingSendt={handleCheckboxTilbakemeldingSendt}
-			/>
+			<TilbakemeldingModal open={isModalOpen} onTilbakemeldingSendt={handleCheckboxTilbakemeldingSendt} />
 		</div>
 	);
 }

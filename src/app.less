@@ -1,10 +1,12 @@
-@import "~nav-frontend-core/less/core";
-@import "~nav-frontend-typografi-style/src/index";
+@import '~nav-frontend-core/less/core';
+@import '~nav-frontend-typografi-style/src/index';
 
 .veilarbmaofs {
+	scroll-behavior: smooth !important;
 	flex-grow: 1;
 	width: 100%;
-	background-color: #F4F4F4;
+
+	background-color: #f4f4f4;
 
 	.ReactCollapse--collapse {
 		transition: none;
@@ -17,9 +19,13 @@
 	line-height: @line-height-base;
 
 	&__container {
-		width: 100%;
-		max-width: 1200px;
-		margin: 2rem auto;
+		max-width: 1920px;
+		min-height: 30vh;
+		margin: 0.75rem auto 0;
+
+		display: flex;
+		align-items: flex-start;
+		-moz-box-flex: 1;
 	}
 
 	&--hidden {
@@ -39,6 +45,10 @@
 		margin-top: 0.2rem;
 	}
 
+	.innrykk {
+		padding-left: 0.5rem;
+	}
+
 	.italic-gra {
 		color: @navGra60;
 		font-style: italic;
@@ -48,33 +58,16 @@
 		font-style: italic;
 	}
 
-	.break-all {
-		width: 280px;
-		word-break: normal;
-		hyphens: auto;
+	.wrap-anywhere {
+		overflow-wrap: anywhere;
 	}
 
-	.break-all-sm-column {
-		width: 250px;
-		word-break: normal;
-		hyphens: auto;
-	}
+	.alertstripe_intern {
+		padding: 1rem;
 
-	@media (max-width: 1232px) {
-		padding: 0 1rem;
-	}
-
-	.kilde-tekst {
-		color: #645f5a;
-		margin-top: 3px;
-		line-height: 1rem;
-		hyphens: auto;
-		word-break: normal;
-	}
-
-	.personalia-grid {
-		display: grid;
-		gap: 1rem;
-		grid-auto-flow: column;
+		.navds-body-long {
+			line-height: 1.375rem;
+			font-size: 1rem;
+		}
 	}
 }

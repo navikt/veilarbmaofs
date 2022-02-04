@@ -2,11 +2,11 @@ import React from 'react';
 import { finnAlder } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
-import {Normaltekst, UndertekstBold} from 'nav-frontend-typografi';
-import {Gradering, PersonaliaV2Info, PersonsBarn} from '../../../../rest/datatyper/personaliav2';
-import EMDASH from "../../../../utils/emdash";
-import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from "../../../../utils";
-import { graderingBeskrivelse } from "../../../../utils/konstanter";
+import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi';
+import { Gradering, PersonaliaV2Info, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
+import EMDASH from '../../../../utils/emdash';
+import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from '../../../../utils';
+import { graderingBeskrivelse } from '../../../../utils/konstanter';
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -25,26 +25,26 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const graderingTekst = graderingBeskrivelse(gradering);
 
 	return (
-		<div className="overinformasjon underinformasjon">
-			{ erEgenAnsatt && !harVeilederTilgang ?
+		<div className="overinformasjon underinformasjon innrykk">
+			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
 					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
 					<BorSammen barn={props.barn} />
 				</div>
-				: gradering !== Gradering.UGRADERT && !harVeilederTilgang ?
-					<div>
-						<UndertekstBold>Barn</UndertekstBold>
-						{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
-					</div>
-					:
-					<div>
-						<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
-						<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
-						<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
-						<BorSammen barn={props.barn} />
-						{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
-					</div>
-			}
+			) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
+				<div>
+					<UndertekstBold>Barn</UndertekstBold>
+					{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
+				</div>
+			) : (
+				<div>
+					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
+					<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
+					<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
+					<BorSammen barn={props.barn} />
+					{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
+				</div>
+			)}
 		</div>
 	);
 }
@@ -52,7 +52,9 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 function Barn(props: Pick<PersonaliaV2Info, 'barn'>) {
 	const { barn, ...rest } = props;
 
-	const barnListe = isNotEmptyArray(barn) ? barn.map(ettBarn => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />) : EMDASH;
+	const barnListe = isNotEmptyArray(barn)
+		? barn.map(ettBarn => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />)
+		: EMDASH;
 
 	return (
 		<Informasjonsbolk header="Barn under 21 år" {...rest}>

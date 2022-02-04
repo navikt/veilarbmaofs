@@ -3,8 +3,12 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import {
 	Gateadresse,
 	Matrikkeladresse,
-	PersonaliaInfo, PersonaliaMidlertidigAdresse, PersonaliaPostadresse, PersonaliaStrukturertMidlertidigAdresse,
-	PostboksadresseNorsk, UstrukturertAdresse
+	PersonaliaInfo,
+	PersonaliaMidlertidigAdresse,
+	PersonaliaPostadresse,
+	PersonaliaStrukturertMidlertidigAdresse,
+	PostboksadresseNorsk,
+	UstrukturertAdresse
 } from '../../../../rest/datatyper/personalia';
 import EMDASH from '../../../../utils/emdash';
 import { isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
@@ -69,7 +73,7 @@ function PostAdresse(props: { postAdresse: PersonaliaPostadresse }) {
 	return (
 		<div className="underinformasjon">
 			<Element> Postadresse </Element>
-			<UstrukturertAdresseVisning ustrukturertAdresse={props.postAdresse.ustrukturertAdresse}/>
+			<UstrukturertAdresseVisning ustrukturertAdresse={props.postAdresse.ustrukturertAdresse} />
 		</div>
 	);
 }
@@ -79,13 +83,7 @@ function UstrukturertAdresseVisning(props: { ustrukturertAdresse: UstrukturertAd
 		return null;
 	}
 
-	const {
-		adresselinje1,
-		adresselinje2,
-		adresselinje3,
-		adresselinje4,
-		landkode
-	} = props.ustrukturertAdresse;
+	const { adresselinje1, adresselinje2, adresselinje3, adresselinje4, landkode } = props.ustrukturertAdresse;
 
 	return (
 		<>

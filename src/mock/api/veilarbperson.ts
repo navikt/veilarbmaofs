@@ -452,11 +452,12 @@ const personaliav2: PersonaliaV2Info = {
 			telefonNr: '44222444',
 			registrertDato: null,
 			master: 'PDL'
-		}],
+		}
+	],
 	epost: {
-		epostAdresse:'tester.scrambling@registre.no',
-		epostSistOppdatert:'10.04.2010',
-		master:'KRR'
+		epostAdresse: 'tester.scrambling@registre.no',
+		epostSistOppdatert: '10.04.2010',
+		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
 	sivilstand: {
@@ -490,9 +491,28 @@ const personaliav2: PersonaliaV2Info = {
 			poststed: 'Posted',
 			kommune: 'Kommune'
 		},
-		matrikkeladresse: null,
-		utenlandskAdresse: null,
-		ukjentBosted: null
+		matrikkeladresse: {
+			matrikkelId: null,
+			bruksenhetsnummer: 'H0101',
+			tilleggsnavn: 'Ja',
+			kommunenummer: '8008',
+			postnummer: '1337',
+			poststed: 'Sandvika',
+			kommune: 'Blærum'
+		},
+		utenlandskAdresse: {
+			adressenavnNummer: 'AdressenavnNummer?',
+			bygningEtasjeLeilighet: 'H4290',
+			postboksNummerNavn: '42',
+			postkode: '1337',
+			bySted: 'Shanghai',
+			regionDistriktOmraade: 'Shanghai',
+			landkode: 'CN'
+		},
+		ukjentBosted: {
+			bostedskommune: 'Vinje',
+			kommune: 'Kommune'
+		}
 	},
 	oppholdsadresse: null,
 	kontaktadresser: [
@@ -584,7 +604,6 @@ const mockTilrettelagtKommunikasjon: TilrettelagtKommunikasjonData = {
 	talespraak: 'Engelsk',
 	tegnspraak: null
 };
-
 
 const ordinaerRegistering: RegistreringsData = {
 	type: 'ORDINAER',
