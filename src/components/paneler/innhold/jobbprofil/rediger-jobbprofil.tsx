@@ -13,7 +13,7 @@ export function RedigerJobbprofil(props: { erManuell: boolean; jobbprofilRegistr
 		<Link href={props.jobbprofilRegistreringsLenke} className="cv-panel-lenke" target="_blank">
 			<span onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				{hover ? <EditFilled /> : <Edit />}
-				Endre jobbprofil
+				Endre jobbønsker
 			</span>
 		</Link>
 	);

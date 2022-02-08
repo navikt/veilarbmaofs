@@ -57,11 +57,11 @@ function PersonverninformasjonManuell() {
 				posten.
 			</BodyShort>
 			<Heading level="3" size="medium">
-				Har du allerede registrert en CV eller jobbprofil på arbeidsplassen.nav.no?
+				Har du allerede registrert en CV eller jobbønsker på arbeidsplassen.nav.no?
 			</Heading>
 			<BodyShort>
 				Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og
-				jobbprofil. CV-en og jobbprofilen blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
+				jobbønsker. CV-en og jobbønskene blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
 				derfor endre opplysninger du ikke ønsker å dele på{' '}
 				<Link href="https://arbeidsplassen.nav.no/">https://arbeidsplassen.nav.no/</Link> før du starter
 				registreringen.

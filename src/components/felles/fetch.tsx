@@ -4,7 +4,9 @@ import './fetch.less';
 import { Alert, BodyShort, Loader } from '@navikt/ds-react';
 
 export const Feilmelding = (props: { tekst?: string }) => (
-	<Alert variant="warning">{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}</Alert>
+	<Alert variant="warning" className="alertstripe_intern">
+		{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}
+	</Alert>
 );
 
 export const Laster = (props: { midtstilt?: boolean }) => (

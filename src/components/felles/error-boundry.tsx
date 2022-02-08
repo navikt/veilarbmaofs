@@ -22,7 +22,11 @@ class ErrorBoundary extends React.Component<ErrorBoundryProps, ErrorBoundryState
 
 	render() {
 		if (this.state.hasError) {
-			return <Alert variant="warning">{this.props.message}</Alert>;
+			return (
+				<Alert variant="warning" className="alertstripe_intern">
+					{this.props.message}
+				</Alert>
+			);
 		}
 		return this.props.children;
 	}

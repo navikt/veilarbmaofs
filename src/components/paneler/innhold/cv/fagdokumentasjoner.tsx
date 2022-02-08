@@ -42,7 +42,7 @@ function Fagdokumentasjoner(props: Props) {
 			: EMDASH;
 
 	return (
-		<Informasjonsbolk header="Fagdokumentasjoner" headerTypo="ingress">
+		<Informasjonsbolk header="Fagbrev" headerTypo="ingress">
 			{dokumentasjoner}
 		</Informasjonsbolk>
 	);
