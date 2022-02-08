@@ -4,7 +4,7 @@ import { BodyShort, Heading, Link } from '@navikt/ds-react';
 function PersonverninformasjonManuell() {
 	return (
 		<div className="personverninformasjon-modal__innhold">
-			<Heading level="1" size="xlarge">
+			<Heading level="1" size="large">
 				Når du har registrert deg
 			</Heading>
 			<ul>

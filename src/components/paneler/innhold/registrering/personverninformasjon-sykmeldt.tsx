@@ -4,7 +4,7 @@ import { BodyShort, Heading, Link } from '@navikt/ds-react';
 function PersonverninformasjonSykmeldt() {
 	return (
 		<div id="personverninformasjon-modal__innhold">
-			<Heading level="1" size="xlarge">
+			<Heading level="1" size="large">
 				Mer veiledning fra NAV
 			</Heading>
 			<Heading level="2" size="large">
