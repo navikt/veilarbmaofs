@@ -22,8 +22,10 @@ export const Sidemeny: React.FC = () => {
 
 	return (
 		<section className="sidemeny">
-			<h2 onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}>Detaljer om bruker</h2>
-			<nav>
+			<nav aria-labelledby="detaljer-om-bruker">
+				<h2 onClick={() => scrollTilElement('#veilarbpersonflatefs-root')} id="detaljer-om-bruker">
+					Detaljer om bruker
+				</h2>
 				<ul>
 					{sidemenyElementer.map(
 						sidemenyElement =>
