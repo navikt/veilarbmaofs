@@ -5,7 +5,7 @@ import { useFetchFeatureToggle } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
 import './sidemeny.less';
 import { scrollTilElement, sidemenyElementId } from '../../utils/sidemeny';
-import { Heading, Link, Panel } from '@navikt/ds-react';
+import { Heading, Panel } from '@navikt/ds-react';
 
 export const Sidemeny: React.FC = () => {
 	const { sidemenyElementer, setIsOpenSidemenyElement } = useAppStore();
@@ -21,8 +21,13 @@ export const Sidemeny: React.FC = () => {
 	};
 
 	return (
-		<Panel className="sidemeny">
-			<Heading level="2" size="medium">
+		<Panel className="sidemeny" aria-labelledby="detaljer-om-bruker">
+			<Heading
+				size="medium"
+				level="2"
+				onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}
+				id="detaljer-om-bruker"
+			>
 				Detaljer om bruker
 			</Heading>
 			<ul>
@@ -30,7 +35,7 @@ export const Sidemeny: React.FC = () => {
 					sidemenyElement =>
 						skalViseMenyElement(sidemenyElement.id) && (
 							<li key={`sidemenyelement-${sidemenyElement.id}`}>
-								<Link
+								<a
 									tabIndex={-1}
 									onClick={e => {
 										e.preventDefault();
@@ -40,7 +45,7 @@ export const Sidemeny: React.FC = () => {
 									href={`#${sidemenyElement.id}`}
 								>
 									{sidemenyElement.name}
-								</Link>
+								</a>
 							</li>
 						)
 				)}
