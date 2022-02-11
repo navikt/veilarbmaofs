@@ -20,6 +20,8 @@ function Kopiknapp(props: { kopitekst: string; type: string }) {
 			onMouseLeave={() => setHover(false)}
 			variant="tertiary"
 			size="small"
+			aria-label={`Kopier ${props.type}`}
+			title={`Kopier ${props.type}`}
 		>
 			{hover ? <CopyFilled /> : <Copy />}
 		</Button>
