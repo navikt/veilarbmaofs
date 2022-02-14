@@ -85,8 +85,8 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 			Date.UTC(Number(datoObjekt!.year), Number(datoObjekt!.month) - 1, Number(datoObjekt!.day))
 		);
 	}
-	const shortOption = { year: 'numeric', month: 'short' };
-	const longOption = { year: 'numeric', month: 'short', day: 'numeric' };
+	const shortOption: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short' };
+	const longOption: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
 	const options = onlyYearMonth || lokalDatoKunArManed ? shortOption : longOption;
 
 	return lokalDato.toLocaleDateString('no-NO', options);
