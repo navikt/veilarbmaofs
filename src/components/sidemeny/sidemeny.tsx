@@ -7,6 +7,7 @@ import { useAppStore } from '../../stores/app-store';
 import './sidemeny.less';
 import { scrollTilElement, sidemenyElementId } from '../../utils/sidemeny';
 import { Heading, Panel } from '@navikt/ds-react';
+import { TilToppenKnapp } from '../felles/til-toppen-knapp';
 
 export const Sidemeny: React.FC = () => {
 	const { sidemenyElementer, setIsOpenSidemenyElement } = useAppStore();
@@ -22,35 +23,38 @@ export const Sidemeny: React.FC = () => {
 	};
 
 	return (
-		<Panel className="sidemeny" aria-labelledby="detaljer-om-bruker">
-			<Heading
-				size="medium"
-				level="2"
-				onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}
-				id="detaljer-om-bruker"
-			>
-				Detaljer om bruker
-			</Heading>
-			<ul>
-				{sidemenyElementer.map(
-					sidemenyElement =>
-						skalViseMenyElement(sidemenyElement.id) && (
-							<li key={`sidemenyelement-${sidemenyElement.id}`}>
-								<a
-									tabIndex={-1}
-									onClick={e => {
-										e.preventDefault();
-										setIsOpenSidemenyElement(sidemenyElement);
-										scrollTilElement(`#${sidemenyElement.id}`);
-									}}
-									href={`#${sidemenyElement.id}`}
-								>
-									{sidemenyElement.name}
-								</a>
-							</li>
-						)
-				)}
-			</ul>
-		</Panel>
+		<div className="side-container">
+			<Panel className="sidemeny" aria-labelledby="detaljer-om-bruker">
+				<Heading
+					size="medium"
+					level="2"
+					onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}
+					id="detaljer-om-bruker"
+				>
+					Detaljer om bruker
+				</Heading>
+				<ul>
+					{sidemenyElementer.map(
+						sidemenyElement =>
+							skalViseMenyElement(sidemenyElement.id) && (
+								<li key={`sidemenyelement-${sidemenyElement.id}`}>
+									<a
+										tabIndex={-1}
+										onClick={e => {
+											e.preventDefault();
+											setIsOpenSidemenyElement(sidemenyElement);
+											scrollTilElement(`#${sidemenyElement.id}`);
+										}}
+										href={`#${sidemenyElement.id}`}
+									>
+										{sidemenyElement.name}
+									</a>
+								</li>
+							)
+					)}
+				</ul>
+			</Panel>
+			<TilToppenKnapp />
+		</div>
 	);
 };
