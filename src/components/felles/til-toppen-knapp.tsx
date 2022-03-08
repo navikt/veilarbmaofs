@@ -1,19 +1,32 @@
 import { UpFilled } from '@navikt/ds-icons';
 import { Button } from '@navikt/ds-react';
+import { useEffect, useState } from 'react';
 import { logMetrikk } from '../../utils/logger';
 import { scrollTilElement } from '../../utils/sidemeny';
 import './til-toppen-knapp.less';
 
 export const TilToppenKnapp = () => {
-	// Hvis høyden på nettsiden er høyere enn en skjermhøyde og man ikke er på toppen, vis knapp
+	const [synlig, setSynlig] = useState(false);
 
 	const skrollOgLogg = () => {
 		scrollTilElement('#veilarbpersonflatefs-root');
 		logMetrikk('tiltoppenknapp');
 	};
 
+	const synlighet = () => {
+		if (window.scrollY > 300) {
+			setSynlig(true);
+		} else {
+			setSynlig(false);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', synlighet);
+	});
+
 	return (
-		<Button variant="secondary" className="til-toppen-knapp" onClick={skrollOgLogg}>
+		<Button variant="secondary" className={`til-toppen-knapp ${synlig ? 'visKnapp' : ''}`} onClick={skrollOgLogg}>
 			<UpFilled />
 		</Button>
 	);
