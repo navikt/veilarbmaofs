@@ -460,24 +460,22 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: {
-		sivilstand: 'Gift',
-		fraDato: '2012-08-20'
-	},
-	partner: {
-		fornavn: 'fornavn',
-		mellomnavn: null,
-		etternavn: 'etternavn',
-		forkortetNavn: 'fornavn etternavn',
-		fodselsnummer: '12108000391',
-		fodselsdato: '1980-12-10',
-		dodsdato: null,
-		harSammeBosted: true,
-		erEgenAnsatt: true,
-		harVeilederTilgang: false,
-		gradering: Gradering.UGRADERT,
-		kjonn: 'M'
-	},
+	sivilstand: [
+		{
+			sivilstand: 'Gift',
+			harSammeBosted: 'ja',
+			fraDato: '2012-08-20',
+			registrertDato: null,
+			master: 'Freg'
+		},
+		{
+			sivilstand: 'Skilt',
+			harSammeBosted: null,
+			fraDato: '2019-06-01',
+			registrertDato: '15.06.2019',
+			master: 'PDL'
+		}
+	],
 	bostedsadresse: {
 		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {

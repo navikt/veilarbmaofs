@@ -33,12 +33,14 @@ const PersonaliaV2PanelInnhold = () => {
 		kontonummer,
 		statsborgerskap,
 		sivilstand,
-		partner,
 		barn
 	} = personaliav2.data;
 
 	return (
 		<>
+			{personaliav2.data.sivilstand.length > 1 && (
+				<Feilmelding tekst="Her kommer teksten om dobbel sannhet sivilstand" />
+			)}
 			<Grid columns={4} gap="1rem">
 				<KontaktInformasjon
 					telefon={telefon}
@@ -47,7 +49,7 @@ const PersonaliaV2PanelInnhold = () => {
 					oppholdsadresse={oppholdsadresse}
 					kontaktadresser={kontaktadresser}
 				/>
-				<FamilieRelasjoner sivilstand={sivilstand} partner={partner} barn={barn} />
+				<FamilieRelasjoner sivilstand={sivilstand} barn={barn} />
 				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} />
 				<div>
 					<VergeFullmaktInfo />

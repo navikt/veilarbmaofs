@@ -35,3 +35,13 @@ export function hentKilde(master: OrNothing<String>) {
 			return null;
 	}
 }
+export function hentBorMedPartnerBeskrivelse(harSammeBosted: OrNothing<String>) {
+	switch (harSammeBosted) {
+		case 'ja':
+			return 'Bor med bruker';
+		case 'nei':
+			return 'Bor ikke med bruker';
+		default:
+			return null;
+	}
+}

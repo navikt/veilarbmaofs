@@ -1,17 +1,11 @@
 import React from 'react';
 import Sivilstand from './sivilstand';
-import Partner from './partner';
 import Barn from './barn';
 import { kalkulerAlder } from '../../../../utils/date-utils';
-import { PersonaliaPartner, PersonaliaSivilstand, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
-import { OrNothing } from '../../../../utils/felles-typer';
+import { PersonaliaSivilstand, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
 
-function FamilieInfo(props: {
-	sivilstand: PersonaliaSivilstand;
-	partner: OrNothing<PersonaliaPartner>;
-	barn: PersonsBarn[];
-}) {
-	const { sivilstand, partner, barn, ...rest } = props;
+function FamilieInfo(props: { sivilstand: PersonaliaSivilstand[]; barn: PersonsBarn[] }) {
+	const { sivilstand, barn, ...rest } = props;
 
 	const MAX_ALDER_BARN = 21;
 	const filtrertBarneListe =
@@ -20,7 +14,6 @@ function FamilieInfo(props: {
 	return (
 		<div {...rest}>
 			<Sivilstand sivilstand={sivilstand} />
-			<Partner partner={partner} />
 			<Barn barn={filtrertBarneListe} />
 		</div>
 	);
