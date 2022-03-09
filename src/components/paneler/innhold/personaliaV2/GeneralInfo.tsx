@@ -18,7 +18,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string }) {
 			<InformasjonsbolkEnkel
 				header="Statsborgerskap"
 				value={formateStringInUpperAndLowerCase(statsborgerskap)}
-				childClassName="innrykk"
+				childclassname="innrykk"
 			/>
 			{hasData(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
