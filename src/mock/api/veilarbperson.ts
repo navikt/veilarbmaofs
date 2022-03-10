@@ -1,7 +1,6 @@
 import { rest } from 'msw';
 import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
-import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
@@ -285,96 +284,6 @@ const cvOgJobbprofil: ArenaPerson = {
 		},
 		kompetanse: []
 	}
-};
-
-const personalia: PersonaliaInfo = {
-	fornavn: 'BRUCE',
-	mellomnavn: 'BATTY',
-	etternavn: 'WAYNE',
-	sammensattNavn: 'BRUCE BATTY WAYNE',
-	fodselsnummer: '10108000398',
-	fodselsdato: '1974-09-16',
-	dodsdato: null,
-	barn: [
-		{
-			fornavn: 'BRUCE',
-			mellomnavn: null,
-			etternavn: 'BANNER',
-			sammensattNavn: 'BRUCE BANNER',
-			fodselsnummer: '10108000391',
-			fodselsdato: '2016-04-17',
-			dodsdato: null,
-			harSammeBosted: true,
-			kjonn: 'M'
-		},
-		{
-			fornavn: 'HARRY',
-			mellomnavn: null,
-			etternavn: 'BOSCH',
-			sammensattNavn: 'HARRY BOSCH',
-			fodselsnummer: '10108000392',
-			fodselsdato: '2014-05-24',
-			dodsdato: null,
-			harSammeBosted: false,
-			kjonn: 'M'
-		},
-		{
-			fornavn: 'SATOSHI',
-			mellomnavn: null,
-			etternavn: 'NAKAMOTO',
-			sammensattNavn: 'SATOSHI NAKAMOTO',
-			fodselsnummer: '10108000398',
-			fodselsdato: '2005-10-04',
-			dodsdato: '2010-10-04',
-			harSammeBosted: true,
-			kjonn: 'K'
-		}
-	],
-	diskresjonskode: '6',
-	kontonummer: '12345678910',
-	geografiskTilknytning: '0106',
-	geografiskEnhet: {
-		enhetsnummer: '0106',
-		navn: 'NAV Fredrikstad'
-	},
-	telefon: '+4799999999',
-	epost: 'tester.scrambling-script@fellesregistre.no',
-	statsborgerskap: 'NORGE',
-	sikkerhetstiltak: 'To ansatte i samtale',
-	sivilstand: {
-		sivilstand: 'Gift',
-		fraDato: '2016-08-04'
-	},
-	partner: null,
-	bostedsadresse: {
-		strukturertAdresse: {
-			Gateadresse: {
-				landkode: 'NORGE',
-				tilleggsadresse: null,
-				postnummer: '1621',
-				poststed: 'GRESSVIK',
-				husnummer: 2228,
-				husbokstav: null,
-				kommunenummer: '0106',
-				gatenavn: 'GATEVEIEN',
-				bolignummer: null,
-				gatenummer: null
-			}
-		}
-	},
-	midlertidigAdresseNorge: null,
-	midlertidigAdresseUtland: null,
-	postAdresse: {
-		ustrukturertAdresse: {
-			adresselinje1: 'DOIDGE',
-			adresselinje2: null,
-			adresselinje3: null,
-			adresselinje4: '4001 STAVANGER',
-			landkode: 'NORGE'
-		}
-	},
-	egenAnsatt: true,
-	kjonn: 'K'
 };
 
 const personaliav2: PersonaliaV2Info = {
@@ -719,9 +628,7 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/registrering', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
 	}),
-	rest.get('/veilarbperson/api/person/:fnr', (req, res, ctx) => {
-		return res(ctx.delay(500), ctx.json(personalia));
-	}),
+
 	rest.get('/veilarbperson/api/v2/person', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
 	}),

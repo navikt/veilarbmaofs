@@ -2,7 +2,7 @@ import { Hovedmal, Innsatsgruppe } from '../rest/datatyper/innsatsbehov';
 import EMDASH from './emdash';
 import { ArenaHovedmalKode, OppfolgingsstatusData, ArenaServicegruppeKode } from '../rest/datatyper/oppfolgingsstatus';
 import { OrNothing, StringOrNothing } from './felles-typer';
-import { PersonaliaInfo } from '../rest/datatyper/personalia';
+import { PersonaliaV2Info } from '../rest/datatyper/personaliav2';
 import { VeilederData } from '../rest/datatyper/veileder';
 
 export function mapServicegruppeTilTekst(servicegruppe: OrNothing<ArenaServicegruppeKode>): string {
@@ -72,7 +72,7 @@ export function hentOppfolgingsEnhetTekst(oppfolgingsstatus: OppfolgingsstatusDa
 	return `${enhetId} ${navn}`;
 }
 
-export function hentGeografiskEnhetTekst(personalia: PersonaliaInfo | null): StringOrNothing {
+export function hentGeografiskEnhetTekst(personalia: PersonaliaV2Info | null): StringOrNothing {
 	if (!personalia || !personalia.geografiskEnhet) {
 		return null;
 	}
