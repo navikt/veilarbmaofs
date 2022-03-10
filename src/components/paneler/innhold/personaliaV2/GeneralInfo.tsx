@@ -6,9 +6,10 @@ import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import { useFetchSpraakTolk } from '../../../../rest/api';
 import { useAppStore } from '../../../../stores/app-store';
 import Kontonummer from './kontonummer';
+import Malform from './malform';
 
-function GeneralInfo(props: { kontonummer: string; statsborgerskap: string }) {
-	const { kontonummer, statsborgerskap, ...rest } = props;
+function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: string }) {
+	const { kontonummer, statsborgerskap, malform, ...rest } = props;
 	const { fnr } = useAppStore();
 	const tilrettelagtKommunikasjon = useFetchSpraakTolk(fnr);
 
@@ -18,11 +19,12 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string }) {
 			<InformasjonsbolkEnkel
 				header="Statsborgerskap"
 				value={formateStringInUpperAndLowerCase(statsborgerskap)}
-				childClassName="innrykk"
+				childclassname="innrykk"
 			/>
 			{hasData(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
 			)}
+			<Malform malform={malform} />
 		</div>
 	);
 }

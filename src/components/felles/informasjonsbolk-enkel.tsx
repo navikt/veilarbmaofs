@@ -10,14 +10,14 @@ interface Props {
 	value?: StringOrNothing;
 	defaultValue?: string;
 	className?: string;
-	childClassName?: string;
+	childclassname?: string;
 }
 
 function InformasjonsbolkEnkel(props: Props) {
 	const { value, defaultValue, ...rest } = props;
 	let content: string | React.ReactElement<Props> = EMDASH;
 	if (!(isNullOrUndefined(props.value) && isNullOrUndefined(props.defaultValue))) {
-		content = <Normaltekst className={props.childClassName}>{value || defaultValue}</Normaltekst>;
+		content = <Normaltekst className={props.childclassname}>{value || defaultValue}</Normaltekst>;
 	}
 
 	return <Informasjonsbolk {...rest}>{content}</Informasjonsbolk>;
