@@ -1,4 +1,4 @@
-import { UpFilled } from '@navikt/ds-icons';
+import { Up } from '@navikt/ds-icons';
 import { Button } from '@navikt/ds-react';
 import { useEffect, useState } from 'react';
 import { logMetrikk } from '../../utils/logger';
@@ -27,7 +27,7 @@ export const TilToppenKnapp = () => {
 
 	return (
 		<Button variant="secondary" className={`til-toppen-knapp ${synlig ? 'visKnapp' : ''}`} onClick={skrollOgLogg}>
-			<UpFilled />
+			<Up />
 		</Button>
 	);
 };

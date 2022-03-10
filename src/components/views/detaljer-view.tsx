@@ -8,8 +8,8 @@ export const DetaljerView: React.FC = () => {
 	return (
 		<article className="veilarbmaofs__container">
 			<Sidemeny />
-			<TilToppenKnapp />
 			<Paneler />
+			<TilToppenKnapp />
 			<TilbakemeldingFab />
 		</article>
 	);
