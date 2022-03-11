@@ -534,7 +534,7 @@ const personaliav2: PersonaliaV2Info = {
 		}
 	],
 	kjonn: 'K',
-	malform: 'nynorsk'
+	malform: 'nn'
 };
 
 const mockVergeOgFullmakt: VergeOgFullmaktData = {

@@ -7,8 +7,9 @@ import { useFetchSpraakTolk } from '../../../../rest/api';
 import { useAppStore } from '../../../../stores/app-store';
 import Kontonummer from './kontonummer';
 import Malform from './malform';
+import { StringOrNothing } from '../../../../utils/felles-typer';
 
-function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: string }) {
+function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
 	const { fnr } = useAppStore();
 	const tilrettelagtKommunikasjon = useFetchSpraakTolk(fnr);
@@ -24,7 +25,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malf
 			{hasData(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
 			)}
-			<Malform malform={malform} />
+			{malform && <Malform malform={malform} />}
 		</div>
 	);
 }
