@@ -6,8 +6,10 @@ import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import { useFetchSpraakTolk } from '../../../../rest/api';
 import { useAppStore } from '../../../../stores/app-store';
 import Kontonummer from './kontonummer';
-import Malform from './malform';
 import { StringOrNothing } from '../../../../utils/felles-typer';
+import { hentMalform } from '../../../../utils/konstanter';
+import { Normaltekst } from 'nav-frontend-typografi';
+import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
@@ -25,7 +27,11 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malf
 			{hasData(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
 			)}
-			{malform && <Malform malform={malform} />}
+			{malform && (
+				<Informasjonsbolk header="Målform">
+					<Normaltekst className="innrykk">{hentMalform(malform)}</Normaltekst>
+				</Informasjonsbolk>
+			)}
 		</div>
 	);
 }

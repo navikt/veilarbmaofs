@@ -35,3 +35,18 @@ export function hentKilde(master: OrNothing<String>) {
 			return null;
 	}
 }
+
+export function hentMalform(malform: OrNothing<String>) {
+	switch (malform) {
+		case 'nn':
+			return 'Nynorsk';
+		case 'nb':
+			return 'Bokmål';
+		case 'en':
+			return 'Engelsk';
+		case 'se':
+			return 'Nordsamisk';
+		default:
+			return null;
+	}
+}
