@@ -8,8 +8,6 @@ import { useAppStore } from '../../../../stores/app-store';
 import Kontonummer from './kontonummer';
 import { StringOrNothing } from '../../../../utils/felles-typer';
 import { hentMalform } from '../../../../utils/konstanter';
-import { Normaltekst } from 'nav-frontend-typografi';
-import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
@@ -28,9 +26,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malf
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
 			)}
 			{malform && (
-				<Informasjonsbolk header="Målform">
-					<Normaltekst className="innrykk">{hentMalform(malform)}</Normaltekst>
-				</Informasjonsbolk>
+				<InformasjonsbolkEnkel header="Målform" value={hentMalform(malform)} childclassname="innrykk" />
 			)}
 		</div>
 	);
