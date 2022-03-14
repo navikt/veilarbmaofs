@@ -18,6 +18,5 @@ export const tilretteleggingsbehovSpaConfig: AsyncSpaConfig = {
 	loader: <Laster midtstilt={true} />
 };
 
-export const TilretteleggingsbehovSpa = AsyncNavspa.importer<TilretteleggingsbehovViewSpaProps>(
-	tilretteleggingsbehovSpaConfig
-);
+export const TilretteleggingsbehovSpa =
+	AsyncNavspa.importer<TilretteleggingsbehovViewSpaProps>(tilretteleggingsbehovSpaConfig);

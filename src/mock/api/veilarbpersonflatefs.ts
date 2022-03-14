@@ -9,7 +9,7 @@ import {
 
 const features: Features = {
 	[PERSONALIA_DATA_FRA_TPS]: false,
-	[SPOR_OM_TILBAKEMELDING]: true,
+	[SPOR_OM_TILBAKEMELDING]: false,
 	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: false
 };
 
