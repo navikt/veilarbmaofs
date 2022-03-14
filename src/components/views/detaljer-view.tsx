@@ -1,4 +1,5 @@
 import React from 'react';
+import { TilToppenKnapp } from '../felles/til-toppen-knapp';
 import { Paneler } from '../paneler/paneler';
 import { Sidemeny } from '../sidemeny/sidemeny';
 import TilbakemeldingFab from '../tilbakemelding/fab/tilbakemelding-fab';
@@ -8,6 +9,7 @@ export const DetaljerView: React.FC = () => {
 		<article className="veilarbmaofs__container">
 			<Sidemeny />
 			<Paneler />
+			<TilToppenKnapp />
 			<TilbakemeldingFab />
 		</article>
 	);

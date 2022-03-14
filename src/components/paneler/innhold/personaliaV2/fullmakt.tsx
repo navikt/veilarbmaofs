@@ -5,14 +5,8 @@ import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi';
 import { formateLocalDate, isNotEmptyArray } from '../../../../utils';
 
 function FullmaktigEllerFullmaktsgiver(props: { fullmakt: Fullmakter }) {
-	const {
-		motpartsPersonident,
-		motpartsPersonNavn,
-		motpartsRolle,
-		omraader,
-		gyldigFraOgMed,
-		gyldigTilOgMed
-	} = props.fullmakt;
+	const { motpartsPersonident, motpartsPersonNavn, motpartsRolle, omraader, gyldigFraOgMed, gyldigTilOgMed } =
+		props.fullmakt;
 	const { fornavn, mellomnavn, etternavn } = motpartsPersonNavn;
 
 	const gjeldendeOmraader = omraader.map((omraade, index) => omraade.beskrivelse).join(', ');
