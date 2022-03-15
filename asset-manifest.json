@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/veilarbmaofs/static/css/main.08e91c38.chunk.css",
-    "main.js": "/veilarbmaofs/static/js/main.08d313ce.chunk.js",
-    "main.js.map": "/veilarbmaofs/static/js/main.08d313ce.chunk.js.map",
+    "main.js": "/veilarbmaofs/static/js/main.e13c8ab4.chunk.js",
+    "main.js.map": "/veilarbmaofs/static/js/main.e13c8ab4.chunk.js.map",
     "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.2f642c4e.js",
     "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.2f642c4e.js.map",
     "static/css/2.80c5796d.chunk.css": "/veilarbmaofs/static/css/2.80c5796d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.80c5796d.chunk.css",
     "static/js/2.d4964282.chunk.js",
     "static/css/main.08e91c38.chunk.css",
-    "static/js/main.08d313ce.chunk.js"
+    "static/js/main.e13c8ab4.chunk.js"
   ]
 }
