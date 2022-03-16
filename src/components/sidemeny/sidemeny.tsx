@@ -23,12 +23,7 @@ export const Sidemeny: React.FC = () => {
 
 	return (
 		<Panel className="sidemeny" aria-labelledby="detaljer-om-bruker">
-			<Heading
-				size="medium"
-				level="2"
-				onClick={() => scrollTilElement('#veilarbpersonflatefs-root')}
-				id="detaljer-om-bruker"
-			>
+			<Heading size="medium" level="2" id="detaljer-om-bruker">
 				Detaljer om bruker
 			</Heading>
 			<ul>

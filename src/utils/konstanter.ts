@@ -1,5 +1,6 @@
 import { Gradering } from '../rest/datatyper/personaliav2';
 import { OrNothing } from './felles-typer';
+import EMDASH from './emdash';
 
 export const APP_NAME = 'veilarbmaofs';
 
@@ -33,5 +34,20 @@ export function hentKilde(master: OrNothing<String>) {
 			return 'i Folkeregisteret';
 		default:
 			return null;
+	}
+}
+
+export function hentMalform(malform: OrNothing<String>) {
+	switch (malform) {
+		case 'nn':
+			return 'Nynorsk';
+		case 'nb':
+			return 'Bokmål';
+		case 'en':
+			return 'Engelsk';
+		case 'se':
+			return 'Nordsamisk';
+		default:
+			return EMDASH;
 	}
 }
