@@ -25,9 +25,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malf
 			{hasData(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.data} />
 			)}
-			{malform && (
-				<InformasjonsbolkEnkel header="Målform" value={hentMalform(malform)} childclassname="innrykk" />
-			)}
+			<InformasjonsbolkEnkel header="Målform" value={hentMalform(malform)} childclassname="innrykk" />
 		</div>
 	);
 }

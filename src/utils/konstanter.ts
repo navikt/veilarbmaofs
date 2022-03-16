@@ -1,5 +1,6 @@
 import { Gradering } from '../rest/datatyper/personaliav2';
 import { OrNothing } from './felles-typer';
+import EMDASH from './emdash';
 
 export const APP_NAME = 'veilarbmaofs';
 
@@ -47,6 +48,6 @@ export function hentMalform(malform: OrNothing<String>) {
 		case 'se':
 			return 'Nordsamisk';
 		default:
-			return null;
+			return EMDASH;
 	}
 }
