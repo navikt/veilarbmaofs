@@ -149,4 +149,5 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
 	kontaktadresser: Kontaktadresse[];
+	malform: StringOrNothing;
 }

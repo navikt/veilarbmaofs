@@ -33,7 +33,8 @@ const PersonaliaV2PanelInnhold = () => {
 		kontonummer,
 		statsborgerskap,
 		sivilstand,
-		barn
+		barn,
+		malform
 	} = personaliav2.data;
 
 	return (
@@ -50,7 +51,7 @@ const PersonaliaV2PanelInnhold = () => {
 					kontaktadresser={kontaktadresser}
 				/>
 				<FamilieRelasjoner sivilstand={sivilstand} barn={barn} />
-				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} />
+				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} malform={malform} />
 				<div>
 					<VergeFullmaktInfo />
 				</div>
