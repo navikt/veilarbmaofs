@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"@craco/craco": "^6.4.3",
-		"@navikt/ds-css": "0.16.2",
+		"@navikt/ds-css": "0.16.4",
 		"@navikt/ds-css-internal": "^0.7.1",
 		"@navikt/ds-icons": "^0.8.4",
 		"@navikt/ds-react": "0.17.3",
