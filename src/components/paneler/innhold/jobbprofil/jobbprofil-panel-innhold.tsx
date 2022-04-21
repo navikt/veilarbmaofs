@@ -55,38 +55,40 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const pamUrl = byggPamUrl(fnr);
 
 	// Sjekk alltid tilgang først
-	// @ts-ignore
-	if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
-		return (
-			<Alert variant="info" className="alertstripe_intern">
-				Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
-				<ul>
-					<li>
-						Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang. Be bruker gå inn på
-						nav.no og oppdatere CV'en sin.
-					</li>
-				</ul>
-			</Alert>
-		);
-	} else {
-		if (
-			// @ts-ignore
-			cvOgJobbprofil.result.status === 404 ||
-			cvOgJobbprofil.result.status === 204
-			//			|| !harJobbprofilData(cvOgJobbprofil)
-		) {
+	if (cvOgJobbprofil.result?.status !== undefined) {
+		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
 			return (
 				<Alert variant="info" className="alertstripe_intern">
-					Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
-					{erManuell && brukerAktorId && (
-						<Lenke target="_blank" href={pamUrl}>
-							Registrer her
-						</Lenke>
-					)}
+					Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
+					<ul>
+						<li>
+							Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang. Be bruker gå inn
+							på nav.no og oppdatere CV'en sin.
+						</li>
+					</ul>
 				</Alert>
 			);
-		} else if (!isResolved(cvOgJobbprofil)) {
-			return <Feilmelding />;
+		}
+	} else {
+		if (cvOgJobbprofil.result?.status !== undefined) {
+			if (
+				cvOgJobbprofil.result.status === 404 ||
+				cvOgJobbprofil.result.status === 204
+				//			|| !harJobbprofilData(cvOgJobbprofil)
+			) {
+				return (
+					<Alert variant="info" className="alertstripe_intern">
+						Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
+						{erManuell && brukerAktorId && (
+							<Lenke target="_blank" href={pamUrl}>
+								Registrer her
+							</Lenke>
+						)}
+					</Alert>
+				);
+			} else if (!isResolved(cvOgJobbprofil)) {
+				return <Feilmelding />;
+			}
 		}
 	}
 
@@ -98,6 +100,7 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 		onsketArbeidstidsordning,
 		heltidDeltid,
 		kompetanse
+		// @ts-ignore
 	} = cvOgJobbprofil.result.data.jobbprofil;
 
 	const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);

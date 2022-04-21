@@ -61,8 +61,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (isRejected(cvOgJobbprofil)) {
-		// @ts-ignore
+	if (cvOgJobbprofil.result?.status !== undefined) {
 		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
 			return (
 				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
@@ -76,7 +75,6 @@ const CvPanelInnhold = (): React.ReactElement => {
 				</Alert>
 			);
 		} else {
-			// @ts-ignore
 			if (cvOgJobbprofil.result.status === 404 || cvOgJobbprofil.result?.status === 204) {
 				return (
 					<Alert variant="info" className="alertstripe_intern">
@@ -93,41 +91,43 @@ const CvPanelInnhold = (): React.ReactElement => {
 			}
 		}
 	}
+	if (cvOgJobbprofil.result?.data !== undefined) {
+		const {
+			fagdokumentasjoner,
+			sammendrag,
+			arbeidserfaring,
+			annenErfaring,
+			utdanning,
+			godkjenninger,
+			andreGodkjenninger,
+			forerkort,
+			sprak,
+			kurs,
+			sistEndret
+		} = cvOgJobbprofil.result.data;
 
-	const {
-		fagdokumentasjoner,
-		sammendrag,
-		arbeidserfaring,
-		annenErfaring,
-		utdanning,
-		godkjenninger,
-		andreGodkjenninger,
-		forerkort,
-		sprak,
-		kurs,
-		sistEndret
-	} = cvOgJobbprofil.result.data;
-
-	return (
-		<>
-			<LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
-			<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
-			<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
-			<CvIkkeSynligInfo />
-			<Sammendrag sammendrag={sammendrag} />
-			<FloatGrid columns={2} gap={8}>
-				<Arbeidserfaring arbeidserfaring={arbeidserfaring} />
-				<AnnenErfaring annenErfaring={annenErfaring} />
-				<Utdanning utdanning={utdanning} />
-				<Kurs kurs={kurs} />
-				<Godkjenninger godkjenninger={godkjenninger} />
-				<AndreGodkjenninger andreGodkjenninger={andreGodkjenninger} />
-				<Forerkort forerkort={forerkort} />
-				<Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
-				<Sprak sprak={sprak} />
-			</FloatGrid>
-		</>
-	);
+		return (
+			<>
+				<LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
+				<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
+				<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
+				<CvIkkeSynligInfo />
+				<Sammendrag sammendrag={sammendrag} />
+				<FloatGrid columns={2} gap={8}>
+					<Arbeidserfaring arbeidserfaring={arbeidserfaring} />
+					<AnnenErfaring annenErfaring={annenErfaring} />
+					<Utdanning utdanning={utdanning} />
+					<Kurs kurs={kurs} />
+					<Godkjenninger godkjenninger={godkjenninger} />
+					<AndreGodkjenninger andreGodkjenninger={andreGodkjenninger} />
+					<Forerkort forerkort={forerkort} />
+					<Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
+					<Sprak sprak={sprak} />
+				</FloatGrid>
+			</>
+		);
+	}
+	return <Feilmelding />;
 };
 
 export default CvPanelInnhold;
