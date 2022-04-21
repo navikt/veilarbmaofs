@@ -6,29 +6,40 @@ import SistEndret from '../../../felles/sist-endret';
 import Grid from '../../../felles/grid';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl } from '../../../../utils';
-import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
+import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
-import { isPending, hasError, WithData, FetchResult } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { Alert } from '@navikt/ds-react';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
+import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
-const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
+/*	const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
 	const withData = cvOgJobbprofil as WithData<ArenaPerson>;
 	return withData.data && withData.data.jobbprofil != null;
 };
-
-const JobbprofilPanelInnhold = () => {
+*/
+const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
-	const cvOgJobbprofil = useFetchCvOgJobbprofil(fnr);
-	const underOppfolging = useFetchUnderOppfolging(fnr);
-	const aktorId = useFetchAktorId(fnr);
+	const cvOgJobbprofil = usePromise<AxiosResponse<ArenaPerson>>(() => fetchCvOgJobbprofil(fnr));
+	const underOppfolging = usePromise<AxiosResponse<UnderOppfolgingData>>(() => fetchUnderOppfolging(fnr));
+	const aktorId = usePromise<AxiosResponse<AktorId>>(() => fetchAktorId(fnr));
 
-	if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
+	if (
+		isNotStartedOrPending(cvOgJobbprofil) ||
+		isNotStartedOrPending(underOppfolging) ||
+		isNotStartedOrPending(aktorId)
+	) {
 		return <Laster midtstilt={true} />;
-	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
+	} else if (
+		isRejected(underOppfolging) ||
+		isRejected(aktorId) ||
+		!isResolved(underOppfolging) ||
+		!isResolved(aktorId)
+	) {
 		return <Feilmelding />;
-	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
+	} else if (!isNotStartedOrPending(underOppfolging) && !underOppfolging.result.data.underOppfolging) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Bruker er ikke under arbeidsrettet oppfølging
@@ -36,15 +47,16 @@ const JobbprofilPanelInnhold = () => {
 		);
 	}
 
-	const underOppfolgingData = underOppfolging.data;
-	const aktorIdData = aktorId.data;
+	const underOppfolgingData = underOppfolging.result.data;
+	const aktorIdData = aktorId.result.data;
 
 	const erManuell = underOppfolgingData.erManuell;
 	const brukerAktorId = aktorIdData.aktorId;
 	const pamUrl = byggPamUrl(fnr);
 
 	// Sjekk alltid tilgang først
-	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
+	// @ts-ignore
+	if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
@@ -56,23 +68,26 @@ const JobbprofilPanelInnhold = () => {
 				</ul>
 			</Alert>
 		);
-	} else if (
-		cvOgJobbprofil.statusCode === 404 ||
-		cvOgJobbprofil.statusCode === 204 ||
-		!harJobbprofilData(cvOgJobbprofil)
-	) {
-		return (
-			<Alert variant="info" className="alertstripe_intern">
-				Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
-				{erManuell && brukerAktorId && (
-					<Lenke target="_blank" href={pamUrl}>
-						Registrer her
-					</Lenke>
-				)}
-			</Alert>
-		);
-	} else if (!hasData(cvOgJobbprofil)) {
-		return <Feilmelding />;
+	} else {
+		if (
+			// @ts-ignore
+			cvOgJobbprofil.result.status === 404 ||
+			cvOgJobbprofil.result.status === 204
+			//			|| !harJobbprofilData(cvOgJobbprofil)
+		) {
+			return (
+				<Alert variant="info" className="alertstripe_intern">
+					Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
+					{erManuell && brukerAktorId && (
+						<Lenke target="_blank" href={pamUrl}>
+							Registrer her
+						</Lenke>
+					)}
+				</Alert>
+			);
+		} else if (!isResolved(cvOgJobbprofil)) {
+			return <Feilmelding />;
+		}
 	}
 
 	const {
@@ -83,7 +98,7 @@ const JobbprofilPanelInnhold = () => {
 		onsketArbeidstidsordning,
 		heltidDeltid,
 		kompetanse
-	} = cvOgJobbprofil.data.jobbprofil;
+	} = cvOgJobbprofil.result.data.jobbprofil;
 
 	const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
 	const yrker = onsketYrke.map(yrke => yrke.tittel);

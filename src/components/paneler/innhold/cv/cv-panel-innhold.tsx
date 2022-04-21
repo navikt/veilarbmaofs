@@ -1,4 +1,5 @@
 import React from 'react';
+import { AxiosResponse } from 'axios';
 import { useAppStore } from '../../../../stores/app-store';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
@@ -16,25 +17,37 @@ import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import { byggPamUrl } from '../../../../utils';
-import { useFetchAktorId, useFetchCvOgJobbprofil, useFetchUnderOppfolging } from '../../../../rest/api';
+import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
-import { hasError, isPending } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
 import { Alert } from '@navikt/ds-react';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
+import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
+import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
-const CvPanelInnhold = () => {
+const CvPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
-	const cvOgJobbprofil = useFetchCvOgJobbprofil(fnr);
-	const underOppfolging = useFetchUnderOppfolging(fnr);
-	const aktorId = useFetchAktorId(fnr);
 
-	if (isPending(cvOgJobbprofil) || isPending(underOppfolging) || isPending(aktorId)) {
+	const cvOgJobbprofil = usePromise<AxiosResponse<ArenaPerson>>(() => fetchCvOgJobbprofil(fnr));
+	const underOppfolging = usePromise<AxiosResponse<UnderOppfolgingData>>(() => fetchUnderOppfolging(fnr));
+	const aktorId = usePromise<AxiosResponse<AktorId>>(() => fetchAktorId(fnr));
+
+	if (
+		isNotStartedOrPending(cvOgJobbprofil) ||
+		isNotStartedOrPending(underOppfolging) ||
+		isNotStartedOrPending(aktorId)
+	) {
 		return <Laster midtstilt={true} />;
-	} else if (hasError(underOppfolging) || hasError(aktorId) || !hasData(underOppfolging) || !hasData(aktorId)) {
+	} else if (
+		isRejected(underOppfolging) ||
+		isRejected(aktorId) ||
+		!isResolved(underOppfolging) ||
+		!isResolved(aktorId)
+	) {
 		return <Feilmelding />;
-	} else if (!isPending(underOppfolging) && !underOppfolging.data.underOppfolging) {
+	} else if (!isNotStartedOrPending(underOppfolging) && !underOppfolging.result.data.underOppfolging) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Bruker er ikke under arbeidsrettet oppfølging
@@ -42,37 +55,43 @@ const CvPanelInnhold = () => {
 		);
 	}
 
-	const underOppfolgingData = underOppfolging.data;
+	const underOppfolgingData = underOppfolging.result.data;
 	const erManuell = underOppfolgingData.erManuell;
 
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (cvOgJobbprofil.statusCode === 403 || cvOgJobbprofil.statusCode === 401) {
-		return (
-			<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
-				Du kan ikke se CV-en, be brukeren om å:
-				<ul>
-					<li>logge inn på arbeidsplassen.no</li>
-					<li>lese teksten om at du må dele CV-en med NAV</li>
-					<li>gå videre og gjennomføre det tjenesten ber om</li>
-				</ul>
-				Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
-			</Alert>
-		);
-	} else if (cvOgJobbprofil.statusCode === 404 || cvOgJobbprofil.statusCode === 204) {
-		return (
-			<Alert variant="info" className="alertstripe_intern">
-				Denne personen har ikke registrert CV.&nbsp;&nbsp;
-				{erManuell && aktorId && (
-					<Lenke target="_blank" href={endreCvUrl}>
-						Registrer her
-					</Lenke>
-				)}
-			</Alert>
-		);
-	} else if (!hasData(cvOgJobbprofil)) {
-		return <Feilmelding />;
+	if (isRejected(cvOgJobbprofil)) {
+		// @ts-ignore
+		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
+			return (
+				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
+					Du kan ikke se CV-en, be brukeren om å:
+					<ul>
+						<li>logge inn på arbeidsplassen.no</li>
+						<li>lese teksten om at du må dele CV-en med NAV</li>
+						<li>gå videre og gjennomføre det tjenesten ber om</li>
+					</ul>
+					Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
+				</Alert>
+			);
+		} else {
+			// @ts-ignore
+			if (cvOgJobbprofil.result.status === 404 || cvOgJobbprofil.result?.status === 204) {
+				return (
+					<Alert variant="info" className="alertstripe_intern">
+						Denne personen har ikke registrert CV.&nbsp;&nbsp;
+						{erManuell && aktorId && (
+							<Lenke target="_blank" href={endreCvUrl}>
+								Registrer her
+							</Lenke>
+						)}
+					</Alert>
+				);
+			} else if (!isResolved(cvOgJobbprofil)) {
+				return <Feilmelding />;
+			}
+		}
 	}
 
 	const {
@@ -87,7 +106,7 @@ const CvPanelInnhold = () => {
 		sprak,
 		kurs,
 		sistEndret
-	} = cvOgJobbprofil.data;
+	} = cvOgJobbprofil.result.data;
 
 	return (
 		<>

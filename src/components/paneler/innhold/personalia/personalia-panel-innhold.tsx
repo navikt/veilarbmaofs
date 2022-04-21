@@ -7,23 +7,24 @@ import Adresser from './adresser';
 import Sivilstand from './sivilstand';
 import Partner from './partner';
 import Barn from './barn';
-import { useFetchPersonalia } from '../../../../rest/api';
+import { fetchPersonalia } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { isPending, hasError } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
 
 const MAX_ALDER_BARN = 21;
 
 const PersonaliaPanelInnhold = () => {
 	const { fnr } = useAppStore();
-	const personalia = useFetchPersonalia(fnr);
+	const personalia = usePromise<AxiosResponse<PersonaliaInfo>>(() => fetchPersonalia(fnr));
 
-	if (isPending(personalia)) {
+	if (isNotStartedOrPending(personalia)) {
 		return <Laster midtstilt={true} />;
-	} else if (hasError(personalia)) {
+	} else if (isRejected(personalia)) {
 		return <Feilmelding />;
-	} else if (!hasData(personalia)) {
+	} else if (!isResolved(personalia)) {
 		return <NoData />;
 	}
 
@@ -39,7 +40,7 @@ const PersonaliaPanelInnhold = () => {
 		sivilstand,
 		partner,
 		barn
-	} = personalia.data;
+	} = personalia.result.data;
 
 	const filtrertBarneListe = barn.filter(
 		enkeltBarn => kalkulerAlder(new Date(enkeltBarn.fodselsdato)) < MAX_ALDER_BARN

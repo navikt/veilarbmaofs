@@ -1,18 +1,17 @@
 import React from 'react';
-import { hasData } from '../../rest/utils';
-import { PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
-import { useFetchFeatureToggle } from '../../rest/api';
+import { Features, PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
+import { fetchFeatureToggle } from '../../rest/api';
 import { useAppStore } from '../../stores/app-store';
-
 import './sidemeny.less';
 import { scrollTilElement, sidemenyElementId } from '../../utils/sidemeny';
 import { Heading, Panel } from '@navikt/ds-react';
+import { isResolved, usePromise } from '../../utils/use-promise';
+import { AxiosResponse } from 'axios';
 
 export const Sidemeny: React.FC = () => {
 	const { sidemenyElementer, setIsOpenSidemenyElement } = useAppStore();
-	const features = useFetchFeatureToggle();
-
-	const visPersonaliaFraTPS = hasData(features) && features.data[PERSONALIA_DATA_FRA_TPS];
+	const features = usePromise<AxiosResponse<Features>>(() => fetchFeatureToggle());
+	const visPersonaliaFraTPS = isResolved(features) && features.result.data[PERSONALIA_DATA_FRA_TPS];
 	const visPersonaliaFraPDL = !visPersonaliaFraTPS;
 
 	const skalViseMenyElement = (id: string): boolean => {

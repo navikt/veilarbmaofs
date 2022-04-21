@@ -4,15 +4,13 @@ import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
-	useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
-	useFetchInnsatsbehov,
-	useFetchOppfolgingsstatus,
-	useFetchPersonalia,
-	useFetchVeileder
+	fetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
+	fetchInnsatsbehov,
+	fetchOppfolgingsstatus,
+	fetchPersonalia,
+	fetchVeileder
 } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
-import { isPending } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
 import {
 	hentGeografiskEnhetTekst,
 	hentOppfolgingsEnhetTekst,
@@ -23,25 +21,37 @@ import {
 } from '../../../../utils/text-mapper';
 import { erInnsatsgruppe } from '../../../../utils/arena-status-utils';
 import { OrNothing } from '../../../../utils/felles-typer';
-import { Hovedmal, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
-import { ArenaHovedmalKode, ArenaServicegruppeKode } from '../../../../rest/datatyper/oppfolgingsstatus';
+import { Hovedmal, Innsatsbehov, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
+import {
+	ArenaHovedmalKode,
+	ArenaServicegruppeKode,
+	OppfolgingsstatusData
+} from '../../../../rest/datatyper/oppfolgingsstatus';
 import { INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE } from '../../../../rest/datatyper/feature';
 import './oppfolging-panel-innhold.less';
 import Show from '../../../felles/show';
 import { Alert } from '@navikt/ds-react';
+import { isPending, isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
+import { VeilederData } from '../../../../rest/datatyper/veileder';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr, features } = useAppStore();
-	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
-	const personalia = useFetchPersonalia(fnr);
-	const innsatsbehov = useFetchInnsatsbehov(fnr);
-	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
-	const veileder = useFetchVeileder(veilederId, { lazy: true });
-	const tilhorerBrukerUtrulletKontorForVedtaksstotte = useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr);
+
+	const oppfolgingsstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
+	const personalia = usePromise<AxiosResponse<PersonaliaInfo>>(() => fetchPersonalia(fnr));
+	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
+	const veilederId = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data.veilederId : null;
+	const veileder = usePromise<AxiosResponse<VeilederData>>(() => fetchVeileder(fnr));
+	const tilhorerBrukerUtrulletKontorForVedtaksstotte = usePromise<AxiosResponse<VeilederData>>(() =>
+		fetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr)
+	);
 
 	useEffect(() => {
-		if (!hasData(veileder) && veilederId != null) {
-			veileder.rerun();
+		if (!isResolved(veileder) && veilederId != null) {
+			//		veileder.rerun();
+			console.log('veileder.rerun()');
 		}
 		// TODO: Når use-fetch memoiseres riktig, så legg til alle dependencies
 		// eslint-disable-next-line
@@ -51,10 +61,10 @@ const OppfolgingPanelInnhold = () => {
 		return <Laster midtstilt={true} />;
 	}
 
-	const veilederData = hasData(veileder) ? veileder.data : null;
-	const personaliaData = hasData(personalia) ? personalia.data : null;
-	const innsatsbehovData = hasData(innsatsbehov) ? innsatsbehov.data : null;
-	const oppfolgingsstatusData = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data : null;
+	const veilederData = isResolved(veileder) ? veileder.result.data : null;
+	const personaliaData = isResolved(personalia) ? personalia.result.data : null;
+	const innsatsbehovData = isResolved(innsatsbehov) ? innsatsbehov.result.data : null;
+	const oppfolgingsstatusData = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data : null;
 
 	let servicegruppe: OrNothing<ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
 	let innsatsgruppe: OrNothing<Innsatsgruppe | ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
@@ -105,8 +115,8 @@ const OppfolgingPanelInnhold = () => {
 			</Grid>
 			<Show
 				if={
-					hasData(tilhorerBrukerUtrulletKontorForVedtaksstotte)
-						? tilhorerBrukerUtrulletKontorForVedtaksstotte.data &&
+					isResolved(tilhorerBrukerUtrulletKontorForVedtaksstotte)
+						? tilhorerBrukerUtrulletKontorForVedtaksstotte.result.data &&
 						  !hentInnsatsgruppeOgHovedmalFraVedtaksstotte()
 						: false
 				}
