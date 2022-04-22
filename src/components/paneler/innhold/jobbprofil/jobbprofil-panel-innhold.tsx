@@ -15,11 +15,8 @@ import { AxiosResponse } from 'axios';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
-/*	const harJobbprofilData = (cvOgJobbprofil: FetchResult<ArenaPerson>): boolean => {
-	const withData = cvOgJobbprofil as WithData<ArenaPerson>;
-	return withData.data && withData.data.jobbprofil != null;
-};
-*/
+const harJobbprofilData = (cvOgJobbprofil: ArenaPerson): boolean => cvOgJobbprofil && cvOgJobbprofil.jobbprofil != null;
+
 const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
 	const cvOgJobbprofil = usePromise<AxiosResponse<ArenaPerson>>(() => fetchCvOgJobbprofil(fnr));
@@ -55,7 +52,7 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const pamUrl = byggPamUrl(fnr);
 
 	// Sjekk alltid tilgang først
-	if (cvOgJobbprofil.result?.status !== undefined) {
+	if (cvOgJobbprofil.result?.status) {
 		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
 			return (
 				<Alert variant="info" className="alertstripe_intern">
@@ -70,11 +67,11 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 			);
 		}
 	} else {
-		if (cvOgJobbprofil.result?.status !== undefined) {
+		if (cvOgJobbprofil.result?.status) {
 			if (
 				cvOgJobbprofil.result.status === 404 ||
-				cvOgJobbprofil.result.status === 204
-				//			|| !harJobbprofilData(cvOgJobbprofil)
+				cvOgJobbprofil.result.status === 204 ||
+				!harJobbprofilData(cvOgJobbprofil.result.data)
 			) {
 				return (
 					<Alert variant="info" className="alertstripe_intern">

@@ -61,7 +61,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (cvOgJobbprofil.result?.status !== undefined) {
+	if (cvOgJobbprofil.result?.status) {
 		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
 			return (
 				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
@@ -91,7 +91,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 			}
 		}
 	}
-	if (cvOgJobbprofil.result?.data !== undefined) {
+	if (cvOgJobbprofil.result?.data) {
 		const {
 			fagdokumentasjoner,
 			sammendrag,
