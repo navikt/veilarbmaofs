@@ -16,3 +16,7 @@ export const initialFeatures: Features = {
 	[SPOR_OM_TILBAKEMELDING]: false,
 	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: false
 };
+
+export const toggles = () => {
+	return `feature=${PERSONALIA_DATA_FRA_TPS}&feature=${SPOR_OM_TILBAKEMELDING}&features=${INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE}`;
+};

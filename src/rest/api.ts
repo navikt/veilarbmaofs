@@ -1,7 +1,7 @@
 import { axiosInstance } from './utils';
 import { APP_NAME } from '../utils/konstanter';
 import { OrNothing } from '../utils/felles-typer';
-import { TOGGLES } from './datatyper/feature';
+import { toggles } from './datatyper/feature';
 const headers = {
 	headers: { 'Nav-Consumer-Id': APP_NAME }
 };
@@ -55,7 +55,7 @@ export const fetchInnsatsbehov = (fnr: string) => {
 };
 
 export const fetchFeatureToggle = () => {
-	return axiosInstance.get(`/veilarbpersonflatefs/api/feature?${TOGGLES}`, headers);
+	return axiosInstance.get(`/veilarbpersonflatefs/api/feature?${toggles()}`, headers);
 };
 
 export const fetchTilgorerBrukerUtrulletKontorForVedtaksstotte = (fnr: string) => {
