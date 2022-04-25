@@ -35,6 +35,9 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 		!isResolved(underOppfolging) ||
 		!isResolved(aktorId)
 	) {
+		console.log('underOppfolging.status ' + underOppfolging.status);
+		// @ts-ignore
+		console.log('underOppfolging.result.data.underOppfolging ' + underOppfolging.result.data.underOppfolging);
 		return <Feilmelding />;
 	} else if (!isNotStartedOrPending(underOppfolging) && !underOppfolging.result.data.underOppfolging) {
 		return (
