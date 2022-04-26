@@ -1,7 +1,6 @@
 import React from 'react';
 import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
-// @ts-ignore
-import { PersonaliaV2Info, PersonaliaSivilstand } from '../../../../rest/datatyper/personaliaV2';
+import { PersonaliaV2Info, PersonaliaSivilstand } from '../../../../rest/datatyper/personaliav2';
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import EMDASH from '../../../../utils/emdash';
