@@ -44,7 +44,7 @@ const PersonaliaV2PanelInnhold = () => {
 
 	return (
 		<>
-			{personaliav2.data.sivilstand.length > 1 && (
+			{personaliav2.result.data.sivilstand.length > 1 && (
 				<Feilmelding tekst="Her kommer teksten om dobbel sannhet sivilstand" />
 			)}
 			<Grid columns={4} gap="1rem">

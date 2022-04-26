@@ -7,7 +7,7 @@ import {
 	fetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
 	fetchInnsatsbehov,
 	fetchOppfolgingsstatus,
-	fetchPersonalia,
+	fetchPersonaliaV2,
 	fetchVeileder
 } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
@@ -33,20 +33,14 @@ import Show from '../../../felles/show';
 import { Alert } from '@navikt/ds-react';
 import { isPending, isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
-import { PersonaliaInfo } from '../../../../rest/datatyper/personalia';
+import { PersonaliaV2Info } from '../../../../rest/datatyper/personaliav2';
 import { VeilederData } from '../../../../rest/datatyper/veileder';
 
 const OppfolgingPanelInnhold = () => {
 	const { fnr, features } = useAppStore();
-	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
-	const personalia = useFetchPersonaliaV2(fnr);
-	const innsatsbehov = useFetchInnsatsbehov(fnr);
-	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
-	const veileder = useFetchVeileder(veilederId, { lazy: true });
-	const tilhorerBrukerUtrulletKontorForVedtaksstotte = useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr);
 
 	const oppfolgingsstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
-	const personalia = usePromise<AxiosResponse<PersonaliaInfo>>(() => fetchPersonalia(fnr));
+	const personalia = usePromise<AxiosResponse<PersonaliaV2Info>>(() => fetchPersonaliaV2(fnr));
 	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
 	const veilederId = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data.veilederId : null;
 	const veileder = usePromise<AxiosResponse<VeilederData>>(() => fetchVeileder(fnr));

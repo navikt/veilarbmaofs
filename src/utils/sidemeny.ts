@@ -25,10 +25,6 @@ export const sidemenyElementer: SidemenyElement[] = [
 	},
 	{
 		name: 'Personalia',
-		id: sidemenyElementId.personalia
-	},
-	{
-		name: 'Personalia',
 		id: sidemenyElementId.personaliaFraPdl
 	},
 	{
