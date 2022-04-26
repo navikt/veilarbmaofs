@@ -32,7 +32,7 @@ export interface Enhet {
 }
 
 export interface PersonaliaSivilstand {
-	sivilstand: string;
+	sivilstand: StringOrNothing;
 	fraDato: StringOrNothing;
 	harSammeBosted: StringOrNothing;
 	registrertDato: StringOrNothing;
