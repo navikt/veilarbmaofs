@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { lagPersonforvalterLenke } from '../../../../utils';
 import { useAppStore } from '../../../../stores/app-store';
-import { useFetchAktorId } from '../../../../rest/api';
-import { hasData } from '../../../../rest/utils';
+import { fetchAktorId } from '../../../../rest/api';
 import Lenke from 'nav-frontend-lenker';
+import { isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
 function LenkeBrukerprofil() {
 	const { fnr } = useAppStore();
-	const fetchAktorId = useFetchAktorId(fnr);
-	const aktorIdEllerFnr = hasData(fetchAktorId) && fetchAktorId.data.aktorId ? fetchAktorId.data.aktorId : fnr;
+	const aktorId = usePromise<AxiosResponse<AktorId>>(() => fetchAktorId(fnr));
+	const aktorIdEllerFnr = isResolved(aktorId) && aktorId.result.data.aktorId ? aktorId.result.data.aktorId : fnr;
 
 	const personforvalterUrl = lagPersonforvalterLenke(aktorIdEllerFnr);
 

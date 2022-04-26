@@ -2,12 +2,14 @@ import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
 import Grid from '../../../felles/grid';
 import Vedtaksliste from './vedtaksliste';
-import { VedtakType } from '../../../../rest/datatyper/ytelse';
+import { VedtakType, YtelseData } from '../../../../rest/datatyper/ytelse';
 import { VEDTAKSSTATUSER } from '../../../../utils/konstanter';
-import { useFetchInnsatsbehov, useFetchOppfolgingsstatus, useFetchYtelser } from '../../../../rest/api';
+import { fetchInnsatsbehov, fetchOppfolgingsstatus, fetchYtelser } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasError, isPending } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { OppfolgingsstatusData } from '../../../../rest/datatyper/oppfolgingsstatus';
+import { Innsatsbehov } from '../../../../rest/datatyper/innsatsbehov';
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 	return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
@@ -15,19 +17,23 @@ const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 
 const YtelserPanelInnhold = () => {
 	const { fnr } = useAppStore();
-	const ytelser = useFetchYtelser(fnr);
-	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
-	const innsatsbehov = useFetchInnsatsbehov(fnr);
+	const ytelser = usePromise<AxiosResponse<YtelseData>>(() => fetchYtelser(fnr));
+	const oppfolgingsstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
+	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
 
-	if (isPending(ytelser) || isPending(innsatsbehov) || isPending(oppfolgingsstatus)) {
+	if (
+		isNotStartedOrPending(ytelser) ||
+		isNotStartedOrPending(innsatsbehov) ||
+		isNotStartedOrPending(oppfolgingsstatus)
+	) {
 		return <Laster midtstilt={true} />;
-	} else if (hasError(ytelser)) {
+	} else if (isRejected(ytelser)) {
 		return <Feilmelding />;
-	} else if (!hasData(ytelser)) {
+	} else if (!isResolved(ytelser)) {
 		return <NoData />;
 	}
 
-	const { vedtaksliste } = ytelser.data;
+	const { vedtaksliste } = ytelser.result.data;
 	const aktivVedtak = getVedtakForVisning(vedtaksliste);
 
 	return (

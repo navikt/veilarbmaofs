@@ -1,8 +1,27 @@
-import { hasData as _hasData, WithData, WithError, WithoutData } from '@nutgaard/use-fetch';
+import axios from 'axios';
+import { APP_NAME } from '../utils/konstanter';
 
-type AsyncData<TYPE> = WithoutData | WithData<TYPE> | WithError;
-
-// Midlertidig fix for at hasData fra useFetch sjekker status og ikke at data er lastet inn
-export function hasData<TYPE>(result: AsyncData<TYPE>): result is WithData<TYPE> {
-	return (result as WithData<TYPE>).data != null && _hasData(result);
+export const axiosInstance = axios.create({
+	withCredentials: true,
+	headers: { 'Nav-Consumer-Id': APP_NAME }
+});
+/*
+export function isAnyLoading(...fetchers: { loading: boolean }[]): boolean {
+	return fetchers.some(f => f.loading);
 }
+
+export function isAnyLoadingOrNotStarted(...fetchers: { data?: any; error?: any; loading: boolean }[]): boolean {
+	return fetchers.some(f => f.loading || (!f.error && !f.data));
+}
+
+export function hasAnyFailed(...fetchers: { error?: AxiosError }[]): boolean {
+	return fetchers.some(f => f.error);
+}
+
+export function ifResponseHasData<T>(callback: (data: T) => void): (res: AxiosResponse<T>) => AxiosPromise<T> {
+  return (res: AxiosResponse<T>) => {
+		if (res.status < 300 && res.data) {
+			callback(res.data);
+		}
+		return Promise.resolve(res);
+} */

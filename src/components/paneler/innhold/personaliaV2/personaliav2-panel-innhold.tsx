@@ -1,9 +1,7 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import { useFetchPersonaliaV2 } from '../../../../rest/api';
+import { fetchPersonaliaV2 } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { isPending, hasError } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
 import LenkeBrukerprofil from '../lenkebrukerprofil/lenke-brukerprofil';
 import KontaktInformasjon from './KontaktInformasjon';
 import FamilieRelasjoner from './FamilieRelasjoner';
@@ -11,17 +9,24 @@ import VergeFullmaktInfo from './VergeFullmaktInfo';
 import GeneralInfo from './GeneralInfo';
 import './personalia-panel-innhold.less';
 import Grid from '../../../felles/grid';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { PersonaliaV2Info } from '../../../../rest/datatyper/personaliav2';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
-	const personaliav2 = useFetchPersonaliaV2(fnr);
+	const personaliav2 = usePromise<AxiosResponse<PersonaliaV2Info>>(() => fetchPersonaliaV2(fnr));
 
-	if (isPending(personaliav2)) {
+	if (isNotStartedOrPending(personaliav2)) {
 		return <Laster />;
-	} else if (hasError(personaliav2)) {
-		return <Feilmelding />;
-	} else if (!hasData(personaliav2)) {
-		return <NoData tekst="Ingen persondata tilgjengelig" />;
+	} else {
+		if (isRejected(personaliav2)) {
+			return <Feilmelding />;
+		} else {
+			if (!isResolved(personaliav2)) {
+				return <NoData tekst="Ingen persondata tilgjengelig" />;
+			}
+		}
 	}
 
 	const {
@@ -35,7 +40,7 @@ const PersonaliaV2PanelInnhold = () => {
 		sivilstand,
 		barn,
 		malform
-	} = personaliav2.data;
+	} = personaliav2.result.data;
 
 	return (
 		<>
