@@ -28,7 +28,6 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 
 function Sivilstand(props: { sivilstand: PersonaliaSivilstand; sivilstandliste: PersonaliaSivilstandNy[] }) {
 	const { sivilstand, sivilstandliste, ...rest } = props;
-	console.log('i sivilstand.tsx');
 	if (props.sivilstand.sivilstand) {
 		return (
 			<Informasjonsbolk header="Sivilstand" {...rest}>
