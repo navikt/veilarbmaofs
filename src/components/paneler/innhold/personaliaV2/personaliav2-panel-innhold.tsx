@@ -14,13 +14,13 @@ import Grid from '../../../felles/grid';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
-	const personaliav2 = useFetchPersonaliaV2(fnr);
+	const personalia = useFetchPersonaliaV2(fnr);
 
-	if (isPending(personaliav2)) {
+	if (isPending(personalia)) {
 		return <Laster />;
-	} else if (hasError(personaliav2)) {
+	} else if (hasError(personalia)) {
 		return <Feilmelding />;
-	} else if (!hasData(personaliav2)) {
+	} else if (!hasData(personalia)) {
 		return <NoData tekst="Ingen persondata tilgjengelig" />;
 	}
 
@@ -33,13 +33,14 @@ const PersonaliaV2PanelInnhold = () => {
 		kontonummer,
 		statsborgerskap,
 		sivilstand,
+		sivilstandliste,
 		barn,
 		malform
-	} = personaliav2.data;
+	} = personalia.data;
 
 	return (
 		<>
-			{personaliav2.data.sivilstand.length > 1 && (
+			{personalia.data.sivilstandliste.length > 1 && (
 				<Feilmelding tekst="Bruker har flere opplysninger om sivilstand" />
 			)}
 			<Grid columns={4} gap="1rem">
@@ -50,7 +51,7 @@ const PersonaliaV2PanelInnhold = () => {
 					oppholdsadresse={oppholdsadresse}
 					kontaktadresser={kontaktadresser}
 				/>
-				<FamilieRelasjoner sivilstand={sivilstand} barn={barn} />
+				<FamilieRelasjoner sivilstand={sivilstand} sivilstandliste={sivilstandliste} barn={barn} />
 				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} malform={malform} />
 				<div>
 					<VergeFullmaktInfo />

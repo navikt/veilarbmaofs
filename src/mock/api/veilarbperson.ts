@@ -369,20 +369,35 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: [
+	sivilstand: {
+		sivilstand: null,
+		fraDato: null,
+		harSammeBosted: null,
+		registrertDato: null,
+		master: null
+	},
+	sivilstandliste: [
 		{
+			type: '',
 			sivilstand: 'Gift',
-			harSammeBosted: 'ja',
 			fraDato: '2012-08-20',
-			registrertDato: null,
-			master: 'Freg'
+			harVeilederTilgang: true,
+			skjermet: false,
+			gradering: Gradering.UGRADERT,
+			harSammeBosted: 'ja',
+			master: 'Freg',
+			registrertDato: null
 		},
 		{
+			type: '',
 			sivilstand: 'Skilt',
-			harSammeBosted: null,
 			fraDato: '2019-06-01',
-			registrertDato: '15.06.2019',
-			master: 'PDL'
+			harVeilederTilgang: true,
+			skjermet: false,
+			gradering: Gradering.UGRADERT,
+			harSammeBosted: null,
+			master: 'PDL',
+			registrertDato: '15.06.2019'
 		}
 	],
 	bostedsadresse: {

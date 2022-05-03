@@ -39,6 +39,18 @@ export interface PersonaliaSivilstand {
 	master: StringOrNothing;
 }
 
+export interface PersonaliaSivilstandNy {
+	type: string;
+	sivilstand: string;
+	fraDato: StringOrNothing;
+	harVeilederTilgang: boolean;
+	skjermet: boolean;
+	gradering: Gradering;
+	harSammeBosted: StringOrNothing;
+	master: StringOrNothing;
+	registrertDato: StringOrNothing;
+}
+
 export interface PersonaliaTelefon {
 	prioritet: string;
 	telefonNr: string;
@@ -145,7 +157,8 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	telefon: PersonaliaTelefon[];
 	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
-	sivilstand: PersonaliaSivilstand[];
+	sivilstand: PersonaliaSivilstand;
+	sivilstandliste: PersonaliaSivilstandNy[];
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
 	kontaktadresser: Kontaktadresse[];
