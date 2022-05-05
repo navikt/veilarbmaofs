@@ -157,7 +157,7 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	telefon: PersonaliaTelefon[];
 	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
-	sivilstand: PersonaliaSivilstand;
+	sivilstand?: PersonaliaSivilstand;
 	sivilstandliste: PersonaliaSivilstandNy[];
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;

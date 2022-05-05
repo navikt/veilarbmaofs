@@ -26,13 +26,15 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 	);
 }
 
-function Sivilstand(props: { sivilstand: PersonaliaSivilstand; sivilstandliste: PersonaliaSivilstandNy[] }) {
+function Sivilstand(props: { sivilstand?: PersonaliaSivilstand; sivilstandliste: PersonaliaSivilstandNy[] }) {
 	const { sivilstand, sivilstandliste, ...rest } = props;
-	if (props.sivilstand.sivilstand) {
+	if (props.sivilstand?.sivilstand) {
 		return (
 			<Informasjonsbolk header="Sivilstand" {...rest}>
-				<Normaltekst className="innrykk">{formateStringInUpperAndLowerCase(sivilstand.sivilstand)}</Normaltekst>
-				{sivilstand.fraDato && (
+				<Normaltekst className="innrykk">
+					{formateStringInUpperAndLowerCase(sivilstand?.sivilstand)}
+				</Normaltekst>
+				{sivilstand?.fraDato && (
 					<Normaltekst className="innrykk">Fra: {formateLocalDate(sivilstand.fraDato)}</Normaltekst>
 				)}
 			</Informasjonsbolk>

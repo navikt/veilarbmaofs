@@ -5,7 +5,7 @@ import { kalkulerAlder } from '../../../../utils/date-utils';
 import { PersonaliaSivilstand, PersonaliaSivilstandNy, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
 
 function FamilieInfo(props: {
-	sivilstand: PersonaliaSivilstand;
+	sivilstand?: PersonaliaSivilstand;
 	sivilstandliste: PersonaliaSivilstandNy[];
 	barn: PersonsBarn[];
 }) {

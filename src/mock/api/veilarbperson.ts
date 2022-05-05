@@ -369,13 +369,7 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: {
-		sivilstand: null,
-		fraDato: null,
-		harSammeBosted: null,
-		registrertDato: null,
-		master: null
-	},
+	sivilstand: undefined,
 	sivilstandliste: [
 		{
 			type: '',
