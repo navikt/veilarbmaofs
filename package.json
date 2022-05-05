@@ -76,7 +76,7 @@
 		"cross-env": "^7.0.3",
 		"husky": "^7.0.4",
 		"msw": "^0.26.0",
-		"prettier": "2.5.1",
+		"prettier": "2.6.2",
 		"typescript": "4.6.2"
 	},
 	"eslintConfig": {
@@ -98,6 +98,6 @@
 		]
 	},
 	"lint-staged": {
-		"src/**/*.{ts{,x},js,css,md}": "prettier --write"
+		"**/*": "prettier --write --ignore-unknown"
 	}
 }
