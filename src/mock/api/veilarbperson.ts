@@ -372,7 +372,6 @@ const personaliav2: PersonaliaV2Info = {
 	sivilstand: undefined,
 	sivilstandliste: [
 		{
-			type: '',
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
 			harVeilederTilgang: true,
@@ -383,7 +382,6 @@ const personaliav2: PersonaliaV2Info = {
 			registrertDato: null
 		},
 		{
-			type: '',
 			sivilstand: 'Skilt',
 			fraDato: '2019-06-01',
 			harVeilederTilgang: true,

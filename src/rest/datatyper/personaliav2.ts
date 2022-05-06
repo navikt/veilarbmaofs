@@ -40,7 +40,6 @@ export interface PersonaliaSivilstand {
 }
 
 export interface PersonaliaSivilstandNy {
-	type: string;
 	sivilstand: string;
 	fraDato: StringOrNothing;
 	harVeilederTilgang: boolean;

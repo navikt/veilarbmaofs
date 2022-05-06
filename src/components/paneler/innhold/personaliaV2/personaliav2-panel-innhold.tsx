@@ -40,7 +40,7 @@ const PersonaliaV2PanelInnhold = () => {
 
 	return (
 		<>
-			{personalia.data.sivilstandliste && personalia.data.sivilstandliste.length > 1 && (
+			{personalia.data.sivilstandliste.length > 1 && (
 				<Feilmelding tekst="Bruker har flere opplysninger om sivilstand" />
 			)}
 			<Grid columns={4} gap="1rem">
