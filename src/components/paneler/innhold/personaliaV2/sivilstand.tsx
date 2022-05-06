@@ -26,7 +26,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 	);
 }
 
-function Sivilstand(props: { sivilstand?: PersonaliaSivilstand; sivilstandliste: PersonaliaSivilstandNy[] }) {
+function Sivilstand(props: { sivilstand?: PersonaliaSivilstand; sivilstandliste?: PersonaliaSivilstandNy[] }) {
 	const { sivilstand, sivilstandliste, ...rest } = props;
 	if (props.sivilstand?.sivilstand) {
 		return (
@@ -41,7 +41,7 @@ function Sivilstand(props: { sivilstand?: PersonaliaSivilstand; sivilstandliste:
 		);
 	} else {
 		const sivilstandListe = isNotEmptyArray(sivilstandliste)
-			? sivilstandliste.map((sivilstand, index) => <SivilstandBolk sivilstand={sivilstand} key={index} />)
+			? sivilstandliste?.map((sivilstand, index) => <SivilstandBolk sivilstand={sivilstand} key={index} />)
 			: EMDASH;
 
 		return (

@@ -369,29 +369,36 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: undefined,
-	sivilstandliste: [
-		{
-			sivilstand: 'Gift',
-			fraDato: '2012-08-20',
-			harVeilederTilgang: true,
-			skjermet: false,
-			gradering: Gradering.UGRADERT,
-			harSammeBosted: 'ja',
-			master: 'Freg',
-			registrertDato: null
-		},
-		{
-			sivilstand: 'Skilt',
-			fraDato: '2019-06-01',
-			harVeilederTilgang: true,
-			skjermet: false,
-			gradering: Gradering.UGRADERT,
-			harSammeBosted: null,
-			master: 'PDL',
-			registrertDato: '15.06.2019'
-		}
-	],
+	sivilstand: {
+		sivilstand: 'Gift',
+		fraDato: '2012-08-20',
+		harSammeBosted: 'ja',
+		registrertDato: '2012-08-20',
+		master: 'Freg'
+	},
+	sivilstandliste: undefined,
+	// sivilstandliste: [
+	// 	{
+	// 		sivilstand: 'Gift',
+	// 		fraDato: '2012-08-20',
+	// 		harVeilederTilgang: true,
+	// 		skjermet: false,
+	// 		gradering: Gradering.UGRADERT,
+	// 		harSammeBosted: 'ja',
+	// 		master: 'Freg',
+	// 		registrertDato: null
+	// 	},
+	// 	{
+	// 		sivilstand: 'Skilt',
+	// 		fraDato: '2019-06-01',
+	// 		harVeilederTilgang: true,
+	// 		skjermet: false,
+	// 		gradering: Gradering.UGRADERT,
+	// 		harSammeBosted: null,
+	// 		master: 'PDL',
+	// 		registrertDato: '15.06.2019'
+	// 	}
+	// ],
 	bostedsadresse: {
 		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {

@@ -6,7 +6,7 @@ import { PersonaliaSivilstand, PersonaliaSivilstandNy, PersonsBarn } from '../..
 
 function FamilieInfo(props: {
 	sivilstand?: PersonaliaSivilstand;
-	sivilstandliste: PersonaliaSivilstandNy[];
+	sivilstandliste?: PersonaliaSivilstandNy[];
 	barn: PersonsBarn[];
 }) {
 	const { sivilstand, sivilstandliste, barn, ...rest } = props;
