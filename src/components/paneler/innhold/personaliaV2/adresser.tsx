@@ -110,15 +110,8 @@ function KontaktAdresse(props: { kontaktadresse: Kontaktadresse }) {
 }
 
 function VegAdresse(prop: { adresse: OrNothing<Vegadresse> }) {
-	const {
-		adressenavn,
-		husnummer,
-		husbokstav,
-		postnummer,
-		poststed,
-		kommunenummer,
-		kommune
-	} = prop.adresse as Vegadresse;
+	const { adressenavn, husnummer, husbokstav, postnummer, poststed, kommunenummer, kommune } =
+		prop.adresse as Vegadresse;
 	return (
 		<div className="innrykk">
 			<Normaltekst>{`${adressenavn || ''} ${husnummer || ''}${husbokstav || ''}`}</Normaltekst>
@@ -129,14 +122,8 @@ function VegAdresse(prop: { adresse: OrNothing<Vegadresse> }) {
 }
 
 function MatrikkelAdresse(prop: { adresse: OrNothing<Matrikkeladresse> }) {
-	const {
-		bruksenhetsnummer,
-		tilleggsnavn,
-		kommunenummer,
-		postnummer,
-		poststed,
-		kommune
-	} = prop.adresse as Matrikkeladresse;
+	const { bruksenhetsnummer, tilleggsnavn, kommunenummer, postnummer, poststed, kommune } =
+		prop.adresse as Matrikkeladresse;
 
 	return (
 		<div className="innrykk">
@@ -195,14 +182,8 @@ function UkjentBosted(prop: { adresse: OrNothing<Ukjentbosted> }) {
 }
 
 function UtenlandskAdresseIFrittFormat(props: { adresse: OrNothing<UtenlandskadresseIFrittFormat> }) {
-	const {
-		adresselinje1,
-		adresselinje2,
-		adresselinje3,
-		byEllerStedsnavn,
-		landkode,
-		postkode
-	} = props.adresse as UtenlandskadresseIFrittFormat;
+	const { adresselinje1, adresselinje2, adresselinje3, byEllerStedsnavn, landkode, postkode } =
+		props.adresse as UtenlandskadresseIFrittFormat;
 
 	return (
 		<div className="innrykk">
@@ -216,13 +197,8 @@ function UtenlandskAdresseIFrittFormat(props: { adresse: OrNothing<Utenlandskadr
 }
 
 function PostAdresseIFrittFormat(props: { adresse: OrNothing<PostadresseIFrittFormat> }) {
-	const {
-		adresselinje1,
-		adresselinje2,
-		adresselinje3,
-		postnummer,
-		poststed
-	} = props.adresse as PostadresseIFrittFormat;
+	const { adresselinje1, adresselinje2, adresselinje3, postnummer, poststed } =
+		props.adresse as PostadresseIFrittFormat;
 
 	return (
 		<div className="innrykk">
@@ -243,7 +219,6 @@ function Adresser(props: Props) {
 	const kontaktadresseList = isNotEmptyArray(kontaktadresser)
 		? kontaktadresser.map((kontaktadresse, index) => <KontaktAdresse kontaktadresse={kontaktadresse} key={index} />)
 		: EMDASH;
-
 	return (
 		<div {...rest}>
 			<BostedsAdresse bostedsadresse={bostedsadresse} />
