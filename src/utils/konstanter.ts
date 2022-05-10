@@ -12,13 +12,28 @@ export const VEDTAKSSTATUSER = {
 export function graderingBeskrivelse(gradering: Gradering) {
 	switch (gradering) {
 		case Gradering.UKJENT:
-			return 'Sperret adresse, ukjent';
+			return 'Barnet har adressebeskyttelse, ukjent';
 		case Gradering.FORTROLIG:
-			return 'Sperret adresse, fortrolig';
+			return 'Barnet har adressebeskyttelse, fortrolig';
 		case Gradering.STRENGT_FORTROLIG:
-			return 'Sperret adresse, strengt fortrolig';
+			return 'Barnet har adressebeskyttelse, strengt fortrolig';
 		case Gradering.STRENGT_FORTROLIG_UTLAND:
-			return 'Sperret adresse, strengt fortrolig utland';
+			return 'Barnet har adressebeskyttelse, strengt fortrolig utland';
+		case Gradering.UGRADERT:
+			return null;
+	}
+}
+
+export function graderingBeskrivelsePartner(gradering: Gradering) {
+	switch (gradering) {
+		case Gradering.UKJENT:
+			return 'Partner har adressebeskyttelse, ukjent';
+		case Gradering.FORTROLIG:
+			return 'Partner har adressebeskyttelse, fortrolig';
+		case Gradering.STRENGT_FORTROLIG:
+			return 'Partner har adressebeskyttelse, strengt fortrolig';
+		case Gradering.STRENGT_FORTROLIG_UTLAND:
+			return 'Partner har adressebeskyttelse, strengt fortrolig utland';
 		case Gradering.UGRADERT:
 			return null;
 	}
@@ -36,12 +51,12 @@ export function hentKilde(master: OrNothing<String>) {
 			return null;
 	}
 }
-export function hentBorMedPartnerBeskrivelse(harSammeBosted: OrNothing<String>) {
+export function hentBorMedPartnerBeskrivelse(harSammeBosted: boolean) {
 	switch (harSammeBosted) {
-		case 'ja':
-			return 'Bor med bruker';
-		case 'nei':
-			return 'Bor ikke med bruker';
+		case true:
+			return 'Partner bor med bruker';
+		case false:
+			return 'Partner bor ikke med bruker';
 		default:
 			return null;
 	}
@@ -60,4 +75,8 @@ export function hentMalform(malform: OrNothing<String>) {
 		default:
 			return EMDASH;
 	}
+}
+
+export function egenAnsattTekst() {
+	return 'Partner er ansatt i NAV';
 }

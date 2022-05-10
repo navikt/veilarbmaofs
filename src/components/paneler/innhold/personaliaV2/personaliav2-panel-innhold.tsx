@@ -32,6 +32,7 @@ const PersonaliaV2PanelInnhold = () => {
 		epost,
 		kontonummer,
 		statsborgerskap,
+		partner,
 		sivilstand,
 		sivilstandliste,
 		barn,
@@ -41,7 +42,7 @@ const PersonaliaV2PanelInnhold = () => {
 	return (
 		<>
 			{personalia.data.sivilstandliste && personalia.data.sivilstandliste.length > 1 && (
-				<Feilmelding tekst="Bruker har flere opplysninger om sivilstand" />
+				<Feilmelding tekst="Det er motstridende informasjon i kildene for sivilstand. Personen bør bes om å oppdatere sin sivilstand hos Folkeregisteret (https://www.skatteetaten.no/person/folkeregister/)." />
 			)}
 			<Grid columns={4} gap="1rem">
 				<KontaktInformasjon
@@ -51,7 +52,12 @@ const PersonaliaV2PanelInnhold = () => {
 					oppholdsadresse={oppholdsadresse}
 					kontaktadresser={kontaktadresser}
 				/>
-				<FamilieRelasjoner sivilstand={sivilstand} sivilstandliste={sivilstandliste} barn={barn} />
+				<FamilieRelasjoner
+					partner={partner}
+					sivilstand={sivilstand}
+					sivilstandliste={sivilstandliste}
+					barn={barn}
+				/>
 				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} malform={malform} />
 				<div>
 					<VergeFullmaktInfo />

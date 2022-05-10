@@ -31,12 +31,16 @@ export interface Enhet {
 	navn: string;
 }
 
+export interface PersonaliaPartner {
+	gradering: Gradering;
+	erEgenAnsatt: boolean;
+	harSammeBosted: boolean;
+	harVeilederTilgang: boolean;
+}
+
 export interface PersonaliaSivilstand {
 	sivilstand: StringOrNothing;
 	fraDato: StringOrNothing;
-	harSammeBosted: StringOrNothing;
-	registrertDato: StringOrNothing;
-	master: StringOrNothing;
 }
 
 export interface PersonaliaSivilstandNy {
@@ -45,7 +49,7 @@ export interface PersonaliaSivilstandNy {
 	harVeilederTilgang: boolean;
 	skjermet: boolean;
 	gradering: Gradering;
-	harSammeBosted: StringOrNothing;
+	harSammeBosted: boolean | undefined | null;
 	master: StringOrNothing;
 	registrertDato: StringOrNothing;
 }
@@ -156,6 +160,7 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	telefon: PersonaliaTelefon[];
 	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
+	partner?: PersonaliaPartner;
 	sivilstand?: PersonaliaSivilstand;
 	sivilstandliste?: PersonaliaSivilstandNy[];
 	bostedsadresse: OrNothing<Bostedsadresse>;

@@ -369,36 +369,40 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: {
-		sivilstand: 'Gift',
-		fraDato: '2012-08-20',
-		harSammeBosted: 'ja',
-		registrertDato: '2012-08-20',
-		master: 'Freg'
+	partner: {
+		gradering: Gradering.STRENGT_FORTROLIG_UTLAND,
+		erEgenAnsatt: true,
+		harSammeBosted: true,
+		harVeilederTilgang: false
 	},
-	sivilstandliste: undefined,
-	// sivilstandliste: [
-	// 	{
-	// 		sivilstand: 'Gift',
-	// 		fraDato: '2012-08-20',
-	// 		harVeilederTilgang: true,
-	// 		skjermet: false,
-	// 		gradering: Gradering.UGRADERT,
-	// 		harSammeBosted: 'ja',
-	// 		master: 'Freg',
-	// 		registrertDato: null
-	// 	},
-	// 	{
-	// 		sivilstand: 'Skilt',
-	// 		fraDato: '2019-06-01',
-	// 		harVeilederTilgang: true,
-	// 		skjermet: false,
-	// 		gradering: Gradering.UGRADERT,
-	// 		harSammeBosted: null,
-	// 		master: 'PDL',
-	// 		registrertDato: '15.06.2019'
-	// 	}
-	// ],
+	sivilstand: undefined,
+	//sivilstand: {
+	//	sivilstand: 'Gift',
+	//	fraDato: '2012-08-20'
+	//},
+	//sivilstandliste: undefined,
+	sivilstandliste: [
+		{
+			sivilstand: 'Gift',
+			fraDato: '2012-08-20',
+			harVeilederTilgang: true,
+			skjermet: false,
+			gradering: Gradering.UKJENT,
+			harSammeBosted: true,
+			master: 'Freg',
+			registrertDato: null
+		},
+		{
+			sivilstand: 'Skilt',
+			fraDato: '2019-06-01',
+			harVeilederTilgang: true,
+			skjermet: false,
+			gradering: Gradering.UGRADERT,
+			harSammeBosted: null,
+			master: 'PDL',
+			registrertDato: '15.06.2019'
+		}
+	],
 	bostedsadresse: {
 		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {
