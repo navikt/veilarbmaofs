@@ -62,7 +62,7 @@ function Sivilstand(props: {
 						partner.harSammeBosted
 					)}`}</Normaltekst>
 				)}
-				{partner?.gradering && (
+				{partner?.gradering && partner.gradering !== Gradering.UGRADERT && (
 					<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(
 						partner.gradering
 					)}`}</Normaltekst>
