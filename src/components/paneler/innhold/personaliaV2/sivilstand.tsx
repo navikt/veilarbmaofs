@@ -13,6 +13,7 @@ import {
 	egenAnsattTekst,
 	graderingBeskrivelsePartner,
 	hentBorMedPartnerBeskrivelse,
+	hentBorMedPartnerBeskrivelseGml,
 	hentKilde
 } from '../../../../utils/konstanter';
 
@@ -56,7 +57,7 @@ function Sivilstand(props: {
 					<Normaltekst className="innrykk">Fra: {formateLocalDate(sivilstand.fraDato)}</Normaltekst>
 				)}
 				{partner?.harSammeBosted && partner?.gradering === Gradering.UGRADERT && (
-					<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(
+					<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelseGml(
 						partner.harSammeBosted
 					)}`}</Normaltekst>
 				)}

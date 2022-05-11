@@ -2,7 +2,7 @@ import { rest } from 'msw';
 import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
-import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
+import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
@@ -385,17 +385,15 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
-			harVeilederTilgang: true,
 			skjermet: true,
 			gradering: Gradering.UKJENT,
-			harSammeBosted: true,
+			harSammeBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
 			registrertDato: null
 		},
 		{
 			sivilstand: 'Skilt',
 			fraDato: '2019-06-01',
-			harVeilederTilgang: true,
 			skjermet: false,
 			gradering: Gradering.UGRADERT,
 			harSammeBosted: null,
@@ -403,12 +401,11 @@ const personaliav2: PersonaliaV2Info = {
 			registrertDato: '15.06.2019'
 		},
 		{
-			sivilstand: 'Gift',
+			sivilstand: 'Skilt',
 			fraDato: '2020-09-03',
-			harVeilederTilgang: true,
 			skjermet: true,
-			gradering: Gradering.FORTROLIG,
-			harSammeBosted: true,
+			gradering: Gradering.UGRADERT,
+			harSammeBosted: RelasjonsBosted.UKJENT_BOSTED,
 			master: 'PDL',
 			registrertDato: '05.09.2020'
 		}

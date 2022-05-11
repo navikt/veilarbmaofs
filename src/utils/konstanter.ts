@@ -1,4 +1,4 @@
-import { Gradering } from '../rest/datatyper/personaliav2';
+import { Gradering, RelasjonsBosted } from '../rest/datatyper/personaliav2';
 import { OrNothing } from './felles-typer';
 import EMDASH from './emdash';
 
@@ -9,7 +9,7 @@ export const VEDTAKSSTATUSER = {
 	iverksatt: 'Iverksatt'
 };
 
-export function graderingBeskrivelse(gradering: Gradering) {
+export function graderingBeskrivelseBarn(gradering: Gradering) {
 	switch (gradering) {
 		case Gradering.UKJENT:
 			return 'Barnet har adressebeskyttelse, ukjent';
@@ -51,12 +51,25 @@ export function hentKilde(master: OrNothing<String>) {
 			return null;
 	}
 }
-export function hentBorMedPartnerBeskrivelse(harSammeBosted: boolean) {
+
+export function hentBorMedPartnerBeskrivelseGml(harSammeBosted: boolean) {
 	switch (harSammeBosted) {
 		case true:
 			return 'Partner bor med bruker';
 		case false:
 			return 'Partner bor ikke med bruker';
+		default:
+			return null;
+	}
+}
+export function hentBorMedPartnerBeskrivelse(harSammeBosted: RelasjonsBosted) {
+	switch (harSammeBosted) {
+		case RelasjonsBosted.SAMME_BOSTED:
+			return 'Partner bor med bruker';
+		case RelasjonsBosted.FORSKJELLIG_BOSTED:
+			return 'Partner bor ikke med bruker';
+		case RelasjonsBosted.UKJENT_BOSTED:
+			return 'Partners bosted er ukjent';
 		default:
 			return null;
 	}

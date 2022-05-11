@@ -8,6 +8,12 @@ export enum Gradering {
 	STRENGT_FORTROLIG_UTLAND = 'STRENGT_FORTROLIG_UTLAND'
 }
 
+export enum RelasjonsBosted {
+	SAMME_BOSTED = 'SAMME_BOSTED',
+	FORSKJELLIG_BOSTED = 'FORSKJELLIG_BOSTED',
+	UKJENT_BOSTED = 'UKJENT_BOSTED'
+}
+
 export interface GrunnPersonalia {
 	fornavn: StringOrNothing;
 	mellomnavn: StringOrNothing;
@@ -46,10 +52,9 @@ export interface PersonaliaSivilstand {
 export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
-	harVeilederTilgang: boolean;
 	skjermet: boolean;
 	gradering: Gradering;
-	harSammeBosted: boolean | undefined | null;
+	harSammeBosted: RelasjonsBosted | null;
 	master: StringOrNothing;
 	registrertDato: StringOrNothing;
 }
