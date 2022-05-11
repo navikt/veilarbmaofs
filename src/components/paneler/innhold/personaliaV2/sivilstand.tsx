@@ -17,9 +17,7 @@ import {
 } from '../../../../utils/konstanter';
 
 function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
-	// eslint-disable-next-line
-	const { sivilstand, fraDato, harVeilederTilgang, skjermet, harSammeBosted, gradering, master, registrertDato } =
-		props.sivilstand;
+	const { sivilstand, fraDato, skjermet, harSammeBosted, gradering, master, registrertDato } = props.sivilstand;
 
 	return (
 		<div className="overinformasjon underinformasjon">
@@ -57,7 +55,7 @@ function Sivilstand(props: {
 				{sivilstand?.fraDato && (
 					<Normaltekst className="innrykk">Fra: {formateLocalDate(sivilstand.fraDato)}</Normaltekst>
 				)}
-				{partner?.harSammeBosted && (
+				{partner?.harSammeBosted && partner?.gradering === Gradering.UGRADERT && (
 					<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(
 						partner.harSammeBosted
 					)}`}</Normaltekst>
