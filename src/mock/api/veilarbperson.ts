@@ -387,7 +387,7 @@ const personaliav2: PersonaliaV2Info = {
 			fraDato: '2012-08-20',
 			skjermet: true,
 			gradering: Gradering.UKJENT,
-			harSammeBosted: RelasjonsBosted.SAMME_BOSTED,
+			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
 			registrertDato: null
 		},
@@ -396,7 +396,7 @@ const personaliav2: PersonaliaV2Info = {
 			fraDato: '2019-06-01',
 			skjermet: false,
 			gradering: Gradering.UGRADERT,
-			harSammeBosted: null,
+			relasjonsBosted: null,
 			master: 'PDL',
 			registrertDato: '15.06.2019'
 		},
@@ -405,7 +405,7 @@ const personaliav2: PersonaliaV2Info = {
 			fraDato: '2020-09-03',
 			skjermet: true,
 			gradering: Gradering.UGRADERT,
-			harSammeBosted: RelasjonsBosted.UKJENT_BOSTED,
+			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED,
 			master: 'PDL',
 			registrertDato: '05.09.2020'
 		}

@@ -54,7 +54,7 @@ export interface PersonaliaSivilstandNy {
 	fraDato: StringOrNothing;
 	skjermet: boolean;
 	gradering: Gradering;
-	harSammeBosted: RelasjonsBosted | null;
+	relasjonsBosted: RelasjonsBosted | null;
 	master: StringOrNothing;
 	registrertDato: StringOrNothing;
 }

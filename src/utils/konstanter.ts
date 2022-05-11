@@ -62,8 +62,8 @@ export function hentBorMedPartnerBeskrivelseGml(harSammeBosted: boolean) {
 			return null;
 	}
 }
-export function hentBorMedPartnerBeskrivelse(harSammeBosted: RelasjonsBosted) {
-	switch (harSammeBosted) {
+export function hentBorMedPartnerBeskrivelse(relasjonsBosted: RelasjonsBosted) {
+	switch (relasjonsBosted) {
 		case RelasjonsBosted.SAMME_BOSTED:
 			return 'Partner bor med bruker';
 		case RelasjonsBosted.FORSKJELLIG_BOSTED:

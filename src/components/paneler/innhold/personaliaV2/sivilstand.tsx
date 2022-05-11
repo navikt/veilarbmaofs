@@ -18,14 +18,14 @@ import {
 } from '../../../../utils/konstanter';
 
 function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
-	const { sivilstand, fraDato, skjermet, harSammeBosted, gradering, master, registrertDato } = props.sivilstand;
+	const { sivilstand, fraDato, skjermet, relasjonsBosted, gradering, master, registrertDato } = props.sivilstand;
 
 	return (
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCase(sivilstand)}</Normaltekst>
 			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
-			{harSammeBosted && gradering === Gradering.UGRADERT && (
-				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(harSammeBosted)}`}</Normaltekst>
+			{relasjonsBosted && gradering === Gradering.UGRADERT && (
+				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
 			)}
 			{gradering !== Gradering.UGRADERT && (
 				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
