@@ -13,8 +13,11 @@ const RegistrertAv = (props: RegistrertAvProps) => {
 
 	const registrertAv = props.registrering.manueltRegistrertAv;
 	const { ident, enhet } = registrertAv;
-
-	return <Normaltekst className="italic-gra">{`Registrert av: ${ident}, ${enhet.id} ${enhet.navn}`}</Normaltekst>;
+	if (enhet) {
+		return <Normaltekst className="italic-gra">{`Registrert av: ${ident}, ${enhet.id} ${enhet.navn}`}</Normaltekst>;
+	} else {
+		return <Normaltekst className="italic-gra">{`Registrert av: ${ident}`}</Normaltekst>;
+	}
 };
 
 export default RegistrertAv;

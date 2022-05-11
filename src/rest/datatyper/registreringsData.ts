@@ -1,6 +1,6 @@
 export interface Veileder {
 	ident: string;
-	enhet: {
+	enhet?: {
 		id: string;
 		navn: string;
 	};
