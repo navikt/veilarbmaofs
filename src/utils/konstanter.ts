@@ -66,7 +66,7 @@ export function hentBorMedPartnerBeskrivelse(relasjonsBosted: RelasjonsBosted) {
 	switch (relasjonsBosted) {
 		case RelasjonsBosted.SAMME_BOSTED:
 			return 'Partner bor med bruker';
-		case RelasjonsBosted.FORSKJELLIG_BOSTED:
+		case RelasjonsBosted.ANNET_BOSTED:
 			return 'Partner bor ikke med bruker';
 		case RelasjonsBosted.UKJENT_BOSTED:
 			return 'Partners bosted er ukjent';

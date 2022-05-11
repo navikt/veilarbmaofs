@@ -10,7 +10,7 @@ export enum Gradering {
 
 export enum RelasjonsBosted {
 	SAMME_BOSTED = 'SAMME_BOSTED',
-	FORSKJELLIG_BOSTED = 'FORSKJELLIG_BOSTED',
+	ANNET_BOSTED = 'ANNET_BOSTED',
 	UKJENT_BOSTED = 'UKJENT_BOSTED'
 }
 
