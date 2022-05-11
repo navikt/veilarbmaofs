@@ -17,18 +17,21 @@ import {
 } from '../../../../utils/konstanter';
 
 function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
-	const { sivilstand, fraDato, harSammeBosted, gradering, master, registrertDato } = props.sivilstand;
+	// eslint-disable-next-line
+	const { sivilstand, fraDato, harVeilederTilgang, skjermet, harSammeBosted, gradering, master, registrertDato } =
+		props.sivilstand;
 
 	return (
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCase(sivilstand)}</Normaltekst>
 			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
-			{harSammeBosted && gradering == Gradering.UGRADERT && (
+			{harSammeBosted && gradering === Gradering.UGRADERT && (
 				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(harSammeBosted)}`}</Normaltekst>
 			)}
-			{gradering != Gradering.UGRADERT && (
+			{gradering !== Gradering.UGRADERT && (
 				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
 			)}
+			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">
 					Registrert {registrertDato && registrertDato}

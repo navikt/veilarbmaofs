@@ -386,7 +386,7 @@ const personaliav2: PersonaliaV2Info = {
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
 			harVeilederTilgang: true,
-			skjermet: false,
+			skjermet: true,
 			gradering: Gradering.UKJENT,
 			harSammeBosted: true,
 			master: 'Freg',
@@ -401,6 +401,16 @@ const personaliav2: PersonaliaV2Info = {
 			harSammeBosted: null,
 			master: 'PDL',
 			registrertDato: '15.06.2019'
+		},
+		{
+			sivilstand: 'Gift',
+			fraDato: '2020-09-03',
+			harVeilederTilgang: true,
+			skjermet: true,
+			gradering: Gradering.FORTROLIG,
+			harSammeBosted: true,
+			master: 'PDL',
+			registrertDato: '05.09.2020'
 		}
 	],
 	bostedsadresse: {
