@@ -288,18 +288,12 @@ const cvOgJobbprofil: ArenaPerson = {
 
 const personaliav2: PersonaliaV2Info = {
 	fornavn: 'Bruce',
-	mellomnavn: 'Batty',
-	etternavn: 'Wayne',
-	forkortetNavn: 'Bruce Batty Wayne',
 	fodselsnummer: '10108000398',
 	fodselsdato: '1974-09-16',
 	dodsdato: null,
 	barn: [
 		{
 			fornavn: 'Bruce',
-			mellomnavn: null,
-			etternavn: 'Banner',
-			forkortetNavn: 'Bruce Banner',
 			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
@@ -311,9 +305,6 @@ const personaliav2: PersonaliaV2Info = {
 		},
 		{
 			fornavn: 'Harry',
-			mellomnavn: null,
-			etternavn: 'Bosch',
-			forkortetNavn: 'Harry Bosch',
 			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
 			dodsdato: null,
@@ -325,9 +316,6 @@ const personaliav2: PersonaliaV2Info = {
 		},
 		{
 			fornavn: 'Satoshi',
-			mellomnavn: null,
-			etternavn: 'Nakamoto',
-			forkortetNavn: 'Satoshi Nakamoto',
 			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
 			dodsdato: null,
