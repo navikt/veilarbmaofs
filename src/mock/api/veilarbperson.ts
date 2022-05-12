@@ -1,9 +1,8 @@
 import { rest } from 'msw';
 import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
-import { PersonaliaInfo } from '../../rest/datatyper/personalia';
 import { AktorId } from '../../rest/datatyper/aktor-id';
-import { Gradering, PersonaliaV2Info } from '../../rest/datatyper/personaliav2';
+import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
@@ -287,96 +286,6 @@ const cvOgJobbprofil: ArenaPerson = {
 	}
 };
 
-const personalia: PersonaliaInfo = {
-	fornavn: 'BRUCE',
-	mellomnavn: 'BATTY',
-	etternavn: 'WAYNE',
-	sammensattNavn: 'BRUCE BATTY WAYNE',
-	fodselsnummer: '10108000398',
-	fodselsdato: '1974-09-16',
-	dodsdato: null,
-	barn: [
-		{
-			fornavn: 'BRUCE',
-			mellomnavn: null,
-			etternavn: 'BANNER',
-			sammensattNavn: 'BRUCE BANNER',
-			fodselsnummer: '10108000391',
-			fodselsdato: '2016-04-17',
-			dodsdato: null,
-			harSammeBosted: true,
-			kjonn: 'M'
-		},
-		{
-			fornavn: 'HARRY',
-			mellomnavn: null,
-			etternavn: 'BOSCH',
-			sammensattNavn: 'HARRY BOSCH',
-			fodselsnummer: '10108000392',
-			fodselsdato: '2014-05-24',
-			dodsdato: null,
-			harSammeBosted: false,
-			kjonn: 'M'
-		},
-		{
-			fornavn: 'SATOSHI',
-			mellomnavn: null,
-			etternavn: 'NAKAMOTO',
-			sammensattNavn: 'SATOSHI NAKAMOTO',
-			fodselsnummer: '10108000398',
-			fodselsdato: '2005-10-04',
-			dodsdato: '2010-10-04',
-			harSammeBosted: true,
-			kjonn: 'K'
-		}
-	],
-	diskresjonskode: '6',
-	kontonummer: '12345678910',
-	geografiskTilknytning: '0106',
-	geografiskEnhet: {
-		enhetsnummer: '0106',
-		navn: 'NAV Fredrikstad'
-	},
-	telefon: '+4799999999',
-	epost: 'tester.scrambling-script@fellesregistre.no',
-	statsborgerskap: 'NORGE',
-	sikkerhetstiltak: 'To ansatte i samtale',
-	sivilstand: {
-		sivilstand: 'Gift',
-		fraDato: '2016-08-04'
-	},
-	partner: null,
-	bostedsadresse: {
-		strukturertAdresse: {
-			Gateadresse: {
-				landkode: 'NORGE',
-				tilleggsadresse: null,
-				postnummer: '1621',
-				poststed: 'GRESSVIK',
-				husnummer: 2228,
-				husbokstav: null,
-				kommunenummer: '0106',
-				gatenavn: 'GATEVEIEN',
-				bolignummer: null,
-				gatenummer: null
-			}
-		}
-	},
-	midlertidigAdresseNorge: null,
-	midlertidigAdresseUtland: null,
-	postAdresse: {
-		ustrukturertAdresse: {
-			adresselinje1: 'DOIDGE',
-			adresselinje2: null,
-			adresselinje3: null,
-			adresselinje4: '4001 STAVANGER',
-			landkode: 'NORGE'
-		}
-	},
-	egenAnsatt: true,
-	kjonn: 'K'
-};
-
 const personaliav2: PersonaliaV2Info = {
 	fornavn: 'Bruce',
 	mellomnavn: 'Batty',
@@ -460,24 +369,47 @@ const personaliav2: PersonaliaV2Info = {
 		master: 'KRR'
 	},
 	statsborgerskap: 'NORGE',
-	sivilstand: {
-		sivilstand: 'Gift',
-		fraDato: '2012-08-20'
-	},
 	partner: {
-		fornavn: 'fornavn',
-		mellomnavn: null,
-		etternavn: 'etternavn',
-		forkortetNavn: 'fornavn etternavn',
-		fodselsnummer: '12108000391',
-		fodselsdato: '1980-12-10',
-		dodsdato: null,
-		harSammeBosted: true,
+		gradering: Gradering.STRENGT_FORTROLIG_UTLAND,
 		erEgenAnsatt: true,
-		harVeilederTilgang: false,
-		gradering: Gradering.UGRADERT,
-		kjonn: 'M'
+		harSammeBosted: true,
+		harVeilederTilgang: false
 	},
+	sivilstand: undefined,
+	//sivilstand: {
+	//	sivilstand: 'Gift',
+	//	fraDato: '2012-08-20'
+	//},
+	//sivilstandliste: undefined,
+	sivilstandliste: [
+		{
+			sivilstand: 'Gift',
+			fraDato: '2012-08-20',
+			skjermet: true,
+			gradering: Gradering.UKJENT,
+			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
+			master: 'Freg',
+			registrertDato: null
+		},
+		{
+			sivilstand: 'Skilt',
+			fraDato: '2019-06-01',
+			skjermet: false,
+			gradering: Gradering.UGRADERT,
+			relasjonsBosted: null,
+			master: 'PDL',
+			registrertDato: '15.06.2019'
+		},
+		{
+			sivilstand: 'Skilt',
+			fraDato: '2020-09-03',
+			skjermet: true,
+			gradering: Gradering.UGRADERT,
+			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED,
+			master: 'PDL',
+			registrertDato: '05.09.2020'
+		}
+	],
 	bostedsadresse: {
 		coAdressenavn: 'CoAdresseNavn',
 		vegadresse: {
@@ -722,9 +654,7 @@ export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/registrering', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
 	}),
-	rest.get('/veilarbperson/api/person/:fnr', (req, res, ctx) => {
-		return res(ctx.delay(500), ctx.json(personalia));
-	}),
+
 	rest.get('/veilarbperson/api/v2/person', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
 	}),

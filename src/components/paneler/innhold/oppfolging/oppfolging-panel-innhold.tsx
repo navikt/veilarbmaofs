@@ -7,7 +7,7 @@ import {
 	useFetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
 	useFetchInnsatsbehov,
 	useFetchOppfolgingsstatus,
-	useFetchPersonalia,
+	useFetchPersonaliaV2,
 	useFetchVeileder
 } from '../../../../rest/api';
 import { Laster } from '../../../felles/fetch';
@@ -33,7 +33,7 @@ import { Alert } from '@navikt/ds-react';
 const OppfolgingPanelInnhold = () => {
 	const { fnr, features } = useAppStore();
 	const oppfolgingsstatus = useFetchOppfolgingsstatus(fnr);
-	const personalia = useFetchPersonalia(fnr);
+	const personalia = useFetchPersonaliaV2(fnr);
 	const innsatsbehov = useFetchInnsatsbehov(fnr);
 	const veilederId = hasData(oppfolgingsstatus) ? oppfolgingsstatus.data.veilederId : null;
 	const veileder = useFetchVeileder(veilederId, { lazy: true });
