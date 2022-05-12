@@ -40,15 +40,15 @@ export function graderingBeskrivelsePartner(gradering: Gradering) {
 }
 
 export function hentKilde(master: OrNothing<String>) {
-	switch (master) {
-		case 'KRR':
+	switch (master?.toLowerCase()) {
+		case 'krr':
 			return 'i Kontakt- og reservasjonsregisteret';
-		case 'PDL':
+		case 'pdl':
 			return 'av NAV';
-		case 'Freg':
+		case 'freg':
 			return 'i Folkeregisteret';
 		default:
-			return null;
+			return `i ${master}`;
 	}
 }
 

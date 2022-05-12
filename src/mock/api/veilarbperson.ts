@@ -348,7 +348,7 @@ const personaliav2: PersonaliaV2Info = {
 			prioritet: '1',
 			telefonNr: '+4746333333',
 			registrertDato: '10.07.2008',
-			master: 'Freg'
+			master: 'FREG'
 		},
 		{
 			prioritet: '2',
