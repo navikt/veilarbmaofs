@@ -8,6 +8,12 @@ export enum Gradering {
 	STRENGT_FORTROLIG_UTLAND = 'STRENGT_FORTROLIG_UTLAND'
 }
 
+export enum RelasjonsBosted {
+	SAMME_BOSTED = 'SAMME_BOSTED',
+	ANNET_BOSTED = 'ANNET_BOSTED',
+	UKJENT_BOSTED = 'UKJENT_BOSTED'
+}
+
 export interface GrunnPersonalia {
 	fornavn: StringOrNothing;
 	mellomnavn: StringOrNothing;
@@ -31,9 +37,26 @@ export interface Enhet {
 	navn: string;
 }
 
+export interface PersonaliaPartner {
+	gradering: Gradering;
+	erEgenAnsatt: boolean;
+	harSammeBosted: boolean;
+	harVeilederTilgang: boolean;
+}
+
 export interface PersonaliaSivilstand {
+	sivilstand: StringOrNothing;
+	fraDato: StringOrNothing;
+}
+
+export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
+	skjermet: boolean;
+	gradering: Gradering;
+	relasjonsBosted: RelasjonsBosted | null;
+	master: StringOrNothing;
+	registrertDato: StringOrNothing;
 }
 
 export interface PersonaliaTelefon {
@@ -41,13 +64,6 @@ export interface PersonaliaTelefon {
 	telefonNr: string;
 	registrertDato: StringOrNothing;
 	master: string;
-}
-
-export interface PersonaliaPartner extends GrunnPersonalia {
-	gradering: Gradering;
-	erEgenAnsatt: boolean;
-	harSammeBosted: boolean;
-	harVeilederTilgang: boolean;
 }
 
 export interface Vegadresse {
@@ -149,8 +165,9 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	telefon: PersonaliaTelefon[];
 	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
-	sivilstand: PersonaliaSivilstand;
-	partner: OrNothing<PersonaliaPartner>;
+	partner?: PersonaliaPartner;
+	sivilstand?: PersonaliaSivilstand;
+	sivilstandliste?: PersonaliaSivilstandNy[];
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
 	kontaktadresser: Kontaktadresse[];

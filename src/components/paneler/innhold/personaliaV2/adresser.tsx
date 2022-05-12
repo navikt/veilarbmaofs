@@ -219,7 +219,6 @@ function Adresser(props: Props) {
 	const kontaktadresseList = isNotEmptyArray(kontaktadresser)
 		? kontaktadresser.map((kontaktadresse, index) => <KontaktAdresse kontaktadresse={kontaktadresse} key={index} />)
 		: EMDASH;
-
 	return (
 		<div {...rest}>
 			<BostedsAdresse bostedsadresse={bostedsadresse} />

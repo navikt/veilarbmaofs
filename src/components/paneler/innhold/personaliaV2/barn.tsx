@@ -6,7 +6,7 @@ import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaV2Info, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
 import EMDASH from '../../../../utils/emdash';
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from '../../../../utils';
-import { graderingBeskrivelse } from '../../../../utils/konstanter';
+import { graderingBeskrivelseBarn } from '../../../../utils/konstanter';
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, harSammeBosted } = props.barn;
@@ -22,7 +22,7 @@ function BorSammen(props: { barn: PersonsBarn }) {
 function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
 	const alder = finnAlder(props.barn);
-	const graderingTekst = graderingBeskrivelse(gradering);
+	const graderingTekst = graderingBeskrivelseBarn(gradering);
 
 	return (
 		<div className="overinformasjon underinformasjon innrykk">

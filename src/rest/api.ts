@@ -1,5 +1,4 @@
 import useFetch, { Config } from '@nutgaard/use-fetch';
-import { PersonaliaInfo } from './datatyper/personalia';
 import { RegistreringsData } from './datatyper/registreringsData';
 import { ArenaPerson } from './datatyper/arenaperson';
 import { VeilederData } from './datatyper/veileder';
@@ -40,9 +39,6 @@ export const useFetchYtelser = (fnr: string) =>
 
 export const useFetchUnderOppfolging = (fnr: string) =>
 	useFetch<UnderOppfolgingData>(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`, headers);
-
-export const useFetchPersonalia = (fnr: string) =>
-	useFetch<PersonaliaInfo>(`/veilarbperson/api/person/${fnr}`, headers);
 
 export const useFetchPersonaliaV2 = (fnr: string) =>
 	useFetch<PersonaliaV2Info>(`/veilarbperson/api/v2/person?fnr=${fnr}`, headers);
