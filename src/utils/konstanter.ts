@@ -91,5 +91,5 @@ export function hentMalform(malform: OrNothing<String>) {
 }
 
 export function egenAnsattTekst() {
-	return 'Partner er ansatt i NAV';
+	return 'Partner er skjermet for innsyn';
 }
