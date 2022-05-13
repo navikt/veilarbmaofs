@@ -398,7 +398,7 @@ const personaliav2: PersonaliaV2Info = {
 			gradering: Gradering.UGRADERT,
 			relasjonsBosted: null,
 			master: 'PDL',
-			registrertDato: '15.06.2019'
+			registrertDato: '2019-06-15T10:30:44'
 		},
 		{
 			sivilstand: 'Skilt',
@@ -407,7 +407,7 @@ const personaliav2: PersonaliaV2Info = {
 			gradering: Gradering.UGRADERT,
 			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED,
 			master: 'PDL',
-			registrertDato: '05.09.2020'
+			registrertDato: '2020-09-05T11:30:15'
 		}
 	],
 	bostedsadresse: {

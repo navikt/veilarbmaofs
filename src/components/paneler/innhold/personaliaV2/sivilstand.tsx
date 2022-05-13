@@ -37,7 +37,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">
-					Registrert {registrertDato && registrertDato}
+					Registrert {registrertDato && formateLocalDate(registrertDato)}
 					{` ${hentKilde(master)}`}
 				</Undertekst>
 			)}
