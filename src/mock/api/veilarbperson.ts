@@ -392,7 +392,7 @@ const personaliav2: PersonaliaV2Info = {
 			registrertDato: null
 		},
 		{
-			sivilstand: 'Skilt',
+			sivilstand: 'Separert_partner',
 			fraDato: '2019-06-01',
 			skjermet: false,
 			gradering: Gradering.UGRADERT,
