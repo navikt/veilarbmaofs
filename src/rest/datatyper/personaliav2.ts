@@ -50,7 +50,7 @@ export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
 	skjermet: boolean | null;
-	gradering: Gradering;
+	gradering: Gradering | null;
 	relasjonsBosted: RelasjonsBosted | null;
 	master: StringOrNothing;
 	registrertDato: StringOrNothing;
