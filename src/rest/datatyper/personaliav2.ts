@@ -16,9 +16,6 @@ export enum RelasjonsBosted {
 
 export interface GrunnPersonalia {
 	fornavn: StringOrNothing;
-	mellomnavn: StringOrNothing;
-	etternavn: StringOrNothing;
-	forkortetNavn: StringOrNothing;
 	fodselsnummer: string;
 	fodselsdato: string;
 	dodsdato: StringOrNothing;
