@@ -49,7 +49,7 @@ export interface PersonaliaSivilstand {
 export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
-	skjermet: boolean;
+	skjermet: boolean | null;
 	gradering: Gradering;
 	relasjonsBosted: RelasjonsBosted | null;
 	master: StringOrNothing;

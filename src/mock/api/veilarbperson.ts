@@ -373,7 +373,7 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
-			skjermet: true,
+			skjermet: null,
 			gradering: Gradering.UKJENT,
 			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
