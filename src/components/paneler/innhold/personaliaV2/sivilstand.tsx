@@ -28,7 +28,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCaseSivilstand(sivilstand)}</Normaltekst>
 			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
-			{relasjonsBosted && gradering && gradering === Gradering.UGRADERT && (
+			{relasjonsBosted && gradering && (
 				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
 			)}
 			{gradering && gradering !== Gradering.UGRADERT && (
