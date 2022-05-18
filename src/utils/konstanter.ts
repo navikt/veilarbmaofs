@@ -9,10 +9,8 @@ export const VEDTAKSSTATUSER = {
 	iverksatt: 'Iverksatt'
 };
 
-export function graderingBeskrivelseBarn(gradering: Gradering) {
+export function graderingBeskrivelseBarn(gradering: Gradering | string | undefined | null) {
 	switch (gradering) {
-		case Gradering.UKJENT:
-			return 'Barnet har adressebeskyttelse, ukjent';
 		case Gradering.FORTROLIG:
 			return 'Barnet har adressebeskyttelse, fortrolig';
 		case Gradering.STRENGT_FORTROLIG:
@@ -21,13 +19,20 @@ export function graderingBeskrivelseBarn(gradering: Gradering) {
 			return 'Barnet har adressebeskyttelse, strengt fortrolig utland';
 		case Gradering.UGRADERT:
 			return null;
+		default:
+			return `Barnet har ukjent kode for adressebeskyttelse, kode: ${gradering}`;
 	}
 }
 
-export function graderingBeskrivelsePartner(gradering: Gradering) {
+export function graderingBeskrivelsePartner(
+	gradering:
+		| Gradering.UKJENT
+		| Gradering.FORTROLIG
+		| Gradering.STRENGT_FORTROLIG
+		| Gradering.STRENGT_FORTROLIG_UTLAND
+		| string
+) {
 	switch (gradering) {
-		case Gradering.UKJENT:
-			return 'Partner har adressebeskyttelse, ukjent';
 		case Gradering.FORTROLIG:
 			return 'Partner har adressebeskyttelse, fortrolig';
 		case Gradering.STRENGT_FORTROLIG:
@@ -36,6 +41,8 @@ export function graderingBeskrivelsePartner(gradering: Gradering) {
 			return 'Partner har adressebeskyttelse, strengt fortrolig utland';
 		case Gradering.UGRADERT:
 			return null;
+		default:
+			return `Partner har ukjent kode for adressebeskyttelse, kode: ${gradering}`;
 	}
 }
 
