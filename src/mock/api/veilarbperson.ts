@@ -288,32 +288,23 @@ const cvOgJobbprofil: ArenaPerson = {
 
 const personaliav2: PersonaliaV2Info = {
 	fornavn: 'Bruce',
-	mellomnavn: 'Batty',
-	etternavn: 'Wayne',
-	forkortetNavn: 'Bruce Batty Wayne',
 	fodselsnummer: '10108000398',
 	fodselsdato: '1974-09-16',
 	dodsdato: null,
 	barn: [
 		{
 			fornavn: 'Bruce',
-			mellomnavn: null,
-			etternavn: 'Banner',
-			forkortetNavn: 'Bruce Banner',
 			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: false,
-			gradering: Gradering.FORTROLIG,
+			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
 			kjonn: 'M'
 		},
 		{
 			fornavn: 'Harry',
-			mellomnavn: null,
-			etternavn: 'Bosch',
-			forkortetNavn: 'Harry Bosch',
 			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
 			dodsdato: null,
@@ -325,9 +316,6 @@ const personaliav2: PersonaliaV2Info = {
 		},
 		{
 			fornavn: 'Satoshi',
-			mellomnavn: null,
-			etternavn: 'Nakamoto',
-			forkortetNavn: 'Satoshi Nakamoto',
 			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
 			dodsdato: null,
@@ -348,7 +336,7 @@ const personaliav2: PersonaliaV2Info = {
 			prioritet: '1',
 			telefonNr: '+4746333333',
 			registrertDato: '10.07.2008',
-			master: 'Freg'
+			master: 'FREG'
 		},
 		{
 			prioritet: '2',
@@ -385,20 +373,20 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
-			skjermet: true,
-			gradering: Gradering.UKJENT,
+			skjermet: null,
+			gradering: 'RANDOM_KODE' as any,
 			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
 			registrertDato: null
 		},
 		{
-			sivilstand: 'Skilt',
+			sivilstand: 'Separert_partner',
 			fraDato: '2019-06-01',
 			skjermet: false,
-			gradering: Gradering.UGRADERT,
+			gradering: 'Ny gradering fra PDL' as any,
 			relasjonsBosted: null,
 			master: 'PDL',
-			registrertDato: '15.06.2019'
+			registrertDato: '2019-06-15T10:30:44'
 		},
 		{
 			sivilstand: 'Skilt',
@@ -407,7 +395,7 @@ const personaliav2: PersonaliaV2Info = {
 			gradering: Gradering.UGRADERT,
 			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED,
 			master: 'PDL',
-			registrertDato: '05.09.2020'
+			registrertDato: '2020-09-05T11:30:15'
 		}
 	],
 	bostedsadresse: {

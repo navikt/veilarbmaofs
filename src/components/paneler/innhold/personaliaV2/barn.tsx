@@ -22,7 +22,7 @@ function BorSammen(props: { barn: PersonsBarn }) {
 function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
 	const alder = finnAlder(props.barn);
-	const graderingTekst = graderingBeskrivelseBarn(gradering);
+	const graderingTekst = gradering ? graderingBeskrivelseBarn(gradering) : null;
 
 	return (
 		<div className="overinformasjon underinformasjon innrykk">

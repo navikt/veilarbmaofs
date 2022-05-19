@@ -10,45 +10,23 @@ export const VEDTAKSSTATUSER = {
 };
 
 export function graderingBeskrivelseBarn(gradering: Gradering) {
-	switch (gradering) {
-		case Gradering.UKJENT:
-			return 'Barnet har adressebeskyttelse, ukjent';
-		case Gradering.FORTROLIG:
-			return 'Barnet har adressebeskyttelse, fortrolig';
-		case Gradering.STRENGT_FORTROLIG:
-			return 'Barnet har adressebeskyttelse, strengt fortrolig';
-		case Gradering.STRENGT_FORTROLIG_UTLAND:
-			return 'Barnet har adressebeskyttelse, strengt fortrolig utland';
-		case Gradering.UGRADERT:
-			return null;
-	}
+	return 'Barnet har adressebeskyttelse, ' + gradering.toLowerCase().replaceAll('_', ' ');
 }
 
 export function graderingBeskrivelsePartner(gradering: Gradering) {
-	switch (gradering) {
-		case Gradering.UKJENT:
-			return 'Partner har adressebeskyttelse, ukjent';
-		case Gradering.FORTROLIG:
-			return 'Partner har adressebeskyttelse, fortrolig';
-		case Gradering.STRENGT_FORTROLIG:
-			return 'Partner har adressebeskyttelse, strengt fortrolig';
-		case Gradering.STRENGT_FORTROLIG_UTLAND:
-			return 'Partner har adressebeskyttelse, strengt fortrolig utland';
-		case Gradering.UGRADERT:
-			return null;
-	}
+	return 'Partner har adressebeskyttelse, ' + gradering.toLowerCase().replaceAll('_', ' ');
 }
 
 export function hentKilde(master: OrNothing<String>) {
-	switch (master) {
-		case 'KRR':
+	switch (master?.toLowerCase()) {
+		case 'krr':
 			return 'i Kontakt- og reservasjonsregisteret';
-		case 'PDL':
+		case 'pdl':
 			return 'av NAV';
-		case 'Freg':
+		case 'freg':
 			return 'i Folkeregisteret';
 		default:
-			return null;
+			return `i ${master}`;
 	}
 }
 
