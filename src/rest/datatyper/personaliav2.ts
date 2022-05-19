@@ -23,7 +23,7 @@ export interface GrunnPersonalia {
 }
 
 export interface PersonsBarn extends GrunnPersonalia {
-	gradering: Gradering | StringOrNothing;
+	gradering: Gradering;
 	erEgenAnsatt: boolean;
 	harSammeBosted: boolean;
 	harVeilederTilgang: boolean;
@@ -35,7 +35,7 @@ export interface Enhet {
 }
 
 export interface PersonaliaPartner {
-	gradering: Gradering | StringOrNothing;
+	gradering: Gradering;
 	erEgenAnsatt: boolean;
 	harSammeBosted: boolean;
 	harVeilederTilgang: boolean;
@@ -50,7 +50,7 @@ export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
 	skjermet: boolean | null;
-	gradering: Gradering | StringOrNothing;
+	gradering: Gradering;
 	relasjonsBosted: RelasjonsBosted | null;
 	master: StringOrNothing;
 	registrertDato: StringOrNothing;

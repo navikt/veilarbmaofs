@@ -28,19 +28,19 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCaseSivilstand(sivilstand)}</Normaltekst>
 			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
-			{relasjonsBosted && gradering && (
-				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
-			)}
-			{gradering && gradering !== Gradering.UGRADERT && (
-				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
-			)}
-			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">
 					Registrert {registrertDato && formateLocalDate(registrertDato)}
 					{` ${hentKilde(master)}`}
 				</Undertekst>
 			)}
+			{relasjonsBosted && (
+				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
+			)}
+			{gradering && gradering !== Gradering.UGRADERT && (
+				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
+			)}
+			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 		</div>
 	);
 }

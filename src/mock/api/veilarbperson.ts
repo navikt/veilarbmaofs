@@ -298,7 +298,7 @@ const personaliav2: PersonaliaV2Info = {
 			fodselsdato: '2016-04-17',
 			dodsdato: null,
 			harSammeBosted: false,
-			gradering: 'Ny gradering fra PDL',
+			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
 			kjonn: 'M'
@@ -374,7 +374,7 @@ const personaliav2: PersonaliaV2Info = {
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
 			skjermet: null,
-			gradering: null,
+			gradering: 'RANDOM_KODE' as any,
 			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
 			registrertDato: null
@@ -383,7 +383,7 @@ const personaliav2: PersonaliaV2Info = {
 			sivilstand: 'Separert_partner',
 			fraDato: '2019-06-01',
 			skjermet: false,
-			gradering: 'Ny gradering fra PDL',
+			gradering: 'Ny gradering fra PDL' as any,
 			relasjonsBosted: null,
 			master: 'PDL',
 			registrertDato: '2019-06-15T10:30:44'
