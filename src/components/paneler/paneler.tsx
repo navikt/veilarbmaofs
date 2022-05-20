@@ -5,28 +5,23 @@ import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhol
 import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
-import PersonaliaPanelInnhold from './innhold/personalia/personalia-panel-innhold';
 import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
-import { fetchOppfolgingsstatus } from '../../rest/api';
+import { useFetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
+import { hasData } from '../../rest/utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
-import Show from '../felles/show';
-import { PERSONALIA_DATA_FRA_TPS } from '../../rest/datatyper/feature';
 import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
-import { isResolved, usePromise } from '../../utils/use-promise';
-import { AxiosResponse } from 'axios';
-import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 
 export const Paneler: React.FC = () => {
-	const { fnr, isSidemenyElementOpen, features } = useAppStore();
-	const oppfolgingstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
+	const { fnr, isSidemenyElementOpen } = useAppStore();
+	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
-		isResolved(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.result.data)
+		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
 			? 'Registrering fra sykefravær'
 			: 'Registrering';
 
@@ -53,28 +48,15 @@ export const Paneler: React.FC = () => {
 					<CvPanel />
 				</Panel>
 
-				<Show if={features[PERSONALIA_DATA_FRA_TPS]}>
-					<Panel
-						key={`panel-${sidemenyElementId.personalia}`}
-						name="personalia"
-						id={sidemenyElementId.personalia}
-						tittel="Personalia"
-						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
-					>
-						<PersonaliaPanelInnhold />
-					</Panel>
-				</Show>
-				<Show if={!features[PERSONALIA_DATA_FRA_TPS]}>
-					<Panel
-						key={`panel-${sidemenyElementId.personaliaFraPdl}`}
-						name="personaliaFraPdl"
-						id={sidemenyElementId.personaliaFraPdl}
-						tittel="Personalia"
-						defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
-					>
-						<PersonaliaV2PanelInnhold />
-					</Panel>
-				</Show>
+				<Panel
+					key={`panel-${sidemenyElementId.personaliaFraPdl}`}
+					name="personaliaFraPdl"
+					id={sidemenyElementId.personaliaFraPdl}
+					tittel="Personalia"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
+				>
+					<PersonaliaV2PanelInnhold />
+				</Panel>
 
 				<Panel
 					key={`panel-${sidemenyElementId.jobbonsker}`}
