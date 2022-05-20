@@ -22,7 +22,7 @@ function BorSammen(props: { barn: PersonsBarn }) {
 function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const { fornavn, fodselsdato, gradering, erEgenAnsatt, harVeilederTilgang } = props.barn;
 	const alder = finnAlder(props.barn);
-	const graderingTekst = gradering ? graderingBeskrivelseBarn(gradering) : null;
+	const graderingTekst = gradering && gradering !== Gradering.UGRADERT ? graderingBeskrivelseBarn(gradering) : null;
 
 	return (
 		<div className="overinformasjon underinformasjon innrykk">
@@ -31,7 +31,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
 					<BorSammen barn={props.barn} />
 				</div>
-			) : gradering !== Gradering.UGRADERT && !harVeilederTilgang ? (
+			) : graderingTekst && !harVeilederTilgang ? (
 				<div>
 					<UndertekstBold>Barn</UndertekstBold>
 					{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
