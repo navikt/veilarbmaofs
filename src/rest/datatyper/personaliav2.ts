@@ -16,9 +16,6 @@ export enum RelasjonsBosted {
 
 export interface GrunnPersonalia {
 	fornavn: StringOrNothing;
-	mellomnavn: StringOrNothing;
-	etternavn: StringOrNothing;
-	forkortetNavn: StringOrNothing;
 	fodselsnummer: string;
 	fodselsdato: string;
 	dodsdato: StringOrNothing;
@@ -52,7 +49,7 @@ export interface PersonaliaSivilstand {
 export interface PersonaliaSivilstandNy {
 	sivilstand: string;
 	fraDato: StringOrNothing;
-	skjermet: boolean;
+	skjermet: boolean | null;
 	gradering: Gradering;
 	relasjonsBosted: RelasjonsBosted | null;
 	master: StringOrNothing;
