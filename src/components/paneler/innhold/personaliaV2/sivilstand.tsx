@@ -6,7 +6,11 @@ import {
 	PersonaliaSivilstand,
 	PersonaliaSivilstandNy
 } from '../../../../rest/datatyper/personaliav2';
-import { formateLocalDate, formateStringInUpperAndLowerCase } from '../../../../utils';
+import {
+	formateLocalDate,
+	formateStringInUpperAndLowerCase,
+	formateStringInUpperAndLowerCaseSivilstand
+} from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import EMDASH from '../../../../utils/emdash';
 import {
@@ -22,21 +26,21 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCase(sivilstand)}</Normaltekst>
+			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCaseSivilstand(sivilstand)}</Normaltekst>
 			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
-			{relasjonsBosted && gradering === Gradering.UGRADERT && (
-				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
-			)}
-			{gradering !== Gradering.UGRADERT && (
-				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
-			)}
-			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">
-					Registrert {registrertDato && registrertDato}
+					Registrert {registrertDato && formateLocalDate(registrertDato)}
 					{` ${hentKilde(master)}`}
 				</Undertekst>
 			)}
+			{relasjonsBosted && (
+				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
+			)}
+			{gradering && gradering !== Gradering.UGRADERT && (
+				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
+			)}
+			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
 		</div>
 	);
 }

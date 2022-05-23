@@ -74,7 +74,7 @@ export function formaterDato(datoObjekt: DatoType | string | undefined | null, o
 		return EMDASH;
 	}
 
-	let lokalDato = null;
+	let lokalDato;
 	let lokalDatoKunArManed = false;
 	const yearMonthReg = /^\d{4}-\d{2}$/;
 	if (typeof datoObjekt === 'string') {
@@ -148,6 +148,12 @@ export function useEventListener(name: string, listener: () => void) {
 
 export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 	return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : EMDASH;
+}
+
+export function formateStringInUpperAndLowerCaseSivilstand(str: OrNothing<string>) {
+	return str
+		? str.replaceAll('_', ' ').charAt(0).toUpperCase() + str.replaceAll('_', ' ').slice(1).toLowerCase()
+		: EMDASH;
 }
 
 export function formateFirstCharOfEachWordToUppercase(str: OrNothing<string>) {
