@@ -27,7 +27,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 	return (
 		<div className="overinformasjon underinformasjon">
 			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCaseSivilstand(sivilstand)}</Normaltekst>
-			<Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>
+			{fraDato && <Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">
 					Registrert {registrertDato && formateLocalDate(registrertDato)}
