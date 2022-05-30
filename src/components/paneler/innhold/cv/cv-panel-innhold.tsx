@@ -1,5 +1,4 @@
 import React from 'react';
-import { AxiosResponse } from 'axios';
 import { useAppStore } from '../../../../stores/app-store';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
@@ -22,7 +21,7 @@ import { Feilmelding, Laster } from '../../../felles/fetch';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
 import { Alert } from '@navikt/ds-react';
-import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { isNotStartedOrPending, isRejected, isResolved, useAxiosPromise } from '../../../../utils/use-promise';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
@@ -30,9 +29,9 @@ import { AktorId } from '../../../../rest/datatyper/aktor-id';
 const CvPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const cvOgJobbprofil = usePromise<AxiosResponse<ArenaPerson>>(() => fetchCvOgJobbprofil(fnr));
-	const underOppfolging = usePromise<AxiosResponse<UnderOppfolgingData>>(() => fetchUnderOppfolging(fnr));
-	const aktorId = usePromise<AxiosResponse<AktorId>>(() => fetchAktorId(fnr));
+	const cvOgJobbprofil = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
+	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
+	const aktorId = useAxiosPromise<AktorId>(() => fetchAktorId(fnr));
 
 	if (
 		isNotStartedOrPending(cvOgJobbprofil) ||
@@ -61,8 +60,8 @@ const CvPanelInnhold = (): React.ReactElement => {
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (cvOgJobbprofil.result?.status) {
-		if (cvOgJobbprofil.result.status === 403 || cvOgJobbprofil.result.status === 401) {
+	if (cvOgJobbprofil.error?.response) {
+		if (cvOgJobbprofil.error.response.status === 403 || cvOgJobbprofil.error.response.status === 401) {
 			return (
 				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
 					Du kan ikke se CV-en, be brukeren om å:
@@ -75,7 +74,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 				</Alert>
 			);
 		} else {
-			if (cvOgJobbprofil.result.status === 404 || cvOgJobbprofil.result?.status === 204) {
+			if (cvOgJobbprofil.error.response.status === 404 || cvOgJobbprofil.error.response.status === 204) {
 				return (
 					<Alert variant="info" className="alertstripe_intern">
 						Denne personen har ikke registrert CV.&nbsp;&nbsp;

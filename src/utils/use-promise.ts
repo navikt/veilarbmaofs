@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { AxiosError, AxiosPromise, AxiosResponse } from 'axios';
 
 export enum Status {
 	NOT_STARTED = 'NOT_STARTED',
@@ -43,17 +44,28 @@ const defaultState: NotStartedPromiseState = {
 	status: Status.NOT_STARTED
 };
 
-type UsePromise<R, E = Error> = PromiseState<R, E> & { setPromise: Dispatch<SetStateAction<Promise<R> | undefined>> };
+type UsePromise<R, E extends Error> = PromiseState<R, E> & {
+	setPromise: Dispatch<SetStateAction<Promise<R> | undefined>>;
+};
 
-export const usePromise = <R, E = Error>(func?: () => Promise<R>, dependencies?: any[]): UsePromise<R, E> => {
+export const usePromise = <R>(func: () => Promise<R>, dependencies?: any[]): UsePromise<R, Error> => {
+	return usePromiseInternal<R, Error>(func, dependencies);
+};
+
+export const useAxiosPromise = <R>(
+	func: () => AxiosPromise<R>,
+	dependencies?: any[]
+): UsePromise<AxiosResponse<R>, AxiosError> => {
+	return usePromiseInternal<AxiosResponse<R>, AxiosError>(func, dependencies);
+};
+
+const usePromiseInternal = <R, E extends Error>(func: () => Promise<R>, dependencies?: any[]): UsePromise<R, E> => {
 	const [promise, setPromise] = useState<Promise<R>>();
 	const [promiseState, setPromiseState] = useState<PromiseState<R, E>>(defaultState);
 
 	useEffect(() => {
-		if (func) {
-			setPromiseState({ status: Status.PENDING, error: undefined, result: undefined });
-			setPromise(func());
-		}
+		setPromiseState({ status: Status.PENDING, error: undefined, result: undefined });
+		setPromise(func());
 		// eslint-disable-next-line
 	}, dependencies || []);
 
