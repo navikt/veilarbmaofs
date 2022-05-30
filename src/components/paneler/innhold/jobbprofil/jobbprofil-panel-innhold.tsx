@@ -15,7 +15,7 @@ import { AxiosResponse } from 'axios';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
-const harJobbprofilData = (cvOgJobbprofil: ArenaPerson): boolean => cvOgJobbprofil && cvOgJobbprofil.jobbprofil != null;
+// const harJobbprofilData = (cvOgJobbprofil: ArenaPerson): boolean => cvOgJobbprofil && cvOgJobbprofil.jobbprofil != null;
 
 const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
