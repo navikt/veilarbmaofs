@@ -68,11 +68,14 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 		}
 	} else {
 		if (cvOgJobbprofil.result?.status) {
+			console.log('cvjobbprofil punkt 1');
 			if (
-				cvOgJobbprofil.result.status === 404 ||
-				cvOgJobbprofil.result.status === 204 ||
-				!harJobbprofilData(cvOgJobbprofil.result.data)
+				cvOgJobbprofil.result.status === 404
+				//				cvOgJobbprofil.result.status === 404 ||
+				//				cvOgJobbprofil.result.status === 204 ||
+				//				!harJobbprofilData(cvOgJobbprofil.result.data)
 			) {
+				console.log('cvjobbprofil punkt 2');
 				return (
 					<Alert variant="info" className="alertstripe_intern">
 						Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
