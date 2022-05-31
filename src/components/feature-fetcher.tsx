@@ -1,21 +1,23 @@
 import React, { PropsWithChildren, useEffect } from 'react';
-import { useFetchFeatureToggle } from '../rest/api';
-import { isPending } from '@nutgaard/use-fetch';
+import { AxiosResponse } from 'axios';
+import { fetchFeatureToggle } from '../rest/api';
 import { Laster } from './felles/fetch';
-import { hasData } from '../rest/utils';
+import { Features } from '../rest/datatyper/feature';
+
 import { useAppStore } from '../stores/app-store';
+import { isNotStartedOrPending, isResolved, usePromise } from '../utils/use-promise';
 
 function FeatureFetcher(props: PropsWithChildren<any>) {
-	const fetchFeatures = useFetchFeatureToggle();
+	const fetchFeatures = usePromise<AxiosResponse<Features>>(() => fetchFeatureToggle());
 	const { setFeatures } = useAppStore();
 
 	useEffect(() => {
-		if (hasData(fetchFeatures)) {
-			setFeatures(fetchFeatures.data);
+		if (isResolved(fetchFeatures)) {
+			setFeatures(fetchFeatures.result.data);
 		}
 	}, [setFeatures, fetchFeatures]);
 
-	if (isPending(fetchFeatures)) {
+	if (isNotStartedOrPending(fetchFeatures)) {
 		return <Laster midtstilt={true} />;
 	}
 

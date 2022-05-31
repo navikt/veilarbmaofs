@@ -6,22 +6,24 @@ import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhol
 import Panel from './panel';
 import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
 import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
-import { useFetchOppfolgingsstatus } from '../../rest/api';
+import { fetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
-import { hasData } from '../../rest/utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import './paneler.less';
 import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
+import { isResolved, usePromise } from '../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 
 export const Paneler: React.FC = () => {
 	const { fnr, isSidemenyElementOpen } = useAppStore();
-	const oppfolgingstatus = useFetchOppfolgingsstatus(fnr);
+	const oppfolgingstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
-		hasData(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.data)
+		isResolved(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.result.data)
 			? 'Registrering fra sykefravær'
 			: 'Registrering';
 

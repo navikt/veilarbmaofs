@@ -3,10 +3,10 @@ import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { VeilederData } from '../../rest/datatyper/veileder';
 
 const veileder: VeilederData = {
-	etternavn: 'Destructor',
-	fornavn: 'The',
+	etternavn: 'Veiledersen',
+	fornavn: 'TJ',
 	ident: 'Z123456',
-	navn: 'The Destructor'
+	navn: 'TJ Veiledersen'
 };
 
 export const veilarbveilederHandlers: RequestHandlersList = [
