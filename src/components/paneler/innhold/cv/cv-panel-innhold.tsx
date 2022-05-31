@@ -73,23 +73,24 @@ const CvPanelInnhold = (): React.ReactElement => {
 					Ved å gjøre dette får brukeren informasjon om behandlingsgrunnlaget, og du vil se CV-en.
 				</Alert>
 			);
-		} else {
-			if (cvOgJobbprofil.error.response.status === 404 || cvOgJobbprofil.error.response.status === 204) {
-				return (
-					<Alert variant="info" className="alertstripe_intern">
-						Denne personen har ikke registrert CV.&nbsp;&nbsp;
-						{erManuell && aktorId && (
-							<Lenke target="_blank" href={endreCvUrl}>
-								Registrer her
-							</Lenke>
-						)}
-					</Alert>
-				);
-			} else if (!isResolved(cvOgJobbprofil)) {
-				return <Feilmelding />;
-			}
 		}
 	}
+
+	if (cvOgJobbprofil.error?.response?.status === 404 || cvOgJobbprofil.result?.status === 204) {
+		return (
+			<Alert variant="info" className="alertstripe_intern">
+				Denne personen har ikke registrert CV.&nbsp;&nbsp;
+				{erManuell && aktorId && (
+					<Lenke target="_blank" href={endreCvUrl}>
+						Registrer her
+					</Lenke>
+				)}
+			</Alert>
+		);
+	} else if (!isResolved(cvOgJobbprofil)) {
+		return <Feilmelding />;
+	}
+
 	if (cvOgJobbprofil.result?.data) {
 		const {
 			fagdokumentasjoner,

@@ -106,14 +106,17 @@ export const isNotStartedOrPending = <R, E>(
 	return state.status === Status.NOT_STARTED || state.status === Status.PENDING;
 };
 
+// @ts-ignore
 export const isPending = <R, E>(state: PromiseState<R, E>): state is PendingPromiseState => {
 	return state.status === Status.PENDING;
 };
 
+// @ts-ignore
 export const isResolved = <R, E>(state: PromiseState<R, E>): state is ResolvedPromiseState<R> => {
 	return state.status === Status.RESOLVED;
 };
 
+// @ts-ignore
 export const isRejected = <R, E>(state: PromiseState<R, E>): state is RejectedPromiseState<E> => {
 	return state.status === Status.REJECTED;
 };
