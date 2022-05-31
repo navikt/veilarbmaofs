@@ -1,10 +1,6 @@
 import { axiosInstance } from './utils';
-import { APP_NAME } from '../utils/konstanter';
 import { OrNothing } from '../utils/felles-typer';
 import { toggles } from './datatyper/feature';
-const headers = {
-	headers: { 'Nav-Consumer-Id': APP_NAME }
-};
 
 export const fetchRegistrering = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/registrering?fnr=${fnr}`);
@@ -15,49 +11,45 @@ export const fetchCvOgJobbprofil = (fnr: string) => {
 };
 
 export const fetchVeileder = (veilederId: OrNothing<string>) => {
-	return axiosInstance.get(`/veilarbveileder/api/veileder/${veilederId}`, headers);
+	return axiosInstance.get(`/veilarbveileder/api/veileder/${veilederId}`);
 };
 
 export const fetchAktorId = (fnr: string) => {
-	return axiosInstance.get(`/veilarbperson/api/person/aktorid?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbperson/api/person/aktorid?fnr=${fnr}`);
 };
 
 export const fetchOppfolgingsstatus = (fnr: string) => {
-	return axiosInstance.get(`/veilarboppfolging/api/person/${fnr}/oppfolgingsstatus`, headers);
+	return axiosInstance.get(`/veilarboppfolging/api/person/${fnr}/oppfolgingsstatus`);
 };
 
 export const fetchYtelser = (fnr: string) => {
-	return axiosInstance.get(`/veilarboppfolging/api/person/${fnr}/ytelser`, headers);
+	return axiosInstance.get(`/veilarboppfolging/api/person/${fnr}/ytelser`);
 };
 
 export const fetchUnderOppfolging = (fnr: string) => {
-	return axiosInstance.get(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`, headers);
-};
-
-export const fetchPersonalia = (fnr: string) => {
-	return axiosInstance.get(`/veilarbperson/api/person/${fnr}`, headers);
+	return axiosInstance.get(`/veilarboppfolging/api/underoppfolging?fnr=${fnr}`);
 };
 
 export const fetchPersonaliaV2 = (fnr: string) => {
-	return axiosInstance.get(`/veilarbperson/api/v2/person?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbperson/api/v2/person?fnr=${fnr}`);
 };
 
 export const fetchVergOgFullmakt = (fnr: string) => {
-	return axiosInstance.get(`/veilarbperson/api/v2/person/vergeOgFullmakt?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbperson/api/v2/person/vergeOgFullmakt?fnr=${fnr}`);
 };
 
 export const fetchSpraakTolk = (fnr: string) => {
-	return axiosInstance.get(`/veilarbperson/api/v2/person/tolk?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbperson/api/v2/person/tolk?fnr=${fnr}`);
 };
 
 export const fetchInnsatsbehov = (fnr: string) => {
-	return axiosInstance.get(`/veilarbvedtaksstotte/api/innsatsbehov?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbvedtaksstotte/api/innsatsbehov?fnr=${fnr}`);
 };
 
 export const fetchFeatureToggle = () => {
-	return axiosInstance.get(`/veilarbpersonflatefs/api/feature?${toggles()}`, headers);
+	return axiosInstance.get(`/veilarbpersonflatefs/api/feature?${toggles()}`);
 };
 
 export const fetchTilgorerBrukerUtrulletKontorForVedtaksstotte = (fnr: string) => {
-	return axiosInstance.get(`/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor?fnr=${fnr}`, headers);
+	return axiosInstance.get(`/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor?fnr=${fnr}`);
 };
