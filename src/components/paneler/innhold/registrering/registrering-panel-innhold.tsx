@@ -1,4 +1,5 @@
 import React from 'react';
+import { AxiosResponse } from 'axios';
 import { useAppStore } from '../../../../stores/app-store';
 import { Header } from './registrert';
 import { SporsmalsListe } from './sporsmolvisning';
@@ -6,25 +7,25 @@ import { JobbetSammenhengende } from './jobbetsammenhengende';
 import PersonverninformasjonUtskrift from './personverninformasjon-utskrift';
 import { ForeslattProfilering } from './foreslatt-profilering';
 import Show from '../../../felles/show';
-import { useFetchRegistrering } from '../../../../rest/api';
+import { fetchRegistrering } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
-import { hasError, isPending } from '@nutgaard/use-fetch';
-import { hasData } from '../../../../rest/utils';
+import { RegistreringsData } from '../../../../rest/datatyper/registreringsData';
+import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
 
-const RegistreringPanelInnhold = () => {
+const RegistreringPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const registrering = useFetchRegistrering(fnr);
+	const registrering = usePromise<AxiosResponse<RegistreringsData>>(() => fetchRegistrering(fnr));
 
-	if (isPending(registrering)) {
+	if (isNotStartedOrPending(registrering)) {
 		return <Laster midtstilt={true} />;
-	} else if (hasError(registrering)) {
+	} else if (isRejected(registrering)) {
 		return <Feilmelding />;
-	} else if (!hasData(registrering)) {
+	} else if (!isResolved(registrering)) {
 		return <NoData tekst="Brukeren har ikke registrert seg gjennom den nye registreringsløsningen." />;
 	}
 
-	const { registrering: brukerRegistrering, type } = registrering.data;
+	const { registrering: brukerRegistrering, type } = registrering.result.data;
 
 	return (
 		<>

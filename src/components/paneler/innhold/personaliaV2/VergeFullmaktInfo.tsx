@@ -1,20 +1,23 @@
 import React from 'react';
-import { hasData } from '../../../../rest/utils';
 import Vergemaal from './vergemaal';
 import Fullmakt from './fullmakt';
-import { useFetchVergOgFullmakt } from '../../../../rest/api';
+import { fetchVergOgFullmakt } from '../../../../rest/api';
 import { useAppStore } from '../../../../stores/app-store';
+import { isResolved, usePromise } from '../../../../utils/use-promise';
+import { AxiosResponse } from 'axios';
+import { VergeOgFullmaktData } from '../../../../rest/datatyper/vergeOgFullmakt';
 
 function VergeFullmaktInfo() {
 	const { fnr } = useAppStore();
-	const vergeOgFullmakt = useFetchVergOgFullmakt(fnr);
-
+	const vergeOgFullmakt = usePromise<AxiosResponse<VergeOgFullmaktData>>(() => fetchVergOgFullmakt(fnr));
 	return (
 		<>
-			{hasData(vergeOgFullmakt) && (
-				<Vergemaal vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.data.vergemaalEllerFremtidsfullmakt} />
+			{isResolved(vergeOgFullmakt) && (
+				<Vergemaal
+					vergemaalEllerFremtidsfullmakt={vergeOgFullmakt.result.data.vergemaalEllerFremtidsfullmakt}
+				/>
 			)}
-			{hasData(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.data.fullmakt} />}
+			{isResolved(vergeOgFullmakt) && <Fullmakt fullmakt={vergeOgFullmakt.result.data.fullmakt} />}
 		</>
 	);
 }
