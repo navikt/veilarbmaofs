@@ -69,7 +69,6 @@ const usePromiseInternal = <R, E extends Error>(func: () => Promise<R>, dependen
 		// eslint-disable-next-line
 	}, dependencies || []);
 
-	// @ts-ignore
 	useEffect(() => {
 		if (promise) {
 			let canceled = false;
@@ -92,8 +91,11 @@ const usePromiseInternal = <R, E extends Error>(func: () => Promise<R>, dependen
 			return () => {
 				canceled = true;
 			};
+		} else {
+			return;
 		}
 	}, [promise]);
+
 	return {
 		...promiseState,
 		setPromise
@@ -106,17 +108,14 @@ export const isNotStartedOrPending = <R, E>(
 	return state.status === Status.NOT_STARTED || state.status === Status.PENDING;
 };
 
-// @ts-ignore
 export const isPending = <R, E>(state: PromiseState<R, E>): state is PendingPromiseState => {
 	return state.status === Status.PENDING;
 };
 
-// @ts-ignore
 export const isResolved = <R, E>(state: PromiseState<R, E>): state is ResolvedPromiseState<R> => {
 	return state.status === Status.RESOLVED;
 };
 
-// @ts-ignore
 export const isRejected = <R, E>(state: PromiseState<R, E>): state is RejectedPromiseState<E> => {
 	return state.status === Status.REJECTED;
 };
