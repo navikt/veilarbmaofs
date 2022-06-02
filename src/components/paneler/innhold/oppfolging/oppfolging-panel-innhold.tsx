@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';
@@ -43,15 +43,16 @@ const OppfolgingPanelInnhold = () => {
 	const personalia = usePromise<AxiosResponse<PersonaliaV2Info>>(() => fetchPersonaliaV2(fnr));
 	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
 	const veilederId = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data.veilederId : null;
-	const veileder = usePromise<AxiosResponse<VeilederData>>(() => fetchVeileder(fnr));
+	const [veileder, setVeileder] = useState<AxiosResponse<VeilederData> | null>(null);
 	const tilhorerBrukerUtrulletKontorForVedtaksstotte = usePromise<AxiosResponse<VeilederData>>(() =>
 		fetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr)
 	);
 
 	useEffect(() => {
-		if (!isResolved(veileder) && veilederId != null) {
-			//		veileder.rerun();
-			console.log('veileder.rerun()');
+		if (!veileder && veilederId != null) {
+			fetchVeileder(veilederId).then(data => {
+				setVeileder(data);
+			});
 		}
 		// TODO: Når use-fetch memoiseres riktig, så legg til alle dependencies
 		// eslint-disable-next-line
@@ -61,7 +62,7 @@ const OppfolgingPanelInnhold = () => {
 		return <Laster midtstilt={true} />;
 	}
 
-	const veilederData = isResolved(veileder) ? veileder.result.data : null;
+	const veilederData = veileder ? veileder.data : null;
 	const personaliaData = isResolved(personalia) ? personalia.result.data : null;
 	const innsatsbehovData = isResolved(innsatsbehov) ? innsatsbehov.result.data : null;
 	const oppfolgingsstatusData = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data : null;
