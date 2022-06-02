@@ -43,7 +43,7 @@ const OppfolgingPanelInnhold = () => {
 	const personalia = usePromise<AxiosResponse<PersonaliaV2Info>>(() => fetchPersonaliaV2(fnr));
 	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
 	const veilederId = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data.veilederId : null;
-	let [veileder, setVeileder] = useState<AxiosResponse<VeilederData> | null>(null);
+	const [veileder, setVeileder] = useState<AxiosResponse<VeilederData> | null>(null);
 	const tilhorerBrukerUtrulletKontorForVedtaksstotte = usePromise<AxiosResponse<VeilederData>>(() =>
 		fetchTilgorerBrukerUtrulletKontorForVedtaksstotte(fnr)
 	);
