@@ -22,10 +22,13 @@ export interface GrunnPersonalia {
 	kjonn: StringOrNothing;
 }
 
-export interface PersonsBarn extends GrunnPersonalia {
-	gradering: Gradering;
+export interface PersonsBarn {
+	fornavn: StringOrNothing;
+	fodselsdato: string;
 	erEgenAnsatt: boolean;
-	harSammeBosted: boolean;
+	dodsdato: StringOrNothing;
+	relasjonsBosted: RelasjonsBosted | null;
+	gradering: Gradering;
 	harVeilederTilgang: boolean;
 }
 
@@ -39,11 +42,6 @@ export interface PersonaliaPartner {
 	erEgenAnsatt: boolean;
 	harSammeBosted: boolean;
 	harVeilederTilgang: boolean;
-}
-
-export interface PersonaliaSivilstand {
-	sivilstand: StringOrNothing;
-	fraDato: StringOrNothing;
 }
 
 export interface PersonaliaSivilstandNy {
@@ -163,7 +161,6 @@ export interface PersonaliaV2Info extends GrunnPersonalia {
 	epost: OrNothing<PersonaliaEpost>;
 	statsborgerskap: string;
 	partner?: PersonaliaPartner;
-	sivilstand?: PersonaliaSivilstand;
 	sivilstandliste?: PersonaliaSivilstandNy[];
 	bostedsadresse: OrNothing<Bostedsadresse>;
 	oppholdsadresse: OrNothing<Oppholdsadresse>;
