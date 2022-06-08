@@ -9,11 +9,8 @@ import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } f
 import { graderingBeskrivelseBarn } from '../../../../utils/konstanter';
 
 function BorSammen(props: { barn: PersonsBarn }) {
-	const { dodsdato, harSammeBosted } = props.barn;
+	const { harSammeBosted } = props.barn;
 
-	if (dodsdato) {
-		return null;
-	}
 	const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
 
 	return <Normaltekst>{borSammen}</Normaltekst>;
@@ -53,7 +50,7 @@ function Barn(props: Pick<PersonaliaV2Info, 'barn'>) {
 	const { barn, ...rest } = props;
 
 	const barnListe = isNotEmptyArray(barn)
-		? barn.map(ettBarn => <EnkeltBarn barn={ettBarn} key={ettBarn.fodselsnummer} />)
+		? barn.map((ettBarn, index) => <EnkeltBarn barn={ettBarn} key={index} />)
 		: EMDASH;
 
 	return (

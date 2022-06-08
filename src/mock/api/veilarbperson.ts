@@ -294,36 +294,30 @@ const personaliav2: PersonaliaV2Info = {
 	barn: [
 		{
 			fornavn: 'Bruce',
-			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
-			dodsdato: null,
 			harSammeBosted: false,
 			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			kjonn: 'M'
+			relasjonsBosted: 'UKJENT_BOSTED'
 		},
 		{
 			fornavn: 'Harry',
-			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
-			dodsdato: null,
 			harSammeBosted: true,
 			gradering: Gradering.UGRADERT,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			kjonn: 'M'
+			relasjonsBosted: 'SAMME_BOSTED'
 		},
 		{
 			fornavn: 'Satoshi',
-			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
-			dodsdato: null,
 			harSammeBosted: false,
 			erEgenAnsatt: false,
 			harVeilederTilgang: true,
 			gradering: Gradering.STRENGT_FORTROLIG,
-			kjonn: 'K'
+			relasjonsBosted: 'ANNET_BOSTED'
 		}
 	],
 	kontonummer: '12345678911',
@@ -363,12 +357,6 @@ const personaliav2: PersonaliaV2Info = {
 		harSammeBosted: true,
 		harVeilederTilgang: false
 	},
-	sivilstand: undefined,
-	//sivilstand: {
-	//	sivilstand: 'Gift',
-	//	fraDato: '2012-08-20'
-	//},
-	//sivilstandliste: undefined,
 	sivilstandliste: [
 		{
 			sivilstand: 'Gift',
