@@ -27,8 +27,8 @@ export interface PersonsBarn {
 	fodselsdato: string;
 	erEgenAnsatt: boolean;
 	dodsdato: StringOrNothing;
+	relasjonsBosted: RelasjonsBosted | null;
 	gradering: Gradering;
-	harSammeBosted: boolean;
 	harVeilederTilgang: boolean;
 }
 

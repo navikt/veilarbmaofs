@@ -295,29 +295,29 @@ const personaliav2: PersonaliaV2Info = {
 		{
 			fornavn: 'Bruce',
 			fodselsdato: '2016-04-17',
-			harSammeBosted: false,
 			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			dodsdato: null
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.ANNET_BOSTED
 		},
 		{
 			fornavn: 'Harry',
 			fodselsdato: '2014-05-24',
-			harSammeBosted: true,
 			gradering: Gradering.UGRADERT,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			dodsdato: null
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED
 		},
 		{
 			fornavn: 'Satoshi',
 			fodselsdato: '2005-10-04',
-			harSammeBosted: false,
 			erEgenAnsatt: false,
 			harVeilederTilgang: true,
 			gradering: Gradering.STRENGT_FORTROLIG,
-			dodsdato: null
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED
 		}
 	],
 	kontonummer: '12345678911',
