@@ -30,19 +30,6 @@ export function hentKilde(master: OrNothing<String>) {
 	}
 }
 
-export function hentBorMedPartnerBeskrivelse(relasjonsBosted: RelasjonsBosted) {
-	switch (relasjonsBosted) {
-		case RelasjonsBosted.SAMME_BOSTED:
-			return 'Partner bor med bruker';
-		case RelasjonsBosted.ANNET_BOSTED:
-			return 'Partner bor ikke med bruker';
-		case RelasjonsBosted.UKJENT_BOSTED:
-			return 'Partners bosted er ukjent';
-		default:
-			return null;
-	}
-}
-
 export function hentBorMedBarnBeskrivelse(relasjonsBosted: RelasjonsBosted | null) {
 	switch (relasjonsBosted) {
 		case RelasjonsBosted.SAMME_BOSTED:
@@ -51,6 +38,19 @@ export function hentBorMedBarnBeskrivelse(relasjonsBosted: RelasjonsBosted | nul
 			return 'Bor ikke med bruker';
 		case RelasjonsBosted.UKJENT_BOSTED:
 			return 'Bosted er ukjent';
+		default:
+			return null;
+	}
+}
+
+export function hentBorMedPartnerBeskrivelse(relasjonsBosted: RelasjonsBosted) {
+	switch (relasjonsBosted) {
+		case RelasjonsBosted.SAMME_BOSTED:
+			return 'Partner bor med bruker';
+		case RelasjonsBosted.ANNET_BOSTED:
+			return 'Partner bor ikke med bruker';
+		case RelasjonsBosted.UKJENT_BOSTED:
+			return 'Partners bosted er ukjent';
 		default:
 			return null;
 	}
