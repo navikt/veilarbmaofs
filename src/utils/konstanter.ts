@@ -30,16 +30,19 @@ export function hentKilde(master: OrNothing<String>) {
 	}
 }
 
-export function hentBorMedPartnerBeskrivelseGml(harSammeBosted: boolean) {
-	switch (harSammeBosted) {
-		case true:
-			return 'Partner bor med bruker';
-		case false:
-			return 'Partner bor ikke med bruker';
+export function hentBorMedBarnBeskrivelse(relasjonsBosted: RelasjonsBosted | null) {
+	switch (relasjonsBosted) {
+		case RelasjonsBosted.SAMME_BOSTED:
+			return 'Bor med bruker';
+		case RelasjonsBosted.ANNET_BOSTED:
+			return 'Bor ikke med bruker';
+		case RelasjonsBosted.UKJENT_BOSTED:
+			return 'Bosted er ukjent';
 		default:
 			return null;
 	}
 }
+
 export function hentBorMedPartnerBeskrivelse(relasjonsBosted: RelasjonsBosted) {
 	switch (relasjonsBosted) {
 		case RelasjonsBosted.SAMME_BOSTED:

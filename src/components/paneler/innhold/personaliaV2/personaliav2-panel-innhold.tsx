@@ -12,6 +12,7 @@ import Grid from '../../../felles/grid';
 import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { PersonaliaV2Info } from '../../../../rest/datatyper/personaliav2';
+import { BodyShort } from '@navikt/ds-react';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -38,16 +39,19 @@ const PersonaliaV2PanelInnhold = () => {
 		kontonummer,
 		statsborgerskap,
 		partner,
-		sivilstand,
 		sivilstandliste,
 		barn,
 		malform
 	} = personalia.result.data;
-
 	return (
 		<>
 			{personalia.result.data.sivilstandliste && personalia.result.data.sivilstandliste.length > 1 && (
-				<Feilmelding tekst="Det er motstridende informasjon i kildene for sivilstand. Personen bør bes om å oppdatere sin sivilstand hos Folkeregisteret (https://www.skatteetaten.no/person/folkeregister/)." />
+				<Feilmelding>
+					<BodyShort size="small">
+						Det er motstridende informasjon i kildene for sivilstand. Personen bør bes om å oppdatere sin
+						sivilstand hos Folkeregisteret (https://www.skatteetaten.no/person/folkeregister/)
+					</BodyShort>
+				</Feilmelding>
 			)}
 			<Grid columns={4} gap="1rem">
 				<KontaktInformasjon
@@ -57,12 +61,7 @@ const PersonaliaV2PanelInnhold = () => {
 					oppholdsadresse={oppholdsadresse}
 					kontaktadresser={kontaktadresser}
 				/>
-				<FamilieRelasjoner
-					partner={partner}
-					sivilstand={sivilstand}
-					sivilstandliste={sivilstandliste}
-					barn={barn}
-				/>
+				<FamilieRelasjoner partner={partner} sivilstandliste={sivilstandliste} barn={barn} />
 				<GeneralInfo kontonummer={kontonummer} statsborgerskap={statsborgerskap} malform={malform} />
 				<div>
 					<VergeFullmaktInfo />
