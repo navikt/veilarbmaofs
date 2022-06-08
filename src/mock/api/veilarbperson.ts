@@ -6,7 +6,6 @@ import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyp
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
-import { StringOrNothing } from '../../utils/felles-typer';
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
