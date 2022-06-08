@@ -6,6 +6,7 @@ import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyp
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
+import { StringOrNothing } from '../../utils/felles-typer';
 
 const aktorId: AktorId = {
 	aktorId: '1234567'
@@ -299,7 +300,7 @@ const personaliav2: PersonaliaV2Info = {
 			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			relasjonsBosted: 'UKJENT_BOSTED'
+			dodsdato: null
 		},
 		{
 			fornavn: 'Harry',
@@ -308,7 +309,7 @@ const personaliav2: PersonaliaV2Info = {
 			gradering: Gradering.UGRADERT,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			relasjonsBosted: 'SAMME_BOSTED'
+			dodsdato: null
 		},
 		{
 			fornavn: 'Satoshi',
@@ -317,7 +318,7 @@ const personaliav2: PersonaliaV2Info = {
 			erEgenAnsatt: false,
 			harVeilederTilgang: true,
 			gradering: Gradering.STRENGT_FORTROLIG,
-			relasjonsBosted: 'ANNET_BOSTED'
+			dodsdato: null
 		}
 	],
 	kontonummer: '12345678911',

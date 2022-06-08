@@ -9,7 +9,10 @@ import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } f
 import { graderingBeskrivelseBarn } from '../../../../utils/konstanter';
 
 function BorSammen(props: { barn: PersonsBarn }) {
-	const { harSammeBosted } = props.barn;
+	const { dodsdato, harSammeBosted } = props.barn;
+	if (dodsdato) {
+		return null;
+	}
 
 	const borSammen = harSammeBosted ? 'Bor med bruker' : 'Bor ikke med bruker';
 
