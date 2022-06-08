@@ -12,7 +12,7 @@ import Grid from '../../../felles/grid';
 import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { PersonaliaV2Info } from '../../../../rest/datatyper/personaliav2';
-import { BodyShort, Link } from '@navikt/ds-react';
+import { BodyShort } from '@navikt/ds-react';
 
 const PersonaliaV2PanelInnhold = () => {
 	const { fnr } = useAppStore();
@@ -49,11 +49,8 @@ const PersonaliaV2PanelInnhold = () => {
 				<Feilmelding>
 					<BodyShort size="small">
 						Det er motstridende informasjon i kildene for sivilstand. Personen bør bes om å oppdatere sin
-						sivilstand hos Folkeregisteret.
+						sivilstand hos Folkeregisteret (https://www.skatteetaten.no/person/folkeregister/)
 					</BodyShort>
-					<Link href={'https://www.skatteetaten.no/person/folkeregister/'} target="_blank">
-						https://www.skatteetaten.no/person/folkeregister/
-					</Link>
 				</Feilmelding>
 			)}
 			<Grid columns={4} gap="1rem">
