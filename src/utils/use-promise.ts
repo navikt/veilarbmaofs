@@ -44,7 +44,7 @@ const defaultState: NotStartedPromiseState = {
 	status: Status.NOT_STARTED
 };
 
-type UsePromise<R, E extends Error> = PromiseState<R, E> & {
+export type UsePromise<R, E extends Error> = PromiseState<R, E> & {
 	setPromise: Dispatch<SetStateAction<Promise<R> | undefined>>;
 };
 

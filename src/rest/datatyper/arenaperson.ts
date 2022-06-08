@@ -135,6 +135,6 @@ export interface ArenaPerson {
 	godkjenninger: Godkjenning[];
 	andreGodkjenninger: AnnenGodkjenning[];
 	sprak: Sprak[];
-	jobbprofil: Jobbprofil;
+	jobbprofil?: Jobbprofil;
 	fagdokumentasjoner?: Fagdokumentasjon[];
 }

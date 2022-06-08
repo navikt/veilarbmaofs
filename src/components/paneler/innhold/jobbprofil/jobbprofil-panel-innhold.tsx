@@ -10,9 +10,24 @@ import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../.
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { Alert } from '@navikt/ds-react';
-import { isNotStartedOrPending, isRejected, isResolved, useAxiosPromise } from '../../../../utils/use-promise';
+import {
+	isNotStartedOrPending,
+	isRejected,
+	isResolved,
+	useAxiosPromise,
+	UsePromise
+} from '../../../../utils/use-promise';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
+import { AxiosError, AxiosResponse } from 'axios';
+
+const harJobbprofilData = (cvOgJobbprofil: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>): boolean => {
+	return (
+		cvOgJobbprofil.result != null &&
+		cvOgJobbprofil.result.data != null &&
+		cvOgJobbprofil.result.data.jobbprofil != null
+	);
+};
 
 const JobbprofilPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
@@ -67,7 +82,11 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 		}
 	}
 
-	if (cvOgJobbprofil.error?.response?.status === 404 || cvOgJobbprofil.result?.status === 204) {
+	if (
+		cvOgJobbprofil.error?.response?.status === 404 ||
+		cvOgJobbprofil.result?.status === 204 ||
+		!harJobbprofilData(cvOgJobbprofil)
+	) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
@@ -82,7 +101,7 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 		return <Feilmelding />;
 	}
 
-	if (cvOgJobbprofil.result?.data) {
+	if (harJobbprofilData(cvOgJobbprofil)) {
 		const {
 			sistEndret,
 			onsketYrke,
@@ -91,7 +110,7 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 			onsketArbeidstidsordning,
 			heltidDeltid,
 			kompetanse
-		} = cvOgJobbprofil.result.data.jobbprofil;
+		} = cvOgJobbprofil.result.data.jobbprofil!;
 		const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
 		const yrker = onsketYrke.map(yrke => yrke.tittel);
 		const ansettelsesform = onsketAnsettelsesform.map(form => form.tittel);
