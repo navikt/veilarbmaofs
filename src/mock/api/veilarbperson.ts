@@ -95,6 +95,11 @@ const cvOgJobbprofil: ArenaPerson = {
 			klasse: 'B',
 			fraDato: '2017-08-01',
 			utloperDato: '2118-12-01'
+		},
+		{
+			klasse: 'C1',
+			fraDato: '2017-08-01',
+			utloperDato: '2118-12-01'
 		}
 	],
 	kurs: [
@@ -622,7 +627,7 @@ const sykmeldtRegistering: RegistreringsData = {
 
 export const veilarbpersonHandlers: RequestHandlersList = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
-		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
+		return res(ctx.delay(500), ctx.json(cvOgJobbprofil), ctx.status(403));
 	}),
 	rest.get('/veilarbperson/api/person/aktorid', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(aktorId));
