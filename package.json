@@ -18,7 +18,6 @@
 		"@navikt/ds-react": "0.17.21",
 		"@navikt/ds-react-internal": "0.13.6",
 		"@navikt/fnrvalidator": "^1.1.4",
-		"@navikt/frontendlogger": "^2.0.0",
 		"@navikt/navspa": "4.1.1",
 		"animated-scroll-to": "^2.2.0",
 		"axios": "^0.27.2",
