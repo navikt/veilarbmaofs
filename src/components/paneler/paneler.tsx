@@ -1,6 +1,7 @@
 import React from 'react';
 import RegistreringPanel from './innhold/registrering/registrering-panel-innhold';
 import CvPanel from './innhold/cv/cv-panel-innhold';
+import CvPanelV2 from './innhold/cv-jobbonsker/cv-jobbonsker-panelinnhold';
 import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
 import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
 import Panel from './panel';
@@ -48,6 +49,16 @@ export const Paneler: React.FC = () => {
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}
 				>
 					<CvPanel />
+				</Panel>
+
+				<Panel
+					key={`panel-${sidemenyElementId.cvjobbonsker}`}
+					name="cv-jobbonsker"
+					id={sidemenyElementId.cvjobbonsker}
+					tittel="CV og jobbønsker"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cvjobbonsker)}
+				>
+					<CvPanelV2 />
 				</Panel>
 
 				<Panel

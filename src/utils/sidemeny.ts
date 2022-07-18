@@ -6,6 +6,7 @@ export interface SidemenyElement {
 export const sidemenyElementId = {
 	oppfolging: 'oppfolging',
 	cv: 'cv',
+	cvjobbonsker: 'cvjobbonsker',
 	jobbonsker: 'jobbonsker',
 	tilretteleggingsbehov: 'tilretteleggingsbehov',
 	ytelser: 'ytelser',
@@ -21,6 +22,10 @@ export const sidemenyElementer: SidemenyElement[] = [
 	{
 		name: 'CV',
 		id: sidemenyElementId.cv
+	},
+	{
+		name: 'CV og jobbønsker',
+		id: sidemenyElementId.cvjobbonsker
 	},
 	{
 		name: 'Personalia',
