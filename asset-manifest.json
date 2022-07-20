@@ -1,25 +1,15 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.08e91c38.chunk.css",
-    "main.js": "/veilarbmaofs/static/js/main.af46f1b7.chunk.js",
-    "main.js.map": "/veilarbmaofs/static/js/main.af46f1b7.chunk.js.map",
-    "runtime-main.js": "/veilarbmaofs/static/js/runtime-main.2f642c4e.js",
-    "runtime-main.js.map": "/veilarbmaofs/static/js/runtime-main.2f642c4e.js.map",
-    "static/css/2.fba3d706.chunk.css": "/veilarbmaofs/static/css/2.fba3d706.chunk.css",
-    "static/js/2.7e001741.chunk.js": "/veilarbmaofs/static/js/2.7e001741.chunk.js",
-    "static/js/2.7e001741.chunk.js.map": "/veilarbmaofs/static/js/2.7e001741.chunk.js.map",
+    "main.css": "/veilarbmaofs/static/css/main.71544900.css",
+    "main.js": "/veilarbmaofs/static/js/main.38ac5e9d.js",
+    "static/media/tilbakemelding.svg": "/veilarbmaofs/static/media/tilbakemelding.b08889cc4e043b3bac553d0b074c831f.svg",
     "index.html": "/veilarbmaofs/index.html",
-    "static/css/2.fba3d706.chunk.css.map": "/veilarbmaofs/static/css/2.fba3d706.chunk.css.map",
-    "static/css/main.08e91c38.chunk.css.map": "/veilarbmaofs/static/css/main.08e91c38.chunk.css.map",
-    "static/js/2.7e001741.chunk.js.LICENSE.txt": "/veilarbmaofs/static/js/2.7e001741.chunk.js.LICENSE.txt",
-    "static/media/lukk.ccaa1c74.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74.svg",
-    "static/media/tilbakemelding.b08889cc.svg": "/veilarbmaofs/static/media/tilbakemelding.b08889cc.svg"
+    "static/media/lukk.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74cd0bdb867ec964ace6e3db7b.svg",
+    "main.71544900.css.map": "/veilarbmaofs/static/css/main.71544900.css.map",
+    "main.38ac5e9d.js.map": "/veilarbmaofs/static/js/main.38ac5e9d.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.2f642c4e.js",
-    "static/css/2.fba3d706.chunk.css",
-    "static/js/2.7e001741.chunk.js",
-    "static/css/main.08e91c38.chunk.css",
-    "static/js/main.af46f1b7.chunk.js"
+    "static/css/main.71544900.css",
+    "static/js/main.38ac5e9d.js"
   ]
 }
