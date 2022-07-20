@@ -1,4 +1,4 @@
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 import { rest } from 'msw';
 import { Hovedmal, Innsatsbehov, Innsatsgruppe } from '../../rest/datatyper/innsatsbehov';
 
@@ -9,7 +9,7 @@ const innsatsbehov: Innsatsbehov = {
 
 const tilhorerBrukerUtrulletKontor = false;
 
-export const veilarbvedtaksstotteHandlers: RequestHandlersList = [
+export const veilarbvedtaksstotteHandlers: RequestHandler[] = [
 	rest.get('/veilarbvedtaksstotte/api/innsatsbehov', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(innsatsbehov));
 	}),

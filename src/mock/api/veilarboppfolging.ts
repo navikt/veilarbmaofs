@@ -2,7 +2,7 @@ import { rest } from 'msw';
 import { UnderOppfolgingData } from '../../rest/datatyper/underOppfolgingData';
 import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
 import { YtelseData } from '../../rest/datatyper/ytelse';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 
 const oppfolging: UnderOppfolgingData = {
 	erManuell: true,
@@ -61,7 +61,7 @@ const ytelsestatus: YtelseData = {
 	]
 };
 
-export const veilarboppfolgingHandlers: RequestHandlersList = [
+export const veilarboppfolgingHandlers: RequestHandler[] = [
 	rest.get('/veilarboppfolging/api/person/:fnr/oppfolgingsstatus', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(oppfolingstatus));
 	}),
