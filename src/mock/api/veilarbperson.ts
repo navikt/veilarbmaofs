@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
@@ -625,7 +625,7 @@ const sykmeldtRegistering: RegistreringsData = {
 	}
 };
 
-export const veilarbpersonHandlers: RequestHandlersList = [
+export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(cvOgJobbprofil), ctx.status(403));
 	}),
