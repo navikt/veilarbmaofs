@@ -2,10 +2,10 @@ import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
 import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
-// import { LastNedCV } from './last-ned-cv';
-// import { RedigerCV } from './rediger-cv';
+import { LastNedCV } from './last-ned-cv';
+import { RedigerCV } from './rediger-cv';
 // import Sammendrag from './sammendrag';
-import FloatGrid from '../../../felles/float-grid';
+// import FloatGrid from '../../../felles/float-grid';
 // import Arbeidserfaring from './arbeidserfaring';
 // import AnnenErfaring from './annen-erfaring';
 // import Utdanning from './utdanning';
@@ -19,22 +19,22 @@ import { byggPamUrl } from '../../../../utils';
 import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 // import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
-// import './cv-panel-innhold.less';
+import './cv-panel-innhold.less';
 import { Alert } from '@navikt/ds-react';
 import { isNotStartedOrPending, isRejected, isResolved, useAxiosPromise } from '../../../../utils/use-promise';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 
-const CvPanelinnholdV2 = (): React.ReactElement => {
+const CvJobbonskerPanelinnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const cvOgJobbprofil = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
+	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
 	const aktorId = useAxiosPromise<AktorId>(() => fetchAktorId(fnr));
 
 	if (
-		isNotStartedOrPending(cvOgJobbprofil) ||
+		isNotStartedOrPending(cvOgJobbonsker) ||
 		isNotStartedOrPending(underOppfolging) ||
 		isNotStartedOrPending(aktorId)
 	) {
@@ -58,8 +58,8 @@ const CvPanelinnholdV2 = (): React.ReactElement => {
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (cvOgJobbprofil.error?.response) {
-		if (cvOgJobbprofil.error.response.status === 403 || cvOgJobbprofil.error.response.status === 401) {
+	if (cvOgJobbonsker.error?.response) {
+		if (cvOgJobbonsker.error.response.status === 403 || cvOgJobbonsker.error.response.status === 401) {
 			return (
 				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
 					Du kan ikke se CV-en, be brukeren om å:
@@ -74,7 +74,7 @@ const CvPanelinnholdV2 = (): React.ReactElement => {
 		}
 	}
 
-	if (cvOgJobbprofil.error?.response?.status === 404 || cvOgJobbprofil.result?.status === 204) {
+	if (cvOgJobbonsker.error?.response?.status === 404 || cvOgJobbonsker.result?.status === 204) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert CV/jobbønsker.&nbsp;
@@ -85,13 +85,13 @@ const CvPanelinnholdV2 = (): React.ReactElement => {
 				)}
 			</Alert>
 		);
-	} else if (!isResolved(cvOgJobbprofil)) {
+	} else if (!isResolved(cvOgJobbonsker)) {
 		return <Feilmelding />;
 	}
 
 	// *** *** Fram til hit ser bra ut *** ***
 
-	if (cvOgJobbprofil.result?.data) {
+	if (cvOgJobbonsker.result?.data) {
 		const {
 			fagdokumentasjoner,
 			sammendrag,
@@ -104,12 +104,12 @@ const CvPanelinnholdV2 = (): React.ReactElement => {
 			sprak,
 			kurs,
 			sistEndret
-		} = cvOgJobbprofil.result.data;
+		} = cvOgJobbonsker.result.data;
 
 		return (
 			<>
-				{/* <LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
-				<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} /> */}
+				<LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
+				<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
 				<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
 				{/* <CvIkkeSynligInfo />
 				<Sammendrag sammendrag={sammendrag} /> */}
@@ -130,4 +130,4 @@ const CvPanelinnholdV2 = (): React.ReactElement => {
 	return <Feilmelding />;
 };
 
-export default CvPanelinnholdV2;
+export default CvJobbonskerPanelinnhold;
