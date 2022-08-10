@@ -91,5 +91,8 @@
 	},
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
+	},
+	"msw": {
+		"workerDirectory": "public"
 	}
 }
