@@ -1,0 +1,41 @@
+@import '~nav-frontend-core/less/_variabler';
+
+.veilarbmaofs {
+	.cv-panel-lenke {
+		margin-right: 1.5rem;
+		gap: 0;
+		font-size: 1rem;
+
+		svg {
+			height: 1.2rem;
+			width: 1.2rem;
+			margin-right: 0.25rem;
+		}
+	}
+
+	.cv-sammendrag {
+		width: 100%;
+	}
+
+	.cv-ikke-synlig {
+		width: 100%;
+	}
+
+	.cv-alert-ikke-tilgang .alertstripe__tekst {
+		max-width: 42rem;
+	}
+
+	.lenke-brukerprofil {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	@media (min-width: @screen-md-min) {
+		.cv-sammendrag {
+			width: 50%;
+		}
+		.cv-ikke-synlig {
+			width: 50%;
+		}
+	}
+}
