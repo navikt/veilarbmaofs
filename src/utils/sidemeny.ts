@@ -6,11 +6,10 @@ export interface SidemenyElement {
 export const sidemenyElementId = {
 	oppfolging: 'oppfolging',
 	cv: 'cv',
-	cvjobbonsker: 'cvjobbonsker',
 	jobbonsker: 'jobbonsker',
 	tilretteleggingsbehov: 'tilretteleggingsbehov',
 	ytelser: 'ytelser',
-	personaliaFraPdl: 'personaliaFraPdl',
+	personalia: 'personalia',
 	registrering: 'registrering'
 };
 
@@ -24,16 +23,12 @@ export const sidemenyElementer: SidemenyElement[] = [
 		id: sidemenyElementId.cv
 	},
 	{
-		name: 'CV og jobbønsker',
-		id: sidemenyElementId.cvjobbonsker
+		name: 'Jobbønsker',
+		id: sidemenyElementId.jobbonsker
 	},
 	{
 		name: 'Personalia',
-		id: sidemenyElementId.personaliaFraPdl
-	},
-	{
-		name: 'Jobbønsker',
-		id: sidemenyElementId.jobbonsker
+		id: sidemenyElementId.personalia
 	},
 	{
 		name: 'Registrering',
