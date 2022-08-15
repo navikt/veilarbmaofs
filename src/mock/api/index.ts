@@ -1,11 +1,11 @@
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
 import { veilarboppfolgingHandlers } from './veilarboppfolging';
 import { veilarbpersonHandlers } from './veilarbperson';
 import { veilarbpersonflatefsHandlers } from './veilarbpersonflatefs';
 import { veilarbveilederHandlers } from './veilarbveileder';
 import { veilarbvedtaksstotteHandlers } from './veilarbvedtaksstotte';
+import { RequestHandler } from 'msw';
 
-export const allHandlers: RequestHandlersList = [
+export const allHandlers: RequestHandler[] = [
 	...veilarboppfolgingHandlers,
 	...veilarbpersonHandlers,
 	...veilarbpersonflatefsHandlers,
