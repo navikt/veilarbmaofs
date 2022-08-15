@@ -1,4 +1,3 @@
-import { APP_NAME } from './konstanter';
 import { sendEventTilVeilarbperson } from '../rest/api';
 
 export interface FrontendEvent {
@@ -12,6 +11,6 @@ export const logMetrikk = (metrikkNavn: string, fields?: {}, tags?: {}): void =>
 		// tslint:disable-next-line:no-console
 		console.log('Event', metrikkNavn, 'Fields:', fields, 'Tags:', tags);
 	} else {
-		sendEventTilVeilarbperson({ name: `${APP_NAME}.metrikker.${metrikkNavn}`, fields, tags });
+		sendEventTilVeilarbperson({ name: `${metrikkNavn}`, fields, tags });
 	}
 };

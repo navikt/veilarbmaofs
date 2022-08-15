@@ -28,7 +28,7 @@ export function TilbakemeldingFab() {
 
 	const handleFabClicked = () => {
 		if (!isModalOpen) {
-			logMetrikk('detaljer.tilbakemelding_modal_apnet');
+			logMetrikk('veilarbmaofs.detaljer.tilbakemelding_modal_apnet');
 		}
 		setModalOpen(!isModalOpen);
 	};
@@ -43,7 +43,7 @@ export function TilbakemeldingFab() {
 		startAutoClose();
 		setHideFab(true);
 		window.localStorage.setItem(TILBAKEMELDING_LOCALSTORAGE_NAME, 'true');
-		logMetrikk('detaljer.tilbakemelding', {
+		logMetrikk('veilarbmaofs.detaljer.tilbakemelding', {
 			feature: TILBAKEMELDING_FEATURE_TAG,
 			...tilbakemelding,
 			...checkboxStatusListe
