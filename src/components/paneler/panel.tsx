@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import ErrorBoundary from '../felles/error-boundry';
-import { logger } from '../../utils/logger';
+import { logMetrikk } from '../../utils/logger';
 import { useEffect } from 'react';
 import { useAppStore } from '../../stores/app-store';
 
@@ -20,7 +20,7 @@ const Panel: React.FC<PanelProps> = ({ defaultOpen, name, id, children, tittel }
 
 	const onClick = () => {
 		const eventType = !isOpen ? 'open' : 'close';
-		logger.event('maofs.lamell-click.v2', {}, { lamell: name, type: eventType });
+		logMetrikk('maofs.lamell-click.v2', {}, { lamell: name, type: eventType });
 		if (isOpen) {
 			fjernSidemenyElement(id);
 		}
