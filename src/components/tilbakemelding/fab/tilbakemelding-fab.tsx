@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import cls from 'classnames';
 import TilbakemeldingModal, { TilbakemeldingProps } from '../tilbakemelding-modal';
-import { logEvent } from '../../../utils/frontend-logger';
 import lukkBilde from './lukk.svg';
 import tilbakemeldingBilde from './tilbakemelding.svg';
 import './tilbakemelding-fab.less';
 import { SPOR_OM_TILBAKEMELDING } from '../../../rest/datatyper/feature';
 import { useAppStore } from '../../../stores/app-store';
+import { logMetrikk } from '../../../utils/logger';
 
 // FAB = Floating Action Button
 
@@ -28,7 +28,7 @@ export function TilbakemeldingFab() {
 
 	const handleFabClicked = () => {
 		if (!isModalOpen) {
-			logEvent('detaljer.tilbakemelding_modal_apnet');
+			logMetrikk('veilarbmaofs.detaljer.tilbakemelding_modal_apnet');
 		}
 		setModalOpen(!isModalOpen);
 	};
@@ -43,7 +43,7 @@ export function TilbakemeldingFab() {
 		startAutoClose();
 		setHideFab(true);
 		window.localStorage.setItem(TILBAKEMELDING_LOCALSTORAGE_NAME, 'true');
-		logEvent('detaljer.tilbakemelding', {
+		logMetrikk('veilarbmaofs.detaljer.tilbakemelding', {
 			feature: TILBAKEMELDING_FEATURE_TAG,
 			...tilbakemelding,
 			...checkboxStatusListe
