@@ -1,20 +1,29 @@
 import React from 'react';
 import cls from 'classnames';
-import TypografiBase from 'nav-frontend-typografi';
+import { Heading, Label } from '@navikt/ds-react';
 
 interface Props {
 	header: string;
 	headerTypo?: 'ingress' | 'element';
 	children: React.ReactNode;
 	className?: string;
+	icon?: React.ReactNode;
 }
 
 function Informasjonsbolk(props: Props) {
-	const { header, headerTypo = 'element', children, className, ...rest } = props;
+	const { header, headerTypo = 'element', children, className, icon, ...rest } = props;
 
 	return (
 		<div className={cls('informasjonsbolk', className)} {...rest}>
-			<TypografiBase type={headerTypo}>{header}</TypografiBase>
+			<span className="informasjonsbolk-tittel">
+				{icon}
+				{headerTypo === 'ingress' && (
+					<Heading level="4" size="small">
+						{header}
+					</Heading>
+				)}
+				{headerTypo === 'element' && <Label>{header}</Label>}
+			</span>
 			{children}
 		</div>
 	);
