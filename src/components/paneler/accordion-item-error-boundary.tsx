@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ErrorBoundary from '../felles/error-boundry';
 import { logger } from '../../utils/logger';
-import { useEffect } from 'react';
 import { useAppStore } from '../../stores/app-store';
 import { Accordion, Heading } from '@navikt/ds-react';
 
@@ -14,7 +13,7 @@ interface PanelProps {
 }
 
 const AccordionItemErrorBoundary: React.FC<PanelProps> = ({ defaultOpen, name, id, children, tittel }) => {
-	const { valgteSidemenyElmenter, isSidemenyElementOpen, fjernSidemenyElement } = useAppStore();
+	const { isSidemenyElementOpen, fjernSidemenyElement } = useAppStore();
 	const [isOpen, setIsOpen] = useState(defaultOpen);
 
 	const onClick = () => {

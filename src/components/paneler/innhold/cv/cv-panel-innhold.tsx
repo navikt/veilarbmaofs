@@ -16,7 +16,7 @@ import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
 import { byggPamUrl } from '../../../../utils';
-import { fetchAktorId, fetchCvOgJobbonsker, fetchUnderOppfolging } from '../../../../rest/api';
+import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
