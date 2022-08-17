@@ -1,12 +1,11 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
 import Lenke from 'nav-frontend-lenker';
-import { RedigerJobbprofil } from './rediger-jobbprofil';
 import SistEndret from '../../../felles/sist-endret';
 import Grid from '../../../felles/grid';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
-import { byggPamUrl } from '../../../../utils';
-import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../../../rest/api';
+import { byggPamUrl, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';
+import { fetchAktorId, fetchCvOgJobbonsker, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { Alert } from '@navikt/ds-react';
@@ -20,24 +19,25 @@ import {
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 import { AxiosError, AxiosResponse } from 'axios';
+import { RedigerCV } from '../cv/rediger-cv';
 
-const harJobbprofilData = (cvOgJobbprofil: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>): boolean => {
+const harJobbonskerdata = (cvOgJobbonsker: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>): boolean => {
 	return (
-		cvOgJobbprofil.result != null &&
-		cvOgJobbprofil.result.data != null &&
-		cvOgJobbprofil.result.data.jobbprofil != null
+		cvOgJobbonsker.result != null &&
+		cvOgJobbonsker.result.data != null &&
+		cvOgJobbonsker.result.data.jobbprofil != null
 	);
 };
 
-const JobbprofilPanelInnhold = (): React.ReactElement => {
+const JobbonskerPanelinnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const cvOgJobbprofil = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
+	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbonsker(fnr));
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
 	const aktorId = useAxiosPromise<AktorId>(() => fetchAktorId(fnr));
 
 	if (
-		isNotStartedOrPending(cvOgJobbprofil) ||
+		isNotStartedOrPending(cvOgJobbonsker) ||
 		isNotStartedOrPending(underOppfolging) ||
 		isNotStartedOrPending(aktorId)
 	) {
@@ -66,15 +66,15 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 
 	// Sjekk alltid tilgang først
 
-	if (cvOgJobbprofil.error?.response) {
-		if (cvOgJobbprofil.error?.response?.status === 403 || cvOgJobbprofil.error?.response?.status === 401) {
+	if (cvOgJobbonsker.error?.response) {
+		if (cvOgJobbonsker.error?.response?.status === 403 || cvOgJobbonsker.error?.response?.status === 401) {
 			return (
 				<Alert variant="info" className="alertstripe_intern">
-					Du har ikke tilgang til å se jobbprofil for denne brukeren. Årsaker kan være
+					Du har ikke tilgang til å se jobbønsker for denne brukeren. Årsaker kan være
 					<ul>
 						<li>
 							Bruker må informeres om NAVs behandlingsgrunnlag før veileder får tilgang. Be bruker gå inn
-							på nav.no og oppdatere CV'en sin.
+							på nav.no og oppdatere CV-en sin.
 						</li>
 					</ul>
 				</Alert>
@@ -83,9 +83,9 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 	}
 
 	if (
-		cvOgJobbprofil.error?.response?.status === 404 ||
-		cvOgJobbprofil.result?.status === 204 ||
-		!harJobbprofilData(cvOgJobbprofil)
+		cvOgJobbonsker.error?.response?.status === 404 ||
+		cvOgJobbonsker.result?.status === 204 ||
+		!harJobbonskerdata(cvOgJobbonsker)
 	) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
@@ -97,37 +97,51 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 				)}
 			</Alert>
 		);
-	} else if (!isResolved(cvOgJobbprofil)) {
+	} else if (!isResolved(cvOgJobbonsker)) {
 		return <Feilmelding />;
 	}
 
-	if (harJobbprofilData(cvOgJobbprofil)) {
+	if (harJobbonskerdata(cvOgJobbonsker)) {
 		const {
 			sistEndret,
 			onsketYrke,
 			onsketArbeidssted,
 			onsketAnsettelsesform,
 			onsketArbeidstidsordning,
+			onsketArbeidsdagordning,
+			onsketArbeidsskiftordning,
 			heltidDeltid,
-			kompetanse
-		} = cvOgJobbprofil.result.data.jobbprofil!;
+			kompetanse,
+			oppstart
+		} = cvOgJobbonsker.result.data.jobbprofil!;
 		const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
 		const yrker = onsketYrke.map(yrke => yrke.tittel);
-		const ansettelsesform = onsketAnsettelsesform.map(form => form.tittel);
-		const arbeidstid = onsketArbeidstidsordning.map(tid => tid.tittel);
+		const ansettelsesform = onsketAnsettelsesform.map(form =>
+			formatStringInUpperAndLowerCaseUnderscore(form.tittel)
+		);
+		const arbeidstid = onsketArbeidstidsordning.map(tid => formatStringInUpperAndLowerCaseUnderscore(tid.tittel));
+		const arbeidsdag = onsketArbeidsdagordning.map(dag => formatStringInUpperAndLowerCaseUnderscore(dag.tittel));
+		const arbeidsskift = onsketArbeidsskiftordning.map(skift =>
+			formatStringInUpperAndLowerCaseUnderscore(skift.tittel)
+		);
 		const kompetanser = kompetanse.map(kompetansen => kompetansen.tittel);
+		const oppstartstid = [formatStringInUpperAndLowerCaseUnderscore(oppstart)];
 		const heltidDeltidList = [heltidDeltid.heltid && 'Heltid', heltidDeltid.deltid && 'Deltid'];
 
 		return (
 			<>
-				<RedigerJobbprofil erManuell={erManuell} jobbprofilRegistreringsLenke={pamUrl} />
+				<RedigerCV erManuell={erManuell} cvRegistreringsLenke={pamUrl} />
 				<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} />
 				<Grid columns={4} gap="1rem">
-					<InformasjonsbolkListe header="Områder" list={arbeidssted} />
 					<InformasjonsbolkListe header="Jobber og yrker" list={yrker} />
+					<InformasjonsbolkListe header="Områder" list={arbeidssted} />
 					<InformasjonsbolkListe header="Heltid eller deltid" list={heltidDeltidList} />
-					<InformasjonsbolkListe header="Arbeidstider" list={arbeidstid} />
+					<InformasjonsbolkListe
+						header="Arbeidstider"
+						list={[...arbeidstid, ...arbeidsdag, ...arbeidsskift]}
+					/>
 					<InformasjonsbolkListe header="Ansettelsesform" list={ansettelsesform} />
+					<InformasjonsbolkListe header="Oppstart" list={oppstartstid} />
 					<InformasjonsbolkListe header="Kompetanser" list={kompetanser} />
 				</Grid>
 			</>
@@ -136,4 +150,4 @@ const JobbprofilPanelInnhold = (): React.ReactElement => {
 	return <Feilmelding />;
 };
 
-export default JobbprofilPanelInnhold;
+export default JobbonskerPanelinnhold;

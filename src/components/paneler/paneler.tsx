@@ -1,12 +1,12 @@
 import React from 'react';
 import OppfolgingPanelinnhold from './innhold/oppfolging/oppfolging-panel-innhold';
 import CvPanelInnhold from './innhold/cv/cv-panel-innhold';
-import JobbonskerPanelinnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
+import JobbonskerPanelinnhold from './innhold/jobbonsker/jobbonsker-panel-innhold';
 import PersonaliaV2Panelinnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
 import RegistreringPanelinnhold from './innhold/registrering/registrering-panel-innhold';
 import YtelserPanelinnhold from './innhold/ytelser/ytelser-panel-innhold';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
-import { fetchCvOgJobbprofil, fetchOppfolgingsstatus } from '../../rest/api';
+import { fetchCvOgJobbonsker, fetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
 import { sidemenyElementId } from '../../utils/sidemeny';
@@ -22,7 +22,7 @@ import AccordionItemErrorBoundary from './accordion-item-error-boundary';
 export const Paneler: React.FC = () => {
 	const { fnr, isSidemenyElementOpen } = useAppStore();
 	const oppfolgingstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
-	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
+	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbonsker(fnr));
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
@@ -48,11 +48,12 @@ export const Paneler: React.FC = () => {
 					tittel={
 						<>
 							CV
-							{cvOgJobbonsker.result?.data && (
-								<Tag id="cv-tag" variant="warning" size="small">
-									Ikke registrert CV
-								</Tag>
-							)}
+							{cvOgJobbonsker.result?.data &&
+								!(
+									<Tag id="cv-tag" variant="warning" size="small">
+										Ingen CV registrert
+									</Tag>
+								)}
 						</>
 					}
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}

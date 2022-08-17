@@ -11,7 +11,7 @@ const aktorId: AktorId = {
 	aktorId: '1234567'
 };
 
-const cvOgJobbprofil: ArenaPerson = {
+const cvOgJobbonsker: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
 	sammendrag:
 		'Jeg er en maritime executive som har mastergrad og bachlorgrad. Har vært teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
@@ -19,10 +19,18 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'Maskinsjef',
 			arbeidsgiver: 'viola enviromental',
-			sted: null,
+			sted: 'Langtvekkistan',
 			beskrivelse: 'Beskrivelse av arbeidserfaring',
 			fraDato: '2010-04',
 			tilDato: '2017-06'
+		},
+		{
+			tittel: 'Arbeidskar',
+			arbeidsgiver: 'Lokale arbeidskarforening',
+			sted: 'Oppdal',
+			beskrivelse: 'Krever en kar å drive med arbeid',
+			fraDato: '2017-08',
+			tilDato: null
 		}
 	],
 	fagdokumentasjoner: [
@@ -180,79 +188,65 @@ const cvOgJobbprofil: ArenaPerson = {
 	],
 	jobbprofil: {
 		sistEndret: '2019-01-15T07:52:35.462+01:00',
-		onsketYrke: [],
+		onsketYrke: [
+			{
+				tittel: 'Vinduspusser'
+			}
+		],
 		onsketArbeidssted: [
 			{
-				stedsnavn: 'Søgne',
-				kode: 'NO10.1018'
+				stedsnavn: 'Søgne'
 			},
 			{
-				stedsnavn: 'Østfold',
-				kode: 'NO01'
+				stedsnavn: 'Østfold'
 			},
 			{
-				stedsnavn: 'Akershus',
-				kode: 'NO02'
+				stedsnavn: 'Akershus'
 			},
 			{
-				stedsnavn: 'Oslo',
-				kode: 'NO03'
+				stedsnavn: 'Oslo'
 			},
 			{
-				stedsnavn: 'Oppland',
-				kode: 'NO05'
+				stedsnavn: 'Oppland'
 			},
 			{
-				stedsnavn: 'Buskerud',
-				kode: 'NO06'
+				stedsnavn: 'Buskerud'
 			},
 			{
-				stedsnavn: 'Vestfold',
-				kode: 'NO07'
+				stedsnavn: 'Vestfold'
 			},
 			{
-				stedsnavn: 'Telemark',
-				kode: 'NO08'
+				stedsnavn: 'Telemark'
 			},
 			{
-				stedsnavn: 'Aust-Agder',
-				kode: 'NO09'
+				stedsnavn: 'Aust-Agder'
 			},
 			{
-				stedsnavn: 'Vest-Agder',
-				kode: 'NO10'
+				stedsnavn: 'Vest-Agder'
 			},
 			{
-				stedsnavn: 'Rogaland',
-				kode: 'NO11'
+				stedsnavn: 'Rogaland'
 			},
 			{
-				stedsnavn: 'Hordaland',
-				kode: 'NO12'
+				stedsnavn: 'Hordaland'
 			},
 			{
-				stedsnavn: 'Sogn og Fjordane',
-				kode: 'NO14'
+				stedsnavn: 'Sogn og Fjordane'
 			},
 			{
-				stedsnavn: 'Møre og Romsdal',
-				kode: 'NO15'
+				stedsnavn: 'Møre og Romsdal'
 			},
 			{
-				stedsnavn: 'Nordland',
-				kode: 'NO18'
+				stedsnavn: 'Nordland'
 			},
 			{
-				stedsnavn: 'Finnmark',
-				kode: 'NO20'
+				stedsnavn: 'Finnmark'
 			},
 			{
-				stedsnavn: 'Øvrige områder',
-				kode: 'NO99'
+				stedsnavn: 'Øvrige områder'
 			},
 			{
-				stedsnavn: 'Trøndelag',
-				kode: 'NO50'
+				stedsnavn: 'Trøndelag'
 			}
 		],
 		onsketAnsettelsesform: [
@@ -270,24 +264,60 @@ const cvOgJobbprofil: ArenaPerson = {
 			},
 			{
 				tittel: 'SESONG'
+			},
+			{
+				tittel: 'LAERLING'
+			},
+			{
+				tittel: 'SELVSTENDIG_NAERINGSDRIVENDE'
+			},
+			{
+				tittel: 'FERIEJOBB'
+			},
+			{
+				tittel: 'ANNET'
 			}
 		],
 		onsketArbeidstidsordning: [
 			{
-				tittel: 'TURNUS'
+				tittel: 'DAGTID'
+			},
+			{
+				tittel: 'KVELD'
+			},
+			{
+				tittel: 'NATT'
+			}
+		],
+
+		onsketArbeidsdagordning: [
+			{
+				tittel: 'UKEDAGER'
+			},
+			{
+				tittel: 'LOERDAG'
+			},
+			{
+				tittel: 'SOENDAG'
+			}
+		],
+		onsketArbeidsskiftordning: [
+			{
+				tittel: 'SKIFT'
 			},
 			{
 				tittel: 'VAKT'
 			},
 			{
-				tittel: 'SKIFT'
+				tittel: 'TURNUS'
 			}
 		],
 		heltidDeltid: {
 			heltid: true,
-			deltid: false
+			deltid: true
 		},
-		kompetanse: []
+		kompetanse: [],
+		oppstart: 'ETTER_AVTALE'
 	}
 };
 
@@ -627,7 +657,7 @@ const sykmeldtRegistering: RegistreringsData = {
 
 export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
-		return res(ctx.delay(500), ctx.json(cvOgJobbprofil), ctx.status(403));
+		return res(ctx.delay(500), ctx.json(cvOgJobbonsker));
 	}),
 	rest.get('/veilarbperson/api/person/aktorid', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(aktorId));
@@ -635,7 +665,6 @@ export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/registrering', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
 	}),
-
 	rest.get('/veilarbperson/api/v2/person', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
 	}),

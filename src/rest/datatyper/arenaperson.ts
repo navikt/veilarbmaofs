@@ -81,8 +81,11 @@ export interface Jobbprofil {
 	onsketArbeidssted: JobbprofilArbeidssted[];
 	onsketAnsettelsesform: JobbprofilAnsettelsesform[];
 	onsketArbeidstidsordning: JobbprofilArbeidstidsordning[];
+	onsketArbeidsskiftordning: JobbprofilArbeidsskiftordning[];
+	onsketArbeidsdagordning: JobbprofilArbeidsdagordning[];
 	heltidDeltid: JobbprofilHeltidDeltid;
 	kompetanse: JobbprofilKompetanse[];
+	oppstart: string;
 }
 
 interface JobbprofilYrke {
@@ -91,7 +94,6 @@ interface JobbprofilYrke {
 
 interface JobbprofilArbeidssted {
 	stedsnavn: string;
-	kode: string;
 }
 
 interface JobbprofilAnsettelsesform {
@@ -99,6 +101,14 @@ interface JobbprofilAnsettelsesform {
 }
 
 interface JobbprofilArbeidstidsordning {
+	tittel: string;
+}
+
+interface JobbprofilArbeidsdagordning {
+	tittel: string;
+}
+
+interface JobbprofilArbeidsskiftordning {
 	tittel: string;
 }
 
