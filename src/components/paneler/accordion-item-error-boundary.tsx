@@ -3,7 +3,7 @@ import ErrorBoundary from '../felles/error-boundry';
 import { logger } from '../../utils/logger';
 import { useEffect } from 'react';
 import { useAppStore } from '../../stores/app-store';
-import { Accordion } from '@navikt/ds-react';
+import { Accordion, Heading } from '@navikt/ds-react';
 
 interface PanelProps {
 	name: string;
@@ -32,7 +32,9 @@ const AccordionItemErrorBoundary: React.FC<PanelProps> = ({ defaultOpen, name, i
 	return (
 		<Accordion.Item defaultOpen={defaultOpen} open={isSidemenyElementOpen(id) || isOpen}>
 			<Accordion.Header id={id} onClick={onClick}>
-				{tittel}
+				<Heading size="small" level="3">
+					{tittel}
+				</Heading>
 			</Accordion.Header>
 			<Accordion.Content>
 				<ErrorBoundary message={errorMessage}>{children}</ErrorBoundary>
