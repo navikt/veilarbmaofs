@@ -2,8 +2,8 @@ import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeSort, safeMap } from '../../../../utils';
-import { Office1 } from '@navikt/ds-icons';
 import { BodyShort, Label } from '@navikt/ds-react';
+import { ReactComponent as Arbeidsikon } from './ikoner/arbeidserfaring.svg';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 	const { arbeidserfaring: arenaErfaring, ...rest } = props;
@@ -27,7 +27,7 @@ function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Arbeidserfaring" headerTypo="ingress" icon={<Office1 />} {...rest}>
+		<Informasjonsbolk header="Arbeidserfaring" headerTypo="ingress" icon={<Arbeidsikon />} {...rest}>
 			{erfaringer}
 		</Informasjonsbolk>
 	);

@@ -4,6 +4,7 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../../../utils/emdash';
 import { visEmdashHvisNull } from '../../../../utils';
+import { ReactComponent as Fagbrevikon } from './ikoner/fagbrev.svg';
 
 type Props = Pick<ArenaPerson, 'fagdokumentasjoner'>;
 
@@ -42,7 +43,7 @@ function Fagdokumentasjoner(props: Props) {
 			: EMDASH;
 
 	return (
-		<Informasjonsbolk header="Fagbrev" headerTypo="ingress">
+		<Informasjonsbolk header="Fagbrev" headerTypo="ingress" icon={<Fagbrevikon />}>
 			{dokumentasjoner}
 		</Informasjonsbolk>
 	);

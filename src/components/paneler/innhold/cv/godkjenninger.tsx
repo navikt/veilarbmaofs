@@ -3,6 +3,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeMap } from '../../../../utils';
+import { ReactComponent as Offentligikon } from './ikoner/offentlige-godkjenninger.svg';
 
 type Props = Pick<ArenaPerson, 'godkjenninger'>;
 
@@ -19,7 +20,7 @@ function Godkjenninger(props: Props) {
 	));
 
 	return (
-		<Informasjonsbolk header="Offentlige godkjenninger" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Offentlige godkjenninger" headerTypo="ingress" icon={<Offentligikon />} {...rest}>
 			{godkjenningListe}
 		</Informasjonsbolk>
 	);

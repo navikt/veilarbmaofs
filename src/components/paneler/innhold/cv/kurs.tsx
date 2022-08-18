@@ -3,6 +3,7 @@ import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, formaterVarighet, safeSort, safeMap } from '../../../../utils';
+import { ReactComponent as Kursikon } from './ikoner/kurs.svg';
 
 function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
 	const { kurs: arenaKurs, ...rest } = props;
@@ -17,7 +18,7 @@ function Kurs(props: Pick<ArenaPerson, 'kurs'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Kurs" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Kurs" headerTypo="ingress" icon={<Kursikon />} {...rest}>
 			{kurs}
 		</Informasjonsbolk>
 	);

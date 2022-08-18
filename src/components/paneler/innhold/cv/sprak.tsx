@@ -3,6 +3,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson, SprakNiva } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap } from '../../../../utils';
+import { ReactComponent as Sprakikon } from './ikoner/sprak.svg';
 
 // String er lagt til for bakoverkompatibilitet
 function mapSprakNivaTilTekst(sprakNiva: SprakNiva | string): string {
@@ -34,7 +35,7 @@ function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Språk" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Språk" headerTypo="ingress" icon={<Sprakikon />} {...rest}>
 			{sprak}
 		</Informasjonsbolk>
 	);

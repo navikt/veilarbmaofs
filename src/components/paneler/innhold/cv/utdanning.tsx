@@ -4,6 +4,7 @@ import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap, formaterDato, safeSort } from '../../../../utils';
 import Hide from '../../../felles/hide';
+import { ReactComponent as Utdanningsikon } from './ikoner/utdanning.svg';
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 	const { utdanning: arenaUtdanning, ...rest } = props;
@@ -22,7 +23,7 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Utdanning" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Utdanning" headerTypo="ingress" icon={<Utdanningsikon />} {...rest}>
 			{utdanninger}
 		</Informasjonsbolk>
 	);

@@ -3,6 +3,7 @@ import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeSort, safeMap } from '../../../../utils';
+import { ReactComponent as Erfaringsikon } from './ikoner/annen-erfaring.svg';
 
 function AnnenErfaring(props: Pick<ArenaPerson, 'annenErfaring'>) {
 	const { annenErfaring: arenaErfaring, ...rest } = props;
@@ -18,7 +19,7 @@ function AnnenErfaring(props: Pick<ArenaPerson, 'annenErfaring'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Annen erfaring" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Annen erfaring" headerTypo="ingress" icon={<Erfaringsikon />} {...rest}>
 			{erfaringer}
 		</Informasjonsbolk>
 	);
