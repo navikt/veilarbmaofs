@@ -129,9 +129,7 @@ export enum FagdokumentType {
 }
 
 export interface Fagdokumentasjon {
-	id?: string;
-	tittel: string | null;
-	konseptId?: string;
+	tittel: string;
 	type: FagdokumentType;
 }
 

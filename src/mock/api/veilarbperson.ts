@@ -35,12 +35,12 @@ const cvOgJobbonsker: ArenaPerson = {
 	],
 	fagdokumentasjoner: [
 		{
-			type: FagdokumentType.MESTERBREV,
-			tittel: null
+			tittel: 'Mesterbrev baker',
+			type: FagdokumentType.MESTERBREV
 		},
 		{
-			type: FagdokumentType.SVENNEBREV_FAGBREV,
-			tittel: 'Tittelen kommer her'
+			tittel: 'Yrkeskompetanse helsesekretær',
+			type: FagdokumentType.SVENNEBREV_FAGBREV
 		}
 	],
 	utdanning: [
