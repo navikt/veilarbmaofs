@@ -142,21 +142,27 @@ const cvOgJobbonsker: ArenaPerson = {
 	godkjenninger: [
 		{
 			tittel: 'Autorisasjon som lege',
+			utsteder: 'Norsk legeforening',
+			gjennomfortDato: '2018-05-17',
+			utloperDato: '2118-12-31'
+		},
+		{
+			tittel: 'Bårførerbevis',
 			utsteder: null,
-			gjennomfortDato: '2018-05',
-			utloperDato: '2118-12'
+			gjennomfortDato: '2020-02-02',
+			utloperDato: null
 		}
 	],
 	andreGodkjenninger: [
 		{
 			tittel: 'Sikkerhetskurs: Diverse spesialkurs',
-			utsteder: null,
-			gjennomfortDato: '2018-05',
-			utloperDato: '2118-12'
+			utsteder: 'Diverse spesialkurs A/S',
+			gjennomfortDato: '2018-05-04',
+			utloperDato: '2118-12-20'
 		},
 		{
 			tittel: 'Maskinoffisersertifikat: Klasse 1',
-			utsteder: null,
+			utsteder: 'Norsk maskinoffiserskole',
 			gjennomfortDato: '2014-12',
 			utloperDato: '2118-12'
 		},
@@ -164,7 +170,7 @@ const cvOgJobbonsker: ArenaPerson = {
 			tittel: 'Kjelpassersertifikat: Rødt sertifikat',
 			utsteder: null,
 			gjennomfortDato: '1974-07',
-			utloperDato: '2118-12'
+			utloperDato: null
 		}
 	],
 	sprak: [

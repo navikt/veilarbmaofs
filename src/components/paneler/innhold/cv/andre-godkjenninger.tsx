@@ -1,21 +1,25 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeMap } from '../../../../utils';
 import { ReactComponent as Andreikon } from './ikoner/andre-godkjenninger.svg';
+import { BodyShort, Label } from '@navikt/ds-react';
+import EMDASH from '../../../../utils/emdash';
 
 type Props = Pick<ArenaPerson, 'andreGodkjenninger'>;
 
 function AndreGodkjenninger(props: Props) {
 	const { andreGodkjenninger, ...rest } = props;
 
-	const annenGodkjenningListe = safeMap(andreGodkjenninger, (annengGodkjenning, index) => (
+	const annenGodkjenningListe = safeMap(andreGodkjenninger, (annenGodkjenning, index) => (
 		<div key={`andregodkjenninger-${index}`} className="underinformasjon">
-			<Normaltekst key={`andregodkjenninger-${index}`} className="underinformasjon">
-				{annengGodkjenning.tittel}
-			</Normaltekst>
-			<Normaltekst>Gjennomført dato: {formaterDato(annengGodkjenning.gjennomfortDato, true)}</Normaltekst>
+			<Label key={`andregodkjenninger-${index}`}>{annenGodkjenning.tittel}</Label>
+
+			<BodyShort>Utsteder: {annenGodkjenning.utsteder ? annenGodkjenning.utsteder : EMDASH}</BodyShort>
+			<BodyShort>Fullført: {formaterDato(annenGodkjenning.gjennomfortDato)}</BodyShort>
+			<BodyShort>
+				Utløper: {annenGodkjenning.utloperDato ? formaterDato(annenGodkjenning.utloperDato) : EMDASH}
+			</BodyShort>
 		</div>
 	));
 

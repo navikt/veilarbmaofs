@@ -1,9 +1,10 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formaterDato, safeMap } from '../../../../utils';
 import { ReactComponent as Offentligikon } from './ikoner/offentlige-godkjenninger.svg';
+import { BodyShort, Label } from '@navikt/ds-react';
+import EMDASH from '../../../../utils/emdash';
 
 type Props = Pick<ArenaPerson, 'godkjenninger'>;
 
@@ -12,10 +13,11 @@ function Godkjenninger(props: Props) {
 
 	const godkjenningListe = safeMap(godkjenninger, (godkjenning, index) => (
 		<div key={`godkjenninger-${index}`} className="underinformasjon">
-			<Normaltekst key={`godkjenninger-${index}`} className="underinformasjon">
-				{godkjenning.tittel}
-			</Normaltekst>
-			<Normaltekst>Gjennomført dato: {formaterDato(godkjenning.gjennomfortDato, true)}</Normaltekst>
+			<Label key={`godkjenninger-${index}`}>{godkjenning.tittel}</Label>
+
+			<BodyShort>Utsteder: {godkjenning.utsteder ? godkjenning.utsteder : EMDASH}</BodyShort>
+			<BodyShort>Fullført: {formaterDato(godkjenning.gjennomfortDato)}</BodyShort>
+			<BodyShort>Utløper: {godkjenning.utloperDato ? formaterDato(godkjenning.utloperDato) : EMDASH}</BodyShort>
 		</div>
 	));
 
