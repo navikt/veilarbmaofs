@@ -1,9 +1,7 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap, formaterDato, safeSort } from '../../../../utils';
-import Hide from '../../../felles/hide';
 import { ReactComponent as Utdanningsikon } from './ikoner/utdanning.svg';
 import { BodyShort, Label } from '@navikt/ds-react';
 

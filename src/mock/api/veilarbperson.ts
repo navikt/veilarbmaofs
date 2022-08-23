@@ -319,7 +319,14 @@ const cvOgJobbonsker: ArenaPerson = {
 			heltid: true,
 			deltid: true
 		},
-		kompetanse: [],
+		kompetanse: [
+			{
+				tittel: 'Salg av utstyr til bakeribransjen'
+			},
+			{
+				tittel: 'Førstehjelpskurs for strømulykker'
+			}
+		],
 		oppstart: 'ETTER_AVTALE'
 	}
 };

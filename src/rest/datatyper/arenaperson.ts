@@ -85,7 +85,7 @@ export interface Jobbprofil {
 	onsketArbeidsskiftordning: JobbprofilArbeidsskiftordning[];
 	onsketArbeidsdagordning: JobbprofilArbeidsdagordning[];
 	heltidDeltid: JobbprofilHeltidDeltid;
-	kompetanse: JobbprofilKompetanse[];
+	kompetanse?: JobbprofilKompetanse[];
 	oppstart: string;
 }
 

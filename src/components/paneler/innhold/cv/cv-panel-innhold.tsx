@@ -15,6 +15,7 @@ import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
+import Kompetanser from './kompetanser';
 import { byggPamUrl } from '../../../../utils';
 import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
@@ -116,7 +117,8 @@ const CvPanelInnhold = (props: cvPanelProps): React.ReactElement => {
 			forerkort,
 			sprak,
 			kurs,
-			sistEndret
+			sistEndret,
+			jobbprofil
 		} = props.cvJobbonskerPromise.result.data;
 
 		return (
@@ -136,6 +138,7 @@ const CvPanelInnhold = (props: cvPanelProps): React.ReactElement => {
 					<Forerkort forerkort={forerkort} />
 					<Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
 					<Sprak sprak={sprak} />
+					<Kompetanser kompetanse={jobbprofil?.kompetanse} />
 				</FloatGrid>
 			</>
 		);

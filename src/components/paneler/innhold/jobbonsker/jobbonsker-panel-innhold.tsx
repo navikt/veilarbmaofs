@@ -111,7 +111,6 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 			onsketArbeidsdagordning,
 			onsketArbeidsskiftordning,
 			heltidDeltid,
-			kompetanse,
 			oppstart
 		} = cvOgJobbonsker.result.data.jobbprofil!;
 		const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
@@ -124,7 +123,6 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 		const arbeidsskift = onsketArbeidsskiftordning.map(skift =>
 			formatStringInUpperAndLowerCaseUnderscore(skift.tittel)
 		);
-		const kompetanser = kompetanse.map(kompetansen => kompetansen.tittel);
 		const oppstartstid = [formatStringInUpperAndLowerCaseUnderscore(oppstart)];
 		const heltidDeltidList = [heltidDeltid.heltid && 'Heltid', heltidDeltid.deltid && 'Deltid'];
 
@@ -142,7 +140,6 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 					/>
 					<InformasjonsbolkListe header="Ansettelsesform" list={ansettelsesform} />
 					<InformasjonsbolkListe header="Oppstart" list={oppstartstid} />
-					<InformasjonsbolkListe header="Kompetanser" list={kompetanser} />
 				</Grid>
 			</>
 		);
