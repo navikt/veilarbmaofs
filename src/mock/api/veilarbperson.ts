@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import { RequestHandler } from 'msw';
-import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
+import { ArenaPerson, FagdokumentType, KursVarighetEnhet, SprakNiva } from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
@@ -103,14 +103,10 @@ const cvOgJobbonsker: ArenaPerson = {
 	],
 	forerkort: [
 		{
-			klasse: 'B',
-			fraDato: '2017-08-01',
-			utloperDato: '2118-12-01'
+			klasse: 'B'
 		},
 		{
-			klasse: 'C1',
-			fraDato: '2017-08-01',
-			utloperDato: '2118-12-01'
+			klasse: 'C1'
 		}
 	],
 	kurs: [
@@ -176,7 +172,7 @@ const cvOgJobbonsker: ArenaPerson = {
 	sprak: [
 		{
 			sprak: 'Dansk',
-			muntligNiva: 'Godt',
+			muntligNiva: SprakNiva.FOERSTESPRAAK,
 			skriftligNiva: 'Godt'
 		},
 		{

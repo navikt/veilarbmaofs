@@ -1,15 +1,15 @@
 import React from 'react';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson, SprakNiva } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap } from '../../../../utils';
 import { ReactComponent as Sprakikon } from './ikoner/sprak.svg';
+import { BodyShort, Label } from '@navikt/ds-react';
 
 // String er lagt til for bakoverkompatibilitet
 function mapSprakNivaTilTekst(sprakNiva: SprakNiva | string): string {
 	switch (sprakNiva) {
 		case SprakNiva.FOERSTESPRAAK:
-			return 'Førstespråk';
+			return 'Førstespråk (morsmål)';
 		case SprakNiva.VELDIG_GODT:
 			return 'Veldig godt';
 		case SprakNiva.GODT:
@@ -28,9 +28,9 @@ function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
 
 	const sprak = safeMap(arenaSprak, (enkeltSprak, index) => (
 		<div key={`kompetanse-${index}`} className="underinformasjon">
-			<Element>{enkeltSprak.sprak}</Element>
-			<Normaltekst>Muntlig: {mapSprakNivaTilTekst(enkeltSprak.muntligNiva)}</Normaltekst>
-			<Normaltekst>Skriftlig: {mapSprakNivaTilTekst(enkeltSprak.skriftligNiva)}</Normaltekst>
+			<Label>{enkeltSprak.sprak}</Label>
+			<BodyShort>Muntlig: {mapSprakNivaTilTekst(enkeltSprak.muntligNiva)}</BodyShort>
+			<BodyShort>Skriftlig: {mapSprakNivaTilTekst(enkeltSprak.skriftligNiva)}</BodyShort>
 		</div>
 	));
 

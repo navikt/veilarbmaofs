@@ -30,8 +30,6 @@ interface AnnenErfaring {
 
 interface Forerkort {
 	klasse: StringOrNothing;
-	fraDato: YearMonthDay;
-	utloperDato: YearMonthDay;
 }
 
 interface Godkjenning {
