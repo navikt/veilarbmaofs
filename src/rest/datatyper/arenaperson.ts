@@ -5,6 +5,7 @@ type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
 
 interface Utdanning {
 	tittel?: string;
+	utdanningsnivaa: string;
 	studiested: StringOrNothing;
 	beskrivelse: StringOrNothing;
 	fraDato: YearMonth;

@@ -5,20 +5,26 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap, formaterDato, safeSort } from '../../../../utils';
 import Hide from '../../../felles/hide';
 import { ReactComponent as Utdanningsikon } from './ikoner/utdanning.svg';
+import { BodyShort, Label } from '@navikt/ds-react';
 
 function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 	const { utdanning: arenaUtdanning, ...rest } = props;
 	const sortedUtdanning = arenaUtdanning.sort((a, b) => safeSort(b.tilDato, a.tilDato));
 	const utdanninger = safeMap(sortedUtdanning, (utdanning, index) => (
 		<div key={`utdanning-${index}`} className="underinformasjon">
-			<Element className="typo-element">{utdanning.tittel}</Element>
+			<Label>{utdanning.tittel}</Label>
 
-			<Normaltekst>{utdanning.studiested}</Normaltekst>
-			<Hide if={utdanning.beskrivelse == null}>
-				<Normaltekst className="italic">{utdanning.beskrivelse}</Normaltekst>
-			</Hide>
-			<Normaltekst>Fra: {formaterDato(utdanning.fraDato, true)}</Normaltekst>
-			<Normaltekst>Til: {formaterDato(utdanning.tilDato, true)}</Normaltekst>
+			<BodyShort className="dypbla">{utdanning.studiested}</BodyShort>
+			<BodyShort>{utdanning.utdanningsnivaa}</BodyShort>
+			<BodyShort>
+				Start- og sluttdato: {formaterDato(utdanning.fraDato, true)} -{' '}
+				{utdanning.tilDato ? formaterDato(utdanning.tilDato, true) : 'nå'}
+			</BodyShort>
+			{utdanning.beskrivelse && (
+				<BodyShort>
+					Beskrivelse: <em>{utdanning.beskrivelse}</em>
+				</BodyShort>
+			)}
 		</div>
 	));
 

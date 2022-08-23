@@ -46,20 +46,23 @@ const cvOgJobbonsker: ArenaPerson = {
 	utdanning: [
 		{
 			tittel: 'Andre servicefag, andre, uspesifisert utdanningsgruppe, høyere nivå',
+			utdanningsnivaa: 'Doktorgrad',
 			studiested: 'Pasific University',
 			beskrivelse: 'Beskrivelse av utdanning',
 			fraDato: '1999-06',
-			tilDato: '2003-06'
+			tilDato: null
 		},
 		{
 			tittel: 'Cand.scient.-utdanning, mekanikk',
-			studiested: 'Pasific university',
+			utdanningsnivaa: 'Høyere utdanning, 1-4 år',
+			studiested: 'Pasific university, kjempelangt studiested',
 			beskrivelse: null,
 			fraDato: '1999-06',
 			tilDato: '2003-06'
 		},
 		{
 			tittel: 'Teknisk fagskole, linje for maritime fag og fiskerifag, toårig',
+			utdanningsnivaa: 'Folkehøgskole',
 			studiested: 'arendal maritime hoyskole',
 			beskrivelse: null,
 			fraDato: '1989-06',

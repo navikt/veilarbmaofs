@@ -12,7 +12,7 @@ function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 		<div key={`arbeidserfaring-${index}`} className="underinformasjon">
 			<Label>{erfaring.tittel}</Label>
 
-			<BodyShort>{erfaring.arbeidsgiver}</BodyShort>
+			<BodyShort className="dypbla">{erfaring.arbeidsgiver}</BodyShort>
 			<BodyShort>Sted: {erfaring.sted}</BodyShort>
 			<BodyShort>
 				Start- og sluttdato: {formaterDato(erfaring.fraDato, true)} -{' '}
