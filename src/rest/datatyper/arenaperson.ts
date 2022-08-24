@@ -35,8 +35,8 @@ interface Forerkort {
 interface Godkjenning {
 	tittel: StringOrNothing;
 	utsteder: StringOrNothing;
-	gjennomfortDato: YearMonth;
-	utloperDato: YearMonth;
+	gjennomfortDato: YearMonthDay;
+	utloperDato: YearMonthDay;
 }
 
 type AnnenGodkjenning = Godkjenning;
@@ -58,7 +58,7 @@ interface Sprak {
 interface Kurs {
 	tittel: StringOrNothing;
 	arrangor: StringOrNothing;
-	tidspunkt?: YearMonth;
+	tidspunkt?: YearMonthDay;
 	varighet?: Kursvarighet;
 }
 

@@ -19,7 +19,13 @@ function Kompetanser(props: Pick<Jobbprofil, 'kompetanse'>) {
 			: EMDASH;
 
 	return (
-		<Informasjonsbolk header="Kompetanser" headerTypo="ingress" icon={<Kompetanserikon />} {...rest}>
+		<Informasjonsbolk
+			className="kompetanser"
+			header="Kompetanser"
+			headerTypo="ingress"
+			icon={<Kompetanserikon />}
+			{...rest}
+		>
 			{kompetanser}
 		</Informasjonsbolk>
 	);
