@@ -1,6 +1,12 @@
 import { rest } from 'msw';
 import { RequestHandler } from 'msw';
-import { ArenaPerson, FagdokumentType, KursVarighetEnhet, SprakNiva } from '../../rest/datatyper/arenaperson';
+import {
+	ArenaPerson,
+	FagdokumentType,
+	JobbprofilOppstartstype,
+	KursVarighetEnhet,
+	SprakNiva
+} from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
@@ -334,7 +340,7 @@ const cvOgJobbonsker: ArenaPerson = {
 				tittel: 'Førstehjelpskurs for strømulykker'
 			}
 		],
-		oppstart: 'ETTER_AVTALE'
+		oppstart: JobbprofilOppstartstype.ETTER_TRE_MND
 	}
 };
 

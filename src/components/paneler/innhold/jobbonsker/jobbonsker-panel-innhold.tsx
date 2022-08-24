@@ -7,7 +7,7 @@ import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';
 import { fetchAktorId, fetchCvOgJobbonsker, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
-import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
+import { ArenaPerson, JobbprofilOppstartstype } from '../../../../rest/datatyper/arenaperson';
 import { Alert } from '@navikt/ds-react';
 import {
 	isNotStartedOrPending,
@@ -20,6 +20,36 @@ import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingD
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 import { AxiosError, AxiosResponse } from 'axios';
 import { RedigerCV } from '../cv/rediger-cv';
+
+const asciiTilNorsk = (tekst: string) => {
+	switch (tekst) {
+		case 'UKEDAGER':
+			return 'Ukedager';
+		case 'LOERDAG':
+			return 'Lørdag';
+		case 'SOENDAG':
+			return 'Søndag';
+		case 'LAERLING':
+			return 'Lærling';
+		case 'SELVSTENDIG_NAERINGSDRIVENDE':
+			return 'Selvstendig næringsdrivende';
+		default:
+			return tekst;
+	}
+};
+
+const oppstartstypeTilTekst = (oppstartstype: JobbprofilOppstartstype): string => {
+	switch (oppstartstype) {
+		case JobbprofilOppstartstype.ETTER_AVTALE:
+			return 'Etter avtale';
+		case JobbprofilOppstartstype.ETTER_TRE_MND:
+			return 'Etter tre måneders oppsigelsestid';
+		case JobbprofilOppstartstype.LEDIG_NAA:
+			return 'Kan begynne nå';
+		default:
+			return '';
+	}
+};
 
 const harJobbonskerdata = (cvOgJobbonsker: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>): boolean => {
 	return (
@@ -116,14 +146,14 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 		const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
 		const yrker = onsketYrke.map(yrke => yrke.tittel);
 		const ansettelsesform = onsketAnsettelsesform.map(form =>
-			formatStringInUpperAndLowerCaseUnderscore(form.tittel)
+			formatStringInUpperAndLowerCaseUnderscore(asciiTilNorsk(form.tittel))
 		);
 		const arbeidstid = onsketArbeidstidsordning.map(tid => formatStringInUpperAndLowerCaseUnderscore(tid.tittel));
-		const arbeidsdag = onsketArbeidsdagordning.map(dag => formatStringInUpperAndLowerCaseUnderscore(dag.tittel));
+		const arbeidsdag = onsketArbeidsdagordning.map(dag => asciiTilNorsk(dag.tittel));
 		const arbeidsskift = onsketArbeidsskiftordning.map(skift =>
 			formatStringInUpperAndLowerCaseUnderscore(skift.tittel)
 		);
-		const oppstartstid = [formatStringInUpperAndLowerCaseUnderscore(oppstart)];
+		const oppstartstid = [oppstartstypeTilTekst(oppstart)];
 		const heltidDeltidList = [heltidDeltid.heltid && 'Heltid', heltidDeltid.deltid && 'Deltid'];
 
 		return (

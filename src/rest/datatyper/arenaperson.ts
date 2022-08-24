@@ -84,7 +84,7 @@ export interface Jobbprofil {
 	onsketArbeidsdagordning: JobbprofilArbeidsdagordning[];
 	heltidDeltid: JobbprofilHeltidDeltid;
 	kompetanse?: JobbprofilKompetanse[];
-	oppstart: string;
+	oppstart: JobbprofilOppstartstype;
 }
 
 interface JobbprofilYrke {
@@ -114,6 +114,12 @@ interface JobbprofilArbeidsskiftordning {
 interface JobbprofilHeltidDeltid {
 	heltid: boolean;
 	deltid: boolean;
+}
+
+export enum JobbprofilOppstartstype {
+	LEDIG_NAA = 'LEDIG_NAA',
+	ETTER_TRE_MND = 'ETTER_TRE_MND',
+	ETTER_AVTALE = 'ETTER_AVTALE'
 }
 
 interface JobbprofilKompetanse {
