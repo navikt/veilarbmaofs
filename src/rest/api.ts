@@ -1,6 +1,7 @@
 import { axiosInstance } from './utils';
 import { OrNothing } from '../utils/felles-typer';
 import { toggles } from './datatyper/feature';
+import { FrontendEvent } from '../utils/logger';
 
 export const fetchRegistrering = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/registrering?fnr=${fnr}`);
@@ -53,3 +54,7 @@ export const fetchFeatureToggle = () => {
 export const fetchTilgorerBrukerUtrulletKontorForVedtaksstotte = (fnr: string) => {
 	return axiosInstance.get(`/veilarbvedtaksstotte/api/utrulling/tilhorerBrukerUtrulletKontor?fnr=${fnr}`);
 };
+
+export function sendEventTilVeilarbperson(event: FrontendEvent) {
+	return axiosInstance.post(`/veilarbperson/api/logger/event`, event);
+}

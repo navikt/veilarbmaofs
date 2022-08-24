@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorBoundary from '../felles/error-boundry';
-import { logger } from '../../utils/logger';
+import { logMetrikk } from '../../utils/logger';
 import { useAppStore } from '../../stores/app-store';
 import { Accordion, Heading } from '@navikt/ds-react';
 
@@ -18,7 +18,7 @@ const AccordionItemErrorBoundary: React.FC<PanelProps> = ({ defaultOpen, name, i
 
 	const onClick = () => {
 		const eventType = !isOpen ? 'open' : 'close';
-		logger.event('maofs.panel-click', {}, { panel: name, type: eventType });
+		logMetrikk('maofs.panel-click', {}, { panel: name, type: eventType });
 		if (isOpen) {
 			fjernSidemenyElement(id);
 		}

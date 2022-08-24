@@ -10,7 +10,7 @@ export const TilToppenKnapp = () => {
 
 	const skrollOgLogg = () => {
 		scrollTilElement('#veilarbpersonflatefs-root');
-		logMetrikk('tiltoppenknapp');
+		logMetrikk('veilarbmaofs.metrikker.tiltoppenknapp');
 	};
 
 	const synlighet = () => {

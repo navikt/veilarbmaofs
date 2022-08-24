@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { logger } from '../../../../utils/logger';
+import { logMetrikk } from '../../../../utils/logger';
 import { Download, DownloadFilled } from '@navikt/ds-icons';
 import { Link } from '@navikt/ds-react';
 
@@ -7,7 +7,7 @@ export function LastNedCV(props: { erManuell: boolean; lastNedCvLenke: string })
 	const [hover, setHover] = useState(false);
 
 	const handleOnLastNedLenkeClicked = () => {
-		logger.event('veilarbmaofs.metrikker.last-ned-cv', { erManuell: props.erManuell });
+		logMetrikk('veilarbmaofs.metrikker.last-ned-cv', { erManuell: props.erManuell });
 	};
 
 	return (
