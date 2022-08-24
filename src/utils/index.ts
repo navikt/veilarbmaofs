@@ -125,7 +125,7 @@ export function formaterVarighet(varighet: Kursvarighet): string {
 		case KursVarighetEnhet.UKE:
 			enhetTekst = storreEnnEn ? 'uker' : 'uke';
 			break;
-		case KursVarighetEnhet.MANED:
+		case KursVarighetEnhet.MND:
 			enhetTekst = storreEnnEn ? 'måneder' : 'måned';
 			break;
 		default:

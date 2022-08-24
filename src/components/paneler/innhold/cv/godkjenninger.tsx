@@ -17,7 +17,11 @@ function Godkjenninger(props: Props) {
 
 			<BodyShort>Utsteder: {godkjenning.utsteder ? godkjenning.utsteder : EMDASH}</BodyShort>
 			<BodyShort>Fullført: {formaterDato(godkjenning.gjennomfortDato)}</BodyShort>
-			<BodyShort>Utløper: {godkjenning.utloperDato ? formaterDato(godkjenning.utloperDato) : EMDASH}</BodyShort>
+			{godkjenning.utloperDato && (
+				<BodyShort>
+					Utløper: {godkjenning.utloperDato ? formaterDato(godkjenning.utloperDato) : EMDASH}
+				</BodyShort>
+			)}
 		</div>
 	));
 

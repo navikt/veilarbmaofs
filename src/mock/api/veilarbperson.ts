@@ -120,10 +120,15 @@ const cvOgJobbonsker: ArenaPerson = {
 			}
 		},
 		{
-			tittel: 'grønn',
-			arrangor: 'falk',
-			tidspunkt: '2017-10'
+			tittel: 'Brillekurs',
+			arrangor: 'Norsk Brilleslangeforbund',
+			tidspunkt: '2022-08-01',
+			varighet: {
+				varighet: 2,
+				tidsenhet: KursVarighetEnhet.MND
+			}
 		},
+
 		{
 			tittel: 'blå',
 			arrangor: 'falk',

@@ -71,7 +71,7 @@ export enum KursVarighetEnhet {
 	TIME = 'TIME',
 	DAG = 'DAG',
 	UKE = 'UKE',
-	MANED = 'MANED'
+	MND = 'MND'
 }
 
 export interface Jobbprofil {

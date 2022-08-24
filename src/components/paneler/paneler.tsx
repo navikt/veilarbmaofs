@@ -48,12 +48,11 @@ export const Paneler: React.FC = () => {
 					tittel={
 						<>
 							CV
-							{cvOgJobbonsker.result?.data &&
-								!(
-									<Tag id="cv-tag" variant="warning" size="small">
-										Ingen CV registrert
-									</Tag>
-								)}
+							{cvOgJobbonsker.error?.response?.status === 404 && (
+								<Tag id="cv-tag" variant="warning" size="small">
+									Ingen CV registrert
+								</Tag>
+							)}
 						</>
 					}
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}

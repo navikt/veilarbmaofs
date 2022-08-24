@@ -17,9 +17,11 @@ function AndreGodkjenninger(props: Props) {
 
 			<BodyShort>Utsteder: {annenGodkjenning.utsteder ? annenGodkjenning.utsteder : EMDASH}</BodyShort>
 			<BodyShort>Fullført: {formaterDato(annenGodkjenning.gjennomfortDato)}</BodyShort>
-			<BodyShort>
-				Utløper: {annenGodkjenning.utloperDato ? formaterDato(annenGodkjenning.utloperDato) : EMDASH}
-			</BodyShort>
+			{annenGodkjenning.utloperDato && (
+				<BodyShort>
+					Utløper: {annenGodkjenning.utloperDato ? formaterDato(annenGodkjenning.utloperDato) : EMDASH}
+				</BodyShort>
+			)}
 		</div>
 	));
 
