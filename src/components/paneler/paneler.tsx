@@ -66,7 +66,7 @@ export const Paneler: React.FC = () => {
 					tittel="Jobbønsker"
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbonsker)}
 				>
-					<JobbonskerPanelinnhold />
+					<JobbonskerPanelinnhold cvJobbonskerPromise={cvOgJobbonsker} />
 				</AccordionItemErrorBoundary>
 
 				<AccordionItemErrorBoundary

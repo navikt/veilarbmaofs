@@ -5,7 +5,7 @@ import SistEndret from '../../../felles/sist-endret';
 import Grid from '../../../felles/grid';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { byggPamUrl, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';
-import { fetchAktorId, fetchCvOgJobbonsker, fetchUnderOppfolging } from '../../../../rest/api';
+import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { ArenaPerson, JobbprofilOppstartstype } from '../../../../rest/datatyper/arenaperson';
 import { Alert } from '@navikt/ds-react';
@@ -59,15 +59,18 @@ const harJobbonskerdata = (cvOgJobbonsker: UsePromise<AxiosResponse<ArenaPerson>
 	);
 };
 
-const JobbonskerPanelinnhold = (): React.ReactElement => {
+interface jobbonskerPanelProps {
+	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson, any>, AxiosError<unknown, any>>;
+}
+
+const JobbonskerPanelinnhold = (props: jobbonskerPanelProps): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbonsker(fnr));
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
 	const aktorId = useAxiosPromise<AktorId>(() => fetchAktorId(fnr));
 
 	if (
-		isNotStartedOrPending(cvOgJobbonsker) ||
+		isNotStartedOrPending(props.cvJobbonskerPromise) ||
 		isNotStartedOrPending(underOppfolging) ||
 		isNotStartedOrPending(aktorId)
 	) {
@@ -96,8 +99,11 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 
 	// Sjekk alltid tilgang først
 
-	if (cvOgJobbonsker.error?.response) {
-		if (cvOgJobbonsker.error?.response?.status === 403 || cvOgJobbonsker.error?.response?.status === 401) {
+	if (props.cvJobbonskerPromise.error?.response) {
+		if (
+			props.cvJobbonskerPromise.error?.response?.status === 403 ||
+			props.cvJobbonskerPromise.error?.response?.status === 401
+		) {
 			return (
 				<Alert variant="info" className="alertstripe_intern">
 					Du har ikke tilgang til å se jobbønsker for denne brukeren. Årsaker kan være
@@ -113,9 +119,9 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 	}
 
 	if (
-		cvOgJobbonsker.error?.response?.status === 404 ||
-		cvOgJobbonsker.result?.status === 204 ||
-		!harJobbonskerdata(cvOgJobbonsker)
+		props.cvJobbonskerPromise.error?.response?.status === 404 ||
+		props.cvJobbonskerPromise.result?.status === 204 ||
+		!harJobbonskerdata(props.cvJobbonskerPromise)
 	) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
@@ -127,11 +133,11 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 				)}
 			</Alert>
 		);
-	} else if (!isResolved(cvOgJobbonsker)) {
+	} else if (!isResolved(props.cvJobbonskerPromise)) {
 		return <Feilmelding />;
 	}
 
-	if (harJobbonskerdata(cvOgJobbonsker)) {
+	if (harJobbonskerdata(props.cvJobbonskerPromise)) {
 		const {
 			sistEndret,
 			onsketYrke,
@@ -142,7 +148,7 @@ const JobbonskerPanelinnhold = (): React.ReactElement => {
 			onsketArbeidsskiftordning,
 			heltidDeltid,
 			oppstart
-		} = cvOgJobbonsker.result.data.jobbprofil!;
+		} = props.cvJobbonskerPromise.result.data.jobbprofil!;
 		const arbeidssted = onsketArbeidssted.map(sted => sted.stedsnavn);
 		const yrker = onsketYrke.map(yrke => yrke.tittel);
 		const ansettelsesform = onsketAnsettelsesform.map(form =>
