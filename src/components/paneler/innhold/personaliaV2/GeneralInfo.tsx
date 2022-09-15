@@ -12,6 +12,7 @@ import { AxiosResponse } from 'axios';
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { isArray, isString } from '@craco/craco/dist/lib/utils';
+import StatsborgerskapInfo from './statsborgerskapinfo';
 
 function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | string; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
@@ -20,31 +21,10 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | s
 		fetchSpraakTolk(fnr)
 	);
 
-	let statsborgerskapDisplay = (stasborgerskapData: string[] | string) => {
-		let headerVerdi = 'Statsborgerskap';
-		if (isArray(stasborgerskapData)) {
-			return (
-				<InformasjonsbolkListe
-					header={headerVerdi}
-					list={stasborgerskapData.map(statsborgerskap => formateStringInUpperAndLowerCase(statsborgerskap))}
-				/>
-			);
-		} else if (isString(stasborgerskapData)) {
-			return (
-				<InformasjonsbolkEnkel
-					header={headerVerdi}
-					value={formateStringInUpperAndLowerCase(stasborgerskapData)}
-					childclassname="innrykk"
-				/>
-			);
-		}
-		return '';
-	};
-
 	return (
 		<div {...rest}>
 			<Kontonummer kontonummer={kontonummer} />
-			{statsborgerskapDisplay(statsborgerskap)}
+			<StatsborgerskapInfo stasborgerskapData={props.statsborgerskap} />
 			{isResolved(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.result.data} />
 			)}
