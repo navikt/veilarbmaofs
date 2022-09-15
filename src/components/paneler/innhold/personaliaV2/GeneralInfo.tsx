@@ -1,5 +1,4 @@
 import React from 'react';
-import { formateStringInUpperAndLowerCase } from '../../../../utils';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import { fetchSpraakTolk } from '../../../../rest/api';
@@ -10,8 +9,6 @@ import { hentMalform } from '../../../../utils/konstanter';
 import { isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
-import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
-import { isArray, isString } from '@craco/craco/dist/lib/utils';
 import StatsborgerskapInfo from './statsborgerskapinfo';
 
 function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | string; malform: StringOrNothing }) {

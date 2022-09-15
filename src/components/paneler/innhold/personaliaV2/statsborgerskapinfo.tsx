@@ -1,4 +1,3 @@
-import { StringOrNothing } from '../../../../utils/felles-typer';
 import { isArray, isString } from '@craco/craco/dist/lib/utils';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { formateStringInUpperAndLowerCase } from '../../../../utils';
