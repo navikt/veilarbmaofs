@@ -22,19 +22,19 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | s
 
 	let headerVerdi = 'Statsborgerskap';
 
-	const statsborgerskapDisplay = (stasborgerskapData: string[] | string) => {
-		if (isArray(statsborgerskap)) {
+	let statsborgerskapDisplay = (stasborgerskapData: string[] | string) => {
+		if (isArray(stasborgerskapData)) {
 			return (
 				<InformasjonsbolkListe
 					header={headerVerdi}
-					list={statsborgerskap.map(x => formateStringInUpperAndLowerCase(x))}
+					list={stasborgerskapData.map(x => formateStringInUpperAndLowerCase(x))}
 				/>
 			);
 		} else if (isString(stasborgerskapData)) {
 			return (
 				<InformasjonsbolkEnkel
 					header={headerVerdi}
-					value={formateStringInUpperAndLowerCase(statsborgerskap)}
+					value={formateStringInUpperAndLowerCase(stasborgerskapData)}
 					childclassname="innrykk"
 				/>
 			);
@@ -45,7 +45,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | s
 	return (
 		<div {...rest}>
 			<Kontonummer kontonummer={kontonummer} />
-			{statsborgerskapDisplay}
+			{statsborgerskapDisplay(statsborgerskap)}
 			{isResolved(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.result.data} />
 			)}
