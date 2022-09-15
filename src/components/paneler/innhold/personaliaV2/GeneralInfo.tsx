@@ -20,9 +20,8 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | s
 		fetchSpraakTolk(fnr)
 	);
 
-	let headerVerdi = 'Statsborgerskap';
-
 	let statsborgerskapDisplay = (stasborgerskapData: string[] | string) => {
+		let headerVerdi = 'Statsborgerskap';
 		if (isArray(stasborgerskapData)) {
 			return (
 				<InformasjonsbolkListe
