@@ -26,7 +26,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | s
 			return (
 				<InformasjonsbolkListe
 					header={headerVerdi}
-					list={stasborgerskapData.map(x => formateStringInUpperAndLowerCase(x))}
+					list={stasborgerskapData.map(statsborgerskap => formateStringInUpperAndLowerCase(statsborgerskap))}
 				/>
 			);
 		} else if (isString(stasborgerskapData)) {
