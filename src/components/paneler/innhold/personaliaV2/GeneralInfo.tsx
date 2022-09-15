@@ -11,21 +11,41 @@ import { isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
+import { isArray, isString } from '@craco/craco/dist/lib/utils';
 
-function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[]; malform: StringOrNothing }) {
+function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | string; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
 	const { fnr } = useAppStore();
 	const tilrettelagtKommunikasjon = usePromise<AxiosResponse<TilrettelagtKommunikasjonData>>(() =>
 		fetchSpraakTolk(fnr)
 	);
 
+	let headerVerdi = 'Statsborgerskap';
+
+	const statsborgerskapDisplay = (stasborgerskapData: string[] | string) => {
+		if (isArray(statsborgerskap)) {
+			return (
+				<InformasjonsbolkListe
+					header={headerVerdi}
+					list={statsborgerskap.map(x => formateStringInUpperAndLowerCase(x))}
+				/>
+			);
+		} else if (isString(stasborgerskapData)) {
+			return (
+				<InformasjonsbolkEnkel
+					header={headerVerdi}
+					value={formateStringInUpperAndLowerCase(statsborgerskap)}
+					childclassname="innrykk"
+				/>
+			);
+		}
+		return '';
+	};
+
 	return (
 		<div {...rest}>
 			<Kontonummer kontonummer={kontonummer} />
-			<InformasjonsbolkListe
-				header="Statsborgerskap"
-				list={statsborgerskap.map(x => formateStringInUpperAndLowerCase(x))}
-			/>
+			{statsborgerskapDisplay}
 			{isResolved(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.result.data} />
 			)}
