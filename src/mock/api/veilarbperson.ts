@@ -350,7 +350,7 @@ const personaliav2: PersonaliaV2Info = {
 		epostSistOppdatert: '10.04.2010',
 		master: 'KRR'
 	},
-	statsborgerskap: 'NORGE',
+	statsborgerskap: ['NORGE', 'POLEN'],
 	partner: {
 		gradering: Gradering.STRENGT_FORTROLIG_UTLAND,
 		erEgenAnsatt: true,
