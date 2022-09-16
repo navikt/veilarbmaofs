@@ -1,0 +1,19 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+current_branch=`git branch --show-current`
+protected_branches="^(dev|master|main|tester-pre-push)$"
+color_red=$(tput setaf 1)
+color_green=$(tput setaf 2)
+
+echo "pre-push check: verifying that branch is eligible for push ..."
+if [[ $current_branch =~ $protected_branches ]]; then
+  echo "${color_red}pre-push check: Pushing to branch \"$current_branch\" not allowed."
+  echo "${color_red}pre-push check: Please make a separate branch and create a Pull Request for your changes."
+  tput sgr0
+  exit 1
+else
+  echo "${color_green}pre-push check: OK!"
+  tput sgr0
+  exit 0
+fi
