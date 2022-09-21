@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/veilarbmaofs/static/css/main.71544900.css",
-    "main.js": "/veilarbmaofs/static/js/main.507375d8.js",
+    "main.js": "/veilarbmaofs/static/js/main.0271fb58.js",
     "static/media/tilbakemelding.svg": "/veilarbmaofs/static/media/tilbakemelding.b08889cc4e043b3bac553d0b074c831f.svg",
     "index.html": "/veilarbmaofs/index.html",
     "static/media/lukk.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74cd0bdb867ec964ace6e3db7b.svg",
     "main.71544900.css.map": "/veilarbmaofs/static/css/main.71544900.css.map",
-    "main.507375d8.js.map": "/veilarbmaofs/static/js/main.507375d8.js.map"
+    "main.0271fb58.js.map": "/veilarbmaofs/static/js/main.0271fb58.js.map"
   },
   "entrypoints": [
     "static/css/main.71544900.css",
-    "static/js/main.507375d8.js"
+    "static/js/main.0271fb58.js"
   ]
 }
