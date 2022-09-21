@@ -1,18 +1,25 @@
 import { isArray, isString } from '@craco/craco/dist/lib/utils';
-import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
 import { formateStringInUpperAndLowerCase } from '../../../../utils';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import React from 'react';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
 
 function StatsborgerskapInfo(props: { stasborgerskapData: string[] | string }) {
 	const headerVerdi = 'Statsborgerskap';
-	const statsborgerskapList = (statsborgerskapListData: string[]) =>
-		statsborgerskapListData.map(statsborgerskap => formateStringInUpperAndLowerCase(statsborgerskap));
 
 	return (
 		<div>
 			{isArray(props.stasborgerskapData) && (
-				<InformasjonsbolkListe header={headerVerdi} list={statsborgerskapList(props.stasborgerskapData)} />
+				<div className="underinformasjon">
+					<Element>{headerVerdi}</Element>
+					{props.stasborgerskapData.map(statsborgerskap => {
+						return (
+							<Normaltekst className="innrykk" key={statsborgerskap}>
+								{formateStringInUpperAndLowerCase(statsborgerskap)}
+							</Normaltekst>
+						);
+					})}
+				</div>
 			)}
 			{isString(props.stasborgerskapData) && (
 				<InformasjonsbolkEnkel
