@@ -11,7 +11,7 @@ import { AxiosResponse } from 'axios';
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
 import StatsborgerskapInfo from './statsborgerskapinfo';
 
-function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[] | string; malform: StringOrNothing }) {
+function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[]; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
 	const { fnr } = useAppStore();
 	const tilrettelagtKommunikasjon = usePromise<AxiosResponse<TilrettelagtKommunikasjonData>>(() =>
