@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
@@ -288,54 +288,36 @@ const cvOgJobbprofil: ArenaPerson = {
 
 const personaliav2: PersonaliaV2Info = {
 	fornavn: 'Bruce',
-	mellomnavn: 'Batty',
-	etternavn: 'Wayne',
-	forkortetNavn: 'Bruce Batty Wayne',
 	fodselsnummer: '10108000398',
 	fodselsdato: '1974-09-16',
 	dodsdato: null,
 	barn: [
 		{
 			fornavn: 'Bruce',
-			mellomnavn: null,
-			etternavn: 'Banner',
-			forkortetNavn: 'Bruce Banner',
-			fodselsnummer: '10108000391',
 			fodselsdato: '2016-04-17',
-			dodsdato: null,
-			harSammeBosted: false,
-			gradering: Gradering.FORTROLIG,
+			gradering: 'Ny gradering fra PDL' as any,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			kjonn: 'M'
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.ANNET_BOSTED
 		},
 		{
 			fornavn: 'Harry',
-			mellomnavn: null,
-			etternavn: 'Bosch',
-			forkortetNavn: 'Harry Bosch',
-			fodselsnummer: '10108000392',
 			fodselsdato: '2014-05-24',
-			dodsdato: null,
-			harSammeBosted: true,
 			gradering: Gradering.UGRADERT,
 			erEgenAnsatt: false,
 			harVeilederTilgang: false,
-			kjonn: 'M'
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED
 		},
 		{
 			fornavn: 'Satoshi',
-			mellomnavn: null,
-			etternavn: 'Nakamoto',
-			forkortetNavn: 'Satoshi Nakamoto',
-			fodselsnummer: '10108000398',
 			fodselsdato: '2005-10-04',
-			dodsdato: null,
-			harSammeBosted: false,
 			erEgenAnsatt: false,
 			harVeilederTilgang: true,
 			gradering: Gradering.STRENGT_FORTROLIG,
-			kjonn: 'K'
+			dodsdato: null,
+			relasjonsBosted: RelasjonsBosted.UKJENT_BOSTED
 		}
 	],
 	kontonummer: '12345678911',
@@ -368,25 +350,19 @@ const personaliav2: PersonaliaV2Info = {
 		epostSistOppdatert: '10.04.2010',
 		master: 'KRR'
 	},
-	statsborgerskap: 'NORGE',
+	statsborgerskap: ['NORGE', 'POLEN'],
 	partner: {
 		gradering: Gradering.STRENGT_FORTROLIG_UTLAND,
 		erEgenAnsatt: true,
 		harSammeBosted: true,
 		harVeilederTilgang: false
 	},
-	sivilstand: undefined,
-	//sivilstand: {
-	//	sivilstand: 'Gift',
-	//	fraDato: '2012-08-20'
-	//},
-	//sivilstandliste: undefined,
 	sivilstandliste: [
 		{
 			sivilstand: 'Gift',
 			fraDato: '2012-08-20',
-			skjermet: true,
-			gradering: Gradering.UKJENT,
+			skjermet: null,
+			gradering: 'RANDOM_KODE' as any,
 			relasjonsBosted: RelasjonsBosted.SAMME_BOSTED,
 			master: 'Freg',
 			registrertDato: null
@@ -395,7 +371,7 @@ const personaliav2: PersonaliaV2Info = {
 			sivilstand: 'Separert_partner',
 			fraDato: '2019-06-01',
 			skjermet: false,
-			gradering: Gradering.UGRADERT,
+			gradering: 'Ny gradering fra PDL' as any,
 			relasjonsBosted: null,
 			master: 'PDL',
 			registrertDato: '2019-06-15T10:30:44'
@@ -644,7 +620,7 @@ const sykmeldtRegistering: RegistreringsData = {
 	}
 };
 
-export const veilarbpersonHandlers: RequestHandlersList = [
+export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
 	}),

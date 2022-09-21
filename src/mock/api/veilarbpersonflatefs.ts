@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 import {
 	Features,
 	SPOR_OM_TILBAKEMELDING,
@@ -11,7 +11,7 @@ const features: Features = {
 	[INNSATSGRUPPE_OG_HOVEDMAL_FRA_VEDTAKSSTOTTE]: false
 };
 
-export const veilarbpersonflatefsHandlers: RequestHandlersList = [
+export const veilarbpersonflatefsHandlers: RequestHandler[] = [
 	rest.get('/veilarbpersonflatefs/api/feature', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(features));
 	})

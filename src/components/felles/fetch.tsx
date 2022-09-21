@@ -5,9 +5,9 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import './fetch.less';
 import { Alert } from '@navikt/ds-react';
 
-export const Feilmelding = (props: { tekst?: string }) => (
+export const Feilmelding = (props: { children?: any }) => (
 	<Alert variant="warning" className="alertstripe_intern">
-		{props.tekst ? props.tekst : 'Kunne ikke laste data, prøv på nytt ...'}
+		{props.children ? props.children : 'Kunne ikke laste data, prøv på nytt ...'}
 	</Alert>
 );
 

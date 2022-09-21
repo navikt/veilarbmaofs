@@ -1,15 +1,15 @@
 import { rest } from 'msw';
-import { RequestHandlersList } from 'msw/lib/types/setupWorker/glossary';
+import { RequestHandler } from 'msw';
 import { VeilederData } from '../../rest/datatyper/veileder';
 
 const veileder: VeilederData = {
-	etternavn: 'Destructor',
-	fornavn: 'The',
+	etternavn: 'Veiledersen',
+	fornavn: 'TJ',
 	ident: 'Z123456',
-	navn: 'The Destructor'
+	navn: 'TJ Veiledersen'
 };
 
-export const veilarbveilederHandlers: RequestHandlersList = [
+export const veilarbveilederHandlers: RequestHandler[] = [
 	rest.get('/veilarbveileder/api/veileder/:veilederId', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(veileder));
 	})

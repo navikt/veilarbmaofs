@@ -1,12 +1,16 @@
-import { createFrontendLogger, DEFAULT_FRONTENDLOGGER_API_URL } from '@navikt/frontendlogger/lib';
-import { APP_NAME } from './konstanter';
+import { sendEventTilVeilarbperson } from '../rest/api';
 
-export const logger = createFrontendLogger(APP_NAME, DEFAULT_FRONTENDLOGGER_API_URL);
-
-export const logError = (fields?: {}, tags?: {}): void => {
-	logger.event(`${APP_NAME}.error`, fields, tags);
-};
+export interface FrontendEvent {
+	name: string;
+	fields?: {};
+	tags?: {};
+}
 
 export const logMetrikk = (metrikkNavn: string, fields?: {}, tags?: {}): void => {
-	logger.event(`${APP_NAME}.metrikker.${metrikkNavn}`, fields, tags);
+	if (process.env.REACT_APP_DEV === 'true') {
+		// eslint-disable-next-line no-console
+		console.log('Event', metrikkNavn, 'Fields:', fields, 'Tags:', tags);
+	} else {
+		sendEventTilVeilarbperson({ name: `${metrikkNavn}`, fields, tags });
+	}
 };
