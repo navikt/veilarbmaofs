@@ -1,5 +1,4 @@
 import React from 'react';
-import { formateStringInUpperAndLowerCase } from '../../../../utils';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import { fetchSpraakTolk } from '../../../../rest/api';
@@ -10,8 +9,9 @@ import { hentMalform } from '../../../../utils/konstanter';
 import { isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
+import StatsborgerskapInfo from './statsborgerskapinfo';
 
-function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malform: StringOrNothing }) {
+function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[]; malform: StringOrNothing }) {
 	const { kontonummer, statsborgerskap, malform, ...rest } = props;
 	const { fnr } = useAppStore();
 	const tilrettelagtKommunikasjon = usePromise<AxiosResponse<TilrettelagtKommunikasjonData>>(() =>
@@ -21,11 +21,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string; malf
 	return (
 		<div {...rest}>
 			<Kontonummer kontonummer={kontonummer} />
-			<InformasjonsbolkEnkel
-				header="Statsborgerskap"
-				value={formateStringInUpperAndLowerCase(statsborgerskap)}
-				childclassname="innrykk"
-			/>
+			<StatsborgerskapInfo stasborgerskapData={props.statsborgerskap} />
 			{isResolved(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.result.data} />
 			)}
