@@ -34,11 +34,11 @@ import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingD
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 import { AxiosError, AxiosResponse } from 'axios';
 
-interface cvPanelProps {
+interface CvPanelProps {
 	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson, any>, AxiosError<unknown, any>>;
 }
 
-const CvPanelInnhold = (props: cvPanelProps): React.ReactElement => {
+const CvPanelInnhold = (props: CvPanelProps): React.ReactElement => {
 	const { fnr } = useAppStore();
 
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));

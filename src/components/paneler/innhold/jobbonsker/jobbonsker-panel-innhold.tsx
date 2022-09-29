@@ -59,11 +59,11 @@ const harJobbonskerdata = (cvOgJobbonsker: UsePromise<AxiosResponse<ArenaPerson>
 	);
 };
 
-interface jobbonskerPanelProps {
+interface JobbonskerPanelProps {
 	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson, any>, AxiosError<unknown, any>>;
 }
 
-const JobbonskerPanelinnhold = (props: jobbonskerPanelProps): React.ReactElement => {
+const JobbonskerPanelinnhold = (props: JobbonskerPanelProps): React.ReactElement => {
 	const { fnr } = useAppStore();
 
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
