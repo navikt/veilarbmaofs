@@ -12,7 +12,7 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 		<div key={`utdanning-${index}`} className="underinformasjon">
 			<Label>{utdanning.tittel}</Label>
 
-			<BodyShort className="dypbla">{utdanning.studiested}</BodyShort>
+			<BodyShort>{utdanning.studiested}</BodyShort>
 			<BodyShort>{utdanning.utdanningsnivaa}</BodyShort>
 			<BodyShort>
 				Start- og sluttdato: {formaterDato(utdanning.fraDato, true)} -{' '}
