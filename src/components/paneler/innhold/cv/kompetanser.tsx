@@ -1,4 +1,3 @@
-import { Star } from '@navikt/ds-icons';
 import { BodyShort } from '@navikt/ds-react';
 import { Jobbprofil } from '../../../../rest/datatyper/arenaperson';
 import EMDASH from '../../../../utils/emdash';
@@ -9,14 +8,7 @@ function Kompetanser(props: Pick<Jobbprofil, 'kompetanse'>) {
 	const { kompetanse, ...rest } = props;
 
 	const kompetanser =
-		kompetanse && kompetanse.length > 0
-			? kompetanse?.map(kompetansen => (
-					<BodyShort className="kompetanse">
-						<Star />
-						{kompetansen.tittel}
-					</BodyShort>
-			  ))
-			: EMDASH;
+		kompetanse && kompetanse.length > 0 ? kompetanse?.map(kompetansen => <li>{kompetansen.tittel}</li>) : EMDASH;
 
 	return (
 		<Informasjonsbolk
@@ -26,7 +18,7 @@ function Kompetanser(props: Pick<Jobbprofil, 'kompetanse'>) {
 			icon={<Kompetanserikon />}
 			{...rest}
 		>
-			{kompetanser}
+			<ul>{kompetanser}</ul>
 		</Informasjonsbolk>
 	);
 }
