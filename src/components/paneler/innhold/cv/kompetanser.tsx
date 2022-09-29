@@ -1,4 +1,3 @@
-import { BodyShort } from '@navikt/ds-react';
 import { Jobbprofil } from '../../../../rest/datatyper/arenaperson';
 import EMDASH from '../../../../utils/emdash';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
