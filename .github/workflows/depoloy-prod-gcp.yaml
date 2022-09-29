@@ -36,3 +36,9 @@ jobs:
               uses: google-github-actions/setup-gcloud@v0
             - name: Upload files to GCS
               run: gsutil -m rsync -r build gs://veilarbmaofs-prod
+            - name: Create release
+              uses: softprops/action-gh-release@v1
+              with:
+                  name: Release to prod
+                  target_commitish: master
+                  tag_name: release/prod@${{ github.sha }}
