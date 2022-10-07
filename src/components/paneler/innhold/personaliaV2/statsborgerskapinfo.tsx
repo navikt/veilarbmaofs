@@ -1,28 +1,18 @@
-import { isArray, isString } from '@craco/craco/dist/lib/utils';
-import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
-import { formateStringInUpperAndLowerCase } from '../../../../utils';
-import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import React from 'react';
+import { BodyShort } from '@navikt/ds-react';
+import Informasjonsbolk from '../../../felles/informasjonsbolk';
+import { formateStringInUpperAndLowerCase } from '../../../../utils';
 
-function StatsborgerskapInfo(props: { stasborgerskapData: string[] | string }) {
-	const headerVerdi = 'Statsborgerskap';
-	const statsborgerskapList = (statsborgerskapListData: string[]) =>
-		statsborgerskapListData.map(statsborgerskap => formateStringInUpperAndLowerCase(statsborgerskap));
+function StatsborgerskapInfo(props: { statsborgerskapData: string[] }) {
+	const content = props.statsborgerskapData.map(statsborgerskap => {
+		return (
+			<BodyShort className="innrykk" key={statsborgerskap}>
+				{formateStringInUpperAndLowerCase(statsborgerskap)}
+			</BodyShort>
+		);
+	});
 
-	return (
-		<div>
-			{isArray(props.stasborgerskapData) && (
-				<InformasjonsbolkListe header={headerVerdi} list={statsborgerskapList(props.stasborgerskapData)} />
-			)}
-			{isString(props.stasborgerskapData) && (
-				<InformasjonsbolkEnkel
-					header={headerVerdi}
-					value={formateStringInUpperAndLowerCase(props.stasborgerskapData)}
-					childclassname="innrykk"
-				/>
-			)}
-		</div>
-	);
+	return <Informasjonsbolk header="Statsborgerskap">{content}</Informasjonsbolk>;
 }
 
 export default StatsborgerskapInfo;

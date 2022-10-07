@@ -1,28 +1,33 @@
 import React from 'react';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import Hide from '../../../felles/hide';
 import { formaterDato, safeSort, safeMap } from '../../../../utils';
+import { BodyShort, Label } from '@navikt/ds-react';
+import { ReactComponent as Arbeidsikon } from './ikoner/arbeidserfaring.svg';
 
 function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 	const { arbeidserfaring: arenaErfaring, ...rest } = props;
 	const sortedErfaringer = arenaErfaring.sort((a, b) => safeSort(b.tilDato, a.tilDato));
 	const erfaringer = safeMap(sortedErfaringer, (erfaring, index) => (
 		<div key={`arbeidserfaring-${index}`} className="underinformasjon">
-			<Element>{erfaring.arbeidsgiver}</Element>
+			<Label>{erfaring.tittel}</Label>
 
-			<Normaltekst>{erfaring.tittel}</Normaltekst>
-			<Hide if={erfaring.beskrivelse == null}>
-				<Normaltekst className="italic">{erfaring.beskrivelse}</Normaltekst>
-			</Hide>
-			<Normaltekst>Fra: {formaterDato(erfaring.fraDato, true)}</Normaltekst>
-			<Normaltekst>Til: {formaterDato(erfaring.tilDato, true)}</Normaltekst>
+			<BodyShort>{erfaring.arbeidsgiver}</BodyShort>
+			<BodyShort>Sted: {erfaring.sted}</BodyShort>
+			<BodyShort>
+				Start- og sluttdato: {formaterDato(erfaring.fraDato, true)} -{' '}
+				{erfaring.tilDato ? formaterDato(erfaring.tilDato, true) : 'nå'}
+			</BodyShort>
+			{erfaring.beskrivelse && (
+				<BodyShort>
+					Arbeidsoppgaver: <em>{erfaring.beskrivelse}</em>
+				</BodyShort>
+			)}
 		</div>
 	));
 
 	return (
-		<Informasjonsbolk header="Arbeidserfaring" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Arbeidserfaring" headerTypo="ingress" icon={<Arbeidsikon />} {...rest}>
 			{erfaringer}
 		</Informasjonsbolk>
 	);

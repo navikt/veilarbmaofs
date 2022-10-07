@@ -8,10 +8,7 @@ export const [AppStoreProvider, useAppStore] = constate(
 		const [fnr, setFnr] = useState(initalValues.fnr);
 		const [enhetId, setEnhetId] = useState(initalValues.enhetId);
 		const [features, setFeatures] = useState(initialFeatures);
-		const [valgteSidemenyElmenter, setValgteSidemenyElementer] = useState<string[]>([
-			sidemenyElementId.oppfolging,
-			sidemenyElementId.cv
-		]);
+		const [valgteSidemenyElmenter, setValgteSidemenyElementer] = useState<string[]>([sidemenyElementId.oppfolging]);
 		const sidemenyElementer = initalValues.sidemenyElementer;
 
 		const setIsOpenSidemenyElement = (sidemenyElement: SidemenyElement) => {

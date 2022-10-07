@@ -7,7 +7,7 @@ export const fetchRegistrering = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/registrering?fnr=${fnr}`);
 };
 
-export const fetchCvOgJobbprofil = (fnr: string) => {
+export const fetchCvOgJobbonsker = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/cv_jobbprofil?fnr=${fnr}`);
 };
 

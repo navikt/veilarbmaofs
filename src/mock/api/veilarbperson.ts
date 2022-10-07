@@ -1,6 +1,12 @@
 import { rest } from 'msw';
 import { RequestHandler } from 'msw';
-import { ArenaPerson, FagdokumentType, KursVarighetEnhet } from '../../rest/datatyper/arenaperson';
+import {
+	ArenaPerson,
+	FagdokumentType,
+	JobbprofilOppstartstype,
+	KursVarighetEnhet,
+	SprakNiva
+} from '../../rest/datatyper/arenaperson';
 import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
@@ -11,7 +17,7 @@ const aktorId: AktorId = {
 	aktorId: '1234567'
 };
 
-const cvOgJobbprofil: ArenaPerson = {
+const cvOgJobbonsker: ArenaPerson = {
 	sistEndret: '2019-01-15T07:52:35.456+01:00',
 	sammendrag:
 		'Jeg er en maritime executive som har mastergrad og bachlorgrad. Har vært teknisk direktor i mange år og flyttet hjem til Norge hvor jeg søker arbeide innenfor then maritime sektor. Har gode referanser og variert seiling og onshore basert arbeid.',
@@ -19,39 +25,50 @@ const cvOgJobbprofil: ArenaPerson = {
 		{
 			tittel: 'Maskinsjef',
 			arbeidsgiver: 'viola enviromental',
-			sted: null,
+			sted: 'Langtvekkistan',
 			beskrivelse: 'Beskrivelse av arbeidserfaring',
 			fraDato: '2010-04',
 			tilDato: '2017-06'
+		},
+		{
+			tittel: 'Arbeidskar',
+			arbeidsgiver: 'Lokale arbeidskarforening',
+			sted: 'Oppdal',
+			beskrivelse: 'Krever en kar å drive med arbeid',
+			fraDato: '2017-08',
+			tilDato: null
 		}
 	],
 	fagdokumentasjoner: [
 		{
-			type: FagdokumentType.MESTERBREV,
-			tittel: null
+			tittel: 'Mesterbrev baker',
+			type: FagdokumentType.MESTERBREV
 		},
 		{
-			type: FagdokumentType.SVENNEBREV_FAGBREV,
-			tittel: 'Tittelen kommer her'
+			tittel: 'Yrkeskompetanse helsesekretær',
+			type: FagdokumentType.SVENNEBREV_FAGBREV
 		}
 	],
 	utdanning: [
 		{
 			tittel: 'Andre servicefag, andre, uspesifisert utdanningsgruppe, høyere nivå',
+			utdanningsnivaa: 'Doktorgrad',
 			studiested: 'Pasific University',
 			beskrivelse: 'Beskrivelse av utdanning',
 			fraDato: '1999-06',
-			tilDato: '2003-06'
+			tilDato: null
 		},
 		{
 			tittel: 'Cand.scient.-utdanning, mekanikk',
-			studiested: 'Pasific university',
+			utdanningsnivaa: 'Høyere utdanning, 1-4 år',
+			studiested: 'Pasific university, kjempelangt studiested',
 			beskrivelse: null,
 			fraDato: '1999-06',
 			tilDato: '2003-06'
 		},
 		{
 			tittel: 'Teknisk fagskole, linje for maritime fag og fiskerifag, toårig',
+			utdanningsnivaa: 'Folkehøgskole',
 			studiested: 'arendal maritime hoyskole',
 			beskrivelse: null,
 			fraDato: '1989-06',
@@ -92,9 +109,10 @@ const cvOgJobbprofil: ArenaPerson = {
 	],
 	forerkort: [
 		{
-			klasse: 'B',
-			fraDato: '2017-08-01',
-			utloperDato: '2118-12-01'
+			klasse: 'B'
+		},
+		{
+			klasse: 'C1'
 		}
 	],
 	kurs: [
@@ -108,10 +126,15 @@ const cvOgJobbprofil: ArenaPerson = {
 			}
 		},
 		{
-			tittel: 'grønn',
-			arrangor: 'falk',
-			tidspunkt: '2017-10'
+			tittel: 'Brillekurs',
+			arrangor: 'Norsk Brilleslangeforbund',
+			tidspunkt: '2022-08-01',
+			varighet: {
+				varighet: 2,
+				tidsenhet: KursVarighetEnhet.MND
+			}
 		},
+
 		{
 			tittel: 'blå',
 			arrangor: 'falk',
@@ -126,21 +149,27 @@ const cvOgJobbprofil: ArenaPerson = {
 	godkjenninger: [
 		{
 			tittel: 'Autorisasjon som lege',
+			utsteder: 'Norsk legeforening',
+			gjennomfortDato: '2018-05-17',
+			utloperDato: '2118-12-31'
+		},
+		{
+			tittel: 'Bårførerbevis',
 			utsteder: null,
-			gjennomfortDato: '2018-05',
-			utloperDato: '2118-12'
+			gjennomfortDato: '2020-02-02',
+			utloperDato: null
 		}
 	],
 	andreGodkjenninger: [
 		{
 			tittel: 'Sikkerhetskurs: Diverse spesialkurs',
-			utsteder: null,
-			gjennomfortDato: '2018-05',
-			utloperDato: '2118-12'
+			utsteder: 'Diverse spesialkurs A/S',
+			gjennomfortDato: '2018-05-04',
+			utloperDato: '2118-12-20'
 		},
 		{
 			tittel: 'Maskinoffisersertifikat: Klasse 1',
-			utsteder: null,
+			utsteder: 'Norsk maskinoffiserskole',
 			gjennomfortDato: '2014-12',
 			utloperDato: '2118-12'
 		},
@@ -148,13 +177,13 @@ const cvOgJobbprofil: ArenaPerson = {
 			tittel: 'Kjelpassersertifikat: Rødt sertifikat',
 			utsteder: null,
 			gjennomfortDato: '1974-07',
-			utloperDato: '2118-12'
+			utloperDato: null
 		}
 	],
 	sprak: [
 		{
 			sprak: 'Dansk',
-			muntligNiva: 'Godt',
+			muntligNiva: SprakNiva.FOERSTESPRAAK,
 			skriftligNiva: 'Godt'
 		},
 		{
@@ -175,79 +204,65 @@ const cvOgJobbprofil: ArenaPerson = {
 	],
 	jobbprofil: {
 		sistEndret: '2019-01-15T07:52:35.462+01:00',
-		onsketYrke: [],
+		onsketYrke: [
+			{
+				tittel: 'Vinduspusser'
+			}
+		],
 		onsketArbeidssted: [
 			{
-				stedsnavn: 'Søgne',
-				kode: 'NO10.1018'
+				stedsnavn: 'Søgne'
 			},
 			{
-				stedsnavn: 'Østfold',
-				kode: 'NO01'
+				stedsnavn: 'Østfold'
 			},
 			{
-				stedsnavn: 'Akershus',
-				kode: 'NO02'
+				stedsnavn: 'Akershus'
 			},
 			{
-				stedsnavn: 'Oslo',
-				kode: 'NO03'
+				stedsnavn: 'Oslo'
 			},
 			{
-				stedsnavn: 'Oppland',
-				kode: 'NO05'
+				stedsnavn: 'Oppland'
 			},
 			{
-				stedsnavn: 'Buskerud',
-				kode: 'NO06'
+				stedsnavn: 'Buskerud'
 			},
 			{
-				stedsnavn: 'Vestfold',
-				kode: 'NO07'
+				stedsnavn: 'Vestfold'
 			},
 			{
-				stedsnavn: 'Telemark',
-				kode: 'NO08'
+				stedsnavn: 'Telemark'
 			},
 			{
-				stedsnavn: 'Aust-Agder',
-				kode: 'NO09'
+				stedsnavn: 'Aust-Agder'
 			},
 			{
-				stedsnavn: 'Vest-Agder',
-				kode: 'NO10'
+				stedsnavn: 'Vest-Agder'
 			},
 			{
-				stedsnavn: 'Rogaland',
-				kode: 'NO11'
+				stedsnavn: 'Rogaland'
 			},
 			{
-				stedsnavn: 'Hordaland',
-				kode: 'NO12'
+				stedsnavn: 'Hordaland'
 			},
 			{
-				stedsnavn: 'Sogn og Fjordane',
-				kode: 'NO14'
+				stedsnavn: 'Sogn og Fjordane'
 			},
 			{
-				stedsnavn: 'Møre og Romsdal',
-				kode: 'NO15'
+				stedsnavn: 'Møre og Romsdal'
 			},
 			{
-				stedsnavn: 'Nordland',
-				kode: 'NO18'
+				stedsnavn: 'Nordland'
 			},
 			{
-				stedsnavn: 'Finnmark',
-				kode: 'NO20'
+				stedsnavn: 'Finnmark'
 			},
 			{
-				stedsnavn: 'Øvrige områder',
-				kode: 'NO99'
+				stedsnavn: 'Øvrige områder'
 			},
 			{
-				stedsnavn: 'Trøndelag',
-				kode: 'NO50'
+				stedsnavn: 'Trøndelag'
 			}
 		],
 		onsketAnsettelsesform: [
@@ -265,24 +280,67 @@ const cvOgJobbprofil: ArenaPerson = {
 			},
 			{
 				tittel: 'SESONG'
+			},
+			{
+				tittel: 'LAERLING'
+			},
+			{
+				tittel: 'SELVSTENDIG_NAERINGSDRIVENDE'
+			},
+			{
+				tittel: 'FERIEJOBB'
+			},
+			{
+				tittel: 'ANNET'
 			}
 		],
 		onsketArbeidstidsordning: [
 			{
-				tittel: 'TURNUS'
+				tittel: 'DAGTID'
+			},
+			{
+				tittel: 'KVELD'
+			},
+			{
+				tittel: 'NATT'
+			}
+		],
+
+		onsketArbeidsdagordning: [
+			{
+				tittel: 'UKEDAGER'
+			},
+			{
+				tittel: 'LOERDAG'
+			},
+			{
+				tittel: 'SOENDAG'
+			}
+		],
+		onsketArbeidsskiftordning: [
+			{
+				tittel: 'SKIFT'
 			},
 			{
 				tittel: 'VAKT'
 			},
 			{
-				tittel: 'SKIFT'
+				tittel: 'TURNUS'
 			}
 		],
 		heltidDeltid: {
 			heltid: true,
-			deltid: false
+			deltid: true
 		},
-		kompetanse: []
+		kompetanse: [
+			{
+				tittel: 'Salg av utstyr til bakeribransjen'
+			},
+			{
+				tittel: 'Førstehjelpskurs for strømulykker'
+			}
+		],
+		oppstart: JobbprofilOppstartstype.ETTER_TRE_MND
 	}
 };
 
@@ -622,7 +680,7 @@ const sykmeldtRegistering: RegistreringsData = {
 
 export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/cv_jobbprofil', (req, res, ctx) => {
-		return res(ctx.delay(500), ctx.json(cvOgJobbprofil));
+		return res(ctx.delay(500), ctx.json(cvOgJobbonsker));
 	}),
 	rest.get('/veilarbperson/api/person/aktorid', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(aktorId));
@@ -630,7 +688,6 @@ export const veilarbpersonHandlers: RequestHandler[] = [
 	rest.get('/veilarbperson/api/person/registrering', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(ordinaerRegistering));
 	}),
-
 	rest.get('/veilarbperson/api/v2/person', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(personaliav2));
 	}),

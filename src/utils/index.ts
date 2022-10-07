@@ -125,7 +125,7 @@ export function formaterVarighet(varighet: Kursvarighet): string {
 		case KursVarighetEnhet.UKE:
 			enhetTekst = storreEnnEn ? 'uker' : 'uke';
 			break;
-		case KursVarighetEnhet.MANED:
+		case KursVarighetEnhet.MND:
 			enhetTekst = storreEnnEn ? 'måneder' : 'måned';
 			break;
 		default:
@@ -150,7 +150,7 @@ export function formateStringInUpperAndLowerCase(str: OrNothing<string>) {
 	return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : EMDASH;
 }
 
-export function formateStringInUpperAndLowerCaseSivilstand(str: OrNothing<string>) {
+export function formatStringInUpperAndLowerCaseUnderscore(str: OrNothing<string>) {
 	return str
 		? str.replaceAll('_', ' ').charAt(0).toUpperCase() + str.replaceAll('_', ' ').slice(1).toLowerCase()
 		: EMDASH;
