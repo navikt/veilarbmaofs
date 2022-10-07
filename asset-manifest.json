@@ -1,15 +1,25 @@
 {
   "files": {
-    "main.css": "/veilarbmaofs/static/css/main.71544900.css",
-    "main.js": "/veilarbmaofs/static/js/main.0271fb58.js",
+    "main.css": "/veilarbmaofs/static/css/main.61d12b6d.css",
+    "main.js": "/veilarbmaofs/static/js/main.e2c0f152.js",
+    "static/media/sprak.svg": "/veilarbmaofs/static/media/sprak.9f65b8d3d2fe7c5a2372fbb29b0f7656.svg",
+    "static/media/utdanning.svg": "/veilarbmaofs/static/media/utdanning.53fd0320341e83b38632985978ce239e.svg",
+    "static/media/arbeidserfaring.svg": "/veilarbmaofs/static/media/arbeidserfaring.ed2530e1eff15002b5be1b400cc34ed2.svg",
+    "static/media/offentlige-godkjenninger.svg": "/veilarbmaofs/static/media/offentlige-godkjenninger.05bf3debae6977b1d94cff6a421be101.svg",
+    "static/media/kurs.svg": "/veilarbmaofs/static/media/kurs.45c0ffd790d98cb0dfc21ec68dcaca53.svg",
+    "static/media/fagbrev.svg": "/veilarbmaofs/static/media/fagbrev.cb2a3374a03e9a24c7b2c6d6ee398702.svg",
+    "static/media/andre-godkjenninger.svg": "/veilarbmaofs/static/media/andre-godkjenninger.78cd0c941b7a3c2a339d79dcb3316e40.svg",
+    "static/media/annen-erfaring.svg": "/veilarbmaofs/static/media/annen-erfaring.8cb263b71cc4b7b271075a637d88b47f.svg",
+    "static/media/forerkort.svg": "/veilarbmaofs/static/media/forerkort.78109a448b60426ffa6a60fc78caa559.svg",
     "static/media/tilbakemelding.svg": "/veilarbmaofs/static/media/tilbakemelding.b08889cc4e043b3bac553d0b074c831f.svg",
     "index.html": "/veilarbmaofs/index.html",
+    "static/media/kompetanser.svg": "/veilarbmaofs/static/media/kompetanser.024e545a86fe11a88ada75e55aded41f.svg",
     "static/media/lukk.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74cd0bdb867ec964ace6e3db7b.svg",
-    "main.71544900.css.map": "/veilarbmaofs/static/css/main.71544900.css.map",
-    "main.0271fb58.js.map": "/veilarbmaofs/static/js/main.0271fb58.js.map"
+    "main.61d12b6d.css.map": "/veilarbmaofs/static/css/main.61d12b6d.css.map",
+    "main.e2c0f152.js.map": "/veilarbmaofs/static/js/main.e2c0f152.js.map"
   },
   "entrypoints": [
-    "static/css/main.71544900.css",
-    "static/js/main.0271fb58.js"
+    "static/css/main.61d12b6d.css",
+    "static/js/main.e2c0f152.js"
   ]
 }
