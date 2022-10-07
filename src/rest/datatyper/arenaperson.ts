@@ -5,6 +5,7 @@ type YearMonthDay = StringOrNothing; // er på formatet YYYY-MM-DD
 
 interface Utdanning {
 	tittel?: string;
+	utdanningsnivaa: string;
 	studiested: StringOrNothing;
 	beskrivelse: StringOrNothing;
 	fraDato: YearMonth;
@@ -29,15 +30,13 @@ interface AnnenErfaring {
 
 interface Forerkort {
 	klasse: StringOrNothing;
-	fraDato: YearMonthDay;
-	utloperDato: YearMonthDay;
 }
 
 interface Godkjenning {
 	tittel: StringOrNothing;
 	utsteder: StringOrNothing;
-	gjennomfortDato: YearMonth;
-	utloperDato: YearMonth;
+	gjennomfortDato: YearMonthDay;
+	utloperDato: YearMonthDay;
 }
 
 type AnnenGodkjenning = Godkjenning;
@@ -59,7 +58,7 @@ interface Sprak {
 interface Kurs {
 	tittel: StringOrNothing;
 	arrangor: StringOrNothing;
-	tidspunkt?: YearMonth;
+	tidspunkt?: YearMonthDay;
 	varighet?: Kursvarighet;
 }
 
@@ -72,7 +71,7 @@ export enum KursVarighetEnhet {
 	TIME = 'TIME',
 	DAG = 'DAG',
 	UKE = 'UKE',
-	MANED = 'MANED'
+	MND = 'MND'
 }
 
 export interface Jobbprofil {
@@ -81,8 +80,11 @@ export interface Jobbprofil {
 	onsketArbeidssted: JobbprofilArbeidssted[];
 	onsketAnsettelsesform: JobbprofilAnsettelsesform[];
 	onsketArbeidstidsordning: JobbprofilArbeidstidsordning[];
+	onsketArbeidsskiftordning: JobbprofilArbeidsskiftordning[];
+	onsketArbeidsdagordning: JobbprofilArbeidsdagordning[];
 	heltidDeltid: JobbprofilHeltidDeltid;
-	kompetanse: JobbprofilKompetanse[];
+	kompetanse?: JobbprofilKompetanse[];
+	oppstart: JobbprofilOppstartstype;
 }
 
 interface JobbprofilYrke {
@@ -91,7 +93,6 @@ interface JobbprofilYrke {
 
 interface JobbprofilArbeidssted {
 	stedsnavn: string;
-	kode: string;
 }
 
 interface JobbprofilAnsettelsesform {
@@ -102,9 +103,23 @@ interface JobbprofilArbeidstidsordning {
 	tittel: string;
 }
 
+interface JobbprofilArbeidsdagordning {
+	tittel: string;
+}
+
+interface JobbprofilArbeidsskiftordning {
+	tittel: string;
+}
+
 interface JobbprofilHeltidDeltid {
 	heltid: boolean;
 	deltid: boolean;
+}
+
+export enum JobbprofilOppstartstype {
+	LEDIG_NAA = 'LEDIG_NAA',
+	ETTER_TRE_MND = 'ETTER_TRE_MND',
+	ETTER_AVTALE = 'ETTER_AVTALE'
 }
 
 interface JobbprofilKompetanse {
@@ -118,9 +133,7 @@ export enum FagdokumentType {
 }
 
 export interface Fagdokumentasjon {
-	id?: string;
-	tittel: string | null;
-	konseptId?: string;
+	tittel: string;
 	type: FagdokumentType;
 }
 

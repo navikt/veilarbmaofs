@@ -15,26 +15,37 @@ import AndreGodkjenninger from './andre-godkjenninger';
 import Forerkort from './forerkort';
 import Sprak from './sprak';
 import Fagdokumentasjon from './fagdokumentasjoner';
+import Kompetanser from './kompetanser';
 import { byggPamUrl } from '../../../../utils';
-import { fetchAktorId, fetchCvOgJobbprofil, fetchUnderOppfolging } from '../../../../rest/api';
+import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
 import { Alert } from '@navikt/ds-react';
-import { isNotStartedOrPending, isRejected, isResolved, useAxiosPromise } from '../../../../utils/use-promise';
+import {
+	isNotStartedOrPending,
+	isRejected,
+	isResolved,
+	useAxiosPromise,
+	UsePromise
+} from '../../../../utils/use-promise';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import { UnderOppfolgingData } from '../../../../rest/datatyper/underOppfolgingData';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
+import { AxiosError, AxiosResponse } from 'axios';
 
-const CvPanelInnhold = (): React.ReactElement => {
+interface CvPanelProps {
+	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>;
+}
+
+const CvPanelInnhold = (props: CvPanelProps): React.ReactElement => {
 	const { fnr } = useAppStore();
 
-	const cvOgJobbprofil = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbprofil(fnr));
 	const underOppfolging = useAxiosPromise<UnderOppfolgingData>(() => fetchUnderOppfolging(fnr));
 	const aktorId = useAxiosPromise<AktorId>(() => fetchAktorId(fnr));
 
 	if (
-		isNotStartedOrPending(cvOgJobbprofil) ||
+		isNotStartedOrPending(props.cvJobbonskerPromise) ||
 		isNotStartedOrPending(underOppfolging) ||
 		isNotStartedOrPending(aktorId)
 	) {
@@ -60,8 +71,11 @@ const CvPanelInnhold = (): React.ReactElement => {
 	const endreCvUrl = byggPamUrl(fnr);
 	const lastNedCvUrl = byggPamUrl(fnr, '/cv/pdf');
 
-	if (cvOgJobbprofil.error?.response) {
-		if (cvOgJobbprofil.error.response.status === 403 || cvOgJobbprofil.error.response.status === 401) {
+	if (props.cvJobbonskerPromise.error?.response) {
+		if (
+			props.cvJobbonskerPromise.error.response.status === 403 ||
+			props.cvJobbonskerPromise.error.response.status === 401
+		) {
 			return (
 				<Alert variant="info" className="cv-alert-ikke-tilgang alertstripe_intern">
 					Du kan ikke se CV-en, be brukeren om å:
@@ -76,7 +90,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 		}
 	}
 
-	if (cvOgJobbprofil.error?.response?.status === 404 || cvOgJobbprofil.result?.status === 204) {
+	if (props.cvJobbonskerPromise.error?.response?.status === 404 || props.cvJobbonskerPromise.result?.status === 204) {
 		return (
 			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert CV.&nbsp;&nbsp;
@@ -87,11 +101,11 @@ const CvPanelInnhold = (): React.ReactElement => {
 				)}
 			</Alert>
 		);
-	} else if (!isResolved(cvOgJobbprofil)) {
+	} else if (!isResolved(props.cvJobbonskerPromise)) {
 		return <Feilmelding />;
 	}
 
-	if (cvOgJobbprofil.result?.data) {
+	if (props.cvJobbonskerPromise.result?.data) {
 		const {
 			fagdokumentasjoner,
 			sammendrag,
@@ -103,8 +117,9 @@ const CvPanelInnhold = (): React.ReactElement => {
 			forerkort,
 			sprak,
 			kurs,
-			sistEndret
-		} = cvOgJobbprofil.result.data;
+			sistEndret,
+			jobbprofil
+		} = props.cvJobbonskerPromise.result.data;
 
 		return (
 			<>
@@ -123,6 +138,7 @@ const CvPanelInnhold = (): React.ReactElement => {
 					<Forerkort forerkort={forerkort} />
 					<Fagdokumentasjon fagdokumentasjoner={fagdokumentasjoner} />
 					<Sprak sprak={sprak} />
+					<Kompetanser kompetanse={jobbprofil?.kompetanse} />
 				</FloatGrid>
 			</>
 		);

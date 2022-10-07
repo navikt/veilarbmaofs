@@ -1,25 +1,28 @@
 import React from 'react';
-import RegistreringPanel from './innhold/registrering/registrering-panel-innhold';
-import CvPanel from './innhold/cv/cv-panel-innhold';
-import JobbprofilPanelInnhold from './innhold/jobbprofil/jobbprofil-panel-innhold';
-import OppfolgingPanelInnhold from './innhold/oppfolging/oppfolging-panel-innhold';
-import Panel from './panel';
-import YtelserPanelInnhold from './innhold/ytelser/ytelser-panel-innhold';
-import PersonaliaV2PanelInnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
-import { fetchOppfolgingsstatus } from '../../rest/api';
+import OppfolgingPanelinnhold from './innhold/oppfolging/oppfolging-panel-innhold';
+import CvPanelInnhold from './innhold/cv/cv-panel-innhold';
+import JobbonskerPanelinnhold from './innhold/jobbonsker/jobbonsker-panel-innhold';
+import PersonaliaV2Panelinnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
+import RegistreringPanelinnhold from './innhold/registrering/registrering-panel-innhold';
+import YtelserPanelinnhold from './innhold/ytelser/ytelser-panel-innhold';
+import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
+import { fetchCvOgJobbonsker, fetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
-import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
-import './paneler.less';
 import { sidemenyElementId } from '../../utils/sidemeny';
 import { useAppStore } from '../../stores/app-store';
-import { isResolved, usePromise } from '../../utils/use-promise';
+import { isResolved, useAxiosPromise, usePromise } from '../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { OppfolgingsstatusData } from '../../rest/datatyper/oppfolgingsstatus';
+import { Accordion, Tag } from '@navikt/ds-react';
+import { ArenaPerson } from '../../rest/datatyper/arenaperson';
+import './paneler.less';
+import AccordionItemErrorBoundary from './accordion-item-error-boundary';
 
 export const Paneler: React.FC = () => {
 	const { fnr, isSidemenyElementOpen } = useAppStore();
 	const oppfolgingstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
+	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbonsker(fnr));
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
 	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
@@ -29,49 +32,53 @@ export const Paneler: React.FC = () => {
 
 	return (
 		<section className="paneler-container">
-			<div className="paneler">
-				<Panel
-					key={`panel-${sidemenyElementId.oppfolging}`}
+			<Accordion>
+				<AccordionItemErrorBoundary
 					name="oppfolging"
 					id={sidemenyElementId.oppfolging}
 					tittel="Oppfølging"
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.oppfolging)}
 				>
-					<OppfolgingPanelInnhold />
-				</Panel>
+					<OppfolgingPanelinnhold />
+				</AccordionItemErrorBoundary>
 
-				<Panel
-					key={`panel-${sidemenyElementId.cv}`}
+				<AccordionItemErrorBoundary
 					name="cv"
 					id={sidemenyElementId.cv}
-					tittel="CV"
+					tittel={
+						<>
+							CV
+							{cvOgJobbonsker.error?.response?.status === 404 && (
+								<Tag id="cv-tag" variant="warning" size="small">
+									Ingen CV registrert
+								</Tag>
+							)}
+						</>
+					}
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.cv)}
 				>
-					<CvPanel />
-				</Panel>
+					<CvPanelInnhold cvJobbonskerPromise={cvOgJobbonsker} />
+				</AccordionItemErrorBoundary>
 
-				<Panel
-					key={`panel-${sidemenyElementId.personaliaFraPdl}`}
-					name="personaliaFraPdl"
-					id={sidemenyElementId.personaliaFraPdl}
-					tittel="Personalia"
-					defaultOpen={isSidemenyElementOpen(sidemenyElementId.personaliaFraPdl)}
-				>
-					<PersonaliaV2PanelInnhold />
-				</Panel>
-
-				<Panel
-					key={`panel-${sidemenyElementId.jobbonsker}`}
+				<AccordionItemErrorBoundary
 					name="jobbonsker"
 					id={sidemenyElementId.jobbonsker}
 					tittel="Jobbønsker"
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.jobbonsker)}
 				>
-					<JobbprofilPanelInnhold />
-				</Panel>
+					<JobbonskerPanelinnhold cvJobbonskerPromise={cvOgJobbonsker} />
+				</AccordionItemErrorBoundary>
 
-				<Panel
-					key={`panel-${sidemenyElementId.registrering}`}
+				<AccordionItemErrorBoundary
+					name="personalia"
+					id={sidemenyElementId.personalia}
+					tittel="Personalia"
+					defaultOpen={isSidemenyElementOpen(sidemenyElementId.personalia)}
+				>
+					<PersonaliaV2Panelinnhold />
+				</AccordionItemErrorBoundary>
+
+				<AccordionItemErrorBoundary
 					name="registrering"
 					id={sidemenyElementId.registrering}
 					tittel={registreringPanelNavn}
@@ -81,21 +88,19 @@ export const Paneler: React.FC = () => {
 							: apneRegistrering
 					}
 				>
-					<RegistreringPanel />
-				</Panel>
+					<RegistreringPanelinnhold />
+				</AccordionItemErrorBoundary>
 
-				<Panel
-					key={`panel-${sidemenyElementId.ytelser}`}
+				<AccordionItemErrorBoundary
 					name="ytelser"
 					id={sidemenyElementId.ytelser}
 					tittel="Ytelser"
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
 				>
-					<YtelserPanelInnhold />
-				</Panel>
+					<YtelserPanelinnhold />
+				</AccordionItemErrorBoundary>
 
-				<Panel
-					key={`panel-${sidemenyElementId.tilretteleggingsbehov}`}
+				<AccordionItemErrorBoundary
 					name="tilretteleggingsbehov"
 					id={sidemenyElementId.tilretteleggingsbehov}
 					tittel="Behov for tilrettelegging"
@@ -109,8 +114,8 @@ export const Paneler: React.FC = () => {
 						fnr={fnr}
 						viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
 					/>
-				</Panel>
-			</div>
+				</AccordionItemErrorBoundary>
+			</Accordion>
 		</section>
 	);
 };

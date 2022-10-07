@@ -1,9 +1,8 @@
 import React from 'react';
 import { useAppStore } from '../../stores/app-store';
-
-import './sidemeny.less';
 import { scrollTilElement } from '../../utils/sidemeny';
 import { Heading, Panel } from '@navikt/ds-react';
+import './sidemeny.less';
 
 export const Sidemeny: React.FC = () => {
 	const { sidemenyElementer, setIsOpenSidemenyElement } = useAppStore();

@@ -3,6 +3,8 @@
 .veilarbmaofs {
 	.cv-panel-lenke {
 		margin-right: 1.5rem;
+		gap: 0;
+		font-size: 1rem;
 
 		svg {
 			height: 1.2rem;
@@ -26,6 +28,17 @@
 	.lenke-brukerprofil {
 		display: flex;
 		justify-content: flex-end;
+	}
+
+	.kompetanser {
+		display: flex;
+		flex-direction: column;
+
+		ul {
+			margin: 0;
+			padding-left: 0.9rem;
+			line-height: 22px;
+		}
 	}
 
 	@media (min-width: @screen-md-min) {

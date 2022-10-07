@@ -1,7 +1,7 @@
 import React from 'react';
 import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaPartner, PersonaliaSivilstandNy } from '../../../../rest/datatyper/personaliav2';
-import { formateLocalDate, formateStringInUpperAndLowerCaseSivilstand } from '../../../../utils';
+import { formateLocalDate, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import EMDASH from '../../../../utils/emdash';
 import {
@@ -16,7 +16,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst className="innrykk">{formateStringInUpperAndLowerCaseSivilstand(sivilstand)}</Normaltekst>
+			<Normaltekst className="innrykk">{formatStringInUpperAndLowerCaseUnderscore(sivilstand)}</Normaltekst>
 			{fraDato && <Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>}
 			{sivilstand && (
 				<Undertekst className="kilde-tekst">

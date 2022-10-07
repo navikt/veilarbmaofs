@@ -1,25 +1,20 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { formaterDato, safeMap, visEmdashHvisNull } from '../../../../utils';
+import { safeMap, visEmdashHvisNull } from '../../../../utils';
+import { ReactComponent as Forerkortikon } from './ikoner/forerkort.svg';
+import { BodyShort } from '@navikt/ds-react';
 
 type Props = Pick<ArenaPerson, 'forerkort'>;
 
 function Forerkort(props: Props) {
 	const { forerkort, ...rest } = props;
 	const forerkortListe = safeMap(forerkort, (enkeltForerkort, index) => (
-		<div key={`forerkort-${index}`} className="underinformasjon">
-			<Normaltekst key={`forerkort-${index}`} className="underinformasjon">
-				Klasse: {visEmdashHvisNull(enkeltForerkort.klasse)}
-			</Normaltekst>
-			<Normaltekst>Fra: {formaterDato(enkeltForerkort.fraDato)}</Normaltekst>
-			<Normaltekst>Utløper: {formaterDato(enkeltForerkort.utloperDato)}</Normaltekst>
-		</div>
+		<BodyShort key={`forerkort-${index}`}>Klasse {visEmdashHvisNull(enkeltForerkort.klasse)}</BodyShort>
 	));
 
 	return (
-		<Informasjonsbolk header="Førerkort" headerTypo="ingress" {...rest}>
+		<Informasjonsbolk header="Førerkort" headerTypo="ingress" icon={<Forerkortikon />} {...rest}>
 			{forerkortListe}
 		</Informasjonsbolk>
 	);
