@@ -1,9 +1,6 @@
 name: Deploy to dev
 on:
     workflow_dispatch:
-    push:
-        branches:
-            - dev
 env:
     CI: true
     TZ: Europe/Amsterdam
