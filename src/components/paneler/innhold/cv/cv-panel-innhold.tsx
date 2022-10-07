@@ -35,7 +35,7 @@ import { AktorId } from '../../../../rest/datatyper/aktor-id';
 import { AxiosError, AxiosResponse } from 'axios';
 
 interface CvPanelProps {
-	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson, any>, AxiosError<unknown, any>>;
+	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>;
 }
 
 const CvPanelInnhold = (props: CvPanelProps): React.ReactElement => {

@@ -60,7 +60,7 @@ const harJobbonskerdata = (cvOgJobbonsker: UsePromise<AxiosResponse<ArenaPerson>
 };
 
 interface JobbonskerPanelProps {
-	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson, any>, AxiosError<unknown, any>>;
+	cvJobbonskerPromise: UsePromise<AxiosResponse<ArenaPerson>, AxiosError>;
 }
 
 const JobbonskerPanelinnhold = (props: JobbonskerPanelProps): React.ReactElement => {
