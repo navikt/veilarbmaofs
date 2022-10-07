@@ -22,7 +22,7 @@ jobs:
             - name: Run tests
               run: npm run test
             - name: Build application
-              run: npm run build:gcp
+              run: npm run build
               env:
                   PUBLIC_URL: https://veilarbmaofs.dev.intern.nav.no
             - name: Authenticate to Google Cloud
