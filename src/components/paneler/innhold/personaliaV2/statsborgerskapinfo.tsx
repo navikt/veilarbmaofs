@@ -1,22 +1,18 @@
-import { formateStringInUpperAndLowerCase } from '../../../../utils';
 import React from 'react';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
+import Informasjonsbolk from '../../../felles/informasjonsbolk';
+import { formateStringInUpperAndLowerCase } from '../../../../utils';
 
-function StatsborgerskapInfo(props: { stasborgerskapData: string[] }) {
-	const headerVerdi = 'Statsborgerskap';
+function StatsborgerskapInfo(props: { statsborgerskapData: string[] }) {
+	const content = props.statsborgerskapData.map(statsborgerskap => {
+		return (
+			<BodyShort className="innrykk" key={statsborgerskap}>
+				{formateStringInUpperAndLowerCase(statsborgerskap)}
+			</BodyShort>
+		);
+	});
 
-	return (
-		<div className="informasjonsbolk">
-			<Element>{headerVerdi}</Element>
-			{props.stasborgerskapData.map(statsborgerskap => {
-				return (
-					<Normaltekst className="innrykk" key={statsborgerskap}>
-						{formateStringInUpperAndLowerCase(statsborgerskap)}
-					</Normaltekst>
-				);
-			})}
-		</div>
-	);
+	return <Informasjonsbolk header="Statsborgerskap">{content}</Informasjonsbolk>;
 }
 
 export default StatsborgerskapInfo;

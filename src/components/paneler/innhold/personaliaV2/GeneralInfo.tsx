@@ -21,7 +21,7 @@ function GeneralInfo(props: { kontonummer: string; statsborgerskap: string[]; ma
 	return (
 		<div {...rest}>
 			<Kontonummer kontonummer={kontonummer} />
-			<StatsborgerskapInfo stasborgerskapData={props.statsborgerskap} />
+			<StatsborgerskapInfo statsborgerskapData={statsborgerskap} />
 			{isResolved(tilrettelagtKommunikasjon) && (
 				<TilrettelagtKommunikasjon tilrettelagtKommunikasjon={tilrettelagtKommunikasjon.result.data} />
 			)}
