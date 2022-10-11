@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/veilarbmaofs/static/css/main.61d12b6d.css",
-    "main.js": "/veilarbmaofs/static/js/main.b5048b64.js",
+    "main.js": "/veilarbmaofs/static/js/main.45947f0f.js",
     "static/media/sprak.svg": "/veilarbmaofs/static/media/sprak.9f65b8d3d2fe7c5a2372fbb29b0f7656.svg",
     "static/media/utdanning.svg": "/veilarbmaofs/static/media/utdanning.53fd0320341e83b38632985978ce239e.svg",
     "static/media/arbeidserfaring.svg": "/veilarbmaofs/static/media/arbeidserfaring.ed2530e1eff15002b5be1b400cc34ed2.svg",
@@ -16,10 +16,10 @@
     "static/media/kompetanser.svg": "/veilarbmaofs/static/media/kompetanser.024e545a86fe11a88ada75e55aded41f.svg",
     "static/media/lukk.svg": "/veilarbmaofs/static/media/lukk.ccaa1c74cd0bdb867ec964ace6e3db7b.svg",
     "main.61d12b6d.css.map": "/veilarbmaofs/static/css/main.61d12b6d.css.map",
-    "main.b5048b64.js.map": "/veilarbmaofs/static/js/main.b5048b64.js.map"
+    "main.45947f0f.js.map": "/veilarbmaofs/static/js/main.45947f0f.js.map"
   },
   "entrypoints": [
     "static/css/main.61d12b6d.css",
-    "static/js/main.b5048b64.js"
+    "static/js/main.45947f0f.js"
   ]
 }
