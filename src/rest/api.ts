@@ -43,8 +43,8 @@ export const fetchSpraakTolk = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/v2/person/tolk?fnr=${fnr}`);
 };
 
-export const fetchInnsatsbehov = (fnr: string) => {
-	return axiosInstance.get(`/veilarbvedtaksstotte/api/innsatsbehov?fnr=${fnr}`);
+export const fetchSiste14aVedtak = (fnr: string) => {
+	return axiosInstance.get(`/veilarbvedtaksstotte/api/siste-14a-vedtak?fnr=${fnr}`);
 };
 
 export const fetchFeatureToggle = () => {
