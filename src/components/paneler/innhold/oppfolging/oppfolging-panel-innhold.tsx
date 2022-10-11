@@ -5,7 +5,7 @@ import Grid from '../../../felles/grid';
 import { useAppStore } from '../../../../stores/app-store';
 import {
 	fetchTilgorerBrukerUtrulletKontorForVedtaksstotte,
-	fetchInnsatsbehov,
+	fetchSiste14aVedtak,
 	fetchOppfolgingsstatus,
 	fetchPersonaliaV2,
 	fetchVeileder
@@ -21,7 +21,7 @@ import {
 } from '../../../../utils/text-mapper';
 import { erInnsatsgruppe } from '../../../../utils/arena-status-utils';
 import { OrNothing } from '../../../../utils/felles-typer';
-import { Hovedmal, Innsatsbehov, Innsatsgruppe } from '../../../../rest/datatyper/innsatsbehov';
+import { Hovedmal, Siste14aVedtak, Innsatsgruppe } from '../../../../rest/datatyper/siste14aVedtak';
 import {
 	ArenaHovedmalKode,
 	ArenaServicegruppeKode,
@@ -41,7 +41,7 @@ const OppfolgingPanelInnhold = () => {
 
 	const oppfolgingsstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
 	const personalia = usePromise<AxiosResponse<PersonaliaV2Info>>(() => fetchPersonaliaV2(fnr));
-	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
+	const siste14aVedtak = usePromise<AxiosResponse<Siste14aVedtak>>(() => fetchSiste14aVedtak(fnr));
 	const veilederId = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data.veilederId : null;
 	const [veileder, setVeileder] = useState<AxiosResponse<VeilederData> | null>(null);
 	const tilhorerBrukerUtrulletKontorForVedtaksstotte = usePromise<AxiosResponse<VeilederData>>(() =>
@@ -58,13 +58,13 @@ const OppfolgingPanelInnhold = () => {
 		// eslint-disable-next-line
 	}, [oppfolgingsstatus.status]);
 
-	if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(innsatsbehov)) {
+	if (isPending(oppfolgingsstatus) || isPending(personalia) || isPending(siste14aVedtak)) {
 		return <Laster midtstilt={true} />;
 	}
 
 	const veilederData = veileder ? veileder.data : null;
 	const personaliaData = isResolved(personalia) ? personalia.result.data : null;
-	const innsatsbehovData = isResolved(innsatsbehov) ? innsatsbehov.result.data : null;
+	const siste14aVedtakData = isResolved(siste14aVedtak) ? siste14aVedtak.result.data : null;
 	const oppfolgingsstatusData = isResolved(oppfolgingsstatus) ? oppfolgingsstatus.result.data : null;
 
 	let servicegruppe: OrNothing<ArenaServicegruppeKode> = oppfolgingsstatusData?.servicegruppe;
@@ -76,8 +76,8 @@ const OppfolgingPanelInnhold = () => {
 		// fra vedtaksstøtte dersom det er togglet på. Hvis servicegruppe fra Arena er en innsatsgruppe, så viser vi
 		// innsatsgruppe + hovedmål fra vedtaksstøtte. Hvis servicegruppe fra Arena ikke er en innsatsgruppe, så viser
 		// vi ikke innsatsgruppe og hovedmål fra vedtaksstøtte, siden bruker da har fått en nyere status i Arena.
-		innsatsgruppe = innsatsbehovData?.innsatsgruppe;
-		hovedmal = innsatsbehovData?.hovedmal;
+		innsatsgruppe = siste14aVedtakData?.innsatsgruppe;
+		hovedmal = siste14aVedtakData?.hovedmal;
 	}
 
 	function hentInnsatsgruppeOgHovedmalFraVedtaksstotte() {
