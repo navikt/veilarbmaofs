@@ -1,4 +1,4 @@
-import { Hovedmal, Innsatsgruppe } from '../rest/datatyper/innsatsbehov';
+import { Hovedmal, Innsatsgruppe } from '../rest/datatyper/siste14aVedtak';
 import EMDASH from './emdash';
 import { ArenaHovedmalKode, OppfolgingsstatusData, ArenaServicegruppeKode } from '../rest/datatyper/oppfolgingsstatus';
 import { OrNothing, StringOrNothing } from './felles-typer';

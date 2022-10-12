@@ -4,12 +4,11 @@ import Grid from '../../../felles/grid';
 import Vedtaksliste from './vedtaksliste';
 import { VedtakType, YtelseData } from '../../../../rest/datatyper/ytelse';
 import { VEDTAKSSTATUSER } from '../../../../utils/konstanter';
-import { fetchInnsatsbehov, fetchOppfolgingsstatus, fetchYtelser } from '../../../../rest/api';
+import { fetchOppfolgingsstatus, fetchYtelser } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { OppfolgingsstatusData } from '../../../../rest/datatyper/oppfolgingsstatus';
-import { Innsatsbehov } from '../../../../rest/datatyper/innsatsbehov';
 
 const getVedtakForVisning = (vedtaksliste: VedtakType[]) => {
 	return vedtaksliste.filter(vedtak => vedtak.status === VEDTAKSSTATUSER.iverksatt);
@@ -19,13 +18,8 @@ const YtelserPanelInnhold = () => {
 	const { fnr } = useAppStore();
 	const ytelser = usePromise<AxiosResponse<YtelseData>>(() => fetchYtelser(fnr));
 	const oppfolgingsstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
-	const innsatsbehov = usePromise<AxiosResponse<Innsatsbehov>>(() => fetchInnsatsbehov(fnr));
 
-	if (
-		isNotStartedOrPending(ytelser) ||
-		isNotStartedOrPending(innsatsbehov) ||
-		isNotStartedOrPending(oppfolgingsstatus)
-	) {
+	if (isNotStartedOrPending(ytelser) || isNotStartedOrPending(oppfolgingsstatus)) {
 		return <Laster midtstilt={true} />;
 	} else if (isRejected(ytelser)) {
 		return <Feilmelding />;

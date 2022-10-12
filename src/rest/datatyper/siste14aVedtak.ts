@@ -1,4 +1,4 @@
-export interface Innsatsbehov {
+export interface Siste14aVedtak {
 	innsatsgruppe: Innsatsgruppe;
 	hovedmal?: Hovedmal;
 }
