@@ -10,7 +10,7 @@ import Show from '../../../felles/show';
 import { fetchRegistrering } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';
 import { RegistreringsData } from '../../../../rest/datatyper/registreringsData';
-import { isNotStartedOrPending, isRejected, isResolved, usePromise } from '../../../../utils/use-promise';
+import { isNotStartedOrPending, isRejected, usePromise } from '../../../../utils/use-promise';
 
 const RegistreringPanelInnhold = (): React.ReactElement => {
 	const { fnr } = useAppStore();
