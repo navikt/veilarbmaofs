@@ -21,7 +21,7 @@ const RegistreringPanelInnhold = (): React.ReactElement => {
 		return <Laster midtstilt={true} />;
 	} else if (isRejected(registrering)) {
 		return <Feilmelding />;
-	} else if (!isResolved(registrering)) {
+	} else if (!registrering.result.data) {
 		return <NoData tekst="Brukeren har ikke registrert seg gjennom den nye registreringsløsningen." />;
 	}
 
