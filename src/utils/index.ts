@@ -188,7 +188,9 @@ export function formaterTelefonnummer(landkode: StringOrNothing, telefonnummer: 
 
 	if (utenSpace.length !== 8) {
 		return telefonnummer;
-	} else {
+	} else if (utenSpace.substring(0, 3) === '800') {
 		return formatertLandkode + formatNumber('### ## ###', utenSpace);
+	} else {
+		return formatertLandkode + formatNumber('## ## ## ##', utenSpace);
 	}
 }
