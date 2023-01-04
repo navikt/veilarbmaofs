@@ -1,8 +1,9 @@
+import React from 'react';
+import { CopyToClipboard } from '@navikt/ds-react-internal';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { isNullOrUndefined } from '../../../../utils';
 import EMDASH from '../../../../utils/emdash';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import Kopiknapp from '../../../felles/kopiknapp';
 
 function Kontonummer(props: { kontonummer?: string }) {
 	let content: string | React.ReactElement = EMDASH;
@@ -14,9 +15,15 @@ function Kontonummer(props: { kontonummer?: string }) {
 
 	if (props.kontonummer) {
 		content = (
-			<Normaltekst className="innrykk">
+			<Normaltekst className="innrykk flex-align-center">
 				{kontonummer}
-				<Kopiknapp kopitekst={props.kontonummer} type="kontonummer" />
+				<CopyToClipboard
+					copyText={props.kontonummer}
+					popoverText="Kopiert"
+					popoverPlacement="top"
+					size="xsmall"
+					title="Kopier kontonummer"
+				/>
 			</Normaltekst>
 		);
 	}
