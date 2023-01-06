@@ -1,11 +1,11 @@
 import React from 'react';
+import { CopyToClipboard } from '@navikt/ds-react-internal';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
 import { PersonaliaV2Info, PersonaliaTelefon } from '../../../../rest/datatyper/personaliav2';
 import EMDASH from '../../../../utils/emdash';
 import { formaterTelefonnummer, isNotEmptyArray } from '../../../../utils';
 import { hentKilde } from '../../../../utils/konstanter';
-import Kopiknapp from '../../../felles/kopiknapp';
 
 function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 	const { telefonNr, registrertDato, master } = props.telefon;
@@ -25,9 +25,15 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst className="innrykk">
+			<Normaltekst className="innrykk flex-align-center">
 				{formaterTelefonnummer(landkode, telefonnummer)}
-				<Kopiknapp kopitekst={props.telefon.telefonNr} type="telefonnummer" />
+				<CopyToClipboard
+					copyText={props.telefon.telefonNr}
+					popoverText="Kopiert"
+					popoverPlacement="top"
+					size="xsmall"
+					title="Kopier telefonnummer"
+				/>
 			</Normaltekst>
 			{telefonNr && (
 				<Undertekst className="kilde-tekst">
