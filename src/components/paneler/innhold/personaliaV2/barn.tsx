@@ -2,11 +2,11 @@ import React from 'react';
 import { finnAlder } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
-import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi';
 import { Gradering, PersonaliaV2Info, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
 import EMDASH from '../../../../utils/emdash';
 import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from '../../../../utils';
 import { graderingBeskrivelseBarn, hentBorMedBarnBeskrivelse } from '../../../../utils/konstanter';
+import { BodyShort, Detail } from '@navikt/ds-react';
 
 function BorSammen(props: { barn: PersonsBarn }) {
 	const { dodsdato, relasjonsBosted } = props.barn;
@@ -16,7 +16,7 @@ function BorSammen(props: { barn: PersonsBarn }) {
 
 	const borSammen = hentBorMedBarnBeskrivelse(relasjonsBosted);
 
-	return <Normaltekst>{borSammen}</Normaltekst>;
+	return <BodyShort>{borSammen}</BodyShort>;
 }
 
 function EnkeltBarn(props: { barn: PersonsBarn }) {
@@ -28,21 +28,27 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 		<div className="overinformasjon underinformasjon innrykk">
 			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
-					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
+					<Detail>
+						<strong>{`Barn (${alder})`}</strong>
+					</Detail>
 					<BorSammen barn={props.barn} />
 				</div>
 			) : graderingTekst && !harVeilederTilgang ? (
 				<div>
-					<UndertekstBold>Barn</UndertekstBold>
-					{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
+					<Detail>
+						<strong>Barn</strong>
+					</Detail>
+					{graderingTekst && <BodyShort>{graderingTekst}</BodyShort>}
 				</div>
 			) : (
 				<div>
-					<UndertekstBold>{`Barn (${alder})`}</UndertekstBold>
-					<Normaltekst>{formateStringInUpperAndLowerCase(fornavn)}</Normaltekst>
-					<Normaltekst>{formateLocalDate(fodselsdato)}</Normaltekst>
+					<Detail>
+						<strong>{`Barn (${alder})`}</strong>
+					</Detail>
+					<BodyShort>{formateStringInUpperAndLowerCase(fornavn)}</BodyShort>
+					<BodyShort>{formateLocalDate(fodselsdato)}</BodyShort>
 					<BorSammen barn={props.barn} />
-					{graderingTekst && <Normaltekst>{graderingTekst}</Normaltekst>}
+					{graderingTekst && <BodyShort>{graderingTekst}</BodyShort>}
 				</div>
 			)}
 		</div>

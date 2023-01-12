@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
 import Grid from '../../../felles/grid';
 import InformasjonsbolkListe from '../../../felles/informasjonsbolk-liste';
@@ -8,7 +7,7 @@ import { byggPamUrl, formatStringInUpperAndLowerCaseUnderscore } from '../../../
 import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { ArenaPerson, JobbprofilOppstartstype } from '../../../../rest/datatyper/arenaperson';
-import { Alert } from '@navikt/ds-react';
+import { Alert, Link } from '@navikt/ds-react';
 import {
 	isNotStartedOrPending,
 	isRejected,
@@ -127,9 +126,9 @@ const JobbonskerPanelinnhold = (props: JobbonskerPanelProps): React.ReactElement
 			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert jobbønsker.&nbsp;&nbsp;
 				{erManuell && brukerAktorId && (
-					<Lenke target="_blank" href={pamUrl}>
+					<Link href={pamUrl} target="_blank" rel="noopener" className="lenke-i-alert">
 						Registrer her
-					</Lenke>
+					</Link>
 				)}
 			</Alert>
 		);

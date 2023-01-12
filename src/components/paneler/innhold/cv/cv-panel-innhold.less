@@ -1,4 +1,4 @@
-@import '~nav-frontend-core/less/_variabler';
+@screen-md: 992px;
 
 .veilarbmaofs {
 	.cv-panel-lenke {
@@ -19,6 +19,7 @@
 
 	.cv-ikke-synlig {
 		width: 100%;
+		margin-bottom: var(--a-spacing-10);
 	}
 
 	.cv-alert-ikke-tilgang .alertstripe__tekst {
@@ -41,7 +42,11 @@
 		}
 	}
 
-	@media (min-width: @screen-md-min) {
+	.sist-endret {
+		margin-bottom: var(--a-spacing-4);
+	}
+
+	@media (min-width: @screen-md) {
 		.cv-sammendrag {
 			width: 50%;
 		}

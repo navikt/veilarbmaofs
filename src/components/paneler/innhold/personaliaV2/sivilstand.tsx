@@ -1,5 +1,5 @@
 import React from 'react';
-import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
+import { BodyShort, Detail } from '@navikt/ds-react';
 import { Gradering, PersonaliaPartner, PersonaliaSivilstandNy } from '../../../../rest/datatyper/personaliav2';
 import { formateLocalDate, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
@@ -16,21 +16,21 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst className="innrykk">{formatStringInUpperAndLowerCaseUnderscore(sivilstand)}</Normaltekst>
-			{fraDato && <Normaltekst className="innrykk">Fra: {formateLocalDate(fraDato)}</Normaltekst>}
+			<BodyShort className="innrykk">{formatStringInUpperAndLowerCaseUnderscore(sivilstand)}</BodyShort>
+			{fraDato && <BodyShort className="innrykk">Fra: {formateLocalDate(fraDato)}</BodyShort>}
 			{sivilstand && (
-				<Undertekst className="kilde-tekst">
+				<Detail size="small" className="kilde-tekst">
 					Registrert {registrertDato && formateLocalDate(registrertDato)}
 					{` ${hentKilde(master)}`}
-				</Undertekst>
+				</Detail>
 			)}
 			{relasjonsBosted && (
-				<Normaltekst className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</Normaltekst>
+				<BodyShort className="innrykk">{` ${hentBorMedPartnerBeskrivelse(relasjonsBosted)}`}</BodyShort>
 			)}
 			{gradering && gradering !== Gradering.UGRADERT && (
-				<Normaltekst className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</Normaltekst>
+				<BodyShort className="innrykk">{` ${graderingBeskrivelsePartner(gradering)}`}</BodyShort>
 			)}
-			{skjermet && <Normaltekst className="innrykk">{` ${egenAnsattTekst()}`}</Normaltekst>}
+			{skjermet && <BodyShort className="innrykk">{` ${egenAnsattTekst()}`}</BodyShort>}
 		</div>
 	);
 }

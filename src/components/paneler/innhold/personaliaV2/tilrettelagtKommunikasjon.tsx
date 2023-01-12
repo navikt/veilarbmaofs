@@ -1,8 +1,8 @@
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { isNullOrUndefined } from '../../../../utils';
+import { BodyShort } from '@navikt/ds-react';
 
 function TilrettelagtKommunikasjon(props: { tilrettelagtKommunikasjon: TilrettelagtKommunikasjonData }) {
 	const { tilrettelagtKommunikasjon, ...rest } = props;
@@ -15,8 +15,8 @@ function TilrettelagtKommunikasjon(props: { tilrettelagtKommunikasjon: Tilrettel
 	return (
 		<Informasjonsbolk header="Tilrettelagt kommunikasjon" {...rest}>
 			<div className="overinformasjon innrykk">
-				{talespraak && <Normaltekst>Språktolk: {talespraak}</Normaltekst>}
-				{tegnspraak && <Normaltekst>Tegnspråktolk</Normaltekst>}
+				{talespraak && <BodyShort>Språktolk: {talespraak}</BodyShort>}
+				{tegnspraak && <BodyShort>Tegnspråktolk</BodyShort>}
 			</div>
 		</Informasjonsbolk>
 	);

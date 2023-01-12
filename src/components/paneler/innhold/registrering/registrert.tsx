@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ingress } from 'nav-frontend-typografi';
+import { Ingress } from '@navikt/ds-react';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
 import RegistrertTid from './registrert-tid';
 import RegistrertAv from './registrert-av';

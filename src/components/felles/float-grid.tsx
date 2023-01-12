@@ -37,7 +37,7 @@ function FloatGrid({ columns, gap, children }: FloatGridProps) {
 	));
 
 	return (
-		<div className="floatgrid clearfix" style={containerStyle}>
+		<div className="floatgrid" style={containerStyle}>
 			{columnsChildren}
 		</div>
 	);

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Innholdstittel, Normaltekst, Systemtittel, Undertittel } from 'nav-frontend-typografi';
+import { BodyShort, Heading, Link } from '@navikt/ds-react';
 
 function PersonverninformasjonManuell() {
 	return (
-		<div className="personverninformasjon-modal__innhold">
-			<Innholdstittel>Når du har registrert deg</Innholdstittel>
+		<div className="personverninformasjon-modal-veilarbmaofs__innhold">
+			<Heading level="1" size="large">
+				Når du har registrert deg
+			</Heading>
 			<ul>
 				<li>får du hjelp til å komme i jobb</li>
 				<li>kan du søke om dagpenger eller annen økonomisk støtte</li>
@@ -12,28 +14,34 @@ function PersonverninformasjonManuell() {
 				<li>kan du få varsler om ledige stillinger</li>
 				<li>kan du bruke din egen aktivitetsplan</li>
 			</ul>
-			<Systemtittel>Rettigheter</Systemtittel>
+			<Heading level="2" size="medium">
+				Rettigheter
+			</Heading>
 			<ul>
 				<li>
 					Du har krav på at NAV vurderer behovet ditt for veiledning. Dette er en rettighet du har etter
 					NAV-loven § 14a se{' '}
-					<a href="https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a">
+					<Link href="https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a">
 						https://lovdata.no/NL/lov/2006-06-16-20/%C2%A714a
-					</a>
+					</Link>
 					.
 				</li>
 				<li>Du får et brev der du kan lese mer om tjenestene vi foreslår for deg.</li>
 			</ul>
-			<Systemtittel>Plikter</Systemtittel>
+			<Heading level="2" size="medium">
+				Plikter
+			</Heading>
 			<ul>
 				<li>Du må sende meldekort hver 14. dag. Det er et krav for å få oppfølging og økonomisk støtte.</li>
 				<li>Du må være aktiv arbeidssøker, søke på ledige stillinger og holde CV-en oppdatert.</li>
 			</ul>
-			<Systemtittel>Dine opplysninger</Systemtittel>
-			<Normaltekst>
+			<Heading level="2" size="medium">
+				Dine opplysninger
+			</Heading>
+			<BodyShort size="small">
 				NAV vurderer hva slags veiledning du trenger når du registrerer deg som jobbsøker. For å gjøre denne
 				vurderingen må vi ha opplysninger om
-			</Normaltekst>
+			</BodyShort>
 			<div className="div--pl1">
 				<ul>
 					<li>alderen din</li>
@@ -42,31 +50,33 @@ function PersonverninformasjonManuell() {
 					<li>eventuelle utfordringer</li>
 				</ul>
 			</div>
-			<Normaltekst>
+			<BodyShort size="small">
 				Vi har også opplysninger om arbeidssøkere i omtrent samme situasjon som deg. Det gjør at vi kan anta noe
 				om mulighetene dine til å finne en jobb. På bakgrunn av dette blir det laget et automatisk forslag til
 				hvilke tjenester vi tror kan passe for deg. En veileder vurderer forslaget og sender deg et vedtak i
 				posten.
-			</Normaltekst>
-			<Undertittel>Har du allerede registrert en CV eller jobbønsker på arbeidsplassen.nav.no?</Undertittel>
-			<Normaltekst>
+			</BodyShort>
+			<Heading level="2" size="xsmall">
+				Har du allerede registrert en CV eller jobbønsker på arbeidsplassen.nav.no?
+			</Heading>
+			<BodyShort size="small">
 				Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og
 				jobbønsker. CV-en og jobbønskene blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
 				derfor endre opplysninger du ikke ønsker å dele på{' '}
-				<a href="https://arbeidsplassen.nav.no/ ">https://arbeidsplassen.nav.no/</a> før du starter
+				<Link href="https://arbeidsplassen.nav.no/ ">https://arbeidsplassen.nav.no/</Link> før du starter
 				registreringen.
-			</Normaltekst>
-			<Undertittel>Behandling av personopplysninger </Undertittel>
-			<div className="blokk-xxs">
-				<Normaltekst>
-					Opplysningene dine blir lagret etter arkivloven. NAV bruker anonymiserte personopplysninger om
-					arbeidssøkere til å lage offentlig statistikk om arbeidsmarkedet. Les mer om hvordan NAV behandler
-					personopplysninger på <a href="https://www.nav.no/personvern">https://www.nav.no/personvern</a>.
-				</Normaltekst>
-			</div>
-			<Normaltekst>
+			</BodyShort>
+			<Heading level="2" size="xsmall">
+				Behandling av personopplysninger{' '}
+			</Heading>
+			<BodyShort size="small" spacing={true}>
+				Opplysningene dine blir lagret etter arkivloven. NAV bruker anonymiserte personopplysninger om
+				arbeidssøkere til å lage offentlig statistikk om arbeidsmarkedet. Les mer om hvordan NAV behandler
+				personopplysninger på <Link href="https://www.nav.no/personvern">https://www.nav.no/personvern</Link>.
+			</BodyShort>
+			<BodyShort size="small">
 				<strong>Tips! </strong>Du må fullføre registreringen før du kan søke om dagpenger.
-			</Normaltekst>
+			</BodyShort>
 		</div>
 	);
 }

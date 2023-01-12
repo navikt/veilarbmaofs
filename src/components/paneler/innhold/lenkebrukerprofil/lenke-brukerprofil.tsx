@@ -2,10 +2,10 @@ import * as React from 'react';
 import { lagPersonforvalterLenke } from '../../../../utils';
 import { useAppStore } from '../../../../stores/app-store';
 import { fetchAktorId } from '../../../../rest/api';
-import Lenke from 'nav-frontend-lenker';
 import { isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
+import { Link } from '@navikt/ds-react';
 
 function LenkeBrukerprofil() {
 	const { fnr } = useAppStore();
@@ -16,9 +16,9 @@ function LenkeBrukerprofil() {
 
 	return (
 		<div className="lenke-brukerprofil">
-			<Lenke href={personforvalterUrl} target={'_blank'} rel="noreferrer noopener">
+			<Link href={personforvalterUrl} target="_blank" rel="noreferrer noopener">
 				Endre personopplysninger
-			</Lenke>
+			</Link>
 		</div>
 	);
 }

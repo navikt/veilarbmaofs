@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
+import { Button, Modal } from '@navikt/ds-react';
 import { RegistreringType } from '../../../../rest/datatyper/registreringsData';
-import ModalWrapper from 'nav-frontend-modal';
-import { Flatknapp } from 'nav-frontend-knapper';
 import PersonverninformasjonSykmeldt from './personverninformasjon-sykmeldt';
 import PersonverninformasjonManuell from './personverninformasjon-manuell';
 import { PrintKnappModal } from './print-knapp-modal';
@@ -24,22 +23,22 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 
 	return (
 		<>
-			<Flatknapp
+			<Button
+				variant="secondary"
 				onClick={() => setVisPrintModal(true)}
-				htmlType="button"
-				className="utskrift-knapp btn--radius025"
+				size="small"
+				type="button"
+				className="utskrift-knapp"
 				onMouseEnter={() => setHover(true)}
 				onMouseLeave={() => setHover(false)}
+				icon={hover ? <PrintFilled /> : <Print />}
 			>
-				{hover ? <PrintFilled /> : <Print />}
 				Personverninformasjon, rettigheter og plikter
-			</Flatknapp>
-			<ModalWrapper
-				portalClassName="veilarbmaofs"
-				className="personverninformasjon-modal"
-				contentLabel="PersonverninformasjonPrintModal" // TODO SKRIV NOE BEDRE HER
-				isOpen={visPrintModal}
-				onRequestClose={() => setVisPrintModal(false)}
+			</Button>
+			<Modal
+				className="personverninformasjon-modal-veilarbmaofs"
+				open={visPrintModal}
+				onClose={() => setVisPrintModal(false)}
 			>
 				<PrintKnappModal />
 				<Show if={erSykmeldt(props.type)}>
@@ -48,7 +47,7 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 				<Show if={erOrdinaer(props.type)}>
 					<PersonverninformasjonManuell />
 				</Show>
-			</ModalWrapper>
+			</Modal>
 		</>
 	);
 }

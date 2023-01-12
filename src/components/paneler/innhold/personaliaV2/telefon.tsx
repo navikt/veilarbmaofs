@@ -1,7 +1,7 @@
 import React from 'react';
 import { CopyToClipboard } from '@navikt/ds-react-internal';
+import { BodyShort, Detail } from '@navikt/ds-react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
 import { PersonaliaV2Info, PersonaliaTelefon } from '../../../../rest/datatyper/personaliav2';
 import EMDASH from '../../../../utils/emdash';
 import { formaterTelefonnummer, isNotEmptyArray } from '../../../../utils';
@@ -25,7 +25,7 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 
 	return (
 		<div className="overinformasjon underinformasjon">
-			<Normaltekst className="innrykk flex-align-center">
+			<BodyShort className="innrykk flex-align-center">
 				{formaterTelefonnummer(landkode, telefonnummer)}
 				<CopyToClipboard
 					copyText={props.telefon.telefonNr}
@@ -34,12 +34,12 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 					size="xsmall"
 					title="Kopier telefonnummer"
 				/>
-			</Normaltekst>
+			</BodyShort>
 			{telefonNr && (
-				<Undertekst className="kilde-tekst">
+				<Detail size="small" className="kilde-tekst">
 					Registrert {registrertDato && registrertDato}
 					{` ${hentKilde(master)}`}
-				</Undertekst>
+				</Detail>
 			)}
 		</div>
 	);

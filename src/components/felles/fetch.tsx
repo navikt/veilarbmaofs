@@ -1,9 +1,7 @@
 import React from 'react';
+import { Alert, BodyShort, Loader } from '@navikt/ds-react';
 import cls from 'classnames';
-import NavFrontendSpinner from 'nav-frontend-spinner';
-import { Normaltekst } from 'nav-frontend-typografi';
 import './fetch.less';
-import { Alert } from '@navikt/ds-react';
 
 export const Feilmelding = (props: { children?: any }) => (
 	<Alert variant="warning" className="alertstripe_intern">
@@ -13,10 +11,10 @@ export const Feilmelding = (props: { children?: any }) => (
 
 export const Laster = (props: { midtstilt?: boolean }) => (
 	<div className={cls({ 'veilarbmaofs__laster--midtstilt': props.midtstilt })}>
-		<NavFrontendSpinner type="XL" />
+		<Loader size="2xlarge" />
 	</div>
 );
 
 export const NoData = (props: { tekst?: string }) => (
-	<Normaltekst>{props.tekst ? props.tekst : 'Ingen data tilgjengelig'}</Normaltekst>
+	<BodyShort>{props.tekst ? props.tekst : 'Ingen data tilgjengelig'}</BodyShort>
 );
