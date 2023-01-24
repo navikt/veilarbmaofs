@@ -10,7 +10,9 @@ function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 	const sortedErfaringer = arenaErfaring.sort((a, b) => safeSort(b.tilDato, a.tilDato));
 	const erfaringer = safeMap(sortedErfaringer, (erfaring, index) => (
 		<div key={`arbeidserfaring-${index}`} className="underinformasjon">
-			<Label>{erfaring.tittel}</Label>
+			<Label size="small" as="p">
+				{erfaring.tittel}
+			</Label>
 
 			<BodyShort>{erfaring.arbeidsgiver}</BodyShort>
 			<BodyShort>Sted: {erfaring.sted}</BodyShort>

@@ -13,7 +13,9 @@ function AndreGodkjenninger(props: Props) {
 
 	const annenGodkjenningListe = safeMap(andreGodkjenninger, (annenGodkjenning, index) => (
 		<div key={`andregodkjenninger-${index}`} className="underinformasjon">
-			<Label key={`andregodkjenninger-${index}`}>{annenGodkjenning.tittel}</Label>
+			<Label size="small" as="p" key={`andregodkjenninger-${index}`}>
+				{annenGodkjenning.tittel}
+			</Label>
 
 			<BodyShort>Utsteder: {annenGodkjenning.utsteder ? annenGodkjenning.utsteder : EMDASH}</BodyShort>
 			<BodyShort>Fullført: {formaterDato(annenGodkjenning.gjennomfortDato)}</BodyShort>

@@ -128,7 +128,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 				<Heading level="1" size="medium" spacing={true}>
 					Hva trenger du å vite om brukerens familie?
 				</Heading>
-				<Label spacing={true}>
+				<Label size="small" as="p" spacing={true}>
 					Vi skal alltid prøve å begrense mengden informasjon vi har om brukerne våre. Hvor mye informasjon om
 					brukers familie trenger du minimum for oppfølging mot arbeid?
 				</Label>

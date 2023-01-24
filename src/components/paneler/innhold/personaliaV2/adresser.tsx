@@ -39,7 +39,9 @@ function BostedsAdresse(props: Pick<PersonaliaV2Info, 'bostedsadresse'>) {
 
 	return (
 		<div className="underinformasjon">
-			<Label>Bostedsadresse</Label>
+			<Label size="small" as="p">
+				Bostedsadresse
+			</Label>
 			<BodyShort className="innrykk">{coAdressenavn || ''}</BodyShort>
 			{!isNullOrUndefined(adresseVisning) ? adresseVisning : EMDASH}
 		</div>
@@ -67,7 +69,9 @@ function OppholdsAdresse(props: Pick<PersonaliaV2Info, 'oppholdsadresse'>) {
 
 	return (
 		<div className="underinformasjon">
-			<Label>Oppholdsadresse</Label>
+			<Label size="small" as="p">
+				Oppholdsadresse
+			</Label>
 			<BodyShort className="innrykk">{coAdressenavn || ''}</BodyShort>
 			{!isNullOrUndefined(adresseVisning) ? adresseVisning : EMDASH}
 		</div>
@@ -102,7 +106,9 @@ function KontaktAdresse(props: { kontaktadresse: Kontaktadresse }) {
 
 	return (
 		<div className="underinformasjon">
-			<Label>Kontaktadresse {`(${adresseType})`}</Label>
+			<Label size="small" as="p">
+				Kontaktadresse {`(${adresseType})`}
+			</Label>
 			<BodyShort className="innrykk">{coAdressenavn || ''}</BodyShort>
 			{!isNullOrUndefined(adresseVisning) ? adresseVisning : EMDASH}
 		</div>

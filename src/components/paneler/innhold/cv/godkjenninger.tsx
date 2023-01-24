@@ -13,7 +13,9 @@ function Godkjenninger(props: Props) {
 
 	const godkjenningListe = safeMap(godkjenninger, (godkjenning, index) => (
 		<div key={`godkjenninger-${index}`} className="underinformasjon">
-			<Label key={`godkjenninger-${index}`}>{godkjenning.tittel}</Label>
+			<Label size="small" as="p" key={`godkjenninger-${index}`}>
+				{godkjenning.tittel}
+			</Label>
 
 			<BodyShort>Utsteder: {godkjenning.utsteder ? godkjenning.utsteder : EMDASH}</BodyShort>
 			<BodyShort>Fullført: {formaterDato(godkjenning.gjennomfortDato)}</BodyShort>
