@@ -42,14 +42,12 @@ function PersonverninformasjonManuell() {
 				NAV vurderer hva slags veiledning du trenger når du registrerer deg som jobbsøker. For å gjøre denne
 				vurderingen må vi ha opplysninger om
 			</BodyShort>
-			<div className="div--pl1">
-				<ul>
-					<li>alderen din</li>
-					<li>du har vært i jobb</li>
-					<li>utdanningen din</li>
-					<li>eventuelle utfordringer</li>
-				</ul>
-			</div>
+			<ul>
+				<li>alderen din</li>
+				<li>du har vært i jobb</li>
+				<li>utdanningen din</li>
+				<li>eventuelle utfordringer</li>
+			</ul>
 			<BodyShort size="small" spacing>
 				Vi har også opplysninger om arbeidssøkere i omtrent samme situasjon som deg. Det gjør at vi kan anta noe
 				om mulighetene dine til å finne en jobb. På bakgrunn av dette blir det laget et automatisk forslag til
