@@ -6,6 +6,7 @@ import { isResolved, usePromise } from '../../../../utils/use-promise';
 import { AxiosResponse } from 'axios';
 import { AktorId } from '../../../../rest/datatyper/aktor-id';
 import { Link } from '@navikt/ds-react';
+import { ExternalLink } from '@navikt/ds-icons';
 
 function LenkeBrukerprofil() {
 	const { fnr } = useAppStore();
@@ -17,7 +18,7 @@ function LenkeBrukerprofil() {
 	return (
 		<div className="lenke-brukerprofil">
 			<Link href={personforvalterUrl} target="_blank" rel="noreferrer noopener">
-				Endre personopplysninger
+				Endre personopplysninger <ExternalLink />
 			</Link>
 		</div>
 	);
