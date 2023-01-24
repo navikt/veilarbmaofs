@@ -9,9 +9,9 @@ export function PrintKnappModal() {
 	};
 
 	return (
-		<div className="personverninformasjon-modal-veilarbmaofs__header">
+		<div className="veilarbmaofs-personverninformasjon-modal__header">
 			<Button variant="primary" type="button" onClick={printModal}>
-				<span>Skriv ut</span>
+				Skriv ut
 			</Button>
 		</div>
 	);

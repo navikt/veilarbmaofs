@@ -3,8 +3,8 @@ import { BodyShort, Heading, Link } from '@navikt/ds-react';
 
 function PersonverninformasjonSykmeldt() {
 	return (
-		<div id="personverninformasjon-modal-veilarbmaofs__innhold">
-			<Heading level="1" size="large">
+		<div id="veilarbmaofs-personverninformasjon-modal__innhold">
+			<Heading level="1" size="large" spacing>
 				Mer veiledning fra NAV
 			</Heading>
 			<Heading level="2" size="medium">
@@ -20,7 +20,7 @@ function PersonverninformasjonSykmeldt() {
 				<Heading level="3" size="small">
 					Behandling av personopplysninger
 				</Heading>
-				<BodyShort>
+				<BodyShort spacing>
 					Når du registrerer deg for å få mer veiledning, skal NAV vurdere hva slags informasjon, veiledning
 					og hjelp du trenger. Du vil derfor få noen spørsmål om situasjonen din slik at du kan få riktig
 					hjelp. Du kan endre på svarene hvis situasjonen din endrer seg. Det er bare veilederen din som kan

@@ -24,9 +24,8 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 	return (
 		<>
 			<Button
-				variant="secondary"
+				variant="tertiary"
 				onClick={() => setVisPrintModal(true)}
-				size="small"
 				type="button"
 				className="utskrift-knapp"
 				onMouseEnter={() => setHover(true)}
@@ -36,7 +35,7 @@ function PersonverninformasjonUtskrift(props: { type?: RegistreringType }) {
 				Personverninformasjon, rettigheter og plikter
 			</Button>
 			<Modal
-				className="personverninformasjon-modal-veilarbmaofs"
+				className="veilarbmaofs-personverninformasjon-modal"
 				open={visPrintModal}
 				onClose={() => setVisPrintModal(false)}
 			>

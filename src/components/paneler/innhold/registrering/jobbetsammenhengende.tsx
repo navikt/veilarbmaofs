@@ -24,8 +24,7 @@ export function JobbetSammenhengende(props: Props) {
 			<FloatGrid columns={2} gap={8}>
 				<div>
 					<Label size="small" as="p">
-						{' '}
-						Brukeren har vært sammenhengende i jobb minst 6 av de siste 12 måneder{' '}
+						Brukeren har vært sammenhengende i jobb minst 6 av de siste 12 måneder
 					</Label>
 					<BodyShort>
 						{ordinaerRegistrering.profilering.jobbetSammenhengendeSeksAvTolvSisteManeder ? 'Ja' : 'Nei'}{' '}

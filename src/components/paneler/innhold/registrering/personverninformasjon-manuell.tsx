@@ -3,7 +3,7 @@ import { BodyShort, Heading, Link } from '@navikt/ds-react';
 
 function PersonverninformasjonManuell() {
 	return (
-		<div className="personverninformasjon-modal-veilarbmaofs__innhold">
+		<div className="veilarbmaofs-personverninformasjon-modal__innhold">
 			<Heading level="1" size="large">
 				Når du har registrert deg
 			</Heading>
@@ -50,7 +50,7 @@ function PersonverninformasjonManuell() {
 					<li>eventuelle utfordringer</li>
 				</ul>
 			</div>
-			<BodyShort size="small">
+			<BodyShort size="small" spacing>
 				Vi har også opplysninger om arbeidssøkere i omtrent samme situasjon som deg. Det gjør at vi kan anta noe
 				om mulighetene dine til å finne en jobb. På bakgrunn av dette blir det laget et automatisk forslag til
 				hvilke tjenester vi tror kan passe for deg. En veileder vurderer forslaget og sender deg et vedtak i
@@ -59,7 +59,7 @@ function PersonverninformasjonManuell() {
 			<Heading level="2" size="xsmall">
 				Har du allerede registrert en CV eller jobbønsker på arbeidsplassen.nav.no?
 			</Heading>
-			<BodyShort size="small">
+			<BodyShort size="small" spacing>
 				Når du fullfører registreringen som arbeidssøker gjelder ikke samtykket du ga for å opprette CV og
 				jobbønsker. CV-en og jobbønskene blir tilgjengelig for veilederen som skal vurdere dine behov. Du må
 				derfor endre opplysninger du ikke ønsker å dele på{' '}
@@ -67,7 +67,7 @@ function PersonverninformasjonManuell() {
 				registreringen.
 			</BodyShort>
 			<Heading level="2" size="xsmall">
-				Behandling av personopplysninger{' '}
+				Behandling av personopplysninger
 			</Heading>
 			<BodyShort size="small" spacing={true}>
 				Opplysningene dine blir lagret etter arkivloven. NAV bruker anonymiserte personopplysninger om
