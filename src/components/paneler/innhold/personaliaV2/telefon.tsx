@@ -24,7 +24,7 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 	}
 
 	return (
-		<div className="overinformasjon underinformasjon">
+		<div className="underinformasjon">
 			<BodyShort className="innrykk flex-align-center">
 				{formaterTelefonnummer(landkode, telefonnummer)}
 				<CopyToClipboard

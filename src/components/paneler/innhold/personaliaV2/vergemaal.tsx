@@ -54,7 +54,9 @@ function VergeEllerFullmakt(props: { vergeEllerFullmektig: VergeEllerFullmektig 
 	return (
 		<div>
 			<div>
-				<Detail className="overinformasjon">Verge</Detail>
+				<Detail className="overinformasjon">
+					<b>Verge</b>
+				</Detail>
 				{navn && (
 					<div>
 						<BodyShort>{`${navn.fornavn} ${navn.mellomnavn || ''} ${navn.etternavn}`}</BodyShort>
@@ -63,7 +65,9 @@ function VergeEllerFullmakt(props: { vergeEllerFullmektig: VergeEllerFullmektig 
 				<BodyShort>{motpartsPersonident}</BodyShort>
 			</div>
 			<div>
-				<Detail className="overinformasjon">Omfang</Detail>
+				<Detail className="overinformasjon">
+					<b>Omfang</b>
+				</Detail>
 				<BodyShort>{vergeEllerFullmaktOmfangBeskrivelse(omfang)}</BodyShort>
 			</div>
 		</div>
@@ -76,9 +80,11 @@ function Verge(props: { vergemaal: VergemaalEllerFremtidsfullmakt }) {
 
 	return (
 		<div className="underinformasjon innrykk">
-			<BodyShort className="overinformasjon">{vergetypeBeskrivelse(type)}</BodyShort>
+			<BodyShort>{vergetypeBeskrivelse(type)}</BodyShort>
 			<VergeEllerFullmakt vergeEllerFullmektig={vergeEllerFullmektig} />
-			<Detail className="overinformasjon">Fylkesmannsembete</Detail>
+			<Detail className="overinformasjon">
+				<b>Fylkesmannsembete</b>
+			</Detail>
 			<BodyShort>{embete}</BodyShort>
 			<BodyShort>
 				{`${ajourholdstidspunkt && formateLocalDate(ajourholdstidspunkt)} - ${

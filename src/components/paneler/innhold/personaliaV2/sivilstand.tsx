@@ -15,7 +15,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 	const { sivilstand, fraDato, skjermet, relasjonsBosted, gradering, master, registrertDato } = props.sivilstand;
 
 	return (
-		<div className="overinformasjon underinformasjon">
+		<div className="underinformasjon">
 			<BodyShort className="innrykk">{formatStringInUpperAndLowerCaseUnderscore(sivilstand)}</BodyShort>
 			{fraDato && <BodyShort className="innrykk">Fra: {formateLocalDate(fraDato)}</BodyShort>}
 			{sivilstand && (

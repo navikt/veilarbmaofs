@@ -25,7 +25,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 	const graderingTekst = gradering && gradering !== Gradering.UGRADERT ? graderingBeskrivelseBarn(gradering) : null;
 
 	return (
-		<div className="overinformasjon underinformasjon innrykk">
+		<div className="underinformasjon innrykk">
 			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
 					<Detail>
