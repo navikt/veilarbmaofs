@@ -29,21 +29,21 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 			{erEgenAnsatt && !harVeilederTilgang ? (
 				<div>
 					<Detail>
-						<strong>{`Barn (${alder})`}</strong>
+						<b>{`Barn (${alder})`}</b>
 					</Detail>
 					<BorSammen barn={props.barn} />
 				</div>
 			) : graderingTekst && !harVeilederTilgang ? (
 				<div>
 					<Detail>
-						<strong>Barn</strong>
+						<b>Barn</b>
 					</Detail>
 					{graderingTekst && <BodyShort>{graderingTekst}</BodyShort>}
 				</div>
 			) : (
 				<div>
 					<Detail>
-						<strong>{`Barn (${alder})`}</strong>
+						<b>{`Barn (${alder})`}</b>
 					</Detail>
 					<BodyShort>{formateStringInUpperAndLowerCase(fornavn)}</BodyShort>
 					<BodyShort>{formateLocalDate(fodselsdato)}</BodyShort>
