@@ -19,7 +19,7 @@ function SivilstandBolk(props: { sivilstand: PersonaliaSivilstandNy }) {
 			<BodyShort className="innrykk">{formatStringInUpperAndLowerCaseUnderscore(sivilstand)}</BodyShort>
 			{fraDato && <BodyShort className="innrykk">Fra: {formateLocalDate(fraDato)}</BodyShort>}
 			{sivilstand && (
-				<Detail size="small" className="kilde-tekst">
+				<Detail className="kilde-tekst">
 					Registrert {registrertDato && formateLocalDate(registrertDato)}
 					{` ${hentKilde(master)}`}
 				</Detail>

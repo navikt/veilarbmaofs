@@ -35,7 +35,7 @@ function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
 					/>
 				)}
 			</BodyShort>
-			<Detail size="small" className="kilde-tekst">
+			<Detail className="kilde-tekst">
 				<span>
 					Registrert {epostSistOppdatert && epostSistOppdatert}
 					{` ${hentKilde(master)}`}

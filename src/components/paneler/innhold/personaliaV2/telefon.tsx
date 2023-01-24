@@ -36,7 +36,7 @@ function TelefonNrMedKilde(props: { telefon: PersonaliaTelefon }) {
 				/>
 			</BodyShort>
 			{telefonNr && (
-				<Detail size="small" className="kilde-tekst">
+				<Detail className="kilde-tekst">
 					Registrert {registrertDato && registrertDato}
 					{` ${hentKilde(master)}`}
 				</Detail>
