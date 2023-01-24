@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import cls from 'classnames';
 import './tilbakemelding-modal.less';
 import takkIkon from './takk-ikon.png';

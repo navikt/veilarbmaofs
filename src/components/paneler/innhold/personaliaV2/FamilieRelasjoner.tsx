@@ -1,4 +1,3 @@
-import React from 'react';
 import Sivilstand from './sivilstand';
 import Barn from './barn';
 import { kalkulerAlder } from '../../../../utils/date-utils';

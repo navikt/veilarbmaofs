@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { AxiosResponse } from 'axios';
 import { fetchFeatureToggle } from '../rest/api';
 import { Laster } from './felles/fetch';

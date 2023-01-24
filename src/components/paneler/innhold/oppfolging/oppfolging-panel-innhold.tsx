@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import EMDASH from '../../../../utils/emdash';
 import Grid from '../../../felles/grid';

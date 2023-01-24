@@ -1,4 +1,3 @@
-import React from 'react';
 import { safeMap } from '../../utils';
 import Informasjonsbolk from './informasjonsbolk';
 import { BodyShort } from '@navikt/ds-react';

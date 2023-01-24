@@ -1,4 +1,3 @@
-import React from 'react';
 import { finnAlder } from '../../../../utils/date-utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArenaPerson, SprakNiva } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap } from '../../../../utils';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { Alert } from '@navikt/ds-react';
 
 interface ErrorBoundryProps {
@@ -10,7 +10,7 @@ interface ErrorBoundryState {
 	hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundryProps, ErrorBoundryState> {
+class ErrorBoundary extends Component<ErrorBoundryProps, ErrorBoundryState> {
 	constructor(props: ErrorBoundryProps) {
 		super(props);
 		this.state = { hasError: false };

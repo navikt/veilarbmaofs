@@ -1,4 +1,3 @@
-import React from 'react';
 import { Alert, BodyShort, Loader } from '@navikt/ds-react';
 import cls from 'classnames';
 import './fetch.less';

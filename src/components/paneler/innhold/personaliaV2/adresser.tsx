@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort, Label } from '@navikt/ds-react';
 import { isNotEmptyArray, isNullOrUndefined, visEmdashHvisNull } from '../../../../utils';
 import EMDASH from '../../../../utils/emdash';

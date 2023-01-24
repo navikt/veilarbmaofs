@@ -1,4 +1,3 @@
-import React from 'react';
 import cls from 'classnames';
 import { StringOrNothing } from '../../utils/felles-typer';
 import { formaterDato } from '../../utils';

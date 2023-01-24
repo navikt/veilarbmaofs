@@ -1,4 +1,3 @@
-import React from 'react';
 import Vergemaal from './vergemaal';
 import Fullmakt from './fullmakt';
 import { fetchVergOgFullmakt } from '../../../../rest/api';

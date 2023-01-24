@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort } from '@navikt/ds-react';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
 import { formaterDato, isNullOrUndefined } from '../../../../utils';

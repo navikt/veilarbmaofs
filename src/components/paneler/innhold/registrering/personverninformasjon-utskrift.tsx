@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Modal } from '@navikt/ds-react';
 import { RegistreringType } from '../../../../rest/datatyper/registreringsData';
 import PersonverninformasjonSykmeldt from './personverninformasjon-sykmeldt';

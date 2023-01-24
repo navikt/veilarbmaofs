@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { lagPersonforvalterLenke } from '../../../../utils';
 import { useAppStore } from '../../../../stores/app-store';
 import { fetchAktorId } from '../../../../rest/api';

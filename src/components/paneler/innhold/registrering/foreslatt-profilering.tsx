@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort, Ingress, Panel } from '@navikt/ds-react';
 import { InnsatsgruppeType, OrdinaerRegistrering, Registrering } from '../../../../rest/datatyper/registreringsData';
 

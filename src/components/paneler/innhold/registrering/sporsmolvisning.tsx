@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort } from '@navikt/ds-react';
 import { Registrering, Sporsmal } from '../../../../rest/datatyper/registreringsData';
 import FloatGrid from '../../../felles/float-grid';

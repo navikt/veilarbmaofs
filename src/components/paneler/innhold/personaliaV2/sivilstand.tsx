@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort, Detail } from '@navikt/ds-react';
 import { Gradering, PersonaliaPartner, PersonaliaSivilstandNy } from '../../../../rest/datatyper/personaliav2';
 import { formateLocalDate, formatStringInUpperAndLowerCaseUnderscore } from '../../../../utils';

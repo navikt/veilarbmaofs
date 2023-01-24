@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppStore } from '../../stores/app-store';
 import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 

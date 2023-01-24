@@ -1,4 +1,3 @@
-import React from 'react';
 import { CopyToClipboard } from '@navikt/ds-react-internal';
 import { BodyShort, Detail } from '@navikt/ds-react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';

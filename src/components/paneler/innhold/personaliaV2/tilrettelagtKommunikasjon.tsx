@@ -1,6 +1,5 @@
 import { TilrettelagtKommunikasjonData } from '../../../../rest/datatyper/tilrettelagtKommunikasjon';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
-import React from 'react';
 import { isNullOrUndefined } from '../../../../utils';
 import { BodyShort } from '@navikt/ds-react';
 

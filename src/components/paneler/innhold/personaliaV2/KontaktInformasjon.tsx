@@ -1,4 +1,3 @@
-import React from 'react';
 import { OrNothing } from '../../../../utils/felles-typer';
 import {
 	Bostedsadresse,

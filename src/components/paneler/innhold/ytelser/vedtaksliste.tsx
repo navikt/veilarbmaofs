@@ -1,4 +1,3 @@
-import React from 'react';
 import { YtelseData } from '../../../../rest/datatyper/ytelse';
 import Grid from '../../../felles/grid';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';

@@ -1,4 +1,3 @@
-import React from 'react';
 import StoreProvider from './stores/store-provider';
 import { ViewController } from './components/views/view-controller';
 import './app.less';

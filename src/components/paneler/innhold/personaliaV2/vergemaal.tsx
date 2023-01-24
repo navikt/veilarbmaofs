@@ -1,4 +1,3 @@
-import React from 'react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {
 	Vergetype,

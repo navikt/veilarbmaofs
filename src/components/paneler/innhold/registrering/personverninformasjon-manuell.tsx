@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort, Heading, Link } from '@navikt/ds-react';
 
 function PersonverninformasjonManuell() {

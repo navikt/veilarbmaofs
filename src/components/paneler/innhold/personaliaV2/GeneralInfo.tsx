@@ -1,4 +1,3 @@
-import React from 'react';
 import InformasjonsbolkEnkel from '../../../felles/informasjonsbolk-enkel';
 import TilrettelagtKommunikasjon from './tilrettelagtKommunikasjon';
 import { fetchSpraakTolk } from '../../../../rest/api';

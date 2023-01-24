@@ -1,4 +1,3 @@
-import React from 'react';
 import { useViewStore, ViewType } from '../../stores/view-store';
 import { DetaljerView } from './detaljer-view';
 import { TilretteleggingsbehovView } from './tilretteleggingsbehov-view';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Edit, EditFilled } from '@navikt/ds-icons';
 import { Link } from '@navikt/ds-react';
 

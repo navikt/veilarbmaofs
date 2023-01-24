@@ -1,4 +1,3 @@
-import React from 'react';
 import { Ingress } from '@navikt/ds-react';
 import { Registrering } from '../../../../rest/datatyper/registreringsData';
 import RegistrertTid from './registrert-tid';

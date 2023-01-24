@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort, Detail } from '@navikt/ds-react';
 import { Fullmakter, VergeOgFullmaktData } from '../../../../rest/datatyper/vergeOgFullmakt';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
