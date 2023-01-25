@@ -26,8 +26,11 @@ export const TilToppenKnapp = () => {
 	});
 
 	return (
-		<Button variant="secondary" className={`til-toppen-knapp ${synlig ? 'visKnapp' : ''}`} onClick={skrollOgLogg}>
-			<Up />
-		</Button>
+		<Button
+			variant="secondary"
+			icon={<Up />}
+			className={`til-toppen-knapp ${synlig ? 'visKnapp' : ''}`}
+			onClick={skrollOgLogg}
+		></Button>
 	);
 };

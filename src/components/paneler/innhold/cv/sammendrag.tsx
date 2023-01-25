@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { visEmdashHvisNull } from '../../../../utils';

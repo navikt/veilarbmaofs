@@ -1,7 +1,5 @@
-import React from 'react';
-import { Ingress, Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, Ingress, Panel } from '@navikt/ds-react';
 import { InnsatsgruppeType, OrdinaerRegistrering, Registrering } from '../../../../rest/datatyper/registreringsData';
-import Panel from 'nav-frontend-paneler';
 
 interface Props {
 	registrering: Registrering | undefined;
@@ -21,7 +19,7 @@ export function ForeslattProfilering(props: Props) {
 	return (
 		<Panel border className="informasjonsbolk">
 			<Ingress>Forslag om brukers muligheter og behov (resultat fra profilering)</Ingress>
-			<Normaltekst>{innsatsgruppeBeskrivelse(ordinaerRegistrering.profilering.innsatsgruppe)}</Normaltekst>
+			<BodyShort>{innsatsgruppeBeskrivelse(ordinaerRegistrering.profilering.innsatsgruppe)}</BodyShort>
 		</Panel>
 	);
 }

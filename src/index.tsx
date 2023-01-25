@@ -1,15 +1,15 @@
 import 'react-app-polyfill/ie11';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navspa, AsyncNavspa } from '@navikt/navspa';
 import '@navikt/ds-css';
-import ModalWrapper from 'nav-frontend-modal';
+import '@navikt/ds-css-internal';
 import App from './app';
 import env from './utils/environment';
 import { fnr, enhet } from './mock/app';
 import { tilretteleggingsbehovSpaConfig } from './components/tilretteleggingsbehov-spa';
+import { Modal } from '@navikt/ds-react';
 
-ModalWrapper.setAppElement(document.getElementById('modal-a11y-wrapper'));
+Modal.setAppElement(document.getElementById('modal-a11y-wrapper'));
 
 if (env.isMocked) {
 	require('./mock');

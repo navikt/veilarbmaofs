@@ -1,6 +1,3 @@
-@import '~nav-frontend-core/less/core';
-@import '~nav-frontend-typografi-style/src/index';
-
 .veilarbmaofs {
 	scroll-behavior: smooth !important;
 	flex-grow: 1;
@@ -13,10 +10,8 @@
 		height: auto;
 	}
 
-	.typo-normal-mixin();
-	color: @navMorkGra;
-	font-family: @font-family;
-	line-height: @line-height-base;
+	color: var(--a-gray-900);
+	font-family: var(--a-font-family);
 
 	&__container {
 		max-width: 1920px;
@@ -41,7 +36,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		margin-bottom: var(--navds-spacing-1);
+		margin-bottom: var(--a-spacing-1);
 	}
 
 	.underinformasjon {
@@ -61,7 +56,7 @@
 	}
 
 	.italic-gra {
-		color: @navGra60;
+		color: var(--a-gray-600);
 		font-style: italic;
 	}
 

@@ -1,6 +1,5 @@
-import React from 'react';
 import { CopyToClipboard } from '@navikt/ds-react-internal';
-import { Normaltekst, Undertekst } from 'nav-frontend-typografi';
+import { BodyShort, Detail } from '@navikt/ds-react';
 import { isNullOrUndefined } from '../../../../utils';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { PersonaliaEpost } from '../../../../rest/datatyper/personaliav2';
@@ -23,7 +22,7 @@ function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
 
 	return (
 		<Informasjonsbolk header="Epost" {...rest}>
-			<Normaltekst className="innrykk wrap-anywhere flex-align-center">
+			<BodyShort className="innrykk wrap-anywhere flex-align-center">
 				{epostAdresse}
 				{epostAdresse && (
 					<CopyToClipboard
@@ -34,13 +33,13 @@ function Epost(props: { epost: OrNothing<PersonaliaEpost> }) {
 						title="Kopier e-postadresse"
 					/>
 				)}
-			</Normaltekst>
-			<Undertekst className="kilde-tekst">
+			</BodyShort>
+			<Detail className="kilde-tekst">
 				<span>
 					Registrert {epostSistOppdatert && epostSistOppdatert}
 					{` ${hentKilde(master)}`}
 				</span>
-			</Undertekst>
+			</Detail>
 		</Informasjonsbolk>
 	);
 }

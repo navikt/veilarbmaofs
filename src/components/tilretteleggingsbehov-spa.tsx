@@ -1,4 +1,3 @@
-import React from 'react';
 import { AsyncNavspa, AsyncSpaConfig } from '@navikt/navspa';
 import { Laster } from './felles/fetch';
 

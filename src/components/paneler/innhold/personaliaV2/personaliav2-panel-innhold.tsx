@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
 import { fetchPersonaliaV2 } from '../../../../rest/api';
 import { Feilmelding, Laster, NoData } from '../../../felles/fetch';

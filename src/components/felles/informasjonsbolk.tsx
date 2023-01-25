@@ -22,7 +22,7 @@ function Informasjonsbolk(props: Props) {
 						{header}
 					</Heading>
 				)}
-				{headerTypo === 'element' && <Label>{header}</Label>}
+				{headerTypo === 'element' && <Label size="small">{header}</Label>}
 			</span>
 			{children}
 		</div>

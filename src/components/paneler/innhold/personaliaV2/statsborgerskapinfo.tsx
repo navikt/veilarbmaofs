@@ -1,4 +1,3 @@
-import React from 'react';
 import { BodyShort } from '@navikt/ds-react';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { formateStringInUpperAndLowerCase } from '../../../../utils';

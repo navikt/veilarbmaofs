@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
 import Grid from '../../../felles/grid';
 import Vedtaksliste from './vedtaksliste';

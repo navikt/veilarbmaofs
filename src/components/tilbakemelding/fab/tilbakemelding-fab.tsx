@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import cls from 'classnames';
 import TilbakemeldingModal, { TilbakemeldingProps } from '../tilbakemelding-modal';
 import lukkBilde from './lukk.svg';

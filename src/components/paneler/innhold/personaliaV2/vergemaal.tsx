@@ -1,5 +1,3 @@
-import React from 'react';
-import { Normaltekst, UndertekstBold } from 'nav-frontend-typografi/lib';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import {
 	Vergetype,
@@ -9,6 +7,7 @@ import {
 	VergemaalEllerFullmaktOmfangType
 } from '../../../../rest/datatyper/vergeOgFullmakt';
 import { formateLocalDate, isNotEmptyArray } from '../../../../utils';
+import { BodyShort, Detail } from '@navikt/ds-react';
 
 function vergetypeBeskrivelse(vergeType: Vergetype) {
 	switch (vergeType) {
@@ -54,17 +53,21 @@ function VergeEllerFullmakt(props: { vergeEllerFullmektig: VergeEllerFullmektig 
 	return (
 		<div>
 			<div>
-				<UndertekstBold className="overinformasjon">Verge</UndertekstBold>
+				<Detail className="overinformasjon">
+					<b>Verge</b>
+				</Detail>
 				{navn && (
 					<div>
-						<Normaltekst>{`${navn.fornavn} ${navn.mellomnavn || ''} ${navn.etternavn}`}</Normaltekst>
+						<BodyShort>{`${navn.fornavn} ${navn.mellomnavn || ''} ${navn.etternavn}`}</BodyShort>
 					</div>
 				)}
-				<Normaltekst>{motpartsPersonident}</Normaltekst>
+				<BodyShort>{motpartsPersonident}</BodyShort>
 			</div>
 			<div>
-				<UndertekstBold className="overinformasjon">Omfang</UndertekstBold>
-				<Normaltekst>{vergeEllerFullmaktOmfangBeskrivelse(omfang)}</Normaltekst>
+				<Detail className="overinformasjon">
+					<b>Omfang</b>
+				</Detail>
+				<BodyShort>{vergeEllerFullmaktOmfangBeskrivelse(omfang)}</BodyShort>
 			</div>
 		</div>
 	);
@@ -76,15 +79,17 @@ function Verge(props: { vergemaal: VergemaalEllerFremtidsfullmakt }) {
 
 	return (
 		<div className="underinformasjon innrykk">
-			<Normaltekst className="overinformasjon">{vergetypeBeskrivelse(type)}</Normaltekst>
+			<BodyShort>{vergetypeBeskrivelse(type)}</BodyShort>
 			<VergeEllerFullmakt vergeEllerFullmektig={vergeEllerFullmektig} />
-			<UndertekstBold className="overinformasjon">Fylkesmannsembete</UndertekstBold>
-			<Normaltekst>{embete}</Normaltekst>
-			<Normaltekst>
+			<Detail className="overinformasjon">
+				<b>Fylkesmannsembete</b>
+			</Detail>
+			<BodyShort>{embete}</BodyShort>
+			<BodyShort>
 				{`${ajourholdstidspunkt && formateLocalDate(ajourholdstidspunkt)} - ${
 					gyldighetstidspunkt ? formateLocalDate(gyldighetstidspunkt) : ''
 				}`}
-			</Normaltekst>
+			</BodyShort>
 		</div>
 	);
 }

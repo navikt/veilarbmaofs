@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArenaPerson, SprakNiva } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap } from '../../../../utils';
@@ -28,7 +27,9 @@ function Sprak(props: Pick<ArenaPerson, 'sprak'>) {
 
 	const sprak = safeMap(arenaSprak, (enkeltSprak, index) => (
 		<div key={`kompetanse-${index}`} className="underinformasjon">
-			<Label>{enkeltSprak.sprak}</Label>
+			<Label size="small" as="p">
+				{enkeltSprak.sprak}
+			</Label>
 			<BodyShort>Muntlig: {mapSprakNivaTilTekst(enkeltSprak.muntligNiva)}</BodyShort>
 			<BodyShort>Skriftlig: {mapSprakNivaTilTekst(enkeltSprak.skriftligNiva)}</BodyShort>
 		</div>

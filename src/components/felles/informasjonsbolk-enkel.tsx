@@ -1,9 +1,9 @@
 import React from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
 import EMDASH from '../../utils/emdash';
 import { isNullOrUndefined } from '../../utils';
 import { StringOrNothing } from '../../utils/felles-typer';
 import Informasjonsbolk from './informasjonsbolk';
+import { BodyShort } from '@navikt/ds-react';
 
 interface Props {
 	header: string;
@@ -17,7 +17,7 @@ function InformasjonsbolkEnkel(props: Props) {
 	const { value, defaultValue, ...rest } = props;
 	let content: string | React.ReactElement<Props> = EMDASH;
 	if (!(isNullOrUndefined(props.value) && isNullOrUndefined(props.defaultValue))) {
-		content = <Normaltekst className={props.childclassname}>{value || defaultValue}</Normaltekst>;
+		content = <BodyShort className={props.childclassname}>{value || defaultValue}</BodyShort>;
 	}
 
 	return <Informasjonsbolk {...rest}>{content}</Informasjonsbolk>;

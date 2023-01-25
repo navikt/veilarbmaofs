@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import cls from 'classnames';
-import { Innholdstittel, Element } from 'nav-frontend-typografi';
 import './tilbakemelding-modal.less';
-import { Checkbox, Textarea } from 'nav-frontend-skjema';
-import { Hovedknapp } from 'nav-frontend-knapper';
 import takkIkon from './takk-ikon.png';
 import { isNullOrUndefined } from '../../utils';
+import { Button, Heading, Label, Textarea, Checkbox } from '@navikt/ds-react';
 
 export interface TilbakemeldingProps {
 	checkboxIndexListe: number[];
@@ -97,9 +95,9 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 		return (
 			<div className="tilbakemelding-modal__takk-melding-wrapper">
 				<img alt="Takk for din tilbakemelding" className="tilbakemelding-modal__takk-ikon" src={takkIkon} />
-				<Element>
+				<Label>
 					Takk for at du tok deg tid til å gi tilbakemelding. Vi bruker innspillene til å forbedre løsningen.
-				</Element>
+				</Label>
 			</div>
 		);
 	};
@@ -111,12 +109,13 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					return (
 						<Checkbox
 							checked={checkboxIndexListe.includes(index + 1)}
-							label={CheckboxVerdier[key]}
 							value={CheckboxVerdier[key]}
 							key={index}
 							onChange={e => handleCheckboxChanged(index + 1, e)}
-							className="tilbakemelding-modal__checkbox-element"
-						/>
+							size="small"
+						>
+							{CheckboxVerdier[key]}
+						</Checkbox>
 					);
 				})}
 			</>
@@ -126,13 +125,13 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 	const renderCheckboxValg = () => {
 		return (
 			<div className={cls({ 'tilbakemelding-modal__innhold-fade-out': showFadeOutAnimation })}>
-				<Innholdstittel className="blokk-xxs tilbakemelding-modal__tittel">
+				<Heading level="1" size="medium" spacing={true}>
 					Hva trenger du å vite om brukerens familie?
-				</Innholdstittel>
-				<Element className="blokk-xxs">
+				</Heading>
+				<Label size="small" as="p" spacing={true}>
 					Vi skal alltid prøve å begrense mengden informasjon vi har om brukerne våre. Hvor mye informasjon om
 					brukers familie trenger du minimum for oppfølging mot arbeid?
-				</Element>
+				</Label>
 				<form
 					className="tilbakemelding-modal__ekspander"
 					onSubmit={handleCheckboxFormSubmitted}
@@ -141,7 +140,7 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					<CheckboxValg />
 					<div className="tilbakemelding-modal__kommentar">
 						<Textarea
-							className="tilbakemelding-modal__kommentar-felt"
+							size="small"
 							label="Hva bruker du disse opplysningene til?"
 							rows={KOMMENTAR_ROWS}
 							maxLength={KOMMENTAR_MAX_CHAR}
@@ -149,9 +148,9 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 							onChange={e => handleKommentarChanged(e.target.value)}
 						/>
 					</div>
-					<Hovedknapp role="submit" className="knapp--hoved">
+					<Button variant="primary" role="submit">
 						Send
-					</Hovedknapp>
+					</Button>
 				</form>
 			</div>
 		);

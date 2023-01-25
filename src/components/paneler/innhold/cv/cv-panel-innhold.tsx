@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppStore } from '../../../../stores/app-store';
-import Lenke from 'nav-frontend-lenker';
 import SistEndret from '../../../felles/sist-endret';
 import { LastNedCV } from './last-ned-cv';
 import { RedigerCV } from './rediger-cv';
@@ -21,7 +20,7 @@ import { fetchAktorId, fetchUnderOppfolging } from '../../../../rest/api';
 import { Feilmelding, Laster } from '../../../felles/fetch';
 import { CvIkkeSynligInfo } from './cv-ikke-synlig-info';
 import './cv-panel-innhold.less';
-import { Alert } from '@navikt/ds-react';
+import { Alert, Link } from '@navikt/ds-react';
 import {
 	isNotStartedOrPending,
 	isRejected,
@@ -95,9 +94,9 @@ const CvPanelInnhold = (props: CvPanelProps): React.ReactElement => {
 			<Alert variant="info" className="alertstripe_intern">
 				Denne personen har ikke registrert CV.&nbsp;&nbsp;
 				{erManuell && aktorId && (
-					<Lenke target="_blank" href={endreCvUrl}>
+					<Link href={endreCvUrl} target="_blank" rel="noopener" className="lenke-i-alert">
 						Registrer her
-					</Lenke>
+					</Link>
 				)}
 			</Alert>
 		);
@@ -125,7 +124,7 @@ const CvPanelInnhold = (props: CvPanelProps): React.ReactElement => {
 			<>
 				<LastNedCV erManuell={erManuell} lastNedCvLenke={lastNedCvUrl} />
 				<RedigerCV erManuell={erManuell} cvRegistreringsLenke={endreCvUrl} />
-				<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="blokk-xs" />
+				<SistEndret sistEndret={sistEndret} onlyYearAndMonth={false} className="sist-endret" />
 				<CvIkkeSynligInfo />
 				<Sammendrag sammendrag={sammendrag} />
 				<FloatGrid columns={2} gap={8}>

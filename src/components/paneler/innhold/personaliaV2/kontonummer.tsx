@@ -1,6 +1,6 @@
 import React from 'react';
+import { BodyShort } from '@navikt/ds-react';
 import { CopyToClipboard } from '@navikt/ds-react-internal';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { isNullOrUndefined } from '../../../../utils';
 import EMDASH from '../../../../utils/emdash';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
@@ -15,7 +15,7 @@ function Kontonummer(props: { kontonummer?: string }) {
 
 	if (props.kontonummer) {
 		content = (
-			<Normaltekst className="innrykk flex-align-center">
+			<BodyShort className="innrykk flex-align-center">
 				{kontonummer}
 				<CopyToClipboard
 					copyText={props.kontonummer}
@@ -24,7 +24,7 @@ function Kontonummer(props: { kontonummer?: string }) {
 					size="xsmall"
 					title="Kopier kontonummer"
 				/>
-			</Normaltekst>
+			</BodyShort>
 		);
 	}
 

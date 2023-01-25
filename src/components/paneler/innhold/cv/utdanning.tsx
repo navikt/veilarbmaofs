@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArenaPerson } from '../../../../rest/datatyper/arenaperson';
 import Informasjonsbolk from '../../../felles/informasjonsbolk';
 import { safeMap, formaterDato, safeSort } from '../../../../utils';
@@ -10,7 +9,9 @@ function Utdanning(props: Pick<ArenaPerson, 'utdanning'>) {
 	const sortedUtdanning = arenaUtdanning.sort((a, b) => safeSort(b.tilDato, a.tilDato));
 	const utdanninger = safeMap(sortedUtdanning, (utdanning, index) => (
 		<div key={`utdanning-${index}`} className="underinformasjon">
-			<Label>{utdanning.tittel}</Label>
+			<Label size="small" as="p">
+				{utdanning.tittel}
+			</Label>
 
 			<BodyShort>{utdanning.studiested}</BodyShort>
 			<BodyShort>{utdanning.utdanningsnivaa}</BodyShort>
