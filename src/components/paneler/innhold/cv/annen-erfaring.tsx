@@ -22,7 +22,7 @@ function AnnenErfaring(props: Pick<ArenaPerson, 'annenErfaring'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Annen erfaring" headerTypo="ingress" icon={<Erfaringsikon />} {...rest}>
+		<Informasjonsbolk header="Andre erfaringer" headerTypo="ingress" icon={<Erfaringsikon />} {...rest}>
 			{erfaringer}
 		</Informasjonsbolk>
 	);

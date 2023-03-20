@@ -28,7 +28,7 @@ function Arbeidserfaring(props: Pick<ArenaPerson, 'arbeidserfaring'>) {
 	));
 
 	return (
-		<Informasjonsbolk header="Arbeidserfaring" headerTypo="ingress" icon={<Arbeidsikon />} {...rest}>
+		<Informasjonsbolk header="Arbeidsforhold" headerTypo="ingress" icon={<Arbeidsikon />} {...rest}>
 			{erfaringer}
 		</Informasjonsbolk>
 	);
