@@ -23,7 +23,7 @@
 			// det som ligger under her, box-shadow og :hover, kan fjernes etter lekkasjen fra Valp er borte. Dvs at noen av oss innkapsler appen sin, så vi slutter å påvirke hverandre.
 			box-shadow: none;
 
-			&:hover {
+			&[aria-expanded='false']:hover {
 				background-color: inherit;
 				text-decoration: none;
 			}
