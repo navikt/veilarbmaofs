@@ -5,7 +5,6 @@ import JobbonskerPanelinnhold from './innhold/jobbonsker/jobbonsker-panel-innhol
 import PersonaliaV2Panelinnhold from './innhold/personaliaV2/personaliav2-panel-innhold';
 import RegistreringPanelinnhold from './innhold/registrering/registrering-panel-innhold';
 import YtelserPanelinnhold from './innhold/ytelser/ytelser-panel-innhold';
-import { TilretteleggingsbehovSpa, TilretteleggingsbehovViewType } from '../tilretteleggingsbehov-spa';
 import { fetchCvOgJobbonsker, fetchOppfolgingsstatus } from '../../rest/api';
 import { erBrukerSykmeldt } from '../../utils/arena-status-utils';
 import { hasHashParam, hasQueryParam } from '../../utils';
@@ -24,7 +23,6 @@ export const Paneler: React.FC = () => {
 	const oppfolgingstatus = usePromise<AxiosResponse<OppfolgingsstatusData>>(() => fetchOppfolgingsstatus(fnr));
 	const cvOgJobbonsker = useAxiosPromise<ArenaPerson>(() => fetchCvOgJobbonsker(fnr));
 	const apneRegistrering = hasQueryParam('visRegistreringDetaljer') || hasHashParam('apneRegistrering');
-	const apneTilrettelegging = hasHashParam('apneTilretteleggingsbehov');
 	const registreringPanelNavn =
 		isResolved(oppfolgingstatus) && erBrukerSykmeldt(oppfolgingstatus.result.data)
 			? 'Registrering fra sykefravær'
@@ -98,22 +96,6 @@ export const Paneler: React.FC = () => {
 					defaultOpen={isSidemenyElementOpen(sidemenyElementId.ytelser)}
 				>
 					<YtelserPanelinnhold />
-				</AccordionItemErrorBoundary>
-
-				<AccordionItemErrorBoundary
-					name="tilretteleggingsbehov"
-					id={sidemenyElementId.tilretteleggingsbehov}
-					tittel="Behov for tilrettelegging"
-					defaultOpen={
-						isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
-							? isSidemenyElementOpen(sidemenyElementId.tilretteleggingsbehov)
-							: apneTilrettelegging
-					}
-				>
-					<TilretteleggingsbehovSpa
-						fnr={fnr}
-						viewType={TilretteleggingsbehovViewType.VIS_TILRETTELEGGINGSBEHOV}
-					/>
 				</AccordionItemErrorBoundary>
 			</Accordion>
 		</section>
