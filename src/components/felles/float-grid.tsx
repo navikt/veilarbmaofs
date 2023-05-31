@@ -11,8 +11,10 @@ function FloatGrid({ columns, gap, children }: FloatGridProps) {
 	const splitChildren = React.Children.map(children, (child, index) => ({ index, child })).reduce(
 		(acc, { child, index }) => {
 			const key = index % columns;
+			// @ts-ignore
 			const group = acc[key] || [];
 			group.push(child);
+			// @ts-ignore
 			acc[key] = group;
 			return acc;
 		},
@@ -32,7 +34,10 @@ function FloatGrid({ columns, gap, children }: FloatGridProps) {
 
 	const columnsChildren = Object.keys(splitChildren).map(key => (
 		<div key={key} style={divStyle}>
-			{splitChildren[key]}
+			{
+				// @ts-ignore
+				splitChildren[key]
+			}
 		</div>
 	));
 

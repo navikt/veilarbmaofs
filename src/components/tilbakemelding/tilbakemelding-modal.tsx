@@ -109,12 +109,16 @@ function TilbakemeldingModal(props: TilbakemeldingModalProps) {
 					return (
 						<Checkbox
 							checked={checkboxIndexListe.includes(index + 1)}
+							// @ts-ignore
 							value={CheckboxVerdier[key]}
 							key={index}
 							onChange={e => handleCheckboxChanged(index + 1, e)}
 							size="small"
 						>
-							{CheckboxVerdier[key]}
+							{
+								// @ts-ignore
+								CheckboxVerdier[key]
+							}
 						</Checkbox>
 					);
 				})}
