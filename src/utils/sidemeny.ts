@@ -7,7 +7,6 @@ export const sidemenyElementId = {
 	oppfolging: 'oppfolging',
 	cv: 'cv',
 	jobbonsker: 'jobbonsker',
-	tilretteleggingsbehov: 'tilretteleggingsbehov',
 	ytelser: 'ytelser',
 	personalia: 'personalia',
 	registrering: 'registrering'
@@ -37,10 +36,6 @@ export const sidemenyElementer: SidemenyElement[] = [
 	{
 		name: 'Ytelser',
 		id: sidemenyElementId.ytelser
-	},
-	{
-		name: 'Behov for tilrettelegging',
-		id: sidemenyElementId.tilretteleggingsbehov
 	}
 ];
 

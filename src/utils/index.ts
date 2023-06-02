@@ -34,6 +34,7 @@ export function omit<S>(obj: S, ...props: string[]) {
 	return Object.keys(obj)
 		.filter(key => !props.includes(key))
 		.reduce((acc, key) => {
+			// @ts-ignore
 			acc[key] = obj[key];
 			return acc;
 		}, {});

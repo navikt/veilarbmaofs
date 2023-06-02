@@ -2,8 +2,7 @@ import { useState } from 'react';
 import constate from 'constate';
 
 export enum ViewType {
-	DETALJER = 'DETALJER',
-	TILRETTELEGGINGSBEHOV = 'TILRETTELEGGINGSBEHOV'
+	DETALJER = 'DETALJER'
 }
 
 export const [ViewStoreProvider, useViewStore] = constate(() => {
