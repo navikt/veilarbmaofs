@@ -360,7 +360,7 @@ const personaliav2: PersonaliaV2Info = {
 			relasjonsBosted: RelasjonsBosted.ANNET_BOSTED
 		},
 		{
-			fornavn: 'Harry',
+			fornavn: 'Harry August',
 			fodselsdato: '2014-05-24',
 			gradering: Gradering.UGRADERT,
 			erEgenAnsatt: false,

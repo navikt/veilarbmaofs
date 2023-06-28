@@ -3,7 +3,7 @@ import Informasjonsbolk from '../../../felles/informasjonsbolk';
 
 import { Gradering, PersonaliaV2Info, PersonsBarn } from '../../../../rest/datatyper/personaliav2';
 import EMDASH from '../../../../utils/emdash';
-import { formateLocalDate, formateStringInUpperAndLowerCase, isNotEmptyArray } from '../../../../utils';
+import { formateFirstCharOfEachWordToUppercase, formateLocalDate, isNotEmptyArray } from '../../../../utils';
 import { graderingBeskrivelseBarn, hentBorMedBarnBeskrivelse } from '../../../../utils/konstanter';
 import { BodyShort, Detail } from '@navikt/ds-react';
 
@@ -44,7 +44,7 @@ function EnkeltBarn(props: { barn: PersonsBarn }) {
 					<Detail>
 						<b>{`Barn (${alder})`}</b>
 					</Detail>
-					<BodyShort>{formateStringInUpperAndLowerCase(fornavn)}</BodyShort>
+					<BodyShort>{formateFirstCharOfEachWordToUppercase(fornavn)}</BodyShort>
 					<BodyShort>{formateLocalDate(fodselsdato)}</BodyShort>
 					<BorSammen barn={props.barn} />
 					{graderingTekst && <BodyShort>{graderingTekst}</BodyShort>}
