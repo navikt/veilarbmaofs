@@ -1,4 +1,4 @@
-import { finnInternNavDomene } from './miljo-utils';
+import { finnInternNavDomene, finnInternNavDomeneOld } from './miljo-utils';
 import { OrNothing, StringOrNothing } from './felles-typer';
 import EMDASH from './emdash';
 import { Kursvarighet, KursVarighetEnhet } from '../rest/datatyper/arenaperson';
@@ -41,7 +41,7 @@ export function omit<S>(obj: S, ...props: string[]) {
 }
 
 export function byggPamUrl(fnr: string, path = '/cv') {
-	return `https://pam-personbruker-veileder.${finnInternNavDomene()}${path}?fnr=${fnr}`;
+	return `https://pam-personbruker-veileder.${finnInternNavDomeneOld()}${path}?fnr=${fnr}`;
 }
 
 export function lagPersonforvalterLenke(aktoerIdEllerFnr: string) {
