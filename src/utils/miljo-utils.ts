@@ -1,6 +1,7 @@
 export const NAIS_PREPROD_SUFFIX = 'nais.preprod.local';
 export const NAIS_PROD_SUFFIX = 'nais.adeo.no';
 
+export const NAV_INTERN_PREPROD_SUFFIX_OLD = 'intern.dev.nav.no';
 export const NAV_INTERN_PREPROD_SUFFIX = 'dev.intern.nav.no';
 export const NAV_INTERN_PROD_SUFFIX = 'intern.nav.no';
 
@@ -16,4 +17,8 @@ export function finnNaisDomene() {
 
 export function finnInternNavDomene() {
 	return erITestMiljo() ? NAV_INTERN_PREPROD_SUFFIX : NAV_INTERN_PROD_SUFFIX;
+}
+
+export function finnInternNavDomeneOld() {
+	return erITestMiljo() ? NAV_INTERN_PREPROD_SUFFIX_OLD : NAV_INTERN_PROD_SUFFIX;
 }
