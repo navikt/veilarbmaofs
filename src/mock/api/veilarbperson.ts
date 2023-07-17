@@ -11,6 +11,7 @@ import { AktorId } from '../../rest/datatyper/aktor-id';
 import { Gradering, PersonaliaV2Info, RelasjonsBosted } from '../../rest/datatyper/personaliav2';
 import { VergemaalEllerFullmaktOmfangType, VergeOgFullmaktData, Vergetype } from '../../rest/datatyper/vergeOgFullmakt';
 import { TilrettelagtKommunikasjonData } from '../../rest/datatyper/tilrettelagtKommunikasjon';
+import { EndringIRegistreringsdata } from '../../rest/datatyper/EndringIRegistreringdata';
 import { RegistreringsData } from '../../rest/datatyper/registreringsData';
 
 const aktorId: AktorId = {
@@ -572,6 +573,90 @@ const mockTilrettelagtKommunikasjon: TilrettelagtKommunikasjonData = {
 	tegnspraak: null
 };
 
+const mockEndringIRegistreringsData: EndringIRegistreringsdata = {
+	registreringsId: 10004400,
+	besvarelse: {
+		utdanning: {
+			verdi: 'HOYERE_UTDANNING_1_TIL_4',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		utdanningBestatt: {
+			verdi: 'JA',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		utdanningGodkjent: {
+			verdi: 'JA',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		helseHinder: {
+			verdi: 'NEI',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		andreForhold: {
+			verdi: 'NEI',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		sisteStilling: {
+			verdi: 'INGEN_SVAR',
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		dinSituasjon: {
+			verdi: 'OPPSIGELSE',
+			tilleggsData: {
+				forsteArbeidsdagDato: null,
+				sisteArbeidsdagDato: '2023-07-31',
+				oppsigelseDato: '2023-07-19',
+				gjelderFraDato: null,
+				permitteringsProsent: null,
+				stillingsProsent: null,
+				permitteringForlenget: null,
+				harNyJobb: null
+			},
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: 'BRUKER',
+			endretTidspunkt: '2023-07-18T11:24:03.136693338'
+		},
+		fremtidigSituasjon: {
+			verdi: null,
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		},
+		tilbakeIArbeid: {
+			verdi: null,
+			gjelderFraDato: null,
+			gjelderTilDato: null,
+			endretAv: null,
+			endretTidspunkt: null
+		}
+	},
+	endretAv: 'BRUKER',
+	endretTidspunkt: '2023-07-18T11:24:03.158629',
+	registreringsTidspunkt: '2023-07-17T11:27:25.299658',
+	opprettetAv: 'BRUKER',
+	erBesvarelsenEndret: true
+};
+
 const ordinaerRegistering: RegistreringsData = {
 	type: 'ORDINAER',
 	registrering: {
@@ -696,5 +781,8 @@ export const veilarbpersonHandlers: RequestHandler[] = [
 	}),
 	rest.get('/veilarbperson/api/v2/person/tolk', (req, res, ctx) => {
 		return res(ctx.delay(500), ctx.json(mockTilrettelagtKommunikasjon));
+	}),
+	rest.post('/veilarbperson/api/person/registrering/endringer', (req, res, ctx) => {
+		return res(ctx.delay(500), ctx.json(mockEndringIRegistreringsData));
 	})
 ];
