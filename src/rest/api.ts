@@ -7,6 +7,10 @@ export const fetchRegistrering = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/registrering?fnr=${fnr}`);
 };
 
+export const fetchEnringIRegistreringsdata = (fnr: string) => {
+	return axiosInstance.post(`/veilarbperson/api/person/registrering/endringer`, { fodselsnummer: fnr });
+};
+
 export const fetchCvOgJobbonsker = (fnr: string) => {
 	return axiosInstance.get(`/veilarbperson/api/person/cv_jobbprofil?fnr=${fnr}`);
 };
